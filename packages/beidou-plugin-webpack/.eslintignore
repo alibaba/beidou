@@ -1,0 +1,5 @@
+app/proxy*
+node_modules/
+spm_modules/
+test/fixtures
+dist/

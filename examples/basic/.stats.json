@@ -1,0 +1,28 @@
+Hash: 585674c0d1997ef61210
+Version: webpack 3.2.0
+Time: 8164ms
+                              Asset       Size  Chunks             Chunk Names
+      index.js?585674c0d1997ef61210     161 kB       0  [emitted]  index
+       test.js?585674c0d1997ef61210     125 kB       1  [emitted]  test
+hello-world.js?585674c0d1997ef61210  854 bytes       2  [emitted]  hello-world
+                        manifest.js      96 kB       3  [emitted]  manifest
+                          index.css   21 bytes       0  [emitted]  index
+  [66] ./node_modules/babel-runtime/helpers/classCallCheck.js 208 bytes {3} [built]
+  [88] ./node_modules/react-hot-loader/patch.js 41 bytes {3} [built]
+  [89] ./node_modules/webpack-hot-middleware/client.js?path=__webpack_hmr&timeout=20000&heartbeat=10000 6.68 kB {3} [built]
+ [145] (webpack)/buildin/module.js 517 bytes {3} [built]
+ [231] multi react-hot-loader/patch webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&heartbeat=10000 ./client//test.jsx 52 bytes {1} [built]
+ [232] ./node_modules/react-hot-loader/lib/patch.js 209 bytes {3} [built]
+ [234] /Users/wujingfeng/Gitlab/beidou/beidou/packages/beidou-plugin-webpack/node_modules/querystring-es3/index.js 127 bytes {3} [built]
+ [245] ./client/test.jsx 1.89 kB {1} [built]
+ [300] ./client/_lib/render.js 1.08 kB {1} [built]
+ [380] multi react-hot-loader/patch webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&heartbeat=10000 ./client/hello-world/index.jsx 52 bytes {2} [built]
+ [381] ./client/hello-world/index.jsx 2.08 kB {2} [built]
+ [382] multi react-hot-loader/patch webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&heartbeat=10000 ./client/index/index.jsx 52 bytes {0} [built]
+ [383] ./client/index/index.jsx 3.7 kB {0} [built]
+ [384] ./node_modules/react-hot-loader/index.js 41 bytes {0} [built]
+ [506] ./client/index/component.jsx 1.92 kB {0} [built]
+    + 496 hidden modules
+Child extract-text-webpack-plugin:
+       [0] ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./client/index/index.scss 180 bytes {0} [built]
+       [1] ./node_modules/css-loader/lib/css-base.js 1.51 kB {0} [built]

@@ -1,0 +1,26 @@
+{
+  "lerna": "2.0.0-rc.5",
+  "version": "0.0.0",
+  "changelog": {
+    "repo": "alibaba/beidou",
+    "labels": {
+      "tag: spec compliancy": ":eyeglasses: Spec Compliancy",
+      "tag: bc": ":boom: Breaking Change",
+      "tag: feat": ":rocket: New Feature",
+      "tag: fix": ":bug: Bug Fix",
+      "tag: polish": ":nail_care: Polish",
+      "tag: doc": ":memo: Documentation",
+      "tag: internal": ":house: Internal"
+    }
+  },
+  "packages": [
+    "packages/*"
+  ],
+  "publishConfig": {
+    "ignore": [
+      "*.md",
+      "test/**"
+    ]
+  },
+  "npmClient": "yarn"
+}

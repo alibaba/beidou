@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-config-beidou",
+  "rules": {
+    "prefer-rest-params": 0
+  }
+}

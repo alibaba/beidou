@@ -1,0 +1,11 @@
+.title {
+  text-align: center;
+  color: red;
+}
+
+p {
+  text-align: center;
+  .document {
+    color: green;
+  }
+}

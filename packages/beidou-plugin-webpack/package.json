@@ -1,0 +1,64 @@
+{
+  "name": "beidou-plugin-webpack",
+  "version": "0.0.1",
+  "description": "webpack middleware",
+  "eggPlugin": {
+    "name": "webpack"
+  },
+  "keywords": [
+    "egg",
+    "plugin"
+  ],
+  "dependencies": {
+    "debug": "^2.2.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "koa-webpack-dev-middleware": "^1.2.1",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.3",
+    "request": "^2.81.0",
+    "sass-loader": "^6.0.6",
+    "sdk-base": "^2.0.1",
+    "webpack": "3.x",
+    "webpack-dev-middleware": "^1.11.0"
+  },
+  "devDependencies": {
+    "autod": "2",
+    "babel-loader": "^6.2.4",
+    "chai": "^4.0.2",
+    "egg": "^1.4.0",
+    "egg-bin": "^3.4.2",
+    "egg-mock": "^3.7.1",
+    "eslint": "^3.4.0",
+    "eslint-config-beidou": "0.0.1",
+    "should": "8",
+    "supertest": "1"
+  },
+  "files": [
+    "app",
+    "lib",
+    "config",
+    "app.js",
+    "agent.js"
+  ],
+  "engines": {
+    "node": ">=4.3.1"
+  },
+  "ci": {
+    "versions": [
+      "4",
+      "6"
+    ]
+  },
+  "scripts": {
+    "test": "npm run lint && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint --fix lib app app.js agent.js config",
+    "ci": "npm run cov",
+    "history": "egg-bin history CHANGELOG.md"
+  },
+  "___bin": {
+    "webpack-build": "./bin/build.js"
+  }
+}

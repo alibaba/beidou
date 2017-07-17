@@ -1,0 +1,51 @@
+{
+  "name": "beidou-plugin-isomorphic",
+  "version": "0.0.1",
+  "description": "beidou isomorphic register",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run lint && npm run test-local",
+    "test-local": "TEST_REPORTER=spec egg-bin test",
+    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "lint": "eslint --fix app config app.js",
+    "ci": "npm run cov",
+    "history": "egg-bin history CHANGELOG.md",
+    "precommit": "npm run lint"
+  },
+  "eggPlugin": {
+    "name": "isomorphic"
+  },
+  "keywords": [
+    "egg",
+    "plugin"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^2.6.0",
+    "isomorphic-register": "^0.0.1",
+    "jsdom": "^9.8.3"
+  },
+  "devDependencies": {
+    "autod": "2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-beidou-server": "^0.0.5",
+    "babel-preset-react": "^6.16.0",
+    "egg": "^1.4.0",
+    "egg-bin": "^3.4.2",
+    "egg-mock": "^3.7.2",
+    "eslint": "^3.11.0",
+    "eslint-config-beidou": "^0.0.1",
+    "husky": "^0.13.4",
+    "should": "8",
+    "supertest": "1"
+  },
+  "files": [
+    "config",
+    "lib",
+    "app",
+    "app.js"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "beidou-core",
+  "version": "0.0.1",
+  "description": "Isomorphic framework for server-rendered React apps",
+  "main": "index.js",
+  "scripts": {
+    "lint": "make lint",
+    "test": "make test",
+    "test-only": "make test-only",
+    "test-all": "make test-all",
+    "cov": "make cov",
+    "install-all": "make install",
+    "clean": "make clean-all",
+    "ci": "make cov",
+    "changelog": "make changelog",
+    "precommit": "make test-all"
+  },
+  "author": "weichunpeng",
+  "devDependencies": {
+    "beidou-plugin-webpack": "file:./packages/beidou-plugin-webpack",
+    "css-loader": "^0.26.1",
+    "egg-bin": "^4.0.4",
+    "egg-logrotater": "^1.0.1",
+    "egg-mock": "^3.8.0",
+    "eslint": "^3.8.1",
+    "eslint-config-beidou": "^0.0.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "husky": "^0.13.4",
+    "lerna": "^2.0.0-rc.5",
+    "lerna-changelog": "^0.5.0",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "lint-staged": "^4.0.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "sass-loader": "^4.1.1",
+    "should": "^6.0.3",
+    "style-loader": "^0.13.1",
+    "supertest": "^1.2.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.15.0"
+  },
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.20.0",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-beidou-client": "^0.0.5",
+    "babel-preset-beidou-server": "^0.0.5",
+    "beidou-plugin-isomorphic": "file:./packages/beidou-plugin-isomorphic",
+    "beidou-plugin-react": "file:./packages/beidou-plugin-react",
+    "egg": "^1.5.0",
+    "mz": "^2.6.0"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "license": "MIT",
+  "config": {
+    "alicov": {
+      "threshold": 90
+    }
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"]
+  }
+}

@@ -1,0 +1,22 @@
+# log
+*.log
+*_config.json
+*.babel.json
+
+# temp files
+*.lerna_backup
+*.dat
+test/fixtures/apps/*/build/
+test/fixtures/apps/*/*/isomorphic/
+packages/*/test/fixtures/**/run/
+
+# build files
+examples/**/build/
+
+# project organization files of IED
+.idea
+.vscode
+
+# Dependency directories
+node_modules
+

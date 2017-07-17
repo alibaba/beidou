@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea
+.tmp
+coverage
+node_modules/
+logs
+npm-debug.log
+test
+.DS_Store
+.nyc_output
+.cise.yml
+.gitlab-ci.yml
+.eslintrc
+.eslintignore
+.editorconfig
+build.sh
+
