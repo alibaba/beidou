@@ -76,13 +76,3 @@ exports.webpack = {
 
 
 ## Examples
-
-## Contributors(3)
-
-Ordered by date of first contribution, by [ali-contributors](http://gitlab.alibaba-inc.com/node/ali-contributors).
-
-- ![](https://work.alibaba-inc.com/photo/102598.30x30.jpg) [@倞羽](https://work.alibaba-inc.com/work/u/102598)<a target="_blank" href="http://amos.im.alisoft.com/msg.aw?v=2&site=cntaobao&s=2&charset=utf-8&uid=%E5%80%9E%E7%BE%BD"><img src="http://amos.alicdn.com/online.aw?v=2&uid=%E5%80%9E%E7%BE%BD&site=cntaobao&s=1&charset=utf-8"></a>
-- ![](https://work.alibaba-inc.com/photo/86450.30x30.jpg) [@六猴](https://work.alibaba-inc.com/work/u/86450)<a target="_blank" href="http://amos.im.alisoft.com/msg.aw?v=2&site=cntaobao&s=2&charset=utf-8&uid=%E5%85%AD%E7%8C%B4"><img src="http://amos.alicdn.com/online.aw?v=2&uid=%E5%85%AD%E7%8C%B4&site=cntaobao&s=1&charset=utf-8"></a>
-- ![](https://work.alibaba-inc.com/photo/109043.30x30.jpg) [@陌农](https://work.alibaba-inc.com/work/u/109043)<a target="_blank" href="http://amos.im.alisoft.com/msg.aw?v=2&site=cntaobao&s=2&charset=utf-8&uid=%E9%99%8C%E5%86%9C"><img src="http://amos.alicdn.com/online.aw?v=2&uid=%E9%99%8C%E5%86%9C&site=cntaobao&s=1&charset=utf-8"></a>
-
---------------------

@@ -11,14 +11,10 @@ const symbol = Symbol.for('ReactView#view');
 class BeidouReactView {
 
   /*
-    extname: 'jsx' // optional, file extension name
     beautify: false // optional, beautify HTML snippet
     cache: true, //optional, if false, clean require cache for development usage
-    loadPath: `${antx.baseDir}/app/views`, //optional, View directory
-    clientPath: `${antx.baseDir}/client`,  //optional, Client directory
     internals: true, //optional, true: renderToString or false: renderToStaticMarkup
     doctype: '<!DOCTYPE html>', //optional, HTML doctype
-    host: '', //optional, host for assets such as js, css files, e.g. 'www.mycdn.com'
   */
   constructor(ctx) {
     this.ctx = ctx;
