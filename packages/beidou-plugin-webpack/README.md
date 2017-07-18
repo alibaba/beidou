@@ -1,34 +1,14 @@
 # beidou-plugin-webpack
 
-[![TNPM version][tnpm-image]][tnpm-url]
-[![TNPM downloads][tnpm-downloads-image]][tnpm-url]
+webpack dev server for local environment
 
-[![build status][ci-image]][ci-url]
-[![line coverage][line-coverage-image]][ci-url]
-[![branch coverage][branch-coverage-image]][ci-url]
+## Features
+* Serve jsx/js source
+* Serve less/scss/css source
+* Support hot module replacement(hmr)
 
-[tnpm-image]: http://web.npm.alibaba-inc.com/badge/v/@ali/beidou-plugin-webpack.svg?style=flat-square
-[tnpm-url]: http://web.npm.alibaba-inc.com/package/@ali/beidou-plugin-webpack
-[tnpm-downloads-image]: http://web.npm.alibaba-inc.com/badge/d/@ali/beidou-plugin-webpack.svg?style=flat-square
-[ci-image]: http://cise.alibaba-inc.com/task/398496/status.svg
-[ci-url]: http://cise.alibaba-inc.com/task/398496
-[line-coverage-image]: http://cise.alibaba-inc.com/task/398496/ut_line_coverage.svg
-[branch-coverage-image]: http://cise.alibaba-inc.com/task/398496/ut_branch_coverage.svg
 
-在本地开发环境（local）下的 webpack dev server 插件
-
-local环境下默认开启, 其他环境下不建议使用.
-
-## 功能特性
-
-### middleware
-
-提供了一个 webpack compiler middleware
-
-- 与 beidou server 在相同端口上监听文件请求;
-- 与webpack的使用方式一致;
-
-## 配置
+## Configuration
 
 ```js
 exports.webpack = {
@@ -70,9 +50,58 @@ exports.webpack = {
 }
 ```
 
-| 配置项 	| 类型 	| 默认值 	| 说明 	|
-|------------------	|---------------	|-------------------------------------	|--------------	|
-| config 	| String | null 	| 必填项, webpack 配置文件路径 	|
+- config/plugin.default.js:  
 
+```
+exports.webpack = {
+    enable: true,
+    package: 'beidou-plugin-webpack',
+    env: ['local', 'unittest']
+  }
 
-## Examples
+```
+
+- config/config.local.js  
+
+```
+exports.webpack = {
+    // [optional] default to 'beidou-plugin-webpack/config/default.webpack.config.js'
+    defaultConfig: 'path of webpack config', 
+    // [optional] 
+    path: [], // the path of request should be transfered to webpack. e.g HMR: /__webpack_hmr
+    // [optional] 
+    noInfo: false,
+    // [optional] 
+    quiet: false,
+    // [optional] 
+    lazy: false,
+    // [optional] 
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: true,
+    },
+    // [optional] 
+    headers: { 'X-Custom-Header': 'yes' },
+    // [optional] 
+    stats: {
+        colors: true,
+        chunks: false,
+    },
+    // [optional] 
+    defaultEntryName: 'index.jsx',
+    // [optional] 
+    outputPath: './build',
+    // [optional] 
+    publicPath: '/build',
+    // [optional] hot module replacement config
+    hmr: {
+        path: '__webpack_hmr',
+        timeout: '20000',
+        heartbeat: '10000',
+    }
+};
+```
+
+## License
+
+[MIT](LICENSE)

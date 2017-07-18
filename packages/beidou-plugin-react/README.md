@@ -14,11 +14,17 @@ Beidou react view
 
 > React view 
 
+### Install
+
+```
+$ npm install beidou-plugin-react --save
+```
+
 ### Configuration  
 
 - config/plugin.default.js:  
 
-```  
+``` 
 exports.react = {
   enable: true,
   package: 'beidou-plugin-react',
@@ -34,6 +40,12 @@ exports.react = {
     internals: true, //optional, true: renderToString or false: renderToStaticMarkup
     doctype: '<!DOCTYPE html>', //optional, HTML doctype
 }
+
+exports.view = {
+      defaultViewEngine: 'react',
+      defaultExtension: '.jsx'
+    }
+    
 ```  
 
 ### Usage
@@ -49,7 +61,12 @@ exprots.index = function*() {
 
 ### API
 
-React view exports `render` and `renderString` , return Promise.
+React view exports `render` and `renderString` 2 APIs, return Promise.
 
 > * ctx.render(name, locals) - render template, and assign to ctx.body
 > * ctx.renderString(tpl, locals) - only render template to string, will `not` assign to ctx.body
+
+
+## License
+
+[MIT](LICENSE)

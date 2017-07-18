@@ -71,12 +71,12 @@ beidou-project
 │   ├── view (optional)
 │   |   └── home.tpl
 │   └── extend (optional)
-│       ├── helper.js (optional)
-│       ├── request.js (optional)
-│       ├── response.js (optional)
-│       ├── context.js (optional)
-│       ├── application.js (optional)
-│       └── agent.js (optional)
+│       ├── helper.js
+│       ├── request.js
+│       ├── response.js
+│       ├── context.js
+│       ├── application.js
+│       └── agent.js
 ├── config
 |   ├── plugin.js
 |   ├── config.default.js
@@ -134,5 +134,9 @@ module.exports = function* aController() {
 };
 
 ```
+
+## License
+
+[MIT](LICENSE)
 
 
