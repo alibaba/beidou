@@ -2,7 +2,7 @@ MAKEFLAGS = -j1
 
 export NODE_ENV = test
 
-.PHONY: lint install clean test-clean clean-all test-only test-all test cov changelog
+.PHONY: lint install clean test-clean clean-all test-only test-all test cov ci changelog
 
 lint:
 	./node_modules/.bin/lint-staged --fix lib
@@ -48,10 +48,14 @@ test:
 	make lint
 	make test-only
 
-cov: ./node_modules/.bin/egg-bin cov
+cov:
+	./node_modules/.bin/egg-bin cov
 
-ci: make cov
+ci:
+	./node_modules/.bin/eslint lib config
+	make cov
 
-changelog: ./node_modules/.bin/lerna-changelog
+changelog:
+	./node_modules/.bin/lerna-changelog
 
 

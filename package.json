@@ -11,7 +11,7 @@
     "cov": "make cov",
     "install-all": "make install",
     "clean": "make clean-all",
-    "ci": "make cov",
+    "ci": "make ci",
     "changelog": "make changelog",
     "precommit": "make test-all"
   },
