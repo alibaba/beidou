@@ -1,0 +1,52 @@
+{
+  "name": "beidou-init",
+  "version": "0.0.1",
+  "description": "beidou init helper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "beidou": "bin/beidou.js"
+  },
+  "config": {
+    "boilerplate": {
+      "Empty": {
+        "package": "beidou-template-empty",
+        "description": "Empty beidou isomorphic app boilerplate"
+      },
+      "Simple": {
+        "package": "beidou-template-simple",
+        "description": "Simple beidou isomorphic app boilerplate"
+      }
+    }
+  },
+  "keywords": [
+    "beidou",
+    "nodejs",
+    "isomorphic",
+    "react"
+  ],
+  "author": "Holden",
+  "license": "MIT",
+  "dependencies": {
+    "co": "^4.6.0",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "cross-spawn": "^5.0.1",
+    "glob": "^7.1.1",
+    "group-object": "^0.1.1",
+    "inquirer": "^2.0.0",
+    "is-type-of": "^1.0.0",
+    "mem-fs": "^1.1.3",
+    "mem-fs-editor": "^2.3.0",
+    "mkdirp": "^0.5.1",
+    "node-homedir": "^1.0.0",
+    "npm-updater": "^1.2.0",
+    "npminstall": "^2.16.0",
+    "rimraf": "^2.5.4",
+    "tar": "^2.2.1",
+    "urllib": "^2.19.0",
+    "yargs": "^6.5.0"
+  }
+}
