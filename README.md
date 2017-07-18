@@ -4,7 +4,7 @@ Isomorphic framework for server-rendered React apps
 [![NPM quality][quality-image]][quality-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
-[![NPM download][download-image]][download-url]
+[![Gitter][gitter-image]][gitter-url]
 
 [npm-image]: https://img.shields.io/npm/v/beidou-core.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/beidou-core
