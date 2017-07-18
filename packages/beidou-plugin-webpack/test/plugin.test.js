@@ -5,8 +5,8 @@
 /* global it: true */
 
 const path = require('path');
-const fs = require('fs');
-const exec = require('child_process').exec;
+// const fs = require('fs');
+// const exec = require('child_process').exec;
 const request = require('supertest');
 const mm = require('egg-mock');
 const chai = require('chai');
@@ -20,7 +20,7 @@ describe('test/plugin.test.js', () => {
     let app;
     before((done) => {
       app = mm.cluster({
-        baseDir: 'default-webpack-config',
+        baseDir: './default-webpack-config',
         plugin,
         framework,
       });
@@ -56,7 +56,7 @@ describe('test/plugin.test.js', () => {
     let app;
     before((done) => {
       app = mm.cluster({
-        baseDir: 'custom-webpack-config',
+        baseDir: './custom-webpack-config',
         plugin,
         framework,
       });
@@ -86,7 +86,7 @@ describe('test/plugin.test.js', () => {
     let app;
     before((done) => {
       app = mm.cluster({
-        baseDir: 'config-publicPath',
+        baseDir: './config-publicPath',
         plugin,
         framework,
       });
@@ -126,7 +126,7 @@ describe('test/plugin.test.js', () => {
     let app;
     before((done) => {
       app = mm.cluster({
-        baseDir: 'hot-module-reload',
+        baseDir: './hot-module-reload',
         plugin,
         framework,
       });

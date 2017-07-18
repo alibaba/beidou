@@ -6,7 +6,7 @@
     "name": "webpack"
   },
   "keywords": [
-    "egg",
+    "beidou",
     "plugin"
   ],
   "dependencies": {
@@ -52,13 +52,18 @@
   },
   "scripts": {
     "test": "npm run lint && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
+    "test-local": "TEST_REPORTER=spec egg-bin test",
+    "cov": "TEST_REPORTER=spec egg-bin cov",
     "lint": "eslint --fix lib app app.js agent.js config",
     "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
   "___bin": {
     "webpack-build": "./bin/build.js"
+  },
+  "config": {
+    "alicov": {
+      "threshold": 90
+    }
   }
 }
