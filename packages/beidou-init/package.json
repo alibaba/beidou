@@ -49,8 +49,5 @@
     "urllib": "^2.19.0",
     "yargs": "^6.5.0"
   },
-  "repository" :
-  { "type" : "git", 
-    "url" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
-  }
+  "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
 }

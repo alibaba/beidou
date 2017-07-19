@@ -55,8 +55,5 @@
       "threshold": 90
     }
   },
-  "repository" :
-  { "type" : "git", 
-    "url" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
-  }
+  "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
 }

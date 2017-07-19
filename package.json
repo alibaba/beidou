@@ -64,5 +64,6 @@
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"]
-  }
+  },
+  "repository" : "https://github.com/alibaba/beidou"
 }
