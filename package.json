@@ -17,7 +17,7 @@
   },
   "author": "weichunpeng",
   "devDependencies": {
-    "beidou-plugin-webpack": "file:./packages/beidou-plugin-webpack",
+    "beidou-plugin-webpack": "^0.2.0",
     "css-loader": "^0.26.1",
     "egg-bin": "^4.0.4",
     "egg-logrotater": "^1.0.1",
@@ -48,8 +48,8 @@
     "babel-polyfill": "^6.20.0",
     "babel-preset-beidou-client": "^0.0.5",
     "babel-preset-beidou-server": "^0.0.5",
-    "beidou-plugin-isomorphic": "file:./packages/beidou-plugin-isomorphic",
-    "beidou-plugin-react": "file:./packages/beidou-plugin-react",
+    "beidou-plugin-isomorphic": "^0.2.0",
+    "beidou-plugin-react": "^0.2.0",
     "egg": "^1.5.0",
     "mz": "^2.6.0",
     "require-hacker": "^3.0.0"
