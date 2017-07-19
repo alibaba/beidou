@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-webpack",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "webpack middleware",
   "eggPlugin": {
     "name": "webpack"
@@ -52,7 +52,7 @@
     "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "bin": {
+  "__bin": {
     "webpack-build": "./bin/build.js"
   },
   "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
