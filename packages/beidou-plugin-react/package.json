@@ -50,10 +50,5 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "config": {
-    "alicov": {
-      "threshold": 90
-    }
-  },
   "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
 }
