@@ -1,6 +1,6 @@
 {
   "name": "beidou-init",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "beidou init helper",
   "main": "index.js",
   "scripts": {
@@ -48,5 +48,6 @@
     "tar": "^2.2.1",
     "urllib": "^2.19.0",
     "yargs": "^6.5.0"
-  }
+  },
+  "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
 }

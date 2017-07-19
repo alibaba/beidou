@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-webpack",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "webpack middleware",
   "eggPlugin": {
     "name": "webpack"
@@ -42,13 +42,7 @@
     "agent.js"
   ],
   "engines": {
-    "node": ">=4.3.1"
-  },
-  "ci": {
-    "versions": [
-      "4",
-      "6"
-    ]
+    "node": ">=6.0.0"
   },
   "scripts": {
     "test": "npm run lint && npm run test-local",
@@ -58,12 +52,8 @@
     "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "___bin": {
+  "bin": {
     "webpack-build": "./bin/build.js"
   },
-  "config": {
-    "alicov": {
-      "threshold": 90
-    }
-  }
+  "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
 }
