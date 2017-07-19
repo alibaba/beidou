@@ -14,13 +14,13 @@ export default class View extends React.Component {
     return (
       <html>
         <head>
-          <title>Render</title>
-          <link rel="stylesheet" href="/build/render.css" />
+          <title>Example</title>
+          <link rel="stylesheet" href="/build/example.css" />
         </head>
         <body>
           <div id="container" />
           <script src={'/build/manifest.js'} />
-          <script src={'/build/render.js'} />
+          <script src={'/build/example.js'} />
         </body>
       </html>
     );
