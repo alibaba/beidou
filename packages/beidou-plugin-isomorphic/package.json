@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-isomorphic",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "beidou isomorphic register",
   "main": "app.js",
   "scripts": {
