@@ -15,7 +15,7 @@
     "history": "egg-bin history CHANGELOG.md",
     "precommit": "npm run lint"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "js-beautify": "^1.6.2",
     "react": "^15.5.4",
@@ -50,9 +50,5 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "config": {
-    "alicov": {
-      "threshold": 90
-    }
-  }
+  "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
 }

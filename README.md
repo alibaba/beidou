@@ -131,6 +131,7 @@ For example, visit `http://localhost:6001/page-a`, `/client/page-a.jsx` will be 
 #### Custom router
 
 if we want to map `/a` to `/client/b.jsx`, follow the next steps
+
 step 1: create a new router
 
 ```javascript

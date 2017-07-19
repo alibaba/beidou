@@ -19,10 +19,9 @@
     "egg",
     "plugin"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "debug": "^2.6.0",
-    "isomorphic-register": "^0.0.1",
     "jsdom": "^9.8.3"
   },
   "devDependencies": {
@@ -47,5 +46,6 @@
   ],
   "engines": {
     "node": ">=6.0.0"
-  }
+  },
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic"
 }

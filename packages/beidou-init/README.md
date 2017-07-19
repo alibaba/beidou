@@ -9,13 +9,13 @@ Init beidou app helper tools.
 $ tnpm install beidou-init -g
 ```
 
-## 初始化
+## Initialize
 
 ```bash
 $ beidou init
 ```
 
-## 选择应用场景
+## Choose boilerplate
 
 ```bash
 $ beidou init
@@ -24,13 +24,13 @@ $ beidou init
   Empty - Empty beidou isomorphic app boilerplate
 ```
 
-## 启动应用
+## start
 
 ```bash
 $ beidou start （or npm start）
 ```
 
-## 编译
+## build
 
 ```bash
 $ beidou build (or npm build)
