@@ -85,9 +85,9 @@ class BeidouReactView {
         this.app.logger.error(err);
         err.name = `no such file or directory: ${viewPath}`;
         err.status = 404;
-        reject(err);
-        return;
+        return reject(err);
       }
+
       resolve(markup);
     });
   }

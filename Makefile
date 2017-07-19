@@ -53,7 +53,7 @@ cov:
 
 ci:
 	./node_modules/.bin/eslint lib config
-	make cov
+	./scripts/ci.sh
 
 changelog:
 	./node_modules/.bin/lerna-changelog

@@ -47,7 +47,10 @@ exports.notFound = function* () {
   try {
     yield this.render('home/notFound', { store, title: '测试' });
   } catch (err) {
-    if (err.name === 'AssertionError' && err.message.indexOf("Can't find home/notFound from") >= 0) {
+    /*
+    * in nodejs 8, name of AssertionError is: AssertionError [ERR_ASSERTION]
+    */
+    if (err instanceof Error && err.message.indexOf("Can't find home/notFound from") >= 0) {
       this.body = 'no such file or directory';
       this.status = 404;
     }

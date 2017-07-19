@@ -1,5 +1,22 @@
 Isomorphic framework for server-rendered React apps
 
+[![NPM version][npm-image]][npm-url]
+[![NPM quality][quality-image]][quality-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][codecov-image]][codecov-url]
+[![Gitter][gitter-image]][gitter-url]
+
+[npm-image]: https://img.shields.io/npm/v/beidou-core.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/beidou-core
+[quality-image]: http://npm.packagequality.com/shield/beidou-core.svg?style=flat-square
+[quality-url]: http://packagequality.com/#?package=beidou-core
+[travis-image]: https://img.shields.io/travis/alibaba/beidou.svg?style=flat-square
+[travis-url]: https://travis-ci.org/alibaba/beidou
+[codecov-image]: https://img.shields.io/codecov/c/github/alibaba/beidou.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/alibaba/beidou
+[gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg?style=flat-square
+[gitter-url]: https://gitter.im/alibaba/beidou
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -102,14 +119,14 @@ Every page in /client folder will be routed automatically.
 For example, visit `http://localhost:6001/page-a`, `/client/page-a.jsx` will be rendered.
 
 
-| Client source | Router | Memo |
-| --- | --- | --- |
-| client/index.jsx | / | Default router |
-| client/index/index.jsx | / | Default router |
-| client/a.jsx | /a | Auto router |
-| client/a/index.jsx | /a | Auto router |
-| client/a/b.jsx | /a/b | Auto router |
-| client/a/b/index.jsx | /a/b | Auto router |
+| Client source          | Router | Memo           |
+| ---------------------- | ------ | -------------- |
+| client/index.jsx       | /      | Default router |
+| client/index/index.jsx | /      | Default router |
+| client/a.jsx           | /a     | Auto router    |
+| client/a/index.jsx     | /a     | Auto router    |
+| client/a/b.jsx         | /a/b   | Auto router    |
+| client/a/b/index.jsx   | /a/b   | Auto router    |
 
 #### Custom router
 
