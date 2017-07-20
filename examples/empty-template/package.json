@@ -1,6 +1,6 @@
 {
   "name": "beidou-template-empty",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "beidou empty template",
   "scripts": {
     "start": "./node_modules/.bin/node ./bin/server.js",
