@@ -44,7 +44,7 @@ Isomorphic framework for server-rendered React apps
 Install generator
 
 ```bash
-npm install beidou-bin -g
+npm install beidou-init -g
 ```
 
 Init
