@@ -55,5 +55,5 @@
   "__bin": {
     "webpack-build": "./bin/build.js"
   },
-  "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
 }
