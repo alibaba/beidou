@@ -5,8 +5,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <div>
-        <h1>Render into DOM</h1>
-        <button onClick={() => alert('hello')}>Click Me</button>
+        <h3>This is example page, back to <a href="/">index page</a></h3>
       </div>
     );
   }
