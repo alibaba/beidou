@@ -29,31 +29,3 @@ render({
   view: View,
   script: '/build/index.js',
 });
-
-// render({
-//   element: <App />,
-//   containerId: 'container2',
-//   view: View
-// });
-
-// // const init = (Component) => {
-// //   render(
-// //     <AppContainer>
-// //       <Component />
-// //     </AppContainer>,
-// //     document.getElementById('container')
-// //   );
-// // };
-
-// // init(App);
-
-// if (module.hot) {
-//   module.hot.accept('./component', () => {
-//     const Component = require('./component');
-//     render({
-//       element: <Component />,
-//       containerId: 'container2',
-//       view: View
-//     });
-//   });
-// }
