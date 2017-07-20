@@ -1,10 +1,9 @@
 {
-  "lerna": "2.0.0-rc.5",
+  "lerna": "2.0.0",
   "version": "0.2.0",
   "changelog": {
     "repo": "alibaba/beidou",
     "labels": {
-      "tag: spec compliancy": ":eyeglasses: Spec Compliancy",
       "tag: bc": ":boom: Breaking Change",
       "tag: feat": ":rocket: New Feature",
       "tag: fix": ":bug: Bug Fix",
@@ -16,11 +15,13 @@
   "packages": [
     "packages/*"
   ],
-  "publishConfig": {
-    "ignore": [
-      "*.md",
-      "test/**"
-    ]
+  "command": {
+    "publish": {
+      "ignore": [
+        "*.md",
+        "test/**"
+      ]
+    }
   },
   "npmClient": "yarn"
 }
