@@ -11,7 +11,7 @@ const require_hacker = require('require-hacker');
 const request = require('supertest');
 const mm = require('egg-mock');
 
-const frameworkPath = path.join(__dirname, '../../../');
+const frameworkPath = path.join(__dirname, '../../beidou-core/');
 
 describe('test/plugin.test.js', () => {
   describe('GET isomorphic resources', () => {

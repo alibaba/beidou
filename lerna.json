@@ -13,7 +13,8 @@
     }
   },
   "packages": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "command": {
     "publish": {

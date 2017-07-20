@@ -46,7 +46,7 @@ test-all:
 
 test:
 	make lint
-	make test-only
+	make test-all
 
 cov:
 	./node_modules/.bin/egg-bin cov

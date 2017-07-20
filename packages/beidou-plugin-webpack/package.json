@@ -7,7 +7,8 @@
   },
   "keywords": [
     "beidou",
-    "plugin"
+    "plugin",
+    "webpack"
   ],
   "dependencies": {
     "debug": "^2.2.0",
@@ -35,6 +36,7 @@
     "supertest": "1"
   },
   "files": [
+    "bin",
     "app",
     "lib",
     "config",
@@ -52,7 +54,7 @@
     "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "__bin": {
+  "bin": {
     "webpack-build": "./bin/build.js"
   },
   "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"

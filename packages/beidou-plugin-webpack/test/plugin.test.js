@@ -12,7 +12,7 @@ const mm = require('egg-mock');
 const chai = require('chai');
 
 const expect = chai.expect;
-const framework = path.join(__dirname, '../../../');
+const framework = path.join(__dirname, '../../beidou-core/');
 const plugin = 'webpack';
 
 describe('test/plugin.test.js', () => {
