@@ -21,3 +21,5 @@ coverage/
 # Dependency directories
 node_modules
 
+# build assets
+*.stats.json

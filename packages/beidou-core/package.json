@@ -1,6 +1,6 @@
 {
   "name": "beidou-core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
   "scripts": {
