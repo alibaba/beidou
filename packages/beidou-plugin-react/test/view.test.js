@@ -7,7 +7,7 @@
 'use strict';
 
 /**
- * config.view = {
+ * config.react = {
     extname: 'jsx',
     beautify: false,
     cache: true,
