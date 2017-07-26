@@ -17,20 +17,6 @@ Isomorphic framework for server-rendered React apps
 [gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg?style=flat-square
 [gitter-url]: https://gitter.im/alibaba/beidou
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [Features](#features)
-- [How to use](#how-to-use)
-  - [Setup](#setup)
-  - [Structure](#structure)
-  - [Router](#router)
-    - [Auto router](#auto-router)
-    - [Custom router](#custom-router)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Features
 
 - ✔︎ React server side render
@@ -46,7 +32,12 @@ Isomorphic framework for server-rendered React apps
 
 ## Documentation
 
+* [project structure](./docs/project-structure.md)
 * [getting started](./docs/getting-started.md)
+* [CSS](./docs/css.md)
+  * [CSS-in-JSX](./docs/css.md#css-in-jsx)
+  * [importing CSS/less/scss](./docs/css.md#importing-CSS/less/scss)
+  * [css-modules supported](./docs/css.md#css-modules-supported)
 * [router](./docs/router.md)
   * [auto router](./docs/router.md#auto-router)
   * [custom router](./docs/router.md#custom-router)
