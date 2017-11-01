@@ -1,7 +1,6 @@
 Isomorphic framework for server-rendered React apps
 
 [![NPM version][npm-image]][npm-url]
-[![NPM quality][quality-image]][quality-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
 [![Gitter][gitter-image]][gitter-url]
