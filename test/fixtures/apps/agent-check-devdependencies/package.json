@@ -1,6 +1,6 @@
 {
   "name": "agent-check-devdependencies",
   "devDependencies": {
-    "@ali/beidou-plugin-view-react": "^0.1.0"
+    "beidou-plugin-react": "^0.1.0"
   }
 }
