@@ -5,7 +5,10 @@ export NODE_ENV = test
 .PHONY: lint install clean test-clean clean-all test-only test-all test cov ci changelog
 
 lint:
-	./node_modules/.bin/lint-staged --fix lib
+	./node_modules/.bin/lint-staged ./packages
+
+lint-all:
+	./node_modules/.bin/eslint --ext .js --ext .jsx --fix ./packages
 
 install:
 	yarn install
@@ -41,6 +44,7 @@ test-only:
 	make test-clean
 
 test-all:
+	make lint-all
 	./scripts/test-all.sh
 	make test-clean
 

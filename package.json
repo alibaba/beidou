@@ -13,7 +13,8 @@
     "clean": "make clean-all",
     "ci": "make ci",
     "changelog": "make changelog",
-    "precommit": "make test-all"
+    "precommit": "make lint",
+    "prepush": "make test-all"
   },
   "author": "weichunpeng",
   "devDependencies": {

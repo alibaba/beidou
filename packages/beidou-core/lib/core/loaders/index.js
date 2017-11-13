@@ -2,7 +2,6 @@
  * Loader逻辑,覆盖部分egg loader
  */
 
-'use strict';
 
 // exports.BaseLoader = require('./aone-loader');
 // exports.MasterLoader = require('./master_loader');

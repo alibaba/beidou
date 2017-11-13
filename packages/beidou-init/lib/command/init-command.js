@@ -1,7 +1,7 @@
 /**
  * @author Holden <holdenwei@qq.com>
  */
-'use strict';
+
 
 const os = require('os');
 const fs = require('fs');
@@ -17,8 +17,6 @@ const yargs = require('yargs');
 const memFs = require('mem-fs');
 const editor = require('mem-fs-editor');
 const glob = require('glob');
-const is = require('is-type-of');
-const homedir = require('node-homedir');
 const groupBy = require('group-object');
 const BaseCommand = require('./base-command');
 
@@ -35,16 +33,16 @@ class InitCommand extends BaseCommand {
       '_.gitignore': '.gitignore',
       '_package.json': 'package.json',
       '_.eslintignore': '.eslintignore',
-      };
+    };
     this.proxyMapping = [];
     // default to beidou
     this.toolkitName = 'beidou';
- }
+  }
 
   * run(cwd, args, toolkit) {
-    let processedArgs = args || [];
+    const processedArgs = args || [];
     // compatible with fie
-    if(toolkit === 'fie'){
+    if (toolkit === 'fie') {
       this.toolkitName = 'fie';
     }
     const argv = this.argv = this.getParser().parse(processedArgs);
@@ -54,7 +52,7 @@ class InitCommand extends BaseCommand {
 
     // detect registry url
     this.registryUrl = this.getRegistryByType();
-    //this.log(`use registry: ${this.registryUrl}`);
+    // this.log(`use registry: ${this.registryUrl}`);
 
     // check update
     yield updater({
@@ -69,7 +67,7 @@ class InitCommand extends BaseCommand {
     const boilerplateMapping = yield this.fetchBoilerplateMapping();
     // ask for boilerplate
     let boilerplate;
-    if (argv.type && boilerplateMapping.hasOwnProperty(argv.type)) {
+    if (argv.type && Object.hasOwnProperty.call(boilerplateMapping, argv.type)) {
       boilerplate = boilerplateMapping[argv.type];
     } else {
       boilerplate = yield this.askForBoilerplateType(boilerplateMapping);
@@ -81,19 +79,19 @@ class InitCommand extends BaseCommand {
     // copy template
     yield this.processFiles(this.targetDir, templateDir);
 
-    this.log(`start to install the dependencies ... `.green);
+    this.log('start to install the dependencies ... '.green);
 
     yield this.helper.npmInstall.install(this.targetDir);
 
-    this.log(`npm packages installed`.green);
+    this.log('npm packages installed'.green);
 
     // auto proxy
-    if(this.proxyMapping.indexOf(boilerplate.package) >= 0){
-      this.log(`auto proxy `.green);
+    if (this.proxyMapping.indexOf(boilerplate.package) >= 0) {
+      this.log('auto proxy '.green);
 
       yield this.helper.autoProxy.proxy(this.targetDir);
 
-      this.log(`proxy finished`.green);
+      this.log('proxy finished'.green);
     }
 
     // done
@@ -103,7 +101,7 @@ class InitCommand extends BaseCommand {
   /**
    * show boilerplate list and let user choose one
    *
-   * @param {Object} mapping - boilerplate config mapping, `{ simple: { "name": "admin", "package": "@ali/beidou-example-admin", "description": "基于淘宝登录的后台管理应用" } }`
+   * @param {Object} mapping - boilerplate config mapping, `{ simple: { "name": "admin", "package": "beidou-example-admin", "description": "admin platform" } }`
    * @return {Object} boilerplate config item
    */
   * askForBoilerplateType(mapping) {
@@ -125,7 +123,7 @@ class InitCommand extends BaseCommand {
     }
 
     // ask for boilerplate
-    const choices = Object.keys(group).map(key => {
+    const choices = Object.keys(group).map((key) => {
       const item = group[key];
       return {
         name: `${key} - ${item.description}`,
@@ -144,7 +142,7 @@ class InitCommand extends BaseCommand {
     return answers.type;
   }
 
-  * copyGitignore (targetDir) {
+  * copyGitignore(targetDir) {
     const to = path.join(targetDir, '.gitignore');
     this.log('write to:%s', to);
     fs.writeFileSync(to, fs.readFileSync(path.join(__filename, '../../files/_.gitignore')));
@@ -157,16 +155,16 @@ class InitCommand extends BaseCommand {
    * @return {Array} file names
    */
   * processFiles(targetDir, templateDir) {
-    //const src = path.join(templateDir, 'boilerplate');
+    // const src = path.join(templateDir, 'boilerplate');
     const src = path.join(templateDir);
     const locals = {};
     const fsEditor = editor.create(memFs.create());
-    const files = glob.sync('**/*', {cwd: src, dot: true, nodir: true});
-    files.forEach(file => {
+    const files = glob.sync('**/*', { cwd: src, dot: true, nodir: true });
+    files.forEach((file) => {
       const from = path.join(src, file);
       const to = path.join(targetDir, this.replaceTemplate(this.fileMapping[file] || file, locals));
       fsEditor.copy(from, to, {
-        process: content => {
+        process: (content) => {
           this.log('write to:%s', to);
           return this.replaceTemplate(content, locals);
         },
@@ -235,12 +233,12 @@ class InitCommand extends BaseCommand {
    * @return {String} Full path of target directory
    */
   * getTargetDirectory() {
-    //const dir = this.argv._[0] || this.argv.dir || '';
-    const dir = '';
-    let targetDir = path.resolve(this.cwd, dir);
+    // const dir = this.argv._[0] || this.argv.dir || '';
+    // const dir = '';
+    let targetDir = path.resolve(this.cwd, '');
     const force = this.argv.force;
 
-    const validate = dir => {
+    const validate = (dir) => {
       // create dir if not exist
       if (!fs.existsSync(dir)) {
         mkdirp.sync(dir);
@@ -271,7 +269,6 @@ class InitCommand extends BaseCommand {
       const answer = yield this.inquirer.prompt({
         name: 'dir',
         message: 'Please enter target dir: ',
-        default: dir || '.',
         filter: dir => path.resolve(this.cwd, dir),
         validate,
       });
@@ -288,7 +285,7 @@ class InitCommand extends BaseCommand {
   * fetchBoilerplateMapping() {
     const pkgInfo = this.pkgInfo;
     const mapping = pkgInfo.config.boilerplate;
-    Object.keys(mapping).forEach(key => {
+    Object.keys(mapping).forEach((key) => {
       const item = mapping[key];
       item.name = item.name || key;
       item.from = pkgInfo;
@@ -310,7 +307,7 @@ class InitCommand extends BaseCommand {
       if (skip) {
         return block.substring(skip.length);
       }
-      return scope.hasOwnProperty(key) ? scope[key] : block;
+      return Object.hasOwnProperty.call(scope, key) ? scope[key] : block;
     });
   }
 
@@ -354,7 +351,7 @@ class InitCommand extends BaseCommand {
         const gunzip = zlib.createGunzip();
         gunzip.on('error', handleError);
 
-        const extracter = tar.Extract({path: saveDir, strip: 1});
+        const extracter = tar.Extract({ path: saveDir, strip: 1 });
         extracter.on('error', handleError);
         extracter.on('end', callback);
 
@@ -379,11 +376,10 @@ class InitCommand extends BaseCommand {
       return result.data;
     } catch (err) {
       if (withFallback) {
-        this.log('use fallback from ${pkgName}');
+        this.log(`use fallback from ${pkgName}`);
         return require(`${pkgName}/package.json`);
-      } else {
-        throw err;
       }
+      throw err;
     }
   }
 
@@ -391,7 +387,7 @@ class InitCommand extends BaseCommand {
    * print usage guide
    */
   printUsage() {
-    this.log(`boilerplate initialization is completed`.green);
+    this.log('boilerplate initialization is completed'.green);
     this.log(`${this.toolkitName} start - start app`.green);
     this.log(`${this.toolkitName} build - build app`.green);
   }
@@ -403,6 +399,6 @@ class InitCommand extends BaseCommand {
     return 'init boilerplate';
   }
 }
-;
+
 
 module.exports = InitCommand;

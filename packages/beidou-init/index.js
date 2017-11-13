@@ -1,4 +1,4 @@
-'use strict';
+
 
 exports.run = require('./lib/run');
 exports.Program = require('./lib/program');

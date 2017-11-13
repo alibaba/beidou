@@ -1,4 +1,4 @@
-'use strict';
+
 
 const co = require('co');
 const path = require('path');
@@ -32,7 +32,7 @@ class Program {
     co(function* () {
       const Command = require(filepath);
       yield new Command().run(cwd, args);
-    }).catch(err => {
+    }).catch((err) => {
       console.error('[beidou toolkit] run %s with %j at %s error:', cmd, args, cwd);
       console.error(chalk.red(err.stack));
       process.exit(1);

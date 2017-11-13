@@ -2,6 +2,5 @@ example/.node-diamone-client-cache
 example/debug
 example/logs
 lib/plugins/**/app/proxy
-packages/*/test
-packages/*/node_modules/
-packages/*/coverage/
+node_modules
+test

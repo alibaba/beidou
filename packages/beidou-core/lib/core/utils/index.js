@@ -2,7 +2,6 @@
  * util方法集合
  */
 
-'use strict';
 
 const assert = require('assert');
 const fs = require('fs');

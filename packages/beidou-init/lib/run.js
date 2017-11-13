@@ -1,8 +1,8 @@
-'use strict';
+
 
 const commander = require('commander');
 
-module.exports = Program => {
+module.exports = (Program) => {
   process.env.NODE_ENV = process.env.NODE_ENV || 'development';
   const program = new Program();
 
@@ -13,7 +13,7 @@ module.exports = Program => {
   commander
     .command('*')
     .description('See "More commands"')
-    .action(cmd => {
+    .action((cmd) => {
       const args = process.argv.slice(3);
       program.onAction(cmd, process.cwd(), args);
     });

@@ -1,4 +1,4 @@
-'use strict';
+
 
 const egg = require('egg');
 const path = require('path');
