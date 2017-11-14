@@ -13,7 +13,7 @@ lint-all:
 install:
 	yarn install
 	./node_modules/.bin/lerna bootstrap
-	./scripts/install-examples.sh
+	# ./scripts/install-examples.sh  [deprecated]
 
 clean:
 	make test-clean
@@ -27,6 +27,7 @@ clean:
 	rm -rf packages/*/test/fixtures/*/*/*/*.log
 	rm -rf examples/*/logs/
 	rm -rf examples/*/run/
+	rm -rf examples/*/*.log
 
 
 test-clean:
@@ -34,6 +35,7 @@ test-clean:
 	rm -rf packages/*/test/debug
 
 clean-all:
+	./node_modules/.bin/lerna clean
 	rm -rf node_modules
 	rm -rf packages/*/node_modules
 	rm -rf examples/*/node_modules
