@@ -24,22 +24,21 @@ Isomorphic framework for server-rendered React apps
 - ✔︎ Lots of [plugins](https://github.com/search?q=topic%3Aegg-plugin&type=Repositories)
 
 ## How to use
-### Setup
 
-Install generator
+### Install generator
 
 ```bash
 npm install beidou-init -g
 ```
 
-Init
+### Init
 
 
 ```bash
 beidou init
 ```
 
-Start
+### Start
 
 
 ```bash
@@ -47,88 +46,6 @@ npm run start
 ```
 
 After that, go to `http://localhost:6001/`
-
-### Structure
-
-```bash
-beidou-project
-├── package.json
-├── app.js (optional)
-├── agent.js (optional)
-├── app
-|   ├── router.js (optional)
-│   ├── controller (optional)
-│   |   └── home.js
-│   ├── service (optional)
-│   |   └── user.js
-│   ├── middleware (optional)
-│   |   └── response_time.js
-│   ├── schedule (optional)
-│   |   └── my_task.js
-│   ├── public (optional)
-│   |   └── reset.css
-│   ├── view (optional)
-│   |   └── home.tpl
-│   └── extend (optional)
-│       ├── helper.js
-│       ├── request.js
-│       ├── response.js
-│       ├── context.js
-│       ├── application.js
-│       └── agent.js
-├── config
-|   ├── plugin.js
-|   ├── config.default.js
-│   ├── config.prod.js
-|   ├── config.test.js (optional)
-|   ├── config.local.js (optional)
-|   └── config.unittest.js (optional)
-├── client
-|   ├── index.jsx
-|   └── page/index.jsx
-└── test
-    ├── middleware
-    |   └── response_time.test.js
-    └── controller
-        └── home.test.js
-```
-
-### Router
-
-#### Auto router
-
-Every page in /client folder will be routed automatically. 
-For example, visit `http://localhost:6001/page-a`, `/client/page-a.jsx` will be rendered.
-
-
-| Client source          | Router | Memo           |
-| ---------------------- | ------ | -------------- |
-| client/index.jsx       | /      | Default router |
-| client/index/index.jsx | /      | Default router |
-| client/a.jsx           | /a     | Auto router    |
-| client/a/index.jsx     | /a     | Auto router    |
-| client/a/b.jsx         | /a/b   | Auto router    |
-| client/a/b/index.jsx   | /a/b   | Auto router    |
-
-#### Custom router
-
-if we want to map `/a` to `/client/b.jsx`, follow the next steps
-
-step 1: create a new router
-
-```javascript
-//  /app/router.js
-module.exports = (app) => {
-  app.get('/a', app.controller.a);
-};
-
-```
-
-step 2: create a new controller, and render `/client/b.jsx`
-
-* Before you start, take a moment to see how the [project structure](./docs/project-structure.md) looks like
-* Follow the [getting started guide](./docs/getting-started.md) to download and run the project
-    ([Node.js](https://nodejs.org/) >= 6.0)
 
 ## Documentation
 
