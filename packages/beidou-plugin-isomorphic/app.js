@@ -1,9 +1,13 @@
 'use strict';
 
 const basicPolyfill = require('./lib/polyfill').basicPolyfill;
-// basic polyfill
-basicPolyfill();
+const isomorphic = require('./lib/isomorphic');
 
+/**
+ * inject env variables into global
+ * used to seperate server side code from client side
+ * @param {*} ENV dev/production
+ */
 function setGlobal(ENV) {
   global.__ENV__ = ENV;
   global.__CLIENT__ = false;
@@ -14,9 +18,20 @@ function setGlobal(ENV) {
 
 
 module.exports = (app) => {
+  const config = app.config.isomorphic;
   // set global variables
   setGlobal(app.config.env || /* istanbul ignore next */ app.loader.serverEnv);
 
-  // add isomorphic polyfill middleware
-  // app.config.coreMiddleware.push('isomorphicPolyfill');
+  // jsdom polyfill, enabled by default
+  if (config.polyfill) {
+    basicPolyfill();
+  }
+  // babel-register
+  const babel = config.babel;
+  if (babel) {
+    require('babel-register')(babel);
+  }
+
+  // isomorphic register
+  isomorphic(app);
 };
