@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 
 module.exports = (appInfo) => {
@@ -71,8 +69,8 @@ module.exports = (appInfo) => {
       '.svg',
       '.mp4',
       '.webm',
-      '.ogv'
-    ],
+      '.ogv',
+    ]
   };
 
   /**
@@ -95,6 +93,56 @@ module.exports = (appInfo) => {
     'bodyParser',
     'overrideMethod'
   ];
+
+  /**
+   * framework babel config
+   */
+  exports.babel = {
+    enable: true, // default set to enable
+    options: {
+      presets: ['beidou-server'],
+      // babelrc: false,
+      // ignore: /regex/,
+      // ignore: ['*.scss'],
+      // Ignore can also be specified as a function.
+      // ignore(filename) {
+      //   const ext = path.parse(filename).ext;
+      //   if ([
+      //     '.css',
+      //     '.scss',
+      //     '.sass',
+      //     '.pcss',
+      //     '.stylus',
+      //     '.styl',
+      //     '.less',
+      //     '.sss',
+      //     '.gif',
+      //     '.jpeg',
+      //     '.jpg',
+      //     '.png',
+      //     '.svg',
+      //     '.mp4',
+      //     '.webm',
+      //     '.ogv',
+      //   ].indexOf(ext) !== -1) {
+      //     console.log('----------------------');
+      //     return true;
+      //   }
+      //   return false;
+      // },
+
+      // Optional only regex - if any filenames **don't** match this regex then they
+      // aren't compiled
+      // only: /my_es6_folder/,
+
+      // Setting this will remove the currently hooked extensions of `.es6`, `.es`, `.jsx`, `.mjs`
+      // and .js so you'll have to add them back if you want them to be used again.
+      // extensions: ['.es6', '.es', '.jsx', '.js', '.mjs'],
+
+      // Setting this to false will disable the cache.
+      cache: true
+    }
+  };
 
   return exports;
 };
