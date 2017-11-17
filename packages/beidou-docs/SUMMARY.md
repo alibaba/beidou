@@ -18,7 +18,7 @@
    * [Extend](basic/extend.md)
    * [View](basic/view.md)
    * [Mock](basic/Mock.md)
-   * [Custom Init](basic/app-start.md)
+   * [Custom startup](basic/app-start.md)
 * Core
    * [Development](core/development.md)
    * [Unit Testing](core/unittest.md)

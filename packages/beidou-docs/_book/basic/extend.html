@@ -34,7 +34,7 @@
 
     
         
-        <link rel="stylesheet" href="../website-1510922488080.css">
+        <link rel="stylesheet" href="../website-1510923672908.css">
         
     
 
@@ -327,7 +327,7 @@
                 <a href="app-start.html">
             
                     
-                    Custom Init
+                    Custom startup
             
                 </a>
             
@@ -800,6 +800,165 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="extend-framework">Extend Framework</h2>
+<p>Beidou is extensible and it provides multiple extension points to enhance the functionality of itself:</p>
+<ul>
+<li>Application</li>
+<li>Context</li>
+<li>Request</li>
+<li>Response</li>
+<li>Helper</li>
+</ul>
+<p>We could use the extension APIs to help with our developing, or extend the objects given above to enhance the functionality of beidou as well while programming.</p>
+<h2 id="application">Application</h2>
+<p>The object <code>app</code> is just the same aspect as the global application object in Koa. There should be only one <code>app</code> in your application, and it will be created by beidou when the application is boot.</p>
+<h3 id="access-method">Access Method</h3>
+<ul>
+<li><code>ctx.app</code></li>
+<li>You can access the Application object by <code>this.app</code> in Controller, Middleware, Helper, Service. For instance, <code>this.app.config</code> will help you access the Config object.</li>
+<li><p>The <code>app</code> object would be injected into the entry function as the first argument in <code>app.js</code>, like this: </p>
+<pre><code class="lang-js"> <span class="hljs-comment">// app.js</span>
+ <span class="hljs-built_in">module</span>.exports = app =&gt; {
+   <span class="hljs-comment">// here you can use the app object</span>
+ };
+</code></pre>
+</li>
+</ul>
+<h3 id="how-to-extend">How to extend</h3>
+<p>Beidou will merge the object defined in <code>app/extend/application.js</code> with the prototype of Application object in Koa, then generate object <code>app</code> which is based on the extended prototype when application is boot.</p>
+<h4 id="extend-methods">Extend Methods</h4>
+<p>If we want to create a method <code>app.foo()</code>, we can do it like this: &#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/application.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  foo(param) {
+    <span class="hljs-comment">// `this` points to the object app, you can access other methods or property of app with this</span>
+  },
+};
+</code></pre>
+<h4 id="extend-properties">Extend Properties</h4>
+<p>Gernerally speaking, the calculation of properties only need to do once, therefore we have to do some cache, otherwise it will degrade performance of the app as too much calculation would be going to do when access those properties several times.</p>
+<p>So, it&apos;s recommended to use Symbol + Getter.</p>
+<p>For example, if we would like to add a Getter property <code>app.bar</code>:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/application.js</span>
+<span class="hljs-keyword">const</span> BAR = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&apos;Application#bar&apos;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+  get bar() {
+    <span class="hljs-comment">// `this` points to the app object, you can access other methods or property of app with this</span>
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>[BAR]) {
+      <span class="hljs-comment">// It should be more complex in real situation</span>
+      <span class="hljs-keyword">this</span>[BAR] = <span class="hljs-keyword">this</span>.config.xx + <span class="hljs-keyword">this</span>.config.yy;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>[BAR];
+  },
+};
+</code></pre>
+<h2 id="context">Context</h2>
+<p>Context means the context in Koa, which is a  <strong>Request Level</strong> object. That is to say, every request from client will gererate an Context instance. We usually write Context as <code>ctx</code> in short. Through all the doc, both Context and <code>ctx</code> means the context object in Koa.</p>
+<h3 id="access-method">Access Method</h3>
+<ul>
+<li><code>this</code> in middleware is ctx, such as <code>this.cookies.get(&apos;foo&apos;)</code>&#x3002;</li>
+<li>There are two different ways to write controller. If you use class to describe controller, you can use <code>this.ctx</code> to access Context. Or if you write as method, you can access Context with <code>ctx</code> directly.</li>
+<li><code>this</code> in helper, service points to the helper object and service object themselves. Simply use <code>this.ctx</code> to access Context object, such as <code>this.ctx.cookies.get(&apos;foo&apos;)</code>.</li>
+</ul>
+<h3 id="how-to-extend">How to extend</h3>
+<p>Beidou will merge the object defined in <code>app/extend/context.js</code> with the prototype of Context object in Koa. And it will generate a <code>ctx</code> object which is based on the extended prototype when deal with request.</p>
+<h4 id="extend-methods">Extend Methods</h4>
+<p>For instance, we could add a method <code>ctx.foo()</code> in the following way:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/context.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  foo(param) {
+    <span class="hljs-comment">// `this` points to the ctx object, you can access other methods or property of ctx </span>
+  },
+};
+</code></pre>
+<h4 id="extend-properties">Extend Properties</h4>
+<p>Gernerally speaking, the calculation of properties only need to do once, therefore we have to do some cache, otherwise it will degrade performance of the app as too much calculation would be going to do when access those properties several times.</p>
+<p>So, it&apos;s recommended to use Symbol + Getter.</p>
+<p>For example, if we would like to add a Getter property <code>ctx.bar</code>:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/context.js</span>
+<span class="hljs-keyword">const</span> BAR = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&apos;Context#bar&apos;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+  get bar() {
+    <span class="hljs-comment">// `this` points to the ctx object, you can access other methods or property of ctx</span>
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>[BAR]) {
+      <span class="hljs-comment">// For example, we can get from header, but it should be more complex in real situation.</span>
+      <span class="hljs-keyword">this</span>[BAR] = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">&apos;x-bar&apos;</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>[BAR];
+  },
+};
+</code></pre>
+<h2 id="request">Request</h2>
+<p>Request object is the same as that in Koa, which is a <strong>Request Level</strong> object. It provides a great number of methods to help to access the properties and methods you need.</p>
+<h3 id="access-method">Access Method</h3>
+<pre><code class="lang-js">ctx.request
+</code></pre>
+<p>So many properties and methods in <code>ctx</code> can also be accessed in <code>request</code> object. For those properties and methods, it is just the same to access them eigher <code>ctx</code> or <code>request</code>, such as <code>ctx.url === ctx.request.url</code>.</p>
+<p>Here are the properties and methods in <code>ctx</code> which can also be accessed by Request aliases: <a href="http://koajs.com/#request-aliases" target="_blank">Koa - Request aliases</a></p>
+<h3 id="how-to-extend">How to extend</h3>
+<p>Beidou will merge the object defined in <code>app/extend/request.js</code> and the prototype of <code>request</code> object build in beidou. And it will generate a <code>request</code> object which is based on the extended prototype when deal with request.</p>
+<p>For instance, we could add a property <code>request.foo</code> in the following way:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/request.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  get foo() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(<span class="hljs-string">&apos;x-request-foo&apos;</span>);
+  },
+};
+</code></pre>
+<h2 id="response">Response</h2>
+<p>Response object is the same as that in Koa, which is a <strong>Request Level</strong> object. It provides a great number of methods to help to access the properties and methods you need.</p>
+<h3 id="access-method">Access Method</h3>
+<pre><code class="lang-js">ctx.response
+</code></pre>
+<p>So many properties and methods in <code>ctx</code> can also be accessed in <code>response</code> object. For those properties and methods, it is just the same to access them eigher <code>ctx</code> or <code>response</code>. For example <code>ctx.status = 404</code> is the same as <code>ctx.response.status = 404</code>.</p>
+<p>Here are the properties and methods in <code>ctx</code> which can also be accessed by Response aliases: <a href="http://koajs.com/#response-aliases" target="_blank">Koa Response aliases</a></p>
+<h3 id="how-to-extend">How to extend</h3>
+<p>Beidou will merge the object defined in <code>app/extend/response.js</code> and the prototype of <code>response</code> object build in beidou. And it will generate a <code>response</code> object which is based on the extended prototype after dealt with request.</p>
+<p>For instance, we could add a setter <code>request.foo</code> in the following way:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/response.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  set foo(value) {
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">&apos;x-response-foo&apos;</span>, value);
+  },
+};
+</code></pre>
+<p>Then we can use the setter like this: <code>this.response.foo = &apos;bar&apos;;</code></p>
+<h2 id="helper">Helper</h2>
+<p>Function Helper can provides some useful utility functions.</p>
+<p>We can put some utility functions we use ofter into heper.js as an individual function. Then we can write the complex codes in JavaScript, avoiding to write them everywhere. Besides, such a simple function like Helper allows to write test case much easier.</p>
+<p>Beidou has had some build-in Helper functions. We can write our own Helper as well.</p>
+<h3 id="access-method">Access Method</h3>
+<p>Access helper object with <code>ctx.helper</code>, for example:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Assume that home router has already defined in app/router.js</span>
+app.get(<span class="hljs-string">&apos;home&apos;</span>, <span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-string">&apos;home.index&apos;</span>);
+
+<span class="hljs-comment">// Use helper to calculate the specific url path</span>
+ctx.helper.pathFor(<span class="hljs-string">&apos;home&apos;</span>, { by: <span class="hljs-string">&apos;recent&apos;</span>, limit: <span class="hljs-number">20</span> })
+<span class="hljs-comment">// =&gt; /?by=recent&amp;limit=20</span>
+</code></pre>
+<h3 id="how-to-extend">How to extend</h3>
+<p>Beidou will merge the object defined in <code>app/extend/helper.js</code> and the prototype of <code>helper</code> object build in beidou. And it will generate a <code>helper</code> object which is based on the extended prototype after dealt with request.</p>
+<p>For instance, we could add a method <code>helper.foo()</code> in the following way:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/helper.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  foo(param) {
+    <span class="hljs-comment">// // `this` points to the helper object, you can access other methods or property of helper </span>
+    <span class="hljs-comment">// this.ctx =&gt; context object</span>
+    <span class="hljs-comment">// this.app =&gt; application object</span>
+  },
+};
+</code></pre>
+<h2 id="extend-according-to-environment">Extend according to environment</h2>
+<p>Besides, we can extend the framework in an optional way according to the environment. For example, if you want <code>mockXX()</code> only be able to accessed when doing unittest:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/application.unittest.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  mockXX(k, v) {
+  }
+};
+</code></pre>
+<p>This file will only be required under unittest environment.</p>
+<p>Similarly, we could extend beidou in this way for orther object,such as Application, Context, Request, Response and Helper. See more on <a href="env.md">environment</a></p>
 
                                 
                                 </section>
@@ -843,7 +1002,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Extend","level":"1.4.9","depth":2,"next":{"title":"View","level":"1.4.10","depth":2,"path":"basic/view.md","ref":"basic/view.md","articles":[]},"previous":{"title":"Schedule","level":"1.4.8","depth":2,"path":"basic/schedule.md","ref":"basic/schedule.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510922488080.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"basic/extend.md","mtime":"2017-11-14T07:34:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Extend","level":"1.4.9","depth":2,"next":{"title":"View","level":"1.4.10","depth":2,"path":"basic/view.md","ref":"basic/view.md","articles":[]},"previous":{"title":"Schedule","level":"1.4.8","depth":2,"path":"basic/schedule.md","ref":"basic/schedule.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510923672908.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"basic/extend.md","mtime":"2017-11-17T12:48:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
