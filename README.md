@@ -25,27 +25,18 @@ Isomorphic framework for server-rendered React apps
 
 ## How to use
 
-### Install generator
-
 ```bash
 npm install beidou-init -g
-```
-
-### Init
-
-
-```bash
 beidou init
-```
-
-### Start
-
-
-```bash
 npm run start
 ```
 
 After that, go to `http://localhost:6001/`
+
+## boilerplate
+* [empty-template](./examples/empty-template)
+* [simple-template](./examples/simple-template)
+* [advance-template](./examples/advance-template)
 
 ## Documentation
 

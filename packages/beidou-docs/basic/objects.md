@@ -11,7 +11,7 @@ Application is a global application object, an application only instantiate one 
 
 Application object can be accessed almost anywhere in application, the following describes a few commonly used way:
 
-Almost all files (Controller, Service, Schedule, etc.) loaded by the [Loader] (../advanced/loader.md) can export a function that is called by the Loader and uses the app as a parameter:
+Almost all files (Controller, Service, Schedule, etc.) loaded by the [Loader](../advanced/loader.md) can export a function that is called by the Loader and uses the app as a parameter:
 
 - [App start script](./app-start.md)
 
