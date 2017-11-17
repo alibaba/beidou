@@ -1,6 +1,6 @@
 
 const webpack = require('webpack');
-const helper = require('./utils/index');
+const helper = require('../utils');
 
 module.exports = (app) => {
   const config = app.config.webpack;

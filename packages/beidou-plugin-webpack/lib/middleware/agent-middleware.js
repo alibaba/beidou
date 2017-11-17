@@ -1,7 +1,7 @@
 'use strict'; // eslint-disable-line
 
 const webpackMiddleware = require('./webpack-middleware');
-const helper = require('./utils/index');
+const helper = require('../utils');
 
 module.exports = function (compiler, options, app) {
   const webpackConfig = helper.getWebpackConfig(options, app);

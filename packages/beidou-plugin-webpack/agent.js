@@ -1,15 +1,19 @@
-'use strict'; // eslint-disable-line
-
 const http = require('http');
 const webpack = require('webpack');
-const middleware = require('./lib/agent-middleware');
-const helper = require('./lib/utils/index');
+const debug = require('debug')('beidou:plugin:webpack');
+const middleware = require('./lib/middleware/agent-middleware');
+const helper = require('./lib/utils');
 
 module.exports = (agent) => {
   const logger = agent.coreLogger;
+  helper.injectEntryAndPlugin(agent);
+
   // start webpack server util agent ready
   agent.ready(() => {
     const config = agent.config.webpack;
+
+    debug('create webpack server with config: %o', config);
+
     const webpackConfig = helper.getWebpackConfig(config, agent);
     const compiler = webpack(webpackConfig);
     const mw = middleware(compiler, config, agent);
@@ -32,9 +36,11 @@ module.exports = (agent) => {
         logger.error('[Beidou Agent] webpack server start failed,', err);
         return;
       }
+      const port = webpackServer.address().port;
       const msg = {
-        port: webpackServer.address().port
+        port
       };
+      logger.info('webpack server start, listen on port: %s', port);
 
       process.send({ action: 'webpack-server-ready', to: 'app', data: msg });
       // tell worker process what the server port is

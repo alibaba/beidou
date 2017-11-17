@@ -1,13 +1,13 @@
 /* eslint import/no-dynamic-require: off */
-
-'use strict'; // eslint-disable-line
 const path = require('path');
 const fs = require('fs');
+const debug = require('debug')('beidou:plugin:webpack');
+const IsomorphicPlugin = require('../plugin/isomorphic');
 
 module.exports.getWebpackConfig = (options, app) => {
   options = options || {};
 
-  const defaultConfigPath = path.resolve(__dirname, '../../config/default.webpack.config.js');
+  const defaultConfigPath = path.resolve(__dirname, '../../config/webpack.default.config.js');
   const eggLoader = app.loader;
 
   let webpackConfig = null;
@@ -21,4 +21,14 @@ module.exports.getWebpackConfig = (options, app) => {
   }
 
   return webpackConfig;
+};
+
+module.exports.injectEntryAndPlugin = (app) => {
+  const eggLoader = app.loader;
+  const entry = eggLoader.loadFile(path.join(__dirname, '../loader/entry-loader.js'));
+
+  debug('entry auto load as below: %o', entry);
+
+  app.IsomorphicPlugin = IsomorphicPlugin;
+  app.webpackEntry = entry;
 };

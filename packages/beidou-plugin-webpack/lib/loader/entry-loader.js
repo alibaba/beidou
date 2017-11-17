@@ -39,7 +39,7 @@ module.exports = (app) => {
     const filename = path.parse(file).name;
     entry[filename] = [
       ...headEntries,
-      pageDir + path.sep + file
+      path.normalize(pageDir + path.sep + file),
     ];
   });
 

@@ -165,7 +165,7 @@ describe('test/plugin.test.js', () => {
       });
 
       app.ready(() => {
-        const builder = require('../lib/builder.js');
+        const builder = require('../lib/builder');
         const compiler = builder(app);
         compiler.run(done);
       });

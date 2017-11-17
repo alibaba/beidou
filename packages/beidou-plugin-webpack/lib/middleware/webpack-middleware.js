@@ -1,4 +1,3 @@
-'use strict'; // eslint-disable-line
 
 const expressMiddleware = require('webpack-dev-middleware');
 
