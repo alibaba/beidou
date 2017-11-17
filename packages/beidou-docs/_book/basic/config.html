@@ -34,7 +34,7 @@
 
     
         
-        <link rel="stylesheet" href="../website-1510652203097.css">
+        <link rel="stylesheet" href="../website-1510836754292.css">
         
     
 
@@ -799,7 +799,119 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="config">Config</h2>
+                                <h2 id="configuration">Configuration</h2>
+<p>This framework provides powerful and extensible configuration function, including automatically merging applications, plugins, and framework&apos;s configuration. In addition, it allows users to overwrite configuration in sequence and maintain different configs depending on different environments. The result (i.e. merged config) can be accessed from <code>app.config</code>.</p>
+<p>Here are some common control tactics:</p>
+<ol>
+<li>Using platform to manage configurations: while building a new application, you can put the current environment configuration into package and trigger the configuration as long as you run this application. But this certain application won&apos;t be able to build several deployments at once, and you will get into trouble whenever you want to use the configuration in localhost.</li>
+<li>Using platform to manage configurations: you can pass the current environment configuration via environment variables while starting. This is a relatively elegant approach with higher requirement on operation and support from configuration platform. Moreover, The configuration environment has same flaws as first method.</li>
+<li>Using code to manage configurations: you can add some environment configurations in codes and pass them  to current environment arguments while starting. However, it doesn&apos;t allow you to configurate globally and you need to alter your code whenever you want to change the configuration.</li>
+</ol>
+<p>we choose the last strategy, namely <strong>configurate with code</strong>, The change of configuration should be also released after review. The application package itself is capable to be deployed in several environments, only by specifing the running environment.</p>
+<h3 id="multiple-environment-configuration">Multiple environment configuration</h3>
+<p>This framework suppports loading configuration according to the environment and defining configuration files of multiple enviroments. For more details, please check <a href="../basics/env.md">env</a>.</p>
+<pre><code>config
+|- config.default.js
+|- config.test.js
+|- config.prod.js
+|- config.unittest.js
+|- config.local.js
+</code></pre><p><code>config.default.js</code> is the default file for configuration, and all environments will load this file. Besides, this is usually used as default configuration file for development environment.</p>
+<p>The corresponding configuration file will be loaded simultaneously when you set up env and the default configuration with the same name will be overwritten. For example, <code>prod</code> environment will load <code>config.prod.js</code> and <code>config.default.js</code>. As a result, <code>config.prod.js</code> will overwrite the configuration with identical name in <code>config.default.js</code>.</p>
+<h3 id="how-to-write-configuration">How to write configuration</h3>
+<p>The configuration file returns an object which could overwrite some configurations in the framework. Application can put its own business configuration into it for convenient management.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// configurate the catalog of logger&#xFF0C;the default configuration of logger is provided by framework</span>
+<span class="hljs-built_in">module</span>.exports = {
+  logger: {
+    dir: <span class="hljs-string">&apos;/home/admin/logs/demoapp&apos;</span>,
+  },
+};
+</code></pre>
+<p>The configuration file can simplify to <code>exports.key = value</code> format</p>
+<pre><code class="lang-js">exports.keys = <span class="hljs-string">&apos;my-cookie-secret-key&apos;</span>;
+exports.logger = {
+  level: <span class="hljs-string">&apos;DEBUG&apos;</span>,
+};
+</code></pre>
+<p>The configuration file can also return a function which could receive a parameter called <code>appInfo</code></p>
+<pre><code class="lang-js"><span class="hljs-comment">// put the catelog of logger to the catalog of codes</span>
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-built_in">module</span>.exports = appInfo =&gt; {
+  <span class="hljs-keyword">return</span> {
+    logger: {
+      dir: path.join(appInfo.baseDir, <span class="hljs-string">&apos;logs&apos;</span>),
+    },
+  };
+};
+</code></pre>
+<p>The build-in appInfo contains:</p>
+<table>
+<thead>
+<tr>
+<th>appInfo</th>
+<th>elaboration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pkg</td>
+<td>package.json</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Application name, same as pkg.name</td>
+</tr>
+<tr>
+<td>baseDir</td>
+<td>The directory of codes</td>
+</tr>
+<tr>
+<td>HOME</td>
+<td>User directory, e.g, the account of admin is /home/admin</td>
+</tr>
+<tr>
+<td>root</td>
+<td>The application root directory, if the environment is local or unittest, it is baseDir. Otherwise, it is HOME</td>
+</tr>
+</tbody>
+</table>
+<p><code>appInfo.root</code> is an elegant adaption. for example, we tend to use <code>/home/admin/logs</code> as the catalog of log in the server environment, while we don&apos;t want to pollute the user catalog in local development. This adaptation is very good at solving this problem.</p>
+<h3 id="sequence-of-loading-configurations">Sequence of loading configurations</h3>
+<p>Applications, plugin components and framework are able to define those config. Even though the structure of catalog is identical but there is priority (application &gt; framework &gt; plugin). Besides, the running environment has the highest priority.</p>
+<p>Here is one sequence of loading configurations under &quot;prod&quot; environment, in which the following configuration will overwrite the previous configuration with the same name.</p>
+<pre><code>-&gt; plugin config.default.js
+-&gt; framework config.default.js
+-&gt; application config.default.js
+-&gt; plugin config.prod.js
+-&gt; framework config.prod.js
+-&gt; application config.prod.js
+</code></pre><p><strong>Note: there will be plugin loading sequence, but the approximate order is similar. For specific logic, please check the <a href="../advanced/loader.html">loader</a> .</strong></p>
+<h3 id="merging-rule">Merging rule</h3>
+<p>Configs are merged using deep copy from [extend2] module, which is forked from [extend] and process array in a different way.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> a = {
+  arr: [ <span class="hljs-number">1</span>, <span class="hljs-number">2</span> ],
+};
+<span class="hljs-keyword">const</span> b = {
+  arr: [ <span class="hljs-number">3</span> ],
+};
+extend(<span class="hljs-literal">true</span>, a, b);
+<span class="hljs-comment">// =&gt; { arr: [ 3 ] }</span>
+</code></pre>
+<p>As demonstrated above, the framework overwirte arrays instead of merging them.</p>
+<h2 id="configuration-result">Configuration result</h2>
+<p>The final merged config will be dumped to <code>run/application_config.json</code>(for worker process) and <code>run/agent_config.json</code>(for agent process) when the framework started, which can help analyzing problems.</p>
+<p>Some fields are hidden in the config file, mainly including 2 types:</p>
+<ul>
+<li>like passwords, secret keys and other security related fields which can be configured in <code>config.dump.ignore</code> and only <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank">Set</a> type is accepted. See <a href="https://github.com/eggjs/egg/blob/master/config/config.default.js" target="_blank">Egg default Configs</a></li>
+<li>like Function, Buffer, etc. whose content converted by <code>JSON.stringify</code> will be specially large.</li>
+</ul>
+<p><code>run/application_config_meta.json</code> (for worker process&#xFF09;and <code>run/agent_config_meta.json</code> (for agent process) will also be dumped that show which file defines the property, see below</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;logger&quot;</span>: {
+    <span class="hljs-string">&quot;dir&quot;</span>: <span class="hljs-string">&quot;/path/to/config/config.default.js&quot;</span>
+  }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -843,7 +955,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.4.2","depth":2,"next":{"title":"Plugins","level":"1.4.3","depth":2,"path":"basic/plugins.md","ref":"basic/plugins.md","articles":[]},"previous":{"title":"Built-in Objects","level":"1.4.1","depth":2,"path":"basic/objects.md","ref":"basic/objects.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less"],"styles":{"website":"website-1510652203097.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"basic/config.md","mtime":"2017-11-14T07:31:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-14T09:36:41.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.4.2","depth":2,"next":{"title":"Plugins","level":"1.4.3","depth":2,"path":"basic/plugins.md","ref":"basic/plugins.md","articles":[]},"previous":{"title":"Built-in Objects","level":"1.4.1","depth":2,"path":"basic/objects.md","ref":"basic/objects.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510836754292.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"basic/config.md","mtime":"2017-11-16T12:10:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-16T11:46:12.162Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -858,6 +970,10 @@
     
         
         <script src="../gitbook/gitbook-plugin-antsay/bootstrap.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

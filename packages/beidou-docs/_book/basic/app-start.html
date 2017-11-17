@@ -34,7 +34,7 @@
 
     
         
-        <link rel="stylesheet" href="../website-1510652203097.css">
+        <link rel="stylesheet" href="../website-1510836754292.css">
         
     
 
@@ -797,7 +797,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="custom-init">Custom Init</h2>
+                                <h2 id="custom-application-startup">Custom Application Startup</h2>
+<p>When the application starts up, we often need to set up some initialization logic. The application bootstraps with those specific configurations. It is in a healthy state and be able to take external service requests after those configurations successfully applied. Otherwise, it failed.</p>
+<p>The framework starts with a file called <code>app.js</code> that executes the application initialization logic, if present, and it returns a function.</p>
+<p>For example, we need to load a list of national cities from the remote server during application startup for subsequent use in the controller:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app.js</span>
+<span class="hljs-built_in">module</span>.exports = app =&gt; {
+  app.beforeStart(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// The lifecycle method runs before the application bootstraps</span>
+    app.cities = <span class="hljs-keyword">await</span> app.curl(<span class="hljs-string">&apos;http://example.com/city.json&apos;</span>, {
+      method: <span class="hljs-string">&apos;GET&apos;</span>,
+      dataType: <span class="hljs-string">&apos;json&apos;</span>,
+    });
+  });
+};
+</code></pre>
+<p><code>cities</code> attribute has attached on the global <code>app</code>. It can be accessed in the controller,</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/controller/home.js</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HomeController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{
+  <span class="hljs-keyword">async</span> index() {
+    <span class="hljs-comment">// now you can use `ctx.app.cities`</span>
+  }
+}
+</code></pre>
+<p><strong>Note: When the framework executes the lifecycle method <code>beforeStart</code>, do not run time-consuming operation. The framework enables a <em>Timeout</em> setting by default when it starts up.</strong></p>
 
                                 
                                 </section>
@@ -837,7 +860,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Custom Init","level":"1.4.12","depth":2,"next":{"title":"Core","level":"1.5","depth":1,"ref":"","articles":[{"title":"Development","level":"1.5.1","depth":2,"path":"core/development.md","ref":"core/development.md","articles":[]},{"title":"Unit Testing","level":"1.5.2","depth":2,"path":"core/unittest.md","ref":"core/unittest.md","articles":[]},{"title":"Logger","level":"1.5.3","depth":2,"path":"core/logger.md","ref":"core/logger.md","articles":[]},{"title":"HttpClient","level":"1.5.4","depth":2,"path":"core/http-client.md","ref":"core/http-client.md","articles":[]},{"title":"Cookie & Session","level":"1.5.5","depth":2,"path":"core/cookie-and-session.md","ref":"core/cookie-and-session.md","articles":[]},{"title":"Cluster and IPC","level":"1.5.6","depth":2,"path":"core/cluster-and-ipc.md","ref":"core/cluster-and-ipc.md","articles":[]},{"title":"Ismorphic Render","level":"1.5.7","depth":2,"path":"core/isomorphic-render.md","ref":"core/isomorphic-render.md","articles":[]},{"title":"Error Handling","level":"1.5.8","depth":2,"path":"core/error-handling.md","ref":"core/error-handling.md","articles":[]},{"title":"Security","level":"1.5.9","depth":2,"path":"core/security.md","ref":"core/security.md","articles":[]},{"title":"Multi-language","level":"1.5.10","depth":2,"path":"core/i18n.md","ref":"core/i18n.md","articles":[]}]},"previous":{"title":"Mock","level":"1.4.11","depth":2,"path":"basic/Mock.md","ref":"basic/Mock.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less"],"styles":{"website":"website-1510652203097.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"basic/app-start.md","mtime":"2017-11-14T07:30:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-14T09:36:41.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Custom Init","level":"1.4.12","depth":2,"next":{"title":"Core","level":"1.5","depth":1,"ref":"","articles":[{"title":"Development","level":"1.5.1","depth":2,"path":"core/development.md","ref":"core/development.md","articles":[]},{"title":"Unit Testing","level":"1.5.2","depth":2,"path":"core/unittest.md","ref":"core/unittest.md","articles":[]},{"title":"Logger","level":"1.5.3","depth":2,"path":"core/logger.md","ref":"core/logger.md","articles":[]},{"title":"HttpClient","level":"1.5.4","depth":2,"path":"core/http-client.md","ref":"core/http-client.md","articles":[]},{"title":"Cookie & Session","level":"1.5.5","depth":2,"path":"core/cookie-and-session.md","ref":"core/cookie-and-session.md","articles":[]},{"title":"Cluster and IPC","level":"1.5.6","depth":2,"path":"core/cluster-and-ipc.md","ref":"core/cluster-and-ipc.md","articles":[]},{"title":"Ismorphic Render","level":"1.5.7","depth":2,"path":"core/isomorphic-render.md","ref":"core/isomorphic-render.md","articles":[]},{"title":"Error Handling","level":"1.5.8","depth":2,"path":"core/error-handling.md","ref":"core/error-handling.md","articles":[]},{"title":"Security","level":"1.5.9","depth":2,"path":"core/security.md","ref":"core/security.md","articles":[]},{"title":"Multi-language","level":"1.5.10","depth":2,"path":"core/i18n.md","ref":"core/i18n.md","articles":[]}]},"previous":{"title":"Mock","level":"1.4.11","depth":2,"path":"basic/Mock.md","ref":"basic/Mock.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510836754292.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"basic/app-start.md","mtime":"2017-11-14T10:12:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-16T11:46:12.162Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -852,6 +875,10 @@
     
         
         <script src="../gitbook/gitbook-plugin-antsay/bootstrap.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
