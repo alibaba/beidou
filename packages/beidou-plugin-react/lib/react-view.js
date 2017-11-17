@@ -29,17 +29,21 @@ class BeidouReactView {
   }
 
   render(name, locals) {
-    let newLocals = locals;
+    const newLocals = Object.assign({}, locals, {
+      renderToStaticMarkup: this.renderToStaticMarkup,
+      renderToString: this.renderToString,
+      render: this.renderReact,
+    });
+
     if (locals.store) {
-      // isJSON = true, XSS defendence and performence optimization
-      const state = serialize(locals.store.getState(), { isJSON: true });
-      newLocals = Object.assign(locals, {
-        state,
-        renderToStaticMarkup: this.renderToStaticMarkup,
-        renderToString: this.renderToString,
-        render: this.renderReact,
-      });
+      // accept redux store instance or pure object
+      const storeObject = typeof locals.store.getState === 'function' ?
+        locals.store.getState() : locals.store;
+
+      const state = serialize(storeObject, { isJSON: true });
+      newLocals.state = state;
     }
+
     // replace egg's helper as appHelper
     newLocals.appHelper = newLocals.helper;
     // inject view helper
@@ -50,6 +54,11 @@ class BeidouReactView {
     return this.renderFile(viewPath, newLocals);
   }
 
+  /**
+   * render file in view directories: `app/views` or `client`
+   * @param {*} viewPath full path of view file
+   * @param {*} locals variables will be passed into render function as react component props
+   */
   renderFile(viewPath, locals) {
     return new Promise((resolve, reject) => {
       const doctype = this._config.doctype || /* istanbul ignore next */ '';
@@ -91,7 +100,7 @@ class BeidouReactView {
         return reject(err);
       }
 
-      resolve(markup);
+      return resolve(markup);
     });
   }
 
