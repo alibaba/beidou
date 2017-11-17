@@ -1,5 +1,6 @@
 # log
 *.log
+**/logs
 *_config.json
 *.babel.json
 
@@ -23,3 +24,4 @@ node_modules
 
 # build assets
 *.stats.json
+**/.isomorphic/
