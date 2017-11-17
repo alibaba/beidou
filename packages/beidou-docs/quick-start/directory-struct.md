@@ -55,6 +55,7 @@ As above, directories by conventions of framework:
 - `app/public/**` used to place static resources, optional, see built-in plugin [egg-static](https://github.com/eggjs/egg-static) for details.
 - `app/schedule/**` used for scheduled tasks, optional, see [Scheduled Task](../basic/schedule.md) for details.
 - `app/extend/**` used for extensions of the framework, optional, see [Extend EGG](../basic/extend.md) for details.
+- `client/**` react application for ismorphic render.
 - `config/config.{env}.js` used to write configuration files, see [Configuration](../basic/config.md) for details.
 - `config/plugin.js` used to configure the plugins that need to be loaded, see [Plugin](../advanced/plugin.md) for details.
 - `test/**` used for unit test, see [Unit Test](../core/unittest.md) for details.
