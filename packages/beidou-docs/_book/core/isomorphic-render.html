@@ -34,7 +34,7 @@
 
     
         
-        <link rel="stylesheet" href="../website-1510925063853.css">
+        <link rel="stylesheet" href="../website-1510927156928.css">
         
     
 
@@ -296,20 +296,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.10" data-path="../basic/view.html">
-            
-                <a href="../basic/view.html">
-            
-                    
-                    View
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.11" data-path="../basic/Mock.html">
+        <li class="chapter " data-level="1.4.10" data-path="../basic/Mock.html">
             
                 <a href="../basic/Mock.html">
             
@@ -322,7 +309,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.12" data-path="../basic/app-start.html">
+        <li class="chapter " data-level="1.4.11" data-path="../basic/app-start.html">
             
                 <a href="../basic/app-start.html">
             
@@ -800,6 +787,55 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="ismorphic-render">Ismorphic Render</h2>
+<p>Framework use <a href="https://github.com/eggjs/egg-view" target="_blank">egg-view</a> for view solution which support multiple template engines, and integrated <a href="https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react" target="_blank">beidou-plugin-react</a> as view engine to support ismorphic render by default. generally no need to modify configuration, we can use it directly. Here are some details about ismorphic render.</p>
+<h2 id="install-react-view-plugin">install react-view plugin</h2>
+<pre><code class="lang-bash">$ npm i beidou-plugin-react --save
+</code></pre>
+<h3 id="enable-react-view-plugin">enable react-view plugin</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// config/plugin.js</span>
+exports.react = {
+  enable: <span class="hljs-literal">true</span>,
+  package: <span class="hljs-string">&apos;beidou-plugin-react&apos;</span>,
+};
+</code></pre>
+<h2 id="config">config</h2>
+<h3 id="egg-view">egg-view</h3>
+<p><a href="https://github.com/eggjs/egg-view" target="_blank">egg-view</a> provided the common config <code>config.view</code>.</p>
+<p>and beidou framework set <a href="https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react" target="_blank">beidou-plugin-react</a> as default view engine: </p>
+<pre><code class="lang-js"><span class="hljs-comment">// config/config.default.js</span>
+view: {
+    defaultViewEngine: <span class="hljs-string">&apos;react&apos;</span>,
+    defaultExtension: <span class="hljs-string">&apos;.jsx&apos;</span>,
+    root: <span class="hljs-string">`<span class="hljs-subst">${antx.baseDir}</span>/app/views`</span>
+}
+</code></pre>
+<h3 id="react-view-engine-configuration"><a href="http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react" target="_blank">react-view engine</a> configuration</h3>
+<p>Also&#xFF0C;beidou framework provided the default config for <a href="https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react" target="_blank">react-view engine</a>, generally no need to config by ourselves.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// config/config.default.js</span>
+react: {
+    beautify: <span class="hljs-literal">false</span>,
+    cache: <span class="hljs-literal">true</span>,
+    loadPath: <span class="hljs-string">`<span class="hljs-subst">${antx.baseDir}</span>/app/views`</span>,
+    clientPath: <span class="hljs-string">`<span class="hljs-subst">${antx.baseDir}</span>/client`</span>,
+    internals: <span class="hljs-literal">false</span>,
+    doctype: <span class="hljs-string">&apos;&lt;!DOCTYPE html&gt;&apos;</span>,
+    cdnRoot: <span class="hljs-string">&apos;&apos;</span>
+}
+</code></pre>
+<h2 id="render-page">render page</h2>
+<p><a href="http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react" target="_blank">react-view plugin</a> provided 3 API in <code>Context</code> object, each of them returns a promise.</p>
+<ul>
+<li><code>render(name, locals)</code> render template, and assign to ctx.body</li>
+<li><code>renderView(name, locals)</code> render template without assignment</li>
+<li><code>renderString(tpl, locals)</code> render template to string without assignment</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">// app/controller/home.js  </span>
+exprots.index = <span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{  
+  <span class="hljs-keyword">yield</span> <span class="hljs-keyword">this</span>.render(<span class="hljs-string">&apos;path/to/index.jsx&apos;</span>, {  
+    user: <span class="hljs-string">&apos;egg view&apos;</span>  
+  });  
+};
+</code></pre>
 
                                 
                                 </section>
@@ -843,7 +879,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Ismorphic Render","level":"1.5.7","depth":2,"next":{"title":"Error Handling","level":"1.5.8","depth":2,"path":"core/error-handling.md","ref":"core/error-handling.md","articles":[]},"previous":{"title":"Cluster and IPC","level":"1.5.6","depth":2,"path":"core/cluster-and-ipc.md","ref":"core/cluster-and-ipc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510925063853.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"core/isomorphic-render.md","mtime":"2017-11-14T09:08:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Ismorphic Render","level":"1.5.7","depth":2,"next":{"title":"Error Handling","level":"1.5.8","depth":2,"path":"core/error-handling.md","ref":"core/error-handling.md","articles":[]},"previous":{"title":"Cluster and IPC","level":"1.5.6","depth":2,"path":"core/cluster-and-ipc.md","ref":"core/cluster-and-ipc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510927156928.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"core/isomorphic-render.md","mtime":"2017-11-17T13:59:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
