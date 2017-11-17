@@ -1,0 +1,8 @@
+app/proxy*
+coverage
+dist
+fntest
+mocks
+node_modules
+spm_modules
+test/fixtures
