@@ -36,7 +36,7 @@ After that, go to `http://localhost:6001/`
 ## boilerplate
 * [empty-template](./examples/empty-template)
 * [simple-template](./examples/simple-template)
-* [advance-template](./examples/advance-template)
+* [advance-template](./examples/advance)
 
 ## Documentation
 
