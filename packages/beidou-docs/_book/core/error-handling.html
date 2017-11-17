@@ -34,7 +34,7 @@
 
     
         
-        <link rel="stylesheet" href="../website-1510927156928.css">
+        <link rel="stylesheet" href="../website-1510927394523.css">
         
     
 
@@ -787,6 +787,159 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="error-handling">Error Handling</h2>
+<h2 id="exception-capture">Exception Capture</h2>
+<p>Taking benefits from <a href="https://github.com/tj/co" target="_blank">co</a> library, Egg easily transforms asynchronous to synchronous. In the meantime, all exceptions can be caught by <code>try catch</code>.</p>
+<p>With those features, you can take following implementation as reference:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/service/test.js</span>
+<span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">yield</span> <span class="hljs-keyword">this</span>.ctx.curl(<span class="hljs-string">&apos;http://eggjs.com/api/echo&apos;</span>, { dataType: <span class="hljs-string">&apos;json&apos;</span> });
+  <span class="hljs-keyword">if</span> (res.status !== <span class="hljs-number">200</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;response status is not 200&apos;</span>);
+  <span class="hljs-keyword">return</span> res.data;
+} <span class="hljs-keyword">catch</span> (err) {
+  <span class="hljs-keyword">this</span>.logger.error(err);
+  <span class="hljs-keyword">return</span> {};
+}
+</code></pre>
+<p>Generally, you can use <code>try catch</code> to catch exceptions. However, some implementations may break this mechanism down. Imaging that <code>yield</code> makes generators run in order just like a chain. What will happen if one of them jumpoff the chain? The following code can help you realize the imagination:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/controller/jump.js</span>
+exports.buy = <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params">ctx</span>) </span>{
+  <span class="hljs-keyword">const</span> request = {};
+  <span class="hljs-keyword">const</span> config = <span class="hljs-keyword">yield</span> ctx.service.trade.buy(request);
+  <span class="hljs-comment">// checking the deal and don&apos;t block current request</span>
+  setImmediate(() =&gt; {
+    ctx.service.trade.check(request).catch(err =&gt; ctx.logger.error(err));
+  });
+}
+</code></pre>
+<p>In this case, you may find that the exceptions in <code>setImmediate</code> will be swallowed because the scope breaks the chain, although egg already handled exceptions externally.</p>
+<p>Above scene is also considered. To catch the exception inside the scope, You can invoke helper method <code>ctx.runInBackground(scope)</code> to wrap the chain back. Now, the exceptions will be detected and caught.</p>
+<pre><code class="lang-js">exports.buy = <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params">ctx</span>) </span>{
+  <span class="hljs-keyword">const</span> request = {};
+  <span class="hljs-keyword">const</span> config = <span class="hljs-keyword">yield</span> ctx.service.trade.buy(request);
+  ctx.runInBackground(<span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Exceptions thrown here will be caught in background and printed into log.</span>
+    <span class="hljs-keyword">yield</span> ctx.service.trade.check(request);
+  });
+}
+</code></pre>
+<p>For convenience of locating problems, exceptions must be guaranteed to be Error object or object based on Error object, which offers a trace of which functions were called.</p>
+<h2 id="beidou-takes-charge-of-exceptions">Beidou takes charge of exceptions</h2>
+<p><a href="https://github.com/eggjs/egg-onerror" target="_blank">egg-onerror</a>, one of Egg&apos;s plugin, handles all exceptions thrown in Middleware, Controller and Service, and returns the error as response based on &quot;Accept&quot; in request header field.</p>
+<table>
+<thead>
+<tr>
+<th>Accept</th>
+<th>ENV</th>
+<th>errorPageUrl</th>
+<th>response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTML &amp; TEXT</td>
+<td>local &amp; unittest</td>
+<td>-</td>
+<td>onerror built-in error page</td>
+</tr>
+<tr>
+<td>HTML &amp; TEXT</td>
+<td>others</td>
+<td>YES</td>
+<td>redirect to errorPageUrl</td>
+</tr>
+<tr>
+<td>HTML &amp; TEXT</td>
+<td>others</td>
+<td>NO</td>
+<td>onerror built-in error page(simple, not recommended)</td>
+</tr>
+<tr>
+<td>JSON &amp; JSONP</td>
+<td>local &amp; unittest</td>
+<td>-</td>
+<td>JSON Object or JSONP response body with details</td>
+</tr>
+<tr>
+<td>JSON &amp; JSONP</td>
+<td>others</td>
+<td>-</td>
+<td>JSON object  or JSONP response body without details</td>
+</tr>
+</tbody>
+</table>
+<h3 id="errorpageurl">errorPageUrl</h3>
+<p>Redirecting to your customized error page by setting <code>errorPageUrl</code> in <code>onerror</code> plugin.</p>
+<p><code>onerror</code> config in <code>config/config.default.js</code>:</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+  onerror: {
+    errorPageUrl: <span class="hljs-string">&apos;/50x.html&apos;</span>,
+  },
+};
+</code></pre>
+<h2 id="create-your-universal-exception-handler">Create your universal exception handler</h2>
+<p>Once the default handler no longer meet your needs, you still can customize your owner error handler by onerror&apos;s configurations.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// config/config.default.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  onerror: {
+    all(err, ctx) {
+      <span class="hljs-comment">// Define an error handler for all type of Response.</span>
+      <span class="hljs-comment">// Once config.all present, other type of error handers will be ignored.</span>
+      <span class="hljs-keyword">this</span>.body = <span class="hljs-string">&apos;error&apos;</span>;
+      <span class="hljs-keyword">this</span>.status = <span class="hljs-number">500</span>;
+    },
+    html(err, ctx) {
+      <span class="hljs-comment">// html hander</span>
+      <span class="hljs-keyword">this</span>.body = <span class="hljs-string">&apos;&lt;h3&gt;error&lt;/h3&gt;&apos;</span>;
+      <span class="hljs-keyword">this</span>.status = <span class="hljs-number">500</span>;
+    },
+    json(err, ctx) {
+      <span class="hljs-comment">// json hander</span>
+      <span class="hljs-keyword">this</span>.body = { message: <span class="hljs-string">&apos;error&apos;</span> };
+      <span class="hljs-keyword">this</span>.status = <span class="hljs-number">500</span>;
+    },
+    jsonp(err, ctx) {
+      <span class="hljs-comment">// Generally, we don&apos;t need to customize jsonp error handler.</span>
+      <span class="hljs-comment">// It will call json error handler and wrap to jsonp type response.</span>
+  },
+};
+</code></pre>
+<h2 id="404">404</h2>
+<p>Beidou won&apos;t take <code>NOT FOUND</code> from back-end as exception. Instead, if <code>NOT FOUND</code> is emitted without a body, it will return the following JSON object as default response.</p>
+<p>identified as JSON:</p>
+<pre><code class="lang-js">{
+  <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;Not Found&quot;</span>
+}
+</code></pre>
+<p>identified as HTML:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>404 Not Found<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</code></pre>
+<p>Overriding default 404 page to the one you want:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// config/config.default.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  notfound: {
+    pageUrl: <span class="hljs-string">&apos;/404.html&apos;</span>,
+  },
+};
+</code></pre>
+<h3 id="customize-404-response">Customize 404 Response</h3>
+<p>If you want a customized 404 response, you only need to create a middleware to handle it once, just like handling exceptions above.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/middleware/notfound_handler.js</span>
+<span class="hljs-built_in">module</span>.exports = () =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params">next</span>) </span>{
+    <span class="hljs-keyword">yield</span> next;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.status === <span class="hljs-number">404</span> &amp;&amp; !<span class="hljs-keyword">this</span>.body) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.acceptJSON) <span class="hljs-keyword">this</span>.body = { error: <span class="hljs-string">&apos;Not Found&apos;</span> };
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">this</span>.body = <span class="hljs-string">&apos;&lt;h1&gt;Page Not Found&lt;/h1&gt;&apos;</span>;
+    }
+  };
+};
+</code></pre>
+<p>Adding yours to <code>middleware</code> in config:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// config/config.default.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  middleware: [ <span class="hljs-string">&apos;notfoundHander&apos;</span> ],
+};
+</code></pre>
 
                                 
                                 </section>
@@ -830,7 +983,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Error Handling","level":"1.5.8","depth":2,"next":{"title":"Security","level":"1.5.9","depth":2,"path":"core/security.md","ref":"core/security.md","articles":[]},"previous":{"title":"Ismorphic Render","level":"1.5.7","depth":2,"path":"core/isomorphic-render.md","ref":"core/isomorphic-render.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510927156928.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"core/error-handling.md","mtime":"2017-11-14T09:06:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Error Handling","level":"1.5.8","depth":2,"next":{"title":"Security","level":"1.5.9","depth":2,"path":"core/security.md","ref":"core/security.md","articles":[]},"previous":{"title":"Ismorphic Render","level":"1.5.7","depth":2,"path":"core/isomorphic-render.md","ref":"core/isomorphic-render.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510927394523.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"core/error-handling.md","mtime":"2017-11-17T14:03:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
