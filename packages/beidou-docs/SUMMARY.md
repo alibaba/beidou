@@ -8,6 +8,7 @@
    * [Step by Step](quick-start/step-by-step.md)
 * Basics
    * [Built-in Objects](basic/objects.md)
+   * [Runtime Environment](basic/env.md)
    * [Configuration](basic/config.md)
    * [Plugins](basic/plugins.md)
    * [Middlewares](basic/middleware.md)
