@@ -34,7 +34,7 @@
 
     
         
-        <link rel="stylesheet" href="../website-1510984633613.css">
+        <link rel="stylesheet" href="../website-1510984811536.css">
         
     
 
@@ -784,7 +784,128 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="async-function">Async Function</h2>
+                                <h2 id="development-with-async-function">Development with Async Function</h2>
+<p>Previous chapter introduces [async function] is a js language level&apos;s syntax that providing asynchronous solutions&#xFF0C;and Node.js will upgrade v8 to version 5.5 since 7.6.0, then async function don&apos;t need to be enabled by flag. Framework default support async function&#xFF0C;and can use async function to replace generator function.</p>
+<p><strong>Note&#xFF1A;When writing async function&#xFF0C;make sure you are running on Node.js 7.6+.</strong></p>
+<h2 id="controller--service">Controller &amp; Service</h2>
+<p>In [controller]&#xFF0C;there are two methods to write a controller&#xFF1A;Controller Class and Method. Any implementations using generator function can use async function instead without logic change&#xFF0C;just modify yield syntax to await.
+Also in [service] and [controller]&#xFF0C;all async function can use async function to replace generator function&#x3002;</p>
+<p>For example, replacing codes in the [controller] with async function&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/controller/post.js</span>
+<span class="hljs-built_in">module</span>.exports = app =&gt; {
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PostController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">app</span>.<span class="hljs-title">Controller</span> </span>{
+    <span class="hljs-comment">// replace * create() with async create()</span>
+    <span class="hljs-keyword">async</span> create() {
+      <span class="hljs-keyword">const</span> { ctx, service } = <span class="hljs-keyword">this</span>;
+      <span class="hljs-keyword">const</span> createRule = {
+        title: { type: <span class="hljs-string">&apos;string&apos;</span> },
+        content: { type: <span class="hljs-string">&apos;string&apos;</span> },
+      };
+      <span class="hljs-comment">// vaildate parameters</span>
+      ctx.validate(createRule);
+      <span class="hljs-comment">// assemble parameters</span>
+      <span class="hljs-keyword">const</span> author = ctx.session.userId;
+      <span class="hljs-keyword">const</span> req = <span class="hljs-built_in">Object</span>.assign(ctx.request.body, { author });
+      <span class="hljs-comment">// call service to handle business </span>
+      <span class="hljs-comment">// replace yield with await</span>
+      <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> service.post.create(req);
+      <span class="hljs-comment">// set response content and status code</span>
+      ctx.body = { id: res.id };
+      ctx.status = <span class="hljs-number">201</span>;
+    }
+  }
+
+  <span class="hljs-keyword">return</span> PostController;
+}
+</code></pre>
+<p><strong>Note&#xFF1A; Using await to call <code>service.post.create()</code>  in the controller, it might need be called after adjusting <code>service.post.create()</code> to async function if <code>service.post.create()</code> also use generator function</strong></p>
+<h2 id="schedule">Schedule</h2>
+<p>[Schedule] also support async function&#xFF0C;tasks need to follow the rules above to replace generator function with async function.</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">// config the schedule tasks through the attributes of schedule</span>
+  schedule: {
+    interval: <span class="hljs-string">&apos;1m&apos;</span>, <span class="hljs-comment">// 1 minute interval</span>
+    type: <span class="hljs-string">&apos;all&apos;</span>, <span class="hljs-comment">// assign all workers are needed to execute</span>
+  },
+  <span class="hljs-comment">// task is the function that running within schedule tasks, first parameter is instance of anonymous ctx</span>
+  <span class="hljs-keyword">async</span> task(ctx) {
+    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> ctx.curl(<span class="hljs-string">&apos;http://www.api.com/cache&apos;</span>, {
+      dataType: <span class="hljs-string">&apos;json&apos;</span>,
+    });
+    ctx.app.cache = res.data;
+  },
+};
+</code></pre>
+<h2 id="middleware">Middleware</h2>
+<p>All middlewares&#xFF0C;including <a href="../basics/middleware.md">Standard</a> and <a href="../basics/router.md#Using%20Middleware">Using Middleware in Router</a> can be written with async function, but argument lists changed comparing to the middleware in generator function, similar to Koa v2.x&#xFF1A;</p>
+<ul>
+<li>first parameter <code>ctx</code>&#xFF0C;the request context&#xFF0C;instance of <a href="../basics/extend.md#Context">Context</a> .</li>
+<li>second parameter <code>next</code>&#xFF0C;use await to execute the logic of middleware.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">// app/middleware/gzip.js</span>
+
+<span class="hljs-keyword">const</span> isJSON = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;koa-is-json&apos;</span>);
+<span class="hljs-keyword">const</span> zlib = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;zlib&apos;</span>);
+
+<span class="hljs-built_in">module</span>.exports = (options, app) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gzip</span>(<span class="hljs-params">ctx, next</span>) </span>{
+    <span class="hljs-comment">// next is a method and need to call comparing to the middleware with the generator function</span>
+    <span class="hljs-keyword">await</span> next();
+
+    <span class="hljs-comment">// completed executing middleware then compress the response body to gzip</span>
+    <span class="hljs-keyword">const</span> body = ctx.body;
+    <span class="hljs-keyword">if</span>&#xFF08;!body) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-comment">// support options.threshold</span>
+    <span class="hljs-keyword">if</span> (options.threshold &amp;&amp; ctx.length &lt; options.threshold) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-keyword">if</span> (isJSON(body)) body = <span class="hljs-built_in">JSON</span>.stringify(body);
+
+    <span class="hljs-comment">// set gzip body and revise the response header</span>
+    ctx.body = zlib.createGzip().end(body);
+    ctx.set(<span class="hljs-string">&apos;Content-Encoding&apos;</span>, <span class="hljs-string">&apos;gzip&apos;</span>);
+  };
+};
+</code></pre>
+<h2 id="call-generator-function-api">Call generator function API</h2>
+<p>Since some plugins providing the API of generator function that we cannot call async function using await directly. We can use [co] to provide a wrap method to wrap them to return a Promise then can be used in async function.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> co = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;co&apos;</span>);
+app.mysql.query = co.wrap(app.mysql.query);
+<span class="hljs-comment">// need to bind this as app.mysql if want to use query directly</span>
+<span class="hljs-keyword">const</span> query = co.wrap(app.mysql.query).bind(app.mysql);
+
+<span class="hljs-comment">// can use async function after wrapping</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUser</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// return await app.mysql.query();</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> query();
+}
+</code></pre>
+<h2 id="slight-of-difference-with-generator-function">Slight of Difference with Generator Function</h2>
+<p>While both functions are exactly the same models, but [co] has some special handling such as supporting yield an array (object), which are not native in the async function. But you can easily implement these functions based on some Promise libraries and methods. </p>
+<ul>
+<li><p>generator function</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> tasks = [ task(<span class="hljs-number">1</span>), task(<span class="hljs-number">2</span>), task(<span class="hljs-number">3</span>) ];
+  <span class="hljs-keyword">let</span> results;
+  <span class="hljs-comment">// concurrency</span>
+  results = <span class="hljs-keyword">yield</span> tasks;
+  <span class="hljs-comment">// set max concurrent as 2 </span>
+  result = <span class="hljs-keyword">yield</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;co-parallel&apos;</span>)(tasks, <span class="hljs-number">2</span>);
+}
+</code></pre>
+</li>
+<li><p>async function</p>
+<pre><code class="lang-js"><span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> tasks = [ task(<span class="hljs-number">1</span>), task(<span class="hljs-number">2</span>), task(<span class="hljs-number">3</span>) ];
+  <span class="hljs-keyword">let</span> results;
+  <span class="hljs-comment">// concurrency</span>
+  results = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all(tasks);
+  <span class="hljs-comment">// set max concurrent as 2 </span>
+  results = <span class="hljs-keyword">await</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;p-all&apos;</span>)(tasks, { concurrency: <span class="hljs-number">2</span>} );
+}
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -824,7 +945,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Async Function","level":"1.7.4","depth":2,"next":{"title":"Advanced","level":"1.8","depth":1,"ref":"","articles":[{"title":"How It Works","level":"1.8.1","depth":2,"path":"advanced/architecture.md","ref":"advanced/architecture.md","articles":[]},{"title":"Loader","level":"1.8.2","depth":2,"path":"advanced/loader.md","ref":"advanced/loader.md","articles":[]},{"title":"Plugin Development","level":"1.8.3","depth":2,"path":"advanced/plugin.md","ref":"advanced/plugin.md","articles":[]},{"title":"Cluster Enhancement","level":"1.8.4","depth":2,"path":"advanced/cluster-enhancement.md","ref":"advanced/cluster-enhancement.md","articles":[]},{"title":"Monitor","level":"1.8.5","depth":2,"path":"advanced/monitor.md","ref":"advanced/monitor.md","articles":[]},{"title":"Performance","level":"1.8.6","depth":2,"path":"advanced/performance.md","ref":"advanced/performance.md","articles":[]},{"title":"Memory Leaks","level":"1.8.7","depth":2,"path":"advanced/oom.md","ref":"advanced/oom.md","articles":[]},{"title":"SSR Attentions","level":"1.8.8","depth":2,"path":"advanced/attentions.md","ref":"advanced/attentions.md","articles":[]}]},"previous":{"title":"Restful API","level":"1.7.3","depth":2,"path":"tutorials/restful.md","ref":"tutorials/restful.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510984633613.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"tutorials/async-function.md","mtime":"2017-11-14T09:19:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-18T05:57:11.971Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Async Function","level":"1.7.4","depth":2,"next":{"title":"Advanced","level":"1.8","depth":1,"ref":"","articles":[{"title":"How It Works","level":"1.8.1","depth":2,"path":"advanced/architecture.md","ref":"advanced/architecture.md","articles":[]},{"title":"Loader","level":"1.8.2","depth":2,"path":"advanced/loader.md","ref":"advanced/loader.md","articles":[]},{"title":"Plugin Development","level":"1.8.3","depth":2,"path":"advanced/plugin.md","ref":"advanced/plugin.md","articles":[]},{"title":"Cluster Enhancement","level":"1.8.4","depth":2,"path":"advanced/cluster-enhancement.md","ref":"advanced/cluster-enhancement.md","articles":[]},{"title":"Monitor","level":"1.8.5","depth":2,"path":"advanced/monitor.md","ref":"advanced/monitor.md","articles":[]},{"title":"Performance","level":"1.8.6","depth":2,"path":"advanced/performance.md","ref":"advanced/performance.md","articles":[]},{"title":"Memory Leaks","level":"1.8.7","depth":2,"path":"advanced/oom.md","ref":"advanced/oom.md","articles":[]},{"title":"SSR Attentions","level":"1.8.8","depth":2,"path":"advanced/attentions.md","ref":"advanced/attentions.md","articles":[]}]},"previous":{"title":"Restful API","level":"1.7.3","depth":2,"path":"tutorials/restful.md","ref":"tutorials/restful.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510984811536.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"tutorials/async-function.md","mtime":"2017-11-18T06:00:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-18T05:57:11.971Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
