@@ -1,0 +1,6 @@
+example/.node-diamone-client-cache
+example/debug
+example/logs
+lib/plugins/**/app/proxy
+node_modules
+test

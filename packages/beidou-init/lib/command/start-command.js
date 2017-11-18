@@ -1,7 +1,7 @@
 /**
  * @author Holden <holdenwei@qq.com>
  */
-'use strict';
+
 
 const spawn = require('cross-spawn');
 const BaseCommand = require('./base-command');
@@ -10,8 +10,8 @@ require('colors');
 
 class StartCommand extends BaseCommand {
 
-  * run(cwd, args) {
-    let processedArgs = args || [];
+  * run(cwd/* , args*/) {
+    // const processedArgs = args || [];
     this.cwd = cwd;
 
     yield this.start(cwd);
@@ -27,12 +27,12 @@ class StartCommand extends BaseCommand {
    */
   * start(cwd) {
     const cli = spawn('npm', ['run', 'start'], {
-      cwd: cwd,
+      cwd,
       stdio: 'inherit'
     });
 
     return new Promise((resolve, reject) => {
-      cli.on('close', status => {
+      cli.on('close', (status) => {
         if (status === 0) {
           resolve();
         } else {
@@ -46,7 +46,7 @@ class StartCommand extends BaseCommand {
    * print usage guide
    */
   printUsage() {
-    this.log(`app started`.green);
+    this.log('app started'.green);
   }
 
   /**
@@ -56,6 +56,6 @@ class StartCommand extends BaseCommand {
     return 'start app';
   }
 }
-;
+
 
 module.exports = StartCommand;

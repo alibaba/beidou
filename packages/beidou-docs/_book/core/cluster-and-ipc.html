@@ -1,0 +1,1276 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Cluster and IPC · Beidou Document</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../website-1510989186484.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="isomorphic-render.html" />
+    
+    
+    <link rel="prev" href="cookie-and-session.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    About Beidou
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../quick-start/quick-start.html">
+            
+                <a href="../quick-start/quick-start.html">
+            
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Step by Step
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../quick-start/prepare-environment.html">
+            
+                <a href="../quick-start/prepare-environment.html">
+            
+                    
+                    Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../quick-start/directory-struct.html">
+            
+                <a href="../quick-start/directory-struct.html">
+            
+                    
+                    Directory Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../quick-start/step-by-step.html">
+            
+                <a href="../quick-start/step-by-step.html">
+            
+                    
+                    Step by Step
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Basics
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../basic/objects.html">
+            
+                <a href="../basic/objects.html">
+            
+                    
+                    Built-in Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../basic/env.html">
+            
+                <a href="../basic/env.html">
+            
+                    
+                    Runtime Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../basic/config.html">
+            
+                <a href="../basic/config.html">
+            
+                    
+                    Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../basic/plugins.html">
+            
+                <a href="../basic/plugins.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../basic/middleware.html">
+            
+                <a href="../basic/middleware.html">
+            
+                    
+                    Middlewares
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../basic/router.html">
+            
+                <a href="../basic/router.html">
+            
+                    
+                    Router
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../basic/controller.html">
+            
+                <a href="../basic/controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../basic/service.html">
+            
+                <a href="../basic/service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../basic/schedule.html">
+            
+                <a href="../basic/schedule.html">
+            
+                    
+                    Schedule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../basic/extend.html">
+            
+                <a href="../basic/extend.html">
+            
+                    
+                    Extend
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../basic/Mock.html">
+            
+                <a href="../basic/Mock.html">
+            
+                    
+                    Mock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../basic/app-start.html">
+            
+                <a href="../basic/app-start.html">
+            
+                    
+                    Custom startup
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Core
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="development.html">
+            
+                <a href="development.html">
+            
+                    
+                    Development
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="unittest.html">
+            
+                <a href="unittest.html">
+            
+                    
+                    Unit Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="logger.html">
+            
+                <a href="logger.html">
+            
+                    
+                    Logger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="http-client.html">
+            
+                <a href="http-client.html">
+            
+                    
+                    HttpClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="cookie-and-session.html">
+            
+                <a href="cookie-and-session.html">
+            
+                    
+                    Cookie & Session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.6" data-path="cluster-and-ipc.html">
+            
+                <a href="cluster-and-ipc.html">
+            
+                    
+                    Cluster and IPC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="isomorphic-render.html">
+            
+                <a href="isomorphic-render.html">
+            
+                    
+                    Ismorphic Render
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    Error Handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="security.html">
+            
+                <a href="security.html">
+            
+                    
+                    Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="i18n.html">
+            
+                <a href="i18n.html">
+            
+                    
+                    Multi-language
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Deployment
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../deployment/deployment.html">
+            
+                <a href="../deployment/deployment.html">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../deployment/devops.html">
+            
+                <a href="../deployment/devops.html">
+            
+                    
+                    DevOps
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../deployment/docker.html">
+            
+                <a href="../deployment/docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Tutorials
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../tutorials/progressive.html">
+            
+                <a href="../tutorials/progressive.html">
+            
+                    
+                    Progressive
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../tutorials/mysql.html">
+            
+                <a href="../tutorials/mysql.html">
+            
+                    
+                    MySQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../tutorials/restful.html">
+            
+                <a href="../tutorials/restful.html">
+            
+                    
+                    Restful API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../tutorials/async-function.html">
+            
+                <a href="../tutorials/async-function.html">
+            
+                    
+                    Async Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Advanced
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../advanced/architecture.html">
+            
+                <a href="../advanced/architecture.html">
+            
+                    
+                    How It Works
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../advanced/loader.html">
+            
+                <a href="../advanced/loader.html">
+            
+                    
+                    Loader
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../advanced/plugin.html">
+            
+                <a href="../advanced/plugin.html">
+            
+                    
+                    Plugin Development
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../advanced/cluster-enhancement.html">
+            
+                <a href="../advanced/cluster-enhancement.html">
+            
+                    
+                    Cluster Enhancement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../advanced/monitor.html">
+            
+                <a href="../advanced/monitor.html">
+            
+                    
+                    Monitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../advanced/performance.html">
+            
+                <a href="../advanced/performance.html">
+            
+                    
+                    Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../advanced/oom.html">
+            
+                <a href="../advanced/oom.html">
+            
+                    
+                    Memory Leaks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../advanced/attentions.html">
+            
+                <a href="../advanced/attentions.html">
+            
+                    
+                    SSR Attentions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../FAQ.html">
+            
+                <a href="../FAQ.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Cluster and IPC</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="multi-process-model-and-inter-process-communication">Multi-Process Model and Inter-Process Communication</h2>
+<p>We know that JavaScript codes are run on single thread, in other words, one Node.js process only runs on one CPU. So if we use Node.js as a Web Server, we cannot benefit from multi-core any more. As an enterprise-level solution, one problem that must be solved is:</p>
+<blockquote>
+<p>how to squeeze all server resources, taking advantages of multi-cores?</p>
+</blockquote>
+<p>And the official solution provided by Node.js is <a href="https://nodejs.org/api/cluster.html" target="_blank">Cluster module</a></p>
+<blockquote>
+<p>A single instance of Node.js runs in a single thread. To take advantage of multi-core systems the user will sometimes want to launch a cluster of Node.js processes to handle the load.</p>
+<p>The cluster module allows you to easily create child processes that all share server ports.</p>
+</blockquote>
+<h1 id="what-is-cluster">What is Cluster?</h1>
+<p>In short,</p>
+<ul>
+<li>fork multiple processes on the server concurrently.</li>
+<li>every single process runs the same source code(just like assigning work done by one process to multiple processes).</li>
+<li>what is more, all these processes can listen on the same one port(for detailed mechanism referring to @DavidCai1993 <a href="https://cnodejs.org/topic/56e84480833b7c8a0492e20c" target="_blank">Cluster Implementation Mechanism</a>)</li>
+</ul>
+<p>of which:</p>
+<ul>
+<li>the process that forks other processes is called Master process, it seems like a contractor that does nothing except forking other processes.</li>
+<li>other forked processes are called Worker processes, as the name suggests, they are workers that work actually. They accept requests and provide services.</li>
+<li>usually the number of Worker processes depends on the CPU core number, only in this way can we take full advantage of multi-core resources.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> cluster = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;cluster&apos;</span>);
+<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;http&apos;</span>);
+<span class="hljs-keyword">const</span> numCPUs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;os&apos;</span>).cpus().length;
+
+<span class="hljs-keyword">if</span> (cluster.isMaster) {
+  <span class="hljs-comment">// Fork workers.</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on(<span class="hljs-string">&apos;exit&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">worker, code, signal</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;worker &apos;</span> + worker.process.pid + <span class="hljs-string">&apos; died&apos;</span>);
+  });
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// Workers can share any TCP connection</span>
+  <span class="hljs-comment">// In this case it is an HTTP server</span>
+  http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{
+    res.writeHead(<span class="hljs-number">200</span>);
+    res.end(<span class="hljs-string">&quot;hello world\n&quot;</span>);
+  }).listen(<span class="hljs-number">8000</span>);
+}
+</code></pre>
+<h2 id="multi-process-model-of-the-framework">Multi-Process Model of the Framework</h2>
+<p>Simple like the example above, but as an enterprise-level solution, much more remains to be considered.</p>
+<ul>
+<li>How to handle the exception that Worker processes exit unexpected?</li>
+<li>How to share resources among multiple Worker processes?</li>
+<li>How to schedule multiple Worker processes?</li>
+<li>...</li>
+</ul>
+<h3 id="daemon-process">Daemon Process</h3>
+<p>Haleness(aka Robustness) of an enterprise-level application must be considered, apart from the guarantee of high quality codes of program itself, the framework level should provide the cache-all mechanism to ensure the availability under extreme circumstance.</p>
+<p>Generally, Node.js processes exist for two reasons:</p>
+<h4 id="uncaught-exception">Uncaught Exception</h4>
+<p>The process will exit when codes throw an exception but fail to catch it, at this time, Node.js provides <code>process.on(&apos;uncaughtException&apos;, handler)</code> interface to catch it, But if a Worker process encounters an uncaught exception, it enters an uncertain state and what we should do is to make it exit elegantly:</p>
+<ol>
+<li>close all TCP Servers started by the corrupted Worker process(close all connections and stop accepting new requests), close the IPC channel between Master and do not accept user requests any more.</li>
+<li>a new Worker process should be forked by the Master immediately to ensure the total number of workers unchanged.</li>
+<li>the corrupted Worker process waits for a while before exit in order to get through accepted requests.</li>
+</ol>
+<pre><code class="lang-bash">   +---------+                 +---------+
+   |  Worker |                 |  Master |
+   +---------+                 +----+----+
+        | uncaughtException         |
+        +------------+              |
+        |            |              |                   +---------+
+        | &lt;----------+              |                   |  Worker |
+        |                           |                   +----+----+
+        |        disconnect         |   fork a new worker    |
+        +-------------------------&gt; + ---------------------&gt; |
+        |         wait...           |                        |
+        |          <span class="hljs-built_in">exit</span>             |                        |
+        +-------------------------&gt; |                        |
+        |                           |                        |
+       die                          |                        |
+                                    |                        |
+                                    |                        |
+</code></pre>
+<h4 id="oom-system-exception">OOM, System Exception</h4>
+<p>When a process crashes due to exceptions or is killed due to OOM by the OS, we have no chance to resume the process like uncaught exceptions occurring, the only choice is to exit current process direcly then Master fork a new Worker immediately.</p>
+<p>In the framework, we use <a href="https://github.com/node-modules/graceful" target="_blank">graceful</a> and <a href="https://github.com/eggjs/egg-cluster" target="_blank">egg-cluster</a> 2 modules correspondingly to implement above logics. This solution has been widely deployed in production environment in Alibaba Cor. and Ant Financial Cor. and is long-tested by &apos;Double 11&apos; big promotion, solid and reliable.</p>
+<h3 id="agent-mechanism">Agent Mechanism</h3>
+<p>Up to now, Node.js multi-process solution seems good enough and it&apos;s also the solution that we used in production environment previously. But before long, we find that there is some work that should not be done by every Worker in fact, if not, it leads to wasting of resources and, even worse, it may result in conflicts on resource access among processes. For example: we usually archive log file by date in production environment and it is easy to do in single process model:</p>
+<blockquote>
+<ol>
+<li>at 0 o&apos;clock in the morning, rename current log file by date</li>
+<li>destroy previous file handle, create new log file and continue writing</li>
+</ol>
+</blockquote>
+<p>Now imagine there are 4 processes doing the same work, and they may get into a mess. So for this kind of background logics, we&apos;d like to run it on a single process which is called Agent Worker, or Agent for short. Agent is something like a &apos;secretary&apos; for other Worker which is introduced by Master, it does not serve outside but only App Workers, especially processes common affairs. Now our multi-process model becomes something like below:</p>
+<pre><code class="lang-bash">                  +--------+          +-------+
+                  | Master |&lt;--------&gt;| Agent |
+                  +--------+          +-------+
+                  ^   ^    ^
+                 /    |     \
+               /      |       \
+             /        |         \
+           v          v          v
+  +----------+   +----------+   +----------+
+  | Worker 1 |   | Worker 2 |   | Worker 3 |
+  +----------+   +----------+   +----------+
+</code></pre>
+<p>And our framework startup sequence looks like:</p>
+<pre><code class="lang-bash">    +---------+           +---------+          +---------+
+    |  Master |           |  Agent  |          |  Worker |
+    +---------+           +----+----+          +----+----+
+         |      fork agent     |                    |
+         +--------------------&gt;|                    |
+         |      agent ready    |                    |
+         |&lt;--------------------+                    |
+         |                     |     fork worker    |
+         +-----------------------------------------&gt;|
+         |     worker ready    |                    |
+         |&lt;-----------------------------------------+
+         |      Beidou ready   |                    |
+         +--------------------&gt;|                    |
+         |      Beidou ready   |                    |
+         +-----------------------------------------&gt;|
+</code></pre>
+<ol>
+<li>Agent process is forked after Mater starts up</li>
+<li>when Agent initialized successfully, Master is notified via IPC channel</li>
+<li>Master forks many App Workers</li>
+<li>when App Worker initialized successfully, Master is notified</li>
+<li>when all process initialized successfully, Master notifies Agent and Worker that the application starts up successfully</li>
+</ol>
+<p>Besides, there still is something about Agent Worker needing to be notices:</p>
+<ol>
+<li>since App Worker depends on Agent, App Worker can be forked only after Agent being initialized</li>
+<li>although Agent is the secretary of App Worker, business related work should not be assigned to Agent, or it may be broken down</li>
+<li>considering the special orientation of Agent, <strong>we must ensure it&apos;s relatively stable</strong>. When it throws an uncaught exception, framework does not shut it down then restart it like App Worker, instead, it logs the exception, gives an alarm and waits for manual handling</li>
+<li>mounting API of Agent differs from that of App Worker, and differences are listed in <a href="../advanced/framework.md">Framework docs</a></li>
+</ol>
+<h3 id="agent-usage">Agent Usage</h3>
+<p>You can implement your own logics in <code>agent.js</code> which is under the directory of the application or the plugin(like the usage of <a href="../basics/app-start.md">Customized Startup</a>, and the only difference is using agent object as the entrance parameter)</p>
+<pre><code class="lang-js"><span class="hljs-comment">// agent.js</span>
+<span class="hljs-built_in">module</span>.exports = agent =&gt; {
+  <span class="hljs-comment">// put your initialization logics here</span>
+
+  <span class="hljs-comment">// messages can also be sent by the messenger object to App Worker</span>
+  <span class="hljs-comment">// but you should wait until App Worker starts up successfully, or the message may be log</span>
+  agent.messenger.on(<span class="hljs-string">&apos;egg-ready&apos;</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> data = { ... };
+    agent.messenger.sendToApp(<span class="hljs-string">&apos;xxx_action&apos;</span>, data);
+  });
+};
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// app.js</span>
+<span class="hljs-built_in">module</span>.exports = app =&gt; {
+  app.messenger.on(<span class="hljs-string">&apos;xxx_action&apos;</span>, data =&gt; {
+    <span class="hljs-comment">// ...</span>
+  });
+};
+</code></pre>
+<p>In this example, codes of <code>agent.js</code> are run in Agent process, codes of <code>app.js</code> are run in the Worker process, and they do the Inter-Process Communication(IPC) through the <code>messenger</code> object encapsulated by framework. Details about the IPC are explained in later sections.</p>
+<h3 id="master-vs-agent-vs-worker">Master VS Agent VS Worker</h3>
+<p>When an application starts up, 3 kinds of processes will be forked.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Number of Processes</th>
+<th>Purpose</th>
+<th>Stability</th>
+<th>Run Business Codes or Not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Master</td>
+<td>1</td>
+<td>Managing processes and transmitting messages among processes</td>
+<td>Very High</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>1</td>
+<td>Running background jobs(persistent connection client)</td>
+<td>High</td>
+<td>Little</td>
+</tr>
+<tr>
+<td>Worker</td>
+<td>usually the number of CPU cores</td>
+<td>Running Business codes</td>
+<td>Normal</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="master">Master</h4>
+<p>With this model, Master process undertakes the process management workers(like <a href="https://github.com/Unitech/pm2" target="_blank">pm2</a>) but runs no business codes. We simply start up a Master process and it will handle all initialization and restarting issues of Worker and Agent processes.</p>
+<p>Master process is extremely stable. We simply use <a href="https://github.com/eggjs/egg-scripts" target="_blank">egg-scripts</a> for online and <code>egg.startCluster</code> for background to start Master process and <a href="https://github.com/Unitech/pm2" target="_blank">pm2</a> or other daemon module is no long necessary.</p>
+<pre><code class="lang-bash">$ egg-scripts start --daemon
+</code></pre>
+<h4 id="agent">Agent</h4>
+<p>In most cases, we needn&apos;t care about Agent process when writing business codes, but in several cases, where we propose to run the codes in a single process and that is the time we use Agent process.</p>
+<p>Since there&apos;s only one Agent that is in charge of tough and tedious work like keeping connections, it cannot be hang or restarted rashly. Agent process won&apos;t exit when encounters uncaught exceptions, but output an error log instead, <strong>so we should always keep out eyes on the uncaught exceptions in logs</strong>.</p>
+<h4 id="worker">Worker</h4>
+<p>Worker process undertakes user requests and <a href="../basics/schedule.md">scheduled tasks</a> actually. Beidou provides scheduled tasks with the ability to be run only in one Worker process, <strong>so never solve problems by Agent as long as they can be solved by scheduled tasks</strong>.</p>
+<p>Worker runs business codes, which are more complicated than those of Agent and Master but the stability may be lower, <strong>a Worker process will be restarted by Master when a Worker process exits unexpectedly</strong>.</p>
+<h2 id="inter-process-communicationipc">Inter-Process Communication(IPC)</h2>
+<p>Although every Worker process runs individually, it&apos;s necessary for them to communicate with each other which is called inter-process communication(IPC). Below is an example code provided by Node.js officially.</p>
+<pre><code class="lang-js"><span class="hljs-meta">&apos;use strict&apos;</span>;
+<span class="hljs-keyword">const</span> cluster = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;cluster&apos;</span>);
+
+<span class="hljs-keyword">if</span> (cluster.isMaster) {
+  <span class="hljs-keyword">const</span> worker = cluster.fork();
+  worker.send(<span class="hljs-string">&apos;hi there&apos;</span>);
+  worker.on(<span class="hljs-string">&apos;message&apos;</span>, msg =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`msg: <span class="hljs-subst">${msg}</span> from worker#<span class="hljs-subst">${worker.id}</span>`</span>);
+  });
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cluster.isWorker) {
+  process.on(<span class="hljs-string">&apos;message&apos;</span>, (msg) =&gt; {
+    process.send(msg);
+  });
+}
+</code></pre>
+<p>Carefully you can see that the IPC channel of clusters exists only between Master and Worker/Agent, not between Worker and Agent. So how to communicate among Workers? Yes, Master helps transmit.</p>
+<pre><code class="lang-bash">Broadcast messages: agent =&gt; all workers
+                  +--------+          +-------+
+                  | Master |&lt;---------| Agent |
+                  +--------+          +-------+
+                 /    |     \
+                /     |      \
+               /      |       \
+              /       |        \
+             v        v         v
+  +----------+   +----------+   +----------+
+  | Worker 1 |   | Worker 2 |   | Worker 3 |
+  +----------+   +----------+   +----------+
+
+Specify receivers: one worker =&gt; another worker
+                  +--------+          +-------+
+                  | Master |----------| Agent |
+                  +--------+          +-------+
+                 ^    |
+     send to    /     |
+    worker 2   /      |
+              /       |
+             /        v
+  +----------+   +----------+   +----------+
+  | Worker 1 |   | Worker 2 |   | Worker 3 |
+  +----------+   +----------+   +----------+
+</code></pre>
+<p>To simplify the invocation, we have encapsulated a messenger object and attached it to the app/agent instance, a set of friendly APIs is provided too.</p>
+<h3 id="send">Send</h3>
+<ul>
+<li><code>app.messenger.broadcast(action, data)</code>: sends messages to all agent/app processes(including itself)</li>
+<li><code>app.messenger.sendToApp(action, data)</code>: sends messages to all app processes<ul>
+<li>when called on app, it sends messages to itself and other app processes</li>
+<li>when called on agent, it sends messages to all app processes</li>
+</ul>
+</li>
+<li><code>app.messenger.sendToAgent(action, data)</code>: sends messages to the agent process<ul>
+<li>when called on app, it sends messages to the agent process</li>
+<li>when called on agent, it sends messages to the agent itself</li>
+</ul>
+</li>
+<li><code>agent.messenger.sendRandom(action, data)</code>:<ul>
+<li>app dose not have this method(now Egg implements it as sendToAgent)</li>
+<li>agent sends a random message to one app process(master determines whom to send to)</li>
+</ul>
+</li>
+<li><code>app.messenger.sendTo(pid, action, data)</code>: send messages to specified process</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">// app.js</span>
+<span class="hljs-built_in">module</span>.exports = app =&gt; {
+  <span class="hljs-comment">// Note, only after egg-ready event occurs can the message be sent</span>
+  app.messenger.once(<span class="hljs-string">&apos;egg-ready&apos;</span>, () =&gt; {
+    app.messenger.sendToAgent(<span class="hljs-string">&apos;agent-event&apos;</span>, { foo: <span class="hljs-string">&apos;bar&apos;</span> });
+    app.messenger.sendToApp(<span class="hljs-string">&apos;app-egent&apos;</span>, { foo: <span class="hljs-string">&apos;bar&apos;</span> });
+  });
+}
+</code></pre>
+<ul>
+<li>All methods called on <code>app.messenger</code> above can be called on <code>agent.messenger</code> too. *</li>
+</ul>
+<h4 id="egg-ready">egg-ready</h4>
+<p>We mentioned in the example above that, only after egg-ready event occurs can the message be sent. Only after Master makes sure that all Agent process and Worker processes have been started successfully(and ready), can the <code>egg-ready</code> message be sent to all Agent and Worker through messenger, notifying that everything is ready and the IPC channel can be used.</p>
+<h3 id="receive">Receive</h3>
+<p>Listen the action event on messenger therefore messages sent by other processes can be received.</p>
+<pre><code class="lang-js">app.messenger.on(action, data =&gt; {
+  <span class="hljs-comment">// process data</span>
+});
+app.messenger.once(action, data =&gt; {
+  <span class="hljs-comment">// process data</span>
+});
+</code></pre>
+<p><em>The way to receive messages using messenger in agent is the same with that of app.</em></p>
+<h2 id="ipc-in-practice">IPC in Practice</h2>
+<p>Now we will show you how IPC solves real problems with the multi-process model of framework by a simple example.</p>
+<h3 id="requisition">Requisition</h3>
+<p>We have a API that gets data from the remote data source and provides services outside. Since data of the data source change little and we prefer to cache it in the memory to accelerate the response of services and reduce the RT. Now a mechanism to update the memory cache is needed.</p>
+<ol>
+<li>Get data from the remote data source periodically and update the memory cache. To reduce pressure on the data source, the period for updating may be set relatively long.</li>
+<li>The remote data source provides an API to check whether its data has been updated. Our service calls that API more frequently and only when data is updated can it pull the data.</li>
+<li>The remote data source pushes data changes through a message-oriented middleware on which our service listens to update the data.</li>
+</ol>
+<p>In real projects, we use solution one to catch all, and, in combination with solution tow or three, the instantaneity of data updating can be sped up. In the example, we use IPC + <a href="../basics/schedule.md">scheduled tasks</a> to implement these three cache updating solutions in the same time.</p>
+<h3 id="implementation">Implementation</h3>
+<p>We put all logics that is used to interact with the remote data source into a Service, where a <code>get</code> method is exposed to Controller to invoke.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/service/source.js</span>
+<span class="hljs-built_in">module</span>.exports = app =&gt; {
+  <span class="hljs-keyword">let</span> memoryCache = {};
+
+  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Source</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">app</span>.<span class="hljs-title">Service</span> </span>{
+    get(key) {
+      <span class="hljs-keyword">return</span> memoryCache[key];
+    }
+
+    * checkUpdate() {
+      <span class="hljs-comment">// check if remote data source has changed</span>
+      <span class="hljs-keyword">const</span> updated = <span class="hljs-keyword">yield</span> mockCheck();
+      <span class="hljs-keyword">this</span>.ctx.logger.info(<span class="hljs-string">&apos;check update response %s&apos;</span>, updated);
+      <span class="hljs-keyword">return</span> updated;
+    }
+
+    * update() {
+      <span class="hljs-comment">// update memory cache from remote</span>
+      memoryCache = <span class="hljs-keyword">yield</span> mockFetch();
+      <span class="hljs-keyword">this</span>.ctx.logger.info(<span class="hljs-string">&apos;update memory cache from remote: %j&apos;</span>, memoryCache);
+    }
+  };
+}
+</code></pre>
+<p>Write the scheduled task to implement solution one: gets data changes from the remote data source every 10 minutes to update cache as a cache-all.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/schedule/force_refresh.js</span>
+exports.schedule = {
+  interval: <span class="hljs-string">&apos;10m&apos;</span>,
+  type: <span class="hljs-string">&apos;all&apos;</span>, <span class="hljs-comment">// run in all workers</span>
+};
+
+exports.task = <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params">ctx</span>) </span>{
+  <span class="hljs-keyword">yield</span> ctx.service.source.update();
+  ctx.app.lastUpdateBy = <span class="hljs-string">&apos;force&apos;</span>;
+};
+</code></pre>
+<p>Write a scheduled task again to implement check logics of solution two: make a worker call the check API every 10 seconds and notify all Workers using methods provided by messenger when data changes are found.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/schedule/pull_refresh.js</span>
+exports.schedule = {
+  interval: <span class="hljs-string">&apos;10s&apos;</span>,
+  type: <span class="hljs-string">&apos;worker&apos;</span>, <span class="hljs-comment">// only run in one worker</span>
+};
+
+exports.task = <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params">ctx</span>) </span>{
+  <span class="hljs-keyword">const</span> needRefresh = <span class="hljs-keyword">yield</span> ctx.service.source.checkUpdate();
+  <span class="hljs-keyword">if</span> (!needRefresh) <span class="hljs-keyword">return</span>;
+
+  <span class="hljs-comment">// notify all workers to update memory cache from `file`</span>
+  ctx.app.messenger.sendToApp(<span class="hljs-string">&apos;refresh&apos;</span>, <span class="hljs-string">&apos;pull&apos;</span>);
+};
+</code></pre>
+<p>Listen on the <code>pullRefresh</code> event in the customized start-up file and update data. All Worker processes will receive this message, trigger updates and our solution two succeeds at last.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app.js</span>
+<span class="hljs-built_in">module</span>.exports = app =&gt; {
+  app.messenger.on(<span class="hljs-string">&apos;refresh&apos;</span>, by =&gt; {
+    app.logger.info(<span class="hljs-string">&apos;start update by %s&apos;</span>, by);
+    <span class="hljs-comment">// create an anonymous context to access service</span>
+    <span class="hljs-keyword">const</span> ctx = app.createAnonymousContext();
+    <span class="hljs-comment">// a convenient way to execute with generator function</span>
+    <span class="hljs-comment">// can replaced by `co`</span>
+    ctx.runInBackground(<span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">yield</span> ctx.service.source.update();
+      app.lastUpdateBy = by;
+    });
+  });
+};
+</code></pre>
+<p>Now let&apos;s consider how to implement solution three. We need a message-oriented middleware that keeps persistent connections with the server side. This kind of persistent connections is proper for Agent process to keep which can effectively reduce connection numbers and reduce costs both ends. So we start message listening on Agent process.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// agent.js</span>
+
+<span class="hljs-keyword">const</span> Subscriber = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./lib/subscriber&apos;</span>);
+
+<span class="hljs-built_in">module</span>.exports = agent =&gt; {
+  <span class="hljs-keyword">const</span> subscriber = <span class="hljs-keyword">new</span> Subscriber();
+  <span class="hljs-comment">// listen changed event, broadcast to all workers</span>
+  subscriber.on(<span class="hljs-string">&apos;changed&apos;</span>, () =&gt; agent.messenger.sendToApp(<span class="hljs-string">&apos;refresh&apos;</span>, <span class="hljs-string">&apos;push&apos;</span>));
+};
+</code></pre>
+<p>With an intelligent use of Agent process, scheduled tasks and IPC, we can easily implement this kind of requisition and reduce pressure on the data source. Detailed example codes refer to<a href="https://github.com/eggjs/examples/tree/master/ipc" target="_blank">examples/ipc</a>.</p>
+<h2 id="more-complexed-scenario">More Complexed Scenario</h2>
+<p>In the above example, we runs a subscriber on Agent process to listen messages sent by the message-oriented middleware. What if Worker processes need to listen messages? How to create connections by Agent process and transmit messages to Worker processes? Answers to these questions can be found in <a href="../advanced/cluster-client.md">Advanced Multi-Process Developing Pattern</a>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="cookie-and-session.html" class="navigation navigation-prev " aria-label="Previous page: Cookie & Session">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="isomorphic-render.html" class="navigation navigation-next " aria-label="Next page: Ismorphic Render">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Cluster and IPC","level":"1.5.6","depth":2,"next":{"title":"Ismorphic Render","level":"1.5.7","depth":2,"path":"core/isomorphic-render.md","ref":"core/isomorphic-render.md","articles":[]},"previous":{"title":"Cookie & Session","level":"1.5.5","depth":2,"path":"core/cookie-and-session.md","ref":"core/cookie-and-session.md","articles":[]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510989186484.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"core/cluster-and-ipc.md","mtime":"2017-11-17T13:23:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-18T07:04:22.028Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://say.alipay.net/public/antsay.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-antsay/bootstrap.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

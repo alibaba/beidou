@@ -2,6 +2,7 @@
 *.log
 *_config.json
 *.babel.json
+examples/*/logs/*
 
 # temp files
 *.lerna_backup
@@ -21,3 +22,5 @@ coverage/
 # Dependency directories
 node_modules
 
+# build assets
+*.stats.json

@@ -5,14 +5,14 @@
 /* global it: true */
 
 const path = require('path');
-// const fs = require('fs');
-// const exec = require('child_process').exec;
+const fs = require('fs');
 const request = require('supertest');
 const mm = require('egg-mock');
 const chai = require('chai');
+const rimraf = require('rimraf');
 
 const expect = chai.expect;
-const framework = path.join(__dirname, '../../../');
+const framework = path.join(__dirname, '../../beidou-core/');
 const plugin = 'webpack';
 
 describe('test/plugin.test.js', () => {
@@ -154,28 +154,35 @@ describe('test/plugin.test.js', () => {
     });
   });
 
-  // describe('webpack build', () => {
-  //   const cwd = path.join(__dirname, './fixtures/webpack-build');
-  //   const src = path.join(__dirname, '../bin/build.js');
-  //   const bin = path.join(__dirname, './fixtures/webpack-build/build');
+  describe('webpack build', () => {
+    const output = path.join(__dirname, './fixtures/webpack-build/output');
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './webpack-build',
+        plugin,
+        framework,
+      });
 
-  //   before((done) => {
-  //     fs.writeFileSync(bin, fs.readFileSync(src));
-  //     exec(`chmod +x ${bin}`, () => {
-  //       exec(bin, { cwd }, done);
-  //     });
-  //   });
+      app.ready(() => {
+        const builder = require('../lib/builder.js');
+        const compiler = builder(app);
+        compiler.run(done);
+      });
+    });
 
-  //   after(() => {
-  //     fs.unlinkSync(bin);
-  //   });
+    after((done) => {
+      if (fs.existsSync(output)) {
+        rimraf(output, done);
+      }
+    });
 
-  //   afterEach(mm.restore);
+    afterEach(mm.restore);
 
-  //   it('should exist output files', (done) => {
-  //     const exist = fs.existsSync(path.join(__dirname, './fixtures/webpack-build/build/index.js'));
-  //     expect(exist).to.equal(true);
-  //     done();
-  //   });
-  // });
+    it('should exist output files', (done) => {
+      const exist = fs.existsSync(path.join(output, 'index.js'));
+      expect(exist).to.equal(true);
+      done();
+    });
+  });
 });

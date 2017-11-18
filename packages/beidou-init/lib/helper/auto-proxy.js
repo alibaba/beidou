@@ -2,9 +2,9 @@
  * @author Holden <holdenwei@qq.com>
  */
 
-'use strict';
 
 const spawn = require('cross-spawn');
+
 const cwd = process.cwd();
 
 const ProxyModule = {
@@ -19,7 +19,7 @@ const ProxyModule = {
     });
 
     return new Promise((resolve, reject) => {
-      cli.on('close', status => {
+      cli.on('close', (status) => {
         if (status === 0) {
           resolve();
         } else {

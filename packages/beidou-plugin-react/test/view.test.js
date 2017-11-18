@@ -7,7 +7,7 @@
 'use strict';
 
 /**
- * config.view = {
+ * config.react = {
     extname: 'jsx',
     beautify: false,
     cache: true,
@@ -22,7 +22,7 @@ const mm = require('egg-mock');
 const path = require('path');
 const fs = require('fs');
 
-const framework = path.join(__dirname, '../../../');
+const framework = path.join(__dirname, '../../beidou-core/');
 const customDoctype = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">';
 const stdDoctype = '<!DOCTYPE html>';
 const sourceHTML = '<html><head><title>测试</title></head><body><div id="container"><div><div>hello world</div></div></div><script>window.__INITIAL_STATE__={"name":"hello world"}</script></body></html>';

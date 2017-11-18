@@ -2,8 +2,6 @@
 
 set -e
 
-npm run cov
-
 TEST_DIRS=""
 
 for f in packages/*; do

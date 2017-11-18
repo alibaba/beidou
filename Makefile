@@ -5,12 +5,15 @@ export NODE_ENV = test
 .PHONY: lint install clean test-clean clean-all test-only test-all test cov ci changelog
 
 lint:
-	./node_modules/.bin/lint-staged --fix lib
+	./node_modules/.bin/lint-staged ./packages
+
+lint-all:
+	./node_modules/.bin/eslint --ext .js --ext .jsx --fix ./packages
 
 install:
 	yarn install
 	./node_modules/.bin/lerna bootstrap
-	./scripts/install-examples.sh
+	# ./scripts/install-examples.sh  [deprecated]
 
 clean:
 	make test-clean
@@ -24,6 +27,7 @@ clean:
 	rm -rf packages/*/test/fixtures/*/*/*/*.log
 	rm -rf examples/*/logs/
 	rm -rf examples/*/run/
+	rm -rf examples/*/*.log
 
 
 test-clean:
@@ -31,6 +35,7 @@ test-clean:
 	rm -rf packages/*/test/debug
 
 clean-all:
+	./node_modules/.bin/lerna clean
 	rm -rf node_modules
 	rm -rf packages/*/node_modules
 	rm -rf examples/*/node_modules
@@ -41,12 +46,13 @@ test-only:
 	make test-clean
 
 test-all:
+	make lint-all
 	./scripts/test-all.sh
 	make test-clean
 
 test:
 	make lint
-	make test-only
+	make test-all
 
 cov:
 	./node_modules/.bin/egg-bin cov

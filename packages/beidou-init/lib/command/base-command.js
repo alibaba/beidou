@@ -1,4 +1,4 @@
-'use strict';
+
 
 require('colors');
 const helper = require('../helper');
@@ -23,7 +23,7 @@ class Command {
   log() {
     const args = Array.prototype.slice.call(arguments);
     args[0] = `[${this.name}] `.blue + args[0];
-    console.log.apply(console, args);
+    console.log(...args);
   }
 }
 

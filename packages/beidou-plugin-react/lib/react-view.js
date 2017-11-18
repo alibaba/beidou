@@ -68,14 +68,17 @@ class BeidouReactView {
         const Component = exportObj.default || exportObj;
         let layout = doctype;
 
+        // server render pure component
         if (this.isReactComponent(Component)) {
           layout += this.renderReactComponent(Component, locals);
         }
 
+        // server render component with server context injected
         if (this.isReactConstructor(Component)) {
           layout += this.renderReactConstructor(Component, locals);
         }
 
+        // isomorphic render
         if (this.isReactView(Component)) {
           layout += this.renderCustomView(Component, locals);
         }
@@ -133,16 +136,16 @@ class BeidouReactView {
     return content;
   }
 
-  isReactView(Component) {
-    return typeof Component === 'function' && Component[symbol];
+  isReactComponent(component) {
+    return React.isValidElement(component);
   }
 
   isReactConstructor(Component) {
     return typeof Component === 'function' && !Component[symbol];
   }
 
-  isReactComponent(component) {
-    return React.isValidElement(component);
+  isReactView(Component) {
+    return typeof Component === 'function' && Component[symbol];
   }
 
   get helper() {

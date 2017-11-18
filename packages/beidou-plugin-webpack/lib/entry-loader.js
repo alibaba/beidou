@@ -20,7 +20,7 @@ module.exports = (app) => {
   const hmr = options.hmr;
   const entry = {};
   let headEntries = [];
-  if (hmr.enable) {
+  if (hmr && hmr.enable) {
     const params = Object.keys(omit(hmr, ['enable']))
     .map(key => `${key}=${hmr[key]}`)
     .join('&');

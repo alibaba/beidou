@@ -1,13 +1,14 @@
 {
   "name": "beidou-plugin-webpack",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "webpack middleware",
   "eggPlugin": {
     "name": "webpack"
   },
   "keywords": [
     "beidou",
-    "plugin"
+    "plugin",
+    "webpack"
   ],
   "dependencies": {
     "debug": "^2.2.0",
@@ -16,6 +17,7 @@
     "koa-webpack-hot-middleware": "^1.0.3",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.3",
+    "react": "^15.6.1",
     "request": "^2.81.0",
     "sass-loader": "^6.0.6",
     "sdk-base": "^2.0.1",
@@ -25,16 +27,21 @@
   "devDependencies": {
     "autod": "2",
     "babel-loader": "^6.2.4",
+    "babel-preset-beidou-client": "^0.0.5",
+    "babel-preset-beidou-server": "^0.0.5",
+    "beidou-core": "^0.2.1",
     "chai": "^4.0.2",
     "egg": "^1.4.0",
     "egg-bin": "^3.4.2",
     "egg-mock": "^3.7.1",
     "eslint": "^3.4.0",
     "eslint-config-beidou": "0.0.1",
+    "rimraf": "^2.6.1",
     "should": "8",
     "supertest": "1"
   },
   "files": [
+    "bin",
     "app",
     "lib",
     "config",
@@ -52,8 +59,8 @@
     "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "__bin": {
+  "bin": {
     "webpack-build": "./bin/build.js"
   },
-  "repository" : "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
 }

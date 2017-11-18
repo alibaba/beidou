@@ -2,12 +2,12 @@
  * @author Holden <holdenwei@qq.com>
  */
 
-'use strict';
 
 const spawn = require('cross-spawn');
+
 const cwd = process.cwd();
 
-//const spawn = require('child_process').spawn;
+// const spawn = require('child_process').spawn;
 
 const NpmModule = {
 
@@ -21,15 +21,15 @@ const NpmModule = {
     });
 
     return new Promise((resolve, reject) => {
-        cli.on('close', status => {
+      cli.on('close', (status) => {
         if (status === 0) {
-        resolve();
-      } else {
-        reject(new Error(`packages install failed, error message: ${status}`));
-      }
+          resolve();
+        } else {
+          reject(new Error(`packages install failed, error message: ${status}`));
+        }
+      });
     });
-  });
-},
+  },
 };
 
 module.exports = NpmModule;

@@ -16,20 +16,6 @@ Isomorphic framework for server-rendered React apps
 [gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg?style=flat-square
 [gitter-url]: https://gitter.im/alibaba/beidou
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [Features](#features)
-- [How to use](#how-to-use)
-  - [Setup](#setup)
-  - [Structure](#structure)
-  - [Router](#router)
-    - [Auto router](#auto-router)
-    - [Custom router](#custom-router)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Features
 
 - ✔︎ React server side render
@@ -38,116 +24,69 @@ Isomorphic framework for server-rendered React apps
 - ✔︎ Lots of [plugins](https://github.com/search?q=topic%3Aegg-plugin&type=Repositories)
 
 ## How to use
-### Setup
-
-Install generator
 
 ```bash
-npm install beidou-init -g
-```
-
-Init
-
-
-```bash
-beidou init
-```
-
-Start
-
-
-```bash
-npm run start
+$ npm install beidou-init -g
+$ beidou init
+$ npm run start
 ```
 
 After that, go to `http://localhost:6001/`
 
-### Structure
+## Boilerplate
+* [empty-template](./examples/empty-template)
+* [simple-template](./examples/simple-template)
+* [advance-template](./examples/advance)
 
-```bash
-beidou-project
-├── package.json
-├── app.js (optional)
-├── agent.js (optional)
-├── app
-|   ├── router.js (optional)
-│   ├── controller (optional)
-│   |   └── home.js
-│   ├── service (optional)
-│   |   └── user.js
-│   ├── middleware (optional)
-│   |   └── response_time.js
-│   ├── schedule (optional)
-│   |   └── my_task.js
-│   ├── public (optional)
-│   |   └── reset.css
-│   ├── view (optional)
-│   |   └── home.tpl
-│   └── extend (optional)
-│       ├── helper.js
-│       ├── request.js
-│       ├── response.js
-│       ├── context.js
-│       ├── application.js
-│       └── agent.js
-├── config
-|   ├── plugin.js
-|   ├── config.default.js
-│   ├── config.prod.js
-|   ├── config.test.js (optional)
-|   ├── config.local.js (optional)
-|   └── config.unittest.js (optional)
-├── client
-|   ├── index.jsx
-|   └── page/index.jsx
-└── test
-    ├── middleware
-    |   └── response_time.test.js
-    └── controller
-        └── home.test.js
-```
+## Documentation
 
-### Router
-
-#### Auto router
-
-Every page in /client folder will be routed automatically. 
-For example, visit `http://localhost:6001/page-a`, `/client/page-a.jsx` will be rendered.
-
-
-| Client source          | Router | Memo           |
-| ---------------------- | ------ | -------------- |
-| client/index.jsx       | /      | Default router |
-| client/index/index.jsx | /      | Default router |
-| client/a.jsx           | /a     | Auto router    |
-| client/a/index.jsx     | /a     | Auto router    |
-| client/a/b.jsx         | /a/b   | Auto router    |
-| client/a/b/index.jsx   | /a/b   | Auto router    |
-
-#### Custom router
-
-if we want to map `/a` to `/client/b.jsx`, follow the next steps
-
-step 1: create a new router
-
-```javascript
-//  /app/router.js
-module.exports = (app) => {
-  app.get('/a', app.controller.a);
-};
-
-```
-
-step 2: create a new controller, and render `/client/b.jsx`
-
-
-```javascript
-//  /app/controller/a.js
-module.exports = function* aController() {
-  yield this.render('b');
-};
-
-```
+* [Quick Start](./packages/beidou-docs/quick-start/quick-start.md)
+* Step by Step
+   * [Environment](./packages/beidou-docs/quick-start/prepare-environment.md)  
+   * [Directory Structure](./packages/beidou-docs/quick-start/directory-struct.md)  
+   * [Step by Step](./packages/beidou-docs/quick-start/step-by-step.md)
+* Basics
+   * [Built-in Objects](./packages/beidou-docs/basic/objects.md)
+   * [Runtime Environment](./packages/beidou-docs/basic/env.md)
+   * [Configuration](./packages/beidou-docs/basic/config.md)
+   * [Plugins](./packages/beidou-docs/basic/plugins.md)
+   * [Middlewares](./packages/beidou-docs/basic/middleware.md)
+   * [Router](./packages/beidou-docs/basic/router.md)
+   * [Controller](./packages/beidou-docs/basic/controller.md)
+   * [Service](./packages/beidou-docs/basic/service.md)
+   * [Schedule](./packages/beidou-docs/basic/schedule.md)
+   * [Extend](./packages/beidou-docs/basic/extend.md)
+   * [Mock](./packages/beidou-docs/basic/Mock.md)
+   * [Custom startup](./packages/beidou-docs/basic/app-start.md)
+* Core
+   * [Development](./packages/beidou-docs/core/development.md)
+   * [Unit Testing](./packages/beidou-docs/core/unittest.md)
+   * [Logger](./packages/beidou-docs/core/logger.md)
+   * [HttpClient](./packages/beidou-docs/core/http-client.md)
+   * [Cookie & Session](./packages/beidou-docs/core/cookie-and-session.md)
+   * [Cluster and IPC](./packages/beidou-docs/core/cluster-and-ipc.md)
+   * [Ismorphic Render](./packages/beidou-docs/core/isomorphic-render.md)
+   * [Error Handling](./packages/beidou-docs/core/error-handling.md)
+   * [Security](./packages/beidou-docs/core/security.md)
+   * [Multi-language](./packages/beidou-docs/core/i18n.md)
+* Deployment
+    * [Deployment](./packages/beidou-docs/deployment/deployment.md)
+    * [DevOps](./packages/beidou-docs/deployment/devops.md)
+    * [Docker](./packages/beidou-docs/deployment/docker.md)
+* Tutorials
+    * [Progressive](./packages/beidou-docs/tutorials/progressive.md)
+    * [MySQL](./packages/beidou-docs/tutorials/mysql.md)
+    * [Restful API](./packages/beidou-docs/tutorials/restful.md)
+    * [Async Function](./packages/beidou-docs/tutorials/async-function.md)
+* Advanced
+    * [How It Works](./packages/beidou-docs/advanced/architecture.md)
+    * [Loader](./packages/beidou-docs/advanced/loader.md)
+    * [Plugin Development](./packages/beidou-docs/advanced/plugin.md)
+    * [Cluster Enhancement](./packages/beidou-docs/advanced/cluster-enhancement.md)
+    * [Monitor](./packages/beidou-docs/advanced/monitor.md)
+    * [Performance](./packages/beidou-docs/advanced/performance.md)  
+    * [Memory Leaks](./packages/beidou-docs/advanced/oom.md)
+    * [SSR Attentions](./packages/beidou-docs/advanced/attentions.md)
 
 ## License
 

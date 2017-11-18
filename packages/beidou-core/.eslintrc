@@ -1,0 +1,9 @@
+{
+  "extends": "eslint-config-beidou",
+  "rules":{
+    "strict": ["error", "safe"],
+    "import/no-dynamic-require": "off",
+    "require-yield": "off",
+    "class-methods-use-this": "off"
+  }
+}

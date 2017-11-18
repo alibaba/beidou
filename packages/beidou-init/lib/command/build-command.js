@@ -1,7 +1,7 @@
 /**
  * @author Holden <holdenwei@qq.com>
  */
-'use strict';
+
 
 const spawn = require('cross-spawn');
 const BaseCommand = require('./base-command');
@@ -10,8 +10,7 @@ require('colors');
 
 class BuildCommand extends BaseCommand {
 
-  * run(cwd, args) {
-    let processedArgs = args || [];
+  * run(cwd) {
     this.cwd = cwd;
 
     yield this.build(cwd);
@@ -27,12 +26,12 @@ class BuildCommand extends BaseCommand {
    */
   * build(cwd) {
     const cli = spawn('npm', ['run', 'build'], {
-      cwd: cwd,
+      cwd,
       stdio: 'inherit'
     });
 
     return new Promise((resolve, reject) => {
-      cli.on('close', status => {
+      cli.on('close', (status) => {
         if (status === 0) {
           resolve();
         } else {
@@ -46,7 +45,7 @@ class BuildCommand extends BaseCommand {
    * print usage guide
    */
   printUsage() {
-    this.log(`Build finished`.green);
+    this.log('Build finished'.green);
   }
 
   /**
@@ -56,6 +55,6 @@ class BuildCommand extends BaseCommand {
     return 'Build application';
   }
 }
-;
+
 
 module.exports = BuildCommand;

@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-isomorphic",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "beidou isomorphic register",
   "main": "app.js",
   "scripts": {
@@ -36,7 +36,8 @@
     "eslint-config-beidou": "^0.0.1",
     "husky": "^0.13.4",
     "should": "8",
-    "supertest": "1"
+    "supertest": "1",
+    "require-hacker": "^3.0.0"
   },
   "files": [
     "config",
