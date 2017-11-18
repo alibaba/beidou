@@ -34,7 +34,7 @@
 
     
         
-        <link rel="stylesheet" href="../website-1510928544495.css">
+        <link rel="stylesheet" href="../website-1510978530037.css">
         
     
 
@@ -785,6 +785,177 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="progressive-development">Progressive Development</h2>
+<p>Egg provides both <a href="../basics/plugin.md">Plugin</a> and <a href="../advanced/framework.md">Framework</a>, and the former has two loading modes includes <code>path</code> and <code>package</code>. Then how should we choose?</p>
+<p>Step-by-step example will be provided to demonstrate how to start coding development progressively.</p>
+<p>Find detail codes on <a href="https://github.com/eggjs/examples/tree/master/progressive" target="_blank">eggjs/examples/progressive</a>.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Assume we are writing a code to analyze UA to implement the function below:</p>
+<ul>
+<li><code>ctx.isAndroid</code></li>
+<li><code>ctx.isIOS</code></li>
+</ul>
+<p>You can easily write it down after previous tutorials, let&apos;s have a quick review:</p>
+<p>Codes refer to <a href="https://github.com/eggjs/examples/tree/master/progressive/step1" target="_blank">step1</a>.</p>
+<p>Directory structure:</p>
+<pre><code class="lang-bash">example-app
+&#x251C;&#x2500;&#x2500; app
+&#x2502;   &#x251C;&#x2500;&#x2500; extend
+&#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; context.js
+&#x2502;   &#x2514;&#x2500;&#x2500; router.js
+&#x251C;&#x2500;&#x2500; <span class="hljs-built_in">test</span>
+&#x2502;   &#x2514;&#x2500;&#x2500; index.test.js
+&#x2514;&#x2500;&#x2500; package.json
+</code></pre>
+<p>Core code:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app/extend/context.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  get isIOS() {
+    <span class="hljs-keyword">const</span> iosReg = <span class="hljs-regexp">/iphone|ipad|ipod/i</span>;
+    <span class="hljs-keyword">return</span> iosReg.test(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">&apos;user-agent&apos;</span>));
+  },
+};
+</code></pre>
+<h2 id="prototype-of-plugin">Prototype of Plugin</h2>
+<p>Obviously, the logic is universal that can be written as a plugin.</p>
+<p>But since function might not perfect at the beginning, it might difficult to maintain if encapsulate into a plugin directly.</p>
+<p>We can put the code as the format of plugin, but not separate out.</p>
+<p>Codes refer to <a href="https://github.com/eggjs/examples/tree/master/progressive/step2" target="_blank">step2</a>.</p>
+<p>New directory structure:</p>
+<pre><code class="lang-bash">example-app
+&#x251C;&#x2500;&#x2500; app
+&#x2502;   &#x2514;&#x2500;&#x2500; router.js
+&#x251C;&#x2500;&#x2500; config
+&#x2502;   &#x2514;&#x2500;&#x2500; plugin.js
+&#x251C;&#x2500;&#x2500; lib
+&#x2502;   &#x2514;&#x2500;&#x2500; plugin
+&#x2502;       &#x2514;&#x2500;&#x2500; egg-ua
+&#x2502;           &#x251C;&#x2500;&#x2500; app
+&#x2502;           &#x2502;   &#x2514;&#x2500;&#x2500; extend
+&#x2502;           &#x2502;       &#x2514;&#x2500;&#x2500; context.js
+&#x2502;           &#x2514;&#x2500;&#x2500; package.json
+&#x251C;&#x2500;&#x2500; <span class="hljs-built_in">test</span>
+&#x2502;   &#x2514;&#x2500;&#x2500; index.test.js
+&#x2514;&#x2500;&#x2500; package.json
+</code></pre>
+<p>Core code:</p>
+<ul>
+<li><p><code>app/extend/context.js</code> move to <code>lib/plugin/egg-ua/app/extend/context.js</code>.</p>
+</li>
+<li><p><code>lib/plugin/egg-ua/package.json</code> to declare plugin.</p>
+</li>
+</ul>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;eggPlugin&quot;</span>: {
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;ua&quot;</span>
+  }
+}
+</code></pre>
+<ul>
+<li><code>config/plugin.js</code> use <code>path</code> to mount the plugin.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">// config/plugin.js</span>
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+exports.ua = {
+  enable: <span class="hljs-literal">true</span>,
+  path: path.join(__dirname, <span class="hljs-string">&apos;../lib/plugin/egg-ua&apos;</span>),
+};
+</code></pre>
+<h2 id="extraction-to-independent-plugin">Extraction to Independent Plugin</h2>
+<p>The module&apos;s functions become more better after a period of developing so we could extract it out as an independent plugin.</p>
+<p>We extract an egg-ua plugin and have a quick review as below. Details refer to <a href="../advanced/plugin.html">Plugin Development</a>.</p>
+<p>Directory structure:</p>
+<pre><code class="lang-bash">egg-ua
+&#x251C;&#x2500;&#x2500; app
+&#x2502;   &#x2514;&#x2500;&#x2500; extend
+&#x2502;       &#x2514;&#x2500;&#x2500; context.js
+&#x251C;&#x2500;&#x2500; <span class="hljs-built_in">test</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; fixtures
+&#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; <span class="hljs-built_in">test</span>-app
+&#x2502;   &#x2502;       &#x251C;&#x2500;&#x2500; app
+&#x2502;   &#x2502;       &#x2502;   &#x2514;&#x2500;&#x2500; router.js
+&#x2502;   &#x2502;       &#x2514;&#x2500;&#x2500; package.json
+&#x2502;   &#x2514;&#x2500;&#x2500; ua.test.js
+&#x2514;&#x2500;&#x2500; package.json
+</code></pre>
+<p>Codes refer to  <a href="https://github.com/eggjs/examples/tree/master/progressive/step3/egg-ua" target="_blank">step3/egg-ua</a>.</p>
+<p>Then modify the application, details refer to <a href="https://github.com/eggjs/examples/tree/master/progressive/step3/example-app" target="_blank">step3/example-app</a>.</p>
+<ul>
+<li>Remove directory <code>lib/plugin/egg-ua</code>.</li>
+<li>declare dependencies <code>egg-ua</code>  in <code>package.json</code>.</li>
+<li>change type to <code>package</code> in <code>config/plugin.js</code>.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">// config/plugin.js</span>
+exports.ua = {
+  enable: <span class="hljs-literal">true</span>,
+  package: <span class="hljs-string">&apos;egg-ua&apos;</span>,
+};
+</code></pre>
+<p><strong>Note&#xFF1A;We can use <code>npm link</code> for local test before releasing the plugin. Details refer to  <a href="https://docs.npmjs.com/cli/link" target="_blank">npm-link</a>.</strong></p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> example-app
+$ npm link ../egg-ua
+$ npm i
+$ npm <span class="hljs-built_in">test</span>
+</code></pre>
+<h2 id="finally-a-framework">Finally: A Framework</h2>
+<p>After repeating the process above, we accumulate a few plugins and configurations, and might found that most of our team projects are using them.</p>
+<p>At that time, you can consider to abstract them as a framework which suitable for business scenarios.</p>
+<p>Firstly, abstract the example-framework as below. Let&apos;s have a quick review, details refer to <a href="../advanced/framework.md">Framework</a>.</p>
+<p>Directory structure:</p>
+<pre><code class="lang-bash">example-framework
+&#x251C;&#x2500;&#x2500; config
+&#x2502;   &#x251C;&#x2500;&#x2500; config.default.js
+&#x2502;   &#x2514;&#x2500;&#x2500; plugin.js
+&#x251C;&#x2500;&#x2500; lib
+&#x2502;   &#x251C;&#x2500;&#x2500; agent.js
+&#x2502;   &#x2514;&#x2500;&#x2500; application.js
+&#x251C;&#x2500;&#x2500; <span class="hljs-built_in">test</span>
+&#x2502;   &#x251C;&#x2500;&#x2500; fixtures
+&#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; <span class="hljs-built_in">test</span>-app
+&#x2502;   &#x2514;&#x2500;&#x2500; framework.test.j.
+&#x251C;&#x2500;&#x2500; README.md
+&#x251C;&#x2500;&#x2500; index.js
+&#x2514;&#x2500;&#x2500; package.json
+</code></pre>
+<ul>
+<li>Codes refer to <a href="https://github.com/eggjs/examples/tree/master/progressive/step4/example-framework" target="_blank">example-framework</a>.</li>
+<li>Remove the dependencies of plugins such as <code>egg-ua</code> and remove it from example-app, then configure them into the <code>package.json</code> and <code>config/plugin.js</code> of the framework.</li>
+</ul>
+<p>Then modify the application, details refer to <a href="https://github.com/eggjs/examples/tree/master/progressive/step4/example-app" target="_blank">step4/example-app</a>.</p>
+<ul>
+<li>Remove declaring dependencies <code>egg-ua</code> in <code>config/plugin.js</code>.</li>
+<li>Remove dependencies <code>egg-ua</code> in <code>package.json</code>.</li>
+<li>declare dependencies <code>example-framework</code>  in <code>package.json</code> and configure the <code>egg.framework</code>.</li>
+</ul>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;progressive&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.0.0&quot;</span>,
+  <span class="hljs-string">&quot;private&quot;</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">&quot;egg&quot;</span>: {
+    <span class="hljs-string">&quot;framework&quot;</span>: <span class="hljs-string">&quot;example-framework&quot;</span>
+  },
+  <span class="hljs-string">&quot;dependencies&quot;</span>: {
+    <span class="hljs-string">&quot;example-framework&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>
+  }
+}
+</code></pre>
+<p><strong>Note&#xFF1A;We can use <code>npm link</code> for local test before releasing the framework <a href="https://docs.npmjs.com/cli/link" target="_blank">npm-link</a>.</strong></p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> example-app
+$ npm link ../egg-framework
+$ npm i
+$ npm <span class="hljs-built_in">test</span>
+</code></pre>
+<h2 id="last">Last</h2>
+<p>In conclusion, we can see how to make the framework evolution step by step which benefits from Egg provides the powerful plugin mechanism, code co-build, reusability and modularity.</p>
+<ul>
+<li>in general, put codes into <code>lib/plugin</code> if it can be reused in the application.</li>
+<li>separate it into a <code>node module</code> when plugin becomes stable.</li>
+<li>application with relatively reusable codes will work as a separate plugin.</li>
+<li>abstract as framework to release after application become certain solutions of specified business scenario.</li>
+<li><p>it would be a great improvement of teamwork after plugins extract, modularize and finally as a framework, beacuase other projects could reuse codes by just <code>npm install</code>.</p>
+</li>
+<li><p><strong>Note&#xFF1A;Whether application/plugin/framework, unittest is a must and try to reach 100% coverage</strong></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -824,7 +995,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Progressive","level":"1.7.1","depth":2,"next":{"title":"MySQL","level":"1.7.2","depth":2,"path":"tutorials/mysql.md","ref":"tutorials/mysql.md","articles":[]},"previous":{"title":"Tutorials","level":"1.7","depth":1,"ref":"","articles":[{"title":"Progressive","level":"1.7.1","depth":2,"path":"tutorials/progressive.md","ref":"tutorials/progressive.md","articles":[]},{"title":"MySQL","level":"1.7.2","depth":2,"path":"tutorials/mysql.md","ref":"tutorials/mysql.md","articles":[]},{"title":"Restful API","level":"1.7.3","depth":2,"path":"tutorials/restful.md","ref":"tutorials/restful.md","articles":[]},{"title":"Async Function","level":"1.7.4","depth":2,"path":"tutorials/async-function.md","ref":"tutorials/async-function.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510928544495.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"tutorials/progressive.md","mtime":"2017-11-14T09:21:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Progressive","level":"1.7.1","depth":2,"next":{"title":"MySQL","level":"1.7.2","depth":2,"path":"tutorials/mysql.md","ref":"tutorials/mysql.md","articles":[]},"previous":{"title":"Tutorials","level":"1.7","depth":1,"ref":"","articles":[{"title":"Progressive","level":"1.7.1","depth":2,"path":"tutorials/progressive.md","ref":"tutorials/progressive.md","articles":[]},{"title":"MySQL","level":"1.7.2","depth":2,"path":"tutorials/mysql.md","ref":"tutorials/mysql.md","articles":[]},{"title":"Restful API","level":"1.7.3","depth":2,"path":"tutorials/restful.md","ref":"tutorials/restful.md","articles":[]},{"title":"Async Function","level":"1.7.4","depth":2,"path":"tutorials/async-function.md","ref":"tutorials/async-function.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["antsay","-sharing","styles-less","livereload"],"styles":{"website":"website-1510978530037.css"},"pluginsConfig":{"antsay":{"useIdentifier":false,"shortName":"","appId":"","key":""},"styles-less":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Beidou Document","gitbook":">= 3.2.0","description":"Beidou Document"},"file":{"path":"tutorials/progressive.md","mtime":"2017-11-18T04:15:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-11-17T09:27:56.242Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

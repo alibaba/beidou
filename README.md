@@ -33,7 +33,7 @@ npm run start
 
 After that, go to `http://localhost:6001/`
 
-## boilerplate
+## Boilerplate
 * [empty-template](./examples/empty-template)
 * [simple-template](./examples/simple-template)
 * [advance-template](./examples/advance)
