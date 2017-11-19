@@ -21,7 +21,7 @@ Isomorphic framework for server-rendered React apps
 - ✔︎ React server side render
 - ✔︎ ES6/ES7 supported
 - ✔︎ Css modules supported
-- ✔︎ Lots of [plugins](https://github.com/search?q=topic%3Aegg-plugin&type=Repositories)
+- ✔︎ Lots of [plugins](./packages/beidou-docs/basic/plugins.md)
 
 ## How to use
 
