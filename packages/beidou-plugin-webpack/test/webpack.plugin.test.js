@@ -166,6 +166,7 @@ describe('test/plugin.test.js', () => {
 
       app.ready(() => {
         const builder = require('../lib/builder');
+        app.config.env = 'prod';
         const compiler = builder(app);
         compiler.run(done);
       });
@@ -184,5 +185,49 @@ describe('test/plugin.test.js', () => {
       expect(exist).to.equal(true);
       done();
     });
+  });
+
+  describe('isomorphic plugin', () => {
+    const output = path.join(__dirname, './fixtures/isomorphic/output');
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './isomorphic',
+        plugin,
+        framework,
+      });
+      app.ready(() => {
+        const builder = require('../lib/builder');
+        const compiler = builder(app);
+        compiler.run(done);
+      });
+      // app.on('webpack-server-ready', done);
+
+      // app.ready(done);
+      
+    });
+
+    after((done) => {
+      app.close();
+      rimraf(output, done);
+    });
+
+    afterEach(mm.restore);
+
+    it('should write `assets.json` into `.isomorphic` directory', () => {
+      const assetsExist = fs.existsSync(path.join(output, 'assets.json'));
+      expect(assetsExist).to.equal(true);
+    });
+
+    it('should save valid json into assets file', () => {
+      const json = require(path.join(output, 'assets.json'));
+      expect(typeof json).to.equal('object');
+    }); 
+
+    it('should exist non-js file content in assets', () => {
+      const json = require(path.join(output, 'assets.json'))
+      expect(json['client/example/index.scss']).to.match(/module\.exports =.+\"bg"/);;
+      expect(json['client/images/bg.png']).to.match(/iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkCPi\/FAADnQH2diZYqwAAAABJRU5ErkJggg==/);
+    }); 
   });
 });
