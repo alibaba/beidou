@@ -31,7 +31,7 @@
     "babel-preset-beidou-server": "^0.0.5",
     "babel-preset-react": "^6.16.0",
     "egg": "^1.4.0",
-    "egg-bin": "^3.4.2",
+    "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.2",
     "eslint": "^3.11.0",
     "eslint-config-beidou": "^0.0.1",
