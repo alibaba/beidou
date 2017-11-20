@@ -40,8 +40,12 @@ module.exports = function (app) {
   const isomorphic = app.config.isomorphic;
   const baseDir = app.config.baseDir;
   const universal = isomorphic.universal;
+
   const logger = app.logger;
   if (universal) {
+    if (!universal.context) {
+      universal.context = app.config.baseDir;
+    }
     const assets = universal.assets;
     const isomorphicRequire = createIsomorphicRequire(baseDir, universal, logger);
     for (const asset of assets) {
