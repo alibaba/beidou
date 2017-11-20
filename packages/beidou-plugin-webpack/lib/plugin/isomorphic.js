@@ -1,3 +1,4 @@
+const process = require('process');
 const path = require('path');
 const assert = require('assert');
 const _ = require('lodash');
@@ -41,6 +42,16 @@ function IsomorphicPlugin(options = {}) {
 }
 
 IsomorphicPlugin.prototype.apply = function (compiler) {
+  // if not assign context, use webpack context
+  if (!this.options.context) {
+    this.options.context = compiler.context;
+  }
+
+  // if not assign assets file path, use default one
+  if (!this.options.assetsFilePath) {
+    this.options.assetsFilePath = path.join(compiler.context, '.isomorphic/assets.json');
+  }
+
   compiler.plugin('done', (stats) => {
     const json = stats.toJson();
     const results = json.modules.map(module => this.parse(module)).filter(result => result);
@@ -51,7 +62,7 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
 
 IsomorphicPlugin.prototype.parse = function (module) {
   const name = module.name;
-  const ext = path.parse(name).ext;
+  const ext = path.extname(name);
   const config = this.getConfig(ext);
   return this.parseForConfig(module, config);
 };
@@ -90,21 +101,22 @@ IsomorphicPlugin.prototype.getConfig = function (ext) {
 
 IsomorphicPlugin.prototype.save = function (results) {
   const filePath = this.options.assetsFilePath;
-  const dir = path.parse(filePath).dir;
-
+  const dir = path.dirname(filePath);
+  const context = this.options.context;
   const json = {};
   for (const result of results) {
-    const relativePath = path.normalize(result.name);
+    const absolutePath = path.join(process.cwd(), result.name);
+    const relativePath = path.relative(context, absolutePath);
     json[relativePath] = result.content;
   }
   const content = JSON.stringify(json);
-  if (!this.options.memoryFs) {
-    mkdirp.sync(dir);
-    fs.writeFileSync(filePath, content, { flag: 'w' });
-  } else {
-    this.fs.mkdirpSync(dir);
-    this.fs.writeFileSync(filePath, content, { flag: 'w' });
-  }
+  // if (!this.options.memoryFs) {
+  mkdirp.sync(dir);
+  fs.writeFileSync(filePath, content, { flag: 'w' });
+  // } else {
+  //   this.fs.mkdirpSync(dir);
+  //   this.fs.writeFileSync(filePath, content, { flag: 'w' });
+  // }
 };
 
 module.exports = IsomorphicPlugin;

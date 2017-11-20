@@ -16,8 +16,8 @@ module.exports = function (compiler, options, app) {
     stats: options.stats,
   }, {
     waitUntilValid() {
-      app.emit('webpack-custom-webpack-config-ready');
-      app.logger.info('[beidou:plugin:webpack] webpack dev custom-webpack-config ready');
+      app.emit('webpack-server-ready');
+      app.logger.info('[beidou:plugin:webpack] webpack-server-ready');
     },
   });
 };

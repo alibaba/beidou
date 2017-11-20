@@ -12,6 +12,7 @@ module.exports = (app) => {
     if (msg.action === 'webpack-server-ready') {
       // receive port message from agent
       app.webpackServerPort = msg.data.port;
+      app.emit('webpack-server-ready');
     }
   });
   // ask agent for webpack port

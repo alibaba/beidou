@@ -1,4 +1,4 @@
-/* eslint import/no-dynamic-require: off */
+
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('beidou:plugin:webpack');
@@ -7,7 +7,6 @@ const IsomorphicPlugin = require('../plugin/isomorphic');
 module.exports.getWebpackConfig = (options, app) => {
   options = options || {};
 
-  const defaultConfigPath = path.resolve(__dirname, '../../config/webpack.default.config.js');
   const eggLoader = app.loader;
 
   let webpackConfig = null;
@@ -17,6 +16,7 @@ module.exports.getWebpackConfig = (options, app) => {
   }
 
   if (!webpackConfig) {
+    const defaultConfigPath = path.resolve(__dirname, '../../config/webpack.default.config.js');
     webpackConfig = eggLoader.loadFile(defaultConfigPath);
   }
 

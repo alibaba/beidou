@@ -7,9 +7,7 @@ module.exports = function (options, app) {
     let webpackUrl = this.request.href.replace(url.parse(this.request.href).port, app.webpackServerPort);
 
     // force to use `http` protocol, because webpack does not support https
-    if (this.request.protocol === 'https') {
-      webpackUrl = webpackUrl.replace('https', 'http');
-    }
+    webpackUrl = webpackUrl.replace(/^https/, 'http');
     const webpackRequest = request(webpackUrl);
     const ctx = this;
     const notFound = yield new Promise((resolve) => {
