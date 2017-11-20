@@ -23,7 +23,7 @@ module.exports = (agent) => {
     const hmr = config.hmr;
     if (hmr.enable) {
       agent.use(require('koa-webpack-hot-middleware')(compiler, {
-        path: hmr.path, heartbeat: hmr.heartbeat || 10 * 1000
+        path: hmr.path, heartbeat: hmr.heartbeat || 10 * 1000,
       }));
     }
 
@@ -38,7 +38,7 @@ module.exports = (agent) => {
       }
       const port = webpackServer.address().port;
       const msg = {
-        port
+        port,
       };
       logger.info('webpack server start, listen on port: %s', port);
 

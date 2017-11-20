@@ -70,7 +70,7 @@ module.exports = (appInfo) => {
       '.mp4',
       '.webm',
       '.ogv',
-    ]
+    ],
   };
 
   /**
@@ -79,7 +79,7 @@ module.exports = (appInfo) => {
    * @property {String} name - framework name(eg. Name)，default to Egg
    */
   exports.core = {
-    name: 'Beidou'
+    name: 'Beidou',
   };
 
   /**
@@ -91,7 +91,7 @@ module.exports = (appInfo) => {
     'siteFile',
     'notfound',
     'bodyParser',
-    'overrideMethod'
+    'overrideMethod',
   ];
 
   /**
@@ -140,8 +140,8 @@ module.exports = (appInfo) => {
       // extensions: ['.es6', '.es', '.jsx', '.js', '.mjs'],
 
       // Setting this to false will disable the cache.
-      cache: true
-    }
+      cache: true,
+    },
   };
 
   return exports;

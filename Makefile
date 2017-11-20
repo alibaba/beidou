@@ -11,9 +11,17 @@ lint-all:
 	./node_modules/.bin/eslint --ext .js --ext .jsx --fix ./packages
 
 install:
+	make clean-all
 	yarn install
 	./node_modules/.bin/lerna bootstrap
-	./scripts/install-examples.sh
+
+reinstall:
+	make clean-all
+	rm -rf *.lock
+	rm -rf packages/*/*.lock
+	rm -rf examples/*/*.lock
+	yarn install
+	./node_modules/.bin/lerna bootstrap	
 
 clean:
 	make test-clean
@@ -21,17 +29,19 @@ clean:
 	rm -rf .run
 	rm -rf run
 	rm -rf packages/*/npm-debug*
-	rm -rf packages/*/test/fixtures/*/.babel.json
-	rm -rf packages/*/test/fixtures/*/*/*_config.json
-	rm -rf packages/*/test/fixtures/*/*/*.log
-	rm -rf packages/*/test/fixtures/*/*/*/*.log
-	rm -rf examples/*/logs/
-	rm -rf examples/*/run/
+	rm -rf packages/*/test/fixtures/*/run
+	rm -rf packages/*/test/fixtures/*/logs
+	rm -rf packages/*/test/fixtures/*/debug
+	rm -rf packages/*.log
+	rm -rf examples/*/logs
+	rm -rf examples/*/run
+	rm -rf examples/*/debug
 
 
 test-clean:
-	rm -rf packages/*/test/run
-	rm -rf packages/*/test/debug
+	rm -rf packages/*/test/**/run
+	rm -rf packages/*/test/**/debug
+	rm -rf packages/*/test/**/logs
 
 clean-all:
 	rm -rf node_modules
@@ -44,7 +54,6 @@ test-only:
 	make test-clean
 
 test-all:
-	make lint-all
 	./scripts/test-all.sh
 	make test-clean
 

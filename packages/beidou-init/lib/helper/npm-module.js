@@ -1,6 +1,3 @@
-/**
- * @author Holden <holdenwei@qq.com>
- */
 
 
 const spawn = require('cross-spawn');
@@ -17,7 +14,7 @@ const NpmModule = {
   install(targetDir) {
     const cli = spawn('npm', ['i'], {
       cwd: targetDir || cwd,
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
 
     return new Promise((resolve, reject) => {

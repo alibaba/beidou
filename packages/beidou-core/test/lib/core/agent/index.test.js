@@ -1,19 +1,9 @@
-/**
- * agent 相关单元测试
- */
-
-'use strict';
-
-/**
- * Module dependencies.
- */
 
 const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf');
 const should = require('should');
 const mm = require('egg-mock');
-const require_hacker = require('require-hacker');
 const utils = require('../../../utils');
 const fixtures = path.join(__dirname, '../../../fixtures');
 const Agent = require('../../../../index').Agent;
@@ -26,8 +16,6 @@ describe('test/lib/core/agent/index.test.js', function() {
 
   afterEach(() => {
     mm.restore();
-    // 清除全局require hook, 避免干扰其它测试用例
-    require_hacker.occupied_file_extensions = new Set();
   });
 
   describe('agent dump config success', function() {

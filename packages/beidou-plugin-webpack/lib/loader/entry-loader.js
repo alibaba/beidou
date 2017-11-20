@@ -22,17 +22,17 @@ module.exports = (app) => {
   let headEntries = [];
   if (hmr && hmr.enable) {
     const params = Object.keys(omit(hmr, ['enable']))
-    .map(key => `${key}=${hmr[key]}`)
-    .join('&');
+      .map(key => `${key}=${hmr[key]}`)
+      .join('&');
     headEntries = [
       'react-hot-loader/patch',
-      `webpack-hot-middleware/client?${params}`
+      `webpack-hot-middleware/client?${params}`,
     ];
   }
 
   const files = glob.sync('@(*.js|*.jsx)', {
     cwd: pageDir,
-    ignore: exclude
+    ignore: exclude,
   });
 
   files.forEach((file) => {
@@ -45,7 +45,7 @@ module.exports = (app) => {
 
   const dirs = glob.sync('*/', {
     cwd: pageDir,
-    ignore: exclude
+    ignore: exclude,
   });
 
   dirs.forEach((file) => {
@@ -54,7 +54,7 @@ module.exports = (app) => {
     if (fs.existsSync(entryFile)) {
       entry[filename] = [
         ...headEntries,
-        entryFile
+        entryFile,
       ];
     }
   });

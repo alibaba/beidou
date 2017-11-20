@@ -19,7 +19,7 @@ module.exports = (appInfo) => {
   config.view = {
     defaultViewEngine: 'react',
     defaultExtension: '.jsx',
-    root: `${appInfo.baseDir}/client`
+    root: `${appInfo.baseDir}/client`,
   };
 
   return config;

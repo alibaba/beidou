@@ -26,5 +26,5 @@ exports.webpack = {
     path: '__webpack_hmr',
     timeout: '20000',
     heartbeat: '10000',
-  }
+  },
 };

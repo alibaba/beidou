@@ -11,11 +11,11 @@ module.exports = (app) => {
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      filename: 'manifest.js'
+      filename: 'manifest.js',
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
-      __CLIENT__: true
+      __CLIENT__: true,
     }),
     new webpack.ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;
@@ -39,8 +39,8 @@ module.exports = (app) => {
   } else {
     plugins.push(new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }));
   }
 
@@ -52,7 +52,7 @@ module.exports = (app) => {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
-      publicPath: app.config.webpack.publicPath
+      publicPath: app.config.webpack.publicPath,
     },
     module: {
       rules: [
@@ -63,8 +63,8 @@ module.exports = (app) => {
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              presets: ['beidou-client']
-            }
+              presets: ['beidou-client'],
+            },
           },
         },
         {
@@ -79,7 +79,7 @@ module.exports = (app) => {
               //   modules: true,
               // },
             }, {
-              loader: 'sass-loader'
+              loader: 'sass-loader',
             }],
             fallback: 'style-loader',
           }),
@@ -90,15 +90,15 @@ module.exports = (app) => {
             {
               loader: 'url-loader',
               options: {
-                limit: 81920
-              }
-            }
-          ]
-        }
-      ]
+                limit: 81920,
+              },
+            },
+          ],
+        },
+      ],
     },
     resolve: {
-      extensions: ['.json', '.js', '.jsx']
+      extensions: ['.json', '.js', '.jsx'],
     },
     devServer: {
       hot: true,

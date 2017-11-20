@@ -30,7 +30,7 @@ function IsomorphicPlugin(options = {}) {
     if (typeof asset === 'string' && /\.[0-9a-zA-A]+/.test(asset)) {
       this.exts[asset] = {
         ext: asset,
-        exclude: 'node_modules'
+        exclude: 'node_modules',
       };
     } else if (typeof asset === 'object' && asset.ext && /\.[0-9a-zA-A]+/.test(asset.ext)) {
       asset.exclude = asset.exclude || 'node_modules';

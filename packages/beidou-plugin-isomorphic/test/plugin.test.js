@@ -7,7 +7,6 @@
 'use strict';
 
 const path = require('path');
-const require_hacker = require('require-hacker');
 const request = require('supertest');
 const mm = require('egg-mock');
 
@@ -34,8 +33,6 @@ describe('test/plugin.test.js', () => {
 
     afterEach(() => {
       mm.restore();
-      // 清除全局require hook, 避免干扰其它测试用例
-      require_hacker.occupied_file_extensions = new Set();
     }
     );
 
@@ -68,8 +65,6 @@ describe('test/plugin.test.js', () => {
 
     afterEach(() => {
       mm.restore();
-      // 清除全局require hook, 避免干扰其它测试用例
-      require_hacker.occupied_file_extensions = new Set();
     }
     );
 
@@ -169,8 +164,6 @@ describe('test/plugin.test.js', () => {
 
   //   afterEach(() => {
   //     mm.restore();
-  //     // 清除全局require hook, 避免干扰其它测试用例
-  //     require_hacker.occupied_file_extensions = new Set();
   //   });
 
   //   it('should return correct BOM property with fullPolyfill', (done) => {
@@ -208,8 +201,6 @@ describe('test/plugin.test.js', () => {
 
   //   afterEach(() => {
   //     mm.restore();
-  //     // 清除全局require hook, 避免干扰其它测试用例
-  //     require_hacker.occupied_file_extensions = new Set();
   //   });
 
   //   it('should return correct BOM property when matched', (done) => {
@@ -245,8 +236,6 @@ describe('test/plugin.test.js', () => {
 
   //   afterEach(() => {
   //     mm.restore();
-  //     // 清除全局require hook, 避免干扰其它测试用例
-  //     require_hacker.occupied_file_extensions = new Set();
   //   });
 
   //   it('should return correct BOM property when matched', (done) => {

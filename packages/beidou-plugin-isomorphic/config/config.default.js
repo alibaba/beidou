@@ -36,7 +36,7 @@ module.exports = function () {
       // extensions: ['.es6', '.es', '.jsx', '.js', '.mjs'],
 
       // Setting this to false will disable the cache.
-      cache: true
+      cache: true,
     },
 
     /**

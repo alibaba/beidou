@@ -9,7 +9,7 @@ const ENV_MAP = {
   daily: 'daily-url', // 日常
   project: 'project-url', // 项目
   pre: 'pre-url', // 预发
-  prod: 'online-url' // 线上
+  prod: 'online-url', // 线上
 };
 
 module.exports = {

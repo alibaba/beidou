@@ -19,7 +19,7 @@ function setPolyfill(window) {
   global.matchMedia = () => ({
     matches: true,
     addListener() { },
-    removeListener() { }
+    removeListener() { },
   });
   window.matchMedia = global.matchMedia;
 }
@@ -28,7 +28,7 @@ module.exports.fullPolyfill = (ctx) => {
   const isomorphic = jsdom(html, {
     url: ctx.request.href,
     cookie: ctx.request.header.cookie,
-    userAgent: ctx.request.header['user-agent']
+    userAgent: ctx.request.header['user-agent'],
   });
 
   setPolyfill(isomorphic.defaultView);

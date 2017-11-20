@@ -9,7 +9,6 @@ const Helper = Symbol('ReactView#Helper');
 const symbol = Symbol.for('ReactView#view');
 
 class BeidouReactView {
-
   /*
     beautify: false // optional, beautify HTML snippet
     cache: true, //optional, if false, clean require cache for development usage

@@ -1,18 +1,13 @@
 # log
 *.log
-**/logs
-*_config.json
-*.babel.json
 
 # temp files
 *.lerna_backup
-*.dat
-test/fixtures/apps/*/build/
-test/fixtures/apps/*/*/isomorphic/
+*.da
 packages/*/test/fixtures/**/run/
+packages/*/test/fixtures/**/debug/
+packages/*/test/fixtures/**/logs/
 
-# build files
-examples/**/build/
 
 # coverage
 coverage/
@@ -21,9 +16,13 @@ coverage/
 .idea
 .vscode
 
+# system config
+.DS_Store
+
 # Dependency directories
 node_modules
 
-# build assets
+# build files
+examples/**/build
 *.stats.json
 **/.isomorphic/

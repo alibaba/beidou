@@ -11,8 +11,8 @@ const escapeRegExp = require('lodash/escapeRegExp');
 exports.createMatchFunction = (input) => {
   input = input.map((item) => {
     return typeof item === 'string'
-      ? new RegExp(`^${escapeRegExp(path.normalize(item))}`)    // normalize path
-      :  /* istanbul ignore next */ item;
+      ? new RegExp(`^${escapeRegExp(path.normalize(item))}`) // normalize path
+      : /* istanbul ignore next */ item;
   });
 
   return function match(file) {
