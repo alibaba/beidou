@@ -13,6 +13,8 @@ packages/*/test/fixtures/**/run/
 
 # build files
 examples/**/build/
+
+# coverage
 coverage/
 
 # project organization files of IED
