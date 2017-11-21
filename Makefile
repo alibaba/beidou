@@ -65,7 +65,6 @@ cov:
 	./node_modules/.bin/egg-bin cov
 
 ci:
-	./node_modules/.bin/eslint lib config
 	./scripts/ci.sh
 
 changelog:
