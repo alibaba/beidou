@@ -5,15 +5,15 @@ export NODE_ENV = test
 .PHONY: lint install clean test-clean clean-all test-only test-all test cov ci changelog
 
 lint:
-	./node_modules/.bin/lint-staged ./packages
+	lint-staged ./packages
 
 lint-all:
-	./node_modules/.bin/eslint --ext .js --ext .jsx --fix ./packages
+	eslint --ext .js --ext .jsx --fix ./packages
 
 install:
 	make clean-all
 	yarn install
-	./node_modules/.bin/lerna bootstrap
+	lerna bootstrap
 
 reinstall:
 	make clean-all
@@ -21,7 +21,7 @@ reinstall:
 	rm -rf packages/*/*.lock
 	rm -rf examples/*/*.lock
 	yarn install
-	./node_modules/.bin/lerna bootstrap	
+	lerna bootstrap	
 
 clean:
 	make test-clean
@@ -62,12 +62,12 @@ test:
 	make test-all
 
 cov:
-	./node_modules/.bin/egg-bin cov
+	egg-bin cov
 
 ci:
 	./scripts/ci.sh
 
 changelog:
-	./node_modules/.bin/lerna-changelog
+	lerna-changelog
 
 
