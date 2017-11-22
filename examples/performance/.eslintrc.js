@@ -16,6 +16,9 @@ module.exports = {
       'react/prefer-stateless-function': 0,
       "no-template-curly-in-string": 0,
       "react/no-danger": 0,
+      "require-yield": 0,
+      "no-plusplus": 0,
+      "react/jsx-filename-extension": 0
     },
     "globals": {
       "__ENV__": true,
