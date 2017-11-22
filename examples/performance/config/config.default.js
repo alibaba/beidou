@@ -2,4 +2,5 @@
 
 module.exports = {
   keys: 'key',
+  middleware: ['logTime'],
 };

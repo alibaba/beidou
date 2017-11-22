@@ -10,10 +10,7 @@ module.exports = (app) => {
   class HomeController extends app.Controller {
     * origin() {
       try {
-        const st = new Date();
         const serverHtml = ReactDOMServer.renderToString(<Home />);
-        const et = new Date();
-        console.log('render time: ', et - st);
         this.ctx.body = serverHtml;
         this.ctx.type = 'html';
       } catch (e) {
@@ -21,10 +18,7 @@ module.exports = (app) => {
       }
     }
     * min() {
-      const st = new Date();
       const serverHtml = ReactDOMServer.renderToString(<Home />);
-      const et = new Date();
-      console.log('render time: ', et - st);
       this.ctx.body = serverHtml;
       this.ctx.type = 'html';
     }
