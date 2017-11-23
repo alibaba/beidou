@@ -2,7 +2,7 @@ import React from 'react';
 
 const leaf = <div>test performance</div>;
 
-const RecursiveDivs = React.createClass({
+export default class RecursiveDivs extends React.Component {
   render() {
     const { depth, breadth } = this.props;
 
@@ -16,6 +16,4 @@ const RecursiveDivs = React.createClass({
     }
     return <div>{children}</div>;
   }
-});
-
-export default RecursiveDivs;
+}

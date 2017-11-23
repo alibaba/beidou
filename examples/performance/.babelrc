@@ -1,9 +1,9 @@
 {
   "presets": ["beidou-server"],
-  "plugins": ["transform-react-constant-elements", 
-    "transform-react-inline-elements",
-    "transform-node-env-inline"
-  ],
+  // "plugins": ["transform-react-constant-elements", 
+  //   "transform-react-inline-elements",
+  //   "transform-node-env-inline"
+  // ],
   "ignore": [
     "*.scss"
   ]
