@@ -1,6 +1,6 @@
 'use strict'; // eslint-disable-line
 
 module.exports = (app) => {
-  app.get('/', 'index.origin');
-  app.get('/min', 'index.origin');
+  app.get('/', 'origin.render');
+  app.get('/min', 'origin.render');
 };

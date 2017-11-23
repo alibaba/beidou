@@ -1,13 +1,13 @@
 'use strict'; // eslint-disable-line
 
-import Home from '../../client/index/index.jsx';
+import Home from '../../client/origin/index.jsx';
 
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
 module.exports = (app) => {
-  class HomeController extends app.Controller {
-    * origin() {
+  class OriginController extends app.Controller {
+    * render() {
       try {
         const serverHtml = ReactDOMServer.renderToString(<Home />);
         const html = `
@@ -16,9 +16,9 @@ module.exports = (app) => {
                   <title>Test page</title>
                 </head>
                 <body>
-                  <div id="container" >${serverHtml}</div>
+                  <div id="container">${serverHtml}</div>
                   <script src="http://127.0.0.1:6001/build/manifest.js"></script>
-                  <script src="http://127.0.0.1:6001/build/index.js"></script>
+                  <script src="http://127.0.0.1:6001/build/origin.js"></script>
                 </body>
               </html>`;
         this.ctx.body = html;
@@ -27,12 +27,7 @@ module.exports = (app) => {
         this.ctx.body = JSON.stringify(e.message);
       }
     }
-    * min() {
-      const serverHtml = ReactDOMServer.renderToString(<Home />);
-      this.ctx.body = serverHtml;
-      this.ctx.type = 'html';
-    }
   }
 
-  return HomeController;
+  return OriginController;
 };
