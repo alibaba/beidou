@@ -14,7 +14,7 @@ class Index extends React.Component {
 
   componentDidMount() {
     this.setState({
-      demoModule: <RecursiveDivs depth={5} breadth={5} />
+      demoModule: <RecursiveDivs depth={4} breadth={6} />
     });
   }
 
@@ -22,8 +22,8 @@ class Index extends React.Component {
     // const { demoModule } = this.state;
     return (
       <div>
-        <RecursiveDivs depth={5} breadth={5} />
-        <RecursiveDivs depth={5} breadth={5} />
+        <RecursiveDivs depth={4} breadth={6} />
+        <RecursiveDivs depth={4} breadth={6} />
       </div>
     );
   }

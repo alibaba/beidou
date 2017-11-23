@@ -13,7 +13,7 @@ const Index = createReactClass({
 
   componentDidMount() {
     this.setState({
-      demoModule: <RecursiveDivs depth={5} breadth={5} />
+      demoModule: <RecursiveDivs depth={4} breadth={6} />
     });
   },
 
@@ -21,8 +21,8 @@ const Index = createReactClass({
     // const { demoModule } = this.state;
     return (
       <div>
-        <RecursiveDivs depth={5} breadth={5} />
-        <RecursiveDivs depth={5} breadth={5} />
+        <RecursiveDivs depth={4} breadth={6} />
+        <RecursiveDivs depth={4} breadth={6} />
       </div>
     );
   }
