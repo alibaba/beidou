@@ -1,10 +1,11 @@
 'use strict'; // eslint-disable-line
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-// import ReactDOMServer from 'react-dom/dist/react-dom-server.min.js';
-
 import Home from '../../client/index/index.jsx';
+
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+// const ReactDOMServer = require('react-dom/dist/react-dom-server.min.js');
+
 
 module.exports = (app) => {
   class HomeController extends app.Controller {

@@ -1,6 +1,9 @@
 {
   "presets": ["beidou-server"],
-  // "plugins": ["react-hot-loader/babel"]
+  "plugins": ["transform-react-constant-elements", 
+    "transform-react-inline-elements",
+    "transform-node-env-inline"
+  ],
   "ignore": [
     "*.scss"
   ]

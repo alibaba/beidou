@@ -1,5 +1,7 @@
-module.exports = (options, app) => function* (next) {
+module.exports = () => function* (next) {
   const st = Date.now();
   yield next;
-  app.logger.info('render time2:', Date.now() - st);
+  // app.logger.info('render time:', Date.now() - st);
+  // for performance test, use console.log instead
+  console.log('render time:', Date.now() - st);
 };

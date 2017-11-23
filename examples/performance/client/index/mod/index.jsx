@@ -10,7 +10,10 @@ class Index extends React.Component {
 
   render() {
     return (
-      <RecursiveDivs depth={5} breadth={5} />
+      <div>
+        <RecursiveDivs depth={5} breadth={5} />
+        <RecursiveDivs depth={5} breadth={5} />
+      </div>
     );
   }
 }
