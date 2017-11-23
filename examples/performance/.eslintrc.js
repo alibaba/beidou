@@ -18,7 +18,8 @@ module.exports = {
       "react/no-danger": 0,
       "require-yield": 0,
       "no-plusplus": 0,
-      "react/jsx-filename-extension": 0
+      "react/jsx-filename-extension": 0,
+      "react/prefer-es6-class": 0
     },
     "globals": {
       "__ENV__": true,
