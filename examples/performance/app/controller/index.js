@@ -4,8 +4,6 @@ import Home from '../../client/index/index.jsx';
 
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-// const ReactDOMServer = require('react-dom/dist/react-dom-server.min.js');
-
 
 module.exports = (app) => {
   class HomeController extends app.Controller {
@@ -18,9 +16,7 @@ module.exports = (app) => {
                   <title>Test page</title>
                 </head>
                 <body>
-                  <div id="container" >
-                    ${serverHtml}
-                  </div>
+                  <div id="container" >${serverHtml}</div>
                   <script src="http://127.0.0.1:6001/build/manifest.js"></script>
                   <script src="http://127.0.0.1:6001/build/index.js"></script>
                 </body>
