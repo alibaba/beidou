@@ -1,22 +1,21 @@
 
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import RecursiveDivs from './RecursiveDivs';
 
-class Index extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
+const Index = createReactClass({
+  getInitState() {
+    return {
       demoModule: 'demo module'
     };
-  }
+  },
 
   componentDidMount() {
     this.setState({
       demoModule: <RecursiveDivs depth={5} breadth={5} />
     });
-  }
+  },
 
   render() {
     // const { demoModule } = this.state;
@@ -27,5 +26,6 @@ class Index extends React.Component {
       </div>
     );
   }
-}
+});
+
 export default Index;

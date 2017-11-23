@@ -2,5 +2,5 @@
 
 module.exports = (app) => {
   app.get('/', 'origin.render');
-  app.get('/min', 'origin.render');
+  app.get('/class', 'class.render');
 };

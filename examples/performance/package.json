@@ -41,6 +41,7 @@
     "beidou-plugin-webpack": "^0.2.0",
     "classnames": "^2.2.3",
     "co": "^4.6.0",
+    "create-react-class": "^15.5.0",
     "css-loader": "~0.23.1",
     "enums": "^1.0.0",
     "extend": "^3.0.0",
