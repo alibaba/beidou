@@ -4,14 +4,25 @@ import React from 'react';
 import RecursiveDivs from './RecursiveDivs';
 
 class Index extends React.Component {
-  componentCacheKey() {
-    return this.props.cache;
+  constructor() {
+    super();
+
+    this.state = {
+      demoModule: 'demo module'
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      demoModule: <RecursiveDivs depth={5} breadth={5} />
+    });
   }
 
   render() {
+    const { demoModule } = this.state;
     return (
       <div>
-        <RecursiveDivs depth={5} breadth={5} />
+        {demoModule}
         <RecursiveDivs depth={5} breadth={5} />
       </div>
     );

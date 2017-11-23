@@ -19,7 +19,8 @@ module.exports = {
       "require-yield": 0,
       "no-plusplus": 0,
       "react/jsx-filename-extension": 0,
-      "react/prefer-es6-class": 0
+      "react/prefer-es6-class": 0,
+      "react/no-did-mount-set-state": 0
     },
     "globals": {
       "__ENV__": true,
