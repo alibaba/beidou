@@ -17,7 +17,7 @@
     "koa-webpack-hot-middleware": "^1.0.3",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.3",
-    "react": "^15.6.1",
+    "react": "~15.3.2",
     "request": "^2.81.0",
     "sass-loader": "^6.0.6",
     "sdk-base": "^2.0.1",
