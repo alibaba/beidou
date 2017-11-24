@@ -18,8 +18,6 @@
   "license": "MIT",
   "dependencies": {
     "js-beautify": "^1.6.2",
-    "react": "~15.3.2",
-    "react-dom": "~15.3.2",
     "serialize-javascript": "^1.3.0"
   },
   "devDependencies": {
@@ -41,6 +39,10 @@
     "should": "8",
     "supertest": "1",
     "webpack": "^1.13.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   },
   "files": [
     "lib",
