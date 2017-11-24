@@ -5,4 +5,5 @@ module.exports = (app) => {
   app.get('/class', 'class.render');
   app.get('/csr', 'partCsr.render');
   app.get('/cache', 'cache.render');
+  app.get('/react16', 'react16.render');
 };
