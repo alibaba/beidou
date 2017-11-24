@@ -1,13 +1,11 @@
 import React from 'react';
 
-const leaf = <div>cacheble divs</div>;
-
 export default class CachebleDivs extends React.Component {
   render() {
     const { depth, breadth } = this.props;
 
     if (depth <= 0) {
-      return leaf;
+      return <div>{`depth: ${depth}, breadth: ${breadth}`}</div>;
     }
 
     const children = [];
