@@ -1,20 +1,19 @@
 
 
 import React from 'react';
-import createReactClass from 'create-react-class';
 import RecursiveDivs from './RecursiveDivs';
 
-const Index = createReactClass({
-  getInitState() {
-    return {
-      demoModule: 'demo module'
-    };
-  },
-
+const Index = React.createClass({
   componentDidMount() {
     this.setState({
       demoModule: <RecursiveDivs depth={4} breadth={6} />
     });
+  },
+
+  getInitState() {
+    return {
+      demoModule: 'demo module'
+    };
   },
 
   render() {

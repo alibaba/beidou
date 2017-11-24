@@ -1,9 +1,8 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 
 const leaf = <div>test performance</div>;
 
-const RecursiveDivs = createReactClass({
+const RecursiveDivs = React.createClass({
   render() {
     const { depth, breadth } = this.props;
 
