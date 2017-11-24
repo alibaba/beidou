@@ -5,12 +5,12 @@ import SSRCaching from 'electrode-react-ssr-caching';
 import ReactDOMServer from 'react-dom/server';
 import Home from '../../client/cache/index.jsx';
 
-
 const cacheConfig = {
   components: {
     CachebleDivs: {
       strategy: 'simple',
-      enable: true
+      enable: true,
+      debug: true
     }
   }
 };
