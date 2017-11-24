@@ -34,6 +34,8 @@
     "eslint": "^3.6.1",
     "eslint-config-beidou": "^0.0.1",
     "husky": "^0.13.4",
+    "react": "~15.6.2",
+    "react-dom": "~15.6.2",
     "react-redux": "^4.0.0",
     "redux": "~3.3.1",
     "should": "8",

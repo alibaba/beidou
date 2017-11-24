@@ -1,8 +1,8 @@
 import React from 'react';
 
-const leaf = <div>cacheble divs</div>;
+const leaf = <div>test performance</div>;
 
-const CachebleDivs = React.createClass({
+export default class RecursiveDivs extends React.Component {
   render() {
     const { depth, breadth } = this.props;
 
@@ -12,10 +12,8 @@ const CachebleDivs = React.createClass({
 
     const children = [];
     for (let i = 0; i < breadth; i++) {
-      children.push(<CachebleDivs key={i} depth={depth - 1} breadth={breadth} />);
+      children.push(<RecursiveDivs key={i} depth={depth - 1} breadth={breadth} />);
     }
     return <div>{children}</div>;
   }
-});
-
-export default CachebleDivs;
+}

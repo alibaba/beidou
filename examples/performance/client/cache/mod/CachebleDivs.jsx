@@ -2,7 +2,7 @@ import React from 'react';
 
 const leaf = <div>cacheble divs</div>;
 
-const CachebleDivs = React.createClass({
+export default class CachebleDivs extends React.Component {
   render() {
     const { depth, breadth } = this.props;
 
@@ -16,6 +16,4 @@ const CachebleDivs = React.createClass({
     }
     return <div>{children}</div>;
   }
-});
-
-export default CachebleDivs;
+}
