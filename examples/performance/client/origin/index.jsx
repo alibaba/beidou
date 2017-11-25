@@ -1,18 +1,16 @@
 
 
 import React from 'react';
-// import createReactClass from 'create-react-class';
 import { render } from 'beidou-plugin-react';
 import Mods from './mod/index';
 
-
-const Home = React.createClass({
+class Home extends React.Component {
   render() {
     return (
       <Mods />
     );
   }
-});
+}
 
 render({
   element: <Mods />,

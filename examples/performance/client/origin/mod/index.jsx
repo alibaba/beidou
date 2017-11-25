@@ -3,7 +3,7 @@
 import React from 'react';
 import RecursiveDivs from './RecursiveDivs';
 
-const Index = React.createClass({
+class Index extends React.Component {
   render() {
     return (
       <div>
@@ -13,6 +13,5 @@ const Index = React.createClass({
       </div>
     );
   }
-});
-
+}
 export default Index;
