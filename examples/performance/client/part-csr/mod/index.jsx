@@ -21,7 +21,7 @@ class Index extends React.Component {
   render() {
     const { demoModule } = this.state;
     return (
-      <div>
+      <div className="recursive">
         { demoModule }
         <RecursiveDivs depth={3} breadth={10} />
         <RecursiveDivs depth={3} breadth={10} />

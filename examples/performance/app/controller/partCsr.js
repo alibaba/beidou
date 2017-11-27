@@ -14,6 +14,31 @@ module.exports = (app) => {
                 <html>
                 <head>
                   <title>Test page</title>
+                  <style>
+                  .recursive {
+                    background: aliceblue;
+                    padding: 20px;
+                  }
+                  .recursive >div{
+                    background: bisque;
+                    padding: 20px;
+                  }
+                  .recursive >div >div{
+                    background: ivory;
+                    padding: 20px;
+                  }
+                  .recursive >div >div >div{
+                    background: #C3DDB6;
+                    padding: 20px;
+                    margin-bottom: 10px;
+                  }
+                  .recursive >div >div >div >div{
+                    display: inline-block;
+                    background: #A8CF96;
+                    padding: 20px;
+                    margin: 10px;
+                  }
+                </style>
                 </head>
                 <body>
                   <div id="container">${serverHtml}</div>
