@@ -9,7 +9,7 @@ class Index extends React.Component {
     super();
 
     this.state = {
-      demoModule: 'demo module'
+      demoModule: 'client side rendering module'
     };
   }
 
