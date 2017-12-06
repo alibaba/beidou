@@ -226,7 +226,7 @@ describe('test/plugin.test.js', () => {
 
     it('should exist non-js file content in assets', () => {
       const json = require(path.join(output, 'assets.json'))
-      expect(json['client/example/index.scss']).to.match(/module\.exports =.+\"bg"/);;
+      expect(json['client/example/index.scss']['bg']).to.match(/.+/);;
       expect(json['client/images/bg.png']).to.match(/iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkCPi\/FAADnQH2diZYqwAAAABJRU5ErkJggg==/);
     }); 
   });

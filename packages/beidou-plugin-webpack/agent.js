@@ -21,10 +21,8 @@ module.exports = (agent) => {
 
     // hrm middleware
     const hmr = config.hmr;
-    if (hmr.enable) {
-      agent.use(require('koa-webpack-hot-middleware')(compiler, {
-        path: hmr.path, heartbeat: hmr.heartbeat || 10 * 1000,
-      }));
+    if (hmr) {
+      agent.use(require('koa-webpack-hot-middleware')(compiler, hmr));
     }
 
     const webpackServer = http.createServer(agent.callback());

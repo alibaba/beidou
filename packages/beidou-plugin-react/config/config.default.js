@@ -10,16 +10,17 @@ module.exports = (appInfo) => {
   config.react = {
     beautify: false,
     cache: true,
-    loadPath: `${appInfo.baseDir}/client`,
-    clientPath: `${appInfo.baseDir}/client`,
-    internals: true,
+    // loadPath: `${appInfo.baseDir}/client`,
+    // clientPath: `${appInfo.baseDir}/client`,
+    static: false,
     doctype: '<!DOCTYPE html>',
-    host: '',
+    assetHost: '',
+    assetPath: '',
   };
   config.view = {
     defaultViewEngine: 'react',
     defaultExtension: '.jsx',
-    root: `${appInfo.baseDir}/client`,
+    root: `${appInfo.baseDir}/app/views,${appInfo.baseDir}/client`,
   };
 
   return config;

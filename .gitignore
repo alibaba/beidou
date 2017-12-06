@@ -7,7 +7,9 @@
 packages/*/test/fixtures/**/run/
 packages/*/test/fixtures/**/debug/
 packages/*/test/fixtures/**/logs/
-
+examples/*/run
+examples/*/debug
+examples/*/logs
 
 # coverage
 coverage/

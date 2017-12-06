@@ -28,7 +28,7 @@ function createIsomorphicRequire(baseDir, universal, logger) {
       delete require.cache[universal.assetsFilePath];
       json = requireAssetsJson(universal.assetsFilePath, logger);
     }
-    module._compile(json[relativePath] || '', filename);
+    module.exports = json[relativePath];
   };
 }
 

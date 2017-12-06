@@ -7,7 +7,7 @@ module.exports = function (appInfo) {
       root: `${appInfo.baseDir}/app/views`,
     },
     react: {
-      internals: false,
+      static: true,
     }
   };
   return exports;

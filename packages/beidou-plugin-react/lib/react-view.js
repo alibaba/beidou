@@ -1,11 +1,14 @@
 'use strict';
 
-const serialize = require('serialize-javascript');
-const helper = require('./helper');
-const beautifyHTML = require('js-beautify').html;
 const React = require('react');
+const compose = require('./utils').compose;
+const reduxMiddleware = require('./middlewares/redux');
+const partialMiddleware = require('./middlewares/partial');
+// const renderMiddleware = require('./middlewares/render');
+const cacheMiddleware = require('./middlewares/cache');
+const beautifyMiddleware = require('./middlewares/beautify');
+const doctypeMiddleware = require('./middlewares/doctype');
 
-const Helper = Symbol('ReactView#Helper');
 const symbol = Symbol.for('ReactView#view');
 
 class BeidouReactView {
@@ -18,39 +21,47 @@ class BeidouReactView {
   constructor(ctx) {
     this.ctx = ctx;
     this.app = ctx.app;
-    this._config = ctx.app.config.react;
-    this.extname = this._config.extname;
+    this.config = ctx.app.config.react;
     this.renderToString = this.app.viewEngine.renderToString;
     this.renderToStaticMarkup = this.app.viewEngine.renderToStaticMarkup;
-    this.renderReact = this._config.internals
-      ? this.renderToString
-      : this.renderToStaticMarkup;
+    this.renderReact = this.config.static
+      ? this.renderToStaticMarkup
+      : this.renderToString;
+
+    const middlewares = [cacheMiddleware, reduxMiddleware, partialMiddleware, doctypeMiddleware, beautifyMiddleware];
+
+    const chain = middlewares.map(middleware => middleware(this));
+
+    const renderToStaticMarkup = this.renderToStaticMarkup;
+    this.renderWithMiddlewares = compose(...chain)(function* (args) { // eslint-disable-line
+      const { Component, props } = args;
+      const instance = React.createElement(Component, props);
+      args.html = renderToStaticMarkup(instance);
+    });
   }
 
-  render(name, locals) {
-    const newLocals = Object.assign({}, locals, {
-      renderToStaticMarkup: this.renderToStaticMarkup,
-      renderToString: this.renderToString,
+
+  render(filepath, props) {
+    Object.assign(props, {
       render: this.renderReact,
+      renderToString: this.renderToString,
+      renderToStaticMarkup: this.renderToStaticMarkup,
+      appHelper: props.helper, // backwark compatibility
     });
+    const process = this.renderWithMiddlewares;
+    const Component = require(filepath);
+    return function* () {
+      const payload = {
+        filepath,
+        Component,
+        props,
+        html: '',
+      };
 
-    if (locals.store) {
-      // accept redux store instance or pure object
-      const storeObject = typeof locals.store.getState === 'function' ?
-        locals.store.getState() : locals.store;
+      yield process(payload);
 
-      const state = serialize(storeObject, { isJSON: true });
-      newLocals.state = state;
-    }
-
-    // replace egg's helper as appHelper
-    newLocals.appHelper = newLocals.helper;
-    // inject view helper
-    newLocals.helper = this.helper;
-
-    const viewPath = name;
-
-    return this.renderFile(viewPath, newLocals);
+      return payload.html;
+    };
   }
 
   /**
@@ -60,18 +71,9 @@ class BeidouReactView {
    */
   renderFile(viewPath, locals) {
     return new Promise((resolve, reject) => {
-      const doctype = this._config.doctype || /* istanbul ignore next */ '';
       let markup = '';
-
+      const doctype = '';
       try {
-        // clean cache
-        if (!this._config.cache) {
-          Object.keys(require.cache).forEach((module) => {
-            if (new RegExp(viewPath).test(require.cache[module].filename)) {
-              delete require.cache[module];
-            }
-          });
-        }
         const exportObj = require(viewPath);
         const Component = exportObj.default || exportObj;
         let layout = doctype;
@@ -130,9 +132,9 @@ class BeidouReactView {
       viewConfig.containerIds.forEach((containerId, index) => {
         const match = content.match(new RegExp(`id="${containerId}"[^>]*>`));
         if (match && match[0]) {
-          let renderdString = this.renderReact(viewConfig.elements[index]);
-          if (this._config.beautify) {
-            renderdString = beautifyHTML(renderdString);
+          const renderdString = this.renderReact(viewConfig.elements[index]);
+          if (this.config.beautify) {
+            // renderdString = beautifyHTML(renderdString);
           }
           const holder = match.index + match[0].length;
           content = content.substr(0, holder)
@@ -154,13 +156,6 @@ class BeidouReactView {
 
   isReactView(Component) {
     return typeof Component === 'function' && Component[symbol];
-  }
-
-  get helper() {
-    if (!this[Helper]) {
-      this[Helper] = helper(this.ctx.app);
-    }
-    return new this[Helper](this.ctx);
   }
 }
 

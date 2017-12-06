@@ -2,16 +2,17 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
-const omit = require('lodash/omit');
 const debug = require('debug')('beidou-plugin:webpack');
 
 module.exports = (app) => {
   const config = app.config;
+  const route = config.route || {};
+
   const options = config.webpack;
   debug('current webpack plugin config: %j ', options);
   const defaultEntryName = options.defaultEntryName;
-  const serveRoot = config.routeMatchRoot;
-  const exclude = config.routeMatchExclude;
+  const serveRoot = route.root || './';
+  const exclude = config.exlude || '_*';
   const clientDir = config.client;
   const pageDir = path.join(clientDir, serveRoot);
   debug('resolve entry in dir: %s', pageDir);
@@ -20,8 +21,8 @@ module.exports = (app) => {
   const hmr = options.hmr;
   const entry = {};
   let headEntries = [];
-  if (hmr && hmr.enable) {
-    const params = Object.keys(omit(hmr, ['enable']))
+  if (hmr) {
+    const params = Object.keys(hmr)
       .map(key => `${key}=${hmr[key]}`)
       .join('&');
     headEntries = [

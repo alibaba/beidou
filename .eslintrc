@@ -1,3 +1,6 @@
 {
-  "extends": "eslint-config-beidou"
+  "extends": "eslint-config-beidou",
+  "rules": {
+    "no-debugger": 0
+  }
 }

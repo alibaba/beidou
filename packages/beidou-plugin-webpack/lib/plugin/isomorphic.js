@@ -1,4 +1,5 @@
 const process = require('process');
+const Module = require('module');
 const path = require('path');
 const assert = require('assert');
 const _ = require('lodash');
@@ -107,9 +108,14 @@ IsomorphicPlugin.prototype.save = function (results) {
   for (const result of results) {
     const absolutePath = path.join(process.cwd(), result.name);
     const relativePath = path.relative(context, absolutePath);
-    json[relativePath] = result.content;
+
+    const m = new Module(absolutePath);
+    m._compile(result.content, absolutePath);
+    const exports = m.exports;
+
+    json[relativePath] = exports;
   }
-  const content = JSON.stringify(json);
+  const content = JSON.stringify(json, null, '  ');
   // if (!this.options.memoryFs) {
   mkdirp.sync(dir);
   fs.writeFileSync(filePath, content, { flag: 'w' });

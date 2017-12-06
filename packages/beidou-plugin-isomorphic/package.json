@@ -21,6 +21,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
     "debug": "^2.6.0",
     "jsdom": "^9.8.3",
     "lodash": "^4.17.4"
@@ -36,9 +37,9 @@
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.0",
     "husky": "^0.13.4",
+    "require-hacker": "^3.0.0",
     "should": "8",
-    "supertest": "1",
-    "require-hacker": "^3.0.0"
+    "supertest": "1"
   },
   "files": [
     "config",

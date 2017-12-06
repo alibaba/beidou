@@ -110,8 +110,8 @@ describe('test/view.test.js', () => {
         .expect(200, done);
     });
 
-    it('should return with internals', (done) => {
-      mm(app.config.react, 'internals', true);
+    it('should return with static', (done) => {
+      mm(app.config.react, 'static', false);
       request(app.callback())
         .get('/')
         .expect(/data-reactid/)
@@ -223,6 +223,7 @@ describe('test/view.test.js', () => {
     });
 
     it('should get resource path without domain name', (done) => {
+      mm(app.config.react, 'host', '');
       request(app.callback())
         .get('/local-resource')
         .expect(/<body>\/main\.js<\/body>/)

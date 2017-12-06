@@ -1,4 +1,3 @@
-'use strict'; // eslint-disable-line
 
 const autoContrller = require('./auto-controller.js');
 

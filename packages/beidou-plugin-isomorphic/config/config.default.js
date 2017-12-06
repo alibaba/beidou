@@ -20,6 +20,7 @@ module.exports = function () {
        * presets of beidou, or you can choose any else you like
        */
       presets: ['beidou-server'],
+      plugins: ['add-module-exports'],
       babelrc: false,
       // ignore: /regex/,
       // ignore: ['*.scss'],

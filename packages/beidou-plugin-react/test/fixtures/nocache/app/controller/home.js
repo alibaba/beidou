@@ -10,8 +10,6 @@ exports.jsxtpl = function* () {
   };
   const store = createStore(initState);
 
-  this.app.logger.info(store.getState());
-
   try {
     yield this.render('home/index', { store, title: '测试' });
   } catch (err) {
