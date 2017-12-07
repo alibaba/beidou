@@ -18,9 +18,12 @@ Isomorphic framework for server-rendered React apps
 
 ## Features
 
+- ✔︎ High performance, 2-5 times speed up
+- ✔︎ Search engine optimization(SEO)
 - ✔︎ React server side render
 - ✔︎ ES6/ES7 supported
 - ✔︎ Css modules supported
+- ✔︎ Auto router supported
 - ✔︎ Lots of [plugins](./packages/beidou-docs/basic/plugins.md)
 
 ## How to use
@@ -87,6 +90,16 @@ After that, go to `http://localhost:6001/`
     * [Performance](./packages/beidou-docs/advanced/performance.md)  
     * [Memory Leaks](./packages/beidou-docs/advanced/oom.md)
     * [SSR Attentions](./packages/beidou-docs/advanced/attentions.md)
+
+## Performance
+
+* Isomorphic rendering performance VS client side rendering performance in 3G network
+
+![isomorphic vs performance](http://img.alicdn.com/tfs/TB1inBqhnnI8KJjy0FfXXcdoVXa-702-666.gif)
+
+* Performance comparison in different network environment 
+
+![isomorphic vs performance](http://img.alicdn.com/tfs/TB172JBhb_I8KJjy1XaXXbsxpXa-1762-818.png)
 
 ## License
 
