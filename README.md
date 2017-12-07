@@ -23,6 +23,7 @@ Isomorphic framework for server-rendered React apps
 - ✔︎ React server side render
 - ✔︎ ES6/ES7 supported
 - ✔︎ Css modules supported
+- ✔︎ Auto router supported
 - ✔︎ Lots of [plugins](./packages/beidou-docs/basic/plugins.md)
 
 ## How to use
