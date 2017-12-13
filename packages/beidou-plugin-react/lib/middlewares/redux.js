@@ -35,7 +35,7 @@ module.exports = () => next => function* (args) {
 function serializeStore(store) {
   const storeObject = typeof store.getState === 'function'
     ? store.getState()
-    : store.store;
+    : store;
 
   return serialize(storeObject, { isJSON: true });
 }

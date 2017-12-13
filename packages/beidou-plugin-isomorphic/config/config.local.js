@@ -2,14 +2,6 @@
 module.exports = function () {
   const config = {
     /**
-     * JSDom polyfill, simulate browser environment in server
-     * true by defalut
-     *
-     * if an `Object` provided, we merge it into `global` use `lodash.merge`
-     */
-    polyfill: true,
-
-    /**
      * babel register, enabled by defalut, set `false` to disable
      *
      * all configs below will be passed into `require('babel-register')(configs)`
@@ -38,33 +30,8 @@ module.exports = function () {
       extensions: ['.es6', '.es', '.js', '.jsx', '.mjs'],
 
       // Setting this to false will disable the cache.
-      cache: true,
+      cache: false,
     },
-
-    /**
-     * false by default
-     *
-     * the universal field provides configuration both for `plugin-isomorphic` and `plugin-webpack`
-     * for `plugin-webpack`:
-     *   write assets.json file into `assetsFilePath`
-     *   only contains assets type defined by `assets` array
-     * for `plugin-isomorphic`:
-     *   read file defined by `assetsFilePath`
-     *   hook require and return content in assets.json if file path matches in `assets`
-     *
-     * universal: {
-     *  context: app.baseDir, // webpack context
-     *  assetsFilePath: '', // path for asset file write into
-     *  memoryFs: false, // TODO: use `memory-fs` in dev
-     *  assets: [{
-     *    ext: '.scss',
-     *    exclude: 'node_modules'
-     *  }],
-     *  cache: true,
-     * }
-     */
-
-    universal: false,
   };
 
   return {

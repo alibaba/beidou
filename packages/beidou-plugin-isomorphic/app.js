@@ -23,14 +23,11 @@ module.exports = (app) => {
   setGlobal(app.config.env || /* istanbul ignore next */ app.loader.serverEnv);
 
   // jsdom polyfill, enabled by default
-  if (config.polyfill) {
-    basicPolyfill();
-  }
+  config.polyfill && basicPolyfill();
   // babel-register
   const babel = config.babel;
-  if (babel) {
-    require('babel-register')(babel);
-  }
+
+  babel && require('babel-register')(babel);
 
   // isomorphic register
   isomorphic(app);

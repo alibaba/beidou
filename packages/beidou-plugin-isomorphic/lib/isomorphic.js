@@ -2,7 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
-
+const Module = require('module');
 
 function requireAssetsJson(filepath, logger) {
   let json = {};
@@ -20,14 +20,14 @@ function requireAssetsJson(filepath, logger) {
 }
 
 function createIsomorphicRequire(baseDir, universal, logger) {
-  let json = requireAssetsJson(universal.assetsFilePath, logger);
+  // let json = requireAssetsJson(universal.assetsFilePath, logger);
   return function (module, filename) {
     const relativePath = path.relative(baseDir, filename);
-    if (__DEV__) {
-      delete require.cache[filename];
-      delete require.cache[universal.assetsFilePath];
-      json = requireAssetsJson(universal.assetsFilePath, logger);
+    if (!universal.cache) {
+      delete Module._cache[filename];
+      delete Module._cache[universal.assetsFilePath];
     }
+    const json = requireAssetsJson(universal.assetsFilePath, logger);
     module.exports = json[relativePath];
   };
 }
@@ -39,13 +39,15 @@ function isValidExt(ext) {
 module.exports = function (app) {
   const isomorphic = app.config.isomorphic;
   const baseDir = app.config.baseDir;
-  const universal = isomorphic.universal;
 
   const logger = app.logger;
-  if (universal) {
-    if (!universal.context) {
-      universal.context = app.config.baseDir;
-    }
+  if (isomorphic.universal) {
+    const universal = Object.assign({
+      context: baseDir,
+      assetsFilePath: path.join(baseDir, '.isomorphic/assets.json'),
+      cache: __DEV__ === false,
+    }, isomorphic.universal);
+
     const assets = universal.assets;
     const isomorphicRequire = createIsomorphicRequire(baseDir, universal, logger);
     for (const asset of assets) {

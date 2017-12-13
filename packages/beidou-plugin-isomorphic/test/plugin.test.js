@@ -7,6 +7,7 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
 const request = require('supertest');
 const mm = require('egg-mock');
 
@@ -17,7 +18,6 @@ describe('test/plugin.test.js', () => {
     let app;
 
     before((done) => {
-      mm.consoleLevel('NONE');
       app = mm.cluster({
         coverage: true,
         baseDir: './isomorphic-app/',
@@ -49,7 +49,6 @@ describe('test/plugin.test.js', () => {
     let app;
 
     before((done) => {
-      mm.consoleLevel('NONE');
       app = mm.app({
         baseDir: './isomorphic-app/',
         plugin: 'isomorphic',
@@ -65,8 +64,7 @@ describe('test/plugin.test.js', () => {
 
     afterEach(() => {
       mm.restore();
-    }
-    );
+    });
 
     it('should return global variable __ENV__ equal to app.loader.serverEnv', (done) => {
       request(app.callback())
@@ -90,25 +88,46 @@ describe('test/plugin.test.js', () => {
     });
 
     it('should return global variable __DEV__ equal to false in prod env', (done) => {
-      mm.consoleLevel('NONE');
-      mm.env('prod');
       request(app.callback())
         .get('/dev')
         .expect('false')
-        .expect(200, () => {
-          done();
-        });
+        .expect(200, done);
+    });
+
+    // it('should return global variable __DEV__ equal to true in local env', (done) => {
+    //   request(app.callback())
+    //     .get('/dev')
+    //     .expect('true')
+    //     .expect(200, done);
+    // });
+  });
+
+  describe('validate global variables', () => {
+    let app;
+
+    before((done) => {
+      mm.env('local');
+      app = mm.app({
+        baseDir: './isomorphic-app/',
+        plugin: 'isomorphic',
+        framework: frameworkPath
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(() => {
+      mm.restore();
     });
 
     it('should return global variable __DEV__ equal to true in local env', (done) => {
-      mm.consoleLevel('NONE');
-      mm.env('local');
       request(app.callback())
         .get('/dev')
         .expect('true')
-        .expect(200, () => {
-          done();
-        });
+        .expect(200, done);
     });
   });
 
@@ -293,4 +312,159 @@ describe('test/plugin.test.js', () => {
   //     });
   //   });
   // });
+
+  describe('universal', () => {
+    let app;
+    const jsonFilePath = path.join(__dirname, 'fixtures/universal', '.isomorphic/assets.json');
+
+    before((done) => {
+      const content = '{"client/index.less": "less", "client/index.scss": "scss"}'
+      fs.writeFileSync(jsonFilePath, content);
+      app = mm.app({
+        baseDir: './universal',
+        plugin: 'isomorphic',
+        framework: frameworkPath
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+      fs.unlinkSync(jsonFilePath)
+    });
+
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should return content of scss in asset ', (done) => {
+      request(app.callback())
+        .get('/sass')
+        .expect('scss')
+        .expect(200, done);
+    });
+
+
+    it('should return content of less in asset ', (done) => {
+      request(app.callback())
+        .get('/less')
+        .expect('less')
+        .expect(200, done);
+    });
+
+  
+    it('should return for unsupport file extension', (done) => {
+      request(app.callback())
+        .get('/others')
+        .expect('{}')
+        .expect(200, done);
+    });
+
+    it('should not clean require cache when cache is true', (done) => {
+      const content = '{"client/index.less": "hello", "client/index.scss": "hello"}';
+      fs.writeFileSync(jsonFilePath, content);
+      request(app.callback())
+        .get('/less')
+        .expect('less')
+        .expect(200, done);
+    });
+  });
+
+  describe('universal no cache', () => {
+    let app;
+    const jsonFilePath = path.join(__dirname, 'fixtures/universal-nocache', '.isomorphic/assets.json');
+
+    before((done) => {
+      const content = '{"client/index.less": "less", "client/index.scss": "scss"}'
+      fs.writeFileSync(jsonFilePath, content);
+      mm.env('local');
+      app = mm.app({
+        baseDir: './universal-nocache',
+        plugin: 'isomorphic',
+        framework: frameworkPath
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+      fs.unlinkSync(jsonFilePath)
+    });
+
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should clean require cache when cache is false', (done) => {
+      const content = '{"client/index.less": "hello", "client/index.scss": "hello"}';
+      fs.writeFileSync(jsonFilePath, content);
+      request(app.callback())
+        .get('/less')
+        .expect('hello')
+        .expect(200, () => done());
+    });
+  });
+
+  describe('universal no assets.json', () => {
+    let app;
+    before((done) => {
+      app = mm.cluster({
+        baseDir: './universal-nocache',
+        plugin: 'isomorphic',
+        framework: frameworkPath
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should return nothing if assets.json not found', (done) => {
+      request(app.callback())
+        .get('/less')
+        .expect(204, done);
+    });
+  });
+
+
+  describe('universal no-json assets.json', () => {
+    let app;
+    const jsonFilePath = path.join(__dirname, 'fixtures/universal-nocache', '.isomorphic/assets.json');
+
+    before((done) => {
+      const content = '{ not a json '
+      fs.writeFileSync(jsonFilePath, content);
+      mm.env('local');
+      app = mm.cluster({
+        baseDir: './universal-nocache',
+        plugin: 'isomorphic',
+        framework: frameworkPath
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+      fs.unlinkSync(jsonFilePath)
+    });
+
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should return nothing if assets.json is not valid json', (done) => {
+      request(app.callback())
+        .get('/less')
+        .expect(204, done);
+    });
+  });
 });

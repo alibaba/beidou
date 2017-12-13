@@ -2,7 +2,7 @@ const utils = require('../utils');
 
 module.exports = view => next => function* (args) {
   const { Component, props } = args;
-  const logger = props.ctx;
+  const { logger } = props.ctx;
 
   // check static method in Component
   const render = Component.getPartial;
