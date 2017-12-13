@@ -119,7 +119,7 @@ $ sh take_cpu_profile.sh 6989
 
 ![](https://img.alicdn.com/tfs/TB17HVOicrI8KJjy0FhXXbfnpXa-810-375.png)
 
-这仅仅是一次试验，肯定不能直接移除`JSON.parse(JSON.stringify(obj))`, 不然会影响业务逻辑的. 需要找一个可以替代的深拷贝库, 这是常用拷贝方法的[性能对比](http://jsben.ch/bWfk9), 自配梯子. 截图如下：
+这仅仅是一次试验，肯定不能直接移除`JSON.parse(JSON.stringify(obj))`, 不然会影响业务逻辑的. 参考下常用拷贝方法的[性能对比](http://jsben.ch/bWfk9), 自配梯子. 截图如下：
 
 ![](https://img.alicdn.com/tfs/TB1bgXqilfH8KJjy1XbXXbLdXXa-2794-1376.png)
 
