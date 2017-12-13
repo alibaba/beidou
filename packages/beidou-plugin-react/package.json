@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-react",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "beidou view react",
   "eggPlugin": {
     "name": "react"
@@ -29,12 +29,8 @@
   },
   "devDependencies": {
     "autod": "2",
-    "babel": "^6.5.2",
-    "babel-core": "^6.20.0",
-    "babel-loader": "^6.2.4",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-beidou-client": "^0.0.5",
-    "babel-preset-beidou-server": "^0.0.5",
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
     "egg": "^1.4.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",

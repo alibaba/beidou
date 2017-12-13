@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-webpack",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "webpack middleware",
   "eggPlugin": {
     "name": "webpack"
@@ -12,6 +12,8 @@
   ],
   "main": "index.js",
   "dependencies": {
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-loader": "^7.0.0",
     "debug": "^2.2.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "koa-webpack-dev-middleware": "^1.2.1",
@@ -28,9 +30,7 @@
   },
   "devDependencies": {
     "autod": "2",
-    "babel-loader": "^6.2.4",
-    "babel-preset-beidou-client": "^0.0.5",
-    "babel-preset-beidou-server": "^0.0.5",
+    "babel-preset-beidou-server": "^0.1.0",
     "chai": "^4.0.2",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
