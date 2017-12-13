@@ -330,7 +330,6 @@ describe('test/plugin.test.js', () => {
 
     after(() => {
       app.close();
-      fs.unlinkSync(jsonFilePath)
     });
 
 
@@ -389,7 +388,6 @@ describe('test/plugin.test.js', () => {
 
     after(() => {
       app.close();
-      fs.unlinkSync(jsonFilePath)
     });
 
 
@@ -411,7 +409,7 @@ describe('test/plugin.test.js', () => {
     let app;
     before((done) => {
       app = mm.cluster({
-        baseDir: './universal-nocache',
+        baseDir: './universal-noasset',
         plugin: 'isomorphic',
         framework: frameworkPath
       });
@@ -453,7 +451,6 @@ describe('test/plugin.test.js', () => {
 
     after(() => {
       app.close();
-      fs.unlinkSync(jsonFilePath)
     });
 
 
