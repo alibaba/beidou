@@ -1258,8 +1258,8 @@ camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000780:
-  version "1.0.30000782"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000782.tgz#5b82b8c385f25348745c471ca51320afb1b7f254"
+  version "1.0.30000783"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000783.tgz#9b5499fb1b503d2345d12aa6b8612852f4276ffd"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1801,8 +1801,8 @@ ee-first@1.1.1, ee-first@^1.1.1, ee-first@~1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 egg-bin@^4.0.0:
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/egg-bin/-/egg-bin-4.3.6.tgz#c4e39c005dbb0d58a599db5d7fe7cb174f75b082"
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/egg-bin/-/egg-bin-4.3.7.tgz#125ddca6cabeafe1d22cb06be8d9fde2e270286c"
   dependencies:
     autod "^3.0.1"
     chalk "^2.3.0"
@@ -1846,8 +1846,8 @@ egg-cookies@^2.2.1:
     utility "^1.9.0"
 
 egg-core@^3.19.1:
-  version "3.19.3"
-  resolved "https://registry.yarnpkg.com/egg-core/-/egg-core-3.19.3.tgz#4265cf13a157f2c66decd31fdb56774438a4cb7b"
+  version "3.20.0"
+  resolved "https://registry.yarnpkg.com/egg-core/-/egg-core-3.20.0.tgz#a306a87c694a5c03257743a6f7911206c808034f"
   dependencies:
     co "^4.6.0"
     debug "^3.1.0"
@@ -3138,10 +3138,8 @@ is-regex@^1.0.4:
     has "^1.0.1"
 
 is-resolvable@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-resolvable/-/is-resolvable-1.0.0.tgz#8df57c61ea2e3c501408d100fb013cf8d6e0cc62"
-  dependencies:
-    tryit "^1.0.1"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-resolvable/-/is-resolvable-1.0.1.tgz#acca1cd36dbe44b974b924321555a70ba03b1cf4"
 
 is-stream@^1.0.1, is-stream@^1.1.0:
   version "1.1.0"
@@ -5038,10 +5036,6 @@ traverse@^0.6.6:
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
-
-tryit@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
 
 tsscmp@1.0.5:
   version "1.0.5"

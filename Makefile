@@ -44,6 +44,7 @@ test-clean:
 	rm -rf packages/*/test/**/logs
 
 clean-all:
+	./node_modules/.bin/lerna clean
 	rm -rf node_modules
 	rm -rf packages/*/node_modules
 	rm -rf examples/*/node_modules

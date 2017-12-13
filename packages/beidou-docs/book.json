@@ -1,0 +1,16 @@
+{
+  "title": "Beidou Document",
+  "description": "Beidou Document",
+  "plugins": ["antsay", "-sharing", "styles-less"],
+  "pluginsConfig": {
+    "antsay": {
+      "shortName": "",
+      "appId": "",
+      "key": ""
+    }
+  },
+  "styles": {
+    "website": "./styles/website.less"
+  },
+  "gitbook": ">= 3.2.0"
+}

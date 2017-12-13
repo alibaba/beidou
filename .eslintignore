@@ -5,3 +5,4 @@ lib/plugins/**/app/proxy
 packages/*/test
 packages/*/node_modules/
 packages/*/coverage/
+packages/beidou-docs/
