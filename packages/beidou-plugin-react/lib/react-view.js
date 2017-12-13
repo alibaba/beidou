@@ -53,7 +53,7 @@ class BeidouReactView {
     return function* () {
       const payload = {
         filepath,
-        Component,
+        Component: Component.default || Component, // when add-module-exports not work
         props,
         html: '',
       };
