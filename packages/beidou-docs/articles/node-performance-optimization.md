@@ -50,7 +50,7 @@ $ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh 
 
 ```
 
-完成安装后，需要将tnvm添加为命令行程序。根据平台的不同，可能是~/.bashrc，~/.profile或~/.zshrc等
+完成安装后，需要将tnvm添加为命令行程序。根据平台的不同，可能是~/.bashrc，~/.profile 或 ~/.zshrc等
 
 ```
 $ source ~/.zshrc
@@ -78,7 +78,7 @@ $ loadtest  http://127.0.0.1:6001 --rps 10
 
 * 第4步： cpu profile
 
-假设启动的worker进程号为6989, 执行以下脚本, 三分钟后将在/tmp/目录下生成一个cpuprofile文件***/tmp/cpu-profile-6989-XXX.cpuprofile***
+假设启动的worker进程号为6989, 执行以下脚本, 三分钟后将在/tmp/目录下生成一个cpuprofile文件`/tmp/cpu-profile-6989-XXX.cpuprofile`
 脚本详见[take_cpu_profile.sh](https://github.com/alibaba/beidou/blob/master/scripts/take_cpu_profile.sh)
 
 ```
@@ -119,8 +119,7 @@ $ sh take_cpu_profile.sh 6989
 
 ![](https://img.alicdn.com/tfs/TB17HVOicrI8KJjy0FhXXbfnpXa-810-375.png)
 
-这仅仅是一次验证，肯定不能直接移除`JSON.parse(JSON.stringify(obj))`, 不然会影响业务逻辑的。需要找一个替代的深拷贝库。
-这是常用拷贝方法的[性能对比](http://jsben.ch/bWfk9), 自配梯子。 截图如下：
+这仅仅是一次验证，肯定不能直接移除`JSON.parse(JSON.stringify(obj))`, 不然会影响业务逻辑的。需要找一个替代的深拷贝库。这是常用拷贝方法的[性能对比](http://jsben.ch/bWfk9), 自配梯子。 截图如下：
 
 ![](https://img.alicdn.com/tfs/TB1bgXqilfH8KJjy1XbXXbLdXXa-2794-1376.png)
 
