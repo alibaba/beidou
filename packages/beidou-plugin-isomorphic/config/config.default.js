@@ -19,7 +19,8 @@ module.exports = function () {
       /**
        * presets of beidou, or you can choose any else you like
        */
-      presets: ['beidou-server'],
+      presets: ['babel-preset-beidou-server'],
+      // plugins: ['add-module-exports'],
       babelrc: false,
       // ignore: /regex/,
       // ignore: ['*.scss'],
@@ -33,7 +34,7 @@ module.exports = function () {
 
       // Setting this will remove the currently hooked extensions of `.es6`, `.es`, `.jsx`, `.mjs`
       // and .js so you'll have to add them back if you want them to be used again.
-      // extensions: ['.es6', '.es', '.jsx', '.js', '.mjs'],
+      extensions: ['.es6', '.es', '.jsx', '.mjs'],
 
       // Setting this to false will disable the cache.
       cache: true,
