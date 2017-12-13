@@ -1,0 +1,9 @@
+{
+  "extends": "eslint-config-beidou",
+  "rules": {
+    "import/no-dynamic-require": 0,
+    "strict": 0,
+    "arrow-body-style": 0,
+    "no-debugger": 0
+  }
+}
