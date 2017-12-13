@@ -26,6 +26,8 @@
     "supertest": "^1.2.0"
   },
   "dependencies": {
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
     "beidou-plugin-isomorphic": "^0.3.0",
     "beidou-plugin-react": "^0.3.0",
     "beidou-plugin-webpack": "^0.3.0",
