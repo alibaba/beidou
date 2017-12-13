@@ -34,6 +34,15 @@ module.exports = {
   },
 
   /**
+   * Isomorphic plugin
+   * @property {Boolean} enable - Default: true
+   */
+  router: {
+    enable: true,
+    package: 'beidou-plugin-router',
+  },
+
+  /**
    * @member {Object} Plugin#i18n
    * @property {Boolean} enable - Default: false
    * @since 1.0.0

@@ -41,25 +41,6 @@ module.exports = (appInfo) => {
     name: 'Beidou',
   };
 
-  exports.route = {
-    /**
-     * root directory for auto match route
-     * include server route and webpack entry
-     * @member {String} Config#root
-     * @since 1.0.0
-     */
-    root: '/',
-
-    /**
-     * files or directories should be ingored
-     * when automatically match route
-     * @member {String} Config#exclude
-     * @since 1.0.0
-     */
-    exclude: '_*',
-
-    entry: 'index',
-  };
   /**
    * core enable middlewares, which will map to app.middlewares.x
    * @member {Array} Config#middleware
