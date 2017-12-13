@@ -30,6 +30,7 @@
   "author": "Holden",
   "license": "MIT",
   "dependencies": {
+    "babel-preset-beidou-server": "^0.0.6",
     "co": "^4.6.0",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
