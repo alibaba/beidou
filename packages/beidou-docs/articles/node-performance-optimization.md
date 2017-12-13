@@ -127,7 +127,7 @@ $ sh take_cpu_profile.sh 6989
 
 ![](https://img.alicdn.com/tfs/TB18FXtilfH8KJjy1XbXXbLdXXa-810-378.png)
 
-第二耗性能是的`J`方法，里面大部分是各个组件的render时间，暂时略过，以同样的方式`_eval`方法进行一次优化, RT降为10.1ms.
+第二耗性能是的`J`方法，里面大部分是各个组件的render时间，暂时略过，以同样的方式对`_eval`方法进行一次优化, RT降为10.1ms.
 
 ![](https://img.alicdn.com/tfs/TB1Ne2DfOqAXuNjy1XdXXaYcVXa-810-378.png)
 
