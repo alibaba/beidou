@@ -9,6 +9,13 @@
     "precommit": "tnpm run lint"
   },
   "author": "",
+  "dependencies": {
+    "beidou-core": "^0.3.0",
+    "classnames": "^2.2.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6"
+  },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
@@ -25,25 +32,9 @@
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
     "webpack-hot-middleware": "^2.20.0"
-  },
-  "dependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-beidou-client": "^0.0.5",
-    "babel-preset-beidou-server": "^0.0.5",
-    "beidou-core": "^0.2.0",
-    "beidou-plugin-isomorphic": "^0.2.1",
-    "beidou-plugin-react": "^0.2.1",
-    "beidou-plugin-webpack": "^0.2.1",
-    "classnames": "^2.2.3",
-    "enums": "^1.0.0",
-    "extend": "^3.0.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-redux": "^5.0.6",
-    "react-transform-catch-errors": "^1.0.2"
   },
   "engines": {
     "node": ">= 6.0.0"
