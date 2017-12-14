@@ -1,9 +1,6 @@
 
 
-'use strict';
-
 const path = require('path');
-const require_hacker = require('require-hacker');
 const basePath = path.join(__dirname, '../../../..');
 const fixtures = path.join(basePath, '/test/fixtures');
 
@@ -11,8 +8,6 @@ describe('test/lib/core/utils/index.test.js', function() {
   const utils = require(`${basePath}/lib/core/utils/index`);
 
   afterEach(() => {
-    // 清除全局require hook, 避免干扰其它测试用例
-    require_hacker.occupied_file_extensions = new Set();
   });
 
   describe('existsModule', function() {

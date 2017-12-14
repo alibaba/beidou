@@ -22,9 +22,6 @@ exports.webpack = {
   outputPath: './build',
   publicPath: '/build',
   hmr: {
-    enable: false,
-    path: '__webpack_hmr',
-    timeout: '20000',
-    heartbeat: '10000',
-  }
+    reload: true,
+  },
 };

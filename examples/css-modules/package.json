@@ -1,0 +1,48 @@
+{
+  "name": "beidou-template-css-modules",
+  "version": "0.2.0",
+  "description": "beidou css modules template",
+  "scripts": {
+    "start": "./node_modules/.bin/node ./bin/server.js",
+    "lint": "./node_modules/.bin/eslint --fix --ext .jsx --ext .js app client config webpack",
+    "prepush": "tnpm run lint",
+    "precommit": "tnpm run lint"
+  },
+  "author": "",
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "~0.23.1",
+    "eslint": "^4.11.0",
+    "eslint-config-beidou": "^1.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "globby": "^6.1.0",
+    "husky": "^0.13.4",
+    "node-sass": "^4.6.1",
+    "react-hot-loader": "^3.1.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-hot-middleware": "^2.20.0"
+  },
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
+    "beidou-core": "^0.3.0",
+    "classnames": "^2.2.3",
+    "enums": "^1.0.0",
+    "extend": "^3.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-transform-catch-errors": "^1.0.2"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "license": "MIT"
+}

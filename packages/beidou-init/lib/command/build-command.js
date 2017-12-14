@@ -1,6 +1,3 @@
-/**
- * @author Holden <holdenwei@qq.com>
- */
 
 
 const spawn = require('cross-spawn');
@@ -9,7 +6,6 @@ const BaseCommand = require('./base-command');
 require('colors');
 
 class BuildCommand extends BaseCommand {
-
   * run(cwd) {
     this.cwd = cwd;
 
@@ -27,7 +23,7 @@ class BuildCommand extends BaseCommand {
   * build(cwd) {
     const cli = spawn('npm', ['run', 'build'], {
       cwd,
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
 
     return new Promise((resolve, reject) => {

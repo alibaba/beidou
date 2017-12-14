@@ -33,5 +33,5 @@ export default class View extends React.Component {
 render({
   element: <App />,
   containerId: 'container',
-  view: View
+  view: View,
 });

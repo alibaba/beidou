@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 
 module.exports = (appInfo) => {
@@ -32,47 +30,6 @@ module.exports = (appInfo) => {
      * @since 1.0.0
      */
     client: path.join(appInfo.baseDir, 'client'),
-
-    /**
-     * root directory for auto match route
-     * include server route and webpack entry
-     * @member {String} Config#routeMatchRoot
-     * @since 1.0.0
-     */
-    routeMatchRoot: '/',
-
-    /**
-     * files or directories should be ingored
-     * when automatically match route
-     * @member {String} Config#routeMatchExclude
-     * @since 1.0.0
-     */
-    routeMatchExclude: '_*',
-
-    /**
-     * files should be ignored when require
-     * in server render process
-     * @member {Array} Config#requireIgnore
-     * @since 1.0.0
-     */
-    requireIgnore: [
-      '.css',
-      '.scss',
-      '.sass',
-      '.pcss',
-      '.stylus',
-      '.styl',
-      '.less',
-      '.sss',
-      '.gif',
-      '.jpeg',
-      '.jpg',
-      '.png',
-      '.svg',
-      '.mp4',
-      '.webm',
-      '.ogv'
-    ],
   };
 
   /**
@@ -81,7 +38,7 @@ module.exports = (appInfo) => {
    * @property {String} name - framework name(eg. Name)，default to Egg
    */
   exports.core = {
-    name: 'Beidou'
+    name: 'Beidou',
   };
 
   /**
@@ -93,7 +50,7 @@ module.exports = (appInfo) => {
     'siteFile',
     'notfound',
     'bodyParser',
-    'overrideMethod'
+    'overrideMethod',
   ];
 
   return exports;

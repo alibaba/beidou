@@ -1,9 +1,5 @@
-/**
- * @author Holden <holdenwei@qq.com>
- */
 
 
-const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
@@ -216,7 +212,7 @@ class InitCommand extends BaseCommand {
         type: 'boolean',
         description: 'force to override directory',
         alias: 'f',
-      }
+      },
     };
   }
 

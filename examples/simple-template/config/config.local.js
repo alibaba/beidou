@@ -11,7 +11,7 @@ module.exports = function () {
       // hmr: {
       //   path: '__webpack_hmr',
       // }
-    }
+    },
   };
   return exports;
 };

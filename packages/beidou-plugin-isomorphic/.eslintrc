@@ -3,5 +3,8 @@
   "rules": {
     "import/no-dynamic-require": 0,
     "strict": 0
+  },
+  "globals": {
+    "__DEV__": true
   }
 }
