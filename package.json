@@ -9,6 +9,7 @@
     "test-only": "make test-only",
     "test-all": "make test-all",
     "cov": "make cov",
+    "install": "lerna bootstrap",
     "install-all": "make install",
     "reinstall": "make reinstall",
     "clean": "make clean-all",
