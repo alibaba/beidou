@@ -23,7 +23,7 @@ coverage/
 .DS_Store
 
 # Dependency directories
-node_modules
+node_modules*
 
 # build files
 examples/**/build
