@@ -10,6 +10,7 @@ packages/*/test/fixtures/**/logs/
 examples/*/run
 examples/*/debug
 examples/*/logs
+examples/*/build/
 
 # coverage
 coverage/
