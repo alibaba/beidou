@@ -2,7 +2,7 @@
 module.exports = function () {
   const exports = {};
   exports.router = {
-    exclude: /^.+-.+$/i,
+    exclude: '*-*',
   }
   return exports;
 };

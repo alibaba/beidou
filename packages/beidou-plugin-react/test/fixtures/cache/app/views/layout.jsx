@@ -7,14 +7,13 @@ module.exports = React.createClass({
     return (
       <html>
         <head>
-          <title>{this.props.data.title}</title>
-
+          <title>{this.props.title}</title>
         </head>
         <body>
           <div id="container">
             {this.props.children}
           </div>
-          <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__=${this.props.data.state}` }} />
+          <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__=${this.props.state}` }} />
         </body>
       </html>
     );

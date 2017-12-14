@@ -14,6 +14,7 @@ module.exports = () => next => function* (args) {
   }
 
   if (store) {
+    props.store = store;
     // Array support
     if (Array.isArray(store)) {
       const states = [];

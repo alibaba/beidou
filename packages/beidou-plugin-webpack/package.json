@@ -22,18 +22,20 @@
     "memory-fs": "^0.4.1",
     "node-sass": "^4.5.3",
     "request": "^2.81.0",
+    "css-loader": "^0.28.7",
     "sass-loader": "^6.0.6",
     "sdk-base": "^2.0.1",
+    "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
     "webpack": "3.x",
-    "webpack-dev-middleware": "^1.11.0"
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.21.0"
   },
   "devDependencies": {
     "autod": "2",
     "babel-preset-beidou-server": "^0.1.0",
     "chai": "^4.0.2",
     "classnames": "^2.2.5",
-    "css-loader": "^0.28.7",
     "egg": "^1.4.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
@@ -42,7 +44,6 @@
     "react": "^15.0.0",
     "rimraf": "^2.6.1",
     "should": "8",
-    "style-loader": "^0.19.0",
     "supertest": "1"
   },
   "files": [

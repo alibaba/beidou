@@ -171,7 +171,7 @@ describe('test/router.plugin.test.js', () => {
     });    
   });
 
-  describe('set `router.exclude = /^.+-.+/i`', () => {
+  describe('set `router.exclude = \'*-*\'`', () => {
     let app;
     before((done) => {
       app = mm.cluster({

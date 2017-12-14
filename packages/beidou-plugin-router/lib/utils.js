@@ -1,21 +1,26 @@
 
 const fs = require('mz/fs');
 const path = require('path');
+const globToRegExp = require('glob-to-regexp');
 
 const resolved = {};
 
 exports.resolvePath = function* (name, providers, root, exclude, ext, entry) {
-  exclude = typeof exclude === 'string' ? new RegExp(exclude) : exclude;
-
-  for (const dir of name.split('/')) {
-    if (exclude.test(dir)) {
-      return false;
+  if (exclude) {
+    exclude = globToRegExp(exclude);
+    for (const dir of name.split('/')) {
+      if (exclude.test(dir)) {
+        return false;
+      }
     }
   }
 
-  const names = [name, path.join(name, entry + ext)];
+  const names = entry
+    ? [path.join(name, entry + ext)]
+    : [name, path.join(name, `index${ext}`)];
+
   const currentExt = path.extname(name);
-  if (!currentExt && !/\/$/.test(name)) {
+  if (!entry && !currentExt && !/\/$/.test(name)) {
     names.unshift(name + ext);
   }
 

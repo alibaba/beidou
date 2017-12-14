@@ -16,6 +16,8 @@ module.exports = (app) => {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
       __CLIENT__: true,
+      __DEV__: dev,
+      __SERVER__: false,
     }),
     new webpack.ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;

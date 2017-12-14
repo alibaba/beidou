@@ -17,13 +17,14 @@ module.exports = () => {
     root: '/',
 
     urlPrefix: '/',
+
     /**
      * files or directories should be ingored
      * when automatically match route
-     * @member {String} Config#exclude
+     * @member {String} Config#exclude glob pattern
      * @since 1.0.0
      */
-    exclude: '^_',
+    exclude: '_*',
 
     /**
      * define custom mapping files to router
@@ -37,7 +38,10 @@ module.exports = () => {
      */
     mapping: null,
 
-    entry: 'index',
+    /**
+     * if entry defined, router only works when name of files match `entry`.
+     */
+    entry: null,
   };
 
   return config;
