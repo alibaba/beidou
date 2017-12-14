@@ -5,8 +5,7 @@
   "scripts": {
     "start": "node ./bin/server.js",
     "lint": "eslint --fix --ext .jsx --ext .js app client config webpack",
-    "build": "webpack-build",
-    "precommit": "tnpm run lint"
+    "build": "webpack-build"
   },
   "author": "",
   "devDependencies": {
