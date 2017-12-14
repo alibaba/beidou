@@ -21,6 +21,7 @@
     "globals": {
       "__ENV__": true,
       "__CLIENT__": true,
-      "__SERVER__": true
+      "__SERVER__": true,
+      "__DEV__": true
     }
 }

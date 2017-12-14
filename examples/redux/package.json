@@ -15,12 +15,15 @@
     "classnames": "^2.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-redux": "^5.0.6"
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-saga": "^0.16.0",
+    "reqwest": "^2.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
-    "babel-preset-env": "^1.6.0",
     "css-loader": "~0.23.1",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.0",

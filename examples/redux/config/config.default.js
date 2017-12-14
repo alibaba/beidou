@@ -1,7 +1,10 @@
 
 
 module.exports = {
-  keys: 'key',
+  keys: 'secret',
+  router: {
+    entry: 'page',
+  },
   isomorphic: {
     universal: {
       assets: ['.scss', '.png'],

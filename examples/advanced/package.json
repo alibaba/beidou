@@ -1,0 +1,31 @@
+{
+  "name": "beidou-example-advanced",
+  "version": "0.0.1",
+  "description": "beidou example advanced",
+  "scripts": {
+    "start": "node ./bin/server.js",
+    "lint": "eslint --fix --ext .jsx --ext .js app client config webpack",
+    "build": "webpack-build",
+    "prepush": "tnpm run lint",
+    "precommit": "tnpm run lint"
+  },
+  "author": "",
+  "devDependencies": {
+    "babel-loader": "^7.1.1",
+    "eslint": "^4.11.0",
+    "eslint-config-beidou": "^1.0.0",
+    "husky": "^0.13.4",
+    "webpack-hot-middleware": "^2.21.0"
+  },
+  "dependencies": {
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
+    "beidou-core": "^0.3.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "license": "MIT"
+}
