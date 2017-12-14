@@ -18,7 +18,7 @@ module.exports = (app) => {
   }
 
   app.get('/(.*)', function* () {
-    const originUrl = this.url;
+    const originUrl = this.path;
     if (!originUrl.startsWith(urlPrefix)) return;
 
     const url = originUrl.substr(urlPrefix.length);
@@ -27,7 +27,7 @@ module.exports = (app) => {
     if (!pageName) {
       const providerRoots = view.root.map(dir => path.join(dir, root));
       pageName = yield utils.resolvePath(url, providerRoots, root, exclude, ext, entry);
-      cache && utils.putCache(url, pageName);
+      cache && pageName && utils.putCache(url, pageName);
     }
 
     if (pageName) {

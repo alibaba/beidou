@@ -45,6 +45,12 @@ describe('test/router.plugin.test.js', () => {
         .expect(200, done);
     });
 
+    it('should response ok for path /foo?bar=bar', (done) => {
+      request(app.callback())
+        .get('/foo?bar=bar')
+        .expect(200, done);
+    });
+
     it('should response ok for path /foo/bar', (done) => {
       request(app.callback())
         .get('/foo/bar')
@@ -56,7 +62,6 @@ describe('test/router.plugin.test.js', () => {
         .get('/_exclude')
         .expect(404, done);
     });
-
 
     it('should search file first for path /file', (done) => {
       request(app.callback())
