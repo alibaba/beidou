@@ -1,7 +1,7 @@
 {
-	"name": "beidou-performance",
+	"name": "beidou-example-performance",
 	"version": "0.0.1",
-	"description": "beidou template of performance",
+	"description": "beidou example of performance",
 	"scripts": {
 	  "start": "NODE_ENV=local node ./bin/server.js",
 	  "start-prod": "NODE_ENV=production node ./bin/server.js",
