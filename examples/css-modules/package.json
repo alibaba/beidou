@@ -1,7 +1,7 @@
 {
-  "name": "beidou-template-css-modules",
+  "name": "beidou-example-css-modules",
   "version": "0.2.0",
-  "description": "beidou css modules template",
+  "description": "beidou css modules example",
   "scripts": {
     "start": "./node_modules/.bin/node ./bin/server.js",
     "lint": "./node_modules/.bin/eslint --fix --ext .jsx --ext .js app client config webpack",
