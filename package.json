@@ -10,6 +10,7 @@
     "test-all": "make test-all",
     "cov": "make cov",
     "install-all": "make install",
+    "reinstall": "make reinstall",
     "clean": "make clean-all",
     "ci": "make ci",
     "changelog": "make changelog",

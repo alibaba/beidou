@@ -11,7 +11,6 @@ lint-all:
 	eslint --ext .js --ext .jsx --fix ./packages
 
 install:
-	make clean-all
 	yarn install
 	lerna bootstrap
 
