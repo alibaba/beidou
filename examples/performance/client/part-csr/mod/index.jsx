@@ -8,22 +8,23 @@ class Index extends React.Component {
     super();
 
     this.state = {
-      demoModule: 'demo module'
+      demoModule: 'client side rendering module'
     };
   }
 
   componentDidMount() {
     this.setState({
-      demoModule: <RecursiveDivs depth={4} breadth={6} />
+      demoModule: <RecursiveDivs depth={3} breadth={10} />
     });
   }
 
   render() {
-    // const { demoModule } = this.state;
+    const { demoModule } = this.state;
     return (
-      <div>
-        <RecursiveDivs depth={4} breadth={6} />
-        <RecursiveDivs depth={4} breadth={6} />
+      <div className="recursive">
+        { demoModule }
+        <RecursiveDivs depth={3} breadth={10} />
+        <RecursiveDivs depth={3} breadth={10} />
       </div>
     );
   }

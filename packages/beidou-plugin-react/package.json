@@ -39,10 +39,15 @@
     "husky": "^0.13.4",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-redux": "^4.0.0",
     "redux": "~3.3.1",
     "should": "8",
     "supertest": "1",
     "webpack": "^1.13.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   },
   "files": [
     "lib",
