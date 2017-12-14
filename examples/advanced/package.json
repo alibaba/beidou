@@ -6,7 +6,6 @@
     "start": "node ./bin/server.js",
     "lint": "eslint --fix --ext .jsx --ext .js app client config webpack",
     "build": "webpack-build",
-    "prepush": "tnpm run lint",
     "precommit": "tnpm run lint"
   },
   "author": "",
