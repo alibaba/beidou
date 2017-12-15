@@ -1,4 +1,4 @@
-# Node.js 性能优化的基本方法与实战
+# 唯快不破，让nodejs再快一点
 
 > 本文首次发表于[北斗同构github](https://github.com/alibaba/beidou/blob/master/packages/beidou-docs/articles/node-performance-optimization.md), 转载请注明出处
 

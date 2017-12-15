@@ -186,9 +186,69 @@ lruCacheSettings: {
 
 ## 实战
 
-接下来通过一个例子，如何一步步地提升性能。
+接下来通过一个例子，展示如何一步步地提升性能。
+[代码仓库](https://github.com/alibaba/beidou/tree/master/examples/performance) -- [https://github.com/alibaba/beidou/](https://github.com/alibaba/beidou/)
 
-To be done
+### 10倍以上性能提升
+* 首先构造一个非常复杂的页面, 页面节点数是3342, 对比之下，[淘宝首页](https://www.taobao.com/)首屏的页面节点数是831, 异步充分加载之后(懒加载完成),整个页面节点数为3049. 注： 淘宝页面为动态页面，每次采样可能会有差异。
+
+![复杂页面](https://img.alicdn.com/tfs/TB1CEBigiqAXuNjy1XdXXaYcVXa-2420-1276.jpg)
+
+![淘宝首屏](https://img.alicdn.com/tfs/TB1REBigiqAXuNjy1XdXXaYcVXa-2532-1110.jpg)
+
+![淘宝全屏](https://img.alicdn.com/tfs/TB1RoBigiqAXuNjy1XdXXaYcVXa-2582-1324.jpg)
+
+* 初始平均渲染时间为`295.75ms`(Node6.92, React15.6.2), 注: 图中有`296.50ms`,`317.25ms`,`297.25ms`,`295.75ms`四个平均值，是因为开启了四个进程，采样最后一个，下同。
+
+![初始渲染时间](https://img.alicdn.com/tfs/TB1WjlkgiqAXuNjy1XdXXaYcVXa-848-612.jpg)
+
+* 启用[babel性能加速插件](https://github.com/alibaba/beidou/blob/master/examples/performance/.babelrc#L3-L6), 平均渲染时间为`219.00ms`
+
+![babel性能加速插件](https://img.alicdn.com/tfs/TB1h_H5ivDH8KJjy1XcXXcpdXXa-796-618.jpg)
+
+* 采用Node8.9.1(或更新版本)平均渲染时间为`207ms`
+
+![Node8](https://img.alicdn.com/tfs/TB1EmpmgiqAXuNjy1XdXXaYcVXa-837-614.jpg)
+
+* 采用`production`模式平均渲染时间为`81.75ms`
+
+![production mode](https://img.alicdn.com/tfs/TB1AYn9ivDH8KJjy1XcXXcpdXXa-835-614.jpg)
+
+* 部分内容客户端渲染，平均渲染时间为`44.63ms`
+
+![part csr](https://img.alicdn.com/tfs/TB17GdqgiqAXuNjy1XdXXaYcVXa-837-633.jpg)
+
+* 部分内容组件级别cache,平均渲染时间为`22.65ms`
+
+![part cache](https://img.alicdn.com/tfs/TB1uE0qgiqAXuNjy1XdXXaYcVXa-834-635.jpg)
+
+* 采用React16(或更新版本)，平均渲染时间为`5.17ms`
+
+![react16](https://img.alicdn.com/tfs/TB1yNkaivDH8KJjy1XcXXcpdXXa-837-631.jpg)
+
+* 结合React16和部分客户端渲染，平均渲染时间为`2.68ms`
+
+![react16+csr](https://img.alicdn.com/tfs/TB16q0ugiqAXuNjy1XdXXaYcVXa-840-635.jpg)
+
+至此，服务端渲染时间已经最初的`295.75ms`降低到了`2.68ms`，提升了超过100倍。
+
+### 更多性能策略
+其实除了上述应用的策略，还有其它的策略，比如
+* 采用`Async`, 有数据称性能提升30%, 笔者试了下，未见明显提升。可能是经过了babel的编译，最终没有发挥出`Async`的优势，这是因为[beidou框架](https://github.com/alibaba/beidou)在服务端要支持`import`等ES6的写法以及支持React的`JSX语法`。其实也非常简单，直接缩小`babel`的编译范围，在[beidou框架](https://github.com/alibaba/beidou)中是可以自己定义的。
+* 降低React组件的嵌套层级。试验数据，同样的页面节点数，服务端渲染时间和组件的嵌套层级是线性正相关的。
+* 热点缓存
+...
+
+### 万变不离其宗
+
+借用《功夫》中的一句经典台词`天下武功，无坚不破，唯快不破`，同样的，
+随着时间的推移，上面这些策略策略迟早会`被破`，比如react16 ssr重构之后，之前的组件级别缓存逻辑不再有效。
+另外，可能由于架构设计/技术选型根本就使不上劲，比如react16是今年9月26才正式发版，很多第三方组件还没来得及升级，如果应用中有些组件强依赖于react15或者更早的版本，可能根本就没法利用react16的性能优势。
 
 
+那么有没有一种`万能的办法`，能够做到`唯快不破`呢？
+
+答案是： 有的。 只有掌握了方法论，才能在不断变化中，找到适合自己应用的性能优化策略。
+
+具体的方法论，请参考本人的另外一篇文章[《唯快不破，让nodejs再快一点》](https://github.com/alibaba/beidou/blob/master/packages/beidou-docs/articles/node-performance-optimization.md)
 
