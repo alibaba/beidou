@@ -37,9 +37,11 @@ $ npm run start
 After that, go to `http://localhost:6001/`
 
 ## Boilerplate
-* [empty-template](./examples/empty-template)
-* [simple-template](./examples/simple-template)
-* [advance-template](./examples/advance)
+* [simple](./examples/simple)
+* [advanced](./examples/advanced)
+* [with redux](./examples/redux)
+* [with css-modules](./examples/css-modules)
+* [performance optimization](./examples/performance)
 
 ## Documentation
 
@@ -90,6 +92,12 @@ After that, go to `http://localhost:6001/`
     * [Performance](./packages/beidou-docs/advanced/performance.md)  
     * [Memory Leaks](./packages/beidou-docs/advanced/oom.md)
     * [SSR Attentions](./packages/beidou-docs/advanced/attentions.md)
+
+## Articles
+
+* [High performance isomorphic-rendered React Apps](./packages/beidou-docs/articles/high-performance-isomorphic-app.md)
+* [How to resolve nodejs memory leak](./packages/beidou-docs/articles/node-memory-leak.md)
+* [Nodejs application performance optimization](./packages/beidou-docs/articles/node-performance-optimization.md)
 
 ## Performance
 
