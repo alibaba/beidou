@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-redux",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "beidou css modules template",
   "scripts": {
     "start": "node ./bin/server.js",
