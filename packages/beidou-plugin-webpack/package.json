@@ -12,6 +12,7 @@
   ],
   "main": "index.js",
   "dependencies": {
+    "babel-core": "^6.26.0",
     "babel-loader": "^7.0.0",
     "babel-preset-beidou-client": "^0.1.0",
     "css-loader": "^0.28.7",
@@ -66,6 +67,7 @@
     "history": "egg-bin history CHANGELOG.md"
   },
   "bin": {
+    "beidou-build": "./bin/build.js",
     "webpack-build": "./bin/build.js"
   },
   "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
