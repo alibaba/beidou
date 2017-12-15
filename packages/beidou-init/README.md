@@ -6,7 +6,7 @@ Init beidou app helper tools.
 ## Install
 
 ```bash
-$ tnpm install beidou-init -g
+$ npm install beidou-init -g
 ```
 
 ## Initialize
