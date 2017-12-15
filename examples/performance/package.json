@@ -37,7 +37,7 @@
 		"babel-preset-beidou-server": "^0.0.5",
 		"beidou-core": "^0.2.0",
 		"beidou-plugin-isomorphic": "^0.2.0",
-		"beidou-plugin-react": "0.2.0-rc2",
+		"beidou-plugin-react": "^0.2.0",
 		"beidou-plugin-webpack": "^0.2.0",
 		"classnames": "^2.2.3",
 		"co": "^4.6.0",
