@@ -17,15 +17,15 @@
       },
       "Redux": {
         "package": "beidou-example-redux",
-        "description": "Empty beidou isomorphic app boilerplate"
+        "description": "Redux beidou isomorphic app boilerplate"
       },
-      "css-modules": {
+      "CSS-MODULES": {
         "package": "beidou-example-css-modules",
-        "description": "Simple beidou isomorphic app boilerplate"
+        "description": "CSS-MODULES beidou isomorphic app boilerplate"
       },
       "Advanced": {
         "package": "beidou-example-advanced",
-        "description": "Simple beidou isomorphic app boilerplate"
+        "description": "Advanced beidou isomorphic app boilerplate"
       }
     }
   },
