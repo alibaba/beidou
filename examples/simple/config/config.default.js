@@ -9,7 +9,4 @@ module.exports = {
   react: {
     assetPath: '/public/',
   },
-  router: {
-    entry: 'page',
-  },
 };

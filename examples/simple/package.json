@@ -4,6 +4,7 @@
   "description": "beidou example simple",
   "scripts": {
     "start": "node ./bin/server.js",
+    "build": "beidou-build",
     "lint": "eslint --fix --ext .jsx --ext .js app client config webpack"
   },
   "author": "",
