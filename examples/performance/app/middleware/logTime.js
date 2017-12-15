@@ -3,5 +3,5 @@ module.exports = () => function* (next) {
   yield next;
   // app.logger.info('render time:', Date.now() - st);
   // for performance test, use console.log instead
-  console.log('render time:', Date.now() - st);
+  console.log('render time:', Date.now() - st, 'ms');
 };

@@ -1,6 +1,6 @@
 {
   "lerna": "2.0.0",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "changelog": {
     "repo": "alibaba/beidou",
     "labels": {
@@ -13,15 +13,16 @@
     }
   },
   "packages": [
-    "packages/*",
-    "examples/*"
+    "packages/*"
   ],
   "command": {
     "publish": {
       "ignore": [
         "*.md",
-        "test/**"
-      ]
+        "test/**",
+        "node_modules"
+      ],
+      "message": "chore(release): publish %s"
     }
   },
   "npmClient": "yarn"

@@ -13,8 +13,5 @@ test
 .eslintrc
 .eslintignore
 .editorconfig
-build.sh
-examples
-packages
 docs
 

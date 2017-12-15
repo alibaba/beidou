@@ -1,26 +1,31 @@
 # log
 *.log
-*_config.json
-*.babel.json
-examples/*/logs/*
 
 # temp files
 *.lerna_backup
-*.dat
-test/fixtures/apps/*/build/
-test/fixtures/apps/*/*/isomorphic/
+*.da
 packages/*/test/fixtures/**/run/
+packages/*/test/fixtures/**/debug/
+packages/*/test/fixtures/**/logs/
+examples/*/run
+examples/*/debug
+examples/*/logs
+examples/*/build/
 
-# build files
-examples/**/build/
+# coverage
 coverage/
 
 # project organization files of IED
 .idea
 .vscode
 
-# Dependency directories
-node_modules
+# system config
+.DS_Store
 
-# build assets
+# Dependency directories
+node_modules*
+
+# build files
+examples/**/build
 *.stats.json
+**/.isomorphic/

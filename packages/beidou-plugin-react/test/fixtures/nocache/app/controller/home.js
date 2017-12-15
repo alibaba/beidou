@@ -10,10 +10,8 @@ exports.jsxtpl = function* () {
   };
   const store = createStore(initState);
 
-  this.app.logger.info(store.getState());
-
   try {
-    yield this.render('home/index', { store, title: '测试' });
+    yield this.render('home/index', { store, title: 'test' });
   } catch (err) {
     console.log(err);
   }
@@ -29,7 +27,7 @@ exports.jstpl = function* () {
   this.app.logger.info(store.getState());
 
   try {
-    yield this.render('home/indexJs', { store, title: '测试' });
+    yield this.render('home/indexJs', { store, title: 'test' });
   } catch (err) {
     console.log(err);
   }
@@ -45,7 +43,7 @@ exports.notFound = function* () {
   this.app.logger.info(store.getState());
 
   try {
-    yield this.render('home/notFound', { store, title: '测试' });
+    yield this.render('home/notFound', { store, title: 'test' });
   } catch (err) {
     /*
     * in nodejs 8, name of AssertionError is: AssertionError [ERR_ASSERTION]
@@ -67,7 +65,7 @@ exports.notImplemented = function* () {
   this.app.logger.info(store.getState());
 
   try {
-    yield this.renderString('home/index', { store, title: '测试' });
+    yield this.renderString('home/index', { store, title: 'test' });
   } catch (err) {
     if (err.status === 200 || err.name === 'not implemented yet!') {
       this.body = 'not implemented yet!';
@@ -83,7 +81,7 @@ exports.client = function* clientRender() {
 
   const store = createStore(initState);
 
-  yield this.render('home', { store, title: '测试' });
+  yield this.render('home', { store, title: 'test' });
 };
 
 exports.cdn = function* cdn() {

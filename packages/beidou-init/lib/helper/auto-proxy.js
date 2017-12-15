@@ -1,6 +1,3 @@
-/**
- * @author Holden <holdenwei@qq.com>
- */
 
 
 const spawn = require('cross-spawn');
@@ -15,7 +12,7 @@ const ProxyModule = {
   proxy(targetDir) {
     const cli = spawn('npm', ['run', 'proxy'], {
       cwd: targetDir || cwd,
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
 
     return new Promise((resolve, reject) => {

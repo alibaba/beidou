@@ -23,7 +23,12 @@ class BeidouAppWorkerLoader extends egg.AppWorkerLoader {
    */
   loadRouter() {
     super.loadRouter();
-    this.loadFile(path.join(__dirname, 'mixin/auto-router.js'));
+    this.loadCustomRouter();
+  }
+
+  loadCustomRouter() {
+    this.getLoadUnits()
+      .forEach(unit => this.loadFile(path.join(unit.path, 'app/extend/router.js')));
   }
 
   /*

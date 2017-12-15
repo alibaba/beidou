@@ -10,8 +10,7 @@ module.exports = function () {
      */
     webpack: {
       defaultConfig: path.resolve(__dirname, '../webpack/webpack.config.dev.js'),
-      testConfig: 'aaaaaa'
-    }
+    },
   };
 
   return exports;

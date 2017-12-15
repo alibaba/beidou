@@ -5,5 +5,11 @@ module.exports = function () {
   exports.webpack = {
   };
 
+  exports.isomorphic = {
+    universal: {
+      assets: [],
+    }
+  }
+
   return exports;
 };

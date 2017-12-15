@@ -9,7 +9,7 @@ module.exports = React.createClass({
 	render() {
 		var Provider = ReactRedux.Provider;
 		return (
-			<Layout data={this.props}>
+			<Layout state={this.props.state} title={this.props.title}>
 				<Provider store={ this.props.store }>
 				  <Container />
 				</Provider>

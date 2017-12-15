@@ -5,15 +5,22 @@ export NODE_ENV = test
 .PHONY: lint install clean test-clean clean-all test-only test-all test cov ci changelog
 
 lint:
-	./node_modules/.bin/lint-staged ./packages
+	lint-staged ./packages
 
 lint-all:
-	./node_modules/.bin/eslint --ext .js --ext .jsx --fix ./packages
+	eslint --ext .js --ext .jsx --fix ./packages
 
 install:
 	yarn install
-	./node_modules/.bin/lerna bootstrap
-	# ./scripts/install-examples.sh  [deprecated]
+	lerna bootstrap
+
+reinstall:
+	make clean-all
+	rm -rf *.lock
+	rm -rf packages/*/*.lock
+	rm -rf examples/*/*.lock
+	yarn install
+	lerna bootstrap	
 
 clean:
 	make test-clean
@@ -21,18 +28,19 @@ clean:
 	rm -rf .run
 	rm -rf run
 	rm -rf packages/*/npm-debug*
-	rm -rf packages/*/test/fixtures/*/.babel.json
-	rm -rf packages/*/test/fixtures/*/*/*_config.json
-	rm -rf packages/*/test/fixtures/*/*/*.log
-	rm -rf packages/*/test/fixtures/*/*/*/*.log
-	rm -rf examples/*/logs/
-	rm -rf examples/*/run/
-	rm -rf examples/*/*.log
+	rm -rf packages/*/test/fixtures/*/run
+	rm -rf packages/*/test/fixtures/*/logs
+	rm -rf packages/*/test/fixtures/*/debug
+	rm -rf packages/*.log
+	rm -rf examples/*/logs
+	rm -rf examples/*/run
+	rm -rf examples/*/debug
 
 
 test-clean:
-	rm -rf packages/*/test/run
-	rm -rf packages/*/test/debug
+	rm -rf packages/*/test/**/run
+	rm -rf packages/*/test/**/debug
+	rm -rf packages/*/test/**/logs
 
 clean-all:
 	./node_modules/.bin/lerna clean
@@ -46,7 +54,6 @@ test-only:
 	make test-clean
 
 test-all:
-	make lint-all
 	./scripts/test-all.sh
 	make test-clean
 
@@ -55,13 +62,12 @@ test:
 	make test-all
 
 cov:
-	./node_modules/.bin/egg-bin cov
+	egg-bin cov
 
 ci:
-	./node_modules/.bin/eslint lib config
 	./scripts/ci.sh
 
 changelog:
-	./node_modules/.bin/lerna-changelog
+	lerna-changelog
 
 

@@ -9,7 +9,7 @@ module.exports = React.createClass({
         <head>
         </head>
         <body>
-          {this.props.helper.resolveLocalResource('/main.js')}
+          {this.props.helper.asset('/main.js')}
         </body>
       </html>
     );

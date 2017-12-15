@@ -16,23 +16,13 @@ function setPolyfill(window) {
   global.XMLHttpRequest = window.XMLHttpRequest;
   global.File = window.File;
   global.Image = window.Image;
-  global.matchMedia = () => ({
+  global.matchMedia = /* istanbul ignore next */ () => ({
     matches: true,
     addListener() { },
-    removeListener() { }
+    removeListener() { },
   });
   window.matchMedia = global.matchMedia;
 }
-
-module.exports.fullPolyfill = (ctx) => {
-  const isomorphic = jsdom(html, {
-    url: ctx.request.href,
-    cookie: ctx.request.header.cookie,
-    userAgent: ctx.request.header['user-agent']
-  });
-
-  setPolyfill(isomorphic.defaultView);
-};
 
 module.exports.basicPolyfill = () => {
   setPolyfill(jsdom(html).defaultView);

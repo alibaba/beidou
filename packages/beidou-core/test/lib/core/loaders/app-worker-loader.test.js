@@ -1,17 +1,8 @@
-/**
- * app worker 相关单元测试
- */
 
-'use strict';
-
-/**
- * Module dependencies.
- */
 
 const path = require('path');
 const should = require('should');
 const mm = require('egg-mock');
-const require_hacker = require('require-hacker');
 const fixtures = path.join(__dirname, '../../../fixtures');
 const Application = require('../../../../index').Application;
 
@@ -22,8 +13,6 @@ describe('test/lib/core/loaders/app-worker-loader.test.js', function() {
 
   afterEach(() => {
     mm.restore();
-    // 清除全局require hook, 避免干扰其它测试用例
-    require_hacker.occupied_file_extensions = new Set();
   });
 
   describe('agent loader load assetsInfo', function() {

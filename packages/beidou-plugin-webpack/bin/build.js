@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Application = require('beidou-core').Application;
 const Loader = require('beidou-core').AppWorkerLoader;
-const builder = require('../lib/builder.js');
+const builder = require('../lib/builder');
 
 Loader.prototype.load = function () {};
 
@@ -24,7 +24,7 @@ compiler.run((err, stats) => {
     fs.writeFileSync(path.join(process.cwd(), '.stats.json'), stats);
     console.log(stats.toString({
       colors: true,
-      children: false
+      children: false,
     }));
   }
 });

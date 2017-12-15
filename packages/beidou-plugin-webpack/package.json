@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-webpack",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "webpack middleware",
   "eggPlugin": {
     "name": "webpack"
@@ -10,32 +10,38 @@
     "plugin",
     "webpack"
   ],
+  "main": "index.js",
   "dependencies": {
+    "babel-loader": "^7.0.0",
+    "babel-preset-beidou-client": "^0.1.0",
+    "css-loader": "^0.28.7",
     "debug": "^2.2.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "koa-webpack-dev-middleware": "^1.2.1",
     "koa-webpack-hot-middleware": "^1.0.3",
     "lodash": "^4.17.4",
+    "memory-fs": "^0.4.1",
     "node-sass": "^4.5.3",
-    "react": "^15.6.1",
     "request": "^2.81.0",
     "sass-loader": "^6.0.6",
     "sdk-base": "^2.0.1",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
     "webpack": "3.x",
-    "webpack-dev-middleware": "^1.11.0"
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.21.0"
   },
   "devDependencies": {
     "autod": "2",
-    "babel-loader": "^6.2.4",
-    "babel-preset-beidou-client": "^0.0.5",
-    "babel-preset-beidou-server": "^0.0.5",
-    "beidou-core": "^0.2.1",
+    "babel-preset-beidou-server": "^0.1.0",
     "chai": "^4.0.2",
+    "classnames": "^2.2.5",
     "egg": "^1.4.0",
-    "egg-bin": "^3.4.2",
+    "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
-    "eslint": "^3.4.0",
-    "eslint-config-beidou": "0.0.1",
+    "eslint": "^4.11.0",
+    "eslint-config-beidou": "^1.0.0",
+    "react": "^15.0.0",
     "rimraf": "^2.6.1",
     "should": "8",
     "supertest": "1"

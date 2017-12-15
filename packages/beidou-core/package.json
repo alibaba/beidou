@@ -1,6 +1,6 @@
 {
   "name": "beidou-core",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
   "scripts": {
@@ -18,24 +18,20 @@
     "egg-bin": "^4.0.4",
     "egg-logrotater": "^1.0.1",
     "egg-mock": "^3.8.0",
-    "eslint": "^3.8.1",
-    "eslint-config-beidou": "^0.0.1",
+    "eslint": "^4.11.0",
+    "eslint-config-beidou": "^1.0.0",
     "husky": "^0.13.4",
     "lint-staged": "^4.0.0",
     "should": "^6.0.3",
-    "supertest": "^1.2.0",
-    "require-hacker": "^3.0.0"
+    "supertest": "^1.2.0"
   },
   "dependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.20.0",
-    "babel-loader": "^6.2.4",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-beidou-client": "^0.0.5",
-    "babel-preset-beidou-server": "^0.0.5",
-    "beidou-plugin-isomorphic": "^0.2.1",
-    "beidou-plugin-react": "^0.2.1",
-    "beidou-plugin-webpack": "^0.2.1",
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
+    "beidou-plugin-isomorphic": "^0.3.0",
+    "beidou-plugin-react": "^0.3.0",
+    "beidou-plugin-router": "^0.3.0",
+    "beidou-plugin-webpack": "^0.3.0",
     "egg": "^1.5.0",
     "mz": "^2.6.0"
   },

@@ -1,43 +1,33 @@
-'use strict'; // eslint-disable-line
-
+const url = require('url');
 const request = require('request');
-const escapeRegExp = require('lodash/escapeRegExp');
-// const debug = require('debug')('beidou-plugin:webpack');
-const helper = require('../../lib/utils/index');
-
-function getPortByHost(host) {
-  const splits = host.split(':');
-  /* istanbul ignore else */
-  if (splits.length > 1) {
-    return splits[1];
-  }
-  return '';
-}
+const debug = require('debug')('beidou-plugin:webpack');
 
 module.exports = function (options, app) {
-  const config = helper.getWebpackConfig(options, app);
-  const logger = app.coreLogger;
   return function* (next) {
-    const publicPath = options.publicPath || config.output.publicPath;
-    let validPath = [];
-    if (options.hmr && options.hmr.path) {
-      validPath.push(options.hmr.path);
+    let webpackUrl = this.request.href.replace(url.parse(this.request.href).port, app.webpackServerPort);
+
+    // force to use `http` protocol, because webpack does not support https
+    webpackUrl = webpackUrl.replace(/^https/, 'http');
+    const webpackRequest = request(webpackUrl);
+    const ctx = this;
+    const notFound = yield new Promise((resolve) => {
+      webpackRequest
+        .on('response', function (res) {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            debug('redirect request to webpack with url: %s', webpackUrl);
+            ctx.res.statusCode = res.statusCode;
+            for (const key in res.headers) {
+              ctx.res.setHeader(key, res.headers[key]);
+            }
+            res.pipe(ctx.res).on('finish', resolve);
+            return;
+          }
+          this.abort();
+          resolve(true);
+        });
+    });
+    if (notFound) {
+      yield next;
     }
-    validPath = validPath.concat(options.path);
-    // transfer assets request to webpack server of agent
-    if (new RegExp(`^${escapeRegExp(publicPath)}`).test(this.request.path)
-      || validPath.indexOf(this.request.path) !== -1) {
-      let resUrl = this.request.href.replace(getPortByHost(this.request.host), app.webpackServerPort);
-      if (this.request.protocol === 'https') {
-        resUrl = resUrl.replace('https', 'http');
-      }
-      this.body = this.req.pipe(request(resUrl))
-        .on('error', (err) => {
-          logger.error(err);
-        })
-        .pipe(this.res);
-      return;
-    }
-    yield next;
   };
 };

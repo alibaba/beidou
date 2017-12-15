@@ -10,7 +10,7 @@ exports.jsxtpl = function* homeController() {
 
   const store = createStore(initState);
 
-  yield this.render('home/index', {store, title: '测试'});
+  yield this.render('home/index', {store, title: 'test'});
 };
 
 exports.jstpl = function* homeController() {
@@ -20,7 +20,7 @@ exports.jstpl = function* homeController() {
 
   const store = createStore(initState);
 
-  yield this.render('home/indexJs', {store, title: '测试'});
+  yield this.render('home/indexJs', {store, title: 'test'});
 }
 
 exports.combo = function* () {
