@@ -4,9 +4,7 @@
   "description": "beidou example simple",
   "scripts": {
     "start": "node ./bin/server.js",
-    "lint": "eslint --fix --ext .jsx --ext .js app client config webpack",
-    "prepush": "tnpm run lint",
-    "precommit": "tnpm run lint"
+    "lint": "eslint --fix --ext .jsx --ext .js app client config webpack"
   },
   "author": "",
   "devDependencies": {

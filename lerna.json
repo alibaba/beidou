@@ -22,7 +22,8 @@
         "*.md",
         "test/**",
         "node_modules"
-      ]
+      ],
+      "message": "chore(release): publish %s"
     }
   },
   "npmClient": "yarn"
