@@ -1,5 +1,6 @@
 {
   "name": "beidou-docs",
+  "private": true,
   "version": "0.3.0",
   "description": "Document of Beidou",
   "main": "index.js",
