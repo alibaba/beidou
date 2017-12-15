@@ -46,6 +46,7 @@
     "webpack": "^1.13.2"
   },
   "files": [
+    "app",
     "lib",
     "config",
     "app.js"
