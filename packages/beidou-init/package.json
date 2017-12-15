@@ -11,12 +11,20 @@
   },
   "config": {
     "boilerplate": {
-      "Empty": {
-        "package": "beidou-template-empty",
+      "Simple": {
+        "package": "beidou-example-simple",
+        "description": "Simple beidou isomorphic app boilerplate"
+      },
+      "Redux": {
+        "package": "beidou-example-redux",
         "description": "Empty beidou isomorphic app boilerplate"
       },
-      "Simple": {
-        "package": "beidou-template-simple",
+      "css-modules": {
+        "package": "beidou-example-css-modules",
+        "description": "Simple beidou isomorphic app boilerplate"
+      },
+      "Advanced": {
+        "package": "beidou-example-advanced",
         "description": "Simple beidou isomorphic app boilerplate"
       }
     }
