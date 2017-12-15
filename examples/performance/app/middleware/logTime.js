@@ -1,7 +1,12 @@
 module.exports = () => function* (next) {
+  if (global && typeof global.__reqIndex === 'number') {
+    global.__reqIndex ++;
+  } else {
+    global.__reqIndex = 1;
+    global.__totleRenderTime = 0;
+  }
   const st = Date.now();
   yield next;
-  // app.logger.info('render time:', Date.now() - st);
-  // for performance test, use console.log instead
-  console.log('render time:', Date.now() - st, 'ms');
+  global.__totleRenderTime += Date.now() - st;
+  console.log(`The average rendering time for ${global.__reqIndex} requests is:`, (global.__totleRenderTime / global.__reqIndex).toFixed(2), 'ms');
 };
