@@ -35,6 +35,7 @@
     "supertest": "1"
   },
   "files": [
+    "app",
     "lib",
     "config",
     "app.js"
