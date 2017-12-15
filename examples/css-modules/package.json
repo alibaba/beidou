@@ -1,12 +1,10 @@
 {
   "name": "beidou-example-css-modules",
-  "version": "0.2.0",
+  "version": "0.3.3",
   "description": "beidou css modules example",
   "scripts": {
     "start": "./node_modules/.bin/node ./bin/server.js",
-    "lint": "./node_modules/.bin/eslint --fix --ext .jsx --ext .js app client config webpack",
-    "prepush": "tnpm run lint",
-    "precommit": "tnpm run lint"
+    "lint": "./node_modules/.bin/eslint --fix --ext .jsx --ext .js app client config webpack"
   },
   "author": "",
   "devDependencies": {
@@ -33,7 +31,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-beidou-client": "^0.1.0",
     "babel-preset-beidou-server": "^0.1.0",
-    "beidou-core": "^0.3.0",
+    "beidou-core": "^0.3.3",
     "classnames": "^2.2.3",
     "enums": "^1.0.0",
     "extend": "^3.0.0",

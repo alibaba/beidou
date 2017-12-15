@@ -1,6 +1,6 @@
 {
   "name": "beidou-init",
-  "version": "0.2.1",
+  "version": "0.3.2",
   "description": "beidou init helper",
   "main": "index.js",
   "scripts": {
@@ -11,13 +11,21 @@
   },
   "config": {
     "boilerplate": {
-      "Empty": {
-        "package": "beidou-template-empty",
-        "description": "Empty beidou isomorphic app boilerplate"
-      },
       "Simple": {
-        "package": "beidou-template-simple",
+        "package": "beidou-example-simple",
         "description": "Simple beidou isomorphic app boilerplate"
+      },
+      "Redux": {
+        "package": "beidou-example-redux",
+        "description": "Redux beidou isomorphic app boilerplate"
+      },
+      "CSS-MODULES": {
+        "package": "beidou-example-css-modules",
+        "description": "CSS-MODULES beidou isomorphic app boilerplate"
+      },
+      "Advanced": {
+        "package": "beidou-example-advanced",
+        "description": "Advanced beidou isomorphic app boilerplate"
       }
     }
   },

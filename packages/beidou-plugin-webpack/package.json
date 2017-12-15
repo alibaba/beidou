@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-webpack",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "webpack middleware",
   "eggPlugin": {
     "name": "webpack"
@@ -12,8 +12,10 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "babel-preset-beidou-client": "^0.1.0",
+    "babel-core": "^6.26.0",
     "babel-loader": "^7.0.0",
+    "babel-preset-beidou-client": "^0.1.0",
+    "css-loader": "^0.28.7",
     "debug": "^2.2.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "koa-webpack-dev-middleware": "^1.2.1",
@@ -22,7 +24,6 @@
     "memory-fs": "^0.4.1",
     "node-sass": "^4.5.3",
     "request": "^2.81.0",
-    "css-loader": "^0.28.7",
     "sass-loader": "^6.0.6",
     "sdk-base": "^2.0.1",
     "style-loader": "^0.19.0",
@@ -66,6 +67,7 @@
     "history": "egg-bin history CHANGELOG.md"
   },
   "bin": {
+    "beidou-build": "./bin/build.js",
     "webpack-build": "./bin/build.js"
   },
   "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"

@@ -1,5 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
 .gitignore
-.idea/
+.idea
 .tmp
 coverage
 node_modules/
@@ -13,5 +14,5 @@ test
 .eslintrc
 .eslintignore
 .editorconfig
-docs
+build.sh
 

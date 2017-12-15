@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-router",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "beidou auto router",
   "eggPlugin": {
     "name": "router"
@@ -35,6 +35,7 @@
     "supertest": "1"
   },
   "files": [
+    "app",
     "lib",
     "config",
     "app.js"

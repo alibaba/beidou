@@ -1,17 +1,16 @@
 {
-  "name": "beidou-example-reudx",
-  "version": "0.2.0",
+  "name": "beidou-example-redux",
+  "version": "0.3.4",
   "description": "beidou css modules template",
   "scripts": {
-    "start": "./node_modules/.bin/node ./bin/server.js",
-    "lint": "./node_modules/.bin/eslint --fix --ext .jsx --ext .js app client config webpack",
-    "prepush": "tnpm run lint",
-    "precommit": "tnpm run lint"
+    "start": "node ./bin/server.js",
+    "build": "beidou-build",
+    "lint": "eslint --fix --ext .jsx --ext .js app client config webpack"
   },
   "author": "",
   "dependencies": {
     "babel-loader": "^7.1.1",
-    "beidou-core": "^0.3.0",
+    "beidou-core": "^0.3.3",
     "classnames": "^2.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -24,6 +23,8 @@
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
+    "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
     "css-loader": "~0.23.1",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.0",
@@ -36,8 +37,6 @@
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
-    "babel-preset-beidou-client": "^0.1.0",
-    "babel-preset-beidou-server": "^0.1.0",
     "webpack-hot-middleware": "^2.20.0"
   },
   "engines": {

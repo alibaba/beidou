@@ -1,13 +1,11 @@
 {
   "name": "beidou-example-advanced",
-  "version": "0.0.1",
+  "version": "0.3.3",
   "description": "beidou example advanced",
   "scripts": {
     "start": "node ./bin/server.js",
     "lint": "eslint --fix --ext .jsx --ext .js app client config webpack",
-    "build": "webpack-build",
-    "prepush": "tnpm run lint",
-    "precommit": "tnpm run lint"
+    "build": "webpack-build"
   },
   "author": "",
   "devDependencies": {
@@ -20,7 +18,7 @@
   "dependencies": {
     "babel-preset-beidou-client": "^0.1.0",
     "babel-preset-beidou-server": "^0.1.0",
-    "beidou-core": "^0.3.0",
+    "beidou-core": "^0.3.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },

@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-react",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "description": "beidou view react",
   "eggPlugin": {
     "name": "react"
@@ -45,11 +45,8 @@
     "supertest": "1",
     "webpack": "^1.13.2"
   },
-  "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
-  },
   "files": [
+    "app",
     "lib",
     "config",
     "app.js"

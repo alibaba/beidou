@@ -6,7 +6,7 @@ Init beidou app helper tools.
 ## Install
 
 ```bash
-$ tnpm install beidou-init -g
+$ npm install beidou-init -g
 ```
 
 ## Initialize
@@ -21,7 +21,9 @@ $ beidou init
 $ beidou init
 ? Please select a boilerplate type (Use arrow keys)
 ❯ Simple - Simple beidou isomorphic app boilerplate
-  Empty - Empty beidou isomorphic app boilerplate
+  Redux - Redux beidou isomorphic app boilerplate
+  CSS-MODULES - css-modules beidou isomorphic app boilerplate
+  Advanced - Advanced beidou isomorphic app boilerplate
 ```
 
 ## start
