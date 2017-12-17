@@ -5,7 +5,7 @@ Before read it, we first introduce some built-in basic objects in the framework,
 
 ## Application
 
-Application is a global application object, an application only instantiate one Application, it inherited from [Koa.Application], we can mount some global methods and objects on it. We can easily [extended Application object] (./extend.md#Application) in plugin or application.
+Application is a global application object, an application only instantiate one Application, it inherited from [Koa.Application], we can mount some global methods and objects on it. We can easily [extended Application object](./extend.md#Application) in plugin or application.
 
 ### How to Get
 
