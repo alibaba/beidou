@@ -2,7 +2,7 @@
 
 > 本文发表于[北斗同构github](https://github.com/alibaba/beidou/blob/master/packages/beidou-docs/articles/node-memory-leak.md), 转载请注明出处
 
-注： 本文为[D2《打造高可靠与高性能的React同构解决方案》](http://d2forum.alibaba-inc.com/#/index?_k=43090s)分享配套文章，已经过数据脱敏处理。
+注： 本文为[第12届D2前端技术论坛《打造高可靠与高性能的React同构解决方案》](http://d2forum.alibaba-inc.com/)分享内容，已经过数据脱敏处理。
 
 ## 前言
 
