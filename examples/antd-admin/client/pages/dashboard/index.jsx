@@ -22,7 +22,6 @@ export default class RouteView extends View {
 
     static getStore() {
       const store = configureStore(reducers, saga);
-      console.log(store.getState());
       return store;
     }
 

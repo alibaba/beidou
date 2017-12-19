@@ -15,6 +15,12 @@ module.exports = {
       assets: ['.less', '.png'],
     },
   },
+  react: {
+    static: true,
+    cache: true,
+    beautify: false,
+    assetPath: '/public',
+  },
   security: {
     domainWhiteList: [
       'localhost:6001',
@@ -25,5 +31,9 @@ module.exports = {
     maxAge: 1 * 3600 * 1000, // 1 hour
     httpOnly: true,
     encrypt: true,
+  },
+
+  static: {
+    dir: path.join(__dirname, '../build/'),
   },
 };
