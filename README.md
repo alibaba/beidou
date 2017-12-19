@@ -9,7 +9,7 @@ Isomorphic framework for server-rendered React apps
 [npm-url]: https://npmjs.org/package/beidou-core
 [quality-image]: http://npm.packagequality.com/shield/beidou-core.svg?style=flat-square
 [quality-url]: http://packagequality.com/#?package=beidou-core
-[travis-image]: https://img.shields.io/travis/alibaba/beidou.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/alibaba/beidou.svg?style=flat-square&branch=master
 [travis-url]: https://travis-ci.org/alibaba/beidou
 [codecov-image]: https://img.shields.io/codecov/c/github/alibaba/beidou.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/alibaba/beidou
