@@ -35,20 +35,18 @@ const changedTpl = `'use strict';
   var Container = require('../../../client/container');
   var Layout = require('../layout');
 
-  module.exports = React.createClass({
-      render() {
-          var Provider = ReactRedux.Provider;
-          var newProps = Object.assign({}, this.props);
-          newProps.title = 'test';
-          return (
-              <Layout {...newProps}>
-                  <Provider store={ this.props.store }>
-                    <Container />
-                  </Provider>
-              </Layout>
-          );
-      }
-  });`;
+  module.exports = (props) => {
+    var Provider = ReactRedux.Provider;
+    var newProps = Object.assign({}, props);
+    newProps.title = 'test';
+    return (
+        <Layout {...newProps}>
+            <Provider store={ props.store }>
+              <Container />
+            </Provider>
+        </Layout>
+    );
+}`;
 
 describe('test/view.test.js', () => {
   describe('view render cache', () => {
@@ -115,7 +113,7 @@ describe('test/view.test.js', () => {
       mm(app.config.react, 'static', false);
       request(app.callback())
         .get('/')
-        .expect(/data-reactid/)
+        .expect(/data-reactroot/)
         .expect(200, done);
     });
 

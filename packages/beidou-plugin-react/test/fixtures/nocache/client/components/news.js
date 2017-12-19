@@ -1,21 +1,17 @@
 
 var React = require('react');
 
-var News = React.createClass({
-	propTypes: {
-    name: React.PropTypes.string,
-  },
-
+class News extends React.Component {
   getDefaultProps() {
     return {
       name: '',
     };
-  },
+  }
 
   render() {
 		return <div>{this.props.data.name}</div>;
 	}
 
-});
+};
 
 module.exports = News;
