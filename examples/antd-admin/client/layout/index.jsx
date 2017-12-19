@@ -30,8 +30,8 @@ export class View extends React.Component {
           <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
           <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__ = ${state}` }} />
           <script src="https://unpkg.com/moment@2.19.4/moment.js" />
-          <script src="https://unpkg.com/react@16.2.0/umd/react.development.js" />
-          <script src="https://unpkg.com/react-dom@16.2.0/umd/react-dom.development.js" />
+          <script src="https://unpkg.com/react@16.2.0/umd/react.production.min.js" />
+          <script src="https://unpkg.com/react-dom@16.2.0/umd/react-dom.production.min.js" />
           <script src="https://unpkg.com/antd@3.0.1/dist/antd.min.js" />
           <script src={helper.asset('manifest.js')} />
           <script src={helper.asset(`${asset}.js`)} />
