@@ -14,7 +14,7 @@ describe('test/lib/core/worker/worker.test.js', () => {
   after(() => app.close());
 
   describe('app.beidouDeprecate()', () => {
-    it('should get deprecate with namespace beidou', async () => {
+    it('should get deprecate with namespace beidou', () => {
       const deprecate = app.beidouDeprecate;
       assert(deprecate._namespace === 'beidou');
       assert(deprecate === app.beidouDeprecate);
