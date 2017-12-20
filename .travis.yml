@@ -2,11 +2,10 @@ sudo: false
 language: node_js
 node_js:
   - '6'
-  - '7'
   - '8'
+  - '9'
 install:
-  - npm i
-  - npm i codecov lerna && lerna bootstrap
+  - yarn
 script:
   - npm run ci
 after_script:
