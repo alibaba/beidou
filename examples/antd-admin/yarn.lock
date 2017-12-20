@@ -141,10 +141,6 @@ antd@^3.0.2:
     shallowequal "^1.0.1"
     warning "~3.0.0"
 
-any-promise@^1.0.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
-
 anymatch@^1.3.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-1.3.2.tgz#553dcb8f91e3c889845dfdba34c77721b90b9d7a"
@@ -1400,10 +1396,6 @@ contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
 
-copy-to@~2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/copy-to/-/copy-to-2.0.1.tgz#2680fbb8068a48d08656b6098092bdafc906f4a5"
-
 core-js@2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
@@ -1416,7 +1408,7 @@ core-js@^2.4.0:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
 
-core-util-is@1.0.2, core-util-is@^1.0.2, core-util-is@~1.0.0:
+core-util-is@1.0.2, core-util-is@^1.0.1, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
@@ -1820,11 +1812,11 @@ echarts@>=3.8.2, echarts@^3.7.2:
   dependencies:
     zrender "3.7.4"
 
-egg-userrole@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/egg-userrole/-/egg-userrole-2.0.0.tgz#5347b3fc0a3f11c50fec219c135c6f7072bccf80"
+egg-userrole@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/egg-userrole/-/egg-userrole-1.1.2.tgz#0bf3860653ce77e5afb3bd0fcf101c20ed47508a"
   dependencies:
-    koa-roles "^2.0.0"
+    koa-roles "^1.0.3"
 
 egg-validate@^1.0.0:
   version "1.0.0"
@@ -1962,10 +1954,6 @@ es6-weak-map@^2.0.1:
     es5-ext "^0.10.14"
     es6-iterator "^2.0.1"
     es6-symbol "^3.1.1"
-
-escape-html@~1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -2715,10 +2703,6 @@ is-ci@^1.0.9:
   dependencies:
     ci-info "^1.0.0"
 
-is-class@~0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/is-class/-/is-class-0.0.4.tgz#e057451705bb34e39e3e33598c93a9837296b736"
-
 is-date-object@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-date-object/-/is-date-object-1.0.1.tgz#9aa20eb6aeebbff77fbd33e74ca01b33581d3a16"
@@ -2835,13 +2819,12 @@ is-symbol@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-symbol/-/is-symbol-1.0.1.tgz#3cc59f00025194b6ab2e38dbae6689256b660572"
 
-is-type-of@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/is-type-of/-/is-type-of-1.2.0.tgz#b553cbb4621adf5b4171e8883f370e7a6ec38995"
+is-type-of@~0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/is-type-of/-/is-type-of-0.3.1.tgz#bfabd0730cd3f718e48d2140d7548ddedd36055f"
   dependencies:
-    core-util-is "^1.0.2"
-    is-class "~0.0.4"
-    isstream "~0.1.2"
+    core-util-is "^1.0.1"
+    isstream "^0.1.0"
 
 is-typedarray@~1.0.0:
   version "1.0.0"
@@ -2872,7 +2855,7 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isstream@~0.1.2:
+isstream@^0.1.0, isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
@@ -2981,11 +2964,11 @@ kind-of@^4.0.0:
   dependencies:
     is-buffer "^1.1.5"
 
-koa-roles@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/koa-roles/-/koa-roles-2.0.0.tgz#3974580a03ba3356fbfddd94546f14006678efc0"
+koa-roles@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/koa-roles/-/koa-roles-1.0.3.tgz#3220d57d5da4c21bd25be7dca8bf6d23535f0a79"
   dependencies:
-    is-type-of "^1.2.0"
+    is-type-of "~0.3.1"
 
 lazy-cache@^1.0.3:
   version "1.0.4"
@@ -3293,14 +3276,6 @@ ms@2.0.0:
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
-
-mz@~2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/mz/-/mz-2.7.0.tgz#95008057a56cafadc2bc63dde7f9ff6955948e32"
-  dependencies:
-    any-promise "^1.0.0"
-    object-assign "^4.0.1"
-    thenify-all "^1.0.0"
 
 nan@^2.3.0:
   version "2.8.0"
@@ -5110,18 +5085,6 @@ text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-thenify-all@^1.0.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/thenify-all/-/thenify-all-1.6.0.tgz#1a1918d402d8fc3f98fbf234db0bcc8cc10e9726"
-  dependencies:
-    thenify ">= 3.1.0 < 4"
-
-"thenify@>= 3.1.0 < 4":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/thenify/-/thenify-3.3.0.tgz#e69e38a1babe969b0108207978b9f62b88604839"
-  dependencies:
-    any-promise "^1.0.0"
-
 through@^2.3.6:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
@@ -5262,15 +5225,6 @@ util@0.10.3, util@^0.10.3:
   resolved "https://registry.yarnpkg.com/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
   dependencies:
     inherits "2.0.1"
-
-utility@^1.13.1:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/utility/-/utility-1.13.1.tgz#9d72e145e49e4c5a21f2c307b0baf575235023f4"
-  dependencies:
-    copy-to "~2.0.1"
-    escape-html "~1.0.3"
-    mkdirp "~0.5.1"
-    mz "~2.7.0"
 
 uuid@^3.0.0:
   version "3.1.0"

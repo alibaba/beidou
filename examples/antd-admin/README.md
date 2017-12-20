@@ -1,5 +1,10 @@
-Beidou template Antd Admin
+Beidou template Antd Admin ( :pencil2: In development
+ )
 =================
+
+Living Demo: <http://antd.vfore.me>
+
+Inspired by: zuiidea's [Antd Admin](https://github.com/zuiidea/antd-admin);
 
 ### Install
 
@@ -10,7 +15,7 @@ $ yarn install
 ### Start  
 
 ``` 
-$ npm run start
+$ npm start
 ```  
 
 then go to http://127.0.0.1:6001/
@@ -25,3 +30,4 @@ then go to http://127.0.0.1:6001/
 ## License
 
 [MIT](LICENSE)
+

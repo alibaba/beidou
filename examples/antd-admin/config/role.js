@@ -1,12 +1,14 @@
 module.exports = (app) => {
-  app.role.failureHandler = function (ctx) {
-    if (ctx.acceptJSON) {
-      ctx.body = { stat: 'deny' };
+  app.role.failureHandler = function () {
+    if (this.acceptJSON) {
+      this.body = { stat: 'deny' };
     } else {
-      ctx.realStatus = 200;
-      ctx.redirect(`/login${ctx.request.search}`);
+      this.realStatus = 200;
+      this.redirect(`/login${this.request.search}`);
     }
   };
 
-  app.role.use('user', ctx => ctx.session.user !== null);
+  app.role.use('user', function () {
+    return this.session.user !== null;
+  });
 };
