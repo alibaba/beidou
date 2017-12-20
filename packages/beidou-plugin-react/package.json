@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-react",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "beidou view react",
   "eggPlugin": {
     "name": "react"

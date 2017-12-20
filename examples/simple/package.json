@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-simple",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "beidou example simple",
   "scripts": {
     "start": "node ./bin/server.js",
@@ -26,7 +26,7 @@
   "dependencies": {
     "babel-preset-beidou-client": "^0.1.0",
     "babel-preset-beidou-server": "^0.1.0",
-    "beidou-core": "^0.3.3",
+    "beidou-core": "^0.3.5",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
