@@ -5,15 +5,13 @@ var ReactRedux = require('react-redux');
 var Container = require('../client/container');
 var Layout = require('./layout');
 
-module.exports = React.createClass({
-	render() {
-		var Provider = ReactRedux.Provider;
-		return (
-			<Layout data={this.props}>
-				<Provider store={ this.props.store }>
-				  <Container />
-				</Provider>
-			</Layout>
-		);
-	}
-});
+module.exports = (props) => {
+	var Provider = ReactRedux.Provider;
+	return (
+		<Layout data={props}>
+			<Provider store={ props.store }>
+				<Container />
+			</Provider>
+		</Layout>
+	);
+}

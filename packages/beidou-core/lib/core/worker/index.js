@@ -1,6 +1,5 @@
 const path = require('path');
 const egg = require('egg');
-// const escapeRegExp = require('lodash/escapeRegExp');
 const AppWorkerLoader = require('../loaders/app-worker-loader');
 
 const DEPRECATE = Symbol('BeidouApplication#deprecate');
@@ -35,14 +34,6 @@ class BeidouApplication extends egg.Application {
       this[DEPRECATE] = require('depd')('beidou');
     }
     return this[DEPRECATE];
-  }
-
-  /*
-   * override dumpConfig of egg, do it inside agent
-   * @private
-   */
-  dumpConfig() {
-
   }
 }
 

@@ -464,4 +464,31 @@ describe('test/plugin.test.js', () => {
         .expect(204, done);
     });
   });
+
+  describe('alias resolve', () => {
+    let app;
+    before((done) => {
+      app = mm.cluster({
+        baseDir: './alias',
+        plugin: 'isomorphic',
+        framework: frameworkPath
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should return content of file defined in alias', (done) => {
+      request(app.callback())
+        .get('/')
+        .expect('alias file content')
+        .expect(200, done);
+    });
+  });
 });

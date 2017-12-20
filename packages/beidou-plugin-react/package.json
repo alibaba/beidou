@@ -1,6 +1,6 @@
 {
   "name": "beidou-plugin-react",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "beidou view react",
   "eggPlugin": {
     "name": "react"
@@ -37,8 +37,8 @@
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.0",
     "husky": "^0.13.4",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^4.0.0",
     "redux": "~3.3.1",
     "should": "8",

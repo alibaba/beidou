@@ -1,0 +1,11 @@
+.idea
+.tmp
+coverage
+node_modules/
+logs
+npm-debug.log
+test
+.DS_Store
+.nyc_output
+run
+

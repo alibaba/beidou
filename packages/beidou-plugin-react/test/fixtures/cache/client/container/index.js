@@ -3,7 +3,7 @@ var ReactRedux = require('react-redux');
 var News = require('../components/news');
 
 
-var App = React.createClass({
+class App extends React.Component {
 
 	render() {
 		return (
@@ -12,7 +12,7 @@ var App = React.createClass({
 			</div>
 		);
 	}
-}) 
+}
 
 function mapStateToProps(state) {
   return {

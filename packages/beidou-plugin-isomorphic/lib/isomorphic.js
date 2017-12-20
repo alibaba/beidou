@@ -3,6 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const Module = require('module');
+const resolveAlias = require('./alias');
 
 function requireAssetsJson(filepath, logger) {
   let json = {};
@@ -41,6 +42,15 @@ module.exports = function (app) {
   const baseDir = app.config.baseDir;
 
   const logger = app.logger;
+
+  if (isomorphic.alias) {
+    const alias = isomorphic.alias;
+    if (alias && Object.keys(alias).length > 0) {
+      app.logger.info('[beidou:plugin:isomorphic] isomorphic.alias detected: %o', alias);
+      resolveAlias(alias);
+    }
+  }
+
   if (isomorphic.universal) {
     const universal = Object.assign({
       context: baseDir,

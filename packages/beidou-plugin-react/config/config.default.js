@@ -1,4 +1,4 @@
-'use strict';
+const path = require('path');
 
 module.exports = (appInfo) => {
   const config = {};
@@ -20,7 +20,7 @@ module.exports = (appInfo) => {
   config.view = {
     defaultViewEngine: 'react',
     defaultExtension: '.jsx',
-    root: `${appInfo.baseDir}/app/views,${appInfo.baseDir}/client`,
+    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(appInfo.baseDir, 'client')}`,
   };
 
   return config;

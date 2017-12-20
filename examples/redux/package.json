@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-redux",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "beidou css modules template",
   "scripts": {
     "start": "node ./bin/server.js",
@@ -10,7 +10,7 @@
   "author": "",
   "dependencies": {
     "babel-loader": "^7.1.1",
-    "beidou-core": "^0.3.3",
+    "beidou-core": "^0.3.5",
     "classnames": "^2.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
