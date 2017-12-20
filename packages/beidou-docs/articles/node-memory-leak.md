@@ -171,4 +171,6 @@ createAmapScript(){
 * 不支持SSR的组件放到componentDidMount中，同理，createElement、appendChild等dom原生操作也放到componentDidMount中
 * 其它详见[同构注意事项](https://github.com/alibaba/beidou/blob/master/packages/beidou-docs/advanced/attentions.md)
 
+### 备注
 
+* alinode 是 Node.js 性能平台 在阿里内部的名称，非阿里内部的用户可以通过 https://node.console.aliyun.com/ 访问使用。
