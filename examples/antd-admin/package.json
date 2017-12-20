@@ -19,7 +19,6 @@
     "echarts-for-react": "^2.0.0",
     "echarts-gl": "^1.0.0-beta.5",
     "echarts-liquidfill": "^1.1.0",
-    "egg-rest": "^2.0.0",
     "egg-validate": "^1.0.0",
     "egg-userrole": "^2.0.0",
     "js-cookie": "^2.2.0",

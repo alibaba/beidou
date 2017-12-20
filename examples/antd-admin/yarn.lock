@@ -1820,13 +1820,6 @@ echarts@>=3.8.2, echarts@^3.7.2:
   dependencies:
     zrender "3.7.4"
 
-egg-rest@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/egg-rest/-/egg-rest-2.0.0.tgz#5539574f8bb3c8ca375f7e23467a2e8efbb20b8e"
-  dependencies:
-    debug "^3.1.0"
-    utility "^1.13.1"
-
 egg-userrole@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/egg-userrole/-/egg-userrole-2.0.0.tgz#5347b3fc0a3f11c50fec219c135c6f7072bccf80"
