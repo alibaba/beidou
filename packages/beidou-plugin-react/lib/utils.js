@@ -1,4 +1,3 @@
-
 const normalizeUrl = require('normalizeurl');
 const isGeneratorFunction = require('is-generator-function');
 

@@ -1,4 +1,3 @@
-
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('beidou:plugin:webpack');

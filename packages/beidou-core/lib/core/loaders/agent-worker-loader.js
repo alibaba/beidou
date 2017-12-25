@@ -1,10 +1,8 @@
-
-
 const path = require('path');
 const egg = require('egg');
 
 /**
- * Agent Worker 进程的 Loader，继承 Egg.AgentWorkerLoader
+ * Agent Worker Loader, extend Egg.AgentWorkerLoader
  * @extends Egg.AgentWorkerLoader
  */
 class BeidouAgentWorkerLoader extends egg.AgentWorkerLoader {
@@ -19,7 +17,7 @@ class BeidouAgentWorkerLoader extends egg.AgentWorkerLoader {
 
 
   /**
-  * 检测开发态插件，目前egg约束所有插件都必须放到dependencies里
+  * check plugins, all plugins must be installed in dependency
   */
   checkDevPlugins() {
     const appPkg = require(path.join(this.options.baseDir, './package.json'));

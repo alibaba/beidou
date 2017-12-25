@@ -1,4 +1,3 @@
-
 module.exports = (app) => {
   class ContactService extends app.Service {
     * list() {
