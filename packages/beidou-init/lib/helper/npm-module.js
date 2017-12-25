@@ -1,5 +1,3 @@
-
-
 const spawn = require('cross-spawn');
 
 const cwd = process.cwd();

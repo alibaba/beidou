@@ -1,6 +1,4 @@
-
 const { concatUrl, normalizeUrl } = require('../../lib/utils');
-
 
 const helper = {
   /**

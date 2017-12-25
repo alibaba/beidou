@@ -1,4 +1,3 @@
-
 const fs = require('mz/fs');
 const path = require('path');
 const globToRegExp = require('glob-to-regexp');
