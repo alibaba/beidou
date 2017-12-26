@@ -110,6 +110,14 @@ After that, go to `http://localhost:6001/`
 
 ![isomorphic vs performance](http://img.alicdn.com/tfs/TB172JBhb_I8KJjy1XaXXbsxpXa-1762-818.png)
 
+## Need Help?
+
+Please let us know how can we help. Do check out [issues](https://github.com/alibaba/beidou/issues) for bug reports or suggestions first.
+
+DingTalk & Wechat group supported
+
+![](https://img.alicdn.com/tfs/TB1dOJhkf6H8KJjy0FjXXaXepXa-700-429.png)
+
 ## License
 
 [MIT](LICENSE)
