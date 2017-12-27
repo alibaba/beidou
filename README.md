@@ -3,6 +3,7 @@ Isomorphic framework for server-rendered React apps
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
+[![NPM Downloads][download-img]][npm-url]
 [![Gitter][gitter-image]][gitter-url]
 
 [npm-image]: https://img.shields.io/npm/v/beidou-core.svg?style=flat-square
@@ -13,8 +14,11 @@ Isomorphic framework for server-rendered React apps
 [travis-url]: https://travis-ci.org/alibaba/beidou
 [codecov-image]: https://img.shields.io/codecov/c/github/alibaba/beidou.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/alibaba/beidou
+[download-img]: https://img.shields.io/npm/dm/beidou-core.svg
 [gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg?style=flat-square
 [gitter-url]: https://gitter.im/alibaba/beidou
+
+
 
 ## Features
 
