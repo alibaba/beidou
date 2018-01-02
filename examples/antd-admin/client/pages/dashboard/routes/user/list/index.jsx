@@ -20,7 +20,7 @@ const List = ({ onDeleteItem, onEditItem, isMotion, location, ...tableProps }) =
       confirm({
         title: 'Are you sure delete this record?',
         onOk() {
-          onDeleteItem(record.id);
+          onDeleteItem(record);
         },
       });
     }

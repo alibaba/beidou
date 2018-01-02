@@ -6,27 +6,25 @@ module.exports = (app) => {
   };
 
   class LoginController extends app.Controller {
-    * doLogin() { // eslint-disable-line
+    * doLogin() {
       const ctx = this.ctx;
       ctx.validate(loginRule);
 
-      const data = ctx.request.body;
-      debugger; // eslint-disable-line
-      if (data.username === 'beidou' && data.password === 'admin') {
-        ctx.session.user = {
-          username: 'guest',
-          loginAt: Date.now(),
-        };
+      const { username, password } = ctx.request.body;
+      if (username && password) {
+        const user = yield this.service.user.find(username, password);
+        if (user) {
+          ctx.session.user = user;
 
-        ctx.body = {
-          success: true,
-        };
-      } else {
-        ctx.body = {
-          success: false,
-        };
+          ctx.body = {
+            success: true,
+          };
+        } else {
+          ctx.body = {
+            success: false,
+          };
+        }
       }
-
       ctx.status = 200;
     }
 
@@ -36,7 +34,7 @@ module.exports = (app) => {
 
     * logout() { // eslint-disable-line
       const ctx = this.ctx;
-      ctx.session.user = null;
+      ctx.session.user = undefined;
 
       ctx.redirect(`/login${ctx.request.search}`);
     }

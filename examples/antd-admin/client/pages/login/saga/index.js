@@ -9,17 +9,22 @@ export const sagaMiddleware = createSagaMiddleware();
 
 function* login({ payload: { username, password } }) {
   yield put(actions.loading());
-  const res = yield axios.post('login', {
-    username,
-    password,
-  });
-  if (res.statusText === 'OK' && res.data.success) {
-    yield put(actions.logined());
-    setTimeout(() => {
-      window.location.href = queryString.parse(window.location.search).r;
-    }, 1000);
-  } else {
-    yield put(actions.rejected(res.data.message || 'Error password or username'));
+  try {
+    const res = yield axios.post('login', {
+      username,
+      password,
+    });
+    if (res.statusText === 'OK' && res.data.success) {
+      yield put(actions.logined());
+      setTimeout(() => {
+        const url = queryString.parse(window.location.search).r || '/dashboard';
+        window.location.href = url;
+      }, 1000);
+    } else {
+      yield put(actions.rejected(res.data.message || 'Error password or username'));
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 

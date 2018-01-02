@@ -23,12 +23,14 @@ export class View extends React.Component {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="description" content="A admin dashboard application demo built upon Ant Design and Beidou" />
           <title>{title}</title>
+          <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" />
           <link rel="stylesheet" href="https://unpkg.com/antd@3.0.1/dist/antd.min.css" />
           <link rel="stylesheet" href={helper.asset(`${asset}.css`)} />
         </head>
         <body>
           <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
           <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__ = ${state}` }} />
+          <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js" />
           <script src="https://unpkg.com/moment@2.19.4/moment.js" />
           <script src="https://unpkg.com/react@16.2.0/umd/react.production.min.js" />
           <script src="https://unpkg.com/react-dom@16.2.0/umd/react-dom.production.min.js" />

@@ -48,11 +48,8 @@ const User = ({ location, history, dispatch, user }) => {
         },
       }));
     },
-    onDeleteItem(id) {
-      dispatch({
-        type: 'user/delete',
-        payload: id,
-      });
+    onDeleteItem(item) {
+      dispatch(actions.user.delete(item));
     },
     onEditItem(item) {
       dispatch({

@@ -9,6 +9,7 @@ import reducers from './reducers';
 import saga, { run } from './saga';
 import routes from './routes';
 import Layout from './layout';
+import actions from './actions';
 
 import './index.less';
 
@@ -20,8 +21,10 @@ export default class RouteView extends View {
       asset: 'main',
     }
 
-    static getStore() {
+    static getStore = function* ({ ctx }) {
       const store = configureStore(reducers, saga);
+      const users = yield ctx.service.user.findAll();
+      store.dispatch(actions.user.fetchSuccess(users));
       return store;
     }
 

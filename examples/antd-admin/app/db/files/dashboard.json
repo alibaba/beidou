@@ -1,0 +1,446 @@
+[{
+  "_id": "414d3205648c0158eb16d434ce0ee399",
+  "sales": [{
+    "name": 2008,
+    "Clothes": 218,
+    "Food": 381,
+    "Electronics": 460
+  }, {
+    "name": 2009,
+    "Clothes": 393,
+    "Food": 189,
+    "Electronics": 364
+  }, {
+    "name": 2010,
+    "Clothes": 412,
+    "Food": 387,
+    "Electronics": 382
+  }, {
+    "name": 2011,
+    "Clothes": 451,
+    "Food": 203,
+    "Electronics": 527
+  }, {
+    "name": 2012,
+    "Clothes": 231,
+    "Food": 383,
+    "Electronics": 457
+  }, {
+    "name": 2013,
+    "Clothes": 393,
+    "Food": 249,
+    "Electronics": 505
+  }, {
+    "name": 2014,
+    "Clothes": 351,
+    "Food": 257,
+    "Electronics": 496
+  }, {
+    "name": 2015,
+    "Clothes": 226,
+    "Food": 254,
+    "Electronics": 448
+  }],
+  "cpu": {
+    "usage": 446,
+    "space": 825,
+    "cpu": 81,
+    "data": [{
+      "cpu": 24
+    }, {
+      "cpu": 48
+    }, {
+      "cpu": 48
+    }, {
+      "cpu": 25
+    }, {
+      "cpu": 57
+    }, {
+      "cpu": 70
+    }, {
+      "cpu": 32
+    }, {
+      "cpu": 67
+    }, {
+      "cpu": 20
+    }, {
+      "cpu": 57
+    }, {
+      "cpu": 48
+    }, {
+      "cpu": 76
+    }, {
+      "cpu": 48
+    }, {
+      "cpu": 34
+    }, {
+      "cpu": 71
+    }, {
+      "cpu": 66
+    }, {
+      "cpu": 58
+    }, {
+      "cpu": 39
+    }, {
+      "cpu": 63
+    }, {
+      "cpu": 50
+    }]
+  },
+  "browser": [{
+    "name": "Google Chrome",
+    "percent": 43.3,
+    "status": 1
+  }, {
+    "name": "Mozilla Firefox",
+    "percent": 33.4,
+    "status": 2
+  }, {
+    "name": "Apple Safari",
+    "percent": 34.6,
+    "status": 3
+  }, {
+    "name": "Internet Explorer",
+    "percent": 12.3,
+    "status": 4
+  }, {
+    "name": "Opera Mini",
+    "percent": 3.3,
+    "status": 1
+  }, {
+    "name": "Chromium",
+    "percent": 2.53,
+    "status": 1
+  }],
+  "user": {
+    "name": "zuiidea",
+    "email": "zuiiidea@.gmail.com",
+    "sales": 3241,
+    "sold": 3556,
+    "avatar": "http://tva4.sinaimg.cn/crop.0.0.996.996.180/6ee6a3a3jw8f0ks5pk7btj20ro0rodi0.jpg"
+  },
+  "completed": [{
+    "name": 2008,
+    "Task complete": 397,
+    "Cards Complete": 913
+  }, {
+    "name": 2009,
+    "Task complete": 273,
+    "Cards Complete": 865
+  }, {
+    "name": 2010,
+    "Task complete": 226,
+    "Cards Complete": 566
+  }, {
+    "name": 2011,
+    "Task complete": 423,
+    "Cards Complete": 511
+  }, {
+    "name": 2012,
+    "Task complete": 993,
+    "Cards Complete": 871
+  }, {
+    "name": 2013,
+    "Task complete": 407,
+    "Cards Complete": 249
+  }, {
+    "name": 2014,
+    "Task complete": 306,
+    "Cards Complete": 215
+  }, {
+    "name": 2015,
+    "Task complete": 726,
+    "Cards Complete": 337
+  }, {
+    "name": 2016,
+    "Task complete": 842,
+    "Cards Complete": 441
+  }, {
+    "name": 2017,
+    "Task complete": 841,
+    "Cards Complete": 207
+  }, {
+    "name": 2018,
+    "Task complete": 288,
+    "Cards Complete": 574
+  }, {
+    "name": 2019,
+    "Task complete": 525,
+    "Cards Complete": 488
+  }],
+  "comments": [{
+    "name": "Young",
+    "status": 3,
+    "content": "Mokrgg fifjkv sodsg dekjcev rtvgyoif twygggivk mmicccaecs ytdrpcwjr dvt vqeeknvmsh gweyawhjeu ffquwn ccbhankrrs nfffo gxaes yegh wvseoonbx.",
+    "avatar": "http://dummyimage.com/48x48/f2ea79/757575.png&text=Y",
+    "date": "2016-11-25 03:48:31"
+  }, {
+    "name": "Anderson",
+    "status": 2,
+    "content": "Qugbqpd ntnefe myxiyghv umcefljy uwa wyfdhqpy afdjmc ijaseknkt ouhkvhjuf yxdrdme fuqevll wkdwgxk oxfdc enool rcfbvcdl.",
+    "avatar": "http://dummyimage.com/48x48/c679f2/757575.png&text=A",
+    "date": "2016-04-28 04:41:22"
+  }, {
+    "name": "Hernandez",
+    "status": 1,
+    "content": "Exetthwjjo tsikinow jcm dfmgao zmhohytlvc hnoadvt dzdu fbbuclfmk ihekxx piubgfnf noehu lpvrf rolswulcgg lofrymx uanbddxs exbdz ltpearih dlqafqccsd.",
+    "avatar": "http://dummyimage.com/48x48/79f2a3/757575.png&text=H",
+    "date": "2016-08-03 18:42:47"
+  }, {
+    "name": "Harris",
+    "status": 2,
+    "content": "Orkkw aunwa xqln kmau oksmxesrt uif uhbjwg lxmnxr jljrcyyup iqucbsih mhfxl osmf.",
+    "avatar": "http://dummyimage.com/48x48/f28079/757575.png&text=H",
+    "date": "2016-09-12 12:00:37"
+  }, {
+    "name": "Jones",
+    "status": 2,
+    "content": "Gmwibg clygg bpxdjuv ytioscxdx xhznqi ixxml oblawmedi iqfnyvxyyr vjynmbn jyjzm mooh eplh mivhkqep inxhi.",
+    "avatar": "http://dummyimage.com/48x48/7995f2/757575.png&text=J",
+    "date": "2016-02-19 18:12:45"
+  }],
+  "recentSales": [{
+    "id": 1,
+    "name": "Hernandez",
+    "status": 4,
+    "price": 137.2,
+    "date": "2015-05-20 05:42:46"
+  }, {
+    "id": 2,
+    "name": "Moore",
+    "status": 2,
+    "price": 176.92,
+    "date": "2015-03-17 19:36:51"
+  }, {
+    "id": 3,
+    "name": "Williams",
+    "status": 3,
+    "price": 178.5,
+    "date": "2015-09-04 12:23:47"
+  }, {
+    "id": 4,
+    "name": "Williams",
+    "status": 2,
+    "price": 32.46,
+    "date": "2016-05-21 03:36:41"
+  }, {
+    "id": 5,
+    "name": "Hernandez",
+    "status": 4,
+    "price": 20.7,
+    "date": "2015-09-01 12:06:27"
+  }, {
+    "id": 6,
+    "name": "Lee",
+    "status": 2,
+    "price": 110.84,
+    "date": "2016-04-21 06:01:23"
+  }, {
+    "id": 7,
+    "name": "Clark",
+    "status": 2,
+    "price": 119.48,
+    "date": "2016-07-14 09:19:51"
+  }, {
+    "id": 8,
+    "name": "Garcia",
+    "status": 1,
+    "price": 81.2,
+    "date": "2016-07-30 00:12:05"
+  }, {
+    "id": 9,
+    "name": "Wilson",
+    "status": 2,
+    "price": 137.4,
+    "date": "2016-05-04 13:38:10"
+  }, {
+    "id": 10,
+    "name": "Walker",
+    "status": 4,
+    "price": 40.24,
+    "date": "2015-05-07 02:11:34"
+  }, {
+    "id": 11,
+    "name": "Walker",
+    "status": 3,
+    "price": 69.9,
+    "date": "2016-02-24 22:17:12"
+  }, {
+    "id": 12,
+    "name": "White",
+    "status": 3,
+    "price": 175.8,
+    "date": "2015-11-18 11:35:36"
+  }, {
+    "id": 13,
+    "name": "Thompson",
+    "status": 4,
+    "price": 50.34,
+    "date": "2016-02-13 12:24:31"
+  }, {
+    "id": 14,
+    "name": "White",
+    "status": 2,
+    "price": 106.8,
+    "date": "2015-11-27 06:51:19"
+  }, {
+    "id": 15,
+    "name": "Gonzalez",
+    "status": 3,
+    "price": 194.2,
+    "date": "2016-08-10 07:03:38"
+  }, {
+    "id": 16,
+    "name": "Perez",
+    "status": 1,
+    "price": 145.31,
+    "date": "2015-08-10 17:11:09"
+  }, {
+    "id": 17,
+    "name": "Jackson",
+    "status": 3,
+    "price": 32.3,
+    "date": "2016-01-03 01:13:24"
+  }, {
+    "id": 18,
+    "name": "Hall",
+    "status": 4,
+    "price": 126.24,
+    "date": "2015-09-14 15:04:49"
+  }, {
+    "id": 19,
+    "name": "Harris",
+    "status": 2,
+    "price": 188.8,
+    "date": "2015-05-12 13:04:25"
+  }, {
+    "id": 20,
+    "name": "Taylor",
+    "status": 1,
+    "price": 20.1,
+    "date": "2016-06-09 20:49:22"
+  }, {
+    "id": 21,
+    "name": "Thomas",
+    "status": 3,
+    "price": 197.4,
+    "date": "2015-07-03 17:01:44"
+  }, {
+    "id": 22,
+    "name": "Brown",
+    "status": 2,
+    "price": 139.56,
+    "date": "2015-09-27 09:37:21"
+  }, {
+    "id": 23,
+    "name": "Johnson",
+    "status": 1,
+    "price": 69.6,
+    "date": "2015-07-23 12:25:51"
+  }, {
+    "id": 24,
+    "name": "Jones",
+    "status": 3,
+    "price": 16.1,
+    "date": "2015-10-27 09:23:54"
+  }, {
+    "id": 25,
+    "name": "Thomas",
+    "status": 2,
+    "price": 174.4,
+    "date": "2015-05-06 09:19:16"
+  }, {
+    "id": 26,
+    "name": "Thompson",
+    "status": 3,
+    "price": 137.4,
+    "date": "2016-05-31 00:10:58"
+  }, {
+    "id": 27,
+    "name": "Smith",
+    "status": 2,
+    "price": 189.2,
+    "date": "2016-09-28 14:43:21"
+  }, {
+    "id": 28,
+    "name": "Miller",
+    "status": 4,
+    "price": 50.34,
+    "date": "2016-10-05 20:32:13"
+  }, {
+    "id": 29,
+    "name": "Young",
+    "status": 2,
+    "price": 175.82,
+    "date": "2015-02-05 00:11:41"
+  }, {
+    "id": 30,
+    "name": "Young",
+    "status": 2,
+    "price": 147.8,
+    "date": "2015-08-22 11:17:47"
+  }, {
+    "id": 31,
+    "name": "Thomas",
+    "status": 2,
+    "price": 99.9,
+    "date": "2016-01-08 08:07:45"
+  }, {
+    "id": 32,
+    "name": "Thomas",
+    "status": 3,
+    "price": 116.5,
+    "date": "2015-10-04 14:36:12"
+  }, {
+    "id": 33,
+    "name": "Anderson",
+    "status": 2,
+    "price": 76.57,
+    "date": "2016-07-25 03:26:02"
+  }, {
+    "id": 34,
+    "name": "Thomas",
+    "status": 4,
+    "price": 188.1,
+    "date": "2015-08-27 00:44:47"
+  }, {
+    "id": 35,
+    "name": "Thomas",
+    "status": 3,
+    "price": 193.7,
+    "date": "2015-12-18 15:11:02"
+  }, {
+    "id": 36,
+    "name": "Perez",
+    "status": 2,
+    "price": 42.8,
+    "date": "2016-12-28 09:52:56"
+  }],
+  "quote": {
+    "name": "Joho Doe",
+    "title": "Graphic Designer",
+    "content": "I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.",
+    "avatar": "http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236"
+  },
+  "numbers": [{
+    "icon": "pay-circle-o",
+    "color": "rgb(100, 234, 145)",
+    "title": "Online Review",
+    "number": 2781
+  }, {
+    "icon": "team",
+    "color": "rgb(143, 201, 251)",
+    "title": "New Customers",
+    "number": 3241
+  }, {
+    "icon": "message",
+    "color": "rgb(216, 151, 235)",
+    "title": "Active Projects",
+    "number": 253
+  }, {
+    "icon": "shopping-cart",
+    "color": "rgb(246, 152, 153)",
+    "title": "Referrals",
+    "number": 4324
+  }]
+}]

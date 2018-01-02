@@ -9,6 +9,6 @@ module.exports = (app) => {
   };
 
   app.role.use('user', function () {
-    return this.session.user !== null;
+    return this.session.user !== undefined;
   });
 };

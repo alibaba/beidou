@@ -7,6 +7,11 @@ import ECharts from './routes/echarts';
 import HighCharts from './routes/highcharts';
 import Recharts from './routes/recharts';
 
+// browserHistory.listen(() => {
+//   window.NProgress.start();
+//   window.NProgress.done();
+// });
+
 export default (
   <Switch>
     <Route exact path="/dashboard" component={Dashboard} />

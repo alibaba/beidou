@@ -15,8 +15,24 @@ function* fetchDashboard() {
   }
 }
 
+function* createUser({ payload: { data } }) {
+  const res = yield axios.post('user', data);
+  if (res.statusText === 'Created') {
+    yield put(actions.user.createSuccess(res.data));
+    yield put(actions.user.hideModal());
+  }
+}
+
+
+function* deleteUser({ payload: { user } }) {
+  yield axios.delete(`user/${user._id}`);
+  yield put(actions.user.deleteFromList(user));
+}
+
 function* saga() {
   yield takeLatest(actions.dashboard.fetch, fetchDashboard);
+  yield takeLatest(actions.user.create, createUser);
+  yield takeLatest(actions.user.delete, deleteUser);
 }
 
 // entry point
