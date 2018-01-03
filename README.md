@@ -120,7 +120,7 @@ Please let us know how can we help. Do check out [issues](https://github.com/ali
 
 DingTalk & Wechat group supported
 
-![](https://img.alicdn.com/tfs/TB1dOJhkf6H8KJjy0FjXXaXepXa-700-429.png)
+![](https://img.alicdn.com/tfs/TB1xFtzlf6H8KJjy0FjXXaXepXa-700-473.jpg)
 
 ## License
 
