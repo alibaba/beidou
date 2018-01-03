@@ -44,7 +44,11 @@ module.exports = (agent) => {
       // tell worker process what the server port is
       process.on('message', (info) => {
         if (info.action === 'ask-for-webpack-server-port') {
-          process.send({ action: 'webpack-server-ready', to: 'app', data: { port: msg.port } });
+          process.send({
+            action: 'webpack-server-ready',
+            to: 'app',
+            data: { port: msg.port },
+          });
         }
       });
     });

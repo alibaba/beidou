@@ -7,13 +7,10 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint && npm run test-local",
-    "test-local": "TEST_REPORTER=spec egg-bin test",
+    "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "lint": "eslint lib config app.js",
     "ci": "npm run cov",
-    "history": "egg-bin history CHANGELOG.md",
-    "precommit": "npm run lint"
+    "history": "egg-bin history CHANGELOG.md"
   },
   "license": "MIT",
   "dependencies": {
@@ -34,9 +31,6 @@
     "egg": "^1.4.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
-    "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.0.0",
-    "husky": "^0.13.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^4.0.0",

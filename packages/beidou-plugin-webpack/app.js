@@ -16,8 +16,9 @@ module.exports = (app) => {
     }
   });
   // ask agent for webpack port
-  process.send && process.send({
-    action: 'ask-for-webpack-server-port',
-    to: 'agent',
-  });
+  process.send &&
+    process.send({
+      action: 'ask-for-webpack-server-port',
+      to: 'agent',
+    });
 };

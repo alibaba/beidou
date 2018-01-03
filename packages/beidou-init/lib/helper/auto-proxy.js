@@ -3,7 +3,6 @@ const spawn = require('cross-spawn');
 const cwd = process.cwd();
 
 const ProxyModule = {
-
   /**
    * npm run proxy
    */

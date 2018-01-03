@@ -9,11 +9,12 @@ const escapeRegExp = require('lodash/escapeRegExp');
  * @return {Function} func
  */
 exports.createMatchFunction = (input) => {
-  input = input.map((item) => {
-    return typeof item === 'string'
-      ? new RegExp(`^${escapeRegExp(path.normalize(item))}`) // normalize path
-      : /* istanbul ignore next */ item;
-  });
+  input = input.map(
+    item =>
+      (typeof item === 'string'
+        ? new RegExp(`^${escapeRegExp(path.normalize(item))}`) // normalize path
+        : /* istanbul ignore next */ item)
+  );
 
   return function match(file) {
     for (let i = 0; i < input.length; i += 1) {

@@ -33,7 +33,11 @@ function IsomorphicPlugin(options = {}) {
         ext: asset,
         exclude: 'node_modules',
       };
-    } else if (typeof asset === 'object' && asset.ext && /\.[0-9a-zA-A]+/.test(asset.ext)) {
+    } else if (
+      typeof asset === 'object' &&
+      asset.ext &&
+      /\.[0-9a-zA-A]+/.test(asset.ext)
+    ) {
       asset.exclude = asset.exclude || 'node_modules';
       this.exts[asset.ext] = asset;
     }
@@ -50,16 +54,20 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
 
   // if not assign assets file path, use default one
   if (!this.options.assetsFilePath) {
-    this.options.assetsFilePath = path.join(compiler.context, '.isomorphic/assets.json');
+    this.options.assetsFilePath = path.join(
+      compiler.context,
+      '.isomorphic/assets.json'
+    );
   }
 
   compiler.plugin('done', (stats) => {
     const json = stats.toJson();
-    const results = json.modules.map(module => this.parse(module)).filter(result => result);
+    const results = json.modules
+      .map(module => this.parse(module))
+      .filter(result => result);
     this.save(results);
   });
 };
-
 
 IsomorphicPlugin.prototype.parse = function (module) {
   const name = module.name;

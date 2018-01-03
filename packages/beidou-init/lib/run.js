@@ -4,9 +4,7 @@ module.exports = (Program) => {
   process.env.NODE_ENV = process.env.NODE_ENV || 'development';
   const program = new Program();
 
-  commander
-    .version(program.version)
-    .usage('[command] [options]');
+  commander.version(program.version).usage('[command] [options]');
 
   commander
     .command('*')
@@ -19,7 +17,6 @@ module.exports = (Program) => {
   commander.on('--help', () => {
     program.help();
   });
-
 
   if (!process.argv.slice(2).length) {
     commander.outputHelp();

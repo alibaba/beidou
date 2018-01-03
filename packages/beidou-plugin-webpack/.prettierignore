@@ -1,0 +1,4 @@
+app/proxy*
+node_modules/
+dist/
+test

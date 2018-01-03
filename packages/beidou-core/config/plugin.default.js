@@ -1,5 +1,4 @@
 module.exports = {
-
   /**
    * Beidou view plugin
    * @member {Object} Plugin#react view

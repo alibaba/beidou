@@ -4,7 +4,7 @@ const BaseCommand = require('./base-command');
 require('colors');
 
 class StartCommand extends BaseCommand {
-  * run(cwd/* , args*/) {
+  * run(cwd /* , args*/) {
     // const processedArgs = args || [];
     this.cwd = cwd;
 
@@ -50,6 +50,5 @@ class StartCommand extends BaseCommand {
     return 'start app';
   }
 }
-
 
 module.exports = StartCommand;

@@ -17,7 +17,6 @@ module.exports = (app) => {
   const pageDir = path.join(clientDir, serveRoot);
   debug('resolve entry in dir: %s', pageDir);
 
-
   const hmr = options.hmr;
   const entry = {};
   let headEntries = [];
@@ -63,13 +62,9 @@ module.exports = (app) => {
     const filename = path.parse(file).name;
     const entryFile = pageDir + file + entryName;
     if (fs.existsSync(entryFile)) {
-      entry[filename] = [
-        ...headEntries,
-        entryFile,
-      ];
+      entry[filename] = [...headEntries, entryFile];
     }
   });
-
 
   debug('get entry file from %s : $j', pageDir, entry);
 

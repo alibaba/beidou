@@ -18,7 +18,9 @@ const helper = {
       return concatUrl(assetHost, assetPath, filename);
     }
 
-    return normalizeUrl(`${this.ctx.protocal}://${concatUrl(assetHost, assetPath, filename)}`);
+    return normalizeUrl(
+      `${this.ctx.protocal}://${concatUrl(assetHost, assetPath, filename)}`
+    );
   },
 };
 
