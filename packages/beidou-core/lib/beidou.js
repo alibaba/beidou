@@ -1,33 +1,23 @@
-'use strict';
-
 /**
  * Module dependencies.
  */
-const egg = require('egg');
+const path = require('path');
 
-const EGG_PATH = __dirname;
-const startCluster = egg.startCluster;
-const BeidouApplication = require('./core/worker/index');
-const BeidouAgent = require('./core/agent/index');
+const EGG_PATH = path.dirname(__dirname);
+const loaderExtend = require('./core/loaders');
+const applicationExtend = require('./core/worker/index');
+const agentExtend = require('./core/agent/index');
 
-module.exports = egg;
-module.exports.Application = BeidouApplication;
-module.exports.Agent = BeidouAgent;
+module.exports = function (target) {
+  loaderExtend(target);
+  applicationExtend(target);
+  agentExtend(target);
+  const startCluster = target.startCluster;
+  target.startCluster = function (options, callback) {
+    options = options || /* istanbul ignore next */ {};
+    options.customEgg = EGG_PATH;
+    startCluster(options, callback);
+  };
 
-/**
- * @member {AppWorkerLoader} Beidou#AppWorkerLoader
- * @since 1.0.0
- */
-module.exports.AppWorkerLoader = require('./core/loaders').AppWorkerLoader;
-
-/**
- * @member {AgentWorkerLoader} Beidou#AgentWorkerLoader
- * @since 1.0.0
- */
-module.exports.AgentWorkerLoader = require('./core/loaders').AgentWorkerLoader;
-
-module.exports.startCluster = function (options, callback) {
-  options = options || /* istanbul ignore next */ {};
-  options.customEgg = EGG_PATH;
-  startCluster(options, callback);
+  return target;
 };
