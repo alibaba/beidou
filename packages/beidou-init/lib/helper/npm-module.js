@@ -5,7 +5,6 @@ const cwd = process.cwd();
 // const spawn = require('child_process').spawn;
 
 const NpmModule = {
-
   /**
    * npm i
    */
@@ -20,7 +19,9 @@ const NpmModule = {
         if (status === 0) {
           resolve();
         } else {
-          reject(new Error(`packages install failed, error message: ${status}`));
+          reject(
+            new Error(`packages install failed, error message: ${status}`)
+          );
         }
       });
     });

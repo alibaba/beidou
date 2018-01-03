@@ -20,7 +20,10 @@ module.exports = (appInfo) => {
   config.view = {
     defaultViewEngine: 'react',
     defaultExtension: '.jsx',
-    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(appInfo.baseDir, 'client')}`,
+    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(
+      appInfo.baseDir,
+      'client'
+    )}`,
   };
 
   return config;

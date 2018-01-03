@@ -40,9 +40,7 @@ exports.resolvePath = function* (name, providers, root, exclude, ext, entry) {
   return false;
 };
 
-exports.cached = (key) => {
-  return resolved[key];
-};
+exports.cached = key => resolved[key];
 
 exports.putCache = (key, value) => {
   resolved[key] = value;

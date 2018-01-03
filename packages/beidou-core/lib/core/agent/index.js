@@ -10,7 +10,10 @@ class BeidouAgent extends egg.Agent {
   constructor(options) {
     super(options);
 
-    this.logger.info('[Beidou Worker] Beidou Worker started, pid is %s', process.pid);
+    this.logger.info(
+      '[Beidou Agent] Beidou Agent started, pid is %s',
+      process.pid
+    );
   }
 
   get [Symbol.for('egg#eggPath')]() {

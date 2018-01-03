@@ -15,10 +15,9 @@ class BeidouAgentWorkerLoader extends egg.AgentWorkerLoader {
     this.checkDevPlugins();
   }
 
-
   /**
-  * check plugins, all plugins must be installed in dependency
-  */
+   * check plugins, all plugins must be installed in dependency
+   */
   checkDevPlugins() {
     const appPkg = require(path.join(this.options.baseDir, './package.json'));
     Object.keys(this.plugins).forEach((key) => {

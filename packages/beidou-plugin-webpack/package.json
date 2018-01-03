@@ -40,8 +40,6 @@
     "egg": "^1.4.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
-    "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.0.0",
     "react": "^15.0.0",
     "rimraf": "^2.6.1",
     "should": "8",
@@ -59,10 +57,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "test": "npm run lint && npm run test-local",
-    "test-local": "TEST_REPORTER=spec egg-bin test",
+    "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "lint": "eslint --fix lib app app.js agent.js config",
     "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },

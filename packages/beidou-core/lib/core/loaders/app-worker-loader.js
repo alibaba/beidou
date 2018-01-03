@@ -9,9 +9,15 @@ class BeidouAppWorkerLoader extends egg.AppWorkerLoader {
   constructor(options) {
     super(options);
 
-    this.logger = options.logger || /* istanbul ignore next */ options.console || /* istanbul ignore next */ console;
+    this.logger =
+      options.logger ||
+      /* istanbul ignore next */ options.console ||
+      /* istanbul ignore next */ console;
 
-    this.logger.info('[Beidou Loader] Beidou Loader started, pid is %s', process.pid);
+    this.logger.info(
+      '[Beidou Loader] Beidou Loader started, pid is %s',
+      process.pid
+    );
   }
 
   /*
@@ -24,8 +30,9 @@ class BeidouAppWorkerLoader extends egg.AppWorkerLoader {
   }
 
   loadCustomRouter() {
-    this.getLoadUnits()
-      .forEach(unit => this.loadFile(path.join(unit.path, 'app/extend/router.js')));
+    this.getLoadUnits().forEach(unit =>
+      this.loadFile(path.join(unit.path, 'app/extend/router.js'))
+    );
   }
 
   /*
@@ -64,6 +71,5 @@ class BeidouAppWorkerLoader extends egg.AppWorkerLoader {
     this.config.assetsInfo.cdnRoot = `/${group}/${project}/${version}/`;
   }
 }
-
 
 module.exports = BeidouAppWorkerLoader;

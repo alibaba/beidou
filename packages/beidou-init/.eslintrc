@@ -1,8 +1,0 @@
-{
-  "extends": "eslint-config-beidou",
-  "rules": {
-    "prefer-rest-params": 0,
-    "require-yield": 0,
-    "import/no-dynamic-require": 1
-  }
-}

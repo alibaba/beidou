@@ -18,7 +18,6 @@ exports.concatUrl = function (...pathes) {
   return normalizeUrl(result);
 };
 
-
 exports.normalizeUrl = normalizeUrl;
 
 exports.isGenerator = isGeneratorFunction;
@@ -34,4 +33,3 @@ exports.compose = function (...funcs) {
 
   return funcs.reduce((a, b) => (...args) => a(b(...args)));
 };
-

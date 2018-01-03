@@ -12,8 +12,11 @@ function requireAssetsJson(filepath, logger) {
       json = require(filepath);
     } catch (e) {
       // warning
-      logger.warn('invalid assets file at: %s, assets file was created automaticly by Isomorphic plugin,' +
-       'never edit it manunly', filepath);
+      logger.warn(
+        'invalid assets file at: %s, assets file was created automaticly by Isomorphic plugin,' +
+          'never edit it manunly',
+        filepath
+      );
       return json;
     }
   }
@@ -46,20 +49,30 @@ module.exports = function (app) {
   if (isomorphic.alias) {
     const alias = isomorphic.alias;
     if (alias && Object.keys(alias).length > 0) {
-      app.logger.info('[beidou:plugin:isomorphic] isomorphic.alias detected: %o', alias);
+      app.logger.info(
+        '[beidou:plugin:isomorphic] isomorphic.alias detected: %o',
+        alias
+      );
       resolveAlias(alias);
     }
   }
 
   if (isomorphic.universal) {
-    const universal = Object.assign({
-      context: baseDir,
-      assetsFilePath: path.join(baseDir, '.isomorphic/assets.json'),
-      cache: __DEV__ === false,
-    }, isomorphic.universal);
+    const universal = Object.assign(
+      {
+        context: baseDir,
+        assetsFilePath: path.join(baseDir, '.isomorphic/assets.json'),
+        cache: __DEV__ === false,
+      },
+      isomorphic.universal
+    );
 
     const assets = universal.assets;
-    const isomorphicRequire = createIsomorphicRequire(baseDir, universal, logger);
+    const isomorphicRequire = createIsomorphicRequire(
+      baseDir,
+      universal,
+      logger
+    );
     for (const asset of assets) {
       let ext = null;
       if (typeof asset === 'string' && isValidExt(asset)) {

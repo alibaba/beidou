@@ -26,10 +26,12 @@ compiler.run((err, stats) => {
   }
   if (stats) {
     fs.writeFileSync(path.join(process.cwd(), '.stats.json'), stats);
-    console.log(stats.toString({
-      colors: true,
-      children: false,
-    }));
+    console.log(
+      stats.toString({
+        colors: true,
+        children: false,
+      })
+    );
   }
 });
 

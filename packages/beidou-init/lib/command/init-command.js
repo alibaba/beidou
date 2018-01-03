@@ -40,7 +40,7 @@ class InitCommand extends BaseCommand {
     if (toolkit === 'fie') {
       this.toolkitName = 'fie';
     }
-    const argv = this.argv = this.getParser().parse(processedArgs);
+    const argv = (this.argv = this.getParser().parse(processedArgs));
     this.cwd = cwd;
 
     // console.log('%j', argv);
@@ -62,7 +62,10 @@ class InitCommand extends BaseCommand {
     const boilerplateMapping = yield this.fetchBoilerplateMapping();
     // ask for boilerplate
     let boilerplate;
-    if (argv.type && Object.hasOwnProperty.call(boilerplateMapping, argv.type)) {
+    if (
+      argv.type &&
+      Object.hasOwnProperty.call(boilerplateMapping, argv.type)
+    ) {
       boilerplate = boilerplateMapping[argv.type];
     } else {
       boilerplate = yield this.askForBoilerplateType(boilerplateMapping);
@@ -96,12 +99,22 @@ class InitCommand extends BaseCommand {
   /**
    * show boilerplate list and let user choose one
    *
-   * @param {Object} mapping - boilerplate config mapping, `{ simple: { "name": "admin", "package": "beidou-example-admin", "description": "admin platform" } }`
+   * @param {Object} mapping - boilerplate config mapping,
+   * `{
+   *   simple: {
+   *     "name": "admin",
+   *     "package": "beidou-example-admin",
+   *     "description": "admin platform"
+   *   }
+   * }`
    * @return {Object} boilerplate config item
    */
   * askForBoilerplateType(mapping) {
     // group by category
-    const groupMapping = groupBy(mapping, (acc, value) => value.category || 'other');
+    const groupMapping = groupBy(
+      mapping,
+      (acc, value) => value.category || 'other'
+    );
     const groupNames = Object.keys(groupMapping);
 
     let group;
@@ -140,7 +153,10 @@ class InitCommand extends BaseCommand {
   * copyGitignore(targetDir) {
     const to = path.join(targetDir, '.gitignore');
     this.log('write to:%s', to);
-    fs.writeFileSync(to, fs.readFileSync(path.join(__filename, '../../files/_.gitignore')));
+    fs.writeFileSync(
+      to,
+      fs.readFileSync(path.join(__filename, '../../files/_.gitignore'))
+    );
   }
 
   /**
@@ -157,7 +173,10 @@ class InitCommand extends BaseCommand {
     const files = glob.sync('**/*', { cwd: src, dot: true, nodir: true });
     files.forEach((file) => {
       const from = path.join(src, file);
-      const to = path.join(targetDir, this.replaceTemplate(this.fileMapping[file] || file, locals));
+      const to = path.join(
+        targetDir,
+        this.replaceTemplate(this.fileMapping[file] || file, locals)
+      );
       fsEditor.copy(from, to, {
         process: (content) => {
           this.log('write to:%s', to);
@@ -190,7 +209,9 @@ class InitCommand extends BaseCommand {
    */
   getParser() {
     return yargs
-      .usage('init beidou app from boilerplate.\nUsage: $0 init [dir] --type=simple')
+      .usage(
+        'init beidou app from boilerplate.\nUsage: $0 init [dir] --type=simple'
+      )
       .options(this.getParserOptions())
       .alias('h', 'help')
       .version()
@@ -249,10 +270,13 @@ class InitCommand extends BaseCommand {
       const files = fs.readdirSync(dir).filter(name => name[0] !== '.');
       if (files.length > 0) {
         if (force) {
-          this.log(`${dir} already exists and will be override due to --force`.red);
+          this.log(
+            `${dir} already exists and will be override due to --force`.red
+          );
           return true;
         }
-        return `${dir} already exists and not empty, to override please use --force`.red;
+        return `${dir} already exists and not empty, to override please use --force`
+          .red;
       }
       return true;
     };
@@ -275,7 +299,14 @@ class InitCommand extends BaseCommand {
 
   /**
    * fetch boilerplate mapping from `package.json`
-   * @return {Object} boilerplate config mapping, `{ simple: { "name": "admin", "package": "beidou-template-simple", "description": "Simple beidou isomorphic app boilerplate" } }`
+   * @return {Object} boilerplate config mapping,
+   * `{
+   *   simple: {
+   *     "name": "admin",
+   *     "package": "beidou-template-simple",
+   *     "description": "Simple beidou isomorphic app boilerplate"
+   *   }
+   * }`
    */
   * fetchBoilerplateMapping() {
     const pkgInfo = this.pkgInfo;
@@ -298,12 +329,14 @@ class InitCommand extends BaseCommand {
    * @return {String} new content
    */
   replaceTemplate(content, scope) {
-    return content.toString().replace(/(\\)?{{ *(\w+) *}}/g, (block, skip, key) => {
-      if (skip) {
-        return block.substring(skip.length);
-      }
-      return Object.hasOwnProperty.call(scope, key) ? scope[key] : block;
-    });
+    return content
+      .toString()
+      .replace(/(\\)?{{ *(\w+) *}}/g, (block, skip, key) => {
+        if (skip) {
+          return block.substring(skip.length);
+        }
+        return Object.hasOwnProperty.call(scope, key) ? scope[key] : block;
+      });
   }
 
   /**
@@ -335,23 +368,27 @@ class InitCommand extends BaseCommand {
         callback(err);
       }
 
-      urllib.request(url, {
-        followRedirect: true,
-        streaming: true,
-      }, (err, _, res) => {
-        if (err) {
-          return callback(err);
+      urllib.request(
+        url,
+        {
+          followRedirect: true,
+          streaming: true,
+        },
+        (err, _, res) => {
+          if (err) {
+            return callback(err);
+          }
+
+          const gunzip = zlib.createGunzip();
+          gunzip.on('error', handleError);
+
+          const extracter = tar.Extract({ path: saveDir, strip: 1 });
+          extracter.on('error', handleError);
+          extracter.on('end', callback);
+
+          res.pipe(gunzip).pipe(extracter);
         }
-
-        const gunzip = zlib.createGunzip();
-        gunzip.on('error', handleError);
-
-        const extracter = tar.Extract({ path: saveDir, strip: 1 });
-        extracter.on('error', handleError);
-        extracter.on('end', callback);
-
-        res.pipe(gunzip).pipe(extracter);
-      });
+      );
     };
   }
 
@@ -364,10 +401,13 @@ class InitCommand extends BaseCommand {
    */
   * getPackageInfo(pkgName, withFallback) {
     try {
-      const result = yield urllib.request(`${this.registryUrl}/${pkgName}/latest`, {
-        dataType: 'json',
-        followRedirect: true,
-      });
+      const result = yield urllib.request(
+        `${this.registryUrl}/${pkgName}/latest`,
+        {
+          dataType: 'json',
+          followRedirect: true,
+        }
+      );
       return result.data;
     } catch (err) {
       if (withFallback) {
@@ -394,6 +434,5 @@ class InitCommand extends BaseCommand {
     return 'init boilerplate';
   }
 }
-
 
 module.exports = InitCommand;
