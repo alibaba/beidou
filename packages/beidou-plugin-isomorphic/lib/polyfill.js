@@ -17,8 +17,8 @@ function setPolyfill(window) {
   global.Image = window.Image;
   global.matchMedia = /* istanbul ignore next */ () => ({
     matches: true,
-    addListener() { },
-    removeListener() { },
+    addListener() {},
+    removeListener() {},
   });
   window.matchMedia = global.matchMedia;
 }
@@ -26,4 +26,3 @@ function setPolyfill(window) {
 module.exports.basicPolyfill = () => {
   setPolyfill(jsdom(html).defaultView);
 };
-

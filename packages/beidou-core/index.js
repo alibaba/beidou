@@ -18,5 +18,4 @@ module.exports.Application = beidou.Application;
  */
 module.exports.Agent = beidou.Agent;
 
-
 module.exports.startCluster = beidou.startCluster;

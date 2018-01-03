@@ -16,7 +16,6 @@ function setGlobal(ENV) {
   global.__DEV__ = ENV === 'local';
 }
 
-
 module.exports = (app) => {
   const config = app.config.isomorphic;
   // set global variables

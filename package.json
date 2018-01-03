@@ -3,6 +3,8 @@
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
   "scripts": {
+    "prettier": "make prettier",
+    "eslint": "make eslint",
     "lint": "make lint",
     "test": "make test",
     "test-only": "make test-only",
@@ -26,6 +28,7 @@
     "lerna": "^2.0.0",
     "lerna-changelog": "^0.5.0",
     "lint-staged": "^4.0.0",
+    "prettier": "^1.9.2",
     "should": "^6.0.3",
     "supertest": "^1.2.0"
   },
@@ -39,10 +42,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
+    "*.js": ["prettier --write", "eslint --fix", "git add"]
   },
   "repository": "https://github.com/alibaba/beidou"
 }

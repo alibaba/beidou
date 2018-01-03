@@ -50,5 +50,4 @@ class BuildCommand extends BaseCommand {
   }
 }
 
-
 module.exports = BuildCommand;

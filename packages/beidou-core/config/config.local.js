@@ -7,7 +7,10 @@ module.exports = function () {
      * @member {Object} Config#webpack.config
      */
     webpack: {
-      defaultConfig: path.resolve(__dirname, '../webpack/webpack.config.dev.js'),
+      defaultConfig: path.resolve(
+        __dirname,
+        '../webpack/webpack.config.dev.js'
+      ),
     },
   };
 

@@ -26,18 +26,24 @@ class BeidouReactView {
       ? this.renderToStaticMarkup
       : this.renderToString;
 
-    const middlewares = [cacheMiddleware, reduxMiddleware, partialMiddleware, doctypeMiddleware, beautifyMiddleware];
+    const middlewares = [
+      cacheMiddleware,
+      reduxMiddleware,
+      partialMiddleware,
+      doctypeMiddleware,
+      beautifyMiddleware,
+    ];
 
     const chain = middlewares.map(middleware => middleware(this));
 
     const renderToStaticMarkup = this.renderToStaticMarkup;
-    this.renderWithMiddlewares = compose(...chain)(function* (args) { // eslint-disable-line
+    this.renderWithMiddlewares = compose(...chain)(function* (args) {
+      // eslint-disable-line
       const { Component, props } = args;
       const instance = React.createElement(Component, props);
       args.html = renderToStaticMarkup(instance);
     });
   }
-
 
   render(filepath, props) {
     Object.assign(props, {
