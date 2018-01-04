@@ -5,30 +5,30 @@
   "eggPlugin": {
     "name": "webpack"
   },
-  "keywords": [
-    "beidou",
-    "plugin",
-    "webpack"
-  ],
+  "keywords": ["beidou", "plugin", "webpack"],
   "main": "index.js",
   "dependencies": {
+    "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.0.0",
     "babel-preset-beidou-client": "^0.1.0",
     "css-loader": "^0.28.7",
     "debug": "^2.2.0",
-    "extract-text-webpack-plugin": "^2.1.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "koa-webpack-dev-middleware": "^1.2.1",
     "koa-webpack-hot-middleware": "^1.0.3",
     "lodash": "^4.17.4",
     "memory-fs": "^0.4.1",
     "node-sass": "^4.5.3",
+    "postcss": "^6.0.15",
+    "postcss-flexbugs-fixes": "^3.2.0",
+    "postcss-loader": "^2.0.10",
     "request": "^2.81.0",
     "sass-loader": "^6.0.6",
     "sdk-base": "^2.0.1",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
-    "webpack": "3.x",
+    "webpack": "^3.10.0",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.21.0"
   },
@@ -45,14 +45,7 @@
     "should": "8",
     "supertest": "1"
   },
-  "files": [
-    "bin",
-    "app",
-    "lib",
-    "config",
-    "app.js",
-    "agent.js"
-  ],
+  "files": ["bin", "app", "lib", "config", "app.js", "agent.js"],
   "engines": {
     "node": ">=6.0.0"
   },

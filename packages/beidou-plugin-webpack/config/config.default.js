@@ -5,9 +5,10 @@
 exports.webpack = {
   // config: 'path/to/webpack/config/file',
   // publicPath: 'webpack/dev/custom-webpack-config/public/path'
-  path: [], // the path of request should be transfered to webpack. e.g HMR: /__webpack_hmr
-  noInfo: false,
-  quiet: false,
+  path: [], // the path of request should be transferred to webpack. e.g HMR: /__webpack_hmr
+  noInfo: true,
+  quiet: true,
+  clientLogLevel: 'warning',
   lazy: false,
   watchOptions: {
     aggregateTimeout: 300,

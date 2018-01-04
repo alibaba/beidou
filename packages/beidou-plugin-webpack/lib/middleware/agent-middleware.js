@@ -3,17 +3,27 @@ const helper = require('../utils');
 
 module.exports = function (compiler, options, app) {
   const webpackConfig = helper.getWebpackConfig(options, app);
+  const {
+    noInfo,
+    quiet,
+    clientLogLevel,
+    lazy,
+    watchOptions,
+    headers,
+    stats,
+  } = options;
   // middleware generator
   return webpackMiddleware(
     compiler,
     {
-      noInfo: options.noInfo,
-      quiet: options.quiet,
-      lazy: options.lazy,
-      watchOptions: options.watchOptions,
+      noInfo,
+      quiet,
+      clientLogLevel,
+      lazy,
+      watchOptions,
       publicPath: options.publicPath || webpackConfig.output.publicPath,
-      headers: options.headers,
-      stats: options.stats,
+      headers,
+      stats,
     },
     {
       waitUntilValid() {
