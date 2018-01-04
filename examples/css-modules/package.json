@@ -3,8 +3,8 @@
   "version": "0.3.5",
   "description": "beidou css modules example",
   "scripts": {
-    "start": "./node_modules/.bin/node ./bin/server.js",
-    "lint": "./node_modules/.bin/eslint --fix --ext .jsx --ext .js app client config webpack"
+    "start": "node ./bin/server.js",
+    "lint": "eslint --fix --ext .jsx --ext .js app client config webpack"
   },
   "author": "",
   "devDependencies": {

@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = (app) => {
   const universal = app.config.isomorphic.universal;
@@ -22,14 +23,6 @@ module.exports = (app) => {
       __CLIENT__: true,
       __DEV__: dev,
       __SERVER__: false,
-    }),
-    new webpack.ProgressPlugin((percentage, msg) => {
-      const stream = process.stderr;
-      if (stream.isTTY && percentage < 0.71) {
-        stream.cursorTo(0);
-        stream.write(`📦   ${msg}`);
-        stream.clearLine(1);
-      }
     }),
     new ExtractTextPlugin('[name].css'),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -76,23 +69,42 @@ module.exports = (app) => {
           },
         },
         {
-          test: /\.scss$/,
+          test: /\.s(c|a)ss$/,
           exclude: /node_modules/,
           use: ExtractTextPlugin.extract({
+            fallback: require.resolve('style-loader'),
             use: [
               {
-                loader: 'css-loader',
-                // uncomment if need css modules
-                // options: {
-                //   importLoaders: 1,
-                //   modules: true,
-                // },
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  minimize: !dev,
+                  sourceMap: dev,
+                },
               },
               {
-                loader: 'sass-loader',
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  // Necessary for external CSS imports to work
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9',
+                      ],
+                      flexbox: 'no-2009',
+                    }),
+                  ],
+                },
+              },
+              {
+                loader: require.resolve('sass-loader'),
               },
             ],
-            fallback: 'style-loader',
           }),
         },
         {

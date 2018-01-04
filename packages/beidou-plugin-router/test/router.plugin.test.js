@@ -1,8 +1,4 @@
-/* global describe: true */
-/* global afterEach: true */
-/* global before: true */
-/* global after: true */
-/* global it: true */
+'use strict';
 
 const path = require('path');
 const fs = require('fs');

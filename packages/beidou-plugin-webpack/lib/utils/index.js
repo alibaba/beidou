@@ -9,7 +9,7 @@ module.exports.getWebpackConfig = (options, app) => {
   const eggLoader = app.loader;
 
   let webpackConfig = null;
-  // custom config esixt
+  // custom config exists
   if (options.config && fs.existsSync(options.config)) {
     webpackConfig = eggLoader.loadFile(options.config);
   }

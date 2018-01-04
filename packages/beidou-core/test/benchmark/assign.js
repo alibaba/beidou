@@ -7,7 +7,6 @@ const utils = require('../../lib/util');
 const suite = new Benchmark.Suite();
 
 suite
-
 .add('Object.assign', function() {
   const a = {};
   const b = { a: 1, b: 2, c: 3, d: 4, e: 5};
