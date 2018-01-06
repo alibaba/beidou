@@ -1,7 +1,9 @@
+'use strict';
+
 module.exports = function () {
   const config = {
     /**
-     * babel register, enabled by defalut, set `false` to disable
+     * babel register, enabled by default, set `false` to disable
      *
      * all configs below will be passed into `require('babel-register')(configs)`
      *

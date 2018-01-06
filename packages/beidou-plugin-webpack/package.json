@@ -5,7 +5,11 @@
   "eggPlugin": {
     "name": "webpack"
   },
-  "keywords": ["beidou", "plugin", "webpack"],
+  "keywords": [
+    "beidou",
+    "plugin",
+    "webpack"
+  ],
   "main": "index.js",
   "dependencies": {
     "autoprefixer": "^7.2.4",
@@ -40,12 +44,21 @@
     "egg": "^1.4.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
+    "file-loader": "^1.1.6",
     "react": "^15.0.0",
+    "react-dom": "^15.0.0",
     "rimraf": "^2.6.1",
     "should": "8",
     "supertest": "1"
   },
-  "files": ["bin", "app", "lib", "config", "app.js", "agent.js"],
+  "files": [
+    "bin",
+    "app",
+    "lib",
+    "config",
+    "app.js",
+    "agent.js"
+  ],
   "engines": {
     "node": ">=6.0.0"
   },

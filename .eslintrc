@@ -1,5 +1,6 @@
 {
   "extends": "eslint-config-beidou",
+  "parser": "babel-eslint",
   "env": {
     "mocha": true,
     "browser": true,

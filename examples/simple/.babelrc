@@ -1,6 +1,5 @@
 {
   "presets": ["beidou-server"],
-  // "plugins": ["react-hot-loader/babel"]
   "ignore": [
     "*.scss"
   ]

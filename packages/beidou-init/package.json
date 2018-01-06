@@ -38,7 +38,7 @@
   "author": "Holden",
   "license": "MIT",
   "dependencies": {
-    "babel-preset-beidou-server": "^0.0.6",
+    "babel-preset-beidou-server": "^0.1.0",
     "chalk": "^2.3.0",
     "co": "^4.6.0",
     "colors": "^1.1.2",

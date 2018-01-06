@@ -1,30 +1,29 @@
-Beidou Example Advanced
-=================
+# Beidou Advanced Example
 
 > Advanced usage of Beidou framework. More complex usage with `router`, `controller`, `service` and so on.
-> For more detail documents, see <https://github.com/eggjs/egg> which Beidou based on. 
+> For more detail documents, see <https://github.com/eggjs/egg> which Beidou based on.
 
-### Install
+## Install
 
-```
+```bash
 $ yarn install
 ```
 
-### Start  
+### Start
 
-``` 
+```bash
 $ npm start
-```  
+```
 
-then go to http://127.0.0.1:6001/
+then go to [http://127.0.0.1:6001/](http://127.0.0.1:6001/)
 
-### Basic Usage
+## Basic Usage
 
 * add a new page in /client folder, eg. `/client/test.jsx`
 * start app: `npm start`
-* go to http://127.0.0.1:6001/test
+* go to [http://127.0.0.1:6001/test](http://127.0.0.1:6001/test)
 
-### [Document](https://github.com/alibaba/beidou)
+## [Document](https://github.com/alibaba/beidou)
 
 ## License
 

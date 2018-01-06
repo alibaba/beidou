@@ -5,7 +5,7 @@ const isomorphic = require('./lib/isomorphic');
 
 /**
  * inject env variables into global
- * used to seperate server side code from client side
+ * used to separate server side code from client side
  * @param {*} ENV dev/production
  */
 function setGlobal(ENV) {
