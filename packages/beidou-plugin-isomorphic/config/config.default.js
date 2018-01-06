@@ -1,17 +1,19 @@
+'use strict';
+
 const path = require('path');
 
 module.exports = function (app) {
   const config = {
     /**
      * JSDom polyfill, simulate browser environment in server
-     * true by defalut
+     * true by default
      *
      * if an `Object` provided, we merge it into `global` use `lodash.merge`
      */
     polyfill: true,
 
     /**
-     * babel register, enabled by defalut, set `false` to disable
+     * babel register, enabled by default, set `false` to disable
      *
      * all configs below will be passed into `require('babel-register')(configs)`
      *

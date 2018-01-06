@@ -14,7 +14,7 @@ function requireAssetsJson(filepath, logger) {
       // warning
       logger.warn(
         'invalid assets file at: %s, assets file was created automaticly by Isomorphic plugin,' +
-          'never edit it manunly',
+          'never edit it manually',
         filepath
       );
       return json;
