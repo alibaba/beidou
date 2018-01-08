@@ -1,3 +1,5 @@
+'use strict';
+
 const React = require('react');
 
 module.exports = view => next =>

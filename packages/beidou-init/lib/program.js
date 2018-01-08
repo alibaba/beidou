@@ -1,3 +1,5 @@
+'use strict';
+
 const co = require('co');
 const path = require('path');
 const chalk = require('chalk');

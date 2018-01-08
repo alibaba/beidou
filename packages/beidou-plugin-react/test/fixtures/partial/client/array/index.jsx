@@ -15,6 +15,7 @@ export default class View extends React.Component {
   static getStore() {
     
   }
+
   /**
    *
    * @param {Object} locals server context variables

@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = view => next =>
   function* (args) {
     // clean cache

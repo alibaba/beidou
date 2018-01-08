@@ -1,11 +1,12 @@
 'use strict';
+
 require('babel-register');
 
-var createStore = require('../../client/store');
+const createStore = require('../../client/store');
 
 exports.jsxtpl = function* homeController() {
-	const initState = {
-		name: 'hello world'
+  const initState = {
+    name: 'hello world'
   };
 
   const store = createStore(initState);
@@ -14,8 +15,8 @@ exports.jsxtpl = function* homeController() {
 };
 
 exports.jstpl = function* homeController() {
-	const initState = {
-		name: 'hello world'
+  const initState = {
+    name: 'hello world'
   };
 
   const store = createStore(initState);

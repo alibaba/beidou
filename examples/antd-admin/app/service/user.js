@@ -31,7 +31,19 @@ module.exports = ({ Service }) => {
       const createTime = moment().format('YY/MM HH:mm:ss');
       const password = 'admin';
       const username = name;
-      const user = this.user.save({ avatar, name, username, password, nickName, isMale, age, phone, email, address, createTime });
+      const user = this.user.save({
+        avatar,
+        name,
+        username,
+        password,
+        nickName,
+        isMale,
+        age,
+        phone,
+        email,
+        address,
+        createTime,
+      });
       return user;
     }
 

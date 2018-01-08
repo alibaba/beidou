@@ -1,4 +1,6 @@
-var path = require('path');
+'use strict';
+
+const path = require('path');
 
 module.exports = function (antx) {
   const exports = {

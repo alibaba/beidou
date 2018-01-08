@@ -2,13 +2,13 @@
 
 /**
  * config.react = {
-    extname: 'jsx',
-    beautify: false,
-    cache: true,
-    loadpath: `${antx.baseDir}/app/views`,
-    internals: false,
-    doctype: '<!DOCTYPE html>',
-  };
+ *   extname: 'jsx',
+ *   beautify: false,
+ *   cache: true,
+ *   loadpath: `${antx.baseDir}/app/views`,
+ *   internals: false,
+ *   doctype: '<!DOCTYPE html>',
+ * };
  */
 const assert = require('assert');
 const should = require('should');
@@ -23,15 +23,16 @@ const stdDoctype = '<!DOCTYPE html>';
 const sourceHTML = '<html><head><title>test</title></head><body><div id="container"><div><div>hello world</div></div></div><script>window.__INITIAL_STATE__={"name":"hello world"}</script></body></html>';
 const changedHTML = '<html><head><title>test</title></head><body><div id="container"><div><div>hello world</div></div></div><script>window.__INITIAL_STATE__={"name":"hello world"}</script></body></html>';
 
-const changedTpl = `'use strict';
-  var React = require('react');
-  var ReactRedux = require('react-redux');
-  var Container = require('../../../client/container');
-  var Layout = require('../layout');
+const changedTpl = `
+  'use strict';
+  const React = require('react');
+  const ReactRedux = require('react-redux');
+  const Container = require('../../../client/container');
+  const Layout = require('../layout');
 
   module.exports = (props) => {
-    var Provider = ReactRedux.Provider;
-    var newProps = Object.assign({}, props);
+    const Provider = ReactRedux.Provider;
+    const newProps = Object.assign({}, props);
     newProps.title = 'test';
     return (
         <Layout {...newProps}>
@@ -40,7 +41,8 @@ const changedTpl = `'use strict';
             </Provider>
         </Layout>
     );
-}`;
+  }
+`;
 
 describe('test/view.test.js', () => {
   describe('view render cache', () => {
@@ -95,7 +97,7 @@ describe('test/view.test.js', () => {
         .expect(404, done);
     });
 
-    it('should return right DOCTYPE with different conifg', (done) => {
+    it('should return right DOCTYPE with different config', (done) => {
       mm(app.config.react, 'doctype', customDoctype);
       request(app.callback())
         .get('/')
@@ -200,7 +202,7 @@ describe('test/view.test.js', () => {
         .expect(200, done);
     });
 
-    it('should return correct resoucePath when host is not set', (done) => {
+    it('should return correct resourcePath when host is not set', (done) => {
       mm(app.config.react, 'host', '');
       request(app.callback())
         .get('/cdn')

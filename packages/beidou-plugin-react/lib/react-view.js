@@ -50,7 +50,7 @@ class BeidouReactView {
       render: this.renderReact,
       renderToString: this.renderToString,
       renderToStaticMarkup: this.renderToStaticMarkup,
-      appHelper: props.helper, // backwark compatibility
+      appHelper: props.helper, // backward compatibility
     });
     const process = this.renderWithMiddlewares;
     const Component = require(filepath);

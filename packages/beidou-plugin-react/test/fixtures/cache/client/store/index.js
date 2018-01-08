@@ -1,6 +1,8 @@
 'use strict';
-var Redux = require('redux');
-var rootReducer = require('../reducers');
+
+const Redux = require('redux');
+const rootReducer = require('../reducers');
+
 module.exports = function (initState) {
-	return Redux.createStore(rootReducer, initState);
+  return Redux.createStore(rootReducer, initState);
 };

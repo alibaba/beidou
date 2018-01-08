@@ -1,3 +1,5 @@
+'use strict';
+
 const process = require('process');
 const Module = require('module');
 const path = require('path');

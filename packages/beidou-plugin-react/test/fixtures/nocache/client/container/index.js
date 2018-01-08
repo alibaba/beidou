@@ -1,17 +1,17 @@
-var React = require('react');
-var ReactRedux = require('react-redux');
-var News = require('../components/news');
+const React = require('react');
+const ReactRedux = require('react-redux');
+const News = require('../components/news');
 
 
 class App extends React.Component {
 
-	render() {
-		return (
-			<div>
-				<News data={this.props.data}/>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <News data={this.props.data}/>
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {

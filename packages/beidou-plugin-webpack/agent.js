@@ -1,3 +1,5 @@
+'use strict';
+
 const http = require('http');
 const webpack = require('webpack');
 const debug = require('debug')('beidou:plugin:webpack');

@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (appInfo) {
   const exports = {
     keys: '123456',

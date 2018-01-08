@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 
 module.exports = (appInfo) => {
@@ -12,6 +14,10 @@ module.exports = (appInfo) => {
     cache: true,
     // loadPath: `${appInfo.baseDir}/client`,
     // clientPath: `${appInfo.baseDir}/client`,
+
+    /**
+     * Use `renderToStaticMarkup` if true, otherwise `renderToString`
+     */
     static: false,
     doctype: '<!DOCTYPE html>',
     assetHost: '',
