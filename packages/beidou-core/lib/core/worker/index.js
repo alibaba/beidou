@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const egg = require('egg');
 const AppWorkerLoader = require('../loaders/app-worker-loader');

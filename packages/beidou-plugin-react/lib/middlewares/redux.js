@@ -1,3 +1,5 @@
+'use strict';
+
 const serialize = require('serialize-javascript');
 const utils = require('../utils');
 

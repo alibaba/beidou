@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const assert = require('assert');
 const pathToRegexp = require('path-to-regexp');

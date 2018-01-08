@@ -1,4 +1,4 @@
-'use strict'; // eslint-disable-line
+'use strict';
 
 // Webpack config for production
 const extend = require('extend');

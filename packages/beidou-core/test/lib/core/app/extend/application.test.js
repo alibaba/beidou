@@ -1,4 +1,4 @@
-
+'use strict';
 
 const mm = require('egg-mock');
 const should = require('should');

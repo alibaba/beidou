@@ -1,4 +1,4 @@
-'use strict'; // eslint-disable-line
+'use strict';
 
 /**
  * webpack 配置公共部分,避免重复配置造成维护困难

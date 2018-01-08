@@ -1,6 +1,6 @@
-'use stirct';
+'use strict';
 
 exports.logger = {
-    level: 'NONE',
-    consoleLevel: 'NONE'
+  level: 'NONE',
+  consoleLevel: 'NONE'
 };

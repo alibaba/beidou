@@ -1,5 +1,5 @@
 
-var React = require('react');
+const React = require('react');
 
 class News extends React.Component {
   getDefaultProps() {
@@ -9,8 +9,8 @@ class News extends React.Component {
   }
 
   render() {
-		return <div>{this.props.data.name}</div>;
-	}
+    return <div>{this.props.data.name}</div>;
+  }
 
 };
 

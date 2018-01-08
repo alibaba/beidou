@@ -13,7 +13,7 @@ function requireAssetsJson(filepath, logger) {
     } catch (e) {
       // warning
       logger.warn(
-        'invalid assets file at: %s, assets file was created automaticly by Isomorphic plugin,' +
+        'invalid assets file at: %s, assets file was created automatically by Isomorphic plugin,' +
           'never edit it manually',
         filepath
       );

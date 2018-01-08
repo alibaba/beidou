@@ -1,3 +1,5 @@
+'use strict';
+
 const { concatUrl, normalizeUrl } = require('../../lib/utils');
 
 const helper = {
@@ -19,7 +21,7 @@ const helper = {
     }
 
     return normalizeUrl(
-      `${this.ctx.protocal}://${concatUrl(assetHost, assetPath, filename)}`
+      `${this.ctx.protocol}://${concatUrl(assetHost, assetPath, filename)}`
     );
   },
 };

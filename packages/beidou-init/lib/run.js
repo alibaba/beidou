@@ -1,3 +1,5 @@
+'use strict';
+
 const commander = require('commander');
 
 module.exports = (Program) => {

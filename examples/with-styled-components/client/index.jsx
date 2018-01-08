@@ -17,7 +17,7 @@ const Wrapper = styled.section`
 
 const App = () => (
   <Wrapper>
-    <Title>Hello, this is a styled component!</Title>
+    <Title>Hello, this is a beidou with styled-components demo!</Title>
   </Wrapper>
 );
 

@@ -1,3 +1,5 @@
+'use strict';
+
 const webpackMiddleware = require('./webpack-middleware');
 const helper = require('../utils');
 

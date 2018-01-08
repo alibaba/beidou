@@ -1,8 +1,4 @@
-// require('babel-register');
-
-// require('babel-register')({
-//  ignore: /(\.css|\.less|\.scss)$/
-// });
+'use strict';
 
 /**
  * Module dependencies.
