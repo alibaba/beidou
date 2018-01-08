@@ -8,7 +8,10 @@ const RaxWebpackPlugin = require('rax-webpack-plugin');
 module.exports = (app) => {
   const universal = app.config.isomorphic.universal;
   const dev = app.config.env !== 'prod';
-  const outputPath = path.join(app.config.baseDir, app.config.webpack.outputPath);
+  const outputPath = path.join(
+    app.config.baseDir,
+    app.config.webpack.outputPath
+  );
 
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
@@ -16,7 +19,9 @@ module.exports = (app) => {
       filename: 'manifest.js',
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
+      'process.env.NODE_ENV': JSON.stringify(
+        dev ? 'development' : 'production'
+      ),
       __CLIENT__: true,
       __DEV__: dev,
       __SERVER__: false,

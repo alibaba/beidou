@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "debug": "^3.1.0",
-    "egg": "^2.2.0",
+    "egg": "^1.11.0",
     "egg-bin": "^4.3.7",
     "egg-mock": "^3.14.0",
     "rax-text": "^0.5.0",
