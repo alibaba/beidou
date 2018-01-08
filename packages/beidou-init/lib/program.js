@@ -13,6 +13,7 @@ class Program {
     // custom command
     this.addCommand('init', path.join(__dirname, '/command/init-command.js'));
     this.addCommand('start', path.join(__dirname, '/command/start-command.js'));
+    this.addCommand('dev', path.join(__dirname, '/command/start-command.js'));
     this.addCommand('build', path.join(__dirname, '/command/build-command.js'));
   }
 

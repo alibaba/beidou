@@ -1,14 +1,12 @@
+const path = require('path');
 const spawn = require('cross-spawn');
 const BaseCommand = require('./base-command');
 
-require('colors');
-
 class StartCommand extends BaseCommand {
-  * run(cwd /* , args*/) {
-    // const processedArgs = args || [];
+  * run(cwd, args) {
+    const processedArgs = args || [];
     this.cwd = cwd;
-
-    yield this.start(cwd);
+    yield this.start(cwd, processedArgs);
 
     // done
     this.printUsage();
@@ -19,8 +17,9 @@ class StartCommand extends BaseCommand {
    * * @param {String} cwd - cwd
    * @return {promise}
    */
-  * start(cwd) {
-    const cli = spawn('npm', ['run', 'start'], {
+  * start(cwd, args) {
+    const bin = path.join(__dirname, '../start');
+    const cli = spawn(bin, args, {
       cwd,
       stdio: 'inherit',
     });

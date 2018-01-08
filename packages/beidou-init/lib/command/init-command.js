@@ -15,8 +15,6 @@ const glob = require('glob');
 const groupBy = require('group-object');
 const BaseCommand = require('./base-command');
 
-require('colors');
-
 class InitCommand extends BaseCommand {
   constructor() {
     super();

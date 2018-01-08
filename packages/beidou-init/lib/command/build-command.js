@@ -1,8 +1,6 @@
 const spawn = require('cross-spawn');
 const BaseCommand = require('./base-command');
 
-require('colors');
-
 class BuildCommand extends BaseCommand {
   * run(cwd) {
     this.cwd = cwd;
