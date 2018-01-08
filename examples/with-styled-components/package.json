@@ -1,7 +1,7 @@
 {
   "name": "with-styled-components",
-  "version": "Beidou example with styled-components",
-  "description": "0.0.1",
+  "version": "0.0.1",
+  "description": "Beidou example with styled-components",
   "license": "MIT",
   "egg": {
     "framework": "beidou-core"
