@@ -7,6 +7,8 @@
 packages/*/test/fixtures/**/run/
 packages/*/test/fixtures/**/debug/
 packages/*/test/fixtures/**/logs/
+packages/*/run
+
 examples/*/run
 examples/*/debug
 examples/*/logs
