@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const path = require('path');
 const utils = require('egg-utils');
 
 const framework = utils.getFrameworkPath({

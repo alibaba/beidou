@@ -6,10 +6,9 @@ const spawn = require('cross-spawn');
 const BaseCommand = require('./base-command');
 
 class StartCommand extends BaseCommand {
-  * run(cwd, args) {
-    const processedArgs = args || [];
+  * run(cwd, args = []) {
     this.cwd = cwd;
-    yield this.start(cwd, processedArgs);
+    yield this.start(cwd, args);
 
     // done
     this.printUsage();
