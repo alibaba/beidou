@@ -6,3 +6,5 @@ packages/*/test
 packages/*/node_modules/
 packages/*/coverage/
 packages/beidou-docs/
+examples/with-rax/client/
+examples/with-rax/app/views/

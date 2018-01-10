@@ -64,6 +64,7 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
 
   compiler.plugin('done', (stats) => {
     const json = stats.toJson();
+    debug('webpack compile json:\n%O', json);
     const results = json.modules
       .map(module => this.parse(module))
       .filter(result => result);
