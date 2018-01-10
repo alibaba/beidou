@@ -16,12 +16,10 @@
   },
   "rules": {
     "new-cap": "off",
-    "prefer-rest-params": "off",
     "require-yield": "off",
     "import/no-dynamic-require": "off",
     "strict": "off",
     "class-methods-use-this": "off",
-    "no-debugger": "off",
     "no-console": "off"
   },
   "globals": {

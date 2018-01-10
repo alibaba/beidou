@@ -2,6 +2,13 @@
 
 module.exports = {
   extends: ['eslint-config-ali/react'].map(require.resolve),
+  parser: 'babel-eslint',
+  env: {
+    mocha: true,
+    browser: true,
+    node: true,
+    commonjs: true,
+  },
   rules: {
     strict: 'off',
   },

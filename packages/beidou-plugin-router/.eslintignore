@@ -1,5 +1,0 @@
-app/proxy*
-node_modules/
-dist/
-coverage/
-test

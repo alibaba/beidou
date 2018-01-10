@@ -19,7 +19,7 @@ module.exports = () => {
     urlPrefix: '/',
 
     /**
-     * files or directories should be ingored
+     * files or directories should be ignored
      * when automatically match route
      * @member {String} Config#exclude glob pattern
      * @since 1.0.0

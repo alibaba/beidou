@@ -30,7 +30,7 @@ function IsomorphicPlugin(options = {}) {
   assert(Array.isArray(this.options.assets), 'assets should be an array');
 
   for (const asset of this.options.assets) {
-    if (typeof asset === 'string' && /\.[0-9a-zA-A]+/.test(asset)) {
+    if (typeof asset === 'string' && /\.[0-9a-zA-Z]+/.test(asset)) {
       this.exts[asset] = {
         ext: asset,
         exclude: 'node_modules',
@@ -38,7 +38,7 @@ function IsomorphicPlugin(options = {}) {
     } else if (
       typeof asset === 'object' &&
       asset.ext &&
-      /\.[0-9a-zA-A]+/.test(asset.ext)
+      /\.[0-9a-zA-Z]+/.test(asset.ext)
     ) {
       asset.exclude = asset.exclude || 'node_modules';
       this.exts[asset.ext] = asset;

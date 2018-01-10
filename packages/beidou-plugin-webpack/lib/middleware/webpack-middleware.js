@@ -6,8 +6,8 @@ function middleware(doIt, req, res) {
   const originalEnd = res.end;
 
   return function (done) {
-    res.end = function () {
-      originalEnd.apply(this, arguments);
+    res.end = function (...args) {
+      originalEnd.apply(this, args);
       done(null, 0);
     };
     doIt(req, res, () => {
@@ -32,8 +32,8 @@ module.exports = function (compiler, option, callbacks) {
       end(content) {
         ctx.body = content;
       },
-      setHeader() {
-        ctx.set(...arguments);
+      setHeader(...args) {
+        ctx.set(...args);
       },
     });
     if (runNext) {

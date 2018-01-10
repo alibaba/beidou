@@ -30,4 +30,4 @@ node_modules*
 # build files
 examples/**/build
 *.stats.json
-**/.isomorphic/
+.isomorphic/

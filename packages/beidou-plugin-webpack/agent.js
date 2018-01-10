@@ -22,7 +22,7 @@ module.exports = (agent) => {
     const mw = middleware(compiler, config, agent);
     agent.use(mw);
 
-    // hrm middleware
+    // hmr middleware
     const hmr = config.hmr;
     if (hmr) {
       agent.use(require('koa-webpack-hot-middleware')(compiler, hmr));

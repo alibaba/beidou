@@ -20,8 +20,7 @@ class Command {
   /**
    * log with prefix
    */
-  log() {
-    const args = Array.prototype.slice.call(arguments);
+  log(...args) {
     args[0] = `[${this.name}] `.blue + args[0];
     console.log(...args);
   }

@@ -4,7 +4,7 @@ const Rax = require('rax');
 const raxRender = require('rax-server-renderer');
 const debug = require('debug')('beidou:rax');
 
-module.exports = class RaxView {
+class RaxView {
   constructor(ctx) {
     this.ctx = ctx;
     this.app = ctx.app;
@@ -44,4 +44,6 @@ module.exports = class RaxView {
       reject(err);
     });
   }
-};
+}
+
+module.exports = RaxView;

@@ -20,7 +20,9 @@
   "author": "<devrsi0n devrsi0n@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "egg-bin test"
+    "test": "TEST_REPORTER=spec egg-bin test",
+    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "ci": "npm run cov"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
