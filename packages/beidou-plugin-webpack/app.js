@@ -3,6 +3,7 @@
 const helper = require('./lib/utils');
 
 module.exports = (app) => {
+  debugger;
   // ensure webpack middleware works before custom middleware
   app.config.coreMiddleware.unshift('webpack');
 
