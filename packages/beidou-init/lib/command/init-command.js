@@ -423,8 +423,8 @@ class InitCommand extends BaseCommand {
    */
   printUsage() {
     this.log('boilerplate initialization is completed'.green);
-    this.log(`${this.toolkitName} start - start app`.green);
-    this.log(`${this.toolkitName} build - build app`.green);
+    this.log(`${this.toolkitName} start/dev - start server`.green);
+    this.log(`${this.toolkitName} build - build assets`.green);
   }
 
   /**

@@ -4,7 +4,7 @@
   "description": "beidou init helper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "TEST_REPORTER=spec egg-bin test"
   },
   "bin": {
     "beidou": "bin/beidou.js"
@@ -60,5 +60,10 @@
     "urllib": "^2.19.0",
     "yargs": "^6.5.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init",
+  "devDependencies": {
+    "coffee": "^4.1.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.2"
+  }
 }
