@@ -4,7 +4,9 @@
   "description": "beidou init helper",
   "main": "index.js",
   "scripts": {
-    "test": "TEST_REPORTER=spec egg-bin test"
+    "test": "TEST_REPORTER=spec egg-bin test",
+    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "ci": "npm run cov"
   },
   "bin": {
     "beidou": "bin/beidou.js"
