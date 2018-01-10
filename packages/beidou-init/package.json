@@ -11,26 +11,6 @@
   "bin": {
     "beidou": "bin/beidou.js"
   },
-  "config": {
-    "boilerplate": {
-      "Simple": {
-        "package": "beidou-example-simple",
-        "description": "Simple beidou isomorphic app boilerplate"
-      },
-      "Redux": {
-        "package": "beidou-example-redux",
-        "description": "Redux beidou isomorphic app boilerplate"
-      },
-      "CSS-MODULES": {
-        "package": "beidou-example-css-modules",
-        "description": "CSS-MODULES beidou isomorphic app boilerplate"
-      },
-      "Advanced": {
-        "package": "beidou-example-advanced",
-        "description": "Advanced beidou isomorphic app boilerplate"
-      }
-    }
-  },
   "keywords": [
     "beidou",
     "nodejs",
@@ -38,7 +18,6 @@
     "react"
   ],
   "author": "Holden",
-  "license": "MIT",
   "dependencies": {
     "babel-preset-beidou-server": "^0.1.0",
     "chalk": "^2.3.0",
@@ -62,10 +41,32 @@
     "urllib": "^2.19.0",
     "yargs": "^6.5.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init",
   "devDependencies": {
     "coffee": "^4.1.0",
+    "egg-bin": "^4.3.7",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2"
-  }
+  },
+  "license": "MIT",
+  "config": {
+    "boilerplate": {
+      "Simple": {
+        "package": "beidou-example-simple",
+        "description": "Simple beidou isomorphic app boilerplate"
+      },
+      "Redux": {
+        "package": "beidou-example-redux",
+        "description": "Redux beidou isomorphic app boilerplate"
+      },
+      "CSS-MODULES": {
+        "package": "beidou-example-css-modules",
+        "description": "CSS-MODULES beidou isomorphic app boilerplate"
+      },
+      "Advanced": {
+        "package": "beidou-example-advanced",
+        "description": "Advanced beidou isomorphic app boilerplate"
+      }
+    }
+  },
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
 }
