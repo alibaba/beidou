@@ -1,13 +1,19 @@
 sudo: false
+git:
+  depth: 10
 language: node_js
 node_js:
   - '6'
   - '8'
   - '9'
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
 install:
-  - yarn
-  - npm i codecov
+  - yarn run install-ci
+  - yarn global add codecov
 script:
-  - npm run ci
+  - yarn run ci
 after_script:
   - codecov

@@ -13,6 +13,7 @@
     "install": "lerna bootstrap",
     "install-all": "make install",
     "reinstall": "make reinstall",
+    "install-ci": "make install-ci",
     "clean": "make clean-all",
     "ci": "make ci",
     "changelog": "make changelog",

@@ -5,7 +5,8 @@ const fs = require('fs');
 const debug = require('debug')('beidou:plugin:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 
-module.exports.getWebpackConfig = (options = {}, app) => {
+module.exports.getWebpackConfig = (options, app) => {
+  options = options || {};
   const eggLoader = app.loader;
 
   let webpackConfig = null;
