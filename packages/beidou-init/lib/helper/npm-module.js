@@ -11,10 +11,24 @@ const NpmModule = {
    * npm i
    */
   install(targetDir) {
-    const cli = spawn('npm', ['i'], {
-      cwd: targetDir || cwd,
+    // Check yarn exists
+    const { stdout } = spawn.sync('yarn', ['--version'], {
       stdio: 'inherit',
     });
+
+    let cli;
+    // Perfer yarn as install faster
+    if (/^\d+.\d+.\d+$/.test(stdout)) {
+      cli = spawn('yarn', [], {
+        cwd: targetDir || cwd,
+        stdio: 'inherit',
+      });
+    } else {
+      cli = spawn('npm', ['i'], {
+        cwd: targetDir || cwd,
+        stdio: 'inherit',
+      });
+    }
 
     return new Promise((resolve, reject) => {
       cli.on('close', (status) => {

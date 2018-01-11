@@ -10,8 +10,11 @@ cache:
   yarn: true
   directories:
     - "node_modules"
+before_install:
+  # Remove examples directories, avoid install dependencies
+  - rm -rf ./examples/
 install:
-  - yarn run install-ci
+  - yarn
   - yarn global add codecov
 script:
   - yarn run ci

@@ -4,8 +4,8 @@
   "description": "beidou init helper",
   "main": "index.js",
   "scripts": {
-    "test": "TEST_REPORTER=spec egg-bin test",
-    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "test": "TEST_REPORTER=spec egg-bin test --timeout=120000",
+    "cov": "TEST_REPORTER=spec egg-bin cov --timeout=120000",
     "ci": "npm run cov"
   },
   "bin": {

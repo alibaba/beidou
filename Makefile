@@ -20,11 +20,6 @@ install:
 	yarn install
 	lerna bootstrap
 
-# Install dependencies for CI env, skip examples/
-install-ci:
-	yarn
-	lerna bootstrap --ignore beidou-example-*
-
 reinstall:
 	make clean-all
 	rm -rf *.lock
