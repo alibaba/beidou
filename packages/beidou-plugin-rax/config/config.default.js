@@ -5,6 +5,7 @@ const path = require('path');
 module.exports = appInfo => ({
   rax: {
     cache: true,
+    doctype: '<!DOCTYPE html>',
   },
   view: {
     mapping: {

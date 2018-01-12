@@ -26,10 +26,11 @@ module.exports = (app) => {
     const params = Object.keys(hmr)
       .map(key => `${key}=${hmr[key]}`)
       .join('&');
-    headEntries = [
-      'react-hot-loader/patch',
-      `webpack-hot-middleware/client?${params}`,
-    ];
+    const reactHotLoader = require.resolve('react-hot-loader/patch');
+    const webpackHotMiddleware = require.resolve(
+      'webpack-hot-middleware/client'
+    );
+    headEntries = [reactHotLoader, `${webpackHotMiddleware}?${params}`];
   }
 
   if (router.entry) {

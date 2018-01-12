@@ -23,7 +23,7 @@ module.exports = function (app) {
       /**
        * presets of beidou, or you can choose any else you like
        */
-      presets: ['babel-preset-beidou-server'],
+      presets: ['babel-preset-beidou-server'].map(require.resolve),
       // plugins: ['add-module-exports'],
       babelrc: false,
       // ignore: /regex/,

@@ -9,6 +9,7 @@ class RaxView {
     this.ctx = ctx;
     this.app = ctx.app;
     this.logger = ctx.app.coreLogger;
+    this.config = ctx.app.config.rax;
   }
 
   /**
@@ -29,7 +30,10 @@ class RaxView {
     debug(`File path: ${filePath}`);
     const tpl = require(filePath);
     debug(`temple: ${tpl.toString()}`);
-    return raxRender.renderToString(Rax.createElement(tpl.default || tpl));
+    return (
+      this.config.doctype +
+      raxRender.renderToString(Rax.createElement(tpl.default || tpl))
+    );
   }
 
   /**

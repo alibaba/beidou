@@ -1,0 +1,23 @@
+{
+  "name": "beidou-example-with-redux-saga",
+  "version": "0.0.1",
+  "description": "Beidou example with redux saga",
+  "egg": {
+    "framework": "beidou-core"
+  },
+  "scripts": {
+    "start": "egg-bin dev",
+    "debug": "egg-bin debug"
+  },
+  "author": "<devrsi0n devrsi0n@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "beidou-core": "^0.3.5",
+    "egg-bin": "^4.3.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0"
+  }
+}

@@ -1237,10 +1237,10 @@ browserify-zlib@^0.2.0:
     pako "~1.0.5"
 
 browserslist@^2.1.2:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.11.0.tgz#50350d6873a82ebe0f3ae5483658c571ae5f9d7d"
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.11.1.tgz#02fda29d9a2164b879100126e7b0d0b57e43a7bb"
   dependencies:
-    caniuse-lite "^1.0.30000784"
+    caniuse-lite "^1.0.30000789"
     electron-to-chromium "^1.3.30"
 
 buffer-xor@^1.0.3:
@@ -1326,9 +1326,9 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
-caniuse-lite@^1.0.30000784:
-  version "1.0.30000789"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000789.tgz#2e3d937b267133f63635ef7f441fac66360fc889"
+caniuse-lite@^1.0.30000789:
+  version "1.0.30000790"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000790.tgz#c954cca780046f34c4b433d324ef419e1db51a53"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1522,8 +1522,8 @@ commander@2.11.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
 
 commander@^2.11.0, commander@^2.9.0:
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
 
 common-bin@^2.7.1:
   version "2.7.1"
@@ -2117,10 +2117,11 @@ egg-session@^2.1.1:
     koa-session "^4.7.0"
 
 egg-static@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/egg-static/-/egg-static-1.4.1.tgz#d2716105d585a211ff1000525eceb511baaaf77d"
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/egg-static/-/egg-static-1.5.0.tgz#7de14c8af31c1ca5258de13c5ad56eb83e3b84d0"
   dependencies:
     koa-compose "^2.5.1"
+    koa-range "^0.2.2"
     koa-static-cache "^4.1.0"
     mkdirp "^0.5.1"
     ylru "^1.0.0"
@@ -3364,6 +3365,12 @@ koa-override@^2.0.0:
   dependencies:
     methods "^1.1.2"
 
+koa-range@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/koa-range/-/koa-range-0.2.2.tgz#8b116895509807c4103140f660b8abf4e926a6f1"
+  dependencies:
+    stream-slice "^0.1.2"
+
 koa-router@^5.4.2:
   version "5.4.2"
   resolved "https://registry.yarnpkg.com/koa-router/-/koa-router-5.4.2.tgz#4dbdba7e715953d5686c03b7c3fdbd214631f870"
@@ -4395,8 +4402,8 @@ randomatic@^1.1.3:
     kind-of "^4.0.0"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.0.5.tgz#dc009a246b8d09a177b4b7a0ae77bc570f4b1b79"
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.0.6.tgz#d302c522948588848a8d300c932b44c24231da80"
   dependencies:
     safe-buffer "^5.1.0"
 
@@ -4937,6 +4944,10 @@ stream-http@^2.7.2:
     readable-stream "^2.2.6"
     to-arraybuffer "^1.0.0"
     xtend "^4.0.0"
+
+stream-slice@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/stream-slice/-/stream-slice-0.1.2.tgz#2dc4f4e1b936fb13f3eb39a2def1932798d07a4b"
 
 streamsearch@0.1.2:
   version "0.1.2"

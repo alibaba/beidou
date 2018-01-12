@@ -9,7 +9,7 @@ exports.webpack = {
   // publicPath: 'webpack/dev/custom-webpack-config/public/path'
   path: [], // the path of request should be transferred to webpack. e.g HMR: /__webpack_hmr
   noInfo: true,
-  quiet: true,
+  quiet: false,
   clientLogLevel: 'warning',
   lazy: false,
   watchOptions: {

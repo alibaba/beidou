@@ -22,7 +22,8 @@
     "babel-preset-beidou-server": "^0.1.0",
     "debug": "^2.6.0",
     "jsdom": "^9.8.3",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "raf": "^3.4.0"
   },
   "devDependencies": {
     "autod": "2",

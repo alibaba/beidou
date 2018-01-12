@@ -3,10 +3,13 @@
 const fs = require('fs');
 const path = require('path');
 const jsdom = require('jsdom').jsdom;
+const raf = require('raf');
 
 const html = fs.readFileSync(path.join(__dirname, './page.html'), 'utf8');
 
 function setPolyfill(window) {
+  raf.polyfill();
+
   // common BOM
   global.window = window;
   global.document = window.document;
