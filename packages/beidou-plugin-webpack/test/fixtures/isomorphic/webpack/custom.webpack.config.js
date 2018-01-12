@@ -4,10 +4,10 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = (app) => {
+module.exports = (app, defaultConfig, isDev) => {
   const universal = app.config.isomorphic.universal;
   const dev = app.config.env !== 'prod';
-  const outputPath = path.join(app.config.baseDir, app.config.webpack.outputPath);
+  const outputPath = path.join(app.config.baseDir, 'output');
 
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
@@ -43,7 +43,7 @@ module.exports = (app) => {
   const config = {
     devtool: dev ? 'eval' : false,
     context: app.baseDir,
-    entry: app.webpackEntry,
+    entry: defaultConfig.entry,
     output: {
       path: outputPath,
       filename: '[name].js?[hash]',

@@ -42,6 +42,7 @@ module.exports = () => {
      * if entry defined, router only works when name of files match `entry`.
      */
     entry: null,
+    ext: ['.jsx'],
   };
 
   return config;

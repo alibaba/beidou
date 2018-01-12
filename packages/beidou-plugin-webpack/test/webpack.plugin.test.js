@@ -48,6 +48,43 @@ describe('test/plugin.test.js', () => {
     });
   });
 
+  // describe('dynamically added entry', () => {
+  //   const dir = path.join(__dirname, 'fixtures/default-webpack-config/client/add');
+  //   const entry = path.join(dir, 'index.jsx');
+  //   let app;
+  //   before((done) => {
+  //     app = mm.cluster({
+  //       baseDir: './default-webpack-config',
+  //       plugin,
+  //       framework,
+  //     });
+  //     app.ready(done);
+  //   });
+
+  //   after(() => {
+  //     rimraf.sync(dir);
+  //     app.close();
+  //   });
+
+  //   afterEach(mm.restore);
+
+  //   it('should get output for new added entry', (done) => {
+  //     // fs.mkdirSync(dir);
+  //     // fs.writeFileSync(entry, 'const a = 0;');
+  //     process.stdin.write('rs\n');
+  //     request(app.callback())
+  //       .get('/build/add.js')
+  //       .expect(200, done);
+  //   });
+
+  //   it('should get 404 for deleted entry', (done) => {
+  //     // rimraf.sync(dir);
+  //     request(app.callback())
+  //       .get('/build/add.js')
+  //       .expect(404, done);
+  //   });
+  // });
+
   describe('use customized webpack config', () => {
     let app;
     before((done) => {
@@ -109,7 +146,7 @@ describe('test/plugin.test.js', () => {
         .expect(404, done);
     });
 
-    // router work
+    // router works
     it('should router work', (done) => {
       request(app.callback())
         .get('/test')
@@ -135,18 +172,10 @@ describe('test/plugin.test.js', () => {
 
     afterEach(mm.restore);
 
-    it('should get event-stream response', (done) => {
-      const server = app.callback();
-      const urllib = require('urllib');
-
-      urllib.request(`127.0.0.1:${server.port}/__webpack_hmr`, {
-        streaming: true,
-      }, (err, data, res) => {
-        expect(res.statusCode).to.equal(200);
-        const isEventStream = /event-stream/i.test(res.headers['content-type']);
-        expect(isEventStream).to.equal(true);
-        done();
-      });
+    it('should get websocket info', (done) => {
+      request(app.callback())
+        .get('/sockjs-node/info')
+        .expect(200, done);
     });
   });
 
@@ -172,6 +201,8 @@ describe('test/plugin.test.js', () => {
       if (fs.existsSync(output)) {
         rimraf(output, done);
       }
+      app.close();
+      app.agent.close();
     });
 
     afterEach(mm.restore);
@@ -200,7 +231,6 @@ describe('test/plugin.test.js', () => {
       // app.on('webpack-server-ready', done);
 
       // app.ready(done);
-      
     });
 
     after((done) => {
@@ -218,12 +248,12 @@ describe('test/plugin.test.js', () => {
     it('should save valid json into assets file', () => {
       const json = require(path.join(output, 'assets.json'));
       expect(typeof json).to.equal('object');
-    }); 
+    });
 
     it('should exist non-js file content in assets', () => {
-      const json = require(path.join(output, 'assets.json'))
-      expect(json['client/example/index.scss']['bg']).to.match(/.+/);;
+      const json = require(path.join(output, 'assets.json'));
+      expect(json['client/example/index.scss'].bg).to.match(/.+/);
       expect(json['client/images/bg.png']).to.match(/iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkCPi\/FAADnQH2diZYqwAAAABJRU5ErkJggg==/);
-    }); 
+    });
   });
 });

@@ -6,6 +6,7 @@ const debug = require('debug')('beidou-plugin:webpack');
 
 module.exports = function (options, app) {
   return function* (next) {
+    if (!app.webpackServerPort) return yield next;
     let webpackUrl = this.request.href.replace(
       url.parse(this.request.href).port,
       app.webpackServerPort

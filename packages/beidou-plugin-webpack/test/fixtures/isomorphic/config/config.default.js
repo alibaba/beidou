@@ -7,7 +7,6 @@ module.exports = function (app) {
 
   exports.webpack = {
     config: path.resolve(__dirname, '../webpack/custom.webpack.config.js'),
-    outputPath: './output/'
   };
 
   exports.isomorphic = {

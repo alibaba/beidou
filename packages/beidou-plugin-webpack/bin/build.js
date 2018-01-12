@@ -8,7 +8,6 @@ const path = require('path');
 const Application = require('beidou-core').Application;
 const Loader = require('beidou-core').AppWorkerLoader;
 const builder = require('../lib/builder');
-const helper = require('../lib/utils');
 
 Loader.prototype.load = function () {};
 
@@ -18,9 +17,6 @@ const app = new Application({
 
 // build in production environment
 app.config.env = 'prod';
-
-helper.injectEntryAndPlugin(app);
-
 const compiler = builder(app);
 
 compiler.run((err, stats) => {
