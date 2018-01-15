@@ -8,9 +8,9 @@
    * [从零开始构建应用](zh/quick-start/step-by-step.md)
 * Basics
    * [内置对象](zh/basic/objects.md)
-   * [Runtime Environment](zh/basic/env.md)
-   * [Configuration](zh/basic/config.md)
-   * [Plugins](zh/basic/plugins.md)
+   * [运行时环境](zh/basic/env.md)
+   * [配置](zh/basic/config.md)
+   * [插件](zh/basic/plugins.md)
    * [Middlewares](zh/basic/middleware.md)
    * [Router](zh/basic/router.md)
    * [Controller](zh/basic/controller.md)
