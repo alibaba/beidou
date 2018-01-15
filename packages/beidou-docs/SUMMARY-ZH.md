@@ -20,7 +20,7 @@
    * [自定义启动](zh/basic/app-start.md)
 * Core
    * [开发调试](zh/core/development.md)
-   * [Unit Testing](zh/core/unittest.md)
+   * [单元测试](zh/core/unittest.md)
    * [Logger](zh/core/logger.md)
    * [HttpClient](zh/core/http-client.md)
    * [Cookie & Session](zh/core/cookie-and-session.md)
