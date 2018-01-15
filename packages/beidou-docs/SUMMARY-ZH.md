@@ -40,7 +40,7 @@
    * [北斗工作原理](zh/advanced/architecture.md)
    * [Loader](zh/advanced/loader.md)
    * [插件开发](zh/advanced/plugin.md)
-   * [Cluster Enhancement](zh/advanced/cluster-enhancement.md)
+   * [多进程研发模式增强](zh/advanced/cluster-enhancement.md)
    * [Monitor](zh/advanced/monitor.md)
    * [Performance](zh/advanced/performance.md)  
    * [Memory Leaks](zh/advanced/oom.md)
