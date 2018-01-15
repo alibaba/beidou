@@ -32,7 +32,7 @@
 * Deployment
    * [应用部署](zh/deployment/deployment.md)
 * Tutorials
-   * [Progressive](zh/tutorials/progressive.md)
+   * [渐进式开发](zh/tutorials/progressive.md)
    * [MySQL](zh/tutorials/mysql.md)
    * [Restful API](zh/tutorials/restful.md)
    * [Async Function](zh/tutorials/async-function.md)
