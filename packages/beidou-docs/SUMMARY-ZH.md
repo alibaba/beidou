@@ -44,4 +44,4 @@
    * [监控与告警](zh/advanced/monitor.md)
    * [性能](zh/advanced/performance.md)  
    * [内存泄漏](zh/advanced/oom.md)
-   * [SSR Attentions](zh/advanced/attentions.md)
+   * [同构注意事项](zh/advanced/attentions.md)
