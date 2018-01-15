@@ -35,7 +35,7 @@
    * [渐进式开发](zh/tutorials/progressive.md)
    * [MySQL](zh/tutorials/mysql.md)
    * [Restful API](zh/tutorials/restful.md)
-   * [Async Function](zh/tutorials/async-function.md)
+   * [Async方法](zh/tutorials/async-function.md)
 * Advanced
    * [How It Works](zh/advanced/architecture.md)
    * [Loader](zh/advanced/loader.md)
