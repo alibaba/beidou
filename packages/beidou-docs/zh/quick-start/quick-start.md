@@ -28,4 +28,4 @@ $ beidou start
 $ npm start
 ``` 
 
-When you open http://127.0.0.1:6001 in your browser, you can see the instance page
+打开 http://127.0.0.1:6001 即可看到示例页面
