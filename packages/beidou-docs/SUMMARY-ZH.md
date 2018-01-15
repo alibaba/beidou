@@ -37,7 +37,7 @@
    * [Restful API](zh/tutorials/restful.md)
    * [Async方法](zh/tutorials/async-function.md)
 * Advanced
-   * [How It Works](zh/advanced/architecture.md)
+   * [北斗工作原理](zh/advanced/architecture.md)
    * [Loader](zh/advanced/loader.md)
    * [Plugin Development](zh/advanced/plugin.md)
    * [Cluster Enhancement](zh/advanced/cluster-enhancement.md)
