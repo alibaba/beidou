@@ -24,7 +24,7 @@
    * [日志](zh/core/logger.md)
    * [调用HTTP服务](zh/core/http-client.md)
    * [Cookie & Session](zh/core/cookie-and-session.md)
-   * [Cluster and IPC](zh/core/cluster-and-ipc.md)
+   * [多进程模型和进程间通讯](zh/core/cluster-and-ipc.md)
    * [Ismorphic Render](zh/core/isomorphic-render.md)
    * [Error Handling](zh/core/error-handling.md)
    * [Security](zh/core/security.md)
