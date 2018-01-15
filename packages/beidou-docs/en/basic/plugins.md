@@ -52,7 +52,7 @@ Plugins
 - [egg-logview](https://github.com/eggjs/egg-logview): Provide a log files viewer for development purpose..
 - [egg-passport-weibo](https://github.com/eggjs/egg-passport-weibo): Weibo passport plugin for egg.
 - [egg-rpc](https://github.com/eggjs/egg-rpc): Rpc server plugin. follow [JSON-RPC 2.0 Specification](http://www.jsonrpc.org/specification)
-- [egg-handlebars](https://github.com/eggjs/egg-handlebars): Handlebars plugin.
+- [egg-view-handlebars](https://github.com/eggjs/egg-view-handlebars): egg view plugin for handlebars
 - [egg-host](https://github.com/eggjs/egg-host): Host plugin. It supports modify the host config, just like edit the /etc/hosts.
 - [egg-async-validator](https://github.com/eggjs/egg-async-validator): Async validate plugin.
 - [egg-watcher-chokidar](https://github.com/eggjs/egg-watcher-chokidar): Watcher-chokidar plugin.
