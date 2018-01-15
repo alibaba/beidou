@@ -14,7 +14,7 @@
    * [中间件](zh/basic/middleware.md)
    * [路由](zh/basic/router.md)
    * [控制器](zh/basic/controller.md)
-   * [Service](zh/basic/service.md)
+   * [服务](zh/basic/service.md)
    * [Schedule](zh/basic/schedule.md)
    * [Extend](zh/basic/extend.md)
    * [Mock](zh/basic/Mock.md)
