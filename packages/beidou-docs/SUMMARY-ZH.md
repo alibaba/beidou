@@ -15,7 +15,7 @@
    * [路由](zh/basic/router.md)
    * [控制器](zh/basic/controller.md)
    * [服务](zh/basic/service.md)
-   * [Schedule](zh/basic/schedule.md)
+   * [定时任务](zh/basic/schedule.md)
    * [Extend](zh/basic/extend.md)
    * [Mock](zh/basic/Mock.md)
    * [Custom startup](zh/basic/app-start.md)
