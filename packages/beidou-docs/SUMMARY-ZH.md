@@ -11,7 +11,7 @@
    * [运行时环境](zh/basic/env.md)
    * [配置](zh/basic/config.md)
    * [插件](zh/basic/plugins.md)
-   * [Middlewares](zh/basic/middleware.md)
+   * [中间件](zh/basic/middleware.md)
    * [Router](zh/basic/router.md)
    * [Controller](zh/basic/controller.md)
    * [Service](zh/basic/service.md)
