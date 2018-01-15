@@ -19,7 +19,7 @@
    * [框架扩展](zh/basic/extend.md)
    * [自定义启动](zh/basic/app-start.md)
 * Core
-   * [Development](zh/core/development.md)
+   * [开发调试](zh/core/development.md)
    * [Unit Testing](zh/core/unittest.md)
    * [Logger](zh/core/logger.md)
    * [HttpClient](zh/core/http-client.md)
