@@ -3,11 +3,11 @@
 * [关于 Beidou](zh/intro/about.md)
 * [快速开始](zh/quick-start/quick-start.md)
 * 从零开始
-   * [Environment](zh/quick-start/prepare-environment.md)  
-   * [Directory Structure](zh/quick-start/directory-struct.md)  
-   * [Step by Step](zh/quick-start/step-by-step.md)
+   * [环境准备](zh/quick-start/prepare-environment.md)  
+   * [目录结构](zh/quick-start/directory-struct.md)  
+   * [从零开始构建应用](zh/quick-start/step-by-step.md)
 * Basics
-   * [Built-in Objects](zh/basic/objects.md)
+   * [内置对象](zh/basic/objects.md)
    * [Runtime Environment](zh/basic/env.md)
    * [Configuration](zh/basic/config.md)
    * [Plugins](zh/basic/plugins.md)
