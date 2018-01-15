@@ -17,7 +17,7 @@
    * [服务](zh/basic/service.md)
    * [定时任务](zh/basic/schedule.md)
    * [框架扩展](zh/basic/extend.md)
-   * [Custom startup](zh/basic/app-start.md)
+   * [自定义启动](zh/basic/app-start.md)
 * Core
    * [Development](zh/core/development.md)
    * [Unit Testing](zh/core/unittest.md)
