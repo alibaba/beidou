@@ -39,7 +39,7 @@
 * Advanced
    * [北斗工作原理](zh/advanced/architecture.md)
    * [Loader](zh/advanced/loader.md)
-   * [Plugin Development](zh/advanced/plugin.md)
+   * [插件开发](zh/advanced/plugin.md)
    * [Cluster Enhancement](zh/advanced/cluster-enhancement.md)
    * [Monitor](zh/advanced/monitor.md)
    * [Performance](zh/advanced/performance.md)  
