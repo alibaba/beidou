@@ -25,7 +25,7 @@
    * [调用HTTP服务](zh/core/http-client.md)
    * [Cookie & Session](zh/core/cookie-and-session.md)
    * [多进程模型和进程间通讯](zh/core/cluster-and-ipc.md)
-   * [Ismorphic Render](zh/core/isomorphic-render.md)
+   * [同构渲染](zh/core/isomorphic-render.md)
    * [Error Handling](zh/core/error-handling.md)
    * [Security](zh/core/security.md)
    * [Multi-language](zh/core/i18n.md)
