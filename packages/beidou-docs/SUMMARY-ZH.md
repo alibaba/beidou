@@ -42,6 +42,6 @@
    * [插件开发](zh/advanced/plugin.md)
    * [多进程研发模式增强](zh/advanced/cluster-enhancement.md)
    * [监控与告警](zh/advanced/monitor.md)
-   * [Performance](zh/advanced/performance.md)  
-   * [Memory Leaks](zh/advanced/oom.md)
+   * [性能](zh/advanced/performance.md)  
+   * [内存泄漏](zh/advanced/oom.md)
    * [SSR Attentions](zh/advanced/attentions.md)
