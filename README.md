@@ -65,7 +65,6 @@ After that, go to `http://localhost:6001/`
    * [Service](./packages/beidou-docs/en/basic/service.md)
    * [Schedule](./packages/beidou-docs/en/basic/schedule.md)
    * [Extend](./packages/beidou-docs/en/basic/extend.md)
-   * [Mock](./packages/beidou-docs/en/basic/Mock.md)
    * [Custom startup](./packages/beidou-docs/en/basic/app-start.md)
 * Core
    * [Development](./packages/beidou-docs/en/core/development.md)

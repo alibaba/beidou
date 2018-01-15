@@ -17,7 +17,6 @@
    * [服务](zh/basic/service.md)
    * [定时任务](zh/basic/schedule.md)
    * [框架扩展](zh/basic/extend.md)
-   * [Mock](zh/basic/Mock.md)
    * [Custom startup](zh/basic/app-start.md)
 * Core
    * [Development](zh/core/development.md)

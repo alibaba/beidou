@@ -17,7 +17,6 @@
    * [Service](en/basic/service.md)
    * [Schedule](en/basic/schedule.md)
    * [Extend](en/basic/extend.md)
-   * [Mock](en/basic/Mock.md)
    * [Custom startup](en/basic/app-start.md)
 * Core
    * [Development](en/core/development.md)
