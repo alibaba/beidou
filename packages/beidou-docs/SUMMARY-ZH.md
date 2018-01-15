@@ -13,7 +13,7 @@
    * [插件](zh/basic/plugins.md)
    * [中间件](zh/basic/middleware.md)
    * [路由](zh/basic/router.md)
-   * [Controller](zh/basic/controller.md)
+   * [控制器](zh/basic/controller.md)
    * [Service](zh/basic/service.md)
    * [Schedule](zh/basic/schedule.md)
    * [Extend](zh/basic/extend.md)
