@@ -24,7 +24,7 @@ Isomorphic framework for server-rendered React apps
 
 - ✔︎ High performance, 2-5 times speed up
 - ✔︎ Search engine optimization(SEO)
-- ✔︎ React server side render
+- ✔︎ React server side rendering
 - ✔︎ ES6/ES7 supported
 - ✔︎ Css modules supported
 - ✔︎ Auto router supported
