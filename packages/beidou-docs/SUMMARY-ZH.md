@@ -16,7 +16,7 @@
    * [控制器](zh/basic/controller.md)
    * [服务](zh/basic/service.md)
    * [定时任务](zh/basic/schedule.md)
-   * [Extend](zh/basic/extend.md)
+   * [框架扩展](zh/basic/extend.md)
    * [Mock](zh/basic/Mock.md)
    * [Custom startup](zh/basic/app-start.md)
 * Core
