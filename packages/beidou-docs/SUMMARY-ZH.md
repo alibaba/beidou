@@ -28,7 +28,7 @@
    * [同构渲染](zh/core/isomorphic-render.md)
    * [错误处理](zh/core/error-handling.md)
    * [安全](zh/core/security.md)
-   * [Multi-language](zh/core/i18n.md)
+   * [多语言](zh/core/i18n.md)
 * Deployment
     * [Deployment](zh/deployment/deployment.md)
     * [DevOps](zh/deployment/devops.md)
