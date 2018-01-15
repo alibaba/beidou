@@ -21,8 +21,8 @@
 * Core
    * [开发调试](zh/core/development.md)
    * [单元测试](zh/core/unittest.md)
-   * [Logger](zh/core/logger.md)
-   * [HttpClient](zh/core/http-client.md)
+   * [日志](zh/core/logger.md)
+   * [调用HTTP服务](zh/core/http-client.md)
    * [Cookie & Session](zh/core/cookie-and-session.md)
    * [Cluster and IPC](zh/core/cluster-and-ipc.md)
    * [Ismorphic Render](zh/core/isomorphic-render.md)
