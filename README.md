@@ -121,6 +121,8 @@ DingTalk & Wechat group supported
 
 ![](https://img.alicdn.com/tfs/TB1xFtzlf6H8KJjy0FjXXaXepXa-700-473.jpg)
 
+Chinese Documentation - [中文文档](./README-ZH.md)
+
 ## License
 
 [MIT](LICENSE)
