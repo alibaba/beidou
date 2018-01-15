@@ -20,7 +20,7 @@
 
 请参考
 
-[打造高可靠与高性能的React同构解决方案](../articles/high-performance-isomorphic-app.md)
+[打造高可靠与高性能的React同构解决方案](../../articles/high-performance-isomorphic-app.md)
 
 
-[唯快不破，让nodejs再快一点](../articles/node-performance-optimization.md)
+[唯快不破，让nodejs再快一点](../../node-performance-optimization.md)

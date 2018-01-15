@@ -5,4 +5,4 @@
 
 * 对于内存泄漏需要高度重视，通常通过压测去暴露内存泄漏或者从平常的监控中发现，然后通过[alinode](http://alinode.alibaba-inc.com/)的堆快照功能定位到问题，再修复。具体的方法论和实战请参考下文
 
-[Node应用内存泄漏分析方法论与实战](../articles/node-memory-leak.md)
+[Node应用内存泄漏分析方法论与实战](../../articles/node-memory-leak.md)
