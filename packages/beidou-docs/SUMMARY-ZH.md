@@ -2,7 +2,7 @@
 
 * [关于 Beidou](zh/intro/about.md)
 * [快速开始](zh/quick-start/quick-start.md)
-* Step by Step
+* 从零开始
    * [Environment](zh/quick-start/prepare-environment.md)  
    * [Directory Structure](zh/quick-start/directory-struct.md)  
    * [Step by Step](zh/quick-start/step-by-step.md)
