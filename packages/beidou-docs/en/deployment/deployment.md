@@ -1,4 +1,102 @@
 Deployment
 ---
 
-to be done
+Launching application via `egg-bin dev` will bring something magical to help people to develop in high efficiency. However, actually, those features are not required in production or any other environment. Let's walk through and learn how to deploy your application in Egg's way.
+
+There are two steps to achieve building once and deploying multiply from source code to runtime.
+
+## Build
+
+In the stage, you don't need to compile JavaScript files unless TypeScript or Babel(ES6 features) are involved in stack.
+
+Generally, before deploying the application, dependencies will be installed with `NODE_ENV=production` or `--production`, which will exclude `devDependencies` because those used in development may increase the size of package released or even create pitfalls that you never expect.
+
+```bash
+$ cd baseDir
+$ npm install --production
+$ tar -zcvf ../release.tgz .
+```
+
+Both the application and dependencies will be packed into a tgz file, what you are going to do is unzipping and launching it.
+
+Reusable package brings a few pros in:
+- Environments in building and runtime are different, try to keep the later environment pure and stable.
+- Abbreviating publish progress and making rollback without hassle.
+
+## Deploy
+
+Node.js(`>= 8.0.0`) is required so that you should make sure it is pre-installed in runtime environment.
+
+Egg takes `egg-cluster` to create [Master](https://github.com/eggjs/egg/blob/master/docs/source/en/core/cluster-and-ipc.md#master) process, which you can rely on to secure the application instead of daemon manager like [pm2]. The API is also really convenient for developers to achieve that, just `egg.startCluster`.
+
+And framework also provide [egg-scripts] for developers to start/stop application at prod mode.
+
+Firstly, we need to import `egg-scripts` as `dependencies`:
+
+```bash
+$ npm i egg-scripts --save
+```
+
+Then add `npm scripts` to `package.json`:
+
+```json
+{
+  "scripts": {
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop"
+  }
+}
+```
+
+Then we are able to use `npm start` and `npm stop` to manage application.
+
+> Note: `egg-scripts` don't support Windows.
+
+### Start
+
+```bash
+$ egg-scripts start --port=6001 --daemon --title=egg-server-showcase
+```
+
+Options:
+
+- `--port=6001` http server port, will use `process.env.PORT`, default to `6001`.
+- `--daemon` whether run at background, so you don't need `nohup`. Ignore this when the application run in docker instance.
+- `--env=prod` then framework env, will use `process.env.EGG_SERVER_ENV`, default to `prod`。
+- `--workers=2` worker count, default to cpu cores, which can leverage the capability of the cpu.
+- `--title=egg-server-showcase` convenient for `ps + grep`, default to `egg-server-${appname}`.
+- `--ignore-stderr` ignore the std err at start up。
+- support all options from [egg-cluster], such as `--https`.
+
+More about [egg-scripts] and [egg-cluster] documents.
+
+#### Dispatch with arguments
+
+Arguments of dispatch can be configured in `config.{env}.js`.
+
+```js
+// config/config.default.js
+exports.cluster = {
+  listen: {
+    port: 6001,
+    hostname: '127.0.0.1',
+    // path: '/var/run/egg.sock',
+  }
+}
+```
+
+[server.listen](https://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback) supports arguments including `path`, `port` and `hostname` to change dispatching behavior. One thing you should know is that the `port` in `egg.startCluster` will override the one in application config.
+
+### Stop
+
+```bash
+$ egg-scripts stop
+```
+
+This command will kill master process which will handler and notice worker and agent to gracefull exit.
+
+Also you can manually call `ps -eo "pid,command" | grep "--type=egg-server"` to find master process then `kill` without `-9`.
+
+[egg-cluster]: https://github.com/eggjs/egg-cluster
+[egg-scripts]: https://github.com/eggjs/egg-scripts
+[pm2]: https://github.com/Unitech/pm2
