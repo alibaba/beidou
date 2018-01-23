@@ -37,7 +37,7 @@ class BeidouReactView {
     const chain = middlewares.map(middleware => middleware(this));
 
     const renderToStaticMarkup = this.renderToStaticMarkup;
-    this.renderWithMiddlewares = compose(...chain)(function* (args) {
+    this.renderWithMiddlewares = compose(...chain)(async (args) => {
       // eslint-disable-line
       const { Component, props } = args;
       const instance = React.createElement(Component, props);
@@ -45,7 +45,7 @@ class BeidouReactView {
     });
   }
 
-  render(filepath, props) {
+  async render(filepath, props) {
     Object.assign(props, {
       render: this.renderReact,
       renderToString: this.renderToString,
@@ -54,21 +54,23 @@ class BeidouReactView {
     });
     const process = this.renderWithMiddlewares;
     const Component = require(filepath);
-    return function* () {
-      const payload = {
-        filepath,
-        Component: Component.default || Component, // when add-module-exports not work
-        props,
-        html: '',
-      };
-
-      yield process(payload);
-
-      return payload.html;
+    const payload = {
+      filepath,
+      Component: Component.default || Component, // when add-module-exports not work
+      props,
+      html: '',
     };
+
+    await process(payload);
+    const htmlStr = payload.html;
+
+    const { ctx } = this;
+    ctx.body = htmlStr;
+
+    return htmlStr;
   }
 
-  renderString() {
+  async renderString() {
     const self = this;
     return new Promise((resolve, reject) => {
       self.app.logger.info('reject');

@@ -28,9 +28,9 @@ function register(app, url, method) {
   app.router.register(url, method, handler);
 }
 
-function* handler() {
+async function handler() {
   const config = this.app.config.router;
   const { entry } = config;
   const url = /\/$/.test(this.url) ? this.url + entry : this.url;
-  yield this.render(url);
+  await this.render(url);
 }

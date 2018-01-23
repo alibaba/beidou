@@ -6,13 +6,13 @@ module.exports = (app) => {
   };
 
   class LoginController extends app.Controller {
-    * doLogin() {
+    async doLogin() {
       const ctx = this.ctx;
       ctx.validate(loginRule);
 
       const { username, password } = ctx.request.body;
       if (username && password) {
-        const user = yield this.service.user.find(username, password);
+        const user = await this.service.user.find(username, password);
         if (user) {
           ctx.session.user = user;
 
@@ -28,11 +28,11 @@ module.exports = (app) => {
       ctx.status = 200;
     }
 
-    * login() {
-      yield this.ctx.render('pages/login');
+    async login() {
+      await this.ctx.render('pages/login');
     }
 
-    * logout() { // eslint-disable-line
+    async logout() { // eslint-disable-line
       const ctx = this.ctx;
       ctx.session.user = undefined;
 

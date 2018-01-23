@@ -4,12 +4,12 @@ const serialize = require('serialize-javascript');
 const utils = require('../utils');
 
 module.exports = () => next =>
-  function* (args) {
+  async function (args) {
     const { props, Component } = args;
     const getStore = Component.getStore;
     let store = null;
-    if (getStore && utils.isGenerator(getStore)) {
-      store = yield getStore.call(Component, props);
+    if (getStore && utils.isAsyncFunc(getStore)) {
+      store = await getStore.call(Component, props);
     } else if (typeof getStore === 'function') {
       store = getStore.call(Component, props);
     } else if (props.store) {
@@ -29,7 +29,7 @@ module.exports = () => next =>
         props.state = serializeStore(store);
       }
     }
-    yield next(args);
+    await next(args);
   };
 
 /**

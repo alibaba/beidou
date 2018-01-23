@@ -36,7 +36,7 @@
     "node-homedir": "^1.0.0",
     "npm-updater": "^1.2.0",
     "npminstall": "^2.16.0",
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.6.2",
     "tar": "^2.2.1",
     "urllib": "^2.19.0",
     "yargs": "^6.5.0"
@@ -44,8 +44,7 @@
   "devDependencies": {
     "coffee": "^4.1.0",
     "egg-bin": "^4.3.7",
-    "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.2"
+    "mkdirp": "^0.5.1"
   },
   "license": "MIT",
   "config": {

@@ -24,6 +24,9 @@ exports.normalizeUrl = normalizeUrl;
 
 exports.isGenerator = isGeneratorFunction;
 
+exports.isAsyncFunc = fn =>
+  fn && fn.constructor && fn.constructor.name === 'AsyncFunction';
+
 exports.compose = function (...funcs) {
   if (funcs.length === 0) {
     return arg => arg;

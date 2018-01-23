@@ -21,7 +21,7 @@
     "autod": "2",
     "babel-preset-beidou-client": "^0.1.0",
     "babel-preset-beidou-server": "^0.1.0",
-    "egg": "^1.4.0",
+    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
     "react": "^16.2.0",
@@ -35,7 +35,7 @@
     "app.js"
   ],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">= 8.0.0"
   },
   "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
 }

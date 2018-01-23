@@ -19,15 +19,15 @@ describe('Basic test', () => {
 
   afterEach(mock.restore);
 
-  it('should render index', function* () {
-    yield app.httpRequest()
+  it('should render index', async function () {
+    await app.httpRequest()
       .get('/')
       .expect(200)
       .expect(/Beidou with Rax/);
   });
 
-  it('should render inline style', function* () {
-    yield app.httpRequest()
+  it('should render inline style', async function () {
+    await app.httpRequest()
       .get('/inline-style')
       .expect(200)
       .expect(/Inline style/);

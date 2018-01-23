@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = view => next =>
-  function* (args) {
-    yield next(args);
+  async function (args) {
+    await next(args);
 
     const defaultDoctype = view.config.doctype;
     const { html, Component } = args;

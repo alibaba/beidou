@@ -42,7 +42,7 @@
     "babel-preset-beidou-server": "^0.1.0",
     "chai": "^4.0.2",
     "classnames": "^2.2.5",
-    "egg": "^1.4.0",
+    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
     "file-loader": "^1.1.6",
@@ -61,7 +61,7 @@
     "agent.js"
   ],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">= 8.0.0"
   },
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",

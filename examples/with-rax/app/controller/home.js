@@ -3,9 +3,9 @@
 const { Controller } = require('beidou-core');
 
 class HomeController extends Controller {
-  * index() {
+  async index() {
     const { ctx } = this;
-    yield ctx.render('test.jsx');
+    await ctx.render('test.jsx');
     ctx.status = 200;
   }
 }

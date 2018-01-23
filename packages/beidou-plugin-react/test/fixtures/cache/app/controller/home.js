@@ -4,30 +4,30 @@ require('babel-register');
 
 const createStore = require('../../client/store');
 
-exports.jsxtpl = function* homeController() {
+exports.jsxtpl = async function homeController() {
   const initState = {
     name: 'hello world'
   };
 
   const store = createStore(initState);
 
-  yield this.render('home/index', {store, title: 'test'});
+  await this.render('home/index', {store, title: 'test'});
 };
 
-exports.jstpl = function* homeController() {
+exports.jstpl = async function homeController() {
   const initState = {
     name: 'hello world'
   };
 
   const store = createStore(initState);
 
-  yield this.render('home/indexJs', {store, title: 'test'});
+  await this.render('home/indexJs', {store, title: 'test'});
 }
 
-exports.combo = function* () {
-  yield this.render('home/combo', {});
+exports.combo = async function () {
+  await this.render('home/combo', {});
 };
 
-exports.cdnSupply = function* cdnSupply() {
-  yield this.render('home/cdnSupply', {});
+exports.cdnSupply = async function cdnSupply() {
+  await this.render('home/cdnSupply', {});
 }

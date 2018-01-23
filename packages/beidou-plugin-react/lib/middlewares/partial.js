@@ -3,15 +3,15 @@
 const utils = require('../utils');
 
 module.exports = view => next =>
-  function* (args) {
+  async function (args) {
     const { Component, props } = args;
     const { logger } = props.ctx;
 
     // check static method in Component
     const render = Component.getPartial;
     if (render && typeof render === 'function') {
-      const mapping = utils.isGenerator(render)
-        ? yield render(props)
+      const mapping = utils.isAsyncFunc(render)
+        ? await render(props)
         : render(props);
 
       for (const key in mapping) {
@@ -33,5 +33,5 @@ module.exports = view => next =>
       }
     }
 
-    yield next(args);
+    await next(args);
   };

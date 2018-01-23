@@ -21,9 +21,9 @@ export default class RouteView extends View {
       asset: 'main',
     }
 
-    static getStore = function* ({ ctx }) {
+    static async getStore({ ctx }) {
       const store = configureStore(reducers, saga);
-      const users = yield ctx.service.user.findAll();
+      const users = await ctx.service.user.findAll();
       store.dispatch(actions.user.fetchSuccess(users));
       return store;
     }

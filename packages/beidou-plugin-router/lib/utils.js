@@ -6,7 +6,14 @@ const globToRegExp = require('glob-to-regexp');
 
 const resolved = {};
 
-exports.resolvePath = function* (name, providers, root, exclude, ext, entry) {
+exports.resolvePath = async function (
+  name,
+  providers,
+  root,
+  exclude,
+  ext,
+  entry
+) {
   if (exclude) {
     exclude = globToRegExp(exclude);
     for (const dir of name.split('/')) {
@@ -29,8 +36,8 @@ exports.resolvePath = function* (name, providers, root, exclude, ext, entry) {
     if (!exclude.test(name)) {
       for (const dir of providers) {
         const target = path.join(dir, file);
-        if (yield fs.exists(target)) {
-          const stat = yield fs.stat(target);
+        if (await fs.exists(target)) {
+          const stat = await fs.stat(target);
           if (stat.isFile()) {
             return path.join(root, file);
           }

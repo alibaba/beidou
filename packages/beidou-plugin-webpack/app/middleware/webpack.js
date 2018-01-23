@@ -5,17 +5,16 @@ const request = require('request');
 const debug = require('debug')('beidou-plugin:webpack');
 
 module.exports = function (options, app) {
-  return function* (next) {
-    let webpackUrl = this.request.href.replace(
-      url.parse(this.request.href).port,
+  return async function (ctx, next) {
+    let webpackUrl = ctx.request.href.replace(
+      url.parse(ctx.request.href).port,
       app.webpackServerPort
     );
 
     // force to use `http` protocol, because webpack does not support https
     webpackUrl = webpackUrl.replace(/^https/, 'http');
     const webpackRequest = request(webpackUrl);
-    const ctx = this;
-    const notFound = yield new Promise((resolve) => {
+    const notFound = await new Promise((resolve) => {
       webpackRequest.on('response', function (res) {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           debug('redirect request to webpack with url: %s', webpackUrl);
@@ -31,7 +30,7 @@ module.exports = function (options, app) {
       });
     });
     if (notFound) {
-      yield next;
+      await next();
     }
   };
 };

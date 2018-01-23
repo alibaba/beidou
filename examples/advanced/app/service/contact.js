@@ -1,8 +1,8 @@
 module.exports = (app) => {
   class ContactService extends app.Service {
-    * list() {
+    async list() {
       this.logger.info('Fetch data');
-      return yield Promise.resolve([
+      return await Promise.resolve([
         'Jim',
         'Peng',
         'Gray',

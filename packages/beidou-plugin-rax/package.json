@@ -45,11 +45,11 @@
     "rax-server-renderer": "^0.5.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">= 8.0.0"
   },
   "devDependencies": {
     "debug": "^3.1.0",
-    "egg": "^1.11.0",
+    "egg": "^2.2.0",
     "egg-bin": "^4.3.7",
     "egg-mock": "^3.14.0",
     "rax": "^0.5.0",
@@ -58,7 +58,7 @@
     "rax-view": "^0.5.0"
   },
   "files": [
-    "app",
+    "app.js",
     "lib",
     "config"
   ]

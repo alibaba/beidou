@@ -1,9 +1,9 @@
 
 module.exports = (app) => {
   class DashboardController extends app.Controller {
-    * index() {
+    async index() {
       const ctx = this.ctx;
-      ctx.body = yield this.service.dashboard.find();
+      ctx.body = await this.service.dashboard.find();
       ctx.status = 200;
     }
   }

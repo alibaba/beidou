@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = view => next =>
-  function* (args) {
+  async function (args) {
     // clean cache
     if (!view.config.cache) {
       const roots = view.app.config.view.root;
@@ -12,5 +12,5 @@ module.exports = view => next =>
         }
       });
     }
-    yield next(args);
+    await next(args);
   };

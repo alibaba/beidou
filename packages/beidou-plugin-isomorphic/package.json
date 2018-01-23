@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "autod": "2",
-    "egg": "^1.4.0",
+    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.2",
     "should": "8",
@@ -40,7 +40,7 @@
     "app.js"
   ],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">= 8.0.0"
   },
   "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic"
 }

@@ -1,13 +1,13 @@
 'use strict';
 
-module.exports.fast = function* () {
+module.exports.fast = async function () {
   console.error('fast', window.location.href);
   this.body = window.location.href;
 };
 
-module.exports.slow = function* () {
+module.exports.slow = async function () {
   console.error('slow', window.location.href);
-  yield new Promise((resolve) => {
+  await new Promise((resolve) => {
     setTimeout(resolve, 1000);
   });
   console.error('slow', window.location.href);

@@ -16,8 +16,8 @@ class RaxView {
    * Render from filePath and set result to ctx.body
    * @param {String} filePath
    */
-  * render(filePath) {
-    const rsp = yield this.renderView(filePath);
+  async render(filePath) {
+    const rsp = await this.renderView(filePath);
     this.ctx.body = rsp;
     return rsp;
   }
@@ -26,7 +26,7 @@ class RaxView {
    * Render from filePath
    * @param {String} filePath
    */
-  * renderView(filePath) {
+  async renderView(filePath) {
     debug(`File path: ${filePath}`);
     const tpl = require(filePath);
     debug(`temple: ${tpl.toString()}`);
@@ -39,7 +39,7 @@ class RaxView {
   /**
    * Render from file string.
    */
-  * renderString() {
+  async renderString() {
     return new Promise((resolve, reject) => {
       this.logger.info('[beidou-plugin-rax] renderString reject');
       const err = new Error();

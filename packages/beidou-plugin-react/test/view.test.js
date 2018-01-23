@@ -63,7 +63,7 @@ describe('test/view.test.js', () => {
       fs.unlinkSync(cacheTmpFile);
     };
 
-    before(function* () {
+    before(async function () {
       app = mm.app({
         baseDir: './nocache',
         framework
@@ -74,7 +74,7 @@ describe('test/view.test.js', () => {
       });
 
       cpFile();
-      yield [app.ready(), cacheApp.ready()];
+      await [app.ready(), cacheApp.ready()];
     });
 
     after(() => {
@@ -229,7 +229,7 @@ describe('test/view.test.js', () => {
   describe('view render middlewares', () => {
     let app;
 
-    before(function* () {
+    before(async function () {
       app = mm.app({
         baseDir: './partial',
         framework
