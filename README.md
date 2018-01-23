@@ -98,10 +98,10 @@ After that, go to `http://localhost:6001/`
 
 ## Articles
 
-* [D2 - High Reliability & Performance Isomorphic App](./packages/beidou-docs/zh/articles/D2_High_Reliability_and_Performance_Isomorphic_App.pdf)
-* [High performance isomorphic-rendered React Apps](./packages/beidou-docs/zh/articles/high-performance-isomorphic-app.md)
-* [How to resolve nodejs memory leak](./packages/beidou-docs/zh/articles/node-memory-leak.md)
-* [Nodejs application performance optimization](./packages/beidou-docs/zh/articles/node-performance-optimization.md)
+* [D2 - High Reliability & Performance Isomorphic App](./packages/beidou-docs/articles/D2_High_Reliability_and_Performance_Isomorphic_App.pdf)
+* [High performance isomorphic-rendered React Apps](./packages/beidou-docs/articles/high-performance-isomorphic-app.md)
+* [How to resolve nodejs memory leak](./packages/beidou-docs/articles/node-memory-leak.md)
+* [Nodejs application performance optimization](./packages/beidou-docs/articles/node-performance-optimization.md)
 
 ## Performance
 
