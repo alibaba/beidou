@@ -119,7 +119,7 @@ Please let us know how can we help. Do check out [issues](https://github.com/ali
 
 DingTalk & Wechat group supported
 
-![](https://img.alicdn.com/tfs/TB12O38mL2H8KJjy0FcXXaDlFXa-700-473.jpg)
+![](https://img.alicdn.com/tfs/TB1CZh7ocLJ8KJjy0FnXXcFDpXa-700-473.jpg)
 
 Chinese Documentation - [中文文档](./README-ZH.md)
 
