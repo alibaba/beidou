@@ -10,7 +10,7 @@ npm i eslint eslint-config-beidou --save-dev
 
 ## Usage
 
-- `package.json`
+* `package.json`
 
 ```json
 {
@@ -21,7 +21,7 @@ npm i eslint eslint-config-beidou --save-dev
 }
 ```
 
-- `.eslintrc.js`
+* `.eslintrc.js`
 
 ```js
 module.exports = {
@@ -31,9 +31,9 @@ module.exports = {
 
 ### Use with Experimental Features
 
-If you want to use ***eslint-config-beidou*** with experimental features such as `async function`, you should use `babel-eslint` parser:
+If you want to use **eslint-config-beidou** with experimental features such as `async function`, you should use `babel-eslint` parser:
 
-- `package.json`
+* `package.json`
 
 ```json
 {
@@ -45,7 +45,7 @@ If you want to use ***eslint-config-beidou*** with experimental features such as
 }
 ```
 
-- `.eslintrc.js`
+* `.eslintrc.js`
 
 ```js
 module.exports = {
@@ -56,15 +56,15 @@ module.exports = {
     // see https://github.com/eslint/eslint/issues/6274
     'generator-star-spacing': 'off',
     'babel/generator-star-spacing': 'off',
-  }
+  },
 };
 ```
 
 ### Use with React in Front-End
 
-If you want to use ***eslint-config-beidou*** with react, jsx and es6 modules:
+If you want to use **eslint-config-beidou** with react, jsx and es6 modules:
 
-- `package.json`
+* `package.json`
 
 ```json
 {
@@ -77,7 +77,7 @@ If you want to use ***eslint-config-beidou*** with react, jsx and es6 modules:
 }
 ```
 
-- `.eslintrc.js`
+* `.eslintrc.js`
 
 ```js
 module.exports = {
@@ -88,9 +88,7 @@ module.exports = {
     // for es6 module
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: ['react'],
   rules: {
     // for variables in jsx
     'react/jsx-uses-vars': 'error',

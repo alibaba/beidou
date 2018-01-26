@@ -28,14 +28,10 @@
     "should": "8",
     "supertest": "1"
   },
-  "files": [
-    "app",
-    "lib",
-    "config",
-    "app.js"
-  ],
+  "files": ["app", "lib", "config", "app.js"],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
 }

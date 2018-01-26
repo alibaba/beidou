@@ -3,14 +3,14 @@
 webpack dev server for local environment
 
 ### Features
+
 * Serve jsx/js source
 * Serve less/scss/css source
 * Support hot module replacement(hmr)
 
-
 ### Configuration
 
-- config/plugin.default.js:  
+* config/plugin.default.js:
 
 ```
 exports.webpack = {
@@ -18,40 +18,39 @@ exports.webpack = {
     package: 'beidou-plugin-webpack',
     env: ['local', 'unittest']
   }
-
 ```
 
-- config/config.local.js  
+* config/config.local.js
 
 ```
 exports.webpack = {
     //[optional] default to 'beidou-plugin-webpack/config/webpack.default.config.js'
-    defaultConfig: 'path of webpack config', 
+    defaultConfig: 'path of webpack config',
     //[optional] the path of request should be transfered to webpack. e.g HMR: /__webpack_hmr
-    path: [], 
-    //[optional] 
+    path: [],
+    //[optional]
     noInfo: false,
-    //[optional] 
+    //[optional]
     quiet: false,
-    //[optional] 
+    //[optional]
     lazy: false,
-    //[optional] 
+    //[optional]
     watchOptions: {
         aggregateTimeout: 300,
         poll: true,
     },
-    //[optional] 
+    //[optional]
     headers: { 'X-Custom-Header': 'yes' },
-    //[optional] 
+    //[optional]
     stats: {
         colors: true,
         chunks: false,
     },
-    //[optional] 
+    //[optional]
     defaultEntryName: 'index.jsx',
-    //[optional] 
+    //[optional]
     outputPath: './build',
-    //[optional] 
+    //[optional]
     publicPath: '/build',
     //[optional] hot module replacement config
     hmr: {
@@ -60,7 +59,6 @@ exports.webpack = {
         heartbeat: '10000',
     }
 };
-
 ```
 
 ### License

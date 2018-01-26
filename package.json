@@ -16,7 +16,7 @@
     "clean": "make clean-all",
     "ci": "make ci",
     "changelog": "make changelog",
-    "precommit": "make lint",
+    "precommit": "lint-staged",
     "prepush": "make test-all"
   },
   "author": "weichunpeng",
@@ -48,6 +48,10 @@
     "*.js": [
       "prettier --write",
       "eslint --fix",
+      "git add"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write",
       "git add"
     ]
   },

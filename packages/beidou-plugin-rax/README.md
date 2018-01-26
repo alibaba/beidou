@@ -10,7 +10,7 @@ yarn add beidou-plugin-rax
 
 ## Configuration
 
-- config/plugin.js
+* config/plugin.js
 
 ```js
 exports.rax = {
@@ -19,7 +19,7 @@ exports.rax = {
 };
 ```
 
-- config/config.default.js
+* config/config.default.js
 
 ```js
 exports.rax = {

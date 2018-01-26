@@ -1,5 +1,4 @@
-beidou-init
-=======
+# beidou-init
 
 Init beidou app helper tools.
 

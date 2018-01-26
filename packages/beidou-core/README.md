@@ -1,8 +1,7 @@
-beidou-core
-=======
+# beidou-core
 
 Beidou Framework
 
-For details, see [beidou](../../)
-=======
+# For details, see [beidou](../../)
+
 [MIT](LICENSE)
