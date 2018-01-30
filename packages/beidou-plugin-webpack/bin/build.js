@@ -21,7 +21,15 @@ app.config.env = 'prod';
 
 helper.injectEntryAndPlugin(app);
 
-const compiler = builder(app);
+const execEnv = process.argv[2];
+if (execEnv && !['node', 'browser'].includes(execEnv)) {
+  app.coreLogger.error(
+    `Expect execute environment to be "node" or "browser"(default), got ${execEnv}`
+  );
+  process.exit(1);
+}
+
+const compiler = builder(app, execEnv);
 
 compiler.run((err, stats) => {
   if (err) {

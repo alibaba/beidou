@@ -22,7 +22,8 @@ module.exports = (app) => {
   const hmr = options.hmr;
   const entry = {};
   let headEntries = [];
-  if (hmr) {
+  const dev = app.config.env !== 'prod';
+  if (hmr && dev) {
     const params = Object.keys(hmr)
       .map(key => `${key}=${hmr[key]}`)
       .join('&');

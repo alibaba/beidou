@@ -24,7 +24,7 @@ exports.webpack = {
 
 ```
 exports.webpack = {
-    //[optional] default to 'beidou-plugin-webpack/config/webpack.default.config.js'
+    //[optional] default to 'beidou-plugin-webpack/config/webpack.browser.js'
     defaultConfig: 'path of webpack config',
     //[optional] the path of request should be transfered to webpack. e.g HMR: /__webpack_hmr
     path: [],

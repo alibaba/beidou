@@ -7,6 +7,8 @@
   },
   "scripts": {
     "start": "egg-bin dev",
+    "build": "beidou-build",
+    "build:node": "beidou-build node",
     "debug": "egg-bin debug"
   },
   "author": "<devrsi0n devrsi0n@gmail.com>",

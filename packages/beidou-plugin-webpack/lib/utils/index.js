@@ -5,25 +5,22 @@ const fs = require('fs');
 const debug = require('debug')('beidou:plugin:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 
-module.exports.getWebpackConfig = (options, app) => {
-  options = options || {};
+module.exports.getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
   const eggLoader = app.loader;
 
-  let webpackConfig = null;
+  // TODO: Custom webpack config with extends default config
   // custom config exists
   if (options.config && fs.existsSync(options.config)) {
-    webpackConfig = eggLoader.loadFile(options.config);
+    return eggLoader.loadFile(options.config);
   }
 
-  if (!webpackConfig) {
-    const defaultConfigPath = path.resolve(
-      __dirname,
-      '../../config/webpack.default.config.js'
-    );
-    webpackConfig = eggLoader.loadFile(defaultConfigPath);
-  }
+  const relativePath =
+    execEnv === 'node'
+      ? '../../config/webpack.node.js'
+      : '../../config/webpack.browser.js';
 
-  return webpackConfig;
+  const defaultConfigPath = path.resolve(__dirname, relativePath);
+  return eggLoader.loadFile(defaultConfigPath);
 };
 
 module.exports.injectEntryAndPlugin = (app) => {

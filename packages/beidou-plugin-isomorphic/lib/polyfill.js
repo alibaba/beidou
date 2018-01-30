@@ -8,6 +8,7 @@ const raf = require('raf');
 const html = fs.readFileSync(path.join(__dirname, './page.html'), 'utf8');
 
 function setPolyfill(window) {
+  // requestAnimationFrame polyfill
   raf.polyfill();
 
   // common BOM

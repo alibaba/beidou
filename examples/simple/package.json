@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/server.js",
     "build": "beidou-build",
+    "build:node": "beidou-build node",
     "lint": "eslint --fix --ext .jsx --ext .js app client config webpack"
   },
   "author": "",

@@ -16,7 +16,7 @@ module.exports = (agent) => {
 
     debug('create webpack server with config: %o', config);
 
-    const webpackConfig = helper.getWebpackConfig(config, agent);
+    const webpackConfig = helper.getWebpackConfig(agent, config);
     debug('Webpack config: %O', webpackConfig);
     const compiler = webpack(webpackConfig);
     const mw = middleware(compiler, config, agent);

@@ -1,5 +1,7 @@
 'use strict';
 
+// Webpack common config
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -14,10 +16,6 @@ module.exports = (app) => {
   );
 
   const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      filename: 'manifest.js',
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(
         dev ? 'development' : 'production'
@@ -32,19 +30,6 @@ module.exports = (app) => {
 
   if (universal) {
     plugins.push(new app.IsomorphicPlugin(universal));
-  }
-
-  if (dev) {
-    plugins.push(new webpack.NamedModulesPlugin());
-    plugins.push(new webpack.HotModuleReplacementPlugin());
-  } else {
-    plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      })
-    );
   }
 
   const config = {
@@ -125,11 +110,26 @@ module.exports = (app) => {
     resolve: {
       extensions: ['.json', '.js', '.jsx'],
     },
-    devServer: {
-      hot: true,
-    },
     plugins,
   };
+
+  if (dev) {
+    config.devServer = {
+      hot: true,
+    };
+    config.plugins.push(
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+    );
+  } else {
+    config.plugins.push(
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+        },
+      })
+    );
+  }
 
   return config;
 };
