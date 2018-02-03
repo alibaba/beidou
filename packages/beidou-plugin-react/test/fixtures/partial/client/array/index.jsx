@@ -38,7 +38,7 @@ export default class View extends React.Component {
    *
    * @returns {ReactInstance|Array<ReactInstance>}
    */
-  static getPartial = async function () {
+  static async getPartial () {
     return { html: [<App />] };
   }
 

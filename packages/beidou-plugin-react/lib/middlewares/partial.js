@@ -9,10 +9,14 @@ module.exports = view => next =>
 
     // check static method in Component
     const render = Component.getPartial;
-    if (render && typeof render === 'function') {
-      const mapping = utils.isAsyncFunc(render)
+    if (typeof render === 'function') {
+      let mapping = utils.isAsyncFunc(render)
         ? await render(props)
         : render(props);
+
+      if (utils.isPromise(mapping)) {
+        mapping = await mapping;
+      }
 
       for (const key in mapping) {
         if (key in props) {

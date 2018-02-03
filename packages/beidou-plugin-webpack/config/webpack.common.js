@@ -16,14 +16,6 @@ module.exports = (app) => {
   );
 
   const plugins = [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(
-        dev ? 'development' : 'production'
-      ),
-      __CLIENT__: true,
-      __DEV__: dev,
-      __SERVER__: false,
-    }),
     new ExtractTextPlugin('[name].css'),
     new webpack.NoEmitOnErrorsPlugin(),
   ];
@@ -44,17 +36,6 @@ module.exports = (app) => {
     },
     module: {
       rules: [
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: require.resolve('babel-loader'),
-            options: {
-              babelrc: false,
-              presets: [require.resolve('babel-preset-beidou-client')],
-            },
-          },
-        },
         {
           test: /\.s(c|a)ss$/,
           exclude: /node_modules/,
@@ -112,24 +93,6 @@ module.exports = (app) => {
     },
     plugins,
   };
-
-  if (dev) {
-    config.devServer = {
-      hot: true,
-    };
-    config.plugins.push(
-      new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
-    );
-  } else {
-    config.plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      })
-    );
-  }
 
   return config;
 };

@@ -8,12 +8,16 @@ module.exports = () => next =>
     const { props, Component } = args;
     const getStore = Component.getStore;
     let store = null;
-    if (getStore && utils.isAsyncFunc(getStore)) {
+    if (utils.isAsyncFunc(getStore)) {
       store = await getStore.call(Component, props);
     } else if (typeof getStore === 'function') {
       store = getStore.call(Component, props);
     } else if (props.store) {
       store = props.store;
+    }
+
+    if (utils.isPromise(store)) {
+      store = await store;
     }
 
     if (store) {

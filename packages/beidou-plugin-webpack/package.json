@@ -15,7 +15,9 @@
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.0.0",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "babel-preset-beidou-client": "^0.1.0",
+    "babel-preset-beidou-server": "^0.1.0",
     "css-loader": "^0.28.7",
     "debug": "^2.2.0",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -40,7 +42,6 @@
   },
   "devDependencies": {
     "autod": "2",
-    "babel-preset-beidou-server": "^0.1.0",
     "chai": "^4.0.2",
     "classnames": "^2.2.5",
     "egg": "^2.2.0",
@@ -52,9 +53,6 @@
     "rimraf": "^2.6.1",
     "should": "8",
     "supertest": "1"
-  },
-  "peerDependencies": {
-    "beidou-core": "^0.3.5"
   },
   "files": [
     "bin",
@@ -72,10 +70,6 @@
     "cov": "TEST_REPORTER=spec egg-bin cov",
     "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
-  },
-  "bin": {
-    "beidou-build": "./bin/build.js",
-    "webpack-build": "./bin/build.js"
   },
   "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack"
 }

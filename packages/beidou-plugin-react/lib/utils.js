@@ -27,6 +27,11 @@ exports.isGenerator = isGeneratorFunction;
 exports.isAsyncFunc = fn =>
   fn && fn.constructor && fn.constructor.name === 'AsyncFunction';
 
+exports.isPromise = obj =>
+  !!obj &&
+  (typeof obj === 'object' || typeof obj === 'function') &&
+  typeof obj.then === 'function';
+
 exports.compose = function (...funcs) {
   if (funcs.length === 0) {
     return arg => arg;

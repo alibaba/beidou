@@ -5,10 +5,10 @@
 const process = require('process');
 const fs = require('fs');
 const path = require('path');
-const Application = require('beidou-core').Application;
-const Loader = require('beidou-core').AppWorkerLoader;
-const builder = require('../lib/builder');
-const helper = require('../lib/utils');
+const { Application } = require('../index');
+const Loader = require('../index').AppWorkerLoader;
+const builder = require('beidou-plugin-webpack/lib/builder');
+const helper = require('beidou-plugin-webpack/lib/utils');
 
 Loader.prototype.load = function () {};
 
