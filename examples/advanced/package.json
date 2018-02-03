@@ -19,8 +19,8 @@
     "babel-preset-beidou-client": "^0.1.0",
     "babel-preset-beidou-server": "^0.1.0",
     "beidou-core": "^0.3.5",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "engines": {
     "node": ">= 8.0.0"

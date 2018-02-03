@@ -43,7 +43,7 @@ After that, go to `http://localhost:6001/`
 
 ## Boilerplate
 
-- [simple](./examples/simple)
+* [simple](./examples/simple)
 * [advanced](./examples/advanced)
 * [with redux](./examples/redux)
 * [with css-modules](./examples/css-modules)

@@ -26,7 +26,7 @@ reinstall:
 	rm -rf packages/*/*.lock
 	rm -rf examples/*/*.lock
 	yarn install
-	lerna bootstrap	
+	lerna bootstrap
 
 clean:
 	make test-clean

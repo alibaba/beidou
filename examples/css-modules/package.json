@@ -35,8 +35,8 @@
     "classnames": "^2.2.3",
     "enums": "^1.0.0",
     "extend": "^3.0.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-transform-catch-errors": "^1.0.2"
   },
   "engines": {
