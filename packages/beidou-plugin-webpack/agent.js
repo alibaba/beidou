@@ -33,11 +33,13 @@ module.exports = (agent) => {
       }
     }
 
-    chokidar.watch(agent.config.client, {
-      ignored: /(^|[/\\])\../,
-      persistent: true,
-      ignoreInitial: true,
-    }).on('add', watcher)
+    chokidar
+      .watch(agent.config.client, {
+        ignored: /(^|[/\\])\../,
+        persistent: true,
+        ignoreInitial: true,
+      })
+      .on('add', watcher)
       .on('addDir', watcher)
       .on('unlinkDir', watcher)
       .on('unlink', watcher);
@@ -45,7 +47,7 @@ module.exports = (agent) => {
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     process.stdin.on('data', (data) => {
-      data = (`${data}`).trim().toLowerCase();
+      data = `${data}`.trim().toLowerCase();
 
       // if the keys entered match the restartable value, then restart!
       if (data === 'rs') {

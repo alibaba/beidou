@@ -18,7 +18,11 @@ function getAvaliablePort(defaultPort, app) {
   const fallback = new FallbackPort(defaultPort);
   const port = fallback.getPort();
   if (port !== defaultPort) {
-    app.logger.warn('[webpack] port %s is in used, use %s instead', defaultPort, port);
+    app.logger.warn(
+      '[webpack] port %s is in used, use %s instead',
+      defaultPort,
+      port
+    );
   }
   return port;
 }
@@ -36,7 +40,7 @@ const getWebpackConfig = (options, app) => {
 
   // make sure the port assigned is available
   let defaultPort = 6002;
-  const portAssigned = (options.devServer && options.devServer.port);
+  const portAssigned = options.devServer && options.devServer.port;
   if (portAssigned) {
     defaultPort = options.devServer.port;
   }
@@ -70,7 +74,11 @@ const getWebpackConfig = (options, app) => {
   }
 
   if (devServer.contentBase !== false) {
-    app.logger.warn('[webpack] devServer.contentBase: %s, if webpack.devServer.contentBase is not false may cause beidou server unreachable', devServer.contentBase);
+    app.logger.warn(
+      '[webpack] devServer.contentBase: %s, if webpack.devServer.contentBase is not false may cause beidou server unreachable',
+      devServer.contentBase
+    );
+    devServer.contentBase = false;
   }
 
   if (!devServer.publicPath) {
@@ -86,12 +94,15 @@ const injectPlugin = (app) => {
 
 const printEntry = function (entry) {
   console.log(
-    boxen(`${colorz.magenta('Auto Load Webpack Entry:')}\n\n${stringify(entry)}`, {
-      padding: 1,
-      borderStyle: 'double',
-      borderColor: 'yellow',
-      float: 'left',
-    })
+    boxen(
+      `${colorz.magenta('Auto Load Webpack Entry:')}\n\n${stringify(entry)}`,
+      {
+        padding: 1,
+        borderStyle: 'double',
+        borderColor: 'yellow',
+        float: 'left',
+      }
+    )
   );
 };
 
@@ -104,7 +115,9 @@ const startServer = (config, port, logger, agent) => {
   let lastCompileResult = false;
   compiler.plugin('done', ({ compilation }) => {
     const ok = compilation.errors.length === 0;
-    ok && !lastCompileResult && logger.info('[webpack]', colorz.green('compile done'));
+    ok &&
+      !lastCompileResult &&
+      logger.info('[webpack]', colorz.green('compile done'));
     lastCompileResult = ok;
   });
 
