@@ -50,7 +50,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.{json,css,md}": [
+    "*.{json,css,scss,md}": [
       "prettier --write",
       "git add"
     ]

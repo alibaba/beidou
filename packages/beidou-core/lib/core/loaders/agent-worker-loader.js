@@ -8,10 +8,6 @@ const egg = require('egg');
  * @extends Egg.AgentWorkerLoader
  */
 class BeidouAgentWorkerLoader extends egg.AgentWorkerLoader {
-  // constructor(options) {
-  //   super(options);
-  // }
-
   loadConfig() {
     super.loadConfig();
     this.checkDevPlugins();
@@ -22,13 +18,13 @@ class BeidouAgentWorkerLoader extends egg.AgentWorkerLoader {
    */
   checkDevPlugins() {
     const appPkg = require(path.join(this.options.baseDir, './package.json'));
-    Object.keys(this.plugins).forEach((key) => {
+    for (const key of Object.keys(this.plugins)) {
       const plugin = this.plugins[key];
       const name = plugin.package || plugin.name;
       if (appPkg.devDependencies && appPkg.devDependencies[name]) {
         throw new Error(`plugin ${name} can not be in devDependencies`);
       }
-    });
+    }
   }
 }
 

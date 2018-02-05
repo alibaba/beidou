@@ -171,7 +171,7 @@ class InitCommand extends BaseCommand {
     const locals = {};
     const fsEditor = editor.create(memFs.create());
     const files = glob.sync('**/*', { cwd: src, dot: true, nodir: true });
-    files.forEach((file) => {
+    for (const file of files) {
       const from = path.join(src, file);
       const to = path.join(
         targetDir,
@@ -183,7 +183,7 @@ class InitCommand extends BaseCommand {
           return this.replaceTemplate(content, locals);
         },
       });
-    });
+    }
 
     // write boilerplate base info to dist pkg info
     const tplPkgInfo = require(path.join(templateDir, 'package.json'));
@@ -311,11 +311,11 @@ class InitCommand extends BaseCommand {
   * fetchBoilerplateMapping() {
     const pkgInfo = this.pkgInfo;
     const mapping = pkgInfo.config.boilerplate;
-    Object.keys(mapping).forEach((key) => {
+    for (const key of Object.keys(mapping)) {
       const item = mapping[key];
       item.name = item.name || key;
       item.from = pkgInfo;
-    });
+    }
     return mapping;
   }
 

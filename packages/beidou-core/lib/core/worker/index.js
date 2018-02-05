@@ -19,7 +19,6 @@ class BeidouApplication extends egg.Application {
 
   get [Symbol.for('egg#eggPath')]() {
     return path.resolve(__dirname, '../../../');
-    // return __dirname;
   }
 
   get [Symbol.for('egg#loader')]() {

@@ -5,7 +5,7 @@ export NODE_ENV = test
 .PHONY: lint install clean test-clean clean-all test-only test-all test cov ci changelog
 
 prettier:
-	prettier --write "packages/**/*.{js,jsx}"
+	prettier --write "packages/**/*.{js,jsx,json,css,scss,md}"
 
 eslint:
 	eslint --fix --ext .jsx,.js packages/
@@ -75,5 +75,3 @@ ci:
 
 changelog:
 	lerna-changelog
-
-

@@ -36,25 +36,25 @@ module.exports = (app) => {
 
   if (router.entry) {
     const filenames = [`${router.entry}.js`, `${router.entry}.jsx`];
-    filenames.forEach((filename) => {
+    for (const filename of filenames) {
       entry.index = [
         ...headEntries,
         path.normalize(pageDir + path.sep + filename),
       ];
-    });
+    }
   } else {
     const files = glob.sync('@(*.js|*.jsx)', {
       cwd: pageDir,
       ignore: exclude,
     });
 
-    files.forEach((file) => {
+    for (const file of files) {
       const filename = path.parse(file).name;
       entry[filename] = [
         ...headEntries,
         path.normalize(pageDir + path.sep + file),
       ];
-    });
+    }
   }
 
   const dirs = glob.sync('*/', {
@@ -62,13 +62,13 @@ module.exports = (app) => {
     ignore: exclude,
   });
 
-  dirs.forEach((file) => {
+  for (const file of dirs) {
     const filename = path.parse(file).name;
     const entryFile = pageDir + file + entryName;
     if (fs.existsSync(entryFile)) {
       entry[filename] = [...headEntries, entryFile];
     }
-  });
+  }
 
   debug('get entry file from %s : $j', pageDir, entry);
 

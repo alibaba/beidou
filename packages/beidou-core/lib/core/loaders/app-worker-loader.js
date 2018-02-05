@@ -32,9 +32,9 @@ class BeidouAppWorkerLoader extends egg.AppWorkerLoader {
   }
 
   loadCustomRouter() {
-    this.getLoadUnits().forEach(unit =>
-      this.loadFile(path.join(unit.path, 'app/extend/router.js'))
-    );
+    for (const unit of this.getLoadUnits()) {
+      this.loadFile(path.join(unit.path, 'app/extend/router.js'));
+    }
   }
 
   /*

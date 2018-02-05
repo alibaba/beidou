@@ -12,9 +12,9 @@ module.exports = function (app, mapping) {
 
 function registerFromMap(app, target, parent = '') {
   if (typeof target === 'object' && !Array.isArray(target)) {
-    Object.keys(target).forEach((key) => {
+    for (const key of Object.keys(target)) {
       registerFromMap(app, target[key], `${parent}/${key}`);
-    });
+    }
   } else if (typeof target === 'string' || Array.isArray(target)) {
     register(app, parent, target);
   }

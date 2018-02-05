@@ -46,7 +46,6 @@ exports.view = {
       defaultViewEngine: 'react',
       defaultExtension: '.jsx'
     }
-
 ```
 
 ### Usage

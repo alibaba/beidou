@@ -20,7 +20,6 @@ class BeidouAgent extends egg.Agent {
 
   get [Symbol.for('egg#eggPath')]() {
     return path.resolve(__dirname, '../../../');
-    // return __dirname;
   }
 
   get [Symbol.for('egg#loader')]() {

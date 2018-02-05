@@ -18,9 +18,10 @@ const outputPath = `${cwd}/build`;
 const files = globby.sync(['**/pages/*'], { cwd: `${cwd}/client` });
 const entry = {};
 
-files.forEach((item) => {
+for (const item of files) {
   entry[`${item}/index`] = [`${cwd}/client/${item}/index.jsx`];
-});
+}
+
 module.exports = {
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),

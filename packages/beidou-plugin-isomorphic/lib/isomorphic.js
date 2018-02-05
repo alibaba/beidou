@@ -41,13 +41,11 @@ function isValidExt(ext) {
 }
 
 module.exports = function (app) {
-  const isomorphic = app.config.isomorphic;
-  const baseDir = app.config.baseDir;
+  const { isomorphic, baseDir } = app.config;
+  const { logger } = app;
+  const { alias } = isomorphic;
 
-  const logger = app.logger;
-
-  if (isomorphic.alias) {
-    const alias = isomorphic.alias;
+  if (alias) {
     if (alias && Object.keys(alias).length > 0) {
       app.logger.info(
         '[beidou:plugin:isomorphic] isomorphic.alias detected: %o',

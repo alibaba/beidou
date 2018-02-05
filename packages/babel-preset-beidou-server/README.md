@@ -4,9 +4,9 @@
 
 This preset includes the following plugins:
 
-- babel-preset-env
-- babel-preset-react
-- babel-preset-stage-2
+* babel-preset-env
+* babel-preset-react
+* babel-preset-stage-2
 
 ## Install
 
@@ -43,7 +43,7 @@ babel script.js --presets beidou-server
 ### Via Node API
 
 ```javascript
-require("babel-core").transform("code", {
-  presets: ["beidou-server"]
+require('babel-core').transform('code', {
+  presets: ['beidou-server'],
 });
 ```

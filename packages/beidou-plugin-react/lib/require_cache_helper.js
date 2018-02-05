@@ -31,9 +31,9 @@ exports.createMatchFunction = (input) => {
  * @return {undefined}
  */
 exports.cleanCache = (match) => {
-  Object.keys(require.cache).forEach((module) => {
+  for (const module of Object.keys(require.cache)) {
     if (match(require.cache[module].filename)) {
       delete require.cache[module];
     }
-  });
+  }
 };
