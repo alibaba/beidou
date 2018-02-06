@@ -1,11 +1,8 @@
 'use strict';
 
 module.exports = {
-  keys: 'secret',
-  router: {
-    entry: 'index',
-  },
-  react: {
+  keys: 'secrets',
+  rax: {
     static: true,
     cache: false,
     beautify: true,
@@ -13,8 +10,5 @@ module.exports = {
   },
   webpack: {
     publicPath: '/build/',
-    hmr: {
-      // reload: true
-    },
   },
 };

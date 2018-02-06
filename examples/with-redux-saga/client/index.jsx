@@ -30,9 +30,7 @@ export default class View extends React.Component {
         </head>
         <body>
           <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
-          <script type="text/javascript">
-            window.__INITIAL_STATE__ = {state};
-          </script>
+          <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__ = ${state}` }} />
           <script src={helper.asset('manifest.js')} />
           <script src={helper.asset('index.js')} />
         </body>

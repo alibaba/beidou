@@ -25,7 +25,7 @@ exports.normalizeUrl = normalizeUrl;
 exports.isGenerator = isGeneratorFunction;
 
 exports.isAsyncFunc = fn =>
-  fn && fn.constructor && fn.constructor.name === 'AsyncFunction';
+  !!fn && fn.constructor && fn.constructor.name === 'AsyncFunction';
 
 exports.isPromise = obj =>
   !!obj &&

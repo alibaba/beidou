@@ -1,4 +1,4 @@
-# Beidou example with [rax](https://github.com/alibaba/rax)
+# Beidou example with [rax-redux](https://github.com/alibaba/rax/tree/master/examples/redux)
 
 ## Install
 

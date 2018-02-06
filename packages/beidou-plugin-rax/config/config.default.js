@@ -29,7 +29,7 @@ module.exports = appInfo => ({
           require.resolve('babel-preset-env'),
           {
             targets: {
-              node: '6.4.0',
+              node: 'current',
             },
           },
         ],

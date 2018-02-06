@@ -59,7 +59,7 @@ module.exports = (app) => {
     entry: app.webpackEntry,
     output: {
       path: outputPath,
-      filename: '[name]-[hash].js',
+      filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
       publicPath: app.config.webpack.publicPath,
     },

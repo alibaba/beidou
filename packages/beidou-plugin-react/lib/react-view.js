@@ -38,7 +38,6 @@ class BeidouReactView {
 
     const renderToStaticMarkup = this.renderToStaticMarkup;
     this.renderWithMiddlewares = compose(...chain)(async (args) => {
-      // eslint-disable-line
       const { Component, props } = args;
       const instance = React.createElement(Component, props);
       args.html = renderToStaticMarkup(instance);

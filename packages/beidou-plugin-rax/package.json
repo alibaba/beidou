@@ -24,9 +24,12 @@
     "beidou-plugin-webpack": "^0.3.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
+    "js-beautify": "^1.7.5",
+    "normalizeurl": "^1.0.0",
     "rax-webpack-plugin": "^0.5.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "serialize-javascript": "^1.4.0",
     "stylesheet-loader": "^0.5.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0"

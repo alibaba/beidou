@@ -1,5 +1,13 @@
 # Beidou rax view plugin
 
+<!-- TOC -->
+
+* [Beidou rax view plugin](#beidou-rax-view-plugin)
+  * [Install](#install)
+  * [Configuration](#configuration)
+
+<!-- /TOC -->
+
 This plugin conflicts with `beidou-plugin-react`, `beidou-plugin-react` should be disabled while this plugin enabled.
 
 ## Install

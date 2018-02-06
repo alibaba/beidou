@@ -1,8 +1,11 @@
 'use strict';
 
 const Rax = require('rax');
-const raxRender = require('rax-server-renderer');
+const { renderToString } = require('rax-server-renderer');
 const debug = require('debug')('beidou:rax');
+const reduxLib = require('./redux');
+const partialLib = require('./partial');
+const beautifyLib = require('./beautify');
 
 class RaxView {
   constructor(ctx) {
@@ -16,8 +19,8 @@ class RaxView {
    * Render from filePath and set result to ctx.body
    * @param {String} filePath
    */
-  async render(filePath) {
-    const rsp = await this.renderView(filePath);
+  async render(filePath, locals) {
+    const rsp = await this.renderView(filePath, locals);
     this.ctx.body = rsp;
     return rsp;
   }
@@ -25,15 +28,25 @@ class RaxView {
   /**
    * Render from filePath
    * @param {String} filePath
+   * @param locals - custom props in `this.render(<view>, props)`
+   * in controller
    */
-  async renderView(filePath) {
+  async renderView(filePath, locals) {
     debug(`File path: ${filePath}`);
-    const tpl = require(filePath);
-    debug(`temple: ${tpl.toString()}`);
-    return (
+    const comp = require(filePath);
+    debug(`temple: ${comp.toString()}`);
+
+    let props = { ...locals };
+    const reduxProps = await reduxLib(comp, props);
+    props = { ...props, ...reduxProps };
+    const partialProps = await partialLib(comp, props, renderToString);
+    props = { ...props, ...partialProps };
+
+    const htmlStr =
       this.config.doctype +
-      raxRender.renderToString(Rax.createElement(tpl.default || tpl))
-    );
+      renderToString(Rax.createElement(comp.default || comp, props));
+
+    return beautifyLib(htmlStr);
   }
 
   /**

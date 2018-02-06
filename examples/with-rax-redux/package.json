@@ -1,0 +1,26 @@
+{
+  "name": "beidou-example-with-rax-redux",
+  "version": "Beidou example with Rax-redux",
+  "description": "0.0.1",
+  "license": "MIT",
+  "egg": {
+    "framework": "beidou-core"
+  },
+  "scripts": {
+    "start": "egg-bin dev",
+    "debug": "egg-bin debug --inspect --inspect-brk",
+    "test": "egg-bin test"
+  },
+  "dependencies": {
+    "beidou-core": "^0.3.5",
+    "beidou-plugin-rax": "^0.0.1",
+    "egg-bin": "^4.3.7",
+    "rax": "^0.5.0",
+    "rax-dom": "^0.5.2",
+    "rax-text": "^0.5.0",
+    "rax-view": "^0.5.0",
+    "rax-redux": "^0.5.2",
+    "react": "^16.2.0",
+    "redux": "^3.7.2"
+  }
+}
