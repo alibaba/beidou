@@ -92,10 +92,6 @@ exports.cdnSupply = async function cdnSupply() {
   await this.render('home/cdnSupply', {});
 };
 
-exports.appHelper = async function appHelper() {
-  await this.render('home/appHelper', {});
-};
-
 exports.combo = async function () {
   await this.render('home/combo', {});
 };

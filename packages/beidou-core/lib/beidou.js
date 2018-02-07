@@ -4,8 +4,9 @@
  * Module dependencies.
  */
 const egg = require('egg');
+const path = require('path');
 
-const EGG_PATH = __dirname;
+const EGG_PATH = path.join(__dirname, '..');
 const startCluster = egg.startCluster;
 const BeidouApplication = require('./core/worker/index');
 const BeidouAgent = require('./core/agent/index');

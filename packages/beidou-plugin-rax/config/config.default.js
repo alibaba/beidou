@@ -4,7 +4,17 @@ const path = require('path');
 
 module.exports = appInfo => ({
   rax: {
-    cache: true,
+    middlewares: [
+      'cache',
+      'redux',
+      'partial',
+      'raxRender',
+      'doctype',
+      'beautify',
+    ],
+    beautify: true,
+    static: false,
+    cache: false,
     doctype: '<!DOCTYPE html>',
   },
   view: {

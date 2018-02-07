@@ -49,4 +49,9 @@ module.exports = {
   i18n: {
     enable: false,
   },
+
+  beidouView: {
+    enable: true,
+    package: 'beidou-view',
+  },
 };

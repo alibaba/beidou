@@ -3,7 +3,7 @@
 const React = require('react');
 
 module.exports = (props) => {
-  const contentStr = props.render(props.children);
+  const contentStr = props.renderElement(props.children);
   return (
     <html>
       <head>

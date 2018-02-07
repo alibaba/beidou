@@ -31,12 +31,12 @@ module.exports = (app) => {
     const finalConfig = {
       ...babel,
       ignore(filename) {
-        if (/test/.test(filename) && !/.test.js/.test(filename)) {
+        if (/test/.test(filename) && !/.test.js$/.test(filename)) {
           return false;
         }
 
-        // Always ignore beidou code
-        if (/beidou-/.test(filename)) {
+        // Always ignore beidou and node_modules code
+        if (/beidou-(core|plugin-)|node_modules/.test(filename)) {
           return true;
         }
 
@@ -52,10 +52,6 @@ module.exports = (app) => {
 
     require('babel-register')(finalConfig);
   }
-
-  // const babel = config.babel;
-
-  // babel && require('babel-register')(babel);
 
   // isomorphic register
   isomorphic(app);
