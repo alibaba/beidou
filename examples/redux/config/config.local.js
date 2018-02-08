@@ -1,6 +1,6 @@
-const path = require('path');
+'use strict';
 
-module.exports = function (app) {
+module.exports = function () {
   const exports = {
     react: {
       static: true,
@@ -9,9 +9,8 @@ module.exports = function (app) {
       assetPath: '/build',
     },
     webpack: {
-      publicPath: '/build/',
-      hmr: {
-        // reload: true
+      output: {
+        publicPath: '/build/',
       },
     },
   };

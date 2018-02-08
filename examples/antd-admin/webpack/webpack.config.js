@@ -4,10 +4,9 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = (app) => {
+module.exports = (app, webpackConfig, dev) => {
   const universal = app.config.isomorphic.universal;
-  const dev = app.config.env !== 'prod';
-  const outputPath = path.join(app.config.baseDir, app.config.webpack.outputPath);
+  const outputPath = path.join(app.config.baseDir, webpackConfig.output.path);
 
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
@@ -52,7 +51,7 @@ module.exports = (app) => {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
-      publicPath: app.config.webpack.publicPath,
+      publicPath: webpackConfig.publicPath,
     },
     externals: {
       react: 'React',
@@ -112,9 +111,7 @@ module.exports = (app) => {
         themes: path.join(__dirname, '../client/themes'),
       },
     },
-    devServer: {
-      hot: true,
-    },
+    devServer: webpackConfig.devServer,
     plugins,
   };
 

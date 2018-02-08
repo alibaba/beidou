@@ -4,7 +4,7 @@
 
 **Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
 
-* [Beidou react view](#beidou-react-view)
+* [Beidou react view](#beidou-view-react)
   * [Configuration](#configuration)
   * [Usage](#usage)
   * [API](#api)

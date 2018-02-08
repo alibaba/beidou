@@ -51,13 +51,13 @@
   * 国际UED - shuttle
   * 国际UED - fie portal
   * ...
-  
+
 ## 业界生态
 
 * [react-server](https://react-server.io/): React服务端渲染框架
 * [next.js](https://github.com/zeit/next.js): 轻量级的同构框架
 * [beidou](https://github.com/alibaba/beidou): 阿里自己的同构框架，基于eggjs, 定位是企业级同构框架
-  
+
 除了开源框架，底层方面React16重构了SSR, react-router提供了更加友好的SSR支持等等, 从某种程度上来说，同构也是一种趋势，至少是方向之一。
 
 ## 思考 与 实现
@@ -75,13 +75,13 @@
 
 #### 基于 eggjs 加入可拔插的同构能力
 
-- [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react)
+- [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react)
   作为原有MVC架构中, view 层的替换, 使用 React 组件作为视图层模板, 可以直接渲染 React Component 并输出给客户端
-  
-- [beidou-plugin-webpack](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack)
+
+- [beidou-webpack](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack)
   集成 Webpack 到框架中, 在开发阶段, 提供代码的编译和打包服务
-  
-- [beidou-plugin-isomorphic](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic)
+
+- [beidou-isomorphic](https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic)
   服务端的 React 运行时: babel-register
   polyfill 注入: 环境变量, BOM等
   非js文件解析: css, images, fonts...
@@ -93,7 +93,7 @@
 
 这里不再赘述具体如何实现，有兴趣的读者可以阅读我们的开源同构框架[beidou](https://github.com/alibaba/beidou) -- [https://github.com/alibaba/beidou](https://github.com/alibaba/beidou)
 
-## 热点问题 
+## 热点问题
 
 任何一种技术都有其适用场景和局限性, 同构也不例外，以下试举一二，以做抛砖引玉.
 
@@ -115,7 +115,7 @@
 
 顺带提一下, 笔者采样了[淘宝首页](https://www.taobao.com/) 和[淘宝某详情页](https://item.taobao.com/item.htm?id=558951082993)以及[Lazada某详情页](https://www.lazada.com.my/vanier-classic-gentlemen-fashion-laser-series-wristwatch-all-black-59739287.html?spm=a2o4k.home.sku-feed-slider-with-banner_42126.4.rpGQzs)，页面节点数分别是2620、2467和3701. 大部分情况下，页面节点数低于1000， 比如[菜鸟物流市场](https://56.cainiao.com/)首页看起来内容不少，其实节点数是775.
 
-那针对3000节点以上的页面，我们该怎么做呢？笔者总结了以下策略并重点阐述其中一两点： 
+那针对3000节点以上的页面，我们该怎么做呢？笔者总结了以下策略并重点阐述其中一两点：
 * 采用编译后的React版本: 根据Sasha Aickin的博客，React15在Node4、Node6、Node8下，采用编译后的版本性能相比未编译版本分别提升了2.36倍、3倍、3.85倍
 * 模块拆分: 模块拆分有利于并发渲染，目前ICBU店铺装修采用的就是这种方式
 * 模块级别缓存: 页面中某些模块其实是很适合缓存的，比如Lazada详情页中节点数虽然高达3701, 但其实页头部分就占比55.5%，页尾占比3.5%，而页头页尾是常年不变的.
@@ -139,7 +139,7 @@ const ReactCompositeComponent = require("react/lib/ReactCompositeComponent");
 
 ReactCompositeComponent.Mixin._mountComponent = ReactCompositeComponent.Mixin.mountComponent;
 ReactCompositeComponent.Mixin.mountComponent = function(rootID, transaction, context) {
-  
+
   const hashKey = generateHashKey(this._currentElement.props);
   if (cacheStorage.hasEntry(hashKey)) {
     // 命中缓存则直接返回缓存结果
@@ -169,7 +169,7 @@ lruCacheSettings: {
 ![template](https://img.alicdn.com/tfs/TB1xhy_byqAXuNjy1XdXXaYcVXa-390-666.png)
 
 要实现结构的缓存，需要在上述逻辑上额外新增三步。
-* 生成中间结构： 
+* 生成中间结构：
   * 以组件```<Price>${price}</Price>```为例，将变量price以占位符```${price}```代替```set(price, "${price}")```, 再调用react原生的mountComponent方法则可以生成中间结构```<div>${price}</div```
 * 缓存中间结构
 * 生成最终组件

@@ -13,7 +13,10 @@ module.exports = function (target) {
     constructor(options) {
       options = options || /* istanbul ignore next */ {};
       super(options);
-      this.logger.info('[Beidou App] App Worker started, pid is %s', process.pid);
+      this.logger.info(
+        '[Beidou App] App Worker started, pid is %s',
+        process.pid
+      );
     }
 
     get [Symbol.for('egg#eggPath')]() {

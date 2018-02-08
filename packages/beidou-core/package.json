@@ -25,10 +25,10 @@
   "dependencies": {
     "babel-preset-beidou-client": "^0.1.0",
     "babel-preset-beidou-server": "^0.1.0",
-    "beidou-plugin-isomorphic": "^0.3.5",
-    "beidou-plugin-react": "^0.3.5",
-    "beidou-plugin-router": "^0.3.2",
-    "beidou-plugin-webpack": "^0.3.2",
+    "beidou-isomorphic": "^0.3.5",
+    "beidou-view-react": "^0.3.5",
+    "beidou-router": "^0.3.2",
+    "beidou-webpack": "^0.3.2",
     "beidou-view": "^0.0.1",
     "egg": "^2.2.0",
     "mz": "^2.6.0"

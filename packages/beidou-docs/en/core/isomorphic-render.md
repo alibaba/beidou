@@ -1,12 +1,12 @@
 Ismorphic Render
 ---
 
-Framework use [egg-view](https://github.com/eggjs/egg-view) for view solution which support multiple template engines, and integrated [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react) as view engine to support ismorphic render by default. generally no need to modify configuration, we can use it directly. Here are some details about ismorphic render.
+Framework use [egg-view](https://github.com/eggjs/egg-view) for view solution which support multiple template engines, and integrated [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react) as view engine to support ismorphic render by default. generally no need to modify configuration, we can use it directly. Here are some details about ismorphic render.
 
 ## install react-view plugin
 
 ```bash
-$ npm i beidou-plugin-react --save
+$ npm i beidou-view-react --save
 ```
 
 ### enable react-view plugin
@@ -15,7 +15,7 @@ $ npm i beidou-plugin-react --save
 // config/plugin.js
 exports.react = {
   enable: true,
-  package: 'beidou-plugin-react',
+  package: 'beidou-view-react',
 };
 ```
 
@@ -25,7 +25,7 @@ exports.react = {
 
 [egg-view](https://github.com/eggjs/egg-view) provided the common config `config.view`.
 
-and beidou framework set [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react) as default view engine: 
+and beidou framework set [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react) as default view engine: 
 
 ```js
 // config/config.default.js
@@ -36,9 +36,9 @@ view: {
 }
 ```
 
-### [beidou-plugin-react](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react) configuration
+### [beidou-view-react](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react) configuration
 
-Also，beidou framework provided the default config for [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react), generally no need to config by ourselves.
+Also，beidou framework provided the default config for [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react), generally no need to config by ourselves.
 
 
 ```js
@@ -56,7 +56,7 @@ react: {
 
 ## render page
 
-[beidou-plugin-react](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react) provided 3 API in `Context` object, each of them returns a promise.
+[beidou-view-react](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react) provided 3 API in `Context` object, each of them returns a promise.
 
 - `render(name, locals)` render template, and assign to ctx.body
 - `renderView(name, locals)` render template without assignment

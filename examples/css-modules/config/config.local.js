@@ -10,9 +10,8 @@ module.exports = function (app) {
     },
     webpack: {
       config: path.join(app.baseDir, 'webpack.config.js'),
-      publicPath: '/build',
-      hmr: {
-        path: '/__webpack_hmr',
+      output: {
+        publicPath: '/build',
       },
     },
   };

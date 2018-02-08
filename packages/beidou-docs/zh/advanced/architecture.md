@@ -72,7 +72,7 @@ require("babel-register")({
 });
 ```  
 
-但是，如果项目中使用了 css modules 的话，那服务端就必须要处理 less 等文件了。[beidou-plugin-isomorphic插件](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic)已经实现了css modules支持，主要完成了两件事：
+但是，如果项目中使用了 css modules 的话，那服务端就必须要处理 less 等文件了。[beidou-isomorphic插件](https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic)已经实现了css modules支持，主要完成了两件事：
 
 - 以webpack插件的形式，预编译less（不局限于less，还支持图片文件、字体文件等），将其转换为一个 assets.json 文件保存到项目目录下。
 - require hook，所有less文件的引入，代理到生成的 JSON 文件中，匹配文件路径，返回一个预先编译好的 JSON 对象。  

@@ -3,6 +3,6 @@
 module.exports = {
   rax: {
     enable: true,
-    package: 'beidou-plugin-rax',
+    package: 'beidou-view-rax',
   },
 };

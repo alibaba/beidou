@@ -11,9 +11,7 @@
   "devDependencies": {
     "babel-loader": "^7.1.1",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.0.0",
-    "husky": "^0.13.4",
-    "webpack-hot-middleware": "^2.21.0"
+    "eslint-config-beidou": "^1.0.0"
   },
   "dependencies": {
     "babel-preset-beidou-client": "^0.1.0",

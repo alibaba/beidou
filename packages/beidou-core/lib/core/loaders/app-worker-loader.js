@@ -12,9 +12,15 @@ module.exports = function (target) {
       super(options);
 
       // 使用egg提供的console, 能够统一控制日志输出级别
-      this.logger = options.logger || /* istanbul ignore next */ options.console || /* istanbul ignore next */ console;
+      this.logger =
+        options.logger ||
+        /* istanbul ignore next */ options.console ||
+        /* istanbul ignore next */ console;
 
-      this.logger.info('[Beidou Loader] Beidou Loader started, pid is %s', process.pid);
+      this.logger.info(
+        '[Beidou Loader] Beidou Loader started, pid is %s',
+        process.pid
+      );
     }
 
     /*
@@ -27,8 +33,9 @@ module.exports = function (target) {
     }
 
     loadCustomRouter() {
-      this.getLoadUnits()
-        .forEach(unit => this.loadFile(path.join(unit.path, 'app/extend/router.js')));
+      this.getLoadUnits().forEach(unit =>
+        this.loadFile(path.join(unit.path, 'app/extend/router.js'))
+      );
     }
 
     /*
@@ -43,10 +50,10 @@ module.exports = function (target) {
     }
 
     /**
-   * @deprecated
-   * load static resources based on CDN root.
-   * eg. /cm/store-decoration-m/0.0.2/
-   */
+     * @deprecated
+     * load static resources based on CDN root.
+     * eg. /cm/store-decoration-m/0.0.2/
+     */
     loadAssetsInfo() {
       let assetsInfo = this.config.assetsInfo;
       if (!assetsInfo) {

@@ -2,9 +2,9 @@ Plugins
 ---
 
 ### Plugins integrated  
-- [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react): Isomorphic react view 
-- [beidou-plugin-webpack](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack): Webpack dev server only for local environment 
-- [beidou-plugin-isomorphic](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic): Ismorphic plugin, support less/scss/css and basic BOM/DOM varibles in server side
+- [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react): Isomorphic react view 
+- [beidou-webpack](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack): Webpack dev server only for local environment 
+- [beidou-isomorphic](https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic): Ismorphic plugin, support less/scss/css and basic BOM/DOM varibles in server side
 - [egg-onerror](https://github.com/eggjs/egg-onerror): Default error handling plugin.
 - [egg-session](https://github.com/eggjs/egg-session): Session plugin based on [koa-session](https://github.com/koajs/session). 
 - [egg-i18n](https://github.com/eggjs/egg-i18n): Multi-language plugin

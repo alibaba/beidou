@@ -6,9 +6,14 @@ module.exports = {
     static: true,
     cache: false,
     beautify: true,
-    assetPath: '/build',
+    assetPath: '/build/',
   },
   webpack: {
-    publicPath: '/build/',
+    output: {
+      publicPath: '/build/',
+    },
+    devServer: {
+      noInfo: false,
+    },
   },
 };

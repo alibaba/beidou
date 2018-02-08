@@ -2,10 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = (app) => {
+module.exports = (app, webpackConfig, dev) => {
   const universal = app.config.isomorphic.universal;
-  const dev = app.config.env !== 'prod';
-  const outputPath = path.join(app.config.baseDir, app.config.webpack.outputPath);
+  const outputPath = path.join(app.config.baseDir, webpackConfig.output.path);
 
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
@@ -15,14 +14,6 @@ module.exports = (app) => {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
       __CLIENT__: true,
-    }),
-    new webpack.ProgressPlugin((percentage, msg) => {
-      const stream = process.stderr;
-      if (stream.isTTY && percentage < 0.71) {
-        stream.cursorTo(0);
-        stream.write(`📦   ${msg}`);
-        stream.clearLine(1);
-      }
     }),
     new app.IsomorphicPlugin(universal),
     new ExtractTextPlugin('[name].css'),
@@ -41,13 +32,13 @@ module.exports = (app) => {
 
   const config = {
     devtool: dev ? 'eval' : false,
-    context: app.config.baseDir,
-    entry: app.webpackEntry,
+    context: webpack.context,
+    entry: webpackConfig.entry,
     output: {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
-      publicPath: app.config.webpack.publicPath,
+      publicPath: webpackConfig.publicPath,
     },
     module: {
       rules: [
@@ -95,9 +86,7 @@ module.exports = (app) => {
     resolve: {
       extensions: ['.json', '.js', '.jsx'],
     },
-    devServer: {
-      hot: true,
-    },
+    devServer: webpackConfig.devServer,
     plugins,
   };
 

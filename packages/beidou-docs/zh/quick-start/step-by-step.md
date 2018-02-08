@@ -68,7 +68,7 @@ $ open http://localhost:6001
 
 ### 模板渲染  
 绝大多数情况，我们都需要读取数据后渲染模板，然后呈现给用户。故我们需要引入对应的模板引擎，也就是 view 插件。  
-北斗框架内置了基于 react 实现的 [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react) 插件。默认配置如下：  
+北斗框架内置了基于 react 实现的 [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react) 插件。默认配置如下：  
 ```js  
 // config/config.default.js  
 
@@ -128,7 +128,7 @@ Beidou框架默认已经配置好babel, 如需扩展，参考配置如下：
 > 注意安装依赖~  
 
 #### 2. webpack 配置  
-react 项目构建离不开 webpack，北斗的 webpack 配置中除了一般的构建动作，还添加了对同构的支持。如需定制请参考[webpack plugin](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack)  
+react 项目构建离不开 webpack，北斗的 webpack 配置中除了一般的构建动作，还添加了对同构的支持。如需定制请参考[webpack plugin](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack)  
 
 ### 编写 Service  
 在实际应用中， Controller 一般不会自己生成数据，也不会包含复杂的逻辑，你应该将那些复杂的过程放到业务逻辑层 Service 里面，然后暴露出一个简单的函数给 Controller 调用，这样也便于测试。

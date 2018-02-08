@@ -737,7 +737,7 @@ module.exports = class ProxyController extends Controller {
 #### Rendering Template
 
 Usually we do not write HTML pages by hand, instead we generate them by a template engine.
-Beidou load [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react) by default, then `ctx.render(template)` can be used to render templates to HTML directly.
+Beidou load [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react) by default, then `ctx.render(template)` can be used to render templates to HTML directly.
 
 #### JSONP
 

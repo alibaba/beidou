@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 const { Application } = require('../index');
 const Loader = require('../index').AppWorkerLoader;
-const builder = require('beidou-plugin-webpack/lib/builder');
-const helper = require('beidou-plugin-webpack/lib/utils');
+const builder = require('beidou-webpack/lib/builder');
+const helper = require('beidou-webpack/lib/utils');
 
 Loader.prototype.load = function () {};
 

@@ -1,6 +1,6 @@
 const Application = require('beidou-core').Application;
 const Loader = require('beidou-core').AppWorkerLoader;
-const builder = require('beidou-plugin-webpack/builder');
+const builder = require('beidou-webpack/builder');
 
 Loader.prototype.load = function () {};
 

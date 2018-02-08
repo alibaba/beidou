@@ -8,19 +8,18 @@ module.exports = function (target) {
    * @extends Egg.AgentWorkerLoader
    */
   class BeidouAgentWorkerLoader extends target.AgentWorkerLoader {
-  // constructor(options) {
-  //   super(options);
-  // }
+    // constructor(options) {
+    //   super(options);
+    // }
 
     loadConfig() {
       super.loadConfig();
       this.checkDevPlugins();
     }
 
-
     /**
-    * 检测开发态插件，目前egg约束所有插件都必须放到dependencies里
-    */
+     * 检测开发态插件，目前egg约束所有插件都必须放到dependencies里
+     */
     checkDevPlugins() {
       const appPkg = require(path.join(this.options.baseDir, './package.json'));
       Object.keys(this.plugins).forEach((key) => {

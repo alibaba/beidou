@@ -9,7 +9,7 @@ module.exports = {
    */
   react: {
     enable: true,
-    package: 'beidou-plugin-react',
+    package: 'beidou-view-react',
   },
 
   /**
@@ -19,7 +19,7 @@ module.exports = {
    */
   webpack: {
     enable: true,
-    package: 'beidou-plugin-webpack',
+    package: 'beidou-webpack',
     env: ['local', 'unittest'],
   },
 
@@ -29,7 +29,7 @@ module.exports = {
    */
   isomorphic: {
     enable: true,
-    package: 'beidou-plugin-isomorphic',
+    package: 'beidou-isomorphic',
   },
 
   /**
@@ -38,7 +38,7 @@ module.exports = {
    */
   router: {
     enable: true,
-    package: 'beidou-plugin-router',
+    package: 'beidou-router',
   },
 
   /**

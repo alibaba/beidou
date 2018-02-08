@@ -8,9 +8,8 @@ module.exports = {
     assetPath: '/build',
   },
   webpack: {
-    publicPath: '/build/',
-    hmr: {
-      // reload: true
+    output: {
+      publicPath: '/build/',
     },
   },
 };

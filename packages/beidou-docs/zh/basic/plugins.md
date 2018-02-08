@@ -2,9 +2,9 @@
 ---
 
 ### 默认开启的插件  
-- [beidou-plugin-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react): React同构视图插件 
-- [beidou-plugin-webpack](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack): 在本地开发环境（local）下的 webpack dev server 插件。
-- [beidou-plugin-isomorphic](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic): 同构插件，使得服务端可以识别less等资源文件，同时能够构造window等客户端对象
+- [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react): React同构视图插件 
+- [beidou-webpack](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack): 在本地开发环境（local）下的 webpack dev server 插件。
+- [beidou-isomorphic](https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic): 同构插件，使得服务端可以识别less等资源文件，同时能够构造window等客户端对象
 - [egg-onerror](https://github.com/eggjs/egg-onerror): egg 的请求全局错误处理插件，返回友好的错误信息，并记录所有的异常。
 - [egg-session](https://github.com/eggjs/egg-session): egg 的 session 插件，支持 cookie session 和 tair session 两种模式。基于[koa-session](https://github.com/koajs/session). 
 - [egg-i18n](https://github.com/eggjs/egg-i18n): 多语言插件

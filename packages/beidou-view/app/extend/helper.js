@@ -4,11 +4,9 @@ const { concatUrl, normalizeUrl } = require('../../lib/utils');
 
 const helper = {
   /**
-   * generate asset url, concat with host and path defined in `config.react`
    * @param {*} filename asset file name
    */
-  asset(filename) {
-    const config = this.config.react;
+  [Symbol.for('#beidou.asset')](filename, config) {
     const assetHost = config.host || config.assetHost;
     const assetPath = config.assetPath;
 
@@ -25,7 +23,5 @@ const helper = {
     );
   },
 };
-
-helper.resolveResource = helper.asset;
 
 module.exports = helper;
