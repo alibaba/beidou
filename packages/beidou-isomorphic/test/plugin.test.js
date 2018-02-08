@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const request = require('supertest');
 const mm = require('egg-mock');
+const mkdirp = require('mkdirp');
 
 const frameworkPath = path.join(__dirname, '../../beidou-core/');
 
@@ -310,6 +311,7 @@ describe('test/plugin.test.js', () => {
   describe('universal', () => {
     let app;
     const jsonFilePath = path.join(__dirname, 'fixtures/universal', '.isomorphic/assets.json');
+    mkdirp.sync(path.dirname(jsonFilePath));
 
     before((done) => {
       const content = '{"client/index.less": "less", "client/index.scss": "scss"}'
@@ -346,7 +348,7 @@ describe('test/plugin.test.js', () => {
         .expect(200, done);
     });
 
-  
+
     it('should return for unsupport file extension', (done) => {
       request(app.callback())
         .get('/others')
@@ -367,6 +369,7 @@ describe('test/plugin.test.js', () => {
   describe('universal no cache', () => {
     let app;
     const jsonFilePath = path.join(__dirname, 'fixtures/universal-nocache', '.isomorphic/assets.json');
+    mkdirp.sync(path.dirname(jsonFilePath));
 
     before((done) => {
       const content = '{"client/index.less": "less", "client/index.scss": "scss"}'
@@ -430,6 +433,7 @@ describe('test/plugin.test.js', () => {
   describe('universal no-json assets.json', () => {
     let app;
     const jsonFilePath = path.join(__dirname, 'fixtures/universal-nocache', '.isomorphic/assets.json');
+    mkdirp.sync(path.dirname(jsonFilePath));
 
     before((done) => {
       const content = '{ not a json '

@@ -8,7 +8,7 @@ module.exports = (props) => {
       <head>
       </head>
       <body>
-        {props.helper.resolveResource('/main.js')}
+        {props.helper.asset('/main.js')}
       </body>
     </html>
   );

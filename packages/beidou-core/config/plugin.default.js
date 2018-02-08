@@ -1,6 +1,11 @@
 'use strict';
 
 module.exports = {
+  beidouView: {
+    enable: true,
+    package: 'beidou-view',
+  },
+
   /**
    * Beidou view plugin
    * @member {Object} Plugin#react view
@@ -48,10 +53,5 @@ module.exports = {
    */
   i18n: {
     enable: false,
-  },
-
-  beidouView: {
-    enable: true,
-    package: 'beidou-view',
   },
 };
