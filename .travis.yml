@@ -13,8 +13,9 @@ before_install:
   # Remove examples directories, avoid install dependencies
   - rm -rf ./examples/
 install:
-  - yarn
+  - yarn global add lerna
   - yarn global add codecov
+  - yarn
 script:
   - yarn run ci
 after_script:

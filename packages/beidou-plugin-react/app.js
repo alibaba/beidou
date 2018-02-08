@@ -1,7 +1,6 @@
 'use strict';
 
 const ReactView = require('./lib/react-view');
-const ReactDOMServer = require('react-dom/server');
 
 module.exports = (app) => {
   if (app.plugins.rax && app.plugins.rax.enable) {
@@ -11,8 +10,6 @@ module.exports = (app) => {
     app.plugins.react.enable = false;
     return;
   }
-
-  app.viewEngine = ReactDOMServer;
 
   app.view.use('react', ReactView);
 

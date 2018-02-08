@@ -1,9 +1,10 @@
 /**
  * Module dependencies.
  */
+
 const path = require('path');
 
-const EGG_PATH = path.dirname(__dirname);
+const EGG_PATH = path.join(__dirname, '..');
 const loaderExtend = require('./core/loaders');
 const applicationExtend = require('./core/worker/index');
 const agentExtend = require('./core/agent/index');
