@@ -1,16 +1,9 @@
 'use strict';
 
-module.exports = function () {
-  const exports = {};
-
-  exports.webpack = {
-  };
-
-  exports.isomorphic = {
+module.exports = {
+  isomorphic: {
     universal: {
       assets: [],
     }
   }
-
-  return exports;
-};
+}
