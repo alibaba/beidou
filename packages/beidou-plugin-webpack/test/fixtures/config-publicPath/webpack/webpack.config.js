@@ -9,25 +9,28 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
     main: [
-      './client/index.js'
-    ]
+      './client/index.js',
+    ],
   },
   output: {
     path: outputPath,
     filename: '[name].js?[hash]',
     chunkFilename: '[name].js',
-    publicPath: '/build/'
+    publicPath: '/static/',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        use: 'babel-loader'
-      }
-    ]
+        use: 'babel-loader',
+      },
+    ],
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx']
-  }
-
+    extensions: ['.json', '.js', '.jsx'],
+  },
+  devServer: {
+    contentBase: false,
+    port: 6003,
+  },
 };

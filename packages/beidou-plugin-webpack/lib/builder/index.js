@@ -3,12 +3,8 @@
 const webpack = require('webpack');
 const helper = require('../utils');
 
-/**
- * Pack project
- * @param {Beidou.Application} app
- * @param {string} execEnv 'node' or 'browser'
- */
 module.exports = (app, execEnv = 'browser') => {
+  helper.injectPlugin(app);
   const config = app.config.webpack;
   const webpackConfig = helper.getWebpackConfig(app, config, execEnv);
 

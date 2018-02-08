@@ -7,7 +7,6 @@ module.exports = function (antx) {
 
   exports.webpack = {
     config: path.resolve(__dirname, '../webpack/webpack.config.js'),
-    publicPath: '/static'
   };
 
   exports.keys = '_2323234_3432_8857';

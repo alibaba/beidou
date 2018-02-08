@@ -1786,7 +1786,7 @@ intelli-espower-loader@^1.0.1:
   dependencies:
     espower-loader "^1.0.0"
 
-invariant@^2.0.0, invariant@^2.2.2:
+invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -2067,41 +2067,9 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.2.1:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.5.tgz#9fc6e737b1c4d151d8f9cae2247305d552ce748f"
-
-lodash._getnative@^3.0.0:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
-
-lodash.isarguments@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
-
-lodash.isarray@^3.0.0:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
-
-lodash.isplainobject@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
-
-lodash.keys@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/lodash.keys/-/lodash.keys-3.1.2.tgz#4dbc0472b156be50a0b286855d1bd0b0c656098a"
-  dependencies:
-    lodash._getnative "^3.0.0"
-    lodash.isarguments "^3.0.0"
-    lodash.isarray "^3.0.0"
-
 lodash@^4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
-
-lodash@^4.2.1:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 longest@^1.0.1:
   version "1.0.1"
@@ -2703,21 +2671,6 @@ raw-body@^2.2.0:
     iconv-lite "0.4.19"
     unpipe "1.0.0"
 
-rax-dom@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/rax-dom/-/rax-dom-0.5.2.tgz#a416ec6c9f8bc8b90671e3babe739cf6e307dcb1"
-  dependencies:
-    rax "^0.5.2"
-
-rax-redux@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/rax-redux/-/rax-redux-0.5.2.tgz#8d76559af76e0950e9ad9a55f5ba6b86afb95e2d"
-  dependencies:
-    invariant "^2.0.0"
-    lodash.isplainobject "^4.0.6"
-    redux "^3.6.0"
-    shallowequal "^0.2.2"
-
 rax-text@^0.5.0:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/rax-text/-/rax-text-0.5.2.tgz#cd726afa5573f25d57c26d012c1a9b542575d2d5"
@@ -2730,7 +2683,7 @@ rax-view@^0.5.0:
   dependencies:
     universal-env "^0.5.2"
 
-rax@^0.5.0, rax@^0.5.2:
+rax@^0.5.0:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/rax/-/rax-0.5.2.tgz#7ef27a0beee99b92ef1c39e32266229f738a83af"
   dependencies:
@@ -2799,15 +2752,6 @@ readable-stream@2, readable-stream@^2.1.5:
     safe-buffer "~5.1.1"
     string_decoder "~1.0.3"
     util-deprecate "~1.0.1"
-
-redux@^3.6.0, redux@^3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
-  dependencies:
-    lodash "^4.2.1"
-    lodash-es "^4.2.1"
-    loose-envify "^1.1.0"
-    symbol-observable "^1.0.3"
 
 regenerate@^1.2.1:
   version "1.3.3"
@@ -2928,12 +2872,6 @@ setimmediate@^1.0.5:
 setprototypeof@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.0.3.tgz#66567e37043eeb4f04d91bd658c0cbefb55b8e04"
-
-shallowequal@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-0.2.2.tgz#1e32fd5bcab6ad688a4812cb0cc04efc75c7014e"
-  dependencies:
-    lodash.keys "^3.1.2"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -3127,10 +3065,6 @@ swap-case@^1.1.0:
   dependencies:
     lower-case "^1.1.1"
     upper-case "^1.1.1"
-
-symbol-observable@^1.0.3:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
 
 tcp-proxy.js@^1.0.5:
   version "1.1.1"

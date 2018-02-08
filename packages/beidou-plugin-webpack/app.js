@@ -6,7 +6,7 @@ module.exports = (app) => {
   // ensure webpack middleware works before custom middleware
   app.config.coreMiddleware.unshift('webpack');
 
-  helper.injectEntryAndPlugin(app);
+  helper.injectPlugin(app);
 
   process.on('message', (msg) => {
     if (msg.action === 'webpack-server-ready') {

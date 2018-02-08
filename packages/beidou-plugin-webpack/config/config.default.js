@@ -6,25 +6,33 @@
 
 exports.webpack = {
   // config: 'path/to/webpack/config/file',
-  // publicPath: 'webpack/dev/custom-webpack-config/public/path'
-  path: [], // the path of request should be transferred to webpack. e.g HMR: /__webpack_hmr
-  noInfo: true,
-  quiet: false,
-  clientLogLevel: 'warning',
-  lazy: false,
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: true,
+  output: {
+    path: './build',
+    filename: '[name].js?[hash]',
+    chunkFilename: '[name].js',
+    publicPath: './build',
   },
-  headers: { 'X-Custom-Header': 'yes' },
-  stats: {
-    colors: true,
-    chunks: false,
+
+  resolve: {
+    extensions: ['.json', '.js', '.jsx'],
   },
-  defaultEntryName: 'index.jsx',
-  outputPath: './build',
-  publicPath: '/build',
-  hmr: {
-    reload: true,
+
+  devServer: {
+    contentBase: false,
+    port: 6002,
+    noInfo: true,
+    quiet: false,
+    clientLogLevel: 'warning',
+    lazy: false,
+    watchOptions: {
+      aggregateTimeout: 300,
+    },
+    headers: { 'X-Custom-Header': 'yes' },
+    stats: {
+      colors: true,
+      chunks: false,
+    },
+    publicPath: '/build',
+    hot: true,
   },
 };

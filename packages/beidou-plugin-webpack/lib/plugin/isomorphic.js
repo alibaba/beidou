@@ -101,6 +101,7 @@ IsomorphicPlugin.prototype.parseForConfig = function (module, config) {
     content: module.source,
     name: module.name,
     config,
+    module,
   };
 };
 
@@ -122,10 +123,13 @@ IsomorphicPlugin.prototype.save = function (results) {
     const relativePath = path.relative(context, absolutePath);
 
     const m = new Module(absolutePath);
-    m._compile(result.content, absolutePath);
-    const exports = m.exports;
-
-    json[relativePath] = exports;
+    try {
+      m._compile(result.content, absolutePath);
+      const exports = m.exports;
+      json[relativePath] = exports;
+    } catch (e) {
+      // do nothing
+    }
   }
   const content = JSON.stringify(json, null, '  ');
   // if (!this.options.memoryFs) {

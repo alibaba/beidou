@@ -5,12 +5,12 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RaxWebpackPlugin = require('rax-webpack-plugin');
 
-module.exports = (app) => {
+module.exports = (app, webpackConfig /* , isDev */) => {
   const universal = app.config.isomorphic.universal;
   const dev = app.config.env !== 'prod';
   const outputPath = path.join(
     app.config.baseDir,
-    app.config.webpack.outputPath
+    webpackConfig.output.path
   );
 
   const plugins = [
@@ -56,7 +56,7 @@ module.exports = (app) => {
     target: 'web',
     devtool: dev ? 'eval' : false,
     context: app.config.baseDir,
-    entry: app.webpackEntry,
+    entry: webpackConfig.entry,
     output: {
       path: outputPath,
       filename: '[name].js?[hash]',

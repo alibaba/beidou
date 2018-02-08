@@ -7,8 +7,8 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
 
-module.exports = (app) => {
-  const config = merge(common(app), {
+module.exports = (app, entry, dev) => {
+  const config = merge(common(app, entry, dev), {
     output: {
       libraryTarget: 'commonjs',
     },

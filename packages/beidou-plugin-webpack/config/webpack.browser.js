@@ -6,8 +6,8 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 const common = require('./webpack.common');
 
-module.exports = (app) => {
-  const config = merge(common(app), {
+module.exports = (app, entry, dev) => {
+  const config = merge(common(app, entry, dev), {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'manifest',

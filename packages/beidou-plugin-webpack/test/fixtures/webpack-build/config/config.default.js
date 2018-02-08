@@ -1,11 +1,9 @@
 'use strict';
 
-module.exports = function () {
-  const exports = {};
+const path = require('path');
 
-  exports.webpack = {
-    outputPath: './output/'
-  };
-
-  return exports;
+exports.webpack = {
+  output: {
+    path: path.join(__dirname, '../output'),
+  }
 };
