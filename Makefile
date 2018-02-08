@@ -4,17 +4,14 @@ export NODE_ENV = test
 
 .PHONY: lint install clean test-clean clean-all test-only test-all test cov ci changelog
 
-prettier:
+prettier-lint:
 	prettier --write "packages/**/*.{js,jsx,json,css,scss,md}"
 
-eslint:
+eslint-lint:
 	eslint --fix --ext .jsx,.js packages/
 
 lint:
-	make prettier && make eslint
-
-lint-all:
-	eslint --ext .js --ext .jsx --fix ./packages
+	make prettier-lint && make eslint-lint
 
 install:
 	yarn install

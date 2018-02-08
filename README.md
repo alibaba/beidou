@@ -16,7 +16,7 @@ Isomorphic framework for server-rendered React apps
 [codecov-image]: https://img.shields.io/codecov/c/github/alibaba/beidou.svg
 [codecov-url]: https://codecov.io/gh/alibaba/beidou
 [download-img]: https://img.shields.io/npm/dm/beidou-core.svg
-[gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg
+[gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg?style=flat-square
 [gitter-url]: https://gitter.im/alibaba/beidou
 [nodejs-image]: https://img.shields.io/badge/node-%3E%3D%208.0.0-brightgreen.svg
 [nodejs-url]: https://nodejs.org
@@ -100,10 +100,10 @@ After that, go to `http://localhost:6001/`
 
 ## Articles
 
-* [D2 - High Reliability & Performance Isomorphic App](./packages/beidou-docs/zh/articles/D2_High_Reliability_and_Performance_Isomorphic_App.pdf)
-* [High performance isomorphic-rendered React Apps](./packages/beidou-docs/zh/articles/high-performance-isomorphic-app.md)
-* [How to resolve nodejs memory leak](./packages/beidou-docs/zh/articles/node-memory-leak.md)
-* [Nodejs application performance optimization](./packages/beidou-docs/zh/articles/node-performance-optimization.md)
+* [D2 - High Reliability & Performance Isomorphic App](./packages/beidou-docs/articles/D2_High_Reliability_and_Performance_Isomorphic_App.pdf)
+* [High performance isomorphic-rendered React Apps](./packages/beidou-docs/articles/high-performance-isomorphic-app.md)
+* [How to resolve nodejs memory leak](./packages/beidou-docs/articles/node-memory-leak.md)
+* [Nodejs application performance optimization](./packages/beidou-docs/articles/node-performance-optimization.md)
 
 ## Performance
 
@@ -121,7 +121,7 @@ Please let us know how can we help. Do check out [issues](https://github.com/ali
 
 DingTalk & Wechat group supported
 
-![](https://img.alicdn.com/tfs/TB1xFtzlf6H8KJjy0FjXXaXepXa-700-473.jpg)
+![](https://img.alicdn.com/tfs/TB1CZh7ocLJ8KJjy0FnXXcFDpXa-700-473.jpg)
 
 Chinese Documentation - [中文文档](./README-ZH.md)
 

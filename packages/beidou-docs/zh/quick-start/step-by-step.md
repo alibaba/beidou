@@ -128,7 +128,7 @@ Beidou框架默认已经配置好babel, 如需扩展，参考配置如下：
 > 注意安装依赖~  
 
 #### 2. webpack 配置  
-react 项目构建离不开 webpack，北斗的 webpack 配置中除了一般的构建动作，还添加了对同构的支持。如需定制请参考[webpack plugin](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack)  
+react 项目构建离不开 webpack，北斗的 webpack 配置中除了一般的构建动作，还添加了对同构的支持。如需定制请参考[webpack plugin](https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-webpack)  
 
 ### 编写 Service  
 在实际应用中， Controller 一般不会自己生成数据，也不会包含复杂的逻辑，你应该将那些复杂的过程放到业务逻辑层 Service 里面，然后暴露出一个简单的函数给 Controller 调用，这样也便于测试。

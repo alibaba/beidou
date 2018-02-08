@@ -21,7 +21,7 @@
 [nodejs-image]: https://img.shields.io/badge/node-%3E%3D%208.0.0-brightgreen.svg
 [nodejs-url]: https://nodejs.org
 
-## 功能
+## 功能/特性
 
 * ✔︎ 高性能, 相比客户端渲染 2-5 倍提升
 * ✔︎ 搜索引擎友好(SEO)
@@ -59,7 +59,7 @@ $ npm run start
   * [环境准备](./packages/beidou-docs/zh/quick-start/prepare-environment.md)
   * [目录结构](./packages/beidou-docs/zh/quick-start/directory-struct.md)
   * [从零开始构建应用](./packages/beidou-docs/zh/quick-start/step-by-step.md)
-* Basics
+* 基础功能
   * [内置对象](./packages/beidou-docs/zh/basic/objects.md)
   * [运行时环境](./packages/beidou-docs/zh/basic/env.md)
   * [配置](./packages/beidou-docs/zh/basic/config.md)
@@ -71,7 +71,7 @@ $ npm run start
   * [定时任务](./packages/beidou-docs/zh/basic/schedule.md)
   * [框架扩展](./packages/beidou-docs/zh/basic/extend.md)
   * [自定义启动](./packages/beidou-docs/zh/basic/app-start.md)
-* Core
+* 核心功能
   * [开发调试](./packages/beidou-docs/zh/core/development.md)
   * [单元测试](./packages/beidou-docs/zh/core/unittest.md)
   * [日志](./packages/beidou-docs/zh/core/logger.md)
@@ -82,14 +82,14 @@ $ npm run start
   * [错误处理](./packages/beidou-docs/zh/core/error-handling.md)
   * [安全](./packages/beidou-docs/zh/core/security.md)
   * [多语言](./packages/beidou-docs/zh/core/i18n.md)
-* Deployment
+* 部署
   * [应用部署](./packages/beidou-docs/zh/deployment/deployment.md)
-* Tutorials
+* 教程
   * [渐进式开发](./packages/beidou-docs/zh/tutorials/progressive.md)
   * [MySQL](./packages/beidou-docs/zh/tutorials/mysql.md)
   * [Restful API](./packages/beidou-docs/zh/tutorials/restful.md)
   * [Async 方法](./packages/beidou-docs/zh/tutorials/async-function.md)
-* Advanced
+* 进阶
   * [北斗工作原理](./packages/beidou-docs/zh/advanced/architecture.md)
   * [Loader](./packages/beidou-docs/zh/advanced/loader.md)
   * [插件开发](./packages/beidou-docs/zh/advanced/plugin.md)
