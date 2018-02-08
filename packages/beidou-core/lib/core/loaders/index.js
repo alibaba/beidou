@@ -4,6 +4,10 @@
  * Loader
  */
 
-// exports.MasterLoader = require('./master_loader');
-exports.AppWorkerLoader = require('./app-worker-loader');
-exports.AgentWorkerLoader = require('./agent-worker-loader');
+const appWorkerLoaderExtend = require('./app-worker-loader');
+const agentWorkerLoaderExtend = require('./agent-worker-loader');
+
+module.exports = function (target) {
+  appWorkerLoaderExtend(target);
+  agentWorkerLoaderExtend(target);
+};

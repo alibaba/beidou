@@ -23,10 +23,35 @@ module.exports = (app) => {
 
   // jsdom polyfill, enabled by default
   config.polyfill && basicPolyfill();
-  // babel-register
-  const babel = config.babel;
 
-  babel && require('babel-register')(babel);
+  // babel-register
+  const { babel } = config;
+
+  if (babel) {
+    const finalConfig = {
+      ...babel,
+      ignore(filename) {
+        if (/test/.test(filename) && !/.test.js$/.test(filename)) {
+          return false;
+        }
+
+        // Always ignore beidou and node_modules code
+        if (/beidou-(core|plugin-)|node_modules/.test(filename)) {
+          return true;
+        }
+
+        const oriIgnore = babel.ignore;
+        if (oriIgnore instanceof RegExp) {
+          return oriIgnore.test(filename);
+        } else if (typeof oriIgnore === 'function') {
+          return oriIgnore(filename);
+        }
+        return false;
+      },
+    };
+
+    require('babel-register')(finalConfig);
+  }
 
   // isomorphic register
   isomorphic(app);

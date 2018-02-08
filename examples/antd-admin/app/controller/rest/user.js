@@ -11,25 +11,25 @@ const createRule = {
 
 module.exports = (app) => {
   class DashboardController extends app.Controller {
-    * index() {
+    async index() {
       const ctx = this.ctx;
-      ctx.body = yield this.service.user.findAll();
+      ctx.body = await this.service.user.findAll();
       ctx.status = 200;
     }
 
-    * create() {
+    async create() {
       const ctx = this.ctx;
       ctx.validate(createRule);
       const { name, nickName, isMale, age, phone, email, address } = ctx.request.body;
-      const user = yield this.service.user.create(name, nickName, isMale, age, phone, email, address);
+      const user = await this.service.user.create(name, nickName, isMale, age, phone, email, address);
       ctx.body = user;
       ctx.status = 201;
     }
 
-    * destroy() {
+    async destroy() {
       const ctx = this.ctx;
       const id = ctx.params.id;
-      yield this.service.user.delete(id);
+      await this.service.user.delete(id);
       ctx.status = 204;
     }
   }

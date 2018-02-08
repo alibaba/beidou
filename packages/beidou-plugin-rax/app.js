@@ -1,8 +1,8 @@
 'use strict';
 
-const view = require('./lib/rax-view');
+const RaxView = require('./lib/rax-view');
 
 module.exports = (app) => {
-  app.view.use('rax', view);
-  app[Symbol.for('egg#view')] = view;
+  app.view.use('rax', RaxView);
+  app[Symbol.for('egg#view')] = RaxView;
 };

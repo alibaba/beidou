@@ -59,7 +59,7 @@ module.exports = (app, webpackConfig /* , isDev */) => {
     entry: webpackConfig.entry,
     output: {
       path: outputPath,
-      filename: '[name]-[hash].js',
+      filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
       publicPath: app.config.webpack.publicPath,
     },

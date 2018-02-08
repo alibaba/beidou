@@ -11,7 +11,7 @@ import App from './app';
  * @extends {React.Component}
  */
 export default class View extends React.Component {
-    static getStore = function* () {
+    static async getStore () {
       function counter(state = 0, action) {
         switch (action.type) {
         case 'INCREMENT':

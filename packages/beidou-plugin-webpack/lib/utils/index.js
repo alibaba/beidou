@@ -27,15 +27,19 @@ function getAvaliablePort(defaultPort, app) {
   return port;
 }
 
-const getWebpackConfig = (options, app) => {
-  options = options || {};
+const getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
   const isDev = app.config.env !== 'prod';
   let webpackConfig = null;
 
+  const relativePath =
+    execEnv === 'node'
+      ? '../../config/webpack.node.js'
+      : '../../config/webpack.browser.js';
+
   const defaultConfigPath = path.join(
     __dirname,
-    '../../config/webpack.default.config.js'
+    relativePath,
   );
 
   // make sure the port assigned is available
@@ -50,15 +54,15 @@ const getWebpackConfig = (options, app) => {
     options.devServer.port = defaultPort;
   }
 
-  const entry = entryLoader(app, options.devServer, isDev);
+  const entry = entryLoader(app, options.devServer, isDev, execEnv);
   debug('entry auto load as below:\n%o', entry);
 
-  webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);
+  webpackConfig = loadFile(defaultConfigPath, app, entry, isDev, execEnv);
 
   // custom config exists
   if (options.config && fs.existsSync(options.config)) {
     debug('custom config found at %s', options.config);
-    webpackConfig = loadFile(options.config, app, webpackConfig, isDev);
+    webpackConfig = loadFile(options.config, app, webpackConfig, isDev, execEnv);
   }
 
   // make sure devServer is provided

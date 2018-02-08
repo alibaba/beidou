@@ -63,7 +63,7 @@ describe('test/view.test.js', () => {
       fs.unlinkSync(cacheTmpFile);
     };
 
-    before(function* () {
+    before(async function () {
       app = mm.app({
         baseDir: './nocache',
         framework
@@ -74,7 +74,7 @@ describe('test/view.test.js', () => {
       });
 
       cpFile();
-      yield [app.ready(), cacheApp.ready()];
+      await [app.ready(), cacheApp.ready()];
     });
 
     after(() => {
@@ -210,13 +210,6 @@ describe('test/view.test.js', () => {
         .expect(200, done);
     });
 
-    it('get appHelper in view', (done) => {
-      request(app.callback())
-        .get('/app-helper')
-        .expect(/UT-123/)
-        .expect(200, done);
-    });
-
     it('should get resource path without domain name', (done) => {
       mm(app.config.react, 'host', '');
       request(app.callback())
@@ -229,7 +222,7 @@ describe('test/view.test.js', () => {
   describe('view render middlewares', () => {
     let app;
 
-    before(function* () {
+    before(async function () {
       app = mm.app({
         baseDir: './partial',
         framework
@@ -269,19 +262,5 @@ describe('test/view.test.js', () => {
         .expect(/\/\/test\.cdn\.com\/version\/unit.css/)
         .expect(200, done);
     });
-  });
-
-  describe('view utils compose',() => {
-    const utils = require('../lib/utils');
-    it('should return origin function if arguments length is 1', () => {
-      const f = () => {};
-      assert(utils.compose(f) === f);
-    });
-
-
-    it('should return function arg => arg, if arguments length is 0', () => {
-      const f = utils.compose();
-      assert(f('input') === 'input');
-    })
   });
 });

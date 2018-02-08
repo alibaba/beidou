@@ -21,7 +21,7 @@ module.exports = (app) => {
     return mapHandler(app, mapping, config);
   }
 
-  app.get('/(.*)', function* () {
+  app.get('/(.*)', async function () {
     const originUrl = this.path;
     if (!originUrl.startsWith(urlPrefix)) return;
 
@@ -30,7 +30,7 @@ module.exports = (app) => {
     let pageName = utils.cached(url);
     if (!pageName) {
       const providerRoots = view.root.map(dir => path.join(dir, root));
-      pageName = yield utils.resolvePath(
+      pageName = await utils.resolvePath(
         url,
         providerRoots,
         root,
@@ -42,7 +42,7 @@ module.exports = (app) => {
     }
 
     if (pageName) {
-      yield this.render(pageName);
+      await this.render(pageName);
     }
   });
 };

@@ -1,10 +1,12 @@
 example/.node-diamone-client-cache
 example/debug
 example/logs
+examples/**/build/
 lib/plugins/**/app/proxy
 packages/*/test
 packages/*/node_modules/
 packages/*/coverage/
 packages/beidou-docs/
 examples/with-rax/client/
-examples/with-rax/app/views/
+examples/with-rax-redux/client/
+examples/with-rax-redux/app/views/

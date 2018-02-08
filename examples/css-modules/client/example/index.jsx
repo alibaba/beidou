@@ -19,7 +19,7 @@ export default class View extends React.Component {
    * here, renderToStaticMarkup or renderToString is decided by `config.react.static` value: true or false
    *
    * `getPartial(locals)` support generator function, so you can do async things here
-   * But which is run before view rendering, performence should be well considered;
+   * But which is run before view rendering, performance should be well considered;
    *
    * @param {Object} locals server context variables
    * ```

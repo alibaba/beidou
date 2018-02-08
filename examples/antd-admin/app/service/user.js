@@ -7,7 +7,7 @@ module.exports = ({ Service }) => {
       super(ctx);
       this.user = this.ctx.db.user;
     }
-    * find(username, password) {
+    async find(username, password) {
       if (username === 'beidou' && password === 'admin') {
         return {
           name: 'beidou',
@@ -21,12 +21,12 @@ module.exports = ({ Service }) => {
       return user;
     }
 
-    * findAll(limit = 50) {
+    async findAll(limit = 50) {
       const user = this.user.find();
       return user.slice(0, limit);
     }
 
-    * create(name, nickName, isMale, age, phone, email, address) {
+    async create(name, nickName, isMale, age, phone, email, address) {
       const avatar = Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', name.substr(0, 1));
       const createTime = moment().format('YY/MM HH:mm:ss');
       const password = 'admin';
@@ -47,7 +47,7 @@ module.exports = ({ Service }) => {
       return user;
     }
 
-    * delete(_id) {
+    async delete(_id) {
       this.user.remove({ _id }, false);
     }
   }

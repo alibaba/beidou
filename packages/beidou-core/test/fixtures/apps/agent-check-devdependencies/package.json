@@ -1,6 +1,3 @@
 {
-  "name": "agent-check-devdependencies",
-  "devDependencies": {
-    "beidou-plugin-react": "^0.1.0"
-  }
+  "name": "agent-check-devdependencies"
 }

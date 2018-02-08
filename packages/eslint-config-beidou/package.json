@@ -8,15 +8,8 @@
     "ci": "npm run cov",
     "cov": "TEST_REPORTER=spec egg-bin cov"
   },
-  "keywords": [
-    "eslint",
-    "beidou"
-  ],
-  "files": [
-    ".eslintrc",
-    "index.js",
-    "lib"
-  ],
+  "keywords": ["eslint", "beidou"],
+  "files": [".eslintrc", "index.js", "lib"],
   "license": "MIT",
   "devDependencies": {
     "egg-bin": "^4.3.7",
@@ -28,7 +21,7 @@
     "eslint-config-ali": "^2.0.3"
   },
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 8.0.0"
   },
   "peerDependencies": {
     "babel-eslint": "^8.2.1",

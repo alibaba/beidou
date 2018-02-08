@@ -12,34 +12,28 @@
   "eggPlugin": {
     "name": "isomorphic"
   },
-  "keywords": [
-    "egg",
-    "plugin"
-  ],
+  "keywords": ["egg", "plugin"],
   "license": "MIT",
   "dependencies": {
     "babel-preset-beidou-client": "^0.1.0",
     "babel-preset-beidou-server": "^0.1.0",
     "debug": "^2.6.0",
     "jsdom": "^9.8.3",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "raf": "^3.4.0"
   },
   "devDependencies": {
     "autod": "2",
-    "egg": "^1.4.0",
+    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.2",
     "should": "8",
     "supertest": "1"
   },
-  "files": [
-    "config",
-    "lib",
-    "app",
-    "app.js"
-  ],
+  "files": ["config", "lib", "app", "app.js"],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-isomorphic"
 }

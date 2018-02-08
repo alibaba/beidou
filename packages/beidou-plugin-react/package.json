@@ -3,7 +3,8 @@
   "version": "0.3.5",
   "description": "beidou view react",
   "eggPlugin": {
-    "name": "react"
+    "name": "react",
+    "dependencies": ["beidouView"]
   },
   "main": "index.js",
   "scripts": {
@@ -17,17 +18,16 @@
     "is-generator-function": "^1.0.6",
     "js-beautify": "^1.6.2",
     "normalizeurl": "^1.0.0",
-    "serialize-javascript": "^1.3.0"
+    "serialize-javascript": "^1.3.0",
+    "beidou-view": "^0.0.1"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "autod": "2",
-    "babel-preset-beidou-client": "^0.1.0",
-    "babel-preset-beidou-server": "^0.1.0",
-    "egg": "^1.4.0",
+    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
     "react": "^16.2.0",
@@ -38,14 +38,10 @@
     "supertest": "1",
     "webpack": "^3.10.0"
   },
-  "files": [
-    "app",
-    "lib",
-    "config",
-    "app.js"
-  ],
+  "files": ["app", "lib", "config", "app.js"],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-plugin-react"
 }

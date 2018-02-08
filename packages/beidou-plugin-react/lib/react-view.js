@@ -1,83 +1,34 @@
 'use strict';
 
-const React = require('react');
-const compose = require('./utils').compose;
-const reduxMiddleware = require('./middlewares/redux');
-const partialMiddleware = require('./middlewares/partial');
-// const renderMiddleware = require('./middlewares/render');
-const cacheMiddleware = require('./middlewares/cache');
-const beautifyMiddleware = require('./middlewares/beautify');
-const doctypeMiddleware = require('./middlewares/doctype');
+const ReactDOM = require('react-dom/server');
+const BaseView = require('beidou-view');
 
-class BeidouReactView {
-  /*
-    beautify: false // optional, beautify HTML snippet
-    cache: true, //optional, if false, clean require cache for development usage
-    internals: true, //optional, true: renderToString or false: renderToStaticMarkup
-    doctype: '<!DOCTYPE html>', //optional, HTML doctype
-  */
+module.exports = class ReactView extends BaseView {
   constructor(ctx) {
-    this.ctx = ctx;
-    this.app = ctx.app;
-    this.config = ctx.app.config.react;
-    this.renderToString = this.app.viewEngine.renderToString;
-    this.renderToStaticMarkup = this.app.viewEngine.renderToStaticMarkup;
-    this.renderReact = this.config.static
-      ? this.renderToStaticMarkup
-      : this.renderToString;
-
-    const middlewares = [
-      cacheMiddleware,
-      reduxMiddleware,
-      partialMiddleware,
-      doctypeMiddleware,
-      beautifyMiddleware,
-    ];
-
-    const chain = middlewares.map(middleware => middleware(this));
-
-    const renderToStaticMarkup = this.renderToStaticMarkup;
-    this.renderWithMiddlewares = compose(...chain)(function* (args) {
-      // eslint-disable-line
-      const { Component, props } = args;
-      const instance = React.createElement(Component, props);
-      args.html = renderToStaticMarkup(instance);
-    });
+    super(ctx, ctx.app.config.react);
   }
 
-  render(filepath, props) {
+  renderElement(...args) {
+    const { renderToString, renderToStaticMarkup } = ReactDOM;
+    return this.options.static
+      ? renderToStaticMarkup(...args)
+      : renderToString(...args);
+  }
+
+  async render(filepath, props) {
     Object.assign(props, {
-      render: this.renderReact,
-      renderToString: this.renderToString,
-      renderToStaticMarkup: this.renderToStaticMarkup,
-      appHelper: props.helper, // backward compatibility
+      renderElement: this.renderElement.bind(this),
     });
-    const process = this.renderWithMiddlewares;
-    const Component = require(filepath);
-    return function* () {
-      const payload = {
-        filepath,
-        Component: Component.default || Component, // when add-module-exports not work
-        props,
-        html: '',
-      };
-
-      yield process(payload);
-
-      return payload.html;
-    };
+    return await super.render(filepath, props);
   }
 
-  renderString() {
-    const self = this;
+  async renderString() {
     return new Promise((resolve, reject) => {
-      self.app.logger.info('reject');
+      this.app.logger.info('reject');
       const err = new Error();
       err.name = 'not implemented yet!';
       err.status = 200;
       reject(err);
     });
   }
-}
-
-module.exports = BeidouReactView;
+};

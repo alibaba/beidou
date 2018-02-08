@@ -16,7 +16,7 @@
     "clean": "make clean-all",
     "ci": "make ci",
     "changelog": "make changelog",
-    "precommit": "make lint",
+    "precommit": "lint-staged",
     "prepush": "make test-all"
   },
   "author": "weichunpeng",
@@ -36,7 +36,7 @@
     "supertest": "^1.2.0"
   },
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 8.0.0"
   },
   "license": "MIT",
   "config": {
@@ -48,6 +48,10 @@
     "*.js": [
       "prettier --write",
       "eslint --fix",
+      "git add"
+    ],
+    "*.{json,css,scss,md}": [
+      "prettier --write",
       "git add"
     ]
   },

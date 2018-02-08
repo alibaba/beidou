@@ -30,6 +30,7 @@ export default class Page extends View {
 
     return store;
   }
+
   static getPartial({ store }) {
     const html = (
       <Provider store={store}>

@@ -1,42 +1,42 @@
 'use strict';
 
 const path = require('path');
-const egg = require('egg');
-const AppWorkerLoader = require('../loaders/app-worker-loader');
 
 const DEPRECATE = Symbol('BeidouApplication#deprecate');
 
-/**
- * Application
- * @extends Egg.Application
- */
-class BeidouApplication extends egg.Application {
-  constructor(options) {
-    options = options || /* istanbul ignore next */ {};
-    super(options);
-    this.logger.info('[Beidou App] App Worker started, pid is %s', process.pid);
-  }
-
-  get [Symbol.for('egg#eggPath')]() {
-    return path.resolve(__dirname, '../../../');
-    // return __dirname;
-  }
-
-  get [Symbol.for('egg#loader')]() {
-    return AppWorkerLoader;
-  }
-
+module.exports = function (target) {
   /**
-   * depd API
-   * @member {Function}
-   * @since 1.1.2
+   * Application
+   * @extends Egg.Application
    */
-  get beidouDeprecate() {
-    if (!this[DEPRECATE]) {
-      this[DEPRECATE] = require('depd')('beidou');
+  class BeidouApplication extends target.Application {
+    constructor(options) {
+      options = options || /* istanbul ignore next */ {};
+      super(options);
+      this.logger.info('[Beidou App] App Worker started, pid is %s', process.pid);
     }
-    return this[DEPRECATE];
-  }
-}
 
-module.exports = BeidouApplication;
+    get [Symbol.for('egg#eggPath')]() {
+      return path.resolve(__dirname, '../../../');
+      // return __dirname;
+    }
+
+    get [Symbol.for('egg#loader')]() {
+      return target.AppWorkerLoader;
+    }
+
+    /**
+     * depd API
+     * @member {Function}
+     * @since 1.1.2
+     */
+    get beidouDeprecate() {
+      if (!this[DEPRECATE]) {
+        this[DEPRECATE] = require('depd')('beidou');
+      }
+      return this[DEPRECATE];
+    }
+  }
+
+  target.Application = BeidouApplication;
+};

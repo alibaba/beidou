@@ -4,7 +4,7 @@ const webpackMiddleware = require('./webpack-middleware');
 const helper = require('../utils');
 
 module.exports = function (compiler, options, app) {
-  const webpackConfig = helper.getWebpackConfig(options, app);
+  const webpackConfig = helper.getWebpackConfig(app, options);
   const {
     noInfo,
     quiet,

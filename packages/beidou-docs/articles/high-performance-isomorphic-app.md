@@ -1,4 +1,4 @@
-# React同构与极致的性能优化
+# 打造高可靠与高性能的React同构解决方案
 
 > 本文发表于[北斗同构github](https://github.com/alibaba/beidou/blob/master/packages/beidou-docs/articles/high-performance-isomorphic-app.md), 转载请注明出处
 
@@ -250,4 +250,4 @@ lruCacheSettings: {
 
 答案是： 有的。 只有掌握了方法论，才能在不断变化中，找到适合自己应用的性能优化策略。
 
-具体的方法论，请参考本人的另外一篇文章[《唯快不破，让nodejs再快一点》](https://github.com/alibaba/beidou/blob/master/packages/beidou-docs/articles/node-performance-optimization.md)
+具体的方法论，请参考本人的另外一篇文章[《唯快不破，让nodejs再快一点》](./node-performance-optimization.md)

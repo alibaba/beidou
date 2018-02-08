@@ -1,20 +1,21 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Beidou Router](#beidou-router)
-    - [Install](#install)
-    - [Configuration](#configuration)
-    - [Usage](#usage)
-    - [API](#api)
-  - [License](#license)
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+* [Beidou Router](#beidou-router)
+  * [Install](#install)
+  * [Configuration](#configuration)
+  * [Usage](#usage)
+  * [API](#api)
+  * [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Beidou Router
-=================
+# Beidou Router
 
-> Auto Router for Beidou framework 
+> Auto Router for Beidou framework
 
 ### Install
 
@@ -22,20 +23,20 @@ Beidou Router
 $ npm install beidou-plugin-router --save
 ```
 
-### Configuration  
+### Configuration
 
-- config/plugin.default.js:  
+* config/plugin.default.js:
 
-``` 
+```
 exports.router = {
   enable: true,
   package: 'beidou-plugin-router',
 };
-```  
+```
 
-- config/config.default.js  
+* config/config.default.js
 
-```  
+```
   /**
    * View options
    * @member Config#view
@@ -64,20 +65,20 @@ exports.router = {
      *  user: {
      *    profile: 'get',
      *    ':id': ['post', 'get'],
-     *    
+     *
      *  }
      * }
-     * 
+     *
      */
     mapping: null,
 
     entry: 'index',
   };
-```  
+```
 
 ### Usage
 
-Straightly visit page located in `client` directory. 
+Straightly visit page located in `client` directory.
 
 e.g. with default config, access `GET: /` will render `client/index.jsx` file.
 

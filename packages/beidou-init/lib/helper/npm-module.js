@@ -4,8 +4,6 @@ const spawn = require('cross-spawn');
 
 const cwd = process.cwd();
 
-// const spawn = require('child_process').spawn;
-
 const NpmModule = {
   /**
    * npm i
@@ -17,17 +15,15 @@ const NpmModule = {
     });
 
     let cli;
+    const options = {
+      cwd: targetDir || cwd,
+      stdio: 'inherit',
+    };
     // Perfer yarn as install faster
-    if (/^\d+.\d+.\d+$/.test(stdout)) {
-      cli = spawn('yarn', [], {
-        cwd: targetDir || cwd,
-        stdio: 'inherit',
-      });
+    if (/^\d+.\d+.\d+$/.test(String(stdout))) {
+      cli = spawn('yarn', [], options);
     } else {
-      cli = spawn('npm', ['i'], {
-        cwd: targetDir || cwd,
-        stdio: 'inherit',
-      });
+      cli = spawn('npm', ['i'], options);
     }
 
     return new Promise((resolve, reject) => {

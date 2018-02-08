@@ -5,7 +5,8 @@ module.exports = ({ Service }) => {
       super(ctx);
       this.dashboard = this.ctx.db.dashboard;
     }
-    * find() {
+
+    async find() {
       const data = this.dashboard.findOne();
       return data;
     }

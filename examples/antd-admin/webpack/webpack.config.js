@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -18,14 +20,6 @@ module.exports = (app) => {
       __DEV__: dev,
       __SERVER__: false,
     }),
-    new webpack.ProgressPlugin((percentage, msg) => {
-      const stream = process.stderr;
-      if (stream.isTTY && percentage < 0.71) {
-        stream.cursorTo(0);
-        stream.write(`📦   ${msg}`);
-        stream.clearLine(1);
-      }
-    }),
     new ExtractTextPlugin('[name].css'),
     new webpack.NoEmitOnErrorsPlugin(),
   ];
@@ -38,23 +32,21 @@ module.exports = (app) => {
     plugins.push(new webpack.NamedModulesPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
   } else {
-    plugins.push(new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-    }));
+    plugins.push(
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+        },
+      })
+    );
   }
 
   const config = {
     devtool: dev ? 'eval' : false,
     context: app.config.baseDir,
     entry: {
-      login: [
-        './client/pages/login/index.jsx',
-      ],
-      main: [
-        './client/pages/dashboard/index.jsx',
-      ],
+      login: ['./client/pages/login/index.jsx'],
+      main: ['./client/pages/dashboard/index.jsx'],
     },
     output: {
       path: outputPath,
@@ -73,10 +65,10 @@ module.exports = (app) => {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
+            loader: require.resolve('babel-loader'),
             options: {
               babelrc: false,
-              presets: ['beidou-client'],
+              presets: [require.resolve('babel-preset-beidou-client')],
             },
           },
         },
@@ -84,24 +76,27 @@ module.exports = (app) => {
           test: /\.less$/,
           exclude: /node_modules/,
           use: ExtractTextPlugin.extract({
-            use: [{
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1,
-                modules: true,
-                localIdentName: '[local]_[hash:base64]',
+            use: [
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  modules: true,
+                  localIdentName: '[local]_[hash:base64]',
+                },
               },
-            }, {
-              loader: 'less-loader',
-            }],
-            fallback: 'style-loader',
+              {
+                loader: require.resolve('less-loader'),
+              },
+            ],
+            fallback: require.resolve('style-loader'),
           }),
         },
         {
           test: /\.(png|jpg|gif)$/,
           use: [
             {
-              loader: 'url-loader',
+              loader: require.resolve('url-loader'),
               options: {
                 limit: 81920,
               },
@@ -125,4 +120,3 @@ module.exports = (app) => {
 
   return config;
 };
-

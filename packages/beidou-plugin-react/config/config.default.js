@@ -10,6 +10,7 @@ module.exports = (appInfo) => {
    * @member Config#view
    */
   config.react = {
+    middlewares: ['cache', 'redux', 'partial', 'render', 'doctype', 'beautify'],
     beautify: false,
     cache: true,
     // loadPath: `${appInfo.baseDir}/client`,

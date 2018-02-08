@@ -12,9 +12,9 @@ module.exports = function (app, mapping) {
 
 function registerFromMap(app, target, parent = '') {
   if (typeof target === 'object' && !Array.isArray(target)) {
-    Object.keys(target).forEach((key) => {
+    for (const key of Object.keys(target)) {
       registerFromMap(app, target[key], `${parent}/${key}`);
-    });
+    }
   } else if (typeof target === 'string' || Array.isArray(target)) {
     register(app, parent, target);
   }
@@ -28,9 +28,9 @@ function register(app, url, method) {
   app.router.register(url, method, handler);
 }
 
-function* handler() {
+async function handler() {
   const config = this.app.config.router;
   const { entry } = config;
   const url = /\/$/.test(this.url) ? this.url + entry : this.url;
-  yield this.render(url);
+  await this.render(url);
 }

@@ -1,4 +1,4 @@
-# Beidou example with [styled-components](https://github.com/styled-components/styled-components)
+# Beidou example with [rax](https://github.com/alibaba/rax)
 
 ## Install
 

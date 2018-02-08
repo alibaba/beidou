@@ -23,7 +23,7 @@ function compileFile(webpackConfig) {
   return promise;
 }
 
-exports.index = function* () {
+exports.index = async function () {
   const type = this.request.query.type;
   let body;
   let webpackConfig;
@@ -42,12 +42,12 @@ exports.index = function* () {
   Object.defineProperty(process, 'cwd', {
     value: originCwd
   });
-  body = yield compileFile(webpackConfig);
+  body = await compileFile(webpackConfig);
   this.body = body;
   // this.body = process.cwd();
 }
 
-exports.isomorphic = function* () {
+exports.isomorphic = async function () {
   try {
     const body = require(path.join(__dirname, '../../client/pages/home/index'));
     this.body = body;
