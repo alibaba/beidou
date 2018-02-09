@@ -20,17 +20,9 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-rax": "^0.5.0",
-    "beidou-isomorphic": "^1.0.0-alpha.2",
     "beidou-view": "^1.0.0-alpha.2",
-    "beidou-webpack": "^1.0.0-alpha.2",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.6",
-    "js-beautify": "^1.7.5",
-    "normalizeurl": "^1.0.0",
     "rax-webpack-plugin": "^0.5.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "serialize-javascript": "^1.4.0",
     "stylesheet-loader": "^0.5.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0"
@@ -43,8 +35,6 @@
     "node": ">= 8.0.0"
   },
   "devDependencies": {
-    "debug": "^3.1.0",
-    "egg": "^2.2.0",
     "egg-bin": "^4.3.7",
     "egg-mock": "^3.14.0",
     "rax": "^0.5.0",

@@ -15,19 +15,14 @@
   "keywords": ["egg", "plugin"],
   "license": "MIT",
   "dependencies": {
-    "babel-preset-beidou-client": "^1.0.0-alpha.2",
-    "babel-preset-beidou-server": "^1.0.0-alpha.2",
-    "debug": "^2.6.0",
-    "jsdom": "^9.8.3",
-    "lodash": "^4.17.4"
+    "babel-register": "^6.26.0",
+    "jsdom": "^9.8.3"
   },
   "devDependencies": {
-    "autod": "2",
-    "egg": "^2.2.0",
+    "babel-preset-beidou-server": "^1.0.0-alpha.2",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.2",
     "mkdirp": "^0.5.1",
-    "should": "8",
     "supertest": "1"
   },
   "files": ["config", "lib", "app.js"],

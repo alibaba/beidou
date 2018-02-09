@@ -15,12 +15,15 @@
   },
   "author": "weichunpeng",
   "devDependencies": {
-    "css-loader": "^0.26.1",
+    "beautify-benchmark": "^0.2.4",
+    "benchmark": "^2.1.4",
     "egg-bin": "^4.0.4",
-    "egg-logrotater": "^1.0.1",
     "egg-mock": "^3.8.0",
+    "node-uuid": "^1.4.8",
+    "rimraf": "^2.6.2",
     "should": "^6.0.3",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "uuid-js": "^0.7.5"
   },
   "dependencies": {
     "babel-preset-beidou-client": "^1.0.0-alpha.2",
@@ -30,8 +33,8 @@
     "beidou-view": "^1.0.0-alpha.2",
     "beidou-view-react": "^1.0.0-alpha.2",
     "beidou-webpack": "^1.0.0-alpha.2",
-    "egg": "^2.2.0",
-    "mz": "^2.6.0"
+    "depd": "^1.1.2",
+    "egg": "^2.2.0"
   },
   "engines": {
     "node": ">= 8.0.0"

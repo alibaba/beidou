@@ -15,17 +15,13 @@
   "license": "MIT",
   "dependencies": {
     "glob-to-regexp": "^0.3.0",
-    "mz": "^2.6.0"
+    "mz": "^2.6.0",
+    "path-to-regexp": "^2.1.0"
   },
   "devDependencies": {
-    "autod": "2",
-    "babel-preset-beidou-client": "^1.0.0-alpha.2",
-    "babel-preset-beidou-server": "^1.0.0-alpha.2",
-    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
     "react": "^16.2.0",
-    "should": "8",
     "supertest": "1"
   },
   "files": ["app", "lib", "config"],

@@ -22,12 +22,8 @@
     "serialize-javascript": "^1.3.0"
   },
   "devDependencies": {
-    "autod": "2",
-    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
-    "egg-mock": "^3.7.1",
-    "should": "8",
-    "supertest": "1"
+    "egg-mock": "^3.7.1"
   },
   "files": ["app", "lib", "config", "index.js"],
   "engines": {
