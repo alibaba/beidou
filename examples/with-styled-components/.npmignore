@@ -1,1 +1,5 @@
 .isomorphic
+.stats.json
+build/
+logs/
+run/

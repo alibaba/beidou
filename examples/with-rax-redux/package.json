@@ -1,7 +1,7 @@
 {
   "name": "beidou-example-with-rax-redux",
   "version": "1.0.0-alpha.2",
-  "description": "0.0.1",
+  "description": "Beidou example with rax redux",
   "license": "MIT",
   "egg": {
     "framework": "beidou-core"

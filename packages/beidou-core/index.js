@@ -5,6 +5,6 @@
  */
 
 const egg = require('egg');
-const framewrok = require('./lib/beidou');
+const framework = require('./lib/beidou');
 
-module.exports = framewrok(egg);
+module.exports = framework(egg);

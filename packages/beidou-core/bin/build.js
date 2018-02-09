@@ -8,18 +8,16 @@ const path = require('path');
 const { Application } = require('../index');
 const Loader = require('../index').AppWorkerLoader;
 const builder = require('beidou-webpack/lib/builder');
-const helper = require('beidou-webpack/lib/utils');
 
 Loader.prototype.load = function () {};
 
 const app = new Application({
   baseDir: process.cwd(),
+  workers: 1,
 });
 
 // build in production environment
 app.config.env = 'prod';
-
-helper.injectEntryAndPlugin(app);
 
 const execEnv = process.argv[2];
 if (execEnv && !['node', 'browser'].includes(execEnv)) {
@@ -34,6 +32,7 @@ const compiler = builder(app, execEnv);
 compiler.run((err, stats) => {
   if (err) {
     console.error(err);
+    process.exit(1);
   }
   if (stats) {
     fs.writeFileSync(path.join(process.cwd(), '.stats.json'), stats);
@@ -44,6 +43,7 @@ compiler.run((err, stats) => {
       })
     );
   }
-});
 
-app.close();
+  console.log('\nBuild finished\n');
+  app.close().then(() => process.exit(0));
+});
