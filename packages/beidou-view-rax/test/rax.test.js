@@ -3,6 +3,7 @@
 const assert = require('assert');
 const mock = require('egg-mock');
 const path = require('path');
+const RaxView = require('../lib/rax-view');
 
 const framework = path.join(__dirname, '../../beidou-core/');
 
@@ -32,6 +33,26 @@ describe('Rax render test', () => {
         .get('/inline-style')
         .expect(200)
         .expect(/Inline style/);
+    });
+
+    let renderApp;
+    before(() => {
+      renderApp = mock.app({
+        baseDir: './normal',
+        framework
+      });
+      return renderApp.ready();
+    });
+
+    it('should throw error', async () => {
+
+      const ctx = renderApp.mockContext();
+      const raxView = new RaxView(ctx);
+      try {
+        await raxView.renderString();
+      } catch (e) {
+        assert(e instanceof Error);
+      }
     });
   });
 

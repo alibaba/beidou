@@ -13,6 +13,7 @@ class App extends Component {
         <Text style={styles.appIntro}>
           To get started, edit src/App.js and save to reload.
         </Text>
+        <Text>Asset 'index.js' url: {this.props.helper.asset('index.js')}</Text>
       </View>
     );
   }
