@@ -85,6 +85,7 @@ class InitCommand extends BaseCommand {
 
     // done
     this.printUsage();
+    process.exit();
   }
 
   /**

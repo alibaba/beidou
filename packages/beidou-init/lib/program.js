@@ -33,6 +33,7 @@ class Program {
     co(function* () {
       const Command = require(filepath);
       yield new Command().run(cwd, args);
+      process.exit(0);
     }).catch((err) => {
       console.error(
         '[beidou-init] run %s with %j at %s error:',
