@@ -8,4 +8,4 @@ test
 .DS_Store
 .nyc_output
 run
-
+.isomorphic

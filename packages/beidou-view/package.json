@@ -29,7 +29,7 @@
     "should": "8",
     "supertest": "1"
   },
-  "files": ["app", "lib", "config"],
+  "files": ["app", "lib", "config", "index.js"],
   "engines": {
     "node": ">= 8.0.0"
   },

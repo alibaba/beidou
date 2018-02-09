@@ -1,7 +1,6 @@
 {
   "name": "beidou",
   "description": "Isomorphic framework for server-rendered React apps",
-  "main": "index.js",
   "scripts": {
     "lint": "make lint",
     "test": "make test",
@@ -14,8 +13,7 @@
     "clean": "make clean-all",
     "ci": "make ci",
     "changelog": "make changelog",
-    "precommit": "lint-staged",
-    "prepush": "make test-all"
+    "precommit": "lint-staged"
   },
   "author": "weichunpeng",
   "devDependencies": {

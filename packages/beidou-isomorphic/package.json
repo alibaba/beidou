@@ -30,7 +30,7 @@
     "supertest": "1",
     "mkdirp": "^0.5.1"
   },
-  "files": ["config", "lib", "app", "app.js"],
+  "files": ["config", "lib", "app.js"],
   "engines": {
     "node": ">= 8.0.0"
   },

@@ -1,6 +1,6 @@
 {
   "lerna": "2.0.0",
-  "version": "0.3.5",
+  "version": "1.0.0-alpha.1",
   "changelog": {
     "repo": "alibaba/beidou",
     "labels": {
@@ -12,17 +12,10 @@
       "tag: internal": ":house: Internal"
     }
   },
-  "packages": [
-    "packages/*",
-    "examples/*"
-  ],
+  "packages": ["packages/*", "examples/*"],
   "command": {
     "publish": {
-      "ignore": [
-        "*.md",
-        "test/**",
-        "node_modules"
-      ],
+      "ignore": ["*.md", "test/**", "node_modules"],
       "message": "chore(release): publish %s"
     }
   },
