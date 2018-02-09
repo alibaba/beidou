@@ -1,6 +1,6 @@
 {
   "name": "beidou-router",
-  "version": "0.3.2",
+  "version": "1.0.0-alpha.2",
   "description": "beidou auto router",
   "eggPlugin": {
     "name": "router"
@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "autod": "2",
-    "babel-preset-beidou-client": "^0.1.0",
-    "babel-preset-beidou-server": "^0.1.0",
+    "babel-preset-beidou-client": "^1.0.0-alpha.2",
+    "babel-preset-beidou-server": "^1.0.0-alpha.2",
     "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1",
@@ -28,10 +28,13 @@
     "should": "8",
     "supertest": "1"
   },
-  "files": ["app", "lib", "config"],
+  "files": [
+    "app",
+    "lib",
+    "config"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
 }

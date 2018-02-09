@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-styled-components",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.2",
   "description": "Beidou example with styled-components",
   "license": "MIT",
   "egg": {
@@ -10,8 +10,8 @@
     "start": "egg-bin dev"
   },
   "dependencies": {
-    "babel-preset-beidou-server": "^0.1.1",
-    "beidou-core": "^0.3.5",
+    "babel-preset-beidou-server": "^1.0.0-alpha.2",
+    "beidou-core": "^1.0.0-alpha.2",
     "egg-bin": "^4.3.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

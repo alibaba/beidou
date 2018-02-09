@@ -1,12 +1,21 @@
 {
   "name": "beidou-view-rax",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.2",
   "description": "Beidou Rax server side render plugin",
   "eggPlugin": {
     "name": "rax",
-    "dep": ["beidouView", "isomorphic"]
+    "dep": [
+      "beidouView",
+      "isomorphic"
+    ]
   },
-  "keywords": ["egg", "eggPlugin", "egg-plugin", "beidouView", "rax"],
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin",
+    "beidouView",
+    "rax"
+  ],
   "main": "index.js",
   "author": "<devrsi0n devrsi0n@gmail.com>",
   "license": "MIT",
@@ -20,9 +29,9 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-rax": "^0.5.0",
-    "beidou-isomorphic": "^0.3.5",
-    "beidou-webpack": "^0.3.2",
-    "beidou-view": "^0.0.1",
+    "beidou-isomorphic": "^1.0.0-alpha.2",
+    "beidou-view": "^1.0.0-alpha.2",
+    "beidou-webpack": "^1.0.0-alpha.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "js-beautify": "^1.7.5",
@@ -52,5 +61,9 @@
     "rax-text": "^0.5.0",
     "rax-view": "^0.5.0"
   },
-  "files": ["app.js", "lib", "config"]
+  "files": [
+    "app.js",
+    "lib",
+    "config"
+  ]
 }

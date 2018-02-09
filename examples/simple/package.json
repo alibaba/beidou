@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-simple",
-  "version": "0.3.5",
+  "version": "1.0.0-alpha.2",
   "description": "beidou example simple",
   "scripts": {
     "start": "node ./bin/server.js",
@@ -14,7 +14,7 @@
     "babel-loader": "^7.1.1",
     "css-loader": "~0.23.1",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.0.0",
+    "eslint-config-beidou": "^1.0.0-alpha.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "globby": "^6.1.0",
     "husky": "^0.13.4",
@@ -25,9 +25,9 @@
     "webpack-hot-middleware": "^2.21.0"
   },
   "dependencies": {
-    "babel-preset-beidou-client": "^0.1.0",
-    "babel-preset-beidou-server": "^0.1.0",
-    "beidou-core": "^0.3.5",
+    "babel-preset-beidou-client": "^1.0.0-alpha.2",
+    "babel-preset-beidou-server": "^1.0.0-alpha.2",
+    "beidou-core": "^1.0.0-alpha.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

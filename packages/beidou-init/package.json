@@ -1,6 +1,6 @@
 {
   "name": "beidou-init",
-  "version": "0.3.2",
+  "version": "1.0.0-alpha.2",
   "description": "beidou init helper",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,15 @@
   "bin": {
     "beidou": "bin/beidou.js"
   },
-  "keywords": ["beidou", "nodejs", "isomorphic", "react"],
+  "keywords": [
+    "beidou",
+    "nodejs",
+    "isomorphic",
+    "react"
+  ],
   "author": "Holden",
   "dependencies": {
-    "babel-preset-beidou-server": "^0.1.0",
+    "babel-preset-beidou-server": "^1.0.0-alpha.2",
     "chalk": "^2.3.0",
     "co": "^4.6.0",
     "colors": "^1.1.2",
@@ -62,6 +67,5 @@
       }
     }
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
 }

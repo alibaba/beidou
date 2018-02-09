@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-rax",
-  "version": "Beidou example with Rax",
+  "version": "1.0.0-alpha.2",
   "description": "0.0.1",
   "license": "MIT",
   "egg": {
@@ -11,15 +11,17 @@
     "test": "egg-bin test"
   },
   "dependencies": {
-    "beidou-core": "^0.3.5",
-    "beidou-view-rax": "^0.0.1",
+    "beidou-core": "^1.0.0-alpha.2",
+    "beidou-view-rax": "^1.0.0-alpha.2",
     "egg-bin": "^4.3.7",
     "rax": "^0.5.0",
     "rax-text": "^0.5.0",
     "rax-view": "^0.5.0",
     "react": "^16.2.0"
   },
-  "files":[
-    "app", "client", "config"
+  "files": [
+    "app",
+    "client",
+    "config"
   ]
 }
