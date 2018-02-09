@@ -5,7 +5,8 @@
   "author": "六猴",
   "license": "MIT",
   "main": "index.js",
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-server",
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-server",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "ci": "npm run cov",

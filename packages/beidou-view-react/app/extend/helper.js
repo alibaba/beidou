@@ -6,7 +6,7 @@ const helper = {
    * @param {*} filename asset file name
    */
   asset(filename) {
-    return this[Symbol.for('#beidou.asset')](filename, this.config.react);
+    return this[Symbol.for('beidou#asset')](filename, this.config.react);
   },
 };
 

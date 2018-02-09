@@ -11,12 +11,7 @@
   "bin": {
     "beidou": "bin/beidou.js"
   },
-  "keywords": [
-    "beidou",
-    "nodejs",
-    "isomorphic",
-    "react"
-  ],
+  "keywords": ["beidou", "nodejs", "isomorphic", "react"],
   "author": "Holden",
   "dependencies": {
     "babel-preset-beidou-server": "^1.0.0-alpha.2",
@@ -67,5 +62,6 @@
       }
     }
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
 }

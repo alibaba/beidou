@@ -4,9 +4,7 @@
   "description": "beidou view react",
   "eggPlugin": {
     "name": "react",
-    "dependencies": [
-      "beidouView"
-    ]
+    "dependencies": ["beidouView"]
   },
   "main": "index.js",
   "scripts": {
@@ -40,14 +38,10 @@
     "supertest": "1",
     "webpack": "^3.10.0"
   },
-  "files": [
-    "app",
-    "lib",
-    "config",
-    "app.js"
-  ],
+  "files": ["app", "lib", "config", "app.js"],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
 }

@@ -24,6 +24,7 @@ class BeidouBaseView {
     const { loader } = this.app;
     const { FileLoader } = loader;
     const middlewares = {};
+
     for (const unit of loader.getLoadUnits()) {
       new FileLoader({
         directory: path.join(unit.path, 'app/view-middlewares'),

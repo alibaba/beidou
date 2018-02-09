@@ -8,14 +8,8 @@
     "ci": "npm run cov",
     "cov": "TEST_REPORTER=spec egg-bin cov"
   },
-  "keywords": [
-    "eslint",
-    "beidou"
-  ],
-  "files": [
-    ".eslintrc",
-    "index.js"
-  ],
+  "keywords": ["eslint", "beidou"],
+  "files": [".eslintrc", "index.js"],
   "license": "MIT",
   "devDependencies": {
     "egg-bin": "^4.3.7",
