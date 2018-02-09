@@ -16,10 +16,11 @@
   "dependencies": {
     "babel-preset-beidou-server": "^1.0.0-alpha.2",
     "chalk": "^2.3.0",
+    "check-npm-registry": "^1.0.4",
     "co": "^4.6.0",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "cross-spawn": "^5.0.1",
+    "cross-spawn": "^6.0.4",
     "egg-utils": "^2.3.0",
     "glob": "^7.1.1",
     "group-object": "^0.1.1",

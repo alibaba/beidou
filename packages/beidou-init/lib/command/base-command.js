@@ -6,7 +6,7 @@ const helper = require('../helper');
 class Command {
   constructor() {
     this.helper = helper;
-    this.name = 'beidou-toolkit';
+    this.name = 'beidou-init';
   }
 
   run(/* cwd, args */) {

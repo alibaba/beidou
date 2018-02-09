@@ -35,7 +35,7 @@ class Program {
       yield new Command().run(cwd, args);
     }).catch((err) => {
       console.error(
-        '[beidou toolkit] run %s with %j at %s error:',
+        '[beidou-init] run %s with %j at %s error:',
         cmd,
         args,
         cwd

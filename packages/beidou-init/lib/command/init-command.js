@@ -36,9 +36,8 @@ class InitCommand extends BaseCommand {
 
   * run(cwd, args, toolkit) {
     const processedArgs = args || [];
-    // compatible with fie
-    if (toolkit === 'fie') {
-      this.toolkitName = 'fie';
+    if (toolkit) {
+      this.toolkitName = toolkit;
     }
     const argv = (this.argv = this.getParser().parse(processedArgs));
     this.cwd = cwd;
@@ -46,12 +45,13 @@ class InitCommand extends BaseCommand {
     // console.log('%j', argv);
 
     // detect registry url
-    this.registryUrl = this.getRegistryByType();
-    // this.log(`use registry: ${this.registryUrl}`);
+    this.registryUrl = yield this.helper.getRegistry();
+    this.log(`use registry: ${this.registryUrl}`);
 
     // check update
     yield updater({
       package: this.pkgInfo,
+      registry: this.registryUrl,
       level: 'major',
     });
 
@@ -79,21 +79,13 @@ class InitCommand extends BaseCommand {
 
     this.log('start to install the dependencies ... '.green);
 
-    yield this.helper.npmInstall.install(this.targetDir);
+    yield this.helper.install(this.targetDir, this.registryUrl);
 
     this.log('npm packages installed'.green);
 
-    // auto proxy
-    if (this.proxyMapping.indexOf(boilerplate.package) >= 0) {
-      this.log('auto proxy '.green);
-
-      yield this.helper.autoProxy.proxy(this.targetDir);
-
-      this.log('proxy finished'.green);
-    }
-
     // done
     this.printUsage();
+    debugger; //eslint-disable-line
   }
 
   /**
