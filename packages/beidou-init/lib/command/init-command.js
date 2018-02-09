@@ -85,7 +85,6 @@ class InitCommand extends BaseCommand {
 
     // done
     this.printUsage();
-    debugger; //eslint-disable-line
   }
 
   /**
