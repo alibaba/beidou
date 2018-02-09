@@ -16,7 +16,7 @@ module.exports = function (targetDir, registry = '') {
   };
   // Prefer yarn as install faster
   if (/\d+.\d+.\d+/.test(String(stdout))) {
-    console.log(`install with yarn: ${args}`.green);
+    console.log(`install with yarn ${args}`.green);
     cli = spawn('yarn', args, options);
   } else {
     console.log(`install with npm i ${args}`.green);
@@ -28,9 +28,7 @@ module.exports = function (targetDir, registry = '') {
       if (status === 0) {
         resolve();
       } else {
-        reject(
-          new Error(`packages install failed, error message: ${status}`)
-        );
+        reject(new Error(`packages install failed, error message: ${status}`));
       }
     });
   });

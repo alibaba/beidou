@@ -15,7 +15,7 @@ const available = [
 let lastCheckedRegistry = null;
 
 module.exports = function () {
-  return new Promise(((resolve) => {
+  return new Promise((resolve) => {
     if (lastCheckedRegistry) {
       resolve(lastCheckedRegistry);
       return;
@@ -24,5 +24,5 @@ module.exports = function () {
       lastCheckedRegistry = registry;
       resolve(registry);
     });
-  }));
+  });
 };
