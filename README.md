@@ -36,9 +36,9 @@ Isomorphic framework for server-rendered React apps
 ## How to use
 
 ```bash
-npm install beidou-init -g
-beidou init
-npm run dev
+$ npm install beidou-init -g
+$ beidou init
+$ npm run dev
 ```
 
 After that, go to `http://localhost:6001/`

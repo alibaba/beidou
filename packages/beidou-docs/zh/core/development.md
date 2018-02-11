@@ -11,6 +11,17 @@
 $ npm i egg-bin --save-dev
 ```
 
+在 `package.json` 声明框架
+
+```json
+{
+  "...": "...",
+  "egg": {
+    "framework": "beidou-core"
+  }
+}
+```
+
 ## 启动应用
 
 本地启动应用进行开发活动，当我们修改代码并保存后，应用会自动重启实时生效。

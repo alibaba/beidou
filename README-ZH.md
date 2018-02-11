@@ -37,9 +37,9 @@
 ## 如何使用？
 
 ```bash
-npm install beidou-init -g
-beidou init
-npm run dev
+$ npm install beidou-init -g
+$ beidou init
+$ npm run dev
 ```
 
 打开 `http://localhost:6001/`
