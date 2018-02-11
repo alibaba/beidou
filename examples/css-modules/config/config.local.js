@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = function (app) {
+module.exports = function () {
   const exports = {
     react: {
       static: true,
@@ -9,7 +9,7 @@ module.exports = function (app) {
       assetPath: '/build',
     },
     webpack: {
-      config: path.join(app.baseDir, 'webpack.config.js'),
+      config: path.resolve(__dirname, './webpack.config.js'),
       output: {
         publicPath: '/build',
       },

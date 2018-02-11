@@ -1,33 +1,20 @@
-# log
-*.log
 
-# temp files
-*.lerna_backup
+.DS_Store
+.idea
+.isomorphic
+.vscode
 *.da
-packages/*/test/fixtures/**/run/
-packages/*/test/fixtures/**/debug/
-packages/*/test/fixtures/**/logs/
-packages/*/run
-
-examples/*/run
+*.lerna_backup
+*.log
+*.stats.json
+coverage
+examples/**/build
+examples/*/build/
 examples/*/debug
 examples/*/logs
-examples/*/build/
-
-# coverage
-coverage/
-
-# project organization files of IED
-.idea
-.vscode
-
-# system config
-.DS_Store
-
-# Dependency directories
-node_modules*
-
-# build files
-examples/**/build
-*.stats.json
-.isomorphic/
+examples/*/run
+node_modules
+packages/*/run
+packages/*/test/fixtures/**/debug/
+packages/*/test/fixtures/**/logs/
+packages/*/test/fixtures/**/run/
