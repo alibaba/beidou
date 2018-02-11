@@ -42,8 +42,6 @@ class InitCommand extends BaseCommand {
     const argv = (this.argv = this.getParser().parse(processedArgs));
     this.cwd = cwd;
 
-    // console.log('%j', argv);
-
     // detect registry url
     this.registryUrl = yield this.helper.getRegistry();
     this.log(`use registry: ${this.registryUrl}`);
@@ -71,21 +69,26 @@ class InitCommand extends BaseCommand {
       boilerplate = yield this.askForBoilerplateType(boilerplateMapping);
     }
     this.log(`you have selected: ${boilerplate.name}(${boilerplate.package})`);
-    // download boilerplate
-    const templateDir = yield this.downloadBoilerplate(boilerplate.package);
 
-    // copy template
-    yield this.processFiles(this.targetDir, templateDir);
+    try {
+      // download boilerplate
+      const templateDir = yield this.downloadBoilerplate(boilerplate.package, argv.tag);
 
-    this.log('start to install the dependencies ... '.green);
+      // copy template
+      yield this.processFiles(this.targetDir, templateDir);
 
-    yield this.helper.install(this.targetDir, this.registryUrl);
+      this.log('start to install the dependencies ... '.green);
 
-    this.log('npm packages installed'.green);
+      yield this.helper.install(this.targetDir, this.registryUrl);
 
-    // done
-    this.printUsage();
-    process.exit();
+      this.log('npm packages installed'.green);
+      // done
+      this.printUsage();
+    } catch(e) {
+      this.log(e.message.red);
+    } finally {
+      process.exit();
+    }
   }
 
   /**
@@ -202,7 +205,7 @@ class InitCommand extends BaseCommand {
   getParser() {
     return yargs
       .usage(
-        'init beidou app from boilerplate.\nUsage: $0 init [dir] --type=simple'
+        'init beidou app from boilerplate.\nUsage: $0 init [dir] --type=simple --tag=next'
       )
       .options(this.getParserOptions())
       .alias('h', 'help')
@@ -219,6 +222,10 @@ class InitCommand extends BaseCommand {
       type: {
         type: 'string',
         description: 'boilerplate type',
+      },
+      tag: {
+        type: 'string',
+        description: 'boilerplate tag',
       },
       force: {
         type: 'boolean',
@@ -334,10 +341,14 @@ class InitCommand extends BaseCommand {
   /**
    * ownload boilerplate by pkgName then extract it
    * @param {String} pkgName - boilerplate package name
+   * @param {String} tag - boilerplate package tag
    * @return {String} extract directory
    */
-  * downloadBoilerplate(pkgName) {
-    const result = yield this.getPackageInfo(pkgName, false);
+  * downloadBoilerplate(pkgName, tag='latest') {
+    const result = yield this.getPackageInfo(pkgName, tag, false);
+    if (!result.dist) {
+      throw new Error(`boilerplate: ${pkgName}@${tag} not found`);
+    }
     const tgzUrl = result.dist.tarball;
     const saveDir = path.join(os.tmpdir(), 'beidou-init-boilerplate');
     this.log(`downloading: ${tgzUrl}`);
@@ -387,14 +398,15 @@ class InitCommand extends BaseCommand {
   /**
    * get package info from registry
    *
-   * @param {String} pkgName - package name
-   * @param {Boolean} [withFallback] - when http request fail, whethe to require local
+   * @param {String} pkgName package name
+   * @param {String} tag package tag 
+   * @param {Boolean} [withFallback] when http request fail, whether to require local
    * @return {Object} pkgInfo
    */
-  * getPackageInfo(pkgName, withFallback) {
+  * getPackageInfo(pkgName, tag, withFallback) {
     try {
       const result = yield urllib.request(
-        `${this.registryUrl}/${pkgName}/latest`,
+        `${this.registryUrl}/${pkgName}/${tag}`,
         {
           dataType: 'json',
           followRedirect: true,
