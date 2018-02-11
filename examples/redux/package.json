@@ -2,10 +2,13 @@
   "name": "beidou-example-redux",
   "version": "1.0.0-alpha.2",
   "description": "beidou css modules template",
+  "egg": {
+    "framework": "beidou-core"
+  },
   "scripts": {
-    "start": "node ./bin/server.js",
+    "dev": "egg-bin dev",
     "build": "beidou-build",
-    "lint": "eslint --fix --ext .jsx --ext .js app client config webpack"
+    "lint": "eslint --fix --ext .jsx,.js app client config"
   },
   "author": "",
   "dependencies": {
@@ -22,12 +25,11 @@
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
-    "babel-preset-beidou-client": "^1.0.0-alpha.2",
-    "babel-preset-beidou-server": "^1.0.0-alpha.2",
+    "egg-bin": "^4.3.7",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.0-alpha.2",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "globby": "^6.1.0"
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1"
   },
   "engines": {
     "node": ">= 8.0.0"

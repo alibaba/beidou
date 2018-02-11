@@ -6,7 +6,7 @@
     "framework": "beidou-core"
   },
   "scripts": {
-    "start": "egg-bin dev",
+    "dev": "egg-bin dev",
     "build": "beidou-build",
     "build:node": "beidou-build node",
     "debug": "egg-bin debug"

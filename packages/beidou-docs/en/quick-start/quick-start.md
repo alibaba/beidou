@@ -26,7 +26,7 @@ Start
 
 ```bash
 $ npm install
-$ npm run start
+$ npm run dev
 ```
 
 After that, go to [http://localhost:6001/](http://localhost:6001/)

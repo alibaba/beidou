@@ -7,10 +7,9 @@
     "framework": "beidou-core"
   },
   "scripts": {
-    "start": "egg-bin dev"
+    "dev": "egg-bin dev"
   },
   "dependencies": {
-    "babel-preset-beidou-server": "^1.0.0-alpha.2",
     "beidou-core": "^1.0.0-alpha.2",
     "egg-bin": "^4.3.7",
     "react": "^16.2.0",

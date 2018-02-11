@@ -31,7 +31,7 @@ const compiler = builder(app, execEnv);
 
 compiler.run((err, stats) => {
   if (err) {
-    console.error(err);
+    app.coreLogger.error(err);
     process.exit(1);
   }
   if (stats) {
@@ -45,5 +45,5 @@ compiler.run((err, stats) => {
   }
 
   console.log('\nBuild finished\n');
-  app.close().then(() => process.exit(0));
+  app.close();
 });

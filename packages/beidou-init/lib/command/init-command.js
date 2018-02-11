@@ -72,7 +72,10 @@ class InitCommand extends BaseCommand {
 
     try {
       // download boilerplate
-      const templateDir = yield this.downloadBoilerplate(boilerplate.package, argv.tag);
+      const templateDir = yield this.downloadBoilerplate(
+        boilerplate.package,
+        argv.tag
+      );
 
       // copy template
       yield this.processFiles(this.targetDir, templateDir);
@@ -84,7 +87,7 @@ class InitCommand extends BaseCommand {
       this.log('npm packages installed'.green);
       // done
       this.printUsage();
-    } catch(e) {
+    } catch (e) {
       this.log(e.message.red);
     } finally {
       process.exit();
@@ -344,7 +347,7 @@ class InitCommand extends BaseCommand {
    * @param {String} tag - boilerplate package tag
    * @return {String} extract directory
    */
-  * downloadBoilerplate(pkgName, tag='latest') {
+  * downloadBoilerplate(pkgName, tag = 'latest') {
     const result = yield this.getPackageInfo(pkgName, tag, false);
     if (!result.dist) {
       throw new Error(`boilerplate: ${pkgName}@${tag} not found`);
@@ -399,7 +402,7 @@ class InitCommand extends BaseCommand {
    * get package info from registry
    *
    * @param {String} pkgName package name
-   * @param {String} tag package tag 
+   * @param {String} tag package tag
    * @param {Boolean} [withFallback] when http request fail, whether to require local
    * @return {Object} pkgInfo
    */

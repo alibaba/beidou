@@ -7,8 +7,7 @@
     "framework": "beidou-core"
   },
   "scripts": {
-    "start": "egg-bin dev",
-    "test": "egg-bin test"
+    "dev": "egg-bin dev"
   },
   "dependencies": {
     "beidou-core": "^1.0.0-alpha.2",
@@ -19,9 +18,5 @@
     "rax-view": "^0.5.0",
     "react": "^16.2.0"
   },
-  "files": [
-    "app",
-    "client",
-    "config"
-  ]
+  "files": ["app", "client", "config"]
 }

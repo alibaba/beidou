@@ -7,9 +7,8 @@
     "framework": "beidou-core"
   },
   "scripts": {
-    "start": "egg-bin dev",
-    "debug": "egg-bin debug --inspect --inspect-brk",
-    "test": "egg-bin test"
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug --inspect --inspect-brk"
   },
   "dependencies": {
     "beidou-core": "^1.0.0-alpha.2",
