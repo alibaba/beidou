@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-beidou",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Beidou Node Style Guide",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,13 @@
     "ci": "npm run cov",
     "cov": "TEST_REPORTER=spec egg-bin cov"
   },
-  "keywords": ["eslint", "beidou"],
-  "files": [".eslintrc", "index.js"],
+  "keywords": [
+    "eslint",
+    "beidou"
+  ],
+  "files": [
+    "index.js"
+  ],
   "license": "MIT",
   "devDependencies": {
     "egg-bin": "^4.3.7",

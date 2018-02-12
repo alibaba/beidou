@@ -10,7 +10,6 @@
 .nyc_output
 .tmp
 .vscode
-# Created by .ignore support plugin (hsz.mobi)
 build.sh
 coverage
 logs

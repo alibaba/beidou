@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-rax-redux",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Beidou example with rax redux",
   "license": "MIT",
   "egg": {
@@ -11,8 +11,8 @@
     "debug": "egg-bin debug --inspect-brk"
   },
   "dependencies": {
-    "beidou-core": "^1.0.0-alpha.2",
-    "beidou-view-rax": "^1.0.0-alpha.2",
+    "beidou-core": "^1.0.0-alpha.3",
+    "beidou-view-rax": "^1.0.0-alpha.3",
     "egg-bin": "^4.3.7",
     "rax": "^0.5.0",
     "rax-dom": "^0.5.2",

@@ -1,6 +1,6 @@
 {
   "name": "beidou-view",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "beidou base view plugin",
   "eggPlugin": {
     "name": "beidouView"
@@ -25,10 +25,14 @@
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.1"
   },
-  "files": ["app", "lib", "config", "index.js"],
+  "files": [
+    "app",
+    "lib",
+    "config",
+    "index.js"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view"
 }
