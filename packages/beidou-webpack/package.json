@@ -7,6 +7,10 @@
   },
   "keywords": ["beidou", "plugin", "webpack"],
   "main": "index.js",
+  "bin": {
+    "beidou-build": "./bin/build.js",
+    "webpack-build": "./bin/build.js"
+  },
   "dependencies": {
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.0",
@@ -46,6 +50,9 @@
     "react": "^16.2.0",
     "rimraf": "^2.6.1",
     "supertest": "1"
+  },
+  "peerDependencies": {
+    "beidou-core": "^1.0.0-alpha.2"
   },
   "files": ["bin", "app", "lib", "config", "app.js", "agent.js", "index.js"],
   "engines": {

@@ -3,12 +3,12 @@
 'use strict';
 
 const process = require('process');
-const argv = require('argh').argv;
+const { argv } = require('argh');
 const fs = require('fs');
 const path = require('path');
-const { Application } = require('../index');
-const Loader = require('../index').AppWorkerLoader;
-const builder = require('beidou-webpack/lib/builder');
+const { Application } = require('beidou-core');
+const Loader = require('beidou-core').AppWorkerLoader;
+const builder = require('../lib/builder');
 
 Loader.prototype.load = function () {};
 
@@ -20,7 +20,7 @@ const app = new Application({
 // build in production environment as default
 app.config.env = argv.dev ? 'local' : 'prod';
 
-const target = argv.target;
+const { target } = argv;
 
 if (target && !['node', 'browser'].includes(target)) {
   app.coreLogger.error(

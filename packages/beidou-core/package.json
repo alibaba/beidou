@@ -3,10 +3,6 @@
   "version": "1.0.0-alpha.2",
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
-  "bin": {
-    "beidou-build": "./bin/build.js",
-    "webpack-build": "./bin/build.js"
-  },
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
