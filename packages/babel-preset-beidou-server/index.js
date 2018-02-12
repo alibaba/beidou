@@ -11,8 +11,10 @@ module.exports = {
       {
         targets: {
           // Compile for this current running node, eg. 8.9.3
-          node: 'current',
+          node: true,
         },
+        useBuiltIns: true,
+        // debug: true,
       },
     ],
     stage2,

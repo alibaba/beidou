@@ -35,14 +35,17 @@ module.exports = appInfo => ({
     babel: {
       presets: [
         [
-          require.resolve('babel-preset-env'),
+          require('babel-preset-env'),
           {
             targets: {
-              node: 'current',
+              node: true,
             },
+            useBuiltIns: true,
+            // debug: true,
           },
         ],
-        require.resolve('babel-preset-rax'),
+        require('babel-preset-stage-2'),
+        require('babel-preset-rax'),
       ],
     },
     universal: {

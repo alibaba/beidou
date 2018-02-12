@@ -29,8 +29,7 @@ function register(app, url, method) {
 }
 
 async function handler() {
-  const config = this.app.config.router;
-  const { entry } = config;
+  const { entry } = this.app.config.router;
   const url = /\/$/.test(this.url) ? this.url + entry : this.url;
   await this.render(url);
 }
