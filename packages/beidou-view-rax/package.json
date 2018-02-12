@@ -43,5 +43,5 @@
     "rax-text": "^0.5.0",
     "rax-view": "^0.5.0"
   },
-  "files": ["app.js", "lib", "config"]
+  "files": ["app", "app.js", "lib", "config"]
 }
