@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = {
+const path = require('path');
+
+module.exports = () => ({
   view: {
     cache: false,
   },
@@ -16,7 +18,7 @@ module.exports = {
     urlPrefix: '/',
 
     /**
-     * files or directories should be ingored
+     * files or directories should be ignored
      * when automatically match route
      * @member {String} Config#exclude glob pattern
      * @since 1.0.0
@@ -40,4 +42,18 @@ module.exports = {
      */
     entry: null,
   },
-};
+  isomorphic: {
+    babel: {
+      ignore(filename) {
+        const testDirs = [path.resolve(__dirname, '../test/fixtures')];
+        for (const dir of testDirs) {
+          if (filename.includes(dir)) {
+            return false;
+          }
+        }
+
+        return true;
+      },
+    },
+  },
+});

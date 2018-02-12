@@ -11,8 +11,8 @@
   "author": "<devrsi0n devrsi0n@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "TEST_REPORTER=spec egg-bin test",
-    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "test": "NODE_ENV=test TEST_REPORTER=spec egg-bin test",
+    "cov": "NODE_ENV=test TEST_REPORTER=spec egg-bin cov",
     "ci": "npm run cov"
   },
   "dependencies": {
