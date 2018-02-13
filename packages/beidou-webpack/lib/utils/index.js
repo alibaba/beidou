@@ -82,7 +82,9 @@ const getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
 
   if (devServer.contentBase !== false) {
     app.logger.warn(
-      '[webpack] devServer.contentBase: %s, if webpack.devServer.contentBase is not false may cause beidou server unreachable',
+      '[webpack] devServer.contentBase: %s, if ' +
+        'webpack.devServer.contentBase is not false may cause beidou' +
+        ' server unreachable',
       devServer.contentBase
     );
     devServer.contentBase = false;

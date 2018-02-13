@@ -1,18 +1,17 @@
 {
   "name": "beidou-example-with-rax",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Beidou example with rax",
   "license": "MIT",
   "egg": {
     "framework": "beidou-core"
   },
   "scripts": {
-    "start": "egg-bin dev",
-    "test": "egg-bin test"
+    "dev": "egg-bin dev"
   },
   "dependencies": {
-    "beidou-core": "^1.0.0-alpha.2",
-    "beidou-view-rax": "^1.0.0-alpha.2",
+    "beidou-core": "^1.0.0-alpha.3",
+    "beidou-view-rax": "^1.0.0-alpha.3",
     "egg-bin": "^4.3.7",
     "rax": "^0.5.0",
     "rax-text": "^0.5.0",

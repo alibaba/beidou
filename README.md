@@ -1,3 +1,5 @@
+# Beidou
+
 Isomorphic framework for server-rendered React apps
 
 [![NPM version][npm-image]][npm-url]
@@ -16,7 +18,7 @@ Isomorphic framework for server-rendered React apps
 [codecov-image]: https://img.shields.io/codecov/c/github/alibaba/beidou.svg
 [codecov-url]: https://codecov.io/gh/alibaba/beidou
 [download-img]: https://img.shields.io/npm/dm/beidou-core.svg
-[gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg?style=flat-square
+[gitter-image]: https://img.shields.io/gitter/room/alibaba/beidou.svg
 [gitter-url]: https://gitter.im/alibaba/beidou
 [nodejs-image]: https://img.shields.io/badge/node-%3E%3D%208.0.0-brightgreen.svg
 [nodejs-url]: https://nodejs.org
@@ -27,7 +29,7 @@ Isomorphic framework for server-rendered React apps
 * ✔︎ Search engine optimization(SEO)
 * ✔︎ React server side rendering
 * ✔︎ ES6/ES7 supported
-* ✔︎ Css modules supported
+* ✔︎ CSS Modules supported
 * ✔︎ Auto router supported
 * ✔︎ Lots of [plugins](./packages/beidou-docs/en/basic/plugins.md)
 
@@ -36,7 +38,7 @@ Isomorphic framework for server-rendered React apps
 ```bash
 $ npm install beidou-init -g
 $ beidou init
-$ npm run start
+$ npm run dev
 ```
 
 After that, go to `http://localhost:6001/`

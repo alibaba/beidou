@@ -1,6 +1,6 @@
 {
   "name": "beidou-isomorphic",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "beidou isomorphic register",
   "main": "app.js",
   "scripts": {
@@ -12,28 +12,30 @@
   "eggPlugin": {
     "name": "isomorphic"
   },
-  "keywords": ["egg", "plugin"],
+  "keywords": [
+    "beidou",
+    "plugin",
+    "isomorphic"
+  ],
   "license": "MIT",
   "dependencies": {
-    "babel-preset-beidou-client": "^1.0.0-alpha.2",
-    "babel-preset-beidou-server": "^1.0.0-alpha.2",
-    "debug": "^2.6.0",
-    "jsdom": "^9.8.3",
-    "lodash": "^4.17.4"
+    "babel-preset-beidou-server": "^1.0.0-alpha.3",
+    "babel-register": "^6.26.0",
+    "jsdom": "^9.8.3"
   },
   "devDependencies": {
-    "autod": "2",
-    "egg": "^2.2.0",
     "egg-bin": "^4.0.0",
     "egg-mock": "^3.7.2",
     "mkdirp": "^0.5.1",
-    "should": "8",
     "supertest": "1"
   },
-  "files": ["config", "lib", "app.js"],
+  "files": [
+    "config",
+    "lib",
+    "app.js"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic"
 }

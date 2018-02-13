@@ -107,8 +107,8 @@ module.exports = (app, webpackConfig, dev) => {
     resolve: {
       extensions: ['.json', '.js', '.jsx'],
       alias: {
-        client: path.join(__dirname, '../client'),
-        themes: path.join(__dirname, '../client/themes'),
+        client: path.join(__dirname, '../../client'),
+        themes: path.join(__dirname, '../../client/themes'),
       },
     },
     devServer: webpackConfig.devServer,

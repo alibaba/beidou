@@ -1925,9 +1925,9 @@ eslint-config-ali@^2.0.3:
     eslint-plugin-import "^2.6.0"
     eslint-plugin-react "^7.1.0"
 
-eslint-config-beidou@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-beidou/-/eslint-config-beidou-1.0.1.tgz#65b1e51030cf71c4999c2ded5b8cdb03f585b896"
+eslint-config-beidou@1.0.0-alpha.2:
+  version "1.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-beidou/-/eslint-config-beidou-1.0.0-alpha.2.tgz#60bc07d384e45f398f58751a5b960b47241a651a"
   dependencies:
     eslint-config-ali "^2.0.3"
 

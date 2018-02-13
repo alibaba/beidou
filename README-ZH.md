@@ -1,3 +1,5 @@
+# Beidou
+
 北斗同构框架
 
 [![NPM version][npm-image]][npm-url]
@@ -27,7 +29,7 @@
 * ✔︎ 搜索引擎友好(SEO)
 * ✔︎ React 服务端渲染
 * ✔︎ 支持 ES6/ES7
-* ✔︎ 支持 Css modules
+* ✔︎ 支持 CSS Modules
 * ✔︎ 支持自动路由
 * ✔︎ 可拔插的同构能力
 * ✔︎ 丰富的 [插件](./packages/beidou-docs/en/basic/plugins.md)
@@ -37,7 +39,7 @@
 ```bash
 $ npm install beidou-init -g
 $ beidou init
-$ npm run start
+$ npm run dev
 ```
 
 打开 `http://localhost:6001/`

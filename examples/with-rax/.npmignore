@@ -1,5 +1,9 @@
+
 .isomorphic
 .stats.json
+.vscode
 build/
 logs/
+node_modules
 run/
+yarn-error.log

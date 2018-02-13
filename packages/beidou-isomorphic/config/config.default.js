@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-module.exports = function (app) {
+module.exports = function (appInfo) {
   const config = {
     /**
      * JSDom polyfill, simulate browser environment in server
@@ -70,7 +70,7 @@ module.exports = function (app) {
     universal: false,
 
     alias: {
-      client: path.join(app.baseDir, 'client'),
+      client: path.join(appInfo.baseDir, 'client'),
     },
   };
 

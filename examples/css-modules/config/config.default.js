@@ -5,5 +5,8 @@ module.exports = {
     universal: {
       assets: ['.scss', '.png'],
     },
+    babel: {
+      extensions: ['.jsx'],
+    },
   },
 };

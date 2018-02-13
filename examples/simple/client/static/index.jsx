@@ -9,7 +9,7 @@ import React from 'react';
  */
 export default class View extends React.Component {
   render() {
-    const { helper } = this.props;
+    // const { helper } = this.props;
     return (
       <html>
         <head>

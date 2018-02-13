@@ -1,12 +1,8 @@
 {
   "name": "beidou-core",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
-  "bin": {
-    "beidou-build": "./bin/build.js",
-    "webpack-build": "./bin/build.js"
-  },
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
@@ -15,23 +11,27 @@
   },
   "author": "weichunpeng",
   "devDependencies": {
-    "css-loader": "^0.26.1",
+    "beautify-benchmark": "^0.2.4",
+    "benchmark": "^2.1.4",
     "egg-bin": "^4.0.4",
-    "egg-logrotater": "^1.0.1",
     "egg-mock": "^3.8.0",
+    "node-uuid": "^1.4.8",
+    "rimraf": "^2.6.2",
     "should": "^6.0.3",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "uuid-js": "^0.7.5"
   },
   "dependencies": {
-    "babel-preset-beidou-client": "^1.0.0-alpha.2",
-    "babel-preset-beidou-server": "^1.0.0-alpha.2",
-    "beidou-isomorphic": "^1.0.0-alpha.2",
-    "beidou-router": "^1.0.0-alpha.2",
-    "beidou-view": "^1.0.0-alpha.2",
-    "beidou-view-react": "^1.0.0-alpha.2",
-    "beidou-webpack": "^1.0.0-alpha.2",
-    "egg": "^2.2.0",
-    "mz": "^2.6.0"
+    "argh": "^0.1.4",
+    "babel-preset-beidou-client": "^1.0.0-alpha.3",
+    "babel-preset-beidou-server": "^1.0.0-alpha.3",
+    "beidou-isomorphic": "^1.0.0-alpha.3",
+    "beidou-router": "^1.0.0-alpha.3",
+    "beidou-view": "^1.0.0-alpha.3",
+    "beidou-view-react": "^1.0.0-alpha.3",
+    "beidou-webpack": "^1.0.0-alpha.3",
+    "depd": "^1.1.2",
+    "egg": "^2.2.0"
   },
   "engines": {
     "node": ">= 8.0.0"
