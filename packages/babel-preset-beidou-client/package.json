@@ -4,12 +4,13 @@
   "description": "Babel preset for Beidou Client.",
   "author": "六猴",
   "license": "MIT",
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client",
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client",
   "main": "index.js",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
-    "ci": "npm run cov",
-    "cov": "TEST_REPORTER=spec egg-bin cov"
+    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "history": "egg-bin history CHANGELOG.md"
   },
   "dependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -17,10 +18,15 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.24.1",
-    "react": "^16.2.0",
     "react-hot-loader": "^3.1.3"
   },
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
   "devDependencies": {
-    "egg-bin": "^4.3.7"
+    "egg-bin": "^4.3.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }

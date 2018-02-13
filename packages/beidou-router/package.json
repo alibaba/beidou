@@ -9,7 +9,6 @@
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
   "license": "MIT",
@@ -24,13 +23,10 @@
     "react": "^16.2.0",
     "supertest": "1"
   },
-  "files": [
-    "app",
-    "lib",
-    "config"
-  ],
+  "files": ["app", "lib", "config"],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
 }

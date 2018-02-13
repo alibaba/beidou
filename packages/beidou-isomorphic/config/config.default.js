@@ -47,11 +47,11 @@ module.exports = function (appInfo) {
     /**
      * false by default
      *
-     * the universal field provides configuration both for `plugin-isomorphic` and `plugin-webpack`
-     * for `plugin-webpack`:
+     * the universal field provides configuration both for `beidou-isomorphic` and `beidou-webpack`
+     * for `beidou-webpack`:
      *   write assets.json file into `assetsFilePath`
      *   only contains assets type defined by `assets` array
-     * for `plugin-isomorphic`:
+     * for `beidou-isomorphic`:
      *   read file defined by `assetsFilePath`
      *   hook require and return content in assets.json if file path matches in `assets`
      *

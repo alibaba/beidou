@@ -15,6 +15,6 @@ examples/*/logs
 examples/*/run
 node_modules
 packages/*/run
-packages/*/test/fixtures/**/debug/
-packages/*/test/fixtures/**/logs/
-packages/*/test/fixtures/**/run/
+packages/*/test/**/debug/
+packages/*/test/**/logs/
+packages/*/test/**/run/

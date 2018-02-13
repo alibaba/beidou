@@ -68,7 +68,20 @@ module.exports = (app, webpackConfig, dev) => {
             loader: require.resolve('babel-loader'),
             options: {
               babelrc: false,
-              presets: [require.resolve('babel-preset-rax')],
+              presets: [
+                [
+                  require.resolve('babel-preset-env'),
+                  {
+                    targets: {
+                      node: true,
+                    },
+                    useBuiltIns: true,
+                    // debug: true,
+                  },
+                ],
+                require.resolve('babel-preset-stage-2'),
+                require.resolve('babel-preset-rax'),
+              ],
             },
           },
         },

@@ -5,11 +5,7 @@
   "eggPlugin": {
     "name": "webpack"
   },
-  "keywords": [
-    "beidou",
-    "plugin",
-    "webpack"
-  ],
+  "keywords": ["beidou", "plugin", "webpack"],
   "main": "index.js",
   "bin": {
     "beidou-build": "./bin/build.js",
@@ -20,8 +16,8 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.0.0",
     "babel-minify-webpack-plugin": "^0.2.0",
-    "babel-preset-beidou-client": "^1.0.0-alpha.3",
-    "babel-preset-beidou-server": "^1.0.0-alpha.3",
+    "babel-preset-beidou-client": "1.0.0-alpha.3",
+    "babel-preset-beidou-server": "1.0.0-alpha.3",
     "boxen": "^1.3.0",
     "chokidar": "^2.0.0",
     "colorz": "^0.1.9",
@@ -56,25 +52,17 @@
     "supertest": "1"
   },
   "peerDependencies": {
-    "beidou-core": "^1.0.0-alpha.2"
+    "beidou-core": "^1.0.0-alpha.3"
   },
-  "files": [
-    "bin",
-    "app",
-    "lib",
-    "config",
-    "app.js",
-    "agent.js",
-    "index.js"
-  ],
+  "files": ["bin", "app", "lib", "config", "app.js", "agent.js", "index.js"],
   "engines": {
     "node": ">= 8.0.0"
   },
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack"
 }

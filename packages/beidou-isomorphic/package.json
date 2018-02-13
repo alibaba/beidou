@@ -6,17 +6,12 @@
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
   "eggPlugin": {
     "name": "isomorphic"
   },
-  "keywords": [
-    "beidou",
-    "plugin",
-    "isomorphic"
-  ],
+  "keywords": ["beidou", "plugin", "isomorphic"],
   "license": "MIT",
   "dependencies": {
     "babel-preset-beidou-server": "^1.0.0-alpha.3",
@@ -29,13 +24,10 @@
     "mkdirp": "^0.5.1",
     "supertest": "1"
   },
-  "files": [
-    "config",
-    "lib",
-    "app.js"
-  ],
+  "files": ["config", "lib", "app.js"],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic"
 }

@@ -6,17 +6,12 @@
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test --timeout=120000",
     "cov": "TEST_REPORTER=spec egg-bin cov --timeout=120000",
-    "ci": "npm run cov"
+    "history": "egg-bin history CHANGELOG.md"
   },
   "bin": {
     "beidou": "bin/beidou.js"
   },
-  "keywords": [
-    "beidou",
-    "nodejs",
-    "isomorphic",
-    "react"
-  ],
+  "keywords": ["beidou", "nodejs", "isomorphic", "react"],
   "author": "Holden",
   "dependencies": {
     "chalk": "^2.3.0",
@@ -64,5 +59,6 @@
       }
     }
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
 }

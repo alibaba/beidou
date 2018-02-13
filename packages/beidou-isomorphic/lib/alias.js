@@ -7,7 +7,7 @@ module.exports = function handle(config) {
   const originalResolveFileName = Module._resolveFilename;
   Module._resolveFilename = function (request, parent) {
     for (const key of Object.keys(config)) {
-      if (request === key || request.indexOf(`${key}/`) === 0) {
+      if (request === key || request.startsWith(`${key}/`)) {
         request = path.normalize(
           `${config[key]}${request.substring(key.length)}`
         );

@@ -24,7 +24,6 @@ function requireAssetsJson(filepath, logger) {
 }
 
 function createIsomorphicRequire(baseDir, universal, logger) {
-  // let json = requireAssetsJson(universal.assetsFilePath, logger);
   return function (module, filename) {
     const relativePath = path.relative(baseDir, filename);
     if (!universal.cache) {
@@ -37,7 +36,7 @@ function createIsomorphicRequire(baseDir, universal, logger) {
 }
 
 function isValidExt(ext) {
-  return /\.[0-9a-zA-A]+/.test(ext);
+  return /\.[0-9a-zA-Z]+/.test(ext);
 }
 
 module.exports = function (app) {
@@ -65,7 +64,7 @@ module.exports = function (app) {
       isomorphic.universal
     );
 
-    const assets = universal.assets;
+    const { assets } = universal;
     const isomorphicRequire = createIsomorphicRequire(
       baseDir,
       universal,

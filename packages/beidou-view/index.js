@@ -25,6 +25,8 @@ class BeidouBaseView {
     const { FileLoader } = loader;
     const middlewares = {};
 
+    // Load all plugins, frameworks, application 'app/view-middlewares'
+    // into object middlewares
     for (const unit of loader.getLoadUnits()) {
       new FileLoader({
         directory: path.join(unit.path, 'app/view-middlewares'),
@@ -33,6 +35,7 @@ class BeidouBaseView {
       }).load();
     }
 
+    // Compose user defined middlewares
     this.fn = compose(options.middlewares.map(name => middlewares[name]));
   }
 

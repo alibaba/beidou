@@ -6,7 +6,6 @@
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
   "author": "weichunpeng",
@@ -23,15 +22,15 @@
   },
   "dependencies": {
     "argh": "^0.1.4",
-    "babel-preset-beidou-client": "^1.0.0-alpha.3",
-    "babel-preset-beidou-server": "^1.0.0-alpha.3",
+    "babel-preset-beidou-client": "1.0.0-alpha.3",
+    "babel-preset-beidou-server": "1.0.0-alpha.3",
     "beidou-isomorphic": "^1.0.0-alpha.3",
     "beidou-router": "^1.0.0-alpha.3",
     "beidou-view": "^1.0.0-alpha.3",
     "beidou-view-react": "^1.0.0-alpha.3",
     "beidou-webpack": "^1.0.0-alpha.3",
     "depd": "^1.1.2",
-    "egg": "^2.2.0"
+    "egg": "^2.3.0"
   },
   "engines": {
     "node": ">= 8.0.0"

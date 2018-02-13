@@ -4,21 +4,17 @@
   "description": "beidou view react",
   "eggPlugin": {
     "name": "react",
-    "dependencies": [
-      "beidouView"
-    ]
+    "dependencies": ["beidouView"]
   },
   "main": "index.js",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
   "license": "MIT",
   "dependencies": {
-    "beidou-view": "^1.0.0-alpha.3",
-    "react-redux": "^5.0.6"
+    "beidou-view": "^1.0.0-alpha.3"
   },
   "peerDependencies": {
     "react": "^16.2.0",
@@ -29,18 +25,15 @@
     "egg-mock": "^3.7.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "should": "8",
     "supertest": "1"
   },
-  "files": [
-    "app",
-    "lib",
-    "config",
-    "app.js"
-  ],
+  "files": ["app", "lib", "config", "app.js"],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
 }

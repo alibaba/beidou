@@ -3,13 +3,14 @@
 const ReactDOM = require('react-dom/server');
 const BaseView = require('beidou-view');
 
+const { renderToString, renderToStaticMarkup } = ReactDOM;
+
 module.exports = class ReactView extends BaseView {
   constructor(ctx) {
     super(ctx, ctx.app.config.react);
   }
 
   renderElement(...args) {
-    const { renderToString, renderToStaticMarkup } = ReactDOM;
     return this.options.static
       ? renderToStaticMarkup(...args)
       : renderToString(...args);
