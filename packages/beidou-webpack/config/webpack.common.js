@@ -20,6 +20,23 @@ module.exports = (app, entry, dev) => {
   const module = {
     rules: [
       {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: require.resolve('style-loader'),
+          use: [
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                importLoaders: 1,
+                minimize: !dev,
+                sourceMap: dev,
+              },
+            },
+          ],
+        }),
+      },
+      {
         test: /\.s(c|a)ss$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
