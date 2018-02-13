@@ -3,11 +3,12 @@
 'use strict';
 
 const process = require('process');
+const { argv } = require('argh');
 const fs = require('fs');
 const path = require('path');
-const { Application } = require('../index');
-const Loader = require('../index').AppWorkerLoader;
-const builder = require('beidou-webpack/lib/builder');
+const { Application } = require('beidou-core');
+const Loader = require('beidou-core').AppWorkerLoader;
+const builder = require('../lib/builder');
 
 Loader.prototype.load = function () {};
 
@@ -16,22 +17,23 @@ const app = new Application({
   workers: 1,
 });
 
-// build in production environment
-app.config.env = 'prod';
+// build in production environment as default
+app.config.env = argv.dev ? 'local' : 'prod';
 
-const execEnv = process.argv[2];
-if (execEnv && !['node', 'browser'].includes(execEnv)) {
+const { target } = argv;
+
+if (target && !['node', 'browser'].includes(target)) {
   app.coreLogger.error(
-    `Expect execute environment to be "node" or "browser"(default), got ${execEnv}`
+    `Expect execute environment to be "node" or "browser"(default), got ${target}`
   );
   process.exit(1);
 }
 
-const compiler = builder(app, execEnv);
+const compiler = builder(app, target);
 
 compiler.run((err, stats) => {
   if (err) {
-    console.error(err);
+    app.coreLogger.error(err);
     process.exit(1);
   }
   if (stats) {
@@ -45,5 +47,5 @@ compiler.run((err, stats) => {
   }
 
   console.log('\nBuild finished\n');
-  app.close().then(() => process.exit(0));
+  app.close();
 });

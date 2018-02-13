@@ -1,3 +1,4 @@
 'use strict';
 
-exports.npmInstall = require('./npm-module');
+exports.install = require('./install');
+exports.getRegistry = require('./registry');

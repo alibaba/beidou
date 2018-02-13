@@ -1,22 +1,27 @@
 {
   "name": "beidou-example-advanced",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "beidou example advanced",
+  "egg": {
+    "framework": "beidou-core"
+  },
   "scripts": {
-    "start": "node ./bin/server.js",
-    "lint": "eslint --fix --ext .jsx --ext .js app client config webpack",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug --inspect-brk",
+    "lint": "eslint --fix --ext .jsx,.js app client config",
     "build": "webpack-build"
   },
   "author": "",
   "devDependencies": {
-    "babel-loader": "^7.1.1",
-    "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.0.0-alpha.2"
+    "babel-eslint": "^8.2.1",
+    "egg-bin": "^4.3.7",
+    "eslint": "^4.15.0",
+    "eslint-config-beidou": "^1.0.0-alpha.3",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1"
   },
   "dependencies": {
-    "babel-preset-beidou-client": "^1.0.0-alpha.2",
-    "babel-preset-beidou-server": "^1.0.0-alpha.2",
-    "beidou-core": "^1.0.0-alpha.2",
+    "beidou-core": "^1.0.0-alpha.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

@@ -1,1 +1,6 @@
+
+.vscode
+node_modules
 test/
+yarn-error.log
+yarn.lock

@@ -9,8 +9,20 @@ module.exports = {
     node: true,
     commonjs: true,
   },
+  parserOptions: {
+    ecmaVersion: 9,
+    ecmaFeatures: {
+      impliedStrict: false,
+      modules: false,
+    },
+  },
   rules: {
+    'new-cap': 'off',
+    'require-yield': 'off',
+    'import/no-dynamic-require': 'off',
     strict: 'off',
+    'class-methods-use-this': 'off',
+    'no-console': 'off',
   },
   globals: {
     __ENV__: true,

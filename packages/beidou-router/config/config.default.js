@@ -4,8 +4,8 @@ module.exports = () => {
   const config = {};
 
   /**
-   * View options
-   * @member Config#view
+   * Router options
+   * @member Config#router
    */
   config.router = {
     /**

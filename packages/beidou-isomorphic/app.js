@@ -28,31 +28,7 @@ module.exports = (app) => {
   const { babel } = config;
 
   if (babel) {
-    const finalConfig = {
-      ...babel,
-      ignore(filename) {
-        // TODO: NOT ignore client code default
-
-        if (/test/.test(filename) && !/.test.js$/.test(filename)) {
-          return false;
-        }
-
-        // Always ignore beidou and node_modules code
-        if (/node_modules|beidou-/.test(filename)) {
-          return true;
-        }
-
-        const oriIgnore = babel.ignore;
-        if (oriIgnore instanceof RegExp) {
-          return oriIgnore.test(filename);
-        } else if (typeof oriIgnore === 'function') {
-          return oriIgnore(filename);
-        }
-        return false;
-      },
-    };
-
-    require('babel-register')(finalConfig);
+    require('babel-register')(babel);
   }
 
   // isomorphic register

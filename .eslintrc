@@ -1,19 +1,6 @@
 {
   "extends": "eslint-config-beidou",
   "root": true,
-  "parser": "babel-eslint",
-  "env": {
-    "mocha": true,
-    "browser": true,
-    "node": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "ecmaFeatures": {
-      "impliedStrict": false,
-      "modules": false
-    }
-  },
   "rules": {
     "new-cap": "off",
     "require-yield": "off",
@@ -21,8 +8,5 @@
     "strict": "off",
     "class-methods-use-this": "off",
     "no-console": "off"
-  },
-  "globals": {
-    "__DEV__": true
   }
 }

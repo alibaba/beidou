@@ -6,8 +6,8 @@ module.exports = (appInfo) => {
   const config = {};
 
   /**
-   * View options
-   * @member Config#view
+   * React view options
+   * @member Config#react
    */
   config.react = {
     middlewares: ['cache', 'redux', 'partial', 'render', 'doctype', 'beautify'],

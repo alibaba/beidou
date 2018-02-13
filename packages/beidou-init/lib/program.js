@@ -3,6 +3,7 @@
 const co = require('co');
 const path = require('path');
 const chalk = require('chalk');
+const check = require('check-node-version');
 
 class Program {
   constructor() {
@@ -25,17 +26,22 @@ class Program {
   }
 
   onAction(cmd, cwd, args) {
+    const self = this;
     const filepath = this._commands[cmd];
     if (!filepath) {
       this.help();
       return;
     }
     co(function* () {
+      // check node version before running
+      yield self.check();
+
       const Command = require(filepath);
       yield new Command().run(cwd, args);
+      process.exit(0);
     }).catch((err) => {
       console.error(
-        '[beidou toolkit] run %s with %j at %s error:',
+        '[beidou-init] run %s with %j at %s error:',
         cmd,
         args,
         cwd
@@ -51,6 +57,24 @@ class Program {
       console.log('    %s - %s', cmd, new Command().help());
     }
     console.log('');
+  }
+
+  check(ver = '>=8') {
+    return new Promise((resolve, reject) => {
+      check({ node: ver }, (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        const { versions: { node } } = results;
+
+        if (node.isSatisfied) {
+          resolve(true);
+        } else {
+          reject(new Error(`Error: Wanted node version ${ver}`));
+        }
+      });
+    });
   }
 }
 

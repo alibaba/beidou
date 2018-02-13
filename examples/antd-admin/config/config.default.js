@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
   keys: 'secret',
   webpack: {
-    config: path.resolve(__dirname, '../webpack/webpack.config.js'),
+    config: path.resolve(__dirname, './webpack/webpack.config.js'),
   },
   router: {
     root: '/pages',

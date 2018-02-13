@@ -6,6 +6,9 @@ module.exports = {
     universal: {
       assets: ['.scss'],
     },
+    babel: {
+      extensions: ['.jsx'],
+    },
   },
   react: {
     assetPath: '/public/',
