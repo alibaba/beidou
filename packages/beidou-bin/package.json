@@ -1,0 +1,33 @@
+{
+  "name": "beidou-bin",
+  "version": "0.0.1",
+  "description": "Beidou commands set",
+  "main": "index.js",
+  "bin": {
+    "beidou-bin": "./bin/beidou-bin.js"
+  },
+  "scripts": {
+    "test": "TEST_REPORTER=spec egg-bin test",
+    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "history": "egg-bin history CHANGELOG.md"
+  },
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-bin",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "check-node-version": "^3.2.0",
+    "check-npm-registry": "^1.0.4",
+    "co": "^4.6.0",
+    "colors": "^1.1.2",
+    "commander": "^2.14.1",
+    "cross-spawn": "^6.0.4",
+    "egg-utils": "^2.3.0"
+  },
+  "devDependencies": {
+    "coffee": "^4.1.0",
+    "egg-bin": "^4.3.7",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.2"
+  }
+}

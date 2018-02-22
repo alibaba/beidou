@@ -10,7 +10,8 @@ for f in examples/*; do
   if [ -f "$f/package.json" ]; then
     cd "$f"
     yarn
-    lerna bootstrap
     cd ../..
   fi
 done
+
+lerna bootstrap

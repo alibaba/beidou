@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 const utils = require('egg-utils');
 
 const framework = utils.getFrameworkPath({

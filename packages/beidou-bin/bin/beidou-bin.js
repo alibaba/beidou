@@ -2,6 +2,6 @@
 
 'use strict';
 
-const { run } = require('beidou-bin');
+const run = require('..').run;
 
 run(require('../lib/program'));

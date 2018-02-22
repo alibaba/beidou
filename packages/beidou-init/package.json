@@ -2,7 +2,6 @@
   "name": "beidou-init",
   "version": "1.0.0-alpha.3",
   "description": "beidou init helper",
-  "main": "index.js",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test --timeout=120000",
     "cov": "TEST_REPORTER=spec egg-bin cov --timeout=120000",
@@ -14,12 +13,8 @@
   "keywords": ["beidou", "nodejs", "isomorphic", "react"],
   "author": "Holden",
   "dependencies": {
-    "chalk": "^2.3.0",
-    "check-node-version": "^3.2.0",
+    "beidou-bin": "^0.0.1",
     "check-npm-registry": "^1.0.4",
-    "co": "^4.6.0",
-    "colors": "^1.1.2",
-    "commander": "^2.9.0",
     "cross-spawn": "^6.0.4",
     "glob": "^7.1.1",
     "group-object": "^0.1.1",
@@ -35,8 +30,7 @@
   },
   "devDependencies": {
     "coffee": "^4.1.0",
-    "egg-bin": "^4.3.7",
-    "mkdirp": "^0.5.1"
+    "egg-bin": "^4.3.7"
   },
   "license": "MIT",
   "config": {

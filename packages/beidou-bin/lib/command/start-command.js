@@ -15,7 +15,7 @@ class StartCommand extends BaseCommand {
 
   /**
    * start application
-   * * @param {String} cwd - cwd
+   * @param {String} cwd - cwd
    * @return {promise}
    */
   * start(cwd, args) {

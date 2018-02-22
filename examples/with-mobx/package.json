@@ -2,16 +2,14 @@
   "name": "beidou-example-with-mobx",
   "version": "1.0.0-alpha.2",
   "description": "beidou css modules template",
-  "egg": {
-    "framework": "beidou-core"
-  },
   "scripts": {
-    "dev": "egg-bin dev",
-    "build": "beidou-build",
+    "dev": "beidou-bin dev",
+    "build": "beidou-bin build",
     "lint": "eslint --fix --ext .jsx,.js app client config"
   },
   "author": "",
   "dependencies": {
+    "beidou-bin": "^0.0.1",
     "beidou-core": "^1.0.0-alpha.2",
     "director": "^1.2.8",
     "js-cookie": "^2.2.0",
@@ -31,7 +29,6 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-beidou-client": "^1.0.0-alpha.2",
     "css-loader": "^0.28.9",
-    "egg-bin": "^4.3.7",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.0-alpha.2",
     "eslint-plugin-import": "^2.8.0",

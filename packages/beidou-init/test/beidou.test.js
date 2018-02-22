@@ -43,7 +43,7 @@ describe('test/beidou-init.test.js', () => {
       coffee.fork(beidou, ['not-exists'], {
           cwd
         })
-        .expect('stdout', /init.*\n.*start.*\n.*dev.*\n.*build/)
+        .expect('stdout', /init.*\n/)
         .expect('code', 0)
         .end(done);
     });
@@ -61,32 +61,5 @@ describe('test/beidou-init.test.js', () => {
         .expect('code', 0)
         .end(done);
     });
-  });
-
-
-  describe('dev server and build', () => {
-    const beidou = require.resolve('../bin/beidou.js');
-    const cwd = path.join(__dirname, 'fixtures/test-files');
-    const env = Object.create(process.env);
-
-    env.NODE_ENV = 'local';
-
-    it('should run build script', done => {
-      coffee.fork(beidou, ['build'], {
-          cwd,
-          env,
-        })
-        .expect('stdout', /Build finished/)
-        .end(done);
-    });
-
-    // it('should start dev server', done => {
-    //   coffee.fork('/Users/wujingfeng/.tnvm/versions/alinode/v3.8.1/bin/egg-bin', ['dev'], {
-    //       cwd
-    //     })
-    //     .expect('stderr', /beidou-core start/)
-    //     .expect('code', 0)
-    //     .end(done);
-    // });
   });
 });

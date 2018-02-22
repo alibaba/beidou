@@ -50,10 +50,13 @@ module.exports = (app, devServer = {}, dev = false) => {
     }
   } else {
     const files = searchForEntries(pageDir);
-    files.forEach((file) => {
+    if (!files) {
+      throw new Error('Expect `client/index.jsx` entry file');
+    }
+    for (const file of files) {
       const filename = path.parse(file).name;
       entry[filename] = [...headEntries, file];
-    });
+    }
   }
 
   const dirs = glob.sync('*/', {
@@ -61,14 +64,14 @@ module.exports = (app, devServer = {}, dev = false) => {
     ignore: exclude,
   });
 
-  dirs.forEach((dir) => {
+  for (const dir of dirs) {
     const files = searchForEntries(path.join(pageDir, dir), entryName);
 
     if (files) {
       const name = path.basename(dir);
       entry[name] = [...headEntries, files[0]];
     }
-  });
+  }
 
   return entry;
 };
