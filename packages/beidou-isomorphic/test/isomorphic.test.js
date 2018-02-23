@@ -8,7 +8,7 @@ const mkdirp = require('mkdirp');
 
 const frameworkPath = path.join(__dirname, '../../beidou-core/');
 
-describe('test/plugin.test.js', () => {
+describe('test/isomorphic.test.js', () => {
   describe('GET isomorphic resources', () => {
     let app;
 

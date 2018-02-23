@@ -8,7 +8,7 @@ const colorz = require('colorz');
 const { stringify } = require('q-i');
 const boxen = require('boxen');
 const FallbackPort = require('fallback-port');
-const debug = require('debug')('beidou:plugin:webpack');
+const debug = require('debug')('beidou:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
 
@@ -75,7 +75,7 @@ const getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
     };
   }
 
-  const devServer = webpackConfig.devServer;
+  const { devServer } = webpackConfig;
   if (!devServer.port) {
     devServer.port = defaultPort;
   }

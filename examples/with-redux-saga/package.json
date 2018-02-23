@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "beidou-bin dev",
     "build": "beidou-bin build",
-    "build:node": "beidou-bin build node"
+    "build:node": "beidou-bin build --target=node"
   },
   "author": "<devrsi0n devrsi0n@gmail.com>",
   "license": "MIT",

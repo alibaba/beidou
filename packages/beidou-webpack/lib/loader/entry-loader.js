@@ -5,7 +5,7 @@ const glob = require('glob');
 const debug = require('debug')('beidou:webpack');
 
 module.exports = (app, devServer = {}, dev = false) => {
-  const config = app.config;
+  const { config } = app;
   const router = config.router || {};
   const options = config.webpack;
   debug('current webpack plugin config: %j ', options);

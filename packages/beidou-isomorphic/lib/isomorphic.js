@@ -47,7 +47,7 @@ module.exports = function (app) {
   if (alias) {
     if (alias && Object.keys(alias).length > 0) {
       app.logger.info(
-        '[beidou:plugin:isomorphic] isomorphic.alias detected: %o',
+        '[beidou:isomorphic] isomorphic.alias detected: %o',
         alias
       );
       resolveAlias(alias);

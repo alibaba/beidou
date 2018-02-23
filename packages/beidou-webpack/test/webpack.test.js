@@ -11,7 +11,7 @@ const expect = chai.expect;
 const framework = path.join(__dirname, '../../beidou-core/');
 const plugin = 'webpack';
 
-describe('test/plugin.test.js', () => {
+describe('test/webpack.test.js', () => {
   describe('use default webpack config', () => {
     let app;
     before((done) => {

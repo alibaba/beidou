@@ -11,7 +11,7 @@ const mm = require('egg-mock');
 const framework = path.join(__dirname, '../../beidou-core/');
 const plugin = 'router';
 
-describe('test/router.plugin.test.js', () => {
+describe('test/router.test.js', () => {
   describe('use default router config', () => {
     let app;
     before((done) => {
@@ -102,7 +102,7 @@ describe('test/router.plugin.test.js', () => {
         .get('/bar')
         .expect(404, done);
     });
-    
+
     it('should response ok for path /foo', (done) => {
       request(app.callback())
         .get('/foo')
@@ -115,7 +115,7 @@ describe('test/router.plugin.test.js', () => {
         .expect(200, done);
     });
 
-    
+
   });
 
   describe('set `router.urlPrefix = \'/about\'`', () => {
@@ -153,7 +153,7 @@ describe('test/router.plugin.test.js', () => {
         .get('/about')
         .expect(200, done);
     });
-    
+
     it('should response ok for path /about/about', (done) => {
       request(app.callback())
         .get('/about/about')
@@ -164,7 +164,7 @@ describe('test/router.plugin.test.js', () => {
       request(app.callback())
         .get('/about/foo/bar')
         .expect(200, done);
-    });    
+    });
   });
 
   describe('set `router.exclude = \'*-*\'`', () => {
@@ -189,12 +189,12 @@ describe('test/router.plugin.test.js', () => {
         .get('/foo-bar')
         .expect(404, done);
     });
-    
+
     it('should response ok for path /foo', (done) => {
       request(app.callback())
         .get('/foo')
         .expect(200, done);
-    });  
+    });
   });
 
   describe('set `router.mapping = { about: \'get\', login: [\'get\', \'post\']}`', () => {
@@ -219,7 +219,7 @@ describe('test/router.plugin.test.js', () => {
         .get('/foo')
         .expect(404, done);
     });
-    
+
     it('should response ok for path GET:/about', (done) => {
       request(app.callback())
         .get('/about')

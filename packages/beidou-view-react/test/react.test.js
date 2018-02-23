@@ -44,7 +44,7 @@ const changedTpl = `
   }
 `;
 
-describe('test/view.test.js', () => {
+describe('test/react.test.js', () => {
   describe('view render cache', () => {
     let app;
     let cacheApp;

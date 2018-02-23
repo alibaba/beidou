@@ -8,7 +8,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 module.exports = (app, entry, dev) => {
-  const { universal } = app.config.isomorphic;
   const webpackConfig = app.config.webpack;
 
   const { output, resolve, devServer } = webpackConfig;
@@ -94,6 +93,7 @@ module.exports = (app, entry, dev) => {
     new webpack.NoEmitOnErrorsPlugin(),
   ];
 
+  const { universal } = app.config.isomorphic;
   if (universal) {
     plugins.push(new app.IsomorphicPlugin(universal));
   }

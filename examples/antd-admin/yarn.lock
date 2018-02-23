@@ -747,7 +747,7 @@ babel-helpers@^6.24.1:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-loader@^7.0.0, babel-loader@^7.1.1:
+babel-loader@^7.0.0:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.2.tgz#f6cbe122710f1aa2af4d881c6d5b54358ca24126"
   dependencies:
@@ -1239,14 +1239,6 @@ babel-preset-beidou-client@^1.0.0-alpha.3:
     react "^16.2.0"
     react-dom "^16.2.0"
     react-hot-loader "^3.1.3"
-
-babel-preset-beidou-server@1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/babel-preset-beidou-server/-/babel-preset-beidou-server-1.0.0-alpha.3.tgz#c5faeba33a31adeb37b56b4764ea0dc62e5e6685"
-  dependencies:
-    babel-preset-env "^1.6.1"
-    babel-preset-react "^6.16.0"
-    babel-preset-stage-2 "^6.24.1"
 
 babel-preset-beidou-server@^1.0.0-alpha.3:
   version "1.0.0-alpha.ca3d4643"
@@ -2479,8 +2471,8 @@ css-color-names@0.0.4:
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
 css-loader@^0.28.7, css-loader@^0.28.9:
-  version "0.28.9"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.9.tgz#68064b85f4e271d7ce4c48a58300928e535d1c95"
+  version "0.28.10"
+  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.10.tgz#40282e79230f7bcb4e483efa631d670b735ebf42"
   dependencies:
     babel-code-frame "^6.26.0"
     css-selector-tokenizer "^0.7.0"
@@ -3037,8 +3029,8 @@ egg-logger@^1.6.0:
     utility "^1.11.0"
 
 egg-logrotator@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/egg-logrotator/-/egg-logrotator-3.0.1.tgz#60eba21204c69bbcf463e236e6bc6559356e11cf"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/egg-logrotator/-/egg-logrotator-3.0.2.tgz#80c3ae370a58dd8004f9e7c15f81ae11f39d6bb3"
   dependencies:
     debug "^3.1.0"
     moment "^2.19.3"
@@ -3185,8 +3177,8 @@ egg@^2.2.0:
     ylru "^1.2.0"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30:
-  version "1.3.33"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.33.tgz#bf00703d62a7c65238136578c352d6c5c042a545"
+  version "1.3.34"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.34.tgz#d93498f40391bb0c16a603d8241b9951404157ed"
 
 element-resize-event@2.0.9:
   version "2.0.9"
@@ -3737,13 +3729,6 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
-
-file-loader@^1.1.6:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.9.tgz#cf152aedbcfb3d67038d0845efb7cf11a96e53de"
-  dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^0.4.5"
 
 file-uri-to-path@1:
   version "1.0.0"
@@ -5713,8 +5698,8 @@ mz@^2.6.0, mz@^2.7.0, mz@~2.7.0:
     thenify-all "^1.0.0"
 
 nan@^2.3.0, nan@^2.3.2:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.9.2.tgz#f564d75f5f8f36a6d9456cca7a6c4fe488ab7866"
 
 nanomatch@^1.2.9:
   version "1.2.9"
@@ -6766,7 +6751,7 @@ querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
 
-querystring@0.2.0, querystring@^0.2.0:
+querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
@@ -7754,7 +7739,7 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
-schema-utils@^0.4.0, schema-utils@^0.4.5:
+schema-utils@^0.4.0:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.5.tgz#21836f0608aac17b78f9e3e24daff14a5ca13a3e"
   dependencies:
@@ -8843,20 +8828,11 @@ webpack-dev-server@^2.10.1:
     webpack-dev-middleware "1.12.2"
     yargs "6.6.0"
 
-webpack-hot-middleware@^2.20.0:
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/webpack-hot-middleware/-/webpack-hot-middleware-2.21.0.tgz#7b3c113a7a4b301c91e0749573c7aab28b414b52"
-  dependencies:
-    ansi-html "0.0.7"
-    html-entities "^1.2.0"
-    querystring "^0.2.0"
-    strip-ansi "^3.0.0"
-
 webpack-merge@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.1.tgz#f1197a0a973e69c6fbeeb6d658219aa8c0c13555"
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.2.tgz#5d372dddd3e1e5f8874f5bf5a8e929db09feb216"
   dependencies:
-    lodash "^4.17.4"
+    lodash "^4.17.5"
 
 webpack-sources@^1.0.1:
   version "1.1.0"
@@ -8865,7 +8841,7 @@ webpack-sources@^1.0.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^3.10.0, webpack@^3.8.1:
+webpack@^3.10.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.11.0.tgz#77da451b1d7b4b117adaf41a1a93b5742f24d894"
   dependencies:

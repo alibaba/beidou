@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "beidou-bin dev",
     "build": "beidou-bin build",
-    "build:node": "beidou-bin build node",
+    "build:node": "beidou-bin build --target=node",
     "lint": "eslint --fix --ext .jsx,.js app client config"
   },
   "author": "",
