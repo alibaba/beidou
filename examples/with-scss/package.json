@@ -1,0 +1,15 @@
+{
+  "name": "beidou-example-with-scss",
+  "version": "0.0.1",
+  "description": "Beidou example with scss",
+  "scripts": {
+    "dev": "beidou-bin dev"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "beidou-bin": "^0.0.1",
+    "beidou-core": "^1.0.0-alpha.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}

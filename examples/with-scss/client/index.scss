@@ -1,0 +1,187 @@
+$s : 50vh;
+$c : (
+  body : #ecebd9,
+  main : #e29372,
+  mainChild : #dd6d62,
+  blk : #000,
+  wht : #ffefe3,
+  stk : #353333
+);
+
+body {
+  width: 100vw;
+  // height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: map-get($c, body);
+}
+
+.title {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+*, *:after, *:before {box-sizing: border-box;}
+
+.🎵 {
+  flex: 1;
+  width: $s;
+  height: $s/1.2;
+  border-top: $s/30 solid map-get($c, blk);
+  border-bottom: $s/30 solid map-get($c, blk);
+  background-color: map-get($c, main);
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 ($s / 1.2 - ($s/30*2)) $s;
+    border-color: transparent transparent map-get($c, mainChild) transparent;
+  }
+}
+
+.⏺ {
+  width: $s/1.7;
+  height: $s/1.7;
+  border-radius: 50%;
+  background: map-get($c, blk);
+  background: radial-gradient(red 5%, map-get($c, wht) 10%, map-get($c, blk) 90%);
+  border: $s/99 solid map-get($c, wht);
+  background: radial-gradient(
+                map-get($c, mainChild) 0,
+                map-get($c, mainChild) 5%,
+                map-get($c, wht) 0%,
+                map-get($c, wht) 25%,
+                map-get($c, blk) 0%,
+                map-get($c, blk) 70%
+              );
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  z-index: 1;
+  animation: disk .5s infinite alternate;
+}
+
+.🕹 {
+  position: absolute;
+  right: 15%;
+  top: 0;
+  width: 20%;
+  height: 80%;
+  top: 50%;
+  transform: rotate(0deg) translateY(-50%);
+  transform-origin: 50% -30%;
+  z-index: 9;
+  animation: starter 1s forwards;
+  &__rotator {
+    width: 25%;
+    height: 20%;
+    border-radius: 30% 30% 30% 30% / 100% 100% 100% 100%;
+    background: map-get($c, blk);
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+    &:after, &:before {
+      content: "";
+      width: 5%;
+      position: absolute;
+      top: 5%;
+      background: map-get($c, wht);
+    }
+    &:after {
+      right: 35%;
+      height: 80%;
+    }
+    &:before {
+      right: 55%;
+      height: 35%;
+    }
+  }
+  &__stick {
+    width: 10%;
+    height: 80%;
+    background: map-get($c, stk);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+  &__voicer {
+    position: absolute;
+    left: 50%;
+    bottom: $s/15;
+    transform: translateX(-50%) rotate(25deg);
+    transform-origin: 0 0;
+    height: 0;
+    width: $s/25;
+    border-top: $s/15 solid map-get($c, wht);
+    border-left: $s*0.01 solid transparent;
+    border-right: $s*0.01 solid transparent;
+  }
+}
+
+.🔈 {
+  width: $s/49;
+  height: 35%;
+  position: absolute;
+  background-color: map-get($c, wht);
+  border-radius: 1vw;
+  z-index: 9;
+  bottom: 18%;
+  &:after, &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: $s/45 solid transparent;
+    border-bottom: $s/45 solid transparent;
+    border-right: $s/35 solid map-get($c, blk);
+    animation: volume 1s alternate infinite;
+  }
+  &:after {
+    right: -50%;
+  }
+  &:before {
+    left: -50%;
+    transform: rotate(180deg);
+  }
+  &--left {
+    right: 15%;
+    &:after, &:before {
+      top: 70%;
+      animation-delay: 2s;
+    }
+  }
+  &--right {
+    right: 7%;
+    &:after, &:before {
+      top: 50%;
+      animation-delay: 1s;
+    }
+  }
+}
+
+@keyframes volume {
+  100% {top: 15%;}
+}
+
+@keyframes starter {
+  100% {
+    transform: rotate(30deg) translateY(-50%);
+  }
+}
+
+@keyframes disk {
+  0% { transform: translateY(-50%) skew(1.5deg) rotate(0);}
+  100% { transform: translateY(-50%) skew(-1.5deg) rotate(360deg);}
+}
