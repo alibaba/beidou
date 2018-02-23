@@ -749,7 +749,7 @@ module.exports = class ProxyController extends Controller {
 
 #### 渲染模板
 
-北斗默认采用[react视图引擎](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react)来支持同构渲染，详见[同构渲染](../core/isomorphic-render.md)章节
+北斗默认采用[react视图引擎](https://github.com/alibaba/beidou/blob/master/packages/beidou-view-react)来支持同构渲染，详见[同构渲染](../core/isomorphic-render.md)章节
 
 #### JSONP
 

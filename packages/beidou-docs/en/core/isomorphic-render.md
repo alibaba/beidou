@@ -36,7 +36,7 @@ view: {
 }
 ```
 
-### [beidou-view-react](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react) configuration
+### [beidou-view-react](https://github.com/alibaba/beidou/blob/master/packages/beidou-view-react) configuration
 
 Also，beidou framework provided the default config for [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react), generally no need to config by ourselves.
 
@@ -56,7 +56,7 @@ react: {
 
 ## render page
 
-[beidou-view-react](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react) provided 3 API in `Context` object, each of them returns a promise.
+[beidou-view-react](https://github.com/alibaba/beidou/blob/master/packages/beidou-view-react) provided 3 API in `Context` object, each of them returns a promise.
 
 - `render(name, locals)` render template, and assign to ctx.body
 - `renderView(name, locals)` render template without assignment

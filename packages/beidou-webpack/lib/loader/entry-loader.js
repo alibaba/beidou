@@ -2,7 +2,7 @@
 
 const path = require('path');
 const glob = require('glob');
-const debug = require('debug')('beidou-plugin:webpack');
+const debug = require('debug')('beidou:webpack');
 
 module.exports = (app, devServer = {}, dev = false) => {
   const config = app.config;
