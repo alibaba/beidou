@@ -18,3 +18,4 @@ packages/*/run
 packages/*/test/**/debug/
 packages/*/test/**/logs/
 packages/*/test/**/run/
+packages/*/yarn.lock

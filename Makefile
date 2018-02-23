@@ -3,7 +3,7 @@ MAKEFLAGS = -j1
 export NODE_ENV = test
 export FORCE_COLOR = true
 
-.PHONY: eslint-lint prettier-lint lint reinstall reinstall-examples reinstall-packages clean-packages clean-examples clean clean-test test ci changelog
+.PHONY: eslint-lint prettier-lint lint reinstall-examples-dependencies clean-packages clean-examples clean clean-test test ci changelog
 
 lint:
 	make prettier-lint && make eslint-lint
@@ -14,22 +14,10 @@ prettier-lint:
 eslint-lint:
 	eslint --fix --ext .jsx,.js packages/
 
-# Reinstall all dependencies
-reinstall:
-	rm -rf node_modules yarn.lock
-	make reinstall-packages && make reinstall-examples
-
-reinstall-examples:
+reinstall-examples-dependencies:
 	make clean-examples
 	rm -rf examples/*/yarn.lock
 	./scripts/reinstall-examples.sh
-
-# Reinstall packages dependencies
-reinstall-packages:
-	make clean-packages
-	rm -rf packages/*/yarn.lock
-	yarn install
-	lerna bootstrap
 
 clean-packages:
 	rm -rf packages/*/node_modules
