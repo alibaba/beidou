@@ -60,7 +60,7 @@ describe('test/beidou-bin.test.js', () => {
       const dstDir = path.join(cwd, 'node_modules/.bin');
       const dstPath = path.join(dstDir, targetName);
       mkdirp.sync(dstDir);
-      fs.createReadStream(srcPath).pipe(fs.createWriteStream(dstPath));
+      fs.copyFileSync(srcPath, dstPath);
       fs.chmodSync(dstPath, '755');
     }
 
