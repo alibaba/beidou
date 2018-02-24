@@ -1,6 +1,6 @@
 {
   "name": "beidou-bin",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.4",
   "description": "Beidou commands set",
   "main": "index.js",
   "bin": {
@@ -11,8 +11,7 @@
     "cov": "TEST_REPORTER=spec egg-bin cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-bin",
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-bin",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.3.1",

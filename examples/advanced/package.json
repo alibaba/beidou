@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-advanced",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "beidou example advanced",
   "scripts": {
     "dev": "beidou-bin dev",
@@ -10,13 +10,13 @@
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
-    "eslint-config-beidou": "1.0.0-alpha.3",
+    "eslint-config-beidou": "^1.0.0-alpha.4",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1"
   },
   "dependencies": {
-    "beidou-bin": "^0.0.1",
-    "beidou-core": "^1.0.0-alpha.3",
+    "beidou-bin": "^1.0.0-alpha.4",
+    "beidou-core": "^1.0.0-alpha.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

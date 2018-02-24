@@ -1,6 +1,6 @@
 {
   "name": "beidou-init",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "beidou init helper",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test --timeout=120000",
@@ -10,10 +10,15 @@
   "bin": {
     "beidou": "bin/beidou.js"
   },
-  "keywords": ["beidou", "nodejs", "isomorphic", "react"],
+  "keywords": [
+    "beidou",
+    "nodejs",
+    "isomorphic",
+    "react"
+  ],
   "author": "Holden",
   "dependencies": {
-    "beidou-bin": "^0.0.1",
+    "beidou-bin": "^1.0.0-alpha.4",
     "check-npm-registry": "^1.0.4",
     "cross-spawn": "^6.0.4",
     "glob": "^7.1.1",
@@ -53,6 +58,5 @@
       }
     }
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-init"
 }

@@ -1,15 +1,15 @@
 {
   "name": "beidou-example-with-rax",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Beidou example with rax",
   "license": "MIT",
   "scripts": {
     "dev": "beidou-bin dev"
   },
   "dependencies": {
-    "beidou-bin": "^0.0.1",
-    "beidou-core": "^1.0.0-alpha.3",
-    "beidou-view-rax": "^1.0.0-alpha.3",
+    "beidou-bin": "^1.0.0-alpha.4",
+    "beidou-core": "^1.0.0-alpha.4",
+    "beidou-view-rax": "^1.0.0-alpha.4",
     "rax": "^0.5.0",
     "rax-server-renderer": "^0.5.0",
     "rax-text": "^0.5.0",

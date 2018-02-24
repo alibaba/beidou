@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-antd-admin",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "beidou antd template",
   "scripts": {
     "build": "beidou-bin build",
@@ -11,9 +11,9 @@
   "dependencies": {
     "antd": "^3.1.3",
     "axios": "^0.17.1",
-    "babel-preset-beidou-client": "1.0.0-alpha.3",
-    "beidou-bin": "^0.0.1",
-    "beidou-core": "^1.0.0-alpha.3",
+    "babel-preset-beidou-client": "^1.0.0-alpha.4",
+    "beidou-bin": "^1.0.0-alpha.4",
+    "beidou-core": "^1.0.0-alpha.4",
     "classnames": "^2.2.3",
     "color": "^2.0.1",
     "diskdb": "^0.1.17",
@@ -47,7 +47,7 @@
     "babel-eslint": "^7.1.1",
     "css-loader": "^0.28.9",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "1.0.0-alpha.3",
+    "eslint-config-beidou": "^1.0.0-alpha.4",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^3.0.2",
