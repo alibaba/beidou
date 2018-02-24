@@ -1,13 +1,11 @@
 'use strict';
 
-module.exports = () => {
-  const config = {};
-
+module.exports = () => ({
   /**
    * Router options
    * @member Config#router
    */
-  config.router = {
+  router: {
     /**
      * root directory for auto match route
      * include server route and webpack entry
@@ -43,7 +41,5 @@ module.exports = () => {
      */
     entry: null,
     ext: ['.jsx'],
-  };
-
-  return config;
-};
+  },
+});

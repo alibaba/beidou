@@ -1,4 +1,4 @@
-'use strict'; // eslint-disable-line
+'use strict';
 
 module.exports = {
   keys: 'key',

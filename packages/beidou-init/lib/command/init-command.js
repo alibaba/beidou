@@ -239,14 +239,6 @@ class InitCommand extends BaseCommand {
   }
 
   /**
-   * get registryUrl
-   * @return {String} registryUrl
-   */
-  getRegistryByType() {
-    return 'https://registry.npmjs.org';
-  }
-
-  /**
    * ask for target directory, will check if dir is valid.
    * @return {String} Full path of target directory
    */

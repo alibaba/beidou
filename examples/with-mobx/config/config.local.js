@@ -14,6 +14,11 @@ module.exports = function () {
       output: {
         publicPath: '/build/',
       },
+      // devServer: {
+      //   noInfo: false,
+      //   quiet: false,
+      //   clientLogLevel: 'info',
+      // },
     },
   };
   return exports;

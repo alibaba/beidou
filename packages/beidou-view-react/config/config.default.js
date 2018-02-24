@@ -2,14 +2,12 @@
 
 const path = require('path');
 
-module.exports = (appInfo) => {
-  const config = {};
-
+module.exports = appInfo => ({
   /**
    * React view options
    * @member Config#react
    */
-  config.react = {
+  react: {
     middlewares: ['cache', 'redux', 'partial', 'render', 'doctype', 'beautify'],
     beautify: false,
     cache: true,
@@ -23,15 +21,10 @@ module.exports = (appInfo) => {
     doctype: '<!DOCTYPE html>',
     assetHost: '',
     assetPath: '',
-  };
-  config.view = {
+  },
+  view: {
     defaultViewEngine: 'react',
     defaultExtension: '.jsx',
-    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(
-      appInfo.baseDir,
-      'client'
-    )}`,
-  };
-
-  return config;
-};
+    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(appInfo.baseDir, 'client')}`,
+  },
+});

@@ -12,7 +12,6 @@
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.6.0",
     "css-loader": "~0.23.1",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "1.0.0-alpha.3",

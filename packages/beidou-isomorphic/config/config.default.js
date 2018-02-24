@@ -2,8 +2,8 @@
 
 const path = require('path');
 
-module.exports = function (appInfo) {
-  const config = {
+module.exports = appInfo => ({
+  isomorphic: {
     /**
      * JSDom polyfill, simulate browser environment in server
      * true by default
@@ -72,9 +72,5 @@ module.exports = function (appInfo) {
     alias: {
       client: path.join(appInfo.baseDir, 'client'),
     },
-  };
-
-  return {
-    isomorphic: config,
-  };
-};
+  },
+});

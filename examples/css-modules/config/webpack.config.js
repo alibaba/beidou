@@ -2,17 +2,17 @@
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = (app, defaultConfig /* , dev */) => {
+module.exports = (app, defaultConfig, dev) => {
   const module = {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: require.resolve('babel-loader'),
           options: {
             babelrc: false,
-            presets: ['beidou-client'],
+            presets: [require.resolve('babel-preset-beidou-client')],
           },
         },
       },
@@ -20,23 +20,27 @@ module.exports = (app, defaultConfig /* , dev */) => {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
-          use: [{
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: true,
+          fallback: require.resolve('style-loader'),
+          use: [
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                importLoaders: 1,
+                modules: true,
+                sourceMap: dev,
+              },
             },
-          }, {
-            loader: 'sass-loader',
-          }],
-          fallback: 'style-loader',
+            {
+              loader: require.resolve('sass-loader'),
+            },
+          ],
         }),
       },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: require.resolve('url-loader'),
             options: {
               limit: 81920,
             },
