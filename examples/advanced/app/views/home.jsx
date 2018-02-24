@@ -1,3 +1,8 @@
 import React from 'react';
 
-export default () => <h2>hello</h2>;
+export default () => (
+  <div>
+    <h2>Beidou advanced example</h2>
+    <a href="/about">about</a>
+  </div>
+);

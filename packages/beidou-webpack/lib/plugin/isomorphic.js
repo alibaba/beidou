@@ -8,7 +8,7 @@ const _ = require('lodash');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const MemoryFileSystem = require('memory-fs');
-const debug = require('debug')('beidou:plugin:webpack');
+const debug = require('debug')('beidou:webpack');
 
 /**
  * isomorphic plugin for webpack

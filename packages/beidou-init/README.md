@@ -25,18 +25,6 @@ $ beidou init
   Advanced - Advanced beidou isomorphic app boilerplate
 ```
 
-## start
-
-```bash
-$ beidou start （or npm start）
-```
-
-## build
-
-```bash
-$ beidou build (or npm build)
-```
-
 ## License
 
 [MIT](LICENSE)

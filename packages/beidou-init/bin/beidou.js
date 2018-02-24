@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
-const run = require('../index').run;
+'use strict';
+
+const { run } = require('beidou-bin');
 
 run(require('../lib/program'));

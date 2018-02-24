@@ -10,8 +10,7 @@ module.exports = function (target) {
    * @extends Egg.Application
    */
   class BeidouApplication extends target.Application {
-    constructor(options) {
-      options = options || /* istanbul ignore next */ {};
+    constructor(options = /* istanbul ignore next */ {}) {
       super(options);
       this.logger.info(
         '[Beidou App] App Worker started, pid is %s',
@@ -21,7 +20,6 @@ module.exports = function (target) {
 
     get [Symbol.for('egg#eggPath')]() {
       return path.resolve(__dirname, '../../../');
-      // return __dirname;
     }
 
     get [Symbol.for('egg#loader')]() {

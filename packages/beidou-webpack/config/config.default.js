@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * default config
- */
-
 exports.webpack = {
   // config: 'path/to/webpack/config/file',
   output: {

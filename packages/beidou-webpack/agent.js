@@ -2,7 +2,7 @@
 
 const chokidar = require('chokidar');
 const equal = require('deep-equal');
-const debug = require('debug')('beidou:plugin:webpack');
+const debug = require('debug')('beidou:webpack');
 const helper = require('./lib/utils');
 const entryLoader = require('./lib/loader/entry-loader');
 

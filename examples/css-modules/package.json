@@ -1,12 +1,10 @@
 {
   "name": "beidou-example-css-modules",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "beidou css modules example",
-  "egg": {
-    "framework": "beidou-core"
-  },
   "scripts": {
-    "dev": "egg-bin dev",
+    "dev": "beidou-bin dev",
+    "build": "beidou-bin build",
     "lint": "eslint --fix --ext .jsx,.js app client config"
   },
   "author": "",
@@ -14,11 +12,9 @@
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.6.0",
     "css-loader": "~0.23.1",
-    "egg-bin": "^4.3.7",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.0.0-alpha.3",
+    "eslint-config-beidou": "^1.0.0-alpha.4",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -33,9 +29,10 @@
   "dependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.25.0",
-    "babel-preset-beidou-client": "^1.0.0-alpha.3",
-    "babel-preset-beidou-server": "^1.0.0-alpha.3",
-    "beidou-core": "^1.0.0-alpha.3",
+    "babel-preset-beidou-client": "^1.0.0-alpha.4",
+    "babel-preset-beidou-server": "^1.0.0-alpha.4",
+    "beidou-bin": "^1.0.0-alpha.4",
+    "beidou-core": "^1.0.0-alpha.4",
     "classnames": "^2.2.3",
     "enums": "^1.0.0",
     "extend": "^3.0.0",

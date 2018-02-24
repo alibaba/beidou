@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const utils = require('egg-utils');
+
+const framework = utils.getFrameworkPath({
+  framework: 'beidou-core',
+  baseDir: process.cwd(),
+});
+
+require(framework).startCluster({
+  port: 6001,
+  baseDir: process.cwd(),
+  workers: 1,
+});

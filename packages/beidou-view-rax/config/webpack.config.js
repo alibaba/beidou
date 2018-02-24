@@ -1,13 +1,56 @@
 'use strict';
 
-const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RaxWebpackPlugin = require('rax-webpack-plugin');
 
-module.exports = (app, webpackConfig, dev) => {
+module.exports = (app, defaultConfig, dev) => {
   const universal = app.config.isomorphic.universal;
-  const outputPath = path.join(app.config.baseDir, webpackConfig.output.path);
+
+  const module = {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: require.resolve('babel-loader'),
+          options: {
+            babelrc: false,
+            presets: [
+              [
+                require.resolve('babel-preset-env'),
+                {
+                  targets: {
+                    node: true,
+                  },
+                  useBuiltIns: true,
+                  // debug: true,
+                },
+              ],
+              require.resolve('babel-preset-stage-2'),
+              require.resolve('babel-preset-rax'),
+            ],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: require.resolve('stylesheet-loader'),
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: require.resolve('url-loader'),
+            options: {
+              limit: 81920,
+            },
+          },
+        ],
+      },
+    ],
+  };
 
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
@@ -48,54 +91,5 @@ module.exports = (app, webpackConfig, dev) => {
     );
   }
 
-  const config = {
-    target: 'web',
-    devtool: dev ? 'eval' : false,
-    context: webpackConfig.context,
-    entry: webpackConfig.entry,
-    output: {
-      path: outputPath,
-      filename: '[name].js?[hash]',
-      chunkFilename: '[name].js',
-      publicPath: webpackConfig.output.publicPath,
-    },
-    module: {
-      rules: [
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: require.resolve('babel-loader'),
-            options: {
-              babelrc: false,
-              presets: [require.resolve('babel-preset-rax')],
-            },
-          },
-        },
-        {
-          test: /\.css$/,
-          exclude: /node_modules/,
-          use: require.resolve('stylesheet-loader'),
-        },
-        {
-          test: /\.(png|jpg|gif)$/,
-          use: [
-            {
-              loader: require.resolve('url-loader'),
-              options: {
-                limit: 81920,
-              },
-            },
-          ],
-        },
-      ],
-    },
-    resolve: {
-      extensions: ['.json', '.js', '.jsx'],
-    },
-    devServer: webpackConfig.devServer,
-    plugins,
-  };
-
-  return config;
+  return { ...defaultConfig, target: 'web', plugins, module };
 };

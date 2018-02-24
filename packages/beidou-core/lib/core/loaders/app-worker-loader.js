@@ -11,7 +11,7 @@ module.exports = function (target) {
     constructor(options) {
       super(options);
 
-      // 使用egg提供的console, 能够统一控制日志输出级别
+      // 使用 egg 提供的 console, 能够统一控制日志输出级别
       this.logger =
         options.logger ||
         /* istanbul ignore next */ options.console ||
@@ -23,10 +23,10 @@ module.exports = function (target) {
       );
     }
 
-    /*
-   * custom loadRouter
-   * @method EggLoader#loadRouter
-   */
+    /**
+     * custom loadRouter
+     * @method EggLoader#loadRouter
+     */
     loadRouter() {
       super.loadRouter();
       this.loadCustomRouter();
@@ -38,10 +38,10 @@ module.exports = function (target) {
       );
     }
 
-    /*
-   * custom loadConfig
-   * @method EggLoader#loadConfig
-   */
+    /**
+     * custom loadConfig
+     * @method EggLoader#loadConfig
+     */
     loadConfig() {
       super.loadConfig();
 

@@ -1,17 +1,14 @@
 {
   "name": "beidou-example-with-styled-components",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Beidou example with styled-components",
   "license": "MIT",
-  "egg": {
-    "framework": "beidou-core"
-  },
   "scripts": {
-    "dev": "egg-bin dev"
+    "dev": "beidou-bin dev"
   },
   "dependencies": {
-    "beidou-core": "^1.0.0-alpha.3",
-    "egg-bin": "^4.3.7",
+    "beidou-bin": "^1.0.0-alpha.4",
+    "beidou-core": "^1.0.0-alpha.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "styled-components": "^2.4.0"

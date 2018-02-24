@@ -1,6 +1,6 @@
 {
   "name": "beidou-view",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "beidou base view plugin",
   "eggPlugin": {
     "name": "beidouView"
@@ -9,7 +9,6 @@
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",
-    "ci": "npm run cov",
     "history": "egg-bin history CHANGELOG.md"
   },
   "license": "MIT",

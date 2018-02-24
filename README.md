@@ -1,6 +1,6 @@
 # Beidou
 
-Isomorphic framework for server-rendered React apps
+🌌  Isomorphic framework for server-rendered React apps
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]

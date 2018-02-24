@@ -13,8 +13,6 @@ _site
 .nyc_output/
 .tmp/
 .vscode
-.vscode
-.vscode/
 app/proxy
 app/proxy_class_map.js
 app/proxy-class

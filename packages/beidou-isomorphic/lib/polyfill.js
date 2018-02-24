@@ -25,6 +25,6 @@ function setPolyfill(window) {
   window.matchMedia = global.matchMedia;
 }
 
-module.exports.basicPolyfill = () => {
+exports.basicPolyfill = () => {
   setPolyfill(jsdom(html).defaultView);
 };

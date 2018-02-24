@@ -1,7 +1,3 @@
-'use strict'; // eslint-disable-line
+'use strict';
 
-module.exports = function () {
-  const exports = {
-  };
-  return exports;
-};
+module.exports = {};

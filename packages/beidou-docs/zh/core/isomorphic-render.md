@@ -39,9 +39,9 @@ view = {
 };
 ```
 
-### [react渲染引擎](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react)
+### [react渲染引擎](https://github.com/alibaba/beidou/blob/master/packages/beidou-view-react)
 
-同样，框架提供了[react渲染引擎](http://gitlab.alibaba-inc.com/beidou/beidou-plugin-view-react)的默认配置，通常无需修改
+同样，框架提供了[react渲染引擎](https://github.com/alibaba/beidou/blob/master/packages/beidou-view-react)的默认配置，通常无需修改
 
 
 ```js

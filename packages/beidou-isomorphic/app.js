@@ -1,6 +1,6 @@
 'use strict';
 
-const basicPolyfill = require('./lib/polyfill').basicPolyfill;
+const { basicPolyfill } = require('./lib/polyfill');
 const isomorphic = require('./lib/isomorphic');
 
 /**

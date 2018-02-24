@@ -1,12 +1,12 @@
 {
   "name": "eslint-config-beidou",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Beidou Node Style Guide",
   "main": "index.js",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
-    "ci": "npm run cov",
-    "cov": "TEST_REPORTER=spec egg-bin cov"
+    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "history": "egg-bin history CHANGELOG.md"
   },
   "keywords": [
     "eslint",
