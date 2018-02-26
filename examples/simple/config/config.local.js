@@ -1,6 +1,3 @@
+'use strict';
 
-module.exports = {
-  react: {
-    assetPath: '/build/',
-  },
-};
+module.exports = {};

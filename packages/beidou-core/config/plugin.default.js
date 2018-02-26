@@ -25,7 +25,7 @@ module.exports = {
   webpack: {
     enable: true,
     package: 'beidou-webpack',
-    env: ['local', 'unittest'],
+    // env: ['local', 'unittest'],
   },
 
   /**

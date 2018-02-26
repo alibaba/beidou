@@ -25,6 +25,9 @@ module.exports = appInfo => ({
   view: {
     defaultViewEngine: 'react',
     defaultExtension: '.jsx',
-    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(appInfo.baseDir, 'client')}`,
+    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(
+      appInfo.baseDir,
+      'client'
+    )}`,
   },
 });

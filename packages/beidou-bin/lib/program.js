@@ -13,10 +13,16 @@ class Program {
     // your bin version
     this.version = require('../package.json').version;
 
-    // custom command
-    this.addCommand('start', path.join(__dirname, '/command/start-command.js'));
-    this.addCommand('dev', path.join(__dirname, '/command/start-command.js'));
-    this.addCommand('build', path.join(__dirname, '/command/build-command.js'));
+    const commandsMap = new Map([
+      ['dev', 'commands/dev.js'],
+      ['start', 'commands/start.js'],
+      ['build', 'commands/build.js'],
+      ['stop', 'commands/stop.js'],
+    ]);
+
+    for (const [cmd, _path] of commandsMap.entries()) {
+      this.addCommand(cmd, path.join(__dirname, _path));
+    }
   }
 
   addCommand(cmd, filepath) {

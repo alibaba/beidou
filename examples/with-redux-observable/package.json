@@ -3,15 +3,19 @@
   "version": "1.0.0-alpha.4",
   "description": "Beidou example with redux-observable",
   "scripts": {
+    "start": "beidou-bin start",
+    "stop": "beidou-bin stop",
     "dev": "beidou-bin dev"
   },
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "beidou-bin": "^1.0.0-alpha.4",
     "beidou-core": "^1.0.0-alpha.4",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-observable": "^0.18.0",
     "rxjs": "^5.5.6"

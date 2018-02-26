@@ -1096,7 +1096,15 @@ babel-plugin-typecheck@^3.9.0:
   dependencies:
     babel-generator "^6.7.7"
 
-babel-preset-beidou-client@^1.0.0-alpha.3:
+babel-polyfill@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+  dependencies:
+    babel-runtime "^6.26.0"
+    core-js "^2.5.0"
+    regenerator-runtime "^0.10.5"
+
+babel-preset-beidou-client@^1.0.0-alpha.4:
   version "1.0.0-alpha.ca3d4643"
   resolved "https://registry.yarnpkg.com/babel-preset-beidou-client/-/babel-preset-beidou-client-1.0.0-alpha.ca3d4643.tgz#0510bc2a2252cce16d58b65908322e8d02fd075b"
   dependencies:
@@ -1110,7 +1118,7 @@ babel-preset-beidou-client@^1.0.0-alpha.3:
     react-dom "^16.2.0"
     react-hot-loader "^3.1.3"
 
-babel-preset-beidou-server@^1.0.0-alpha.3:
+babel-preset-beidou-server@^1.0.0-alpha.4:
   version "1.0.0-alpha.ca3d4643"
   resolved "https://registry.yarnpkg.com/babel-preset-beidou-server/-/babel-preset-beidou-server-1.0.0-alpha.ca3d4643.tgz#ef5a56b33857ae717b0d015da567cc6d06fca78c"
   dependencies:
@@ -1343,9 +1351,9 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beidou-bin@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/beidou-bin/-/beidou-bin-0.0.1.tgz#7da3aaddc645925e1ef7cb265bd9021998d65d92"
+beidou-bin@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-bin/-/beidou-bin-1.0.0-alpha.4.tgz#a48b4509ae658bbda18cb6b60224761b596e383c"
   dependencies:
     chalk "^2.3.1"
     check-node-version "^3.2.0"
@@ -1356,47 +1364,46 @@ beidou-bin@^0.0.1:
     cross-spawn "^6.0.4"
     egg-utils "^2.3.0"
 
-beidou-core@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-1.0.0-alpha.3.tgz#c480a803498113198f3db60b350df677b67b542b"
+beidou-core@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-1.0.0-alpha.4.tgz#00d228a2ee3d2dda3f54acad8a612031fce3f396"
   dependencies:
     argh "^0.1.4"
-    babel-preset-beidou-client "^1.0.0-alpha.3"
-    babel-preset-beidou-server "^1.0.0-alpha.3"
-    beidou-isomorphic "^1.0.0-alpha.3"
-    beidou-router "^1.0.0-alpha.3"
-    beidou-view "^1.0.0-alpha.3"
-    beidou-view-react "^1.0.0-alpha.3"
-    beidou-webpack "^1.0.0-alpha.3"
+    babel-preset-beidou-client "^1.0.0-alpha.4"
+    babel-preset-beidou-server "^1.0.0-alpha.4"
+    beidou-isomorphic "^1.0.0-alpha.4"
+    beidou-router "^1.0.0-alpha.4"
+    beidou-view "^1.0.0-alpha.4"
+    beidou-view-react "^1.0.0-alpha.4"
+    beidou-webpack "^1.0.0-alpha.4"
     depd "^1.1.2"
-    egg "^2.2.0"
+    egg "^2.3.0"
 
-beidou-isomorphic@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-isomorphic/-/beidou-isomorphic-1.0.0-alpha.3.tgz#cb3f33987833fdd394881bd2d1dc2fdf86a41614"
+beidou-isomorphic@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-isomorphic/-/beidou-isomorphic-1.0.0-alpha.4.tgz#86a52f8a016c1e9c51ed61e50d47d1edd6a4be66"
   dependencies:
-    babel-preset-beidou-server "^1.0.0-alpha.3"
+    babel-preset-beidou-server "^1.0.0-alpha.4"
     babel-register "^6.26.0"
     jsdom "^9.8.3"
 
-beidou-router@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-router/-/beidou-router-1.0.0-alpha.3.tgz#96ee03043b5a9541c552aa472e8b3747a161ebd5"
+beidou-router@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-router/-/beidou-router-1.0.0-alpha.4.tgz#4f61984b76121a0ec54cb735395a4eae12c93013"
   dependencies:
     glob-to-regexp "^0.3.0"
     mz "^2.6.0"
     path-to-regexp "^2.1.0"
 
-beidou-view-react@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-1.0.0-alpha.3.tgz#13906d55d77a79554c55d010c3d12393b8f576af"
+beidou-view-react@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-1.0.0-alpha.4.tgz#f7cc3fb2ae4eb597ba237da069e4b00cd8c0db14"
   dependencies:
-    beidou-view "^1.0.0-alpha.3"
-    react-redux "^5.0.6"
+    beidou-view "^1.0.0-alpha.4"
 
-beidou-view@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-1.0.0-alpha.3.tgz#d95f4936fcf839386e0f90da3961c66948edc76c"
+beidou-view@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-1.0.0-alpha.4.tgz#2441b7422e1fc2d4186aea98c1639a713c0e9007"
   dependencies:
     is-type-of "^1.2.0"
     js-beautify "^1.6.2"
@@ -1405,16 +1412,16 @@ beidou-view@^1.0.0-alpha.3:
     normalizeurl "^1.0.0"
     serialize-javascript "^1.3.0"
 
-beidou-webpack@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-1.0.0-alpha.3.tgz#632fda88b96fa94b4160d459c2f1a59d8f0d15a1"
+beidou-webpack@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-1.0.0-alpha.4.tgz#456f7bfd3e0245545bca66358f506cdbfad1b74a"
   dependencies:
     autoprefixer "^7.2.4"
     babel-core "^6.26.0"
     babel-loader "^7.0.0"
     babel-minify-webpack-plugin "^0.2.0"
-    babel-preset-beidou-client "^1.0.0-alpha.3"
-    babel-preset-beidou-server "^1.0.0-alpha.3"
+    babel-preset-beidou-client "^1.0.0-alpha.4"
+    babel-preset-beidou-server "^1.0.0-alpha.4"
     boxen "^1.3.0"
     chokidar "^2.0.0"
     colorz "^0.1.9"
@@ -2738,7 +2745,7 @@ egg-watcher@^3.0.0:
     sdk-base "^3.3.0"
     wt "^1.1.1"
 
-egg@^2.2.0:
+egg@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/egg/-/egg-2.3.0.tgz#98e796e0ece534cc3a70d7026ff47d0f5d7dcda0"
   dependencies:
@@ -3675,10 +3682,6 @@ hoist-non-react-statics@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
-hoist-non-react-statics@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
-
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -3885,7 +3888,7 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.0.0, invariant@^2.2.2:
+invariant@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.3.tgz#1a827dfde7dcbd7c323f0ca826be8fa7c5e9d688"
   dependencies:
@@ -4550,10 +4553,6 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.17.5:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.5.tgz#9fc6e737b1c4d151d8f9cae2247305d552ce748f"
-
 lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
@@ -4610,7 +4609,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.6.1, lodash@~4.17.4:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.6.1, lodash@~4.17.4:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
@@ -5972,17 +5971,6 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
-react-redux@^5.0.6:
-  version "5.0.7"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
-  dependencies:
-    hoist-non-react-statics "^2.5.0"
-    invariant "^2.0.0"
-    lodash "^4.17.5"
-    lodash-es "^4.17.5"
-    loose-envify "^1.1.0"
-    prop-types "^15.6.0"
-
 react@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
@@ -6100,6 +6088,10 @@ reduce-function-call@^1.0.1:
 regenerate@^1.2.1:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
+
+regenerator-runtime@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"

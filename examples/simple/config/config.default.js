@@ -11,6 +11,6 @@ module.exports = {
     },
   },
   react: {
-    assetPath: '/public/',
+    assetPath: '/build/',
   },
 };

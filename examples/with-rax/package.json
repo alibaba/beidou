@@ -4,9 +4,13 @@
   "description": "Beidou example with rax",
   "license": "MIT",
   "scripts": {
-    "dev": "beidou-bin dev"
+    "start": "beidou-bin start",
+    "stop": "beidou-bin stop",
+    "dev": "beidou-bin dev",
+    "build": "beidou-bin build"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "beidou-bin": "^1.0.0-alpha.4",
     "beidou-core": "^1.0.0-alpha.4",
     "beidou-view-rax": "^1.0.0-alpha.4",

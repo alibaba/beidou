@@ -5,4 +5,7 @@ module.exports = {
   react: {
     assetPath: '/build',
   },
+  router: {
+    entry: 'view',
+  },
 };

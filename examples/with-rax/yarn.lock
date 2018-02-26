@@ -173,8 +173,8 @@ ajv@^5.0.0, ajv@^5.1.0:
     json-schema-traverse "^0.3.0"
 
 ajv@^6.1.0:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.1.1.tgz#978d597fbc2b7d0e5a5c3ddeb149a682f2abfa0e"
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.2.0.tgz#afac295bbaa0152449e522742e4547c1ae9328d2"
   dependencies:
     fast-deep-equal "^1.0.0"
     fast-json-stable-stringify "^2.0.0"
@@ -365,8 +365,8 @@ assign-symbols@^1.0.0:
   resolved "https://registry.yarnpkg.com/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
 
 ast-types@0.x.x:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.11.1.tgz#5bb3a8d5ba292c3f4ae94d46df37afc30300b990"
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.11.2.tgz#cc4e1d15a36b39979a1986fe1e91321cbfae7783"
 
 async-each@^1.0.0:
   version "1.0.1"
@@ -650,8 +650,8 @@ babel-helpers@^6.24.1:
     babel-template "^6.24.1"
 
 babel-loader@^7.0.0, babel-loader@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.2.tgz#f6cbe122710f1aa2af4d881c6d5b54358ca24126"
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.3.tgz#ff5b440da716e9153abb946251a9ab7670037b16"
   dependencies:
     find-cache-dir "^1.0.0"
     loader-utils "^1.0.2"
@@ -1177,7 +1177,15 @@ babel-plugin-typecheck@^3.9.0:
   dependencies:
     babel-generator "^6.7.7"
 
-babel-preset-beidou-client@^1.0.0-alpha.3:
+babel-polyfill@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+  dependencies:
+    babel-runtime "^6.26.0"
+    core-js "^2.5.0"
+    regenerator-runtime "^0.10.5"
+
+babel-preset-beidou-client@^1.0.0-alpha.4:
   version "1.0.0-alpha.ca3d4643"
   resolved "https://registry.yarnpkg.com/babel-preset-beidou-client/-/babel-preset-beidou-client-1.0.0-alpha.ca3d4643.tgz#0510bc2a2252cce16d58b65908322e8d02fd075b"
   dependencies:
@@ -1191,7 +1199,7 @@ babel-preset-beidou-client@^1.0.0-alpha.3:
     react-dom "^16.2.0"
     react-hot-loader "^3.1.3"
 
-babel-preset-beidou-server@^1.0.0-alpha.3:
+babel-preset-beidou-server@^1.0.0-alpha.4:
   version "1.0.0-alpha.ca3d4643"
   resolved "https://registry.yarnpkg.com/babel-preset-beidou-server/-/babel-preset-beidou-server-1.0.0-alpha.ca3d4643.tgz#ef5a56b33857ae717b0d015da567cc6d06fca78c"
   dependencies:
@@ -1471,9 +1479,9 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beidou-bin@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/beidou-bin/-/beidou-bin-0.0.1.tgz#7da3aaddc645925e1ef7cb265bd9021998d65d92"
+beidou-bin@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-bin/-/beidou-bin-1.0.0-alpha.4.tgz#a48b4509ae658bbda18cb6b60224761b596e383c"
   dependencies:
     chalk "^2.3.1"
     check-node-version "^3.2.0"
@@ -1484,63 +1492,62 @@ beidou-bin@^0.0.1:
     cross-spawn "^6.0.4"
     egg-utils "^2.3.0"
 
-beidou-core@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-1.0.0-alpha.3.tgz#c480a803498113198f3db60b350df677b67b542b"
+beidou-core@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-1.0.0-alpha.4.tgz#00d228a2ee3d2dda3f54acad8a612031fce3f396"
   dependencies:
     argh "^0.1.4"
-    babel-preset-beidou-client "^1.0.0-alpha.3"
-    babel-preset-beidou-server "^1.0.0-alpha.3"
-    beidou-isomorphic "^1.0.0-alpha.3"
-    beidou-router "^1.0.0-alpha.3"
-    beidou-view "^1.0.0-alpha.3"
-    beidou-view-react "^1.0.0-alpha.3"
-    beidou-webpack "^1.0.0-alpha.3"
+    babel-preset-beidou-client "^1.0.0-alpha.4"
+    babel-preset-beidou-server "^1.0.0-alpha.4"
+    beidou-isomorphic "^1.0.0-alpha.4"
+    beidou-router "^1.0.0-alpha.4"
+    beidou-view "^1.0.0-alpha.4"
+    beidou-view-react "^1.0.0-alpha.4"
+    beidou-webpack "^1.0.0-alpha.4"
     depd "^1.1.2"
-    egg "^2.2.0"
+    egg "^2.3.0"
 
-beidou-isomorphic@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-isomorphic/-/beidou-isomorphic-1.0.0-alpha.3.tgz#cb3f33987833fdd394881bd2d1dc2fdf86a41614"
+beidou-isomorphic@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-isomorphic/-/beidou-isomorphic-1.0.0-alpha.4.tgz#86a52f8a016c1e9c51ed61e50d47d1edd6a4be66"
   dependencies:
-    babel-preset-beidou-server "^1.0.0-alpha.3"
+    babel-preset-beidou-server "^1.0.0-alpha.4"
     babel-register "^6.26.0"
     jsdom "^9.8.3"
 
-beidou-router@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-router/-/beidou-router-1.0.0-alpha.3.tgz#96ee03043b5a9541c552aa472e8b3747a161ebd5"
+beidou-router@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-router/-/beidou-router-1.0.0-alpha.4.tgz#4f61984b76121a0ec54cb735395a4eae12c93013"
   dependencies:
     glob-to-regexp "^0.3.0"
     mz "^2.6.0"
     path-to-regexp "^2.1.0"
 
-beidou-view-rax@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-view-rax/-/beidou-view-rax-1.0.0-alpha.3.tgz#f1a54c7187b9dd869d21dd0e3f71fdeffed84771"
+beidou-view-rax@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-view-rax/-/beidou-view-rax-1.0.0-alpha.4.tgz#c236225c8bdfcb13f5863f8b6cc09fb00777ffff"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
     babel-preset-env "^1.6.1"
     babel-preset-rax "^0.5.0"
     babel-preset-stage-2 "^6.24.1"
-    beidou-view "^1.0.0-alpha.3"
+    beidou-view "^1.0.0-alpha.4"
     extract-text-webpack-plugin "^3.0.2"
     rax-webpack-plugin "^0.5.0"
     stylesheet-loader "^0.5.0"
     url-loader "^0.6.2"
     webpack "^3.10.0"
 
-beidou-view-react@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-1.0.0-alpha.3.tgz#13906d55d77a79554c55d010c3d12393b8f576af"
+beidou-view-react@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-1.0.0-alpha.4.tgz#f7cc3fb2ae4eb597ba237da069e4b00cd8c0db14"
   dependencies:
-    beidou-view "^1.0.0-alpha.3"
-    react-redux "^5.0.6"
+    beidou-view "^1.0.0-alpha.4"
 
-beidou-view@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-1.0.0-alpha.3.tgz#d95f4936fcf839386e0f90da3961c66948edc76c"
+beidou-view@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-1.0.0-alpha.4.tgz#2441b7422e1fc2d4186aea98c1639a713c0e9007"
   dependencies:
     is-type-of "^1.2.0"
     js-beautify "^1.6.2"
@@ -1549,16 +1556,16 @@ beidou-view@^1.0.0-alpha.3:
     normalizeurl "^1.0.0"
     serialize-javascript "^1.3.0"
 
-beidou-webpack@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-1.0.0-alpha.3.tgz#632fda88b96fa94b4160d459c2f1a59d8f0d15a1"
+beidou-webpack@^1.0.0-alpha.4:
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-1.0.0-alpha.4.tgz#456f7bfd3e0245545bca66358f506cdbfad1b74a"
   dependencies:
     autoprefixer "^7.2.4"
     babel-core "^6.26.0"
     babel-loader "^7.0.0"
     babel-minify-webpack-plugin "^0.2.0"
-    babel-preset-beidou-client "^1.0.0-alpha.3"
-    babel-preset-beidou-server "^1.0.0-alpha.3"
+    babel-preset-beidou-client "^1.0.0-alpha.4"
+    babel-preset-beidou-server "^1.0.0-alpha.4"
     boxen "^1.3.0"
     chokidar "^2.0.0"
     colorz "^0.1.9"
@@ -2366,8 +2373,8 @@ css-color-names@0.0.4:
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
 css-loader@^0.28.7:
-  version "0.28.9"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.9.tgz#68064b85f4e271d7ce4c48a58300928e535d1c95"
+  version "0.28.10"
+  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.28.10.tgz#40282e79230f7bcb4e483efa631d670b735ebf42"
   dependencies:
     babel-code-frame "^6.26.0"
     css-selector-tokenizer "^0.7.0"
@@ -2797,8 +2804,8 @@ egg-logger@^1.6.0:
     utility "^1.11.0"
 
 egg-logrotator@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/egg-logrotator/-/egg-logrotator-3.0.1.tgz#60eba21204c69bbcf463e236e6bc6559356e11cf"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/egg-logrotator/-/egg-logrotator-3.0.2.tgz#80c3ae370a58dd8004f9e7c15f81ae11f39d6bb3"
   dependencies:
     debug "^3.1.0"
     moment "^2.19.3"
@@ -2827,8 +2834,8 @@ egg-path-matching@^1.0.0, egg-path-matching@^1.0.1:
     path-to-regexp "^1.7.0"
 
 egg-schedule@^3.1.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/egg-schedule/-/egg-schedule-3.2.1.tgz#136292cfc010eb4ef830f19a4578c94de76080ee"
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/egg-schedule/-/egg-schedule-3.3.0.tgz#d74fe0b3535756ff01b4331f5a986686f348ca4e"
   dependencies:
     cron-parser "^2.4.4"
     humanize-ms "^1.2.1"
@@ -2877,8 +2884,8 @@ egg-utils@^2.3.0:
     utility "^1.13.1"
 
 egg-view@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/egg-view/-/egg-view-2.0.0.tgz#a83904074a31fd76afaa0a42453f0778c26b2276"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/egg-view/-/egg-view-2.1.0.tgz#aa7ca0344213f5d72147d6001bc0503f858b425c"
   dependencies:
     mz "^2.7.0"
 
@@ -2890,7 +2897,7 @@ egg-watcher@^3.0.0:
     sdk-base "^3.3.0"
     wt "^1.1.1"
 
-egg@^2.2.0:
+egg@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/egg/-/egg-2.3.0.tgz#98e796e0ece534cc3a70d7026ff47d0f5d7dcda0"
   dependencies:
@@ -2933,8 +2940,8 @@ egg@^2.2.0:
     ylru "^1.2.0"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30:
-  version "1.3.33"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.33.tgz#bf00703d62a7c65238136578c352d6c5c042a545"
+  version "1.3.34"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.34.tgz#d93498f40391bb0c16a603d8241b9951404157ed"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -3296,8 +3303,8 @@ fallback-port@^0.1.7:
     shelljs "^0.7.3"
 
 fast-deep-equal@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.0.0.tgz#96256a3bc975595eb36d82e9929d060d893439ff"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.1.0.tgz#c053477817c86b51daa853c81e059b733d023614"
 
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
@@ -3827,10 +3834,6 @@ hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
-hoist-non-react-statics@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
-
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -4037,7 +4040,7 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.0.0, invariant@^2.2.2:
+invariant@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.3.tgz#1a827dfde7dcbd7c323f0ca826be8fa7c5e9d688"
   dependencies:
@@ -4711,10 +4714,6 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.17.5:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.5.tgz#9fc6e737b1c4d151d8f9cae2247305d552ce748f"
-
 lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
@@ -4727,25 +4726,13 @@ lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
-lodash.endswith@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/lodash.endswith/-/lodash.endswith-4.2.1.tgz#fed59ac1738ed3e236edd7064ec456448b37bc09"
-
 lodash.escaperegexp@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.escaperegexp/-/lodash.escaperegexp-4.1.2.tgz#64762c48618082518ac3df4ccf5d5886dae20347"
 
-lodash.isfunction@^3.0.8:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
-
 lodash.isplainobject@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
-
-lodash.isstring@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -4758,10 +4745,6 @@ lodash.mergewith@^4.6.0:
 lodash.some@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.some/-/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
-
-lodash.startswith@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/lodash.startswith/-/lodash.startswith-4.2.1.tgz#c598c4adce188a27e53145731cdc6c0e7177600c"
 
 lodash.tail@^4.1.1:
   version "4.1.1"
@@ -4915,8 +4898,8 @@ micromatch@^2.1.5, micromatch@^2.3.11:
     regex-cache "^0.4.2"
 
 micromatch@^3.1.4:
-  version "3.1.8"
-  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.8.tgz#5c8caa008de588eebb395e8c0ad12c128f25fff1"
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.9.tgz#15dc93175ae39e52e93087847096effc73efcf89"
   dependencies:
     arr-diff "^4.0.0"
     array-unique "^0.3.2"
@@ -5060,8 +5043,8 @@ mz@^2.6.0, mz@^2.7.0, mz@~2.7.0:
     thenify-all "^1.0.0"
 
 nan@^2.3.0, nan@^2.3.2:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.9.2.tgz#f564d75f5f8f36a6d9456cca7a6c4fe488ab7866"
 
 nanomatch@^1.2.9:
   version "1.2.9"
@@ -5727,8 +5710,8 @@ postcss-load-plugins@^2.3.0:
     object-assign "^4.1.0"
 
 postcss-loader@^2.0.10:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.1.0.tgz#038c2d6d59753fef4667827fd3ae03f5dc5e6a7a"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.1.1.tgz#208935af3b1d65e1abb1a870a912dd12e7b36895"
   dependencies:
     loader-utils "^1.1.0"
     postcss "^6.0.0"
@@ -6174,17 +6157,6 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
-react-redux@^5.0.6:
-  version "5.0.7"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
-  dependencies:
-    hoist-non-react-statics "^2.5.0"
-    invariant "^2.0.0"
-    lodash "^4.17.5"
-    lodash-es "^4.17.5"
-    loose-envify "^1.1.0"
-    prop-types "^15.6.0"
-
 react@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
@@ -6303,6 +6275,10 @@ regenerate@^1.2.1:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
 
+regenerator-runtime@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
+
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
@@ -6321,7 +6297,7 @@ regex-cache@^0.4.2:
   dependencies:
     is-equal-shallow "^0.1.3"
 
-regex-not@^1.0.0:
+regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/regex-not/-/regex-not-1.0.2.tgz#1f4ece27e00b0b65e0247a6810e6a85d83a5752c"
   dependencies:
@@ -7253,12 +7229,13 @@ to-regex-range@^2.1.0:
     repeat-string "^1.6.1"
 
 to-regex@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/to-regex/-/to-regex-3.0.1.tgz#15358bee4a2c83bd76377ba1dc049d0f18837aae"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/to-regex/-/to-regex-3.0.2.tgz#13cfdd9b336552f30b51f33a8ae1b42a7a7599ce"
   dependencies:
-    define-property "^0.2.5"
-    extend-shallow "^2.0.1"
-    regex-not "^1.0.0"
+    define-property "^2.0.2"
+    extend-shallow "^3.0.2"
+    regex-not "^1.0.2"
+    safe-regex "^1.1.0"
 
 tough-cookie@^2.3.2, tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.3"
@@ -7399,13 +7376,8 @@ unset-value@^1.0.0:
     isobject "^3.0.0"
 
 upath@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/upath/-/upath-1.0.2.tgz#80aaae5395abc5fd402933ae2f58694f0860204c"
-  dependencies:
-    lodash.endswith "^4.2.1"
-    lodash.isfunction "^3.0.8"
-    lodash.isstring "^4.0.1"
-    lodash.startswith "^4.2.1"
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/upath/-/upath-1.0.4.tgz#ee2321ba0a786c50973db043a50b7bcba822361d"
 
 urijs@^1.19.0:
   version "1.19.1"
@@ -7596,10 +7568,10 @@ webpack-dev-server@^2.10.1:
     yargs "6.6.0"
 
 webpack-merge@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.1.tgz#f1197a0a973e69c6fbeeb6d658219aa8c0c13555"
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.2.tgz#5d372dddd3e1e5f8874f5bf5a8e929db09feb216"
   dependencies:
-    lodash "^4.17.4"
+    lodash "^4.17.5"
 
 webpack-sources@^0.1.4:
   version "0.1.5"

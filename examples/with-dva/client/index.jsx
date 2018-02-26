@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import dva, { connect } from 'dva';
 import { memoryHistory, browserHistory } from 'dva/router';

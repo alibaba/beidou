@@ -3,6 +3,8 @@
   "version": "1.0.0-alpha.4",
   "description": "beidou example advanced",
   "scripts": {
+    "start": "beidou-bin start",
+    "stop": "beidou-bin stop",
     "dev": "beidou-bin dev",
     "lint": "eslint --fix --ext .jsx,.js app client config",
     "build": "beidou-bin build"
@@ -15,6 +17,7 @@
     "eslint-plugin-react": "^7.5.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "beidou-bin": "^1.0.0-alpha.4",
     "beidou-core": "^1.0.0-alpha.4",
     "react": "^16.2.0",

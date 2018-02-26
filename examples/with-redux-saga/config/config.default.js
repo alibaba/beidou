@@ -8,4 +8,7 @@ module.exports = {
     beautify: true,
     assetPath: '/build',
   },
+  router: {
+    entry: 'view',
+  },
 };

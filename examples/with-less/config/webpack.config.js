@@ -7,6 +7,7 @@ module.exports = (app, defaultConfig /* , dev */) => {
     test: /\.less$/,
     exclude: /node_modules/,
     use: ExtractTextPlugin.extract({
+      fallback: require.resolve('style-loader'),
       use: [
         {
           loader: require.resolve('css-loader'),
@@ -23,7 +24,6 @@ module.exports = (app, defaultConfig /* , dev */) => {
           },
         },
       ],
-      fallback: require.resolve('style-loader'),
     }),
   });
 

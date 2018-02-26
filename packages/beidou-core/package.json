@@ -32,6 +32,10 @@
     "depd": "^1.1.2",
     "egg": "^2.3.0"
   },
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
   "engines": {
     "node": ">= 8.0.0"
   },

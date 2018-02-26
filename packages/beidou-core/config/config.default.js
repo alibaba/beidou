@@ -46,5 +46,11 @@ module.exports = appInfo => ({
    * core enable middlewares, which will map to app.middlewares.x
    * @member {Array} Config#middleware
    */
-  coreMiddleware: ['meta', 'siteFile', 'notfound', 'bodyParser', 'overrideMethod'],
+  coreMiddleware: [
+    'meta',
+    'siteFile',
+    'notfound',
+    'bodyParser',
+    'overrideMethod',
+  ],
 });

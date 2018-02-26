@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const spawn = require('cross-spawn');
-const BaseCommand = require('./base-command');
+const BaseCommand = require('./base');
 
 class BuildCommand extends BaseCommand {
   * run(cwd, args = []) {

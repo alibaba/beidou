@@ -2,12 +2,12 @@
 
 const path = require('path');
 const spawn = require('cross-spawn');
-const BaseCommand = require('./base-command');
+const BaseCommand = require('./base');
 
-class StartCommand extends BaseCommand {
+class DevCommand extends BaseCommand {
   * run(cwd, args = []) {
     this.cwd = cwd;
-    yield this.start(cwd, args);
+    yield this.startDev(cwd, args);
 
     // done
     this.printUsage();
@@ -18,8 +18,8 @@ class StartCommand extends BaseCommand {
    * @param {String} cwd - cwd
    * @return {promise}
    */
-  * start(cwd, args) {
-    const bin = path.join(__dirname, '../start');
+  * startDev(cwd, args) {
+    const bin = path.join(__dirname, '../dev');
     const cli = spawn(bin, args, {
       cwd,
       stdio: 'inherit',
@@ -30,7 +30,11 @@ class StartCommand extends BaseCommand {
         if (status === 0) {
           resolve();
         } else {
-          reject(new Error(`failed to start app, error message: ${status}`));
+          reject(
+            new Error(
+              `failed to start app in development mode, error message: ${status}`
+            )
+          );
         }
       });
     });
@@ -47,8 +51,8 @@ class StartCommand extends BaseCommand {
    * help
    */
   help() {
-    return 'start app';
+    return 'Start app in development mode';
   }
 }
 
-module.exports = StartCommand;
+module.exports = DevCommand;

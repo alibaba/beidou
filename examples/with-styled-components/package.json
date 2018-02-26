@@ -4,9 +4,12 @@
   "description": "Beidou example with styled-components",
   "license": "MIT",
   "scripts": {
+    "start": "beidou-bin start",
+    "stop": "beidou-bin stop",
     "dev": "beidou-bin dev"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "beidou-bin": "^1.0.0-alpha.4",
     "beidou-core": "^1.0.0-alpha.4",
     "react": "^16.2.0",

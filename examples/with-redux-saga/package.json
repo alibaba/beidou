@@ -3,6 +3,8 @@
   "version": "1.0.0-alpha.4",
   "description": "Beidou example with redux saga",
   "scripts": {
+    "start": "beidou-bin start",
+    "stop": "beidou-bin stop",
     "dev": "beidou-bin dev",
     "build": "beidou-bin build",
     "build:node": "beidou-bin build --target=node"
@@ -10,6 +12,7 @@
   "author": "<devrsi0n devrsi0n@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "beidou-bin": "^1.0.0-alpha.4",
     "beidou-core": "^1.0.0-alpha.4",
     "react": "^16.2.0",

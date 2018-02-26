@@ -44,13 +44,36 @@ describe('test/beidou-bin.test.js', () => {
       coffee.fork(beidouBin, ['not-exists'], {
           cwd
         })
-        .expect('stdout', /start.*\n.*dev.*\n.*build/)
+        .expect('stdout', /start/)
+        .expect('stdout', /stop/)
+        .expect('stdout', /dev/)
+        .expect('stdout', /build/)
         .expect('code', 0)
         .end(done);
     });
   });
 
-  describe('dev server and build', () => {
+  // describe('start, stop commands', () => {
+  //   it('should start production mode', (done) => {
+  //     coffee.fork(beidouBin, ['start'], {
+  //       cwd
+  //     })
+  //       .expect('stdout', /app started/)
+  //       .expect('code', 0)
+  //       .end(done);
+  //   });
+
+  //   it('should stop beidou process', (done) => {
+  //     coffee.fork(beidouBin, ['stop'], {
+  //       cwd
+  //     })
+  //     .expect('stdout', /app stopped/)
+  //     .expect('code', 0)
+  //     .end(done);
+  //   });
+  // });
+
+  describe('beidou-build command', () => {
     const env = Object.create(process.env);
 
     env.NODE_ENV = 'local';
@@ -74,9 +97,9 @@ describe('test/beidou-bin.test.js', () => {
         .end(done);
     });
 
-    it('should run webpack-build script', done => {
+    it('should run webpack-build script with target node', done => {
       copyBuildFile('webpack-build');
-      coffee.fork(beidouBin, ['build'], {
+      coffee.fork(beidouBin, ['build', '--target=node'], {
           cwd,
           env,
         })

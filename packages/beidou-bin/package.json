@@ -11,7 +11,8 @@
     "cov": "TEST_REPORTER=spec egg-bin cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-bin",
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-bin",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.3.1",
@@ -21,6 +22,7 @@
     "colors": "^1.1.2",
     "commander": "^2.14.1",
     "cross-spawn": "^6.0.4",
+    "egg-scripts": "^2.5.1",
     "egg-utils": "^2.3.0"
   },
   "devDependencies": {

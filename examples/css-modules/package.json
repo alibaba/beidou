@@ -3,6 +3,8 @@
   "version": "1.0.0-alpha.4",
   "description": "beidou css modules example",
   "scripts": {
+    "start": "beidou-bin start",
+    "stop": "beidou-bin stop",
     "dev": "beidou-bin dev",
     "build": "beidou-bin build",
     "lint": "eslint --fix --ext .jsx,.js app client config"
@@ -29,6 +31,7 @@
   "dependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.25.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-beidou-client": "^1.0.0-alpha.4",
     "babel-preset-beidou-server": "^1.0.0-alpha.4",
     "beidou-bin": "^1.0.0-alpha.4",
