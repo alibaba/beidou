@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+'use strict';
+
+// This file mock beidou-build result
+
+console.log('Build finished');

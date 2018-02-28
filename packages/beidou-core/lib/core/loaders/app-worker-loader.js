@@ -38,42 +38,13 @@ module.exports = function (target) {
       );
     }
 
-    /**
-     * custom loadConfig
-     * @method EggLoader#loadConfig
-     */
-    loadConfig() {
-      super.loadConfig();
-
-      // 预留扩展
-      this.loadAssetsInfo();
-    }
-
-    /**
-     * @deprecated
-     * load static resources based on CDN root.
-     * eg. /cm/store-decoration-m/0.0.2/
-     */
-    loadAssetsInfo() {
-      let assetsInfo = this.config.assetsInfo;
-      if (!assetsInfo) {
-        this.config.assetsInfo = assetsInfo = {};
-      }
-
-      let group = assetsInfo.group;
-      if (!group) {
-        group = '';
-      }
-      let project = assetsInfo.project;
-      if (!project) {
-        project = this.pkg.name;
-      }
-      let version = assetsInfo.version;
-      if (!version) {
-        version = this.pkg.version;
-      }
-      this.config.assetsInfo.cdnRoot = `/${group}/${project}/${version}/`;
-    }
+    // /**
+    //  * custom loadConfig
+    //  * @method EggLoader#loadConfig
+    //  */
+    // loadConfig() {
+    //   super.loadConfig();
+    // }
   }
 
   target.AppWorkerLoader = BeidouAppWorkerLoader;

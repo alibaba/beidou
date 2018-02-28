@@ -16,7 +16,7 @@ module.exports = function (target) {
   const startCluster = target.startCluster;
   target.startCluster = function (options, callback) {
     options = options || /* istanbul ignore next */ {};
-    options.customEgg = EGG_PATH;
+    options.framework = EGG_PATH;
     startCluster(options, callback);
   };
 

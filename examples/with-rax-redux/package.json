@@ -4,13 +4,16 @@
   "description": "Beidou example with rax redux",
   "license": "MIT",
   "scripts": {
-    "start": "beidou-bin start",
-    "stop": "beidou-bin stop",
-    "dev": "beidou-bin dev"
+    "start": "beidou start",
+    "debug": "beidou debug",
+    "stop": "beidou stop",
+    "dev": "beidou dev",
+    "build": "beidou build",
+    "build:node": "beidou build --target=node"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou-bin": "^1.0.0-alpha.4",
+    "beidou-cli": "^0.0.4",
     "beidou-core": "^1.0.0-alpha.4",
     "beidou-view-rax": "^1.0.0-alpha.4",
     "rax": "^0.5.0",

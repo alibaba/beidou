@@ -24,11 +24,12 @@ const { target } = argv;
 
 if (target && !['node', 'browser'].includes(target)) {
   app.coreLogger.error(
-    `Expect execute environment to be "node" or "browser"(default), got ${target}`
+    `Expect target to be "node" or "browser"(default), got ${target}`
   );
   process.exit(1);
 }
 
+app.coreLogger.info(`Target is ${target}`);
 const compiler = builder(app, target);
 
 compiler.run((err, stats) => {

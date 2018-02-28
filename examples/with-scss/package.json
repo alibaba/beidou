@@ -3,14 +3,17 @@
   "version": "1.0.0-alpha.4",
   "description": "Beidou example with scss",
   "scripts": {
-    "start": "beidou-bin start",
-    "stop": "beidou-bin stop",
-    "dev": "beidou-bin dev"
+    "start": "beidou start",
+    "debug": "beidou debug",
+    "stop": "beidou stop",
+    "dev": "beidou dev",
+    "build": "beidou build",
+    "build:node": "beidou build --target=node"
   },
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou-bin": "^1.0.0-alpha.4",
+    "beidou-cli": "^0.0.4",
     "beidou-core": "^1.0.0-alpha.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
