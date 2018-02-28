@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 
 export default class View extends React.Component {
-  static doctype = '<!DOCTYPE html>'
+  static doctype = '<!DOCTYPE html>';
 
   render() {
     return (

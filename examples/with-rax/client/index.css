@@ -10,7 +10,8 @@
   padding: 2.5;
 }
 
-.appBanner, .appIntro {
+.appBanner,
+.appIntro {
   text-align: center;
 }
 

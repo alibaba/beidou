@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  getHelperInfo: function (msg) {
+  getHelperInfo(msg) {
     return `UT-${msg}`;
-  }
+  },
 };

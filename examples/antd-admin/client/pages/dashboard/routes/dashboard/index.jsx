@@ -31,14 +31,27 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { loading, weather, sales, quote, numbers,
-      recentSales, comments, completed, browser, cpu, user } = this.props;
-    const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
-      <NumberCard {...item} />
-    </Col>));
+    const {
+      loading,
+      weather,
+      sales,
+      quote,
+      numbers,
+      recentSales,
+      comments,
+      completed,
+      browser,
+      cpu,
+      user,
+    } = this.props;
+    const numberCards = numbers.map((item, key) => (
+      <Col key={key} lg={6} md={12}>
+        <NumberCard {...item} />
+      </Col>
+    ));
 
     return (
-      <Page loading={false} >
+      <Page loading={false}>
         <Row gutter={24}>
           {numberCards}
           <Col lg={18} md={24}>
@@ -112,7 +125,10 @@ class Dashboard extends React.Component {
             </Card>
           </Col>
           <Col lg={8} md={24}>
-            <Card bordered={false} bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}>
+            <Card
+              bordered={false}
+              bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}
+            >
               <User {...user} />
             </Card>
           </Col>

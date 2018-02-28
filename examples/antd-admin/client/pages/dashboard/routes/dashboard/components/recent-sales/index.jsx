@@ -29,23 +29,33 @@ function RecentSales({ data }) {
     {
       title: 'NAME',
       dataIndex: 'name',
-    }, {
+    },
+    {
       title: 'STATUS',
       dataIndex: 'status',
       render: text => <Tag color={status[text].color}>{status[text].text}</Tag>,
-    }, {
+    },
+    {
       title: 'DATE',
       dataIndex: 'date',
       render: text => moment(new Date(text)).format('YYYY-MM-DD'),
-    }, {
+    },
+    {
       title: 'PRICE',
       dataIndex: 'price',
-      render: (text, it) => <span style={{ color: status[it.status].color }}>${text}</span>,
+      render: (text, it) => (
+        <span style={{ color: status[it.status].color }}>${text}</span>
+      ),
     },
   ];
   return (
     <div className={styles.recentsales}>
-      <Table pagination={false} columns={columns} rowKey={(record, key) => key} dataSource={data.filter((item, key) => key < 5)} />
+      <Table
+        pagination={false}
+        columns={columns}
+        rowKey={(record, key) => key}
+        dataSource={data.filter((item, key) => key < 5)}
+      />
     </div>
   );
 }

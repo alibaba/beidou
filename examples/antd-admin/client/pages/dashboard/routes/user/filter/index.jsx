@@ -1,7 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch } from 'antd';
+import {
+  Form,
+  Button,
+  Row,
+  Col,
+  DatePicker,
+  Input,
+  Cascader,
+  Switch,
+} from 'antd';
 import FilterItem from 'client/components/filter-item';
 import city from 'client/utils/city';
 
@@ -27,16 +36,15 @@ const Filter = ({
   switchIsMotion,
   onFilterChange,
   filter,
-  form: {
-    getFieldDecorator,
-    getFieldsValue,
-    setFieldsValue,
-  },
+  form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
-  const handleFields = (fields) => {
+  const handleFields = fields => {
     const { createTime } = fields;
     if (createTime.length) {
-      fields.createTime = [moment(createTime[0]).format('YYYY-MM-DD'), moment(createTime[1]).format('YYYY-MM-DD')];
+      fields.createTime = [
+        moment(createTime[0]).format('YYYY-MM-DD'),
+        moment(createTime[1]).format('YYYY-MM-DD'),
+      ];
     }
     return fields;
   };
@@ -82,7 +90,11 @@ const Filter = ({
     <Row gutter={24}>
       <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
         {getFieldDecorator('name', { initialValue: name })(
-          <Search placeholder="Search Name" size="default" onSearch={handleSubmit} />
+          <Search
+            placeholder="Search Name"
+            size="default"
+            onSearch={handleSubmit}
+          />
         )}
       </Col>
       <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
@@ -93,24 +105,58 @@ const Filter = ({
             options={city}
             placeholder="Please pick an address"
             onChange={handleChange.bind(null, 'address')}
-          />)}
+          />
+        )}
       </Col>
       <Col {...ColProps} xl={{ span: 6 }} md={{ span: 8 }} sm={{ span: 12 }}>
         <FilterItem label="Createtime">
           {getFieldDecorator('createTime', { initialValue: initialCreateTime })(
-            <RangePicker style={{ width: '100%' }} size="default" onChange={handleChange.bind(null, 'createTime')} />
+            <RangePicker
+              style={{ width: '100%' }}
+              size="default"
+              onChange={handleChange.bind(null, 'createTime')}
+            />
           )}
         </FilterItem>
       </Col>
-      <Col {...TwoColProps} xl={{ span: 10 }} md={{ span: 24 }} sm={{ span: 24 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-          <div >
-            <Button type="primary" size="default" className="margin-right" onClick={handleSubmit}>Search</Button>
-            <Button size="default" onClick={handleReset}>Reset</Button>
+      <Col
+        {...TwoColProps}
+        xl={{ span: 10 }}
+        md={{ span: 24 }}
+        sm={{ span: 24 }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div>
+            <Button
+              type="primary"
+              size="default"
+              className="margin-right"
+              onClick={handleSubmit}
+            >
+              Search
+            </Button>
+            <Button size="default" onClick={handleReset}>
+              Reset
+            </Button>
           </div>
           <div>
-            <Switch style={{ marginRight: 16 }} size="large" defaultChecked={isMotion} onChange={switchIsMotion} checkedChildren={'Motion'} unCheckedChildren={'Motion'} />
-            <Button size="default" type="ghost" onClick={onAdd}>Create</Button>
+            <Switch
+              style={{ marginRight: 16 }}
+              size="large"
+              defaultChecked={isMotion}
+              onChange={switchIsMotion}
+              checkedChildren={'Motion'}
+              unCheckedChildren={'Motion'}
+            />
+            <Button size="default" type="ghost" onClick={onAdd}>
+              Create
+            </Button>
           </div>
         </div>
       </Col>

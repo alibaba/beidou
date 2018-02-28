@@ -9,7 +9,6 @@ const cwd = process.cwd();
 // see this link for more info on what all of this means
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 module.exports = {
-
   // when adding "js" extension to asset types
   // and then enabling debug mode, it may cause a weird error:
   //
@@ -18,8 +17,14 @@ module.exports = {
   //
   // development: true,
   debug: false,
-  webpack_stats_file_path: path.resolve(__dirname, `${cwd}/.run/isomorphic/stats.json`),
-  webpack_assets_file_path: path.resolve(__dirname, `${cwd}/.run/isomorphic/assets.json`),
+  webpack_stats_file_path: path.resolve(
+    __dirname,
+    `${cwd}/.run/isomorphic/stats.json`
+  ),
+  webpack_assets_file_path: path.resolve(
+    __dirname,
+    `${cwd}/.run/isomorphic/assets.json`
+  ),
   assets: {
     style_modules: {
       extensions: ['less', 'scss'],
@@ -29,7 +34,8 @@ module.exports = {
           // so the module.name is not equal to module.name
           // return WebpackIsomorphicToolsPlugin.style_loader_filter(module, regex, options, log);
           const cssLoader = module.name.split('!')[0];
-          return regex.test(module.name) &&
+          return (
+            regex.test(module.name) &&
             // The paths below have the form of "/~/css-loader"
             // and not the form of "./~/css-loader"
             // because in some (non-standard) cases
@@ -48,10 +54,11 @@ module.exports = {
             // so I haven't thought of better ways of doing all that.
             //
             (cssLoader.indexOf('/~/css-loader') > 0 ||
-             cssLoader.indexOf('/~/.npminstall/css-loader') > 0 ||
-             cssLoader.indexOf('/~/.store/css-loader') > 0 ||
-             // 适配tnpm@4
-             /\.\/~\/\.\d*\.\d*\.\d*@css-loader/.test(cssLoader));
+              cssLoader.indexOf('/~/.npminstall/css-loader') > 0 ||
+              cssLoader.indexOf('/~/.store/css-loader') > 0 ||
+              // 适配tnpm@4
+              /\.\/~\/\.\d*\.\d*\.\d*@css-loader/.test(cssLoader))
+          );
         }
         // in production mode there's no webpack "style-loader",
         // so the module.name will be equal to the asset path
@@ -61,7 +68,11 @@ module.exports = {
         if (options.development) {
           // in development mode there's webpack "style-loader",
           // so the module.name is not equal to module.name
-          return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(module, options, log);
+          return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(
+            module,
+            options,
+            log
+          );
         }
         // in production mode there's no webpack "style-loader",
         // so the module.name will be equal to the asset path
@@ -69,7 +80,11 @@ module.exports = {
       },
       parser(module, options, log) {
         if (options.development) {
-          return WebpackIsomorphicToolsPlugin.css_modules_loader_parser(module, options, log);
+          return WebpackIsomorphicToolsPlugin.css_modules_loader_parser(
+            module,
+            options,
+            log
+          );
         }
         // in production mode there's Extract Text Loader which extracts CSS text away
         return module.source;

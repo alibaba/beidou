@@ -18,10 +18,13 @@ const path = require('path');
 const fs = require('fs');
 
 const framework = path.join(__dirname, '../../beidou-core/');
-const customDoctype = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">';
+const customDoctype =
+  '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">';
 const stdDoctype = '<!DOCTYPE html>';
-const sourceHTML = '<html><head><title>test</title></head><body><div id="container"><div><div>hello world</div></div></div><script>window.__INITIAL_STATE__={"name":"hello world"}</script></body></html>';
-const changedHTML = '<html><head><title>test</title></head><body><div id="container"><div><div>hello world</div></div></div><script>window.__INITIAL_STATE__={"name":"hello world"}</script></body></html>';
+const sourceHTML =
+  '<html><head><title>test</title></head><body><div id="container"><div><div>hello world</div></div></div><script>window.__INITIAL_STATE__={"name":"hello world"}</script></body></html>';
+const changedHTML =
+  '<html><head><title>test</title></head><body><div id="container"><div><div>hello world</div></div></div><script>window.__INITIAL_STATE__={"name":"hello world"}</script></body></html>';
 
 const changedTpl = `
   'use strict';
@@ -48,14 +51,26 @@ describe('test/react.test.js', () => {
   describe('view render cache', () => {
     let app;
     let cacheApp;
-    const demoViewPath = path.join(__dirname, './fixtures/nocache/app/views/home');
-    const cacheViewPath = path.join(__dirname, './fixtures/cache/app/views/home');
+    const demoViewPath = path.join(
+      __dirname,
+      './fixtures/nocache/app/views/home'
+    );
+    const cacheViewPath = path.join(
+      __dirname,
+      './fixtures/cache/app/views/home'
+    );
     const demoTmpFile = path.join(demoViewPath, 'index.jsx');
     const cacheTmpFile = path.join(cacheViewPath, 'index.jsx');
 
     const cpFile = () => {
-      fs.writeFileSync(demoTmpFile, fs.readFileSync(path.join(demoViewPath, 'index.default.jsx')));
-      fs.writeFileSync(cacheTmpFile, fs.readFileSync(path.join(cacheViewPath, 'index.default.jsx')));
+      fs.writeFileSync(
+        demoTmpFile,
+        fs.readFileSync(path.join(demoViewPath, 'index.default.jsx'))
+      );
+      fs.writeFileSync(
+        cacheTmpFile,
+        fs.readFileSync(path.join(cacheViewPath, 'index.default.jsx'))
+      );
     };
 
     const delFiles = () => {
@@ -63,14 +78,14 @@ describe('test/react.test.js', () => {
       fs.unlinkSync(cacheTmpFile);
     };
 
-    before(async function () {
+    before(async () => {
       app = mm.app({
         baseDir: './nocache',
-        framework
+        framework,
       });
       cacheApp = mm.app({
         baseDir: './cache',
-        framework
+        framework,
       });
 
       cpFile();
@@ -131,7 +146,11 @@ describe('test/react.test.js', () => {
 
     it('should return right tpl when clientPath config changed', (done) => {
       mm(app.config.react, 'extname', 'js');
-      mm(app.config.react, 'clientPath', path.join(__dirname, './fixtures/nocache/client2'));
+      mm(
+        app.config.react,
+        'clientPath',
+        path.join(__dirname, './fixtures/nocache/client2')
+      );
       request(app.callback())
         .get('/client')
         .expect(stdDoctype + sourceHTML)
@@ -145,7 +164,6 @@ describe('test/react.test.js', () => {
     //     .expect(stdDoctype + beautifyHTML)
     //     .expect(200, done);
     // });
-
 
     it('should return not implemented when call renderString()', (done) => {
       request(app.callback())
@@ -222,15 +240,15 @@ describe('test/react.test.js', () => {
   describe('view render middlewares', () => {
     let app;
 
-    before(async function () {
+    before(async () => {
       app = mm.app({
         baseDir: './partial',
-        framework
+        framework,
       });
     });
 
     after(() => {
-      app.close()
+      app.close();
     });
 
     afterEach(mm.restore);
@@ -267,15 +285,15 @@ describe('test/react.test.js', () => {
   describe('rax enable', () => {
     let app;
 
-    before(async function () {
+    before(async () => {
       app = mm.app({
         baseDir: './rax-enable',
-        framework
+        framework,
       });
     });
 
     after(() => {
-      app.close()
+      app.close();
     });
 
     it('disabled', () => {

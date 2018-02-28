@@ -9,10 +9,10 @@ lint:
 	make prettier-lint && make eslint-lint
 
 prettier-lint:
-	prettier --write "packages/**/*.{js,jsx,json,css,scss,md}"
+	prettier --write "{packages,examples}/**/*.{js,jsx,json,css,scss,less,md}"
 
 eslint-lint:
-	eslint --fix --ext .jsx,.js packages/
+	eslint --fix --ext .jsx,.js packages/ examples/
 
 reinstall-examples-dependencies:
 	make clean-examples

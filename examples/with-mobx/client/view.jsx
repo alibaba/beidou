@@ -52,9 +52,7 @@ export default class View extends React.Component {
    */
   static getPartial({ store }) {
     const viewStore = new ViewStore();
-    const html = (
-      <TodoApp todoStore={store} viewStore={viewStore} />
-    );
+    const html = <TodoApp todoStore={store} viewStore={viewStore} />;
     return { html };
   }
 

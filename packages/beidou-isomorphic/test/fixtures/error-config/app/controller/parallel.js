@@ -13,4 +13,3 @@ module.exports.slow = async function () {
   console.error('slow', window.location.href);
   this.body = window.location.href;
 };
-

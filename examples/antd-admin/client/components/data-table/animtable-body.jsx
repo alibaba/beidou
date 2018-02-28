@@ -8,21 +8,24 @@ const enterAnim = [
     x: 30,
     backgroundColor: '#fffeee',
     duration: 0,
-  }, {
+  },
+  {
     height: 0,
     duration: 200,
     type: 'from',
     delay: 250,
     ease: 'easeOutQuad',
-    onComplete: (e) => {
+    onComplete: e => {
       e.target.style.height = 'auto';
     },
-  }, {
+  },
+  {
     opacity: 1,
     x: 0,
     duration: 250,
     ease: 'easeOutQuad',
-  }, {
+  },
+  {
     delay: 1000,
     backgroundColor: '#fff',
   },
@@ -33,7 +36,8 @@ const leaveAnim = [
     duration: 250,
     x: -30,
     opacity: 0,
-  }, {
+  },
+  {
     height: 0,
     duration: 200,
     ease: 'easeOutQuad',

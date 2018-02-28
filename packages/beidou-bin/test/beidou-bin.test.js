@@ -20,29 +20,31 @@ describe('test/beidou-bin.test.js', () => {
     mkdirp.sync(cwd);
   });
 
-
   describe('global options', () => {
-    it('should show version', done => {
-      coffee.fork(beidouBin, ['--version'], {
-          cwd
+    it('should show version', (done) => {
+      coffee
+        .fork(beidouBin, ['--version'], {
+          cwd,
         })
         .expect('stdout', /\d+\.\d+\.\d+/)
         .expect('code', 0)
         .end(done);
     });
 
-    it('should show help', done => {
-      coffee.fork(beidouBin, ['--help'], {
-          cwd
+    it('should show help', (done) => {
+      coffee
+        .fork(beidouBin, ['--help'], {
+          cwd,
         })
         .expect('stdout', /Usage: .*beidou.* \[command] \[options]/)
         .expect('code', 0)
         .end(done);
     });
 
-    it('should show help when command not exists', done => {
-      coffee.fork(beidouBin, ['not-exists'], {
-          cwd
+    it('should show help when command not exists', (done) => {
+      coffee
+        .fork(beidouBin, ['not-exists'], {
+          cwd,
         })
         .expect('stdout', /start/)
         .expect('stdout', /stop/)
@@ -87,9 +89,10 @@ describe('test/beidou-bin.test.js', () => {
       fs.chmodSync(dstPath, '755');
     }
 
-    it('should run beidou-build script', done => {
+    it('should run beidou-build script', (done) => {
       copyBuildFile('beidou-build');
-      coffee.fork(beidouBin, ['build'], {
+      coffee
+        .fork(beidouBin, ['build'], {
           cwd,
           env,
         })
@@ -97,9 +100,10 @@ describe('test/beidou-bin.test.js', () => {
         .end(done);
     });
 
-    it('should run webpack-build script with target node', done => {
+    it('should run webpack-build script with target node', (done) => {
       copyBuildFile('webpack-build');
-      coffee.fork(beidouBin, ['build', '--target=node'], {
+      coffee
+        .fork(beidouBin, ['build', '--target=node'], {
           cwd,
           env,
         })
@@ -107,9 +111,10 @@ describe('test/beidou-bin.test.js', () => {
         .end(done);
     });
 
-    it('should throw error', done => {
+    it('should throw error', (done) => {
       rimraf.sync(path.join(cwd, 'node_modules/.bin'));
-      coffee.fork(beidouBin, ['build'], {
+      coffee
+        .fork(beidouBin, ['build'], {
           cwd,
           env,
         })

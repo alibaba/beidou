@@ -7,12 +7,15 @@ module.exports = function () {
     keys: 'test',
     isomorphic: {
       universal: {
-        assets: ['.scss', {
-          ext: '.less'
-        }],
+        assets: [
+          '.scss',
+          {
+            ext: '.less',
+          },
+        ],
         cache: false,
-      }
-    }
+      },
+    },
   };
   return exports;
 };

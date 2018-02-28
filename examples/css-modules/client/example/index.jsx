@@ -10,7 +10,7 @@ import App from './component';
  * @extends {React.Component}
  */
 export default class View extends React.Component {
-  static doctype = '<!DOCTYPE html>'
+  static doctype = '<!DOCTYPE html>';
 
   /**
    * Partial Render for view template

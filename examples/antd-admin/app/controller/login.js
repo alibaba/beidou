@@ -32,7 +32,8 @@ module.exports = (app) => {
       await this.ctx.render('pages/login');
     }
 
-    async logout() { // eslint-disable-line
+    async logout() {
+      // eslint-disable-line
       const ctx = this.ctx;
       ctx.session.user = undefined;
 

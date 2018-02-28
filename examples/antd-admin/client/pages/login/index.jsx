@@ -12,7 +12,7 @@ export default class Page extends View {
   static defaultProps = {
     title: 'Login',
     asset: 'login',
-  }
+  };
 
   static getStore() {
     const store = configureStore(reducers, saga, {

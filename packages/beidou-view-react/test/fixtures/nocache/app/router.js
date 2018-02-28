@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = app => {
+module.exports = (app) => {
   app.get('/', app.controller.home.jsxtpl);
   app.get('/jstpl', app.controller.home.jstpl);
   app.get('/notfound', app.controller.home.notFound);

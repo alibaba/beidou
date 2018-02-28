@@ -5,20 +5,17 @@ const should = require('should');
 const request = require('supertest');
 const utils = require('../../../../utils');
 
-
-describe('test/lib/core/app/extend/application.test.js', function() {
-
+describe('test/lib/core/app/extend/application.test.js', () => {
   describe('app.config.env', () => {
-
     let app;
-    before(done => {
+    before((done) => {
       mm.restore();
       mm.consoleLevel('NONE');
       app = utils.createApp('apps/extend-application');
       return app.ready(done);
     });
 
-    after(function() {
+    after(() => {
       app.close();
     });
 
@@ -31,10 +28,9 @@ describe('test/lib/core/app/extend/application.test.js', function() {
       done();
     });
 
-    it('should get current serverEnv: unittest', function(done) {
+    it('should get current serverEnv: unittest', (done) => {
       should.equal(app.config.env, 'unittest');
       done();
     });
   });
-
 });

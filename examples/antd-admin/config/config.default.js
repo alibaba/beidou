@@ -24,9 +24,7 @@ module.exports = {
     assetPath: '/public',
   },
   security: {
-    domainWhiteList: [
-      'localhost:6001',
-    ],
+    domainWhiteList: ['localhost:6001'],
   },
   session: {
     key: 'BEIDOU_SESS',

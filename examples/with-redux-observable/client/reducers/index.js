@@ -19,7 +19,12 @@ export function isCheckoutPending(state) {
 
 export function getTotal(state) {
   return getAddedIds(state.cart)
-    .reduce((total, id) => total + getProduct(state.products, id).price * getQuantity(state.cart, id), 0)
+    .reduce(
+      (total, id) =>
+        total +
+        getProduct(state.products, id).price * getQuantity(state.cart, id),
+      0
+    )
     .toFixed(2);
 }
 
@@ -44,7 +49,11 @@ const shoppingCart = combineReducers({
  * @param action
  */
 export const rootReducer = (state, action) => {
-  if (action.type === ADD_TO_CART && state.products.byId[action.productId].inventory <= 0) return state;
+  if (
+    action.type === ADD_TO_CART &&
+    state.products.byId[action.productId].inventory <= 0
+  )
+    return state;
 
   return shoppingCart(state, action);
 };

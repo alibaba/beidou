@@ -1,4 +1,3 @@
-
 module.exports = (app) => {
   class DashboardController extends app.Controller {
     async index() {

@@ -17,15 +17,11 @@ const formItemLayout = {
 const modal = ({
   item = {},
   onOk,
-  form: {
-    getFieldDecorator,
-    validateFields,
-    getFieldsValue,
-  },
+  form: { getFieldDecorator, validateFields, getFieldsValue },
   ...modalProps
 }) => {
   const handleOk = () => {
-    validateFields((errors) => {
+    validateFields(errors => {
       if (errors) {
         return;
       }
@@ -125,12 +121,14 @@ const modal = ({
                 required: true,
               },
             ],
-          })(<Cascader
-            size="large"
-            style={{ width: '100%' }}
-            options={city}
-            placeholder="Pick an address"
-          />)}
+          })(
+            <Cascader
+              size="large"
+              style={{ width: '100%' }}
+              options={city}
+              placeholder="Pick an address"
+            />
+          )}
         </FormItem>
       </Form>
     </Modal>

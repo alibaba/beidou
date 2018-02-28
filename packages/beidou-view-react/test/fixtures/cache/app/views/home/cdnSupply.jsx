@@ -2,14 +2,9 @@
 
 const React = require('react');
 
-module.exports = (props) => {
-  return (
-    <html>
-      <head>
-      </head>
-      <body>
-        {props.helper.asset('/main.js', 'aaaa')}
-      </body>
-    </html>
-  );
-}
+module.exports = props => (
+  <html>
+    <head />
+    <body>{props.helper.asset('/main.js', 'aaaa')}</body>
+  </html>
+);

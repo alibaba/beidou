@@ -4,6 +4,6 @@ module.exports = {
   isomorphic: {
     universal: {
       assets: [],
-    }
-  }
-}
+    },
+  },
+};

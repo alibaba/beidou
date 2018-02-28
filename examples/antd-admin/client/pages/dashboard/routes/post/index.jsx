@@ -5,11 +5,6 @@ import style from './index.less';
 
 const cx = classNames.bind(style);
 
-const Dashboard = () => (
-  <div className={cx('dashboard')}>
-      posts
-  </div>
-);
-
+const Dashboard = () => <div className={cx('dashboard')}>posts</div>;
 
 export default connect(state => state)(Dashboard);

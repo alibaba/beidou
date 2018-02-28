@@ -18,10 +18,13 @@ function Weather({ city, icon, dateTime, temperature, name, loading }) {
         </div>
         <div className={styles.right}>
           <h1 className={styles.temperature}>{`${temperature}°`}</h1>
-          <p className={styles.description}>{city},{dateTime}</p>
+          <p className={styles.description}>
+            {city},{dateTime}
+          </p>
         </div>
       </div>
-    </Spin>);
+    </Spin>
+  );
 }
 
 Weather.propTypes = {

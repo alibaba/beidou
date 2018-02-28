@@ -6,12 +6,13 @@ import { memoryHistory, browserHistory } from 'dva/router';
 const App = connect(({ count }) => ({
   count,
 }))(props => (
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-  }}
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+    }}
   >
     <h1>Beidou example with dva</h1>
     <h2>{props.count}</h2>
@@ -25,7 +26,7 @@ const App = connect(({ count }) => ({
           marginRight: '10px',
         }}
       >
-          +
+        +
       </button>
       <button
         key="minus"
@@ -33,7 +34,7 @@ const App = connect(({ count }) => ({
           props.dispatch({ type: 'count/minus' });
         }}
       >
-          -
+        -
       </button>
     </div>
   </div>

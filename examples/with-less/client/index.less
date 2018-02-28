@@ -1,6 +1,7 @@
 // @import url('https://fonts.googleapis.com/css?family=Archivo+Black');
 
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
@@ -26,7 +27,7 @@ body {
 .glitch {
   @offset1: 2px;
   @offset2: -2px;
-  @highlight1: #49FC00;
+  @highlight1: #49fc00;
   @highlight2: spin(@highlight1, 180);
 
   color: white;
@@ -36,7 +37,7 @@ body {
   display: inline-block;
 
   &::before,
-  &::after  {
+  &::after {
     content: attr(data-text);
     position: absolute;
     top: 0;
@@ -62,9 +63,9 @@ body {
 }
 
 .glitch-frames (@n: 20, @index: 0) when (@index <= @n) {
-  @keyframeSel: percentage(@index/@n);
-  @rand1: unit(round(`Math.random()*150`),px);
-  @rand2: unit(round(`Math.random()*150`), px);
+  @keyframeSel: percentage(@index / @n);
+  @rand1: unit(round(`Math.random() * 150`), px);
+  @rand2: unit(round(`Math.random() * 150`), px);
   @{keyframeSel} {
     clip: rect(@rand1, 9999px, @rand2, 0);
   }

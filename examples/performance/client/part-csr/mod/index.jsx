@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import RecursiveDivs from './RecursiveDivs';
 
@@ -8,13 +6,13 @@ class Index extends React.Component {
     super();
 
     this.state = {
-      demoModule: 'client side rendering module'
+      demoModule: 'client side rendering module',
     };
   }
 
   componentDidMount() {
     this.setState({
-      demoModule: <RecursiveDivs depth={3} breadth={10} />
+      demoModule: <RecursiveDivs depth={3} breadth={10} />,
     });
   }
 
@@ -22,7 +20,7 @@ class Index extends React.Component {
     const { demoModule } = this.state;
     return (
       <div className="recursive">
-        { demoModule }
+        {demoModule}
         <RecursiveDivs depth={3} breadth={10} />
         <RecursiveDivs depth={3} breadth={10} />
       </div>

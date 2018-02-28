@@ -10,7 +10,7 @@ module.exports = function (appInfo) {
     },
     react: {
       static: true,
-    }
+    },
   };
   return exports;
 };

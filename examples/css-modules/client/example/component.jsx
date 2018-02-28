@@ -14,7 +14,9 @@ export default class Index extends React.Component {
   render() {
     return (
       <div className={cx('page')}>
-        <h3>This is example page, back to <a href="/">index page</a></h3>
+        <h3>
+          This is example page, back to <a href="/">index page</a>
+        </h3>
         <img className={cx('bg')} src={bg} alt="bg" />
       </div>
     );

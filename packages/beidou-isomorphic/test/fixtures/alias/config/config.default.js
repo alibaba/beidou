@@ -7,9 +7,9 @@ module.exports = function () {
     keys: 'test',
     isomorphic: {
       alias: {
-        'client': path.join(__dirname, '../client')
-      }
-    }
+        client: path.join(__dirname, '../client'),
+      },
+    },
   };
   return exports;
 };

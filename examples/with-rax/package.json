@@ -22,9 +22,5 @@
     "rax-view": "^0.5.0",
     "react": "^16.2.0"
   },
-  "files": [
-    "app",
-    "client",
-    "config"
-  ]
+  "files": ["app", "client", "config"]
 }

@@ -8,8 +8,8 @@ module.exports = function () {
     isomorphic: {
       universal: {
         assets: ['.scss', '.less'],
-      }
-    }
+      },
+    },
   };
   return exports;
 };

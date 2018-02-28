@@ -1,4 +1,3 @@
-
 const createRule = {
   name: 'string',
   nickName: 'string',
@@ -20,8 +19,24 @@ module.exports = (app) => {
     async create() {
       const ctx = this.ctx;
       ctx.validate(createRule);
-      const { name, nickName, isMale, age, phone, email, address } = ctx.request.body;
-      const user = await this.service.user.create(name, nickName, isMale, age, phone, email, address);
+      const {
+        name,
+        nickName,
+        isMale,
+        age,
+        phone,
+        email,
+        address,
+      } = ctx.request.body;
+      const user = await this.service.user.create(
+        name,
+        nickName,
+        isMale,
+        age,
+        phone,
+        email,
+        address
+      );
       ctx.body = user;
       ctx.status = 201;
     }

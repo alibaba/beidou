@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = antx => {
-  return {
-    keys: '123456'
-  }
-}
+module.exports = antx => ({
+  keys: '123456',
+});

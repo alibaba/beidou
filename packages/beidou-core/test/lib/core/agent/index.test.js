@@ -6,11 +6,11 @@ const rimraf = require('rimraf');
 const should = require('should');
 const mm = require('egg-mock');
 const utils = require('../../../utils');
+
 const fixtures = path.join(__dirname, '../../../fixtures');
 const Agent = require('../../../../index').Agent;
 
-describe('test/lib/core/agent/index.test.js', function() {
-
+describe('test/lib/core/agent/index.test.js', () => {
   beforeEach(() => {
     mm.consoleLevel('NONE');
   });
@@ -19,7 +19,7 @@ describe('test/lib/core/agent/index.test.js', function() {
     mm.restore();
   });
 
-  describe('agent dump config success', function() {
+  describe('agent dump config success', () => {
     let agent;
 
     before(() => {
@@ -29,28 +29,40 @@ describe('test/lib/core/agent/index.test.js', function() {
       });
     });
 
-    it('should get dump info', function(done) {
+    it('should get dump info', (done) => {
       should.exist(agent.config.rundir);
 
       setTimeout(() => {
-        const dumpFile = fs.readdirSync(path.join(fixtures, 'apps/agent-dump-config-success/run'));
+        const dumpFile = fs.readdirSync(
+          path.join(fixtures, 'apps/agent-dump-config-success/run')
+        );
         should.notEqual(dumpFile.length, 0);
-        const config = JSON.parse(fs.readFileSync(path.join(fixtures, 'apps/agent-dump-config-success/run', dumpFile[0])));
+        const config = JSON.parse(
+          fs.readFileSync(
+            path.join(
+              fixtures,
+              'apps/agent-dump-config-success/run',
+              dumpFile[0]
+            )
+          )
+        );
         should.equal(config.config.pkg.name, 'agent-dump-config-success');
         done();
       }, 1500);
     });
   });
 
-  describe('agent dump config fail', function() {
+  describe('agent dump config fail', () => {
     let master;
 
-    after(function() {
+    after(() => {
       master.close();
     });
 
-    it('should exit with 1', function(done) {
-      master = utils.startMaster('apps/agent-dump-config-fail', { coverage: true });
+    it('should exit with 1', (done) => {
+      master = utils.startMaster('apps/agent-dump-config-fail', {
+        coverage: true,
+      });
       master.expect('code', 1).ready(done);
     });
   });

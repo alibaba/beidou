@@ -50,6 +50,8 @@ module.exports = (app, defaultConfig, dev) => {
     ],
   };
 
+  defaultConfig.plugins.push(new ExtractTextPlugin('[name].css'));
+
   return {
     ...defaultConfig,
     module,

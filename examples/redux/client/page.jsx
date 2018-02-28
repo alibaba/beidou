@@ -14,7 +14,7 @@ import { run } from './saga';
  * @extends {React.Component}
  */
 export default class View extends React.Component {
-  static doctype = '<!DOCTYPE html>'
+  static doctype = '<!DOCTYPE html>';
 
   /**
    * construct store for server side
@@ -67,7 +67,11 @@ export default class View extends React.Component {
         </head>
         <body>
           <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
-          <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__ = ${state}` }} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__INITIAL_STATE__ = ${state}`,
+            }}
+          />
           <script src={helper.asset('manifest.js')} />
           <script src={helper.asset('index.js')} />
         </body>
@@ -91,8 +95,5 @@ if (__CLIENT__) {
   // run saga
   run();
 
-  ReactDOM.render(
-    app,
-    document.getElementById('container')
-  );
+  ReactDOM.render(app, document.getElementById('container'));
 }

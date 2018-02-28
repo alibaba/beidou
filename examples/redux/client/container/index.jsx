@@ -4,7 +4,6 @@ import actions from '../actions';
 
 import './index.scss';
 
-
 class Container extends React.Component {
   constructor() {
     super();

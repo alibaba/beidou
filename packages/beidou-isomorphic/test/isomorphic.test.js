@@ -17,7 +17,7 @@ describe('test/isomorphic.test.js', () => {
         coverage: true,
         baseDir: './isomorphic-app/',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });
@@ -28,8 +28,7 @@ describe('test/isomorphic.test.js', () => {
 
     afterEach(() => {
       mm.restore();
-    }
-    );
+    });
 
     it('should return empty content: {}', (done) => {
       request(app.callback())
@@ -39,7 +38,6 @@ describe('test/isomorphic.test.js', () => {
     });
   });
 
-
   describe('validate global variables', () => {
     let app;
 
@@ -47,7 +45,7 @@ describe('test/isomorphic.test.js', () => {
       app = mm.app({
         baseDir: './isomorphic-app/',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });
@@ -55,7 +53,6 @@ describe('test/isomorphic.test.js', () => {
     after(() => {
       app.close();
     });
-
 
     afterEach(() => {
       mm.restore();
@@ -105,7 +102,7 @@ describe('test/isomorphic.test.js', () => {
       app = mm.app({
         baseDir: './isomorphic-app/',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });
@@ -149,7 +146,6 @@ describe('test/isomorphic.test.js', () => {
   //       .expect(/search: \?a=b&amp;c=d/) // &amp; 为&，supertest编码了
   //       .expect(200, done);
   //   });
-
 
   //   it('should return correct BOM property with not-match-polyfill', (done) => {
   //     request(app.callback())
@@ -310,16 +306,21 @@ describe('test/isomorphic.test.js', () => {
 
   describe('universal', () => {
     let app;
-    const jsonFilePath = path.join(__dirname, 'fixtures/universal', '.isomorphic/assets.json');
+    const jsonFilePath = path.join(
+      __dirname,
+      'fixtures/universal',
+      '.isomorphic/assets.json'
+    );
     mkdirp.sync(path.dirname(jsonFilePath));
 
     before((done) => {
-      const content = '{"client/index.less": "less", "client/index.scss": "scss"}'
+      const content =
+        '{"client/index.less": "less", "client/index.scss": "scss"}';
       fs.writeFileSync(jsonFilePath, content);
       app = mm.app({
         baseDir: './universal',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });
@@ -327,7 +328,6 @@ describe('test/isomorphic.test.js', () => {
     after(() => {
       app.close();
     });
-
 
     afterEach(() => {
       mm.restore();
@@ -340,14 +340,12 @@ describe('test/isomorphic.test.js', () => {
         .expect(200, done);
     });
 
-
     it('should return content of less in asset ', (done) => {
       request(app.callback())
         .get('/less')
         .expect('less')
         .expect(200, done);
     });
-
 
     it('should return for unsupport file extension', (done) => {
       request(app.callback())
@@ -357,7 +355,8 @@ describe('test/isomorphic.test.js', () => {
     });
 
     it('should not clean require cache when cache is true', (done) => {
-      const content = '{"client/index.less": "hello", "client/index.scss": "hello"}';
+      const content =
+        '{"client/index.less": "hello", "client/index.scss": "hello"}';
       fs.writeFileSync(jsonFilePath, content);
       request(app.callback())
         .get('/less')
@@ -368,17 +367,22 @@ describe('test/isomorphic.test.js', () => {
 
   describe('universal no cache', () => {
     let app;
-    const jsonFilePath = path.join(__dirname, 'fixtures/universal-nocache', '.isomorphic/assets.json');
+    const jsonFilePath = path.join(
+      __dirname,
+      'fixtures/universal-nocache',
+      '.isomorphic/assets.json'
+    );
     mkdirp.sync(path.dirname(jsonFilePath));
 
     before((done) => {
-      const content = '{"client/index.less": "less", "client/index.scss": "scss"}'
+      const content =
+        '{"client/index.less": "less", "client/index.scss": "scss"}';
       fs.writeFileSync(jsonFilePath, content);
       mm.env('local');
       app = mm.app({
         baseDir: './universal-nocache',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });
@@ -387,13 +391,13 @@ describe('test/isomorphic.test.js', () => {
       app.close();
     });
 
-
     afterEach(() => {
       mm.restore();
     });
 
     it('should clean require cache when cache is false', (done) => {
-      const content = '{"client/index.less": "hello", "client/index.scss": "hello"}';
+      const content =
+        '{"client/index.less": "hello", "client/index.scss": "hello"}';
       fs.writeFileSync(jsonFilePath, content);
       request(app.callback())
         .get('/less')
@@ -408,7 +412,7 @@ describe('test/isomorphic.test.js', () => {
       app = mm.cluster({
         baseDir: './universal-noasset',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });
@@ -416,7 +420,6 @@ describe('test/isomorphic.test.js', () => {
     after(() => {
       app.close();
     });
-
 
     afterEach(() => {
       mm.restore();
@@ -429,20 +432,23 @@ describe('test/isomorphic.test.js', () => {
     });
   });
 
-
   describe('universal no-json assets.json', () => {
     let app;
-    const jsonFilePath = path.join(__dirname, 'fixtures/universal-nocache', '.isomorphic/assets.json');
+    const jsonFilePath = path.join(
+      __dirname,
+      'fixtures/universal-nocache',
+      '.isomorphic/assets.json'
+    );
     mkdirp.sync(path.dirname(jsonFilePath));
 
     before((done) => {
-      const content = '{ not a json '
+      const content = '{ not a json ';
       fs.writeFileSync(jsonFilePath, content);
       mm.env('local');
       app = mm.cluster({
         baseDir: './universal-nocache',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });
@@ -450,7 +456,6 @@ describe('test/isomorphic.test.js', () => {
     after(() => {
       app.close();
     });
-
 
     afterEach(() => {
       mm.restore();
@@ -469,7 +474,7 @@ describe('test/isomorphic.test.js', () => {
       app = mm.cluster({
         baseDir: './alias',
         plugin: 'isomorphic',
-        framework: frameworkPath
+        framework: frameworkPath,
       });
       app.ready(done);
     });

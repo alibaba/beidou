@@ -12,11 +12,13 @@ module.exports = (app, defaultConfig, isDev) => {
   const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      filename: 'manifest.js'
+      filename: 'manifest.js',
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
-      __CLIENT__: true
+      'process.env.NODE_ENV': JSON.stringify(
+        dev ? 'development' : 'production'
+      ),
+      __CLIENT__: true,
     }),
     new webpack.ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;
@@ -33,11 +35,13 @@ module.exports = (app, defaultConfig, isDev) => {
   if (dev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
   } else {
-    plugins.push(new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }));
+    plugins.push(
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+        },
+      })
+    );
   }
 
   const config = {
@@ -48,7 +52,7 @@ module.exports = (app, defaultConfig, isDev) => {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
-      publicPath: app.config.webpack.publicPath
+      publicPath: app.config.webpack.publicPath,
     },
     module: {
       rules: [
@@ -59,24 +63,27 @@ module.exports = (app, defaultConfig, isDev) => {
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              presets: ['beidou-client']
-            }
+              presets: ['beidou-client'],
+            },
           },
         },
         {
           test: /\.scss$/,
           exclude: /node_modules/,
           use: ExtractTextPlugin.extract({
-            use: [{
-              loader: 'css-loader',
-              // uncomment if need css modules
-              options: {
-                importLoaders: 1,
-                modules: true,
+            use: [
+              {
+                loader: 'css-loader',
+                // uncomment if need css modules
+                options: {
+                  importLoaders: 1,
+                  modules: true,
+                },
               },
-            }, {
-              loader: 'sass-loader'
-            }],
+              {
+                loader: 'sass-loader',
+              },
+            ],
             fallback: 'style-loader',
           }),
         },
@@ -86,15 +93,15 @@ module.exports = (app, defaultConfig, isDev) => {
             {
               loader: 'url-loader',
               options: {
-                limit: 81920
-              }
-            }
-          ]
-        }
-      ]
+                limit: 81920,
+              },
+            },
+          ],
+        },
+      ],
     },
     resolve: {
-      extensions: ['.json', '.js', '.jsx']
+      extensions: ['.json', '.js', '.jsx'],
     },
     devServer: {
       hot: true,

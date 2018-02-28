@@ -20,7 +20,10 @@ export default class View extends React.Component {
         </head>
         <body>
           <h1 className="title">Styling Page</h1>
-          <p>Static page template in `/client/static/index.jsx`, visit via url `/static`</p>
+          <p>
+            Static page template in `/client/static/index.jsx`, visit via url
+            `/static`
+          </p>
           <p>CSS file serve at `/build/static.css`</p>
         </body>
       </html>

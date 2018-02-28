@@ -12,11 +12,14 @@ module.exports = function (app) {
   exports.isomorphic = {
     universal: {
       assetsFilePath: path.join(__dirname, '../output/assets.json'),
-      assets: ['.scss', {
-        ext: '.png',
-        include: 'bg.png',
-      }]
-    }
+      assets: [
+        '.scss',
+        {
+          ext: '.png',
+          include: 'bg.png',
+        },
+      ],
+    },
   };
 
   return exports;

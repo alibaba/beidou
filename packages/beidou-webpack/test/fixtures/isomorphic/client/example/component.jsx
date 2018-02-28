@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import style from './index.scss'
+import style from './index.scss';
 import bg from '../images/bg.png';
 import ignore from '../images/ignore.png';
 
@@ -14,14 +14,16 @@ export default class Index extends React.Component {
 
   componentWillMount() {
     this.setState({
-      desc: 'css modules'
+      desc: 'css modules',
     });
   }
 
   render() {
     return (
       <div className={cx('page')}>
-        <h3>This is example page, back to <a href="/">index page</a></h3>
+        <h3>
+          This is example page, back to <a href="/">index page</a>
+        </h3>
         <p>{this.state.desc}</p>
         <img className={cx('bg')} src={bg} alt="bg" />
       </div>

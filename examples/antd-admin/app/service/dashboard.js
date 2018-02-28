@@ -1,4 +1,3 @@
-
 module.exports = ({ Service }) => {
   class DashboardService extends Service {
     constructor(ctx) {

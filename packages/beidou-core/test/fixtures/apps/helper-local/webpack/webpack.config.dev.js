@@ -14,9 +14,9 @@ const devConfig = extend(true, {}, config, {
       __SERVER__: false,
       __DEVELOPMENT__: true,
       __DEVTOOLS__: true,
-      __DAILY___: true
-    })
-  ])
+      __DAILY___: true,
+    }),
+  ]),
 });
 
 module.exports = devConfig;

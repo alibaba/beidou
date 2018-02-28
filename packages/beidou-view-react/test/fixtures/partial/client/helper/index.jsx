@@ -10,7 +10,6 @@ import App from './app';
  * @extends {React.Component}
  */
 export default class View extends React.Component {
-  
   render() {
     const { helper } = this.props;
     return (
@@ -19,7 +18,10 @@ export default class View extends React.Component {
           <title>Unittest</title>
         </head>
         <body>
-          <div id="container" dangerouslySetInnerHTML={{ __html: helper.asset('/unit.css') }} />
+          <div
+            id="container"
+            dangerouslySetInnerHTML={{ __html: helper.asset('/unit.css') }}
+          />
         </body>
       </html>
     );

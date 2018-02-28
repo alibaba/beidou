@@ -10,11 +10,9 @@ import App from './app';
  * @extends {React.Component}
  */
 export default class View extends React.Component {
-  static doctype = '<!DOCTYPE html>'
+  static doctype = '<!DOCTYPE html>';
 
-  static getStore() {
-    
-  }
+  static getStore() {}
 
   /**
    *
@@ -38,7 +36,7 @@ export default class View extends React.Component {
    *
    * @returns {ReactInstance|Array<ReactInstance>}
    */
-  static async getPartial () {
+  static async getPartial() {
     return { html: [<App />] };
   }
 

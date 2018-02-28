@@ -1,42 +1,44 @@
 'use strict';
 
 const path = require('path');
+
 const basePath = path.join(__dirname, '../../../..');
 const fixtures = path.join(basePath, '/test/fixtures');
 
-describe('test/lib/core/utils/index.test.js', function() {
+describe('test/lib/core/utils/index.test.js', () => {
   const utils = require(`${basePath}/lib/core/utils/index`);
 
-  afterEach(() => {
-  });
+  afterEach(() => {});
 
-  describe('existsModule', function() {
-
-    it('should return false when module does not exist', function() {
+  describe('existsModule', () => {
+    it('should return false when module does not exist', () => {
       utils.existsModule('/AN_NON_EXIST_MODULE').should.equal(false);
     });
 
-    it('should return true when module exists', function() {
+    it('should return true when module exists', () => {
       utils.existsModule(`${fixtures}/lib/utils/`).should.equal(true);
     });
-
   });
 
-  describe('tryRequire function', function() {
-
-    it('should return empty object when module does not exist', function() {
+  describe('tryRequire function', () => {
+    it('should return empty object when module does not exist', () => {
       utils.tryRequire('/AN_NON_EXIST_MODULE').should.be.Object;
-      utils.tryRequire('/AN_NON_EXIST_MODULE').hasOwnProperty().should.equal(false);
+      utils
+        .tryRequire('/AN_NON_EXIST_MODULE')
+        .hasOwnProperty()
+        .should.equal(false);
     });
 
-    it('should return {test: true} when module exists', function() {
-      utils.tryRequire(`${fixtures}/lib/utils/`).should.have.property('test', true);
+    it('should return {test: true} when module exists', () => {
+      utils
+        .tryRequire(`${fixtures}/lib/utils/`)
+        .should.have.property('test', true);
     });
 
-    it('assert module must exists', function() {
-      utils.tryRequire(`${fixtures}/lib/utils/`, true).should.have.property('test', true);
+    it('assert module must exists', () => {
+      utils
+        .tryRequire(`${fixtures}/lib/utils/`, true)
+        .should.have.property('test', true);
     });
-
   });
-
 });

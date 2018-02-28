@@ -15,21 +15,23 @@ describe('Rax render test', () => {
       app = mock.cluster({
         baseDir: './normal',
         framework,
-      })
+      });
       return app.ready();
     });
 
     afterEach(mock.restore);
 
-    it('should render index', async function () {
-      await app.httpRequest()
+    it('should render index', async () => {
+      await app
+        .httpRequest()
         .get('/')
         .expect(200)
         .expect(/Beidou with Rax/);
     });
 
-    it('should render inline style', async function () {
-      await app.httpRequest()
+    it('should render inline style', async () => {
+      await app
+        .httpRequest()
         .get('/inline-style')
         .expect(200)
         .expect(/Inline style/);
@@ -39,13 +41,12 @@ describe('Rax render test', () => {
     before(() => {
       renderApp = mock.app({
         baseDir: './normal',
-        framework
+        framework,
       });
       return renderApp.ready();
     });
 
     it('should throw error', async () => {
-
       const ctx = renderApp.mockContext();
       const raxView = new RaxView(ctx);
       try {
@@ -61,14 +62,15 @@ describe('Rax render test', () => {
       app = mock.cluster({
         baseDir: './redux-partial',
         framework,
-      })
+      });
       return app.ready();
     });
 
     afterEach(mock.restore);
 
-    it('partial render', async function () {
-      await app.httpRequest()
+    it('partial render', async () => {
+      await app
+        .httpRequest()
         .get('/')
         .expect(200)
         .expect(/Partial render/);

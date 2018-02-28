@@ -5,5 +5,5 @@ import unSupport from './index.unsupport';
 export default {
   less,
   sass,
-  unSupport
-}
+  unSupport,
+};

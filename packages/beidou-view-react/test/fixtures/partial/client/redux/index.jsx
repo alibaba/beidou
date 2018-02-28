@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
+import { createStore } from 'redux';
 import App from './app';
 
 /**
@@ -11,23 +11,23 @@ import App from './app';
  * @extends {React.Component}
  */
 export default class View extends React.Component {
-    static async getStore () {
-      function counter(state = 0, action) {
-        switch (action.type) {
+  static async getStore() {
+    function counter(state = 0, action) {
+      switch (action.type) {
         case 'INCREMENT':
-          return state + 1
+          return state + 1;
         case 'DECREMENT':
-          return state - 1
+          return state - 1;
         default:
-          return state
-        }
+          return state;
       }
+    }
 
-      // Create a Redux store holding the state of your app.
-      // Its API is { subscribe, dispatch, getState }.
-      const store = createStore(counter)
-      
-      return [store];
+    // Create a Redux store holding the state of your app.
+    // Its API is { subscribe, dispatch, getState }.
+    const store = createStore(counter);
+
+    return [store];
   }
 
   render() {

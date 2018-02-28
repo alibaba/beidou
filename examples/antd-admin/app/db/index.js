@@ -7,4 +7,7 @@
 const path = require('path');
 const db = require('diskdb');
 
-module.exports = db.connect(path.join(__dirname, 'files'), ['user', 'dashboard']);
+module.exports = db.connect(path.join(__dirname, 'files'), [
+  'user',
+  'dashboard',
+]);

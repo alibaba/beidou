@@ -1,5 +1,3 @@
 import React from 'react';
 
-export default () => (
-  <span>hello</span>
-);
+export default () => <span>hello</span>;

@@ -12,22 +12,34 @@ import style from './sider.less';
 const cx = classNames.bind(style);
 
 const Sider = ({ dispatch, siderFolded, theme, location }) => (
-  <aside className={cx('sider', { fold: siderFolded, light: theme === 'light' })}>
+  <aside
+    className={cx('sider', { fold: siderFolded, light: theme === 'light' })}
+  >
     <div className={cx('logo')}>
       <img alt={'logo'} src={logo} />
       <span>Antd Admin</span>
     </div>
-    <Menus theme={theme} location={location} siderFolded={siderFolded} className={cx('menu')} />
-    { !siderFolded &&
+    <Menus
+      theme={theme}
+      location={location}
+      siderFolded={siderFolded}
+      className={cx('menu')}
+    />
+    {!siderFolded && (
       <div className={cx('switchtheme')}>
-        <span><Icon type="bulb" />Switch Theme</span>
+        <span>
+          <Icon type="bulb" />Switch Theme
+        </span>
         <Switch
           defaultChecked={false}
           checkedChildren="Dark"
           unCheckedChildren="Light"
-          onChange={checked => dispatch(actions.common.toggleTheme(checked ? 'dark' : 'light'))}
+          onChange={checked =>
+            dispatch(actions.common.toggleTheme(checked ? 'dark' : 'light'))
+          }
         />
-      </div> }
+      </div>
+    )}
   </aside>
 );
 

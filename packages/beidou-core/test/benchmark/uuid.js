@@ -1,18 +1,16 @@
-
-
 'use strict';
 
 /**
  * Module dependencies.
  */
 
-var nodeuuid = require('node-uuid');
-var crypto = require('crypto');
-var Benchmark = require('benchmark');
-var uuidjs = require('uuid-js');
-var uuid = require('uuid');
+const nodeuuid = require('node-uuid');
+const crypto = require('crypto');
+const Benchmark = require('benchmark');
+const uuidjs = require('uuid-js');
+const uuid = require('uuid');
 
-var suite = new Benchmark.Suite();
+const suite = new Benchmark.Suite();
 
 console.log('uuidjs.v4(): %s', uuidjs.create(4).toString());
 console.log('uuidjs.v1(): %s', uuidjs.create(1).toString());
@@ -20,43 +18,46 @@ console.log('nodeuuid.v4(): %s', nodeuuid.v4());
 console.log('nodeuuid.v1(): %s', nodeuuid.v1());
 console.log('uuid.v4(): %s', uuid.v4());
 console.log('uuid.v1(): %s', uuid.v1());
-console.log('crypto.randomBytes(16).toString(\'hex\'): %s', crypto.randomBytes(16).toString('hex'));
+console.log(
+  "crypto.randomBytes(16).toString('hex'): %s",
+  crypto.randomBytes(16).toString('hex')
+);
 
 // add tests
 suite
-.add('uuidjs.v4()', function() {
-  uuidjs.create(4).toString();
-})
-.add('uuidjs.v1()', function() {
-  uuidjs.create(1).toString();
-})
+  .add('uuidjs.v4()', () => {
+    uuidjs.create(4).toString();
+  })
+  .add('uuidjs.v1()', () => {
+    uuidjs.create(1).toString();
+  })
 
-.add('uuid.v4()', function() {
-  uuid.v4();
-})
-.add('uuid.v1()', function() {
-  uuid.v1();
-})
+  .add('uuid.v4()', () => {
+    uuid.v4();
+  })
+  .add('uuid.v1()', () => {
+    uuid.v1();
+  })
 
-.add('nodeuuid.v4()', function() {
-  nodeuuid.v4();
-})
-.add('nodeuuid.v1()', function() {
-  nodeuuid.v1();
-})
+  .add('nodeuuid.v4()', () => {
+    nodeuuid.v4();
+  })
+  .add('nodeuuid.v1()', () => {
+    nodeuuid.v1();
+  })
 
-.add('crypto.randomBytes(16)', function() {
-  crypto.randomBytes(16).toString('hex');
-})
-// add listeners
-.on('cycle', function(event) {
-  console.log(String(event.target));
-})
-.on('complete', function() {
-  console.log('Fastest is ' + this.filter('fastest').map('name'));
-})
-// run async
-.run({ 'async': true });
+  .add('crypto.randomBytes(16)', () => {
+    crypto.randomBytes(16).toString('hex');
+  })
+  // add listeners
+  .on('cycle', (event) => {
+    console.log(String(event.target));
+  })
+  .on('complete', function () {
+    console.log(`Fastest is ${this.filter('fastest').map('name')}`);
+  })
+  // run async
+  .run({ async: true });
 
 // $ node test/benchmark/uuid.js
 // uuidjs.v4(): e6beaa9a-eb93-4c3c-86c5-65c0a9e5c583

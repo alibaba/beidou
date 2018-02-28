@@ -7,15 +7,14 @@ const instance = axios.create({
   headers: { 'x-csrf-token': cookie.get('csrfToken') },
 });
 
-instance.interceptors.request.use((config) => {
+instance.interceptors.request.use(config => {
   window.NProgress.start();
   return config;
 });
 
-instance.interceptors.response.use((response) => {
+instance.interceptors.response.use(response => {
   window.NProgress.done();
   return response;
 });
 
 export default instance;
-

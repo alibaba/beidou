@@ -10,14 +10,14 @@ const basePath = path.join(__dirname, '../../');
 function compileFile(webpackConfig) {
   const promise = new Promise((resolve, reject) => {
     webpack(webpackConfig, (err, stats) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve({
-            hasError: stats.hasErrors(),
-            hasWarning: stats.hasWarnings()
-          });
-        }
+      if (err) {
+        reject(err);
+      } else {
+        resolve({
+          hasError: stats.hasErrors(),
+          hasWarning: stats.hasWarnings(),
+        });
+      }
     });
   });
   return promise;
@@ -29,23 +29,23 @@ exports.index = async function () {
   let webpackConfig;
   const originCwd = process.cwd;
   Object.defineProperty(process, 'cwd', {
-    value: () => {
-      return basePath;
-    }
+    value: () => basePath,
   });
   if (type === 'dev') {
     webpackConfig = require('../../../../../../lib/core/webpack/webpack.config.dev.js');
   } else {
     webpackConfig = require('../../../../../../lib/core/webpack/webpack.config.prod.js');
   }
-  webpackConfig.resolveLoader = { root: path.join(originCwd(), './node_modules')};
+  webpackConfig.resolveLoader = {
+    root: path.join(originCwd(), './node_modules'),
+  };
   Object.defineProperty(process, 'cwd', {
-    value: originCwd
+    value: originCwd,
   });
   body = await compileFile(webpackConfig);
   this.body = body;
   // this.body = process.cwd();
-}
+};
 
 exports.isomorphic = async function () {
   try {
@@ -54,5 +54,4 @@ exports.isomorphic = async function () {
   } catch (e) {
     this.body = `${e.stack}`;
   }
-}
-
+};

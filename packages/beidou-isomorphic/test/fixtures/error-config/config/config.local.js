@@ -6,7 +6,7 @@ module.exports = function (antx) {
   const exports = {
     isomorphic: {
       match: {}, // error config
-    }
+    },
   };
   return exports;
-}
+};

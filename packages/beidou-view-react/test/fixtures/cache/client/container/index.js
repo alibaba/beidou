@@ -2,13 +2,11 @@ const React = require('react');
 const ReactRedux = require('react-redux');
 const News = require('../components/news');
 
-
 class App extends React.Component {
-
   render() {
     return (
       <div>
-        <News data={this.props.data}/>
+        <News data={this.props.data} />
       </div>
     );
   }
@@ -16,10 +14,8 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    data: state
-  }
+    data: state,
+  };
 }
 
-module.exports = ReactRedux.connect(
-  mapStateToProps
-)(App);
+module.exports = ReactRedux.connect(mapStateToProps)(App);

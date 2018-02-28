@@ -21,7 +21,9 @@ function* login({ payload: { username, password } }) {
         window.location.href = url;
       }, 1000);
     } else {
-      yield put(actions.rejected(res.data.message || 'Error password or username'));
+      yield put(
+        actions.rejected(res.data.message || 'Error password or username')
+      );
     }
   } catch (e) {
     console.log(e);

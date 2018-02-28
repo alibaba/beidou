@@ -10,7 +10,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
-const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-config'));
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(
+  require('./webpack-isomorphic-config')
+);
 const babelrc = require('./webpack-babelrc.js');
 
 const cwd = process.cwd();
@@ -42,22 +44,25 @@ module.exports = {
       { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&sourceMap&localIdentName=[local]_[hash:base64:5]!less-loader'),
+        loader: ExtractTextPlugin.extract(
+          'style-loader',
+          'css-loader?modules&importLoaders=1&sourceMap&localIdentName=[local]_[hash:base64:5]!less-loader'
+        ),
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
         // loader: ExtractTextPlugin.extract('isomorphic-style-loader', 'css-loader', 'postcss-loader'),
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
-      }
+        loader: ExtractTextPlugin.extract(
+          'style-loader',
+          'css-loader!sass-loader'
+        ),
+      },
     ],
   },
   progress: true,
   resolve: {
-    modulesDirectories: [
-      'lib',
-      'node_modules',
-    ],
+    modulesDirectories: ['lib', 'node_modules'],
     extensions: ['', '.json', '.js', '.jsx'],
   },
   plugins: [
@@ -76,5 +81,5 @@ module.exports = {
       }
     }),
     webpackIsomorphicToolsPlugin.development(),
-  ]
+  ],
 };

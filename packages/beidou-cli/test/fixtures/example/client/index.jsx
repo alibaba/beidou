@@ -4,9 +4,7 @@ import './index.scss';
 
 const App = () => (
   <div>
-    <div className="title">
-      Beidou example with scss
-    </div>
+    <div className="title">Beidou example with scss</div>
     <div className="🎵">
       <div className="🕹">
         <div className="🕹__rotator" />

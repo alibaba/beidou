@@ -8,9 +8,7 @@ module.exports = {
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: {
-    main: [
-      './client/index.js',
-    ],
+    main: ['./client/index.js'],
   },
   output: {
     path: outputPath,

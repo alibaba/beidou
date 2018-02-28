@@ -1,11 +1,11 @@
-$s : 50vh;
-$c : (
-  body : #ecebd9,
-  main : #e29372,
-  mainChild : #dd6d62,
-  blk : #000,
-  wht : #ffefe3,
-  stk : #353333
+$s: 50vh;
+$c: (
+  body: #ecebd9,
+  main: #e29372,
+  mainChild: #dd6d62,
+  blk: #000,
+  wht: #ffefe3,
+  stk: #353333
 );
 
 body {
@@ -26,7 +26,11 @@ body {
   margin-bottom: 10vh;
 }
 
-*, *:after, *:before {box-sizing: border-box;}
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
 
 .🎵 {
   flex: 1;
@@ -37,14 +41,14 @@ body {
   background-color: map-get($c, main);
   position: relative;
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 0 ($s / 1.2 - ($s/30*2)) $s;
+    border-width: 0 0 ($s / 1.2 - ($s/30 * 2)) $s;
     border-color: transparent transparent map-get($c, mainChild) transparent;
   }
 }
@@ -54,21 +58,25 @@ body {
   height: $s/1.7;
   border-radius: 50%;
   background: map-get($c, blk);
-  background: radial-gradient(red 5%, map-get($c, wht) 10%, map-get($c, blk) 90%);
+  background: radial-gradient(
+    red 5%,
+    map-get($c, wht) 10%,
+    map-get($c, blk) 90%
+  );
   border: $s/99 solid map-get($c, wht);
   background: radial-gradient(
-                map-get($c, mainChild) 0,
-                map-get($c, mainChild) 5%,
-                map-get($c, wht) 0%,
-                map-get($c, wht) 25%,
-                map-get($c, blk) 0%,
-                map-get($c, blk) 70%
-              );
+    map-get($c, mainChild) 0,
+    map-get($c, mainChild) 5%,
+    map-get($c, wht) 0%,
+    map-get($c, wht) 25%,
+    map-get($c, blk) 0%,
+    map-get($c, blk) 70%
+  );
   position: absolute;
   top: 50%;
   left: 10%;
   z-index: 1;
-  animation: disk .5s infinite alternate;
+  animation: disk 0.5s infinite alternate;
 }
 
 .🕹 {
@@ -90,8 +98,9 @@ body {
     position: relative;
     margin: 0 auto;
     z-index: 1;
-    &:after, &:before {
-      content: "";
+    &:after,
+    &:before {
+      content: '';
       width: 5%;
       position: absolute;
       top: 5%;
@@ -125,8 +134,8 @@ body {
     height: 0;
     width: $s/25;
     border-top: $s/15 solid map-get($c, wht);
-    border-left: $s*0.01 solid transparent;
-    border-right: $s*0.01 solid transparent;
+    border-left: $s * 0.01 solid transparent;
+    border-right: $s * 0.01 solid transparent;
   }
 }
 
@@ -138,8 +147,9 @@ body {
   border-radius: 1vw;
   z-index: 9;
   bottom: 18%;
-  &:after, &:before {
-    content: "";
+  &:after,
+  &:before {
+    content: '';
     position: absolute;
     width: 0;
     height: 0;
@@ -157,14 +167,16 @@ body {
   }
   &--left {
     right: 15%;
-    &:after, &:before {
+    &:after,
+    &:before {
       top: 70%;
       animation-delay: 2s;
     }
   }
   &--right {
     right: 7%;
-    &:after, &:before {
+    &:after,
+    &:before {
       top: 50%;
       animation-delay: 1s;
     }
@@ -172,7 +184,9 @@ body {
 }
 
 @keyframes volume {
-  100% {top: 15%;}
+  100% {
+    top: 15%;
+  }
 }
 
 @keyframes starter {
@@ -182,6 +196,10 @@ body {
 }
 
 @keyframes disk {
-  0% { transform: translateY(-50%) skew(1.5deg) rotate(0);}
-  100% { transform: translateY(-50%) skew(-1.5deg) rotate(360deg);}
+  0% {
+    transform: translateY(-50%) skew(1.5deg) rotate(0);
+  }
+  100% {
+    transform: translateY(-50%) skew(-1.5deg) rotate(360deg);
+  }
 }

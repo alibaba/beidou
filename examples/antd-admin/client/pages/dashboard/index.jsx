@@ -16,40 +16,38 @@ import './index.less';
 const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
 
 export default class RouteView extends View {
-    static defaultProps = {
-      title: 'dashboard',
-      asset: 'main',
-    }
+  static defaultProps = {
+    title: 'dashboard',
+    asset: 'main',
+  };
 
-    static async getStore({ ctx }) {
-      const store = configureStore(reducers, saga);
-      const users = await ctx.service.user.findAll();
-      store.dispatch(actions.user.fetchSuccess(users));
-      return store;
-    }
+  static async getStore({ ctx }) {
+    const store = configureStore(reducers, saga);
+    const users = await ctx.service.user.findAll();
+    store.dispatch(actions.user.fetchSuccess(users));
+    return store;
+  }
 
-    static getPartial({ store, ctx }) {
-      const props = {};
-      if (ctx && ctx.url) {
-        props.location = ctx.url;
-        props.context = {
-          location: {
-            pathname: ctx.pathname,
-          },
-        };
-      }
-      const html = (
-        <Provider store={store}>
-          <Router {...props}>
-            <Layout>
-              {routes}
-            </Layout>
-          </Router>
-        </Provider>
-      );
-
-      return { html };
+  static getPartial({ store, ctx }) {
+    const props = {};
+    if (ctx && ctx.url) {
+      props.location = ctx.url;
+      props.context = {
+        location: {
+          pathname: ctx.pathname,
+        },
+      };
     }
+    const html = (
+      <Provider store={store}>
+        <Router {...props}>
+          <Layout>{routes}</Layout>
+        </Router>
+      </Provider>
+    );
+
+    return { html };
+  }
 }
 
 /**
@@ -61,9 +59,7 @@ if (__CLIENT__) {
   const app = (
     <Provider store={store}>
       <Router>
-        <Layout>
-          {routes}
-        </Layout>
+        <Layout>{routes}</Layout>
       </Router>
     </Provider>
   );
@@ -71,8 +67,5 @@ if (__CLIENT__) {
   // run saga
   run();
 
-  ReactDOM.hydrate(
-    app,
-    document.getElementById('container')
-  );
+  ReactDOM.hydrate(app, document.getElementById('container'));
 }

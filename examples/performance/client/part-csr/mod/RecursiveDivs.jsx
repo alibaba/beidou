@@ -12,7 +12,9 @@ export default class RecursiveDivs extends React.Component {
 
     const children = [];
     for (let i = 0; i < breadth; i++) {
-      children.push(<RecursiveDivs key={i} depth={depth - 1} breadth={breadth} />);
+      children.push(
+        <RecursiveDivs key={i} depth={depth - 1} breadth={breadth} />
+      );
     }
     return <div>{children}</div>;
   }

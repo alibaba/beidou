@@ -15,7 +15,6 @@ function* mySaga() {
 
 export default mySaga;
 
-
 // entry point
 export const run = () => {
   sagaMiddleware.run(mySaga);

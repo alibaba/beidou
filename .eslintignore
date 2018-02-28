@@ -1,12 +1,15 @@
-example/.node-diamone-client-cache
-example/debug
-example/logs
-examples/**/build/
-lib/plugins/**/app/proxy
-packages/*/test
-packages/*/node_modules/
+
+node_modules
 packages/*/coverage/
+packages/*/test
+!packages/*/test/**/*.test.js
 packages/beidou-docs/
-examples/with-rax/client/
-examples/with-rax-redux/client/
-examples/with-rax-redux/app/views/
+.isomorphic
+.stats.json
+
+# Different from .prettierignore
+examples/*/build/
+examples/*/logs/
+examples/*/run/
+examples/*/client/
+examples/*/app/views/

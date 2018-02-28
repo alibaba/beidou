@@ -27,7 +27,13 @@ module.exports = ({ Service }) => {
     }
 
     async create(name, nickName, isMale, age, phone, email, address) {
-      const avatar = Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', name.substr(0, 1));
+      const avatar = Mock.Random.image(
+        '100x100',
+        Mock.Random.color(),
+        '#757575',
+        'png',
+        name.substr(0, 1)
+      );
       const createTime = moment().format('YY/MM HH:mm:ss');
       const password = 'admin';
       const username = name;

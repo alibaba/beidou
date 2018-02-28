@@ -67,7 +67,7 @@ describe('test/router.test.js', () => {
     });
   });
 
-  describe('set `router.root = \'/about\'`', () => {
+  describe("set `router.root = '/about'`", () => {
     let app;
     before((done) => {
       app = mm.cluster({
@@ -89,7 +89,6 @@ describe('test/router.test.js', () => {
         .get('/about')
         .expect(404, done);
     });
-
 
     it('should response ok for path /', (done) => {
       request(app.callback())
@@ -114,11 +113,9 @@ describe('test/router.test.js', () => {
         .get('/foo/bar')
         .expect(200, done);
     });
-
-
   });
 
-  describe('set `router.urlPrefix = \'/about\'`', () => {
+  describe("set `router.urlPrefix = '/about'`", () => {
     let app;
     before((done) => {
       app = mm.cluster({
@@ -140,7 +137,6 @@ describe('test/router.test.js', () => {
         .get('/')
         .expect(404, done);
     });
-
 
     it('should response 404 for path /bar', (done) => {
       request(app.callback())
@@ -167,7 +163,7 @@ describe('test/router.test.js', () => {
     });
   });
 
-  describe('set `router.exclude = \'*-*\'`', () => {
+  describe("set `router.exclude = '*-*'`", () => {
     let app;
     before((done) => {
       app = mm.cluster({
@@ -197,7 +193,7 @@ describe('test/router.test.js', () => {
     });
   });
 
-  describe('set `router.mapping = { about: \'get\', login: [\'get\', \'post\']}`', () => {
+  describe("set `router.mapping = { about: 'get', login: ['get', 'post']}`", () => {
     let app;
     before((done) => {
       app = mm.cluster({

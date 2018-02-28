@@ -5,23 +5,25 @@ const helper = require('egg-scripts/lib/helper');
 /**
  * @param {Number} time - sleep time in seconds
  */
-function sleep (time) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve()
+function sleep(time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
     }, time * 1000);
-  })
+  });
 }
 
 exports.cleanup = async function (baseDir) {
-  const processList = await helper.findNodeProcess(x => x.cmd.includes(`"baseDir":"${baseDir}"`));
+  const processList = await helper.findNodeProcess(x =>
+    x.cmd.includes(`"baseDir":"${baseDir}"`)
+  );
 
   if (processList.length) {
     console.log(`cleanup: ${processList.length} to kill`);
     for (const item of processList) {
       const pid = item.pid;
       const cmd = item.cmd;
-      let type = 'unknown: ' + cmd;
+      let type = `unknown: ${cmd}`;
       if (cmd.includes('start-cluster')) {
         type = 'master';
       } else if (cmd.includes('app_worker.js')) {
@@ -34,7 +36,9 @@ exports.cleanup = async function (baseDir) {
         process.kill(pid, type === 'master' ? '' : 'SIGKILL');
         console.log(`cleanup ${type} ${pid}`);
       } catch (err) {
-        console.log(`cleanup ${type} ${pid} got error ${err.code || err.message || err}`);
+        console.log(
+          `cleanup ${type} ${pid} got error ${err.code || err.message || err}`
+        );
         if (err.code !== 'ESRCH') {
           throw err;
         }

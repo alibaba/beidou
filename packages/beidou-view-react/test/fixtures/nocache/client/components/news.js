@@ -1,4 +1,3 @@
-
 const React = require('react');
 
 class News extends React.Component {
@@ -11,7 +10,6 @@ class News extends React.Component {
   render() {
     return <div>{this.props.data.name}</div>;
   }
-
-};
+}
 
 module.exports = News;

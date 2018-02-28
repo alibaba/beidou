@@ -1,4 +1,4 @@
-@import "~client/themes/vars";
+@import '~client/themes/vars';
 
 .sider {
   width: 224px;
@@ -31,7 +31,7 @@
     }
 
     .ant-menu-root {
-      height: ~"calc(100vh - 144px)";
+      height: ~'calc(100vh - 144px)';
       overflow-x: hidden;
       border-right: none;
 
@@ -61,7 +61,6 @@
       }
     }
   }
-  
 
   .logo {
     text-align: center;
@@ -129,21 +128,32 @@
   }
 
   &.fold {
-      width: 42px;
+    width: 42px;
 
-      .logo {
-        img {
-          width: 28px;
-          margin: 6px 7px;
-        }
+    .logo {
+      img {
+        width: 28px;
+        margin: 6px 7px;
       }
+    }
 
-      :global {
-        .ant-menu-root {
-          width: 100%;
-          overflow: visible;
+    :global {
+      .ant-menu-root {
+        width: 100%;
+        overflow: visible;
 
-          & > .ant-menu-item {
+        & > .ant-menu-item {
+          padding: 0 0 !important;
+          text-align: center;
+
+          .anticon {
+            font-size: 14px;
+            margin-right: 0;
+          }
+        }
+
+        & > .ant-menu-submenu {
+          & > .ant-menu-submenu-title {
             padding: 0 0 !important;
             text-align: center;
 
@@ -151,24 +161,13 @@
               font-size: 14px;
               margin-right: 0;
             }
-          }
 
-          & > .ant-menu-submenu {
-            & > .ant-menu-submenu-title {
-              padding: 0 0 !important;
-              text-align: center;
-
-              .anticon {
-                font-size: 14px;
-                margin-right: 0;
-              }
-
-              &::after {
-                display: none;
-              }
+            &::after {
+              display: none;
             }
           }
         }
+      }
     }
 
     .main {

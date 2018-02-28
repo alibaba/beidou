@@ -11,4 +11,3 @@ module.exports = {
     env: ['local', 'unittest', 'prod'],
   },
 };
-

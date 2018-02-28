@@ -5,8 +5,8 @@ module.exports = function (appInfo) {
     react: {
       beautify: true,
       assetHost: '//test.cdn.com',
-      assetPath: '/version'
-    }
+      assetPath: '/version',
+    },
   };
   return exports;
 };

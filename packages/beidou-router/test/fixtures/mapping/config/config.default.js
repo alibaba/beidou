@@ -8,8 +8,8 @@ module.exports = function () {
       login: ['get', 'post'],
       user: {
         ':id': 'get',
-      }
+      },
     },
-  }
+  };
   return exports;
 };

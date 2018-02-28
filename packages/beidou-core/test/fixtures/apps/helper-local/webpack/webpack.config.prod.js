@@ -13,10 +13,10 @@ const prodConfig = extend(true, {}, config, {
       __DEVELOPMENT__: false,
       __DEVTOOLS__: false,
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production'),
       },
-    })
-  ])
+    }),
+  ]),
 });
 
 module.exports = prodConfig;

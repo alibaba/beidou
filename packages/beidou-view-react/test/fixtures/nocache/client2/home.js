@@ -9,9 +9,9 @@ module.exports = (props) => {
   const Provider = ReactRedux.Provider;
   return (
     <Layout data={props}>
-      <Provider store={ props.store }>
+      <Provider store={props.store}>
         <Container />
       </Provider>
     </Layout>
   );
-}
+};

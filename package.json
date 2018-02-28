@@ -23,9 +23,7 @@
     "lerna": "^2.0.0",
     "lerna-changelog": "^0.5.0",
     "lint-staged": "^4.0.0",
-    "prettier": "^1.9.2",
-    "should": "^6.0.3",
-    "supertest": "^1.2.0"
+    "prettier": "^1.11.0"
   },
   "engines": {
     "node": ">= 8.0.0"
@@ -37,8 +35,15 @@
     }
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "eslint --fix", "git add"],
-    "*.{json,css,scss,md}": ["prettier --write", "git add"]
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,css,scss,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": "https://github.com/alibaba/beidou"
 }

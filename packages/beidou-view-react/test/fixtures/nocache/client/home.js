@@ -10,10 +10,10 @@ module.exports = React.createClass({
     const Provider = ReactRedux.Provider;
     return (
       <Layout data={this.props}>
-        <Provider store={ this.props.store }>
+        <Provider store={this.props.store}>
           <Container />
         </Provider>
       </Layout>
     );
-  }
+  },
 });

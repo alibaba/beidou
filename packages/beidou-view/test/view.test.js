@@ -6,13 +6,19 @@ const mock = require('egg-mock');
 
 const utils = require('../lib/utils');
 const BaseView = require('../index');
+
 const framework = path.join(__dirname, '../../beidou-core/');
 
 describe('test/view.test.js', () => {
   it('utils', () => {
     const { concatUrl } = utils;
-    assert(concatUrl('http://beidou.net', 'docs', 'quickstart') === 'http://beidou.net/docs/quickstart');
-    assert(concatUrl('/root/', '/docs/', '/quickstart/') === '/root/docs/quickstart/');
+    assert(
+      concatUrl('http://beidou.net', 'docs', 'quickstart') ===
+        'http://beidou.net/docs/quickstart'
+    );
+    assert(
+      concatUrl('/root/', '/docs/', '/quickstart/') === '/root/docs/quickstart/'
+    );
   });
 
   describe('Base view', () => {
@@ -21,12 +27,12 @@ describe('test/view.test.js', () => {
     before(() => {
       app = mock.app({
         baseDir: './base-app',
-        framework
+        framework,
       });
     });
     after(() => {
       app.close();
-    })
+    });
 
     it('class exist', () => {
       assert(BaseView);
@@ -37,7 +43,14 @@ describe('test/view.test.js', () => {
         beautify: true,
         cache: false,
         doctype: '<!DOCTYPE html>',
-        middlewares: ['cache', 'redux', 'partial', 'mock', 'doctype', 'beautify']
+        middlewares: [
+          'cache',
+          'redux',
+          'partial',
+          'mock',
+          'doctype',
+          'beautify',
+        ],
       });
 
       return view;
@@ -45,7 +58,7 @@ describe('test/view.test.js', () => {
 
     it('render', async () => {
       const ctx = app.mockContext();
-      let view = getView(ctx);
+      const view = getView(ctx);
 
       assert(view.ctx === ctx);
 
@@ -55,14 +68,17 @@ describe('test/view.test.js', () => {
         assert(e instanceof Error);
       }
 
-      BaseView.prototype.renderElement = function() {
+      BaseView.prototype.renderElement = function () {
         return 'test string';
-      }
+      };
 
-      const indexPath = path.join(__dirname, 'fixtures/base-app/client/index.jsx');
+      const indexPath = path.join(
+        __dirname,
+        'fixtures/base-app/client/index.jsx'
+      );
       const result = await view.render(indexPath, { ctx });
       // See fixture/base-app/app/view-middlewares/mock.js
-      assert('mock data' === result);
+      assert(result === 'mock data');
     });
 
     it('asset helper', () => {
@@ -86,5 +102,4 @@ describe('test/view.test.js', () => {
       assert(url === 'http://127.0.0.1/build/index.js');
     });
   });
-
 });

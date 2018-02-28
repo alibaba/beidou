@@ -15,7 +15,7 @@ class App extends Component {
       setTimeout(() => {
         resolve({ ctx, request });
       }, 500);
-    })
+    });
   }
 
   static async getPartial({ store }) {
@@ -24,7 +24,7 @@ class App extends Component {
     return await new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({
-          html: (<Text>Partial render</Text>),
+          html: <Text>Partial render</Text>,
         });
       }, 500);
     });
@@ -42,7 +42,7 @@ class App extends Component {
         <Text style={styles.appIntro}>
           To get started, edit src/App.js and save to reload.
         </Text>
-        <View dangerouslySetInnerHTML={{__html: html}} />
+        <View dangerouslySetInnerHTML={{ __html: html }} />
       </View>
     );
   }

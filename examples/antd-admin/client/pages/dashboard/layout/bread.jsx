@@ -20,30 +20,30 @@ const Bread = ({ className, menus, location }) => {
     return [];
   };
 
-
   const breadItems = map(menus);
   const breads = breadItems.map((item, key) => {
     const content = (
-      <span>{item.icon
-        ? <Icon type={item.icon} style={{ marginRight: 4 }} />
-        : ''}{item.name}</span>
+      <span>
+        {item.icon ? <Icon type={item.icon} style={{ marginRight: 4 }} /> : ''}
+        {item.name}
+      </span>
     );
     return (
       <Breadcrumb.Item key={key}>
-        {((menus.length - 1) !== key && item.route)
-          ? <Link to={location.pathname !== item.route ? item.route : '#'}>
+        {menus.length - 1 !== key && item.route ? (
+          <Link to={location.pathname !== item.route ? item.route : '#'}>
             {content}
           </Link>
-          : content}
+        ) : (
+          content
+        )}
       </Breadcrumb.Item>
     );
   });
 
   return (
     <div className={cx(className, 'bread')}>
-      <Breadcrumb>
-        {breads}
-      </Breadcrumb>
+      <Breadcrumb>{breads}</Breadcrumb>
     </div>
   );
 };

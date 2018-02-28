@@ -6,9 +6,13 @@ class App extends Component {
   render() {
     return (
       <View>
-        <Text style={{
-          fontSize: 2,
-        }}>Rax demo in `views` directory</Text>
+        <Text
+          style={{
+            fontSize: 2,
+          }}
+        >
+          Rax demo in `views` directory
+        </Text>
       </View>
     );
   }

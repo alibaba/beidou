@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CartItem from './CartItem';
 import { checkout, removeFromCart } from '../actions';
-import { getTotal, getCartProducts, getCheckoutError, isCheckoutPending } from '../reducers';
+import {
+  getTotal,
+  getCartProducts,
+  getCheckoutError,
+  isCheckoutPending,
+} from '../reducers';
 
 /* eslint-disable */
 
@@ -28,7 +33,14 @@ class Cart extends Component {
   };
 
   render() {
-    const { products, total, error, checkoutPending, checkout, removeFromCart } = this.props;
+    const {
+      products,
+      total,
+      error,
+      checkoutPending,
+      checkout,
+      removeFromCart,
+    } = this.props;
 
     const hasProducts = products.length > 0;
     const checkoutAllowed = hasProducts && !checkoutPending;

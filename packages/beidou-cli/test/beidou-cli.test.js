@@ -23,29 +23,31 @@ describe(`test/${path.basename(__filename)}`, () => {
     mkdirp.sync(cwd);
   });
 
-
   describe('global options', () => {
-    it('should show version', done => {
-      coffee.fork(beidouBin, ['--version'], {
-          cwd
+    it('should show version', (done) => {
+      coffee
+        .fork(beidouBin, ['--version'], {
+          cwd,
         })
         .expect('stdout', /\d+\.\d+\.\d+/)
         .expect('code', 0)
         .end(done);
     });
 
-    it('should show help', done => {
-      coffee.fork(beidouBin, ['--help'], {
-          cwd
+    it('should show help', (done) => {
+      coffee
+        .fork(beidouBin, ['--help'], {
+          cwd,
         })
         .expect('stdout', /Usage: .*beidou.* \[command] \[options]/)
         .expect('code', 0)
         .end(done);
     });
 
-    it('should show help when command not exists', done => {
-      coffee.fork(beidouBin, ['not-exists'], {
-          cwd
+    it('should show help when command not exists', (done) => {
+      coffee
+        .fork(beidouBin, ['not-exists'], {
+          cwd,
         })
         .expect('stdout', /build/)
         .expect('stdout', /cov/)
@@ -62,8 +64,9 @@ describe(`test/${path.basename(__filename)}`, () => {
 
   describe('init commands', () => {
     it('should init boilerplate project', (done) => {
-      coffee.fork(beidouBin, ['init'], {
-          cwd
+      coffee
+        .fork(beidouBin, ['init'], {
+          cwd,
         })
         .write('\n')
         .expect('code', 0)
@@ -90,20 +93,23 @@ describe(`test/${path.basename(__filename)}`, () => {
     it('should start production mode', async () => {
       app = coffee.fork(beidouBin, ['start', '--port=8080', '--cluster=1'], {
         cwd: exampleDir,
-      })
+      });
       app.expect('code', 0);
       await sleep(10);
       assert(app.stderr === '');
-      assert(app.stdout.match(/beidou-core started on http:\/\/127\.0\.0\.1:8080/));
+      assert(
+        app.stdout.match(/beidou-core started on http:\/\/127\.0\.0\.1:8080/)
+      );
     });
 
     it('should stop beidou process', (done) => {
-      coffee.fork(beidouBin, ['stop'], {
-        cwd: exampleDir,
-      })
-      .expect('stdout', /stopped/)
-      .expect('code', 0)
-      .end(done);
+      coffee
+        .fork(beidouBin, ['stop'], {
+          cwd: exampleDir,
+        })
+        .expect('stdout', /stopped/)
+        .expect('code', 0)
+        .end(done);
     });
   });
 
@@ -121,9 +127,10 @@ describe(`test/${path.basename(__filename)}`, () => {
       fs.chmodSync(dstPath, '755');
     }
 
-    it('should run beidou-build script', done => {
+    it('should run beidou-build script', (done) => {
       copyBuildFile('beidou-build');
-      coffee.fork(beidouBin, ['build'], {
+      coffee
+        .fork(beidouBin, ['build'], {
           cwd,
           env,
         })
@@ -131,9 +138,10 @@ describe(`test/${path.basename(__filename)}`, () => {
         .end(done);
     });
 
-    it('should run webpack-build script with target node', done => {
+    it('should run webpack-build script with target node', (done) => {
       copyBuildFile('webpack-build');
-      coffee.fork(beidouBin, ['build', '--target=node'], {
+      coffee
+        .fork(beidouBin, ['build', '--target=node'], {
           cwd,
           env,
         })
@@ -141,9 +149,10 @@ describe(`test/${path.basename(__filename)}`, () => {
         .end(done);
     });
 
-    it('should throw error', done => {
+    it('should throw error', (done) => {
       rimraf.sync(path.join(cwd, 'node_modules/.bin'));
-      coffee.fork(beidouBin, ['build'], {
+      coffee
+        .fork(beidouBin, ['build'], {
           cwd,
           env,
         })

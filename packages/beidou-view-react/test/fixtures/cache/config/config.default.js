@@ -6,12 +6,12 @@ module.exports = function (appInfo) {
     view: {
       defaultViewEngine: 'react',
       defaultExtension: '.jsx',
-      root: `${appInfo.baseDir}/app/views`
+      root: `${appInfo.baseDir}/app/views`,
     },
     react: {
       static: false,
       cache: true,
-    }
+    },
   };
   return exports;
 };

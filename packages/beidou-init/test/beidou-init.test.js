@@ -19,29 +19,31 @@ describe('test/beidou-init.test.js', () => {
     mkdirp.sync(cwd);
   });
 
-
   describe('global options', () => {
-    it('should show version', done => {
-      coffee.fork(beidou, ['--version'], {
-          cwd
+    it('should show version', (done) => {
+      coffee
+        .fork(beidou, ['--version'], {
+          cwd,
         })
         .expect('stdout', /\d+\.\d+\.\d+/)
         .expect('code', 0)
         .end(done);
     });
 
-    it('should show help', done => {
-      coffee.fork(beidou, ['--help'], {
-          cwd
+    it('should show help', (done) => {
+      coffee
+        .fork(beidou, ['--help'], {
+          cwd,
         })
         .expect('stdout', /Usage: .*beidou.* \[command] \[options]/)
         .expect('code', 0)
         .end(done);
     });
 
-    it('should show help when command not exists', done => {
-      coffee.fork(beidou, ['not-exists'], {
-          cwd
+    it('should show help when command not exists', (done) => {
+      coffee
+        .fork(beidou, ['not-exists'], {
+          cwd,
         })
         .expect('stdout', /init.*\n/)
         .expect('code', 0)
@@ -53,9 +55,10 @@ describe('test/beidou-init.test.js', () => {
     const beidou = require.resolve('../bin/beidou.js');
     const cwd = path.join(__dirname, 'fixtures/test-files');
 
-    it('should init boilerplate project', done => {
-      coffee.fork(beidou, ['init'], {
-          cwd
+    it('should init boilerplate project', (done) => {
+      coffee
+        .fork(beidou, ['init'], {
+          cwd,
         })
         .write('\n')
         .expect('code', 0)

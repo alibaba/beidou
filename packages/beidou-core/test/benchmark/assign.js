@@ -7,44 +7,47 @@ const utils = require('../../lib/util');
 const suite = new Benchmark.Suite();
 
 suite
-.add('Object.assign', function() {
-  const a = {};
-  const b = { a: 1, b: 2, c: 3, d: 4, e: 5};
-  Object.assign(a, b);
-})
-.add('for in', function() {
-  const a = {};
-  const b = { a: 1, b: 2, c: 3, d: 4, e: 5};
-  for (let key in b) {
-    a[key] = b[key];
-  }
-})
-.add('Object.keys', function() {
-  const a = {};
-  const b = { a: 1, b: 2, c: 3, d: 4, e: 5};
-  const keys = Object.keys(b);
-  for (var i = 0; i < keys.length; i++) {
-    const key = keys[i];
-    a[key] = b[key];
-  }
-})
-.add('utils.assign', function() {
-  const a = {};
-  const b = { a: 1, b: 2, c: 3, d: 4, e: 5};
-  utils.assign(a, b);
-})
-.on('cycle', function (event) {
-  benchmarks.add(event.target);
-})
-.on('start', function () {
-  console.log('\n  node version: %s, date: %s\n  Starting...', process.version, Date());
-})
-.on('complete', function() {
-  benchmarks.log();
-  process.exit(0);
-})
-.run({ 'async': false });
-
+  .add('Object.assign', () => {
+    const a = {};
+    const b = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+    Object.assign(a, b);
+  })
+  .add('for in', () => {
+    const a = {};
+    const b = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+    for (const key in b) {
+      a[key] = b[key];
+    }
+  })
+  .add('Object.keys', () => {
+    const a = {};
+    const b = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+    const keys = Object.keys(b);
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      a[key] = b[key];
+    }
+  })
+  .add('utils.assign', () => {
+    const a = {};
+    const b = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+    utils.assign(a, b);
+  })
+  .on('cycle', (event) => {
+    benchmarks.add(event.target);
+  })
+  .on('start', () => {
+    console.log(
+      '\n  node version: %s, date: %s\n  Starting...',
+      process.version,
+      Date()
+    );
+  })
+  .on('complete', () => {
+    benchmarks.log();
+    process.exit(0);
+  })
+  .run({ async: false });
 
 // node version: v4.2.3, date: Tue Jan 26 2016 16:52:46 GMT+0800 (CST)
 // Starting...

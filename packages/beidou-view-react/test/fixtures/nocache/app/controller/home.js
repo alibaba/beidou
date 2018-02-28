@@ -6,7 +6,7 @@ const createStore = require('../../client/store');
 
 exports.jsxtpl = async function () {
   const initState = {
-    name: 'hello world'
+    name: 'hello world',
   };
   const store = createStore(initState);
 
@@ -19,7 +19,7 @@ exports.jsxtpl = async function () {
 
 exports.jstpl = async function () {
   const initState = {
-    name: 'hello world'
+    name: 'hello world',
   };
 
   const store = createStore(initState);
@@ -35,7 +35,7 @@ exports.jstpl = async function () {
 
 exports.notFound = async function () {
   const initState = {
-    name: 'hello world'
+    name: 'hello world',
   };
 
   const store = createStore(initState);
@@ -48,7 +48,10 @@ exports.notFound = async function () {
     /*
     * in nodejs 8, name of AssertionError is: AssertionError [ERR_ASSERTION]
     */
-    if (err instanceof Error && err.message.indexOf("Can't find home/notFound from") >= 0) {
+    if (
+      err instanceof Error &&
+      err.message.indexOf("Can't find home/notFound from") >= 0
+    ) {
       this.body = 'no such file or directory';
       this.status = 404;
     }
@@ -57,7 +60,7 @@ exports.notFound = async function () {
 
 exports.notImplemented = async function () {
   const initState = {
-    name: 'hello world'
+    name: 'hello world',
   };
 
   const store = createStore(initState);
@@ -76,7 +79,7 @@ exports.notImplemented = async function () {
 
 exports.client = async function clientRender() {
   const initState = {
-    name: 'hello world'
+    name: 'hello world',
   };
 
   const store = createStore(initState);

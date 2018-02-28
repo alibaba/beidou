@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import 'babel-polyfill';
 import { Component, hydrate, createElement } from 'rax';
 import View from 'rax-view';
 import Text from 'rax-text';
@@ -135,7 +135,7 @@ class Entry extends Component {
       combineReducers({
         content,
         counter,
-      }),
+      })
     );
   }
 
@@ -160,7 +160,11 @@ class Entry extends Component {
         </head>
         <body>
           <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
-          <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__ = ${state}` }} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__INITIAL_STATE__ = ${state}`,
+            }}
+          />
           <script src={helper.asset('manifest.js')} />
           <script src={helper.asset('index.js')} />
         </body>
@@ -182,18 +186,21 @@ if (__CLIENT__) {
         counter,
       }),
       window.__INITIAL_STATE__,
-     __REDUX_DEVTOOLS_EXTENSION__(),
+      __REDUX_DEVTOOLS_EXTENSION__()
     );
   } else {
-    store = createStore(combineReducers({
-      content,
-      counter,
-    }), window.__INITIAL_STATE__);
+    store = createStore(
+      combineReducers({
+        content,
+        counter,
+      }),
+      window.__INITIAL_STATE__
+    );
   }
   hydrate(
     <Provider store={store}>
       <App />
     </Provider>,
-    document.getElementById('container'),
+    document.getElementById('container')
   );
 }

@@ -1,9 +1,13 @@
-example/.node-diamone-client-cache
-example/debug
-example/logs
-examples/**/build/
-lib/plugins/**/app/proxy
-packages/*/test
-packages/*/node_modules/
+
+node_modules
 packages/*/coverage/
+packages/*/test
+!packages/*/test/**/*.test.js
 packages/beidou-docs/
+.isomorphic
+.stats.json
+
+# Different from .eslintignore
+examples/*/build/
+examples/*/logs/
+examples/*/run/

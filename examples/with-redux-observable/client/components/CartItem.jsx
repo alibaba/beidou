@@ -9,7 +9,12 @@ export default class CartItem extends Component {
     const { price, quantity, title, onRemove } = this.props;
 
     return (
-      <Product price={price} quantity={quantity} title={title} action={<button onClick={onRemove}>{' X '}</button>} />
+      <Product
+        price={price}
+        quantity={quantity}
+        title={title}
+        action={<button onClick={onRemove}>{' X '}</button>}
+      />
     );
   }
 }

@@ -13,7 +13,16 @@ const obj2query = obj => queryString.stringify(obj);
 
 const User = ({ location, history, dispatch, user }) => {
   location.query = queryString.parse(location.search);
-  const { loading, list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = user;
+  const {
+    loading,
+    list,
+    pagination,
+    currentItem,
+    modalVisible,
+    modalType,
+    isMotion,
+    selectedRowKeys,
+  } = user;
   const { pageSize } = pagination;
 
   const modalProps = {
@@ -39,14 +48,16 @@ const User = ({ location, history, dispatch, user }) => {
     isMotion,
     onChange(page) {
       const { query, pathname } = location;
-      dispatch(history.push({
-        pathname,
-        query: {
-          ...query,
-          page: page.current,
-          pageSize: page.pageSize,
-        },
-      }));
+      dispatch(
+        history.push({
+          pathname,
+          query: {
+            ...query,
+            page: page.current,
+            pageSize: page.pageSize,
+          },
+        })
+      );
     },
     onDeleteItem(item) {
       dispatch(actions.user.delete(item));
@@ -62,7 +73,7 @@ const User = ({ location, history, dispatch, user }) => {
     },
     rowSelection: {
       selectedRowKeys,
-      onChange: (keys) => {
+      onChange: keys => {
         dispatch({
           type: 'user/updateState',
           payload: {
@@ -89,15 +100,17 @@ const User = ({ location, history, dispatch, user }) => {
       });
     },
     onSearch(fieldsValue) {
-      fieldsValue.keyword.length ? history.push({
-        pathname: '/user',
-        search: obj2query({
-          field: fieldsValue.field,
-          keyword: fieldsValue.keyword,
-        }),
-      }) : history.push({
-        pathname: '/user',
-      });
+      fieldsValue.keyword.length
+        ? history.push({
+            pathname: '/user',
+            search: obj2query({
+              field: fieldsValue.field,
+              keyword: fieldsValue.keyword,
+            }),
+          })
+        : history.push({
+            pathname: '/user',
+          });
     },
     onAdd() {
       dispatch(actions.user.showModal('create'));
@@ -119,17 +132,22 @@ const User = ({ location, history, dispatch, user }) => {
   return (
     <Page inner>
       <Filter {...filterProps} />
-      {
-        selectedRowKeys.length > 0 &&
+      {selectedRowKeys.length > 0 && (
         <Row style={{ marginBottom: 24, textAlign: 'right', fontSize: 13 }}>
           <Col>
             {`Selected ${selectedRowKeys.length} items `}
-            <Popconfirm title={'Are you sure delete these items?'} placement="left" onConfirm={handleDeleteItems}>
-              <Button type="primary" size="large" style={{ marginLeft: 8 }}>Remove</Button>
+            <Popconfirm
+              title={'Are you sure delete these items?'}
+              placement="left"
+              onConfirm={handleDeleteItems}
+            >
+              <Button type="primary" size="large" style={{ marginLeft: 8 }}>
+                Remove
+              </Button>
             </Popconfirm>
           </Col>
         </Row>
-      }
+      )}
       <List {...listProps} />
       {modalVisible && <Modal {...modalProps} />}
     </Page>

@@ -27,45 +27,49 @@ const suite = new Benchmark.Suite();
 
 suite
 
-.add('new ContextLogger(name, ctx).info()', function() {
-  const log = new ContextLogger('logger', ctx);
-  log.info('foo %s, now %d, oaoaoa', 'bar', 123);
-})
-.add('ctx.logger.paddingMessage', function() {
-  const paddingMessage = ctx.logger.paddingMessage;
-})
-.add('ctx.logger.info()', function() {
-  ctx.logger.info('foo %s, now %d, oaoaoa', 'bar', 123);
-})
-.add('logger.info()', function() {
-  logger.info('foo %s, now %d, oaoaoa', 'bar', 123);
-})
-.add('ctx.coreLogger.info()', function() {
-  ctx.coreLogger.info('foo %s, now %d, oaoaoa', 'bar', 123);
-})
+  .add('new ContextLogger(name, ctx).info()', () => {
+    const log = new ContextLogger('logger', ctx);
+    log.info('foo %s, now %d, oaoaoa', 'bar', 123);
+  })
+  .add('ctx.logger.paddingMessage', () => {
+    const paddingMessage = ctx.logger.paddingMessage;
+  })
+  .add('ctx.logger.info()', () => {
+    ctx.logger.info('foo %s, now %d, oaoaoa', 'bar', 123);
+  })
+  .add('logger.info()', () => {
+    logger.info('foo %s, now %d, oaoaoa', 'bar', 123);
+  })
+  .add('ctx.coreLogger.info()', () => {
+    ctx.coreLogger.info('foo %s, now %d, oaoaoa', 'bar', 123);
+  })
 
-.add('ctx.logger.warn()', function() {
-  ctx.logger.warn('logger warn foo %s, now %d, oaoaoa', 'bar', 123);
-})
-.add('ctx.coreLogger.warn()', function() {
-  ctx.coreLogger.warn('coreLogger warn foo %s, now %d, oaoaoa', 'bar', 123);
-})
+  .add('ctx.logger.warn()', () => {
+    ctx.logger.warn('logger warn foo %s, now %d, oaoaoa', 'bar', 123);
+  })
+  .add('ctx.coreLogger.warn()', () => {
+    ctx.coreLogger.warn('coreLogger warn foo %s, now %d, oaoaoa', 'bar', 123);
+  })
 
-.add('ctx.logger.error()', function() {
-  ctx.logger.error(err);
-})
-.add('ctx.coreLogger.error()', function() {
-  ctx.coreLogger.error(err);
-})
+  .add('ctx.logger.error()', () => {
+    ctx.logger.error(err);
+  })
+  .add('ctx.coreLogger.error()', () => {
+    ctx.coreLogger.error(err);
+  })
 
-.on('cycle', function (event) {
-  benchmarks.add(event.target);
-})
-.on('start', function () {
-  console.log('\n  node version: %s, date: %s\n  Starting...', process.version, Date());
-})
-.on('complete', function() {
-  benchmarks.log();
-  process.exit(0);
-})
-.run({ 'async': false });
+  .on('cycle', (event) => {
+    benchmarks.add(event.target);
+  })
+  .on('start', () => {
+    console.log(
+      '\n  node version: %s, date: %s\n  Starting...',
+      process.version,
+      Date()
+    );
+  })
+  .on('complete', () => {
+    benchmarks.log();
+    process.exit(0);
+  })
+  .run({ async: false });

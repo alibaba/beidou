@@ -10,7 +10,8 @@ const initialState = {
   },
   sales: [],
   quote: {
-    avatar: 'http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236',
+    avatar:
+      'http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236',
   },
   numbers: [],
   recentSales: [],
@@ -19,22 +20,26 @@ const initialState = {
   browser: [],
   cpu: {},
   user: {
-    avatar: 'http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236',
+    avatar:
+      'http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236',
   },
   loading: false,
 };
 
-export default handleActions({
-  '@@init': state => ({
-    state,
-    ...initialState,
-  }),
-  [actions.dashboard.fetchSuccess]: (state, { payload: { dashboard } }) => ({
-    ...state,
-    ...dashboard,
-  }),
-  [actions.common.toggleTheme]: (state, { payload: { theme } }) => ({
-    ...state,
-    theme,
-  }),
-}, initialState);
+export default handleActions(
+  {
+    '@@init': state => ({
+      state,
+      ...initialState,
+    }),
+    [actions.dashboard.fetchSuccess]: (state, { payload: { dashboard } }) => ({
+      ...state,
+      ...dashboard,
+    }),
+    [actions.common.toggleTheme]: (state, { payload: { theme } }) => ({
+      ...state,
+      theme,
+    }),
+  },
+  initialState
+);

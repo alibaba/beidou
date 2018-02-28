@@ -1,4 +1,3 @@
-
 module.exports = (app) => {
   // restful api
   const rest = app.controller.rest;
@@ -10,5 +9,10 @@ module.exports = (app) => {
   app.router.post('login', '/api/login', app.controller.login.doLogin);
   app.router.get('login', '/login', app.controller.login.login);
   app.router.get('logout', '/logout', app.controller.login.logout);
-  app.router.get('routes', '/*', app.role.can('user'), app.controller.routes.show);
+  app.router.get(
+    'routes',
+    '/*',
+    app.role.can('user'),
+    app.controller.routes.show
+  );
 };

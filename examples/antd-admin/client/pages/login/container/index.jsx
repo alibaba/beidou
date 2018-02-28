@@ -9,17 +9,10 @@ import logo from '../../../assets/logo.png';
 const cx = classNames.bind(style);
 const FormItem = Form.Item;
 
-
 const Login = ({
   dispatch,
-  form: {
-    getFieldDecorator,
-    validateFieldsAndScroll,
-  },
-  message: {
-    error,
-    text,
-  },
+  form: { getFieldDecorator, validateFieldsAndScroll },
+  message: { error, text },
   loading,
   logined,
 }) => {
@@ -46,7 +39,13 @@ const Login = ({
                 required: true,
               },
             ],
-          })(<Input size="large" onPressEnter={handleOk} placeholder="Username" />)}
+          })(
+            <Input
+              size="large"
+              onPressEnter={handleOk}
+              placeholder="Username"
+            />
+          )}
         </FormItem>
         <FormItem hasFeedback>
           {getFieldDecorator('password', {
@@ -55,10 +54,23 @@ const Login = ({
                 required: true,
               },
             ],
-          })(<Input size="large" type="password" onPressEnter={handleOk} placeholder="Password" />)}
+          })(
+            <Input
+              size="large"
+              type="password"
+              onPressEnter={handleOk}
+              placeholder="Password"
+            />
+          )}
         </FormItem>
         <Row>
-          <Button type="primary" size="large" loading={loading} onClick={handleOk} disabled={logined}>
+          <Button
+            type="primary"
+            size="large"
+            loading={loading}
+            onClick={handleOk}
+            disabled={logined}
+          >
             {logined ? 'Login Successfully' : 'Sign in'}
           </Button>
           <p className={cx({ error })}>{text}</p>
@@ -67,27 +79,27 @@ const Login = ({
             <span>Password：admin</span>
           </p>
         </Row>
-
       </form>
     </div>
   );
 };
 
-
-export default connect(state => state)(Form.create({
-  onFieldsChange(props, changedFields) {
-    props.dispatch(actions.fieldChange(changedFields));
-  },
-  mapPropsToFields(props) {
-    return {
-      username: Form.createFormField({
-        ...props.username,
-        value: props.username.value,
-      }),
-      password: Form.createFormField({
-        ...props.password,
-        value: props.password.value,
-      }),
-    };
-  },
-})(Login));
+export default connect(state => state)(
+  Form.create({
+    onFieldsChange(props, changedFields) {
+      props.dispatch(actions.fieldChange(changedFields));
+    },
+    mapPropsToFields(props) {
+      return {
+        username: Form.createFormField({
+          ...props.username,
+          value: props.username.value,
+        }),
+        password: Form.createFormField({
+          ...props.password,
+          value: props.password.value,
+        }),
+      };
+    },
+  })(Login)
+);

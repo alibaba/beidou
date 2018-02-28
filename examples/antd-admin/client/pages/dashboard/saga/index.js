@@ -23,7 +23,6 @@ function* createUser({ payload: { data } }) {
   }
 }
 
-
 function* deleteUser({ payload: { user } }) {
   yield axios.delete(`user/${user._id}`);
   yield put(actions.user.deleteFromList(user));

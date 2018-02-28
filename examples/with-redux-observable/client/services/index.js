@@ -11,7 +11,7 @@ const MAX_CHECKOUT = 2; // max different items
 
 export const api = {
   getProducts() {
-    return new Observable((observer) => {
+    return new Observable(observer => {
       const timerId = setTimeout(() => {
         observer.next(_products);
         observer.complete();
@@ -21,10 +21,14 @@ export const api = {
   },
 
   buyProducts(cart) {
-    return new Observable((observer) => {
+    return new Observable(observer => {
       const timerId = setTimeout(() => {
-        if (Object.keys(cart.quantityById).length <= MAX_CHECKOUT) observer.next(cart);
-        else observer.error(`You can buy ${MAX_CHECKOUT} items at maximum in a checkout`);
+        if (Object.keys(cart.quantityById).length <= MAX_CHECKOUT)
+          observer.next(cart);
+        else
+          observer.error(
+            `You can buy ${MAX_CHECKOUT} items at maximum in a checkout`
+          );
         observer.complete();
       }, TIMEOUT);
 

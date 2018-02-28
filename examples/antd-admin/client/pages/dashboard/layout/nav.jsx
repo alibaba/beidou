@@ -11,7 +11,7 @@ const SubMenu = Menu.SubMenu;
 
 const Nav = ({ siderFolded, onFade, location }) => (
   <div className={cx('header')}>
-    <div className={cx('button', 'fold-btn')} onClick={onFade} >
+    <div className={cx('button', 'fold-btn')} onClick={onFade}>
       <Icon type={siderFolded ? 'menu-unfold' : 'menu-fold'} />
     </div>
     <Popover
@@ -33,17 +33,21 @@ const Nav = ({ siderFolded, onFade, location }) => (
           style={{
             float: 'right',
           }}
-          title={(
+          title={
             <span>
               <Icon type="user" />
               Gray
             </span>
-          )}
+          }
         >
-          <Menu.Item
-            key="logout"
-          >
-            <a href={`/logout?r=${encodeURIComponent(location.pathname + location.search)}`}>Sign out</a>
+          <Menu.Item key="logout">
+            <a
+              href={`/logout?r=${encodeURIComponent(
+                location.pathname + location.search
+              )}`}
+            >
+              Sign out
+            </a>
           </Menu.Item>
         </SubMenu>
       </Menu>

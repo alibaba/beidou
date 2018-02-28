@@ -12,7 +12,7 @@ const cx = classNames.bind(style);
 class Layout extends React.Component {
   static contextTypes = {
     router: PropTypes.object.isRequired,
-  }
+  };
   constructor() {
     super();
     this.state = {
@@ -24,7 +24,7 @@ class Layout extends React.Component {
     this.setState({
       siderFolded: !this.state.siderFolded,
     });
-  }
+  };
   render() {
     const { children } = this.props;
     const { siderFolded } = this.state;
@@ -40,15 +40,9 @@ class Layout extends React.Component {
             onFade={this.handleFad}
             location={location}
           />
-          <Bread
-            className={cx('bread')}
-            menus={config}
-            location={location}
-          />
+          <Bread className={cx('bread')} menus={config} location={location} />
           <div className={cx('container')}>
-            <div className={cx('content')}>
-              {children}
-            </div>
+            <div className={cx('content')}>{children}</div>
           </div>
         </div>
       </div>

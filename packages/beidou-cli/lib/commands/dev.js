@@ -1,12 +1,12 @@
 'use strict';
 
 const { DevCommand } = require('egg-bin');
+const { getArgvWithDefaultConfig } = require('../helper');
 
 module.exports = class DevCMD extends DevCommand {
   constructor(rawArgv) {
-    rawArgv.push('--framework=beidou-core');
-    super(rawArgv);
+    const argv = getArgvWithDefaultConfig(rawArgv);
+    super(argv);
     this.usage = 'Usage: beidou dev [dir] [options]';
-    this.defaultPort = 6001;
   }
 };

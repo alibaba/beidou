@@ -11,8 +11,12 @@ module.exports = (props) => {
       </head>
       <body>
         <div id="container" dangerouslySetInnerHTML={{ __html: contentStr }} />
-        <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__=${props.state}` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__INITIAL_STATE__=${props.state}`,
+          }}
+        />
       </body>
     </html>
   );
-}
+};
