@@ -8,7 +8,6 @@
 *.log
 *.stats.json
 coverage
-examples/**/build
 examples/*/build/
 examples/*/debug
 examples/*/logs
