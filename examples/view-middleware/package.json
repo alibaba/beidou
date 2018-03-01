@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-view-middleware",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.5",
   "description": "Beidou example view middleware",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou-cli": "^0.0.4",
-    "beidou-core": "^1.0.0-alpha.4",
+    "beidou-cli": "^1.0.0-alpha.5",
+    "beidou-core": "^1.0.0-alpha.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
