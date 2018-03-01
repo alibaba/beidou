@@ -60,7 +60,7 @@ if `process.env.NODE_DEBUG_OPTION` is provided (WebStorm etc), will use it as de
 Init beidou boilerplate project
 
 ```bash
-$ beidou dev
+$ beidou init
 ```
 
 #### Choose boilerplate

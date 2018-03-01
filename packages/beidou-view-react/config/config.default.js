@@ -11,8 +11,6 @@ module.exports = appInfo => ({
     middlewares: ['cache', 'redux', 'partial', 'render', 'doctype', 'beautify'],
     beautify: false,
     cache: true,
-    // loadPath: `${appInfo.baseDir}/client`,
-    // clientPath: `${appInfo.baseDir}/client`,
 
     /**
      * Use `renderToStaticMarkup` if true, otherwise `renderToString`

@@ -1,45 +1,47 @@
-Directory Layout
----
+# Directory Layout
 
 Before you start, take a moment to see how the project structure looks like:
 
 ```bash
-beidou-project
+. helloweb
 ├── package.json
 ├── app.js (optional)
 ├── agent.js (optional)
-├── app
-|   ├── router.js (optional)
-│   ├── controller (optional)
-│   |   └── home.js
+├── app (应用代码目录)
+|   ├── router.js
+│   ├── controller
+│   │   └── home.js
+|   ├── extend (optional，extends Beidou.Application)
+│   |   ├── helper.js (optional)
+│   |   ├── filter.js (optional)
+│   |   ├── request.js (optional)
+│   |   ├── response.js (optional)
+│   |   ├── context.js (optional)
+│   |   ├── application.js (optional)
+│   |   └── agent.js (optional)
+│   ├── proxy (optional)
+|   ├── public (optional)
+|   |   ├── favicon.ico
+|   |   └── ...
 │   ├── service (optional)
-│   |   └── user.js
 │   ├── middleware (optional)
-│   |   └── response_time.js
-│   ├── schedule (optional)
-│   |   └── my_task.js
-│   ├── public (optional)
-│   |   └── reset.css
-│   ├── view (optional)
-│   |   └── home.tpl
-│   └── extend (optional)
-│       ├── helper.js
-│       ├── request.js
-│       ├── response.js
-│       ├── context.js
-│       ├── application.js
-│       └── agent.js
-├── config
-|   ├── plugin.js
+│   │   └── response_time.js
+│   └── views (optional)
+|       ├── layout.html
+│       └── home.html
+├── config (application config dir)
 |   ├── config.default.js
 │   ├── config.prod.js
 |   ├── config.test.js (optional)
 |   ├── config.local.js (optional)
-|   └── config.unittest.js (optional)
-├── client
+|   ├── config.unittest.js (optional)
+│   ├── plugin.js
+│   └── role.js (optional,role plugin for example,special config could save in this dir)
+│   └── webpack.config.js (optional, custom webpack config)
+├── client (客户端代码目录)
 |   ├── index.jsx
 |   └── page/index.jsx
-└── test
+└── test (测试目录)
     ├── middleware
     |   └── response_time.test.js
     └── controller
@@ -60,7 +62,6 @@ As above, directories by conventions of framework:
 - `config/plugin.js` used to configure the plugins that need to be loaded, see [Plugin](../advanced/plugin.md) for details.
 - `test/**` used for unit test, see [Unit Test](../core/unittest.md) for details.
 - `app.js` and `agent.js` are used to customize the initialization works at startup, see [Application Startup Configuration](../basic/app-start.md) for details. For the role of `agent.js` see [Agent Mechanism](../core/cluster-and-ipc.md#agent-mechanism).
-
 
 **To customize your own directory specification, see [Loader API](../advanced/loader.md)**
 

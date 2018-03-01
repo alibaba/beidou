@@ -1,13 +1,12 @@
-Prepare Environment
----
+# Prepare Environment
 
-## operating system
+## Operating system
 
 * OSX
 * Linux
 * Windows(not recommended)
 
-## install Node
+## Install Node
 
 recommended to select the latest[LTS version](https://nodejs.org/en/)(Long Term Support)。
 
@@ -19,10 +18,3 @@ $ source ~/.nvm/nvm.sh
 $ nvm install v8.9.1
 $ nvm alias default 8
 ```
-
-#### install beidou generator 
-
-```bash  
-$ npm install beidou-init -g
-```  
-

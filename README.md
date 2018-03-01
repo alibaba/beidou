@@ -25,18 +25,20 @@
 
 ## Features
 
-* ✔︎ High performance, 2-5 times speed up
+* ✔︎ High performance, 2-5 times speedup compares to client-side rendering
 * ✔︎ Search engine optimization(SEO)
-* ✔︎ React server side rendering
-* ✔︎ ES6/ES7 supported
-* ✔︎ CSS Modules supported
+* ✔︎ ES6/ES7/ES8 supported
+* ✔︎ SCSS/Sass with autoprefixer supported
 * ✔︎ Auto router supported
+* ✔︎ Extends default webpack config supported
+* ✔︎ View rendering middleware supported
+* ✔︎ User-friendly CLI tool
 * ✔︎ Lots of [plugins](./packages/beidou-docs/en/basic/plugins.md)
 
 ## How to use
 
 ```bash
-$ npm install beidou-init -g
+$ npm install beidou-cli -g
 $ beidou init
 $ npm run dev
 ```

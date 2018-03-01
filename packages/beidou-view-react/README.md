@@ -1,65 +1,140 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+# Beidou view react
 
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+Beidou react view plugin, used by `beidou-core`
 
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+## Install
 
-* [Beidou react view](#beidou-view-react-view)
-  * [Configuration](#configuration)
-  * [Usage](#usage)
-  * [API](#api)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Beidou react view
-
-> React view
-
-### Install
-
-```
+```bash
 $ npm install beidou-view-react --save
 ```
 
-### Configuration
+## Configuration
 
-* config/plugin.default.js:
+Enable plugin
 
-```
+```js
 exports.react = {
   enable: true,
   package: 'beidou-view-react',
 };
 ```
 
-* config/config.default.js
+Default configs
 
+```js
+const path = require('path');
+
+module.exports = appInfo => ({
+  /**
+   * React view options
+   * @member Config#react
+   */
+  react: {
+    // React view rendering middlewares
+    middlewares: ['cache', 'redux', 'partial', 'render', 'doctype', 'beautify'],
+    // optional, beautify HTML snippet
+    beautify: false,
+    //optional, if false, clean require cache for development usage
+    cache: true,
+    //optional, true: renderToString or false: renderToStaticMarkup
+    internals: true,
+    //optional, HTML doctype
+    doctype: '<!DOCTYPE html>',
+    assetHost: '',
+    assetPath: '',
+  },
+  view: {
+    defaultViewEngine: 'react',
+    defaultExtension: '.jsx',
+    // Isomorphic directories
+    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(
+      appInfo.baseDir,
+      'client'
+    )}`,
+  },
+});
 ```
-exports.react = {
-  beautify: false // optional, beautify HTML snippet
-    cache: true, //optional, if false, clean require cache for development usage
-    internals: true, //optional, true: renderToString or false: renderToStaticMarkup
-    doctype: '<!DOCTYPE html>', //optional, HTML doctype
-}
 
-exports.view = {
-      defaultViewEngine: 'react',
-      defaultExtension: '.jsx'
-    }
+### Custom view middlewares
+
+You can access view rendering process to meet your needs. For example, if you want to log rendering time, you need to write a `time.js` to your `app/view-middlewares/`. If you don't understand middleware please read [egg-middlewares](https://eggjs.org/en/intro/egg-and-koa.html) before you digging into code.
+
+```js
+// app/view-middlewares/time.js
+
+/**
+ * @param {Object} viewCtx - view context
+ * @param {String} viewCtx.filepath - rendering file path
+ * @param {Class} viewCtx.Component - sub class of React.Component
+ * @param {Object} viewCtx.props - rendering props
+ * @param {String} viewCtx.html - rendering html string
+ * @param {Object} viewCtx.config - app.config, access to all config
+ * @param {Object} viewCtx.options - app.config.react
+ * @param {Function} next - middleware next function
+ */
+module.exports = async function(viewCtx, next) {
+  const startTime = Date.now();
+  await next(); // Execute other middlewares
+  console.log(`Rendering time: ${Date.now() - startTime}`);
+};
 ```
 
-### Usage
+Set appropriate middlewares order
 
+```js
+// config/config.default.js
+
+module.exports = () => ({
+  react: {
+    // Recording time at begining
+    middlewares: [
+      'time',
+      'cache',
+      'redux',
+      'partial',
+      'render',
+      'doctype',
+      'beautify',
+    ],
+  },
+});
 ```
+
+Start [example project](../../examples/view-middleware/README.md) server to get the result
+
+![Rendering time](./screenshot.png)
+
+### Using CDN
+
+You may need access CDN resources when your project online. First you need build your project to assets and upload to your CDN server, then custom your asset config in `config.prod.js`.
+
+```js
+// config/config.prod.js
+
+module.exports = {
+  react: {
+    assetHost: '//your-cdn.com',
+    assetPath: '/project/1.0.0',
+  },
+};
+```
+
+In your project entry `render` method, using `this.props.helper.asset('main.js')` you will get `//your-cdn.com/project/1.0.0/main.js`
+
+## Usage
+
+Using render method in your controllers
+
+```js
 // app/controller/index.js
-exprots.index = function*() {
-  yield this.render('path/to/index.jsx', {
-    user: 'beidou view'
+exprots.index = async function() {
+  await this.ctx.render('path/to/index.jsx', {
+    user: 'beidou view',
   });
 };
 ```
 
-### API
+## API
 
 React view exports `render` and `renderString` 2 APIs, return Promise.
 

@@ -1,31 +1,29 @@
-Quick Start
----
+# Quick Start
 
 ## Requirements
 
-  * Mac OS X, or Linux
-  * [Node.js](https://nodejs.org/) v6.0 or newer
+[prepare-environment](./prepare-environment.md)
 
-## Setup
-
-Install generator
+## Install beidou-cli
 
 ```bash
-$ npm install beidou-init -g
+$ npm install -g beidou-cli
 ```
 
-Init
-
+## Init and choose boilerplate
 
 ```bash
 $ beidou init
+? Please select a boilerplate type (Use arrow keys)
+❯ Simple - Simple beidou isomorphic app boilerplate
+  Redux - Redux beidou isomorphic app boilerplate
+  CSS-MODULES - css-modules beidou isomorphic app boilerplate
+  Advanced - Advanced beidou isomorphic app boilerplate
 ```
 
-Start
-
+## Start dev server
 
 ```bash
-$ npm install
 $ npm run dev
 ```
 

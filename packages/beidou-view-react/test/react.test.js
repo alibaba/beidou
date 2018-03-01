@@ -5,7 +5,6 @@
  *   extname: 'jsx',
  *   beautify: false,
  *   cache: true,
- *   loadpath: `${antx.baseDir}/app/views`,
  *   internals: false,
  *   doctype: '<!DOCTYPE html>',
  * };
@@ -138,19 +137,6 @@ describe('test/react.test.js', () => {
 
     it('should return right tpl when render client component', (done) => {
       mm(app.config.react, 'extname', 'js');
-      request(app.callback())
-        .get('/client')
-        .expect(stdDoctype + sourceHTML)
-        .expect(200, done);
-    });
-
-    it('should return right tpl when clientPath config changed', (done) => {
-      mm(app.config.react, 'extname', 'js');
-      mm(
-        app.config.react,
-        'clientPath',
-        path.join(__dirname, './fixtures/nocache/client2')
-      );
       request(app.callback())
         .get('/client')
         .expect(stdDoctype + sourceHTML)

@@ -25,19 +25,21 @@
 
 ## 功能/特性
 
-* ✔︎ 高性能, 相比客户端渲染 2-5 倍提升
+* ✔︎ 高性能, 相比客户端渲染 2-5 倍性能提升
 * ✔︎ 搜索引擎友好(SEO)
-* ✔︎ React 服务端渲染
-* ✔︎ 支持 ES6/ES7
-* ✔︎ 支持 CSS Modules
+* ✔︎ 支持 ES6/ES7/ES8 JavaScript 语法
+* ✔︎ 支持 SCSS/Sass
 * ✔︎ 支持自动路由
+* ✔︎ 提供扩展默认 webpack 配置的接口
+* ✔︎ 可自定义视图渲染中间件
+* ✔︎ 易使用的 CLI 工具
 * ✔︎ 可拔插的同构能力
 * ✔︎ 丰富的 [插件](./packages/beidou-docs/en/basic/plugins.md)
 
 ## 如何使用？
 
 ```bash
-$ npm install beidou-init -g
+$ npm install beidou-cli -g
 $ beidou init
 $ npm run dev
 ```

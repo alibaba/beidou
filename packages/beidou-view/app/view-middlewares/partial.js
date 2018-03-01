@@ -20,7 +20,7 @@ module.exports = async function (viewCtx, next) {
     for (const key in mapping) {
       if (key in props) {
         logger.warn(
-          '[plugin:react:partial] `%s` already exists in props, origin value will be overwritten',
+          '[beidou:react:partial] `%s` already exists in props, origin value will be overwritten',
           key
         );
       }
