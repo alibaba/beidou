@@ -10,6 +10,9 @@ const { Application } = require('beidou-core');
 const Loader = require('beidou-core').AppWorkerLoader;
 const builder = require('../lib/builder');
 
+// set serverEnv=local to ensure webpack plugin enable
+process.env.EGG_SERVER_ENV = 'local';
+
 Loader.prototype.load = function () {};
 
 const app = new Application({
