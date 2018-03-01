@@ -3,7 +3,7 @@
 const path = require('path');
 const debug = require('debug')('beidou-cli');
 const { Command } = require('egg-bin');
-const { log } = require('../helper');
+// const { log } = require('../helper');
 
 module.exports = class BuildCMD extends Command {
   constructor(rawArgv) {
@@ -23,7 +23,7 @@ module.exports = class BuildCMD extends Command {
   }
 
   async run(context) {
-    log.info(JSON.stringify(context, null, 2));
+    // log.info(JSON.stringify(context, null, 2));
     const buildBin = path.join(context.cwd, 'node_modules/.bin/beidou-build');
     const options = {
       execArgv: context.execArgv,

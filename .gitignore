@@ -6,7 +6,7 @@
 *.da
 *.lerna_backup
 *.log
-*.stats.json
+*.stats
 coverage
 examples/*/build/
 examples/*/debug

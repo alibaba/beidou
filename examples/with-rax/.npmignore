@@ -1,6 +1,6 @@
 
 .isomorphic
-.stats.json
+.stats
 .vscode
 build/
 logs/

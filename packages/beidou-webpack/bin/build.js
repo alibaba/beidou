@@ -41,7 +41,7 @@ compiler.run((err, stats) => {
     process.exit(1);
   }
   if (stats) {
-    fs.writeFileSync(path.join(process.cwd(), '.stats.json'), stats);
+    fs.writeFileSync(path.join(process.cwd(), '.stats'), stats);
     console.log(
       stats.toString({
         colors: true,

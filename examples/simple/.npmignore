@@ -3,7 +3,7 @@
 .idea
 .isomorphic/
 .nyc_output
-.stats.json
+.stats
 .tmp
 .vscode
 build/

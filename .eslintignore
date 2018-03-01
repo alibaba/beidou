@@ -5,7 +5,7 @@ packages/*/test
 !packages/*/test/**/*.test.js
 packages/beidou-docs/
 .isomorphic
-.stats.json
+.stats
 
 # Different from .prettierignore
 examples/*/build/

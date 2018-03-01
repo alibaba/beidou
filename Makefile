@@ -30,7 +30,7 @@ clean-examples:
 	rm -rf examples/*/logs
 	rm -rf examples/*/run
 	rm -rf examples/*/*.log
-	rm -rf examples/*/.stats.json
+	rm -rf examples/*/.stats
 	rm -rf examples/*/.isomorphic
 
 clean:
@@ -39,7 +39,7 @@ clean:
 clean-test:
 	rm -rf packages/*/test/**/run
 	rm -rf packages/*/test/**/logs
-	rm -rf packages/*/test/**/.stats.json
+	rm -rf packages/*/test/**/.stats
 	rm -rf packages/*/test/**/.isomorphic
 
 test:
