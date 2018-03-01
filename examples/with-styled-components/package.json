@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-styled-components",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Beidou example with styled-components",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou-cli": "^0.0.4",
-    "beidou-core": "^1.0.0-alpha.4",
+    "beidou-cli": "^1.0.0-alpha.5",
+    "beidou-core": "^1.0.0-alpha.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "styled-components": "^2.4.0"
