@@ -63,6 +63,11 @@ Init beidou boilerplate project
 $ beidou init
 ```
 
+#### options
+
+* `--tag=next` init boilerplate project with npm next tag, used for alpha or beta version.
+* `--force` force to overwrite directory.
+
 #### Choose boilerplate
 
 ```bash
@@ -82,7 +87,7 @@ Start dev cluster on `local` env, it will start a master, an agent and a worker.
 $ beidou dev
 ```
 
-##### options
+#### options
 
 * `--baseDir` application's root path, default to `process.cwd()`.
 * `--port` server port, default to `6001`.
@@ -101,7 +106,7 @@ use [inspector-proxy](https://github.com/whxaxes/inspector-proxy) to proxy worke
 $ beidou debug --debug-port=9229 --proxy=9999
 ```
 
-##### options
+#### options
 
 * all `beidou dev` options is accepted.
 * `--proxy=9999` worker debug proxy port.

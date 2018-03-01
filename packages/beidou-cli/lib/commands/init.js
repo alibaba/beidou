@@ -38,7 +38,7 @@ module.exports = class InitCMD extends Command {
       },
       force: {
         type: 'boolean',
-        description: 'force to override directory',
+        description: 'force to overwrite directory',
         alias: 'f',
       },
     };
