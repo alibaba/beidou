@@ -28,7 +28,7 @@ module.exports = (agent) => {
       const updatedEntry = entryLoader(agent, webpackConfig.devServer);
       if (!equal(updatedEntry, webpackConfig.entry)) {
         webpackConfig.entry = updatedEntry;
-        helper.restartServer(webpackConfig, port, logger);
+        helper.restartServer(webpackConfig, port, logger, agent);
         logger.info('[webpack:watcher] entry updated');
       }
     }
