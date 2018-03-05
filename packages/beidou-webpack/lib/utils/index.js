@@ -8,6 +8,7 @@ const colorz = require('colorz');
 const { stringify } = require('q-i');
 const boxen = require('boxen');
 const FallbackPort = require('fallback-port');
+const _ = require('lodash');
 const debug = require('debug')('beidou:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
@@ -26,6 +27,36 @@ function getAvaliablePort(defaultPort, app) {
   }
   return port;
 }
+
+
+const dumpWebpackConfig = function (agent, config) {
+  const rundir = agent.config.rundir;
+
+  try {
+    /* istanbul ignore if */
+    if (!fs.existsSync(rundir)) fs.mkdirSync(rundir);
+    // dump config meta
+    const file = path.join(rundir, `webpack.${agent.config.env}.json`);
+    fs.writeFileSync(file, JSON.stringify(config, (key, value) => {
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        const type = value.constructor.name || 'Unknown';
+        // debugger; // eslint-disable-line
+        if (type === 'RegExp') {
+          return value.toString();
+        }
+
+        if (type !== 'Object') {
+          return Object.assign({
+            [`<${type}>`]: _.toPlainObject(value),
+          });
+        }
+      }
+      return value;
+    }, 2));
+  } catch (err) {
+    agent.logger.warn(`dumpConfig error: ${err.message}`);
+  }
+};
 
 const getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
@@ -158,6 +189,9 @@ const startServer = (config, port, logger, agent) => {
       return;
     }
   });
+
+  // dump config
+  dumpWebpackConfig(agent, config);
   return server;
 };
 const closeServer = function (agent) {
@@ -172,7 +206,7 @@ const closeServer = function (agent) {
 const restartServer = function (config, port, logger, agent) {
   logger.info('[webpack-dev-server] auto restart');
   closeServer(agent);
-  exports.startServer(config, port, logger, agent);
+  startServer(config, port, logger, agent);
 };
 
 exports.startServer = startServer;
@@ -181,3 +215,4 @@ exports.injectPlugin = injectPlugin;
 exports.restartServer = restartServer;
 exports.printEntry = printEntry;
 exports.getWebpackConfig = getWebpackConfig;
+exports.dumpWebpackConfig = dumpWebpackConfig;
