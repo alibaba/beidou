@@ -40,7 +40,6 @@ const dumpWebpackConfig = function (agent, config) {
     fs.writeFileSync(file, JSON.stringify(config, (key, value) => {
       if (typeof value === 'object' && !Array.isArray(value)) {
         const type = value.constructor.name || 'Unknown';
-        // debugger; // eslint-disable-line
         if (type === 'RegExp') {
           return value.toString();
         }
