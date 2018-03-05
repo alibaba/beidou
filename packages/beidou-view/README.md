@@ -93,6 +93,7 @@ Render react component into string Dymaticlly.
 ## doctype
 
 Define html doctype.
+
 | File | Field | Type | Default | Description |
 |:--:|:--:|:--:|:--:|:--|
 |`config.${env}.js` | `config.${viewType}.doctype` | String | `'<!DOCTYPE html>'` | Global doctype config
