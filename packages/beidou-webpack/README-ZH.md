@@ -14,7 +14,7 @@
 
 * 配置项变更，
 
-  自`v1.0.0`起，beidou-webpack 插件底层依赖从 `webpackDevMiddleware` 迁移到了 `WebpackDevServer`，配置方式更趋近于普通非同构前端项目。具体变更参看 [issue#21](https://github.com/alibaba/beidou/issues/21)details, see .
+  自`v1.0.0`起，beidou-webpack 插件底层依赖从 `webpackDevMiddleware` 迁移到了 `WebpackDevServer`，配置方式更趋近于普通非同构前端项目。具体变更参看 [issue#21](https://github.com/alibaba/beidou/issues/21)
 
 ## Configuration
 
