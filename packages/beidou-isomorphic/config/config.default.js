@@ -36,17 +36,15 @@ module.exports = appInfo => ({
       // aren't compiled
       // only: /my_es6_folder/,
 
-      // Setting this will remove the currently hooked extensions of `.es6`, `.es`, `.jsx`, `.mjs`
+      // Setting this will remove the currently hooked extensions of `.jsx`, `.mjs`
       // and .js so you'll have to add them back if you want them to be used again.
-      extensions: ['.es6', '.es', '.js', '.jsx', '.mjs'],
+      extensions: ['.js', '.jsx', '.mjs'],
 
       // Setting this to false will disable the cache.
       cache: true,
     },
 
     /**
-     * false by default
-     *
      * the universal field provides configuration both for `beidou-isomorphic` and `beidou-webpack`
      * for `beidou-webpack`:
      *   write assets.json file into `assetsFilePath`
@@ -55,19 +53,42 @@ module.exports = appInfo => ({
      *   read file defined by `assetsFilePath`
      *   hook require and return content in assets.json if file path matches in `assets`
      *
-     * universal: {
-     *  context: app.baseDir, // webpack context
-     *  assetsFilePath: '', // path for asset file write into
-     *  memoryFs: false, // TODO: use `memory-fs` in dev
-     *  assets: [{
-     *    ext: '.scss',
-     *    exclude: 'node_modules'
-     *  }],
-     *  cache: true,
-     * }
      */
 
-    universal: false,
+    universal: {
+      // path for asset file write into
+      assetsFilePath: path.join(appInfo.baseDir, '.isomorphic/assets.json'),
+      // memoryFs: false, // TODO: use `memory-fs` in dev
+
+      /**
+       * @property {Array} - asset extension string array, example:
+       * ['scss', 'png'], default value is webpack support extensions
+       */
+      assets: [
+        '.sass',
+        '.scss',
+        '.css',
+        '.bmp',
+        '.gif',
+        '.jpe',
+        '.jpeg',
+        '.png',
+        '.webp',
+        '.ico',
+        '.woff',
+        '.woff2',
+        '.svg',
+        '.svgz',
+        '.otf',
+        '.tif',
+        '.tiff',
+        '.ttf',
+        '.eot',
+        '.mid',
+        '.midi',
+      ],
+      // cache: true,
+    },
 
     alias: {
       client: path.join(appInfo.baseDir, 'client'),

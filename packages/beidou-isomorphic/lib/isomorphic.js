@@ -57,8 +57,7 @@ module.exports = function (app) {
   if (isomorphic.universal) {
     const universal = Object.assign(
       {
-        context: baseDir,
-        assetsFilePath: path.join(baseDir, '.isomorphic/assets.json'),
+        // Set default value here as __DEV__ can't access in config dir
         cache: __DEV__ === false,
       },
       isomorphic.universal
@@ -74,9 +73,16 @@ module.exports = function (app) {
       let ext = null;
       if (typeof asset === 'string' && isValidExt(asset)) {
         ext = asset;
-      }
-      if (typeof asset === 'object' && asset.ext && isValidExt(asset.ext)) {
+      } else if (
+        typeof asset === 'object' &&
+        asset.ext &&
+        isValidExt(asset.ext)
+      ) {
         ext = asset.ext;
+      } else {
+        logger.error(
+          `Expect asset type string or object（e.g. ['.scss'], [{ext:'scss'}]）, get ${asset}`
+        );
       }
       require.extensions[ext] = isomorphicRequire;
     }

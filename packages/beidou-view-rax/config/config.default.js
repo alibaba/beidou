@@ -16,6 +16,8 @@ module.exports = appInfo => ({
     static: false,
     cache: false,
     doctype: '<!DOCTYPE html>',
+    assetHost: '',
+    assetPath: '/build/',
   },
   view: {
     mapping: {

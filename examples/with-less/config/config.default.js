@@ -4,9 +4,6 @@ const path = require('path');
 
 module.exports = {
   keys: 'secret',
-  react: {
-    assetPath: '/build',
-  },
   isomorphic: {
     universal: {
       assets: ['.less'],

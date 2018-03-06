@@ -6,7 +6,7 @@ exports.webpack = {
     path: './build',
     filename: '[name].js?[hash]',
     chunkFilename: '[name].js',
-    publicPath: './build',
+    publicPath: '/build',
   },
 
   resolve: {

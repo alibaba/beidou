@@ -14,7 +14,7 @@ module.exports = (app, defaultConfig /* , dev */) => {
           options: {
             importLoaders: 1,
             modules: true,
-            localIdentName: '[local]_[hash:base64]',
+            localIdentName: '[local]_[hash:base64:5]',
           },
         },
         {

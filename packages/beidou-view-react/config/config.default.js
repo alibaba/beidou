@@ -18,7 +18,7 @@ module.exports = appInfo => ({
     static: false,
     doctype: '<!DOCTYPE html>',
     assetHost: '',
-    assetPath: '',
+    assetPath: '/build/',
   },
   view: {
     defaultViewEngine: 'react',

@@ -11,14 +11,5 @@ module.exports = {
     static: true,
     cache: false,
     beautify: true,
-    assetPath: '/build/',
-  },
-  webpack: {
-    output: {
-      publicPath: '/build/',
-    },
-    devServer: {
-      noInfo: false,
-    },
   },
 };

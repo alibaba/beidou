@@ -13,7 +13,7 @@ $ npm i --save beidou-core beidou-cli react react-dom
 
 > 说明： 本章节提到的路径未经特别说明均是相对于项目根路径而言。
 
-在 `package.json` 设置命令，具体命令含义参考 [beidou-cli](https://goo.gl/YzJkon)
+在 `package.json` 设置命令，具体命令含义参考 [beidou-cli](https://github.com/alibaba/beidou/tree/master/packages/beidou-cli)
 
 ```js
 {

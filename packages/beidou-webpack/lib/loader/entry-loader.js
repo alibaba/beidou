@@ -4,6 +4,36 @@ const path = require('path');
 const glob = require('glob');
 const debug = require('debug')('beidou:webpack');
 
+/**
+ * Search for entries
+ * @param {Array} exts - extensions string array
+ * @param {string} cwd - current working directory
+ * @param {string} exclude - ignore directories
+ * @param {string} name - entry name
+ * @returns {(Array|null)} return absolute path of entries or null if not exist
+ */
+function searchForEntries({ exts, cwd, exclude, name = '*' }) {
+  const files = glob
+    .sync(`@(${exts.map(ext => name + ext).join('|')})`, {
+      cwd,
+      ignore: exclude,
+    })
+    .sort(
+      (a, b) => exts.indexOf(path.extname(a)) >= exts.indexOf(path.extname(b))
+    );
+
+  if (files && files[0]) {
+    return files.map(file => path.join(cwd, file));
+  }
+  return null;
+}
+
+/**
+ * Get webpack entry config
+ * @param {Beidou.Application} app - beidou application instance
+ * @param {Object} devServer - webpack.devServer config
+ * @param {Boolean} dev - is development env
+ */
 module.exports = (app, devServer = {}, dev = false) => {
   const { config } = app;
   const router = config.router || {};
@@ -17,22 +47,6 @@ module.exports = (app, devServer = {}, dev = false) => {
   const pageDir = path.join(clientDir, serveRoot);
   debug('resolve entry in dir: %s', pageDir);
 
-  function searchForEntries(cwd, name = '*') {
-    const files = glob
-      .sync(`@(${exts.map(ext => name + ext).join('|')})`, {
-        cwd,
-        ignore: exclude,
-      })
-      .sort(
-        (a, b) => exts.indexOf(path.extname(a)) >= exts.indexOf(path.extname(b))
-      );
-
-    if (files && files[0]) {
-      return files.map(file => path.join(cwd, file));
-    }
-    return null;
-  }
-
   const entry = {};
   let headEntries = [];
   if (dev && (devServer.hot || devServer.hotOnly)) {
@@ -44,12 +58,17 @@ module.exports = (app, devServer = {}, dev = false) => {
   }
 
   if (router.entry) {
-    const files = searchForEntries(pageDir, router.entry);
+    const files = searchForEntries({
+      exts,
+      cwd: pageDir,
+      exclude,
+      name: router.entry,
+    });
     if (files) {
       entry.index = [...headEntries, files[0]];
     }
   } else {
-    const files = searchForEntries(pageDir);
+    const files = searchForEntries({ exts, cwd: pageDir, exclude });
     if (!files) {
       throw new Error('Expect `client/index.jsx` entry file');
     }
@@ -65,7 +84,11 @@ module.exports = (app, devServer = {}, dev = false) => {
   });
 
   for (const dir of dirs) {
-    const files = searchForEntries(path.join(pageDir, dir), entryName);
+    const files = searchForEntries({
+      exts,
+      cwd: path.join(pageDir, dir),
+      name: entryName,
+    });
 
     if (files) {
       const name = path.basename(dir);

@@ -1,11 +1,10 @@
+'use strict';
+
+const path = require('path');
+
 module.exports = {
   keys: 'key',
-  isomorphic: {
-    universal: {
-      assets: ['.scss', '.png'],
-    },
-    babel: {
-      extensions: ['.jsx'],
-    },
+  webpack: {
+    config: path.resolve(__dirname, './webpack.config.js'),
   },
 };

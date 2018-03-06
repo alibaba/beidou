@@ -5,12 +5,4 @@ module.exports = {
   router: {
     entry: 'page',
   },
-  react: {
-    assetPath: '/build',
-  },
-  isomorphic: {
-    universal: {
-      assets: ['.scss', '.png'],
-    },
-  },
 };

@@ -6,7 +6,6 @@ module.exports = {
     static: true,
     cache: false,
     beautify: true,
-    assetPath: '/build',
   },
   router: {
     entry: 'view',
