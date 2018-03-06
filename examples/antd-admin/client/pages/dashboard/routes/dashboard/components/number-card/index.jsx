@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Card } from 'antd';
 import CountUp from 'react-countup';
-import styles from './index.less';
+import styles from './index.module.less';
 
 function NumberCard({ icon, color, title, number, countUp }) {
   return (

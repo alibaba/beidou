@@ -67,6 +67,7 @@ module.exports = appInfo => ({
       assets: [
         '.sass',
         '.scss',
+        '.less',
         '.css',
         '.bmp',
         '.gif',

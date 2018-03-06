@@ -7,7 +7,7 @@ import Menus from './menu';
 
 import actions from '../actions';
 
-import style from './sider.less';
+import style from './sider.module.less';
 
 const cx = classNames.bind(style);
 

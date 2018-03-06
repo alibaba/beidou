@@ -88,10 +88,12 @@ describe('test/react.test.js', () => {
       });
 
       cpFile();
-      await [app.ready(), cacheApp.ready()];
+      await Promise.all([app.ready(), cacheApp.ready()]);
     });
 
     after(() => {
+      app.close();
+      cacheApp.close();
       delFiles();
     });
 
@@ -231,6 +233,8 @@ describe('test/react.test.js', () => {
         baseDir: './partial',
         framework,
       });
+
+      await app.ready();
     });
 
     after(() => {
@@ -276,6 +280,8 @@ describe('test/react.test.js', () => {
         baseDir: './rax-enable',
         framework,
       });
+
+      await app.ready();
     });
 
     after(() => {

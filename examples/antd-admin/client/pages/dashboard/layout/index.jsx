@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import Sider from './sider';
 import Nav from './nav';
 import Bread from './bread';
-import style from './index.less';
+import style from './index.module.less';
 import { config } from './menu';
 
 const cx = classNames.bind(style);

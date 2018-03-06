@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import style from './index.less';
+import style from './index.module.less';
 
 const cx = classNames.bind(style);
 

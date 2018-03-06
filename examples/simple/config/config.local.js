@@ -1,3 +1,8 @@
 'use strict';
 
-module.exports = {};
+module.exports = {
+  react: {
+    cache: false,
+    beautify: true,
+  },
+};

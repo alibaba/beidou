@@ -11,16 +11,9 @@ module.exports = {
     root: '/pages',
     entry: 'page',
   },
-  isomorphic: {
-    polyfill: false,
-    universal: {
-      assets: ['.less', '.png'],
-    },
-  },
   react: {
     static: true,
     cache: true,
-    beautify: false,
   },
   security: {
     domainWhiteList: ['localhost:6001'],

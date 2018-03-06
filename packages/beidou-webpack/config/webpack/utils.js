@@ -57,6 +57,13 @@ const postCssLoaderConfig = {
   },
 };
 
+const lessLoaderConfig = {
+  loader: require.resolve('less-loader'),
+  options: {
+    javascriptEnabled: true,
+  },
+};
+
 const getStyleFallbackConfig = dev => ({
   loader: require.resolve('style-loader'),
   options: {
@@ -105,6 +112,25 @@ function getStyleCongfigs(dev) {
           {
             loader: require.resolve('sass-loader'),
           },
+        ],
+      }),
+    },
+    {
+      test: /\.less$/,
+      exclude: /\.module\.less$/,
+      use: ExtractTextPlugin.extract({
+        fallback: getStyleFallbackConfig(dev),
+        use: [getCssLoaderConfig(dev), postCssLoaderConfig, lessLoaderConfig],
+      }),
+    },
+    {
+      test: /\.module\.less$/,
+      use: ExtractTextPlugin.extract({
+        fallback: getStyleFallbackConfig(dev),
+        use: [
+          getCssLoaderConfig(dev, true),
+          postCssLoaderConfig,
+          lessLoaderConfig,
         ],
       }),
     },

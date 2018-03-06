@@ -63,14 +63,13 @@ exports.webpack = {
     hot: true,
   },
 };
-
 ```
-配置项 `output`、`resolve`、`devServer` 和 [webpack](https://webpack.js.org) 中定义的配置项一致。对这些配置的修改会对插件默认生成的webpack配置生效。
 
-- **devServer.port**： 定义 webpack dev server 的监听端口。访问webpack资源时，仍然可以通过Node应用直接访问，插件内置代理中间件自动转发请求到 webpack dev server ，所以通常情况下不需要关心这个端口号。如果有特殊需要，可以直接访问 webpack dev server (上述配置下的地址 http://localhost:6002/webpack-dev-server)。
+配置项 `output`、`resolve`、`devServer` 和 [webpack](https://webpack.js.org) 中定义的配置项一致。对这些配置的修改会对插件默认生成的 webpack 配置生效。
 
+* **devServer.port**： 定义 webpack dev server 的监听端口。访问 webpack 资源时，仍然可以通过 Node 应用直接访问，插件内置代理中间件自动转发请求到 webpack dev server ，所以  通常情况下不需要关心这个端口号。如果有特殊需要，可以直接访问 webpack dev server (上述配置下的地址 http://localhost:6002/webpack-dev-server)。
 
-- **devServer.contentBase**：必须设置为 `false`。任何非`false`的值都会启用 webpack dev server 中的静态资源服务。这将导致所有发送到Node服务的请求都提前被webpack响应。
+- **devServer.contentBase**：必须设置为 `false`。任何非`false`的值都会  启用 webpack dev server 中的静态资源服务。这将导致所有发送到 Node 服务的请求都提前被 webpack 响应。
 
 ## Custom Configuration
 
@@ -78,7 +77,6 @@ exports.webpack = {
 
 ```js
 module.exports = (app, defaultConfig, dev, target) => {
-
   return {
     ...defaultConfig,
     entry: {
@@ -91,17 +89,17 @@ module.exports = (app, defaultConfig, dev, target) => {
       // your plugins
     ],
     //something else to override
-  }
-}
+  };
+};
 ```
 
-- **app**: `BeidouApplication` 示例, 通常用来读取应用的全局配置项。
+* **app**: `BeidouApplication` 示例, 通常用来读取应用的全局配置项。
 
-- **defaultConfig**: 插件生成的默认webapck配置，可用于覆盖使用。
+* **defaultConfig**: 插件生成的默认 webapck 配置，可用于覆盖使用。
 
-- **dev**: 本地开发环境下为`true`，生产环境下为`false` .
+* **dev**: 本地开发环境下为`true`，生产环境下为`false` .
 
-- **target**: 默认为 `browser`，在运行 `beidou build` 时, 通过 `--target` 参数指定, 目前可用值包含 `browser` 和 `node`
+* **target**: 默认为 `browser`，在运行 `beidou build` 时, 通过 `--target` 参数指定, 目前可用值包含 `browser` 和 `node`
 
 ## Entry
 
@@ -110,16 +108,14 @@ module.exports = (app, defaultConfig, dev, target) => {
 扫描规则受 [beidou-router](../beidou-router/) 中
 `router.root` 和 `router.entry` 两个配置项影响。
 
-- **router.root**: 进行扫描的根路径
-- **router.entry**: entry文件名称，文件名（不含后缀）匹配的文件才被视为可用的entry
+* **router.root**: 进行扫描的根路径
+* **router.entry**: entry 文件名称，文件名（不含后缀）匹配的文件才被视为可用的 entry
 
-> **Notice**: 扫描的文件深度为 1 ( 仅匹配 ${router.root}/${entry}.jsx 和 ${router.root}/${dir}/${entry}.jsx )
+> **Notice**:  扫描的文件深度为 1 (  仅匹配 ${router.root}/${entry}.jsx 和 ${router.root}/${dir}/${entry}.jsx )
 
 ## Building
 
-**用法**: beidou build [--target=browser] [--dev]
-
-
+**用法**: beidou build [--target=browser][--dev]
 
 ## License
 

@@ -28,7 +28,6 @@ function getAvaliablePort(defaultPort, app) {
   return port;
 }
 
-
 const dumpWebpackConfig = function (agent, config) {
   const rundir = agent.config.rundir;
 
@@ -37,21 +36,28 @@ const dumpWebpackConfig = function (agent, config) {
     if (!fs.existsSync(rundir)) fs.mkdirSync(rundir);
     // dump config meta
     const file = path.join(rundir, `webpack.${agent.config.env}.json`);
-    fs.writeFileSync(file, JSON.stringify(config, (key, value) => {
-      if (typeof value === 'object' && !Array.isArray(value)) {
-        const type = value.constructor.name || 'Unknown';
-        if (type === 'RegExp') {
-          return value.toString();
-        }
+    fs.writeFileSync(
+      file,
+      JSON.stringify(
+        config,
+        (key, value) => {
+          if (typeof value === 'object' && !Array.isArray(value)) {
+            const type = value.constructor.name || 'Unknown';
+            if (type === 'RegExp') {
+              return value.toString();
+            }
 
-        if (type !== 'Object') {
-          return Object.assign({
-            [`<${type}>`]: _.toPlainObject(value),
-          });
-        }
-      }
-      return value;
-    }, 2));
+            if (type !== 'Object') {
+              return Object.assign({
+                [`<${type}>`]: _.toPlainObject(value),
+              });
+            }
+          }
+          return value;
+        },
+        2
+      )
+    );
   } catch (err) {
     agent.logger.warn(`dumpConfig error: ${err.message}`);
   }

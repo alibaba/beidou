@@ -5,7 +5,6 @@ module.exports = {
   react: {
     static: true,
     cache: false,
-    beautify: true,
   },
   router: {
     entry: 'view',

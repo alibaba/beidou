@@ -13,5 +13,6 @@ module.exports = {
       'doctype',
       'beautify',
     ],
+    beautify: true,
   },
 };

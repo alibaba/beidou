@@ -29,6 +29,8 @@
     "fallback-port": "^0.1.7",
     "file-loader": "^1.1.11",
     "glob": "^7.1.2",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.6",
     "lodash": "^4.17.4",
     "memory-fs": "^0.4.1",
     "mkdirp": "^0.5.1",

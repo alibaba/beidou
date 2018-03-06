@@ -6,7 +6,7 @@ import reducers from './reducers';
 import saga from './saga';
 import App from './container';
 
-import './index.less';
+import './index.module.less';
 
 export default class Page extends View {
   static defaultProps = {

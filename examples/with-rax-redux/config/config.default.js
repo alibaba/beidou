@@ -10,6 +10,5 @@ module.exports = {
   rax: {
     static: true,
     cache: false,
-    beautify: true,
   },
 };

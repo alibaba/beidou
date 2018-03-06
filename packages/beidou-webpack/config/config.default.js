@@ -6,7 +6,7 @@ exports.webpack = {
     path: './build',
     filename: '[name].js?[hash]',
     chunkFilename: '[name].js',
-    publicPath: '/build',
+    publicPath: '/build/',
   },
 
   resolve: {
@@ -28,7 +28,7 @@ exports.webpack = {
       colors: true,
       chunks: false,
     },
-    publicPath: '/build',
+    publicPath: '/build/',
     hot: true,
   },
 };

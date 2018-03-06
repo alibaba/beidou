@@ -16,7 +16,7 @@ import User from './components/user';
 import Cpu from './components/cpu';
 
 import actions from '../../actions';
-import styles from './index.less';
+import styles from './index.module.less';
 
 const bodyStyle = {
   bodyStyle: {

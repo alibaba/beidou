@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './index.less';
+import styles from './index.module.less';
 
 const FilterItem = ({ label = '', children }) => {
   const labelArray = label.split('');

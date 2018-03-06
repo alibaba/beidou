@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styles from './index.less';
+import styles from './index.module.less';
 
 const Detail = ({ userDetail }) => {
   const { data } = userDetail;
