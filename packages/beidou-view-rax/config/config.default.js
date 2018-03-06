@@ -31,7 +31,9 @@ module.exports = appInfo => ({
     )}`,
   },
   webpack: {
-    config: path.resolve(__dirname, './webpack.config.js'),
+    custom: {
+      configPath: path.resolve(__dirname, './webpack.config.js'),
+    },
   },
   isomorphic: {
     babel: {

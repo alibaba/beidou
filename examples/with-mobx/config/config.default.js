@@ -13,6 +13,8 @@ module.exports = {
     },
   },
   webpack: {
-    config: path.join(__dirname, './webpack.config.js'),
+    custom: {
+      configPath: path.join(__dirname, './webpack.config.js'),
+    },
   },
 };

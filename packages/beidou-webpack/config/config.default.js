@@ -1,7 +1,9 @@
 'use strict';
 
 exports.webpack = {
-  // config: 'path/to/webpack/config/file',
+  custom: {
+    // configPath: 'path/to/webpack/config/file',
+  },
   output: {
     path: './build',
     filename: '[name].js?[hash]',

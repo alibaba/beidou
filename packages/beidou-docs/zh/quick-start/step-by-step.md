@@ -341,9 +341,9 @@ export default class News extends React.Component {
 }
 ```
 
-现在，运行我们的应用并访问 http://localhost:6001/home，我们可以看到一个简单的列表页，展示我们从外部接口获取到的信息。数据在服务端直接获取并直接渲染到页面，同时传递给客户端，保证二者的渲染是一致的。
+现在，运行我们的应用并访问 http://localhost:6001/home ，我们可以看到一个简单的列表页，展示我们从外部接口获取到的信息。数据在服务端直接获取并直接渲染到页面，同时传递给客户端，保证二者的渲染是一致的。
 
-> 为保证示例的简洁，这里没有使用Redux或者其他的状态管理工具。如何结合状态管理工具构建应用可以参看 [redux example](https://github.com/alibaba/beidou/tree/master/examples/redux) [mobx example](https://github.com/alibaba/beidou/tree/master/examples/with-mobx) 以及examples目录下更多示例。
+> 为保证示例的简洁，这里没有使用Redux或者其他的状态管理工具。如何结合状态管理工具构建应用可以参看 [redux example](https://github.com/alibaba/beidou/tree/master/examples/redux), [mobx example](https://github.com/alibaba/beidou/tree/master/examples/with-mobx) 以及examples目录下更多示例。
 
 ## 完善其他功能
 ### 编写 Middleware
@@ -382,14 +382,13 @@ exports.robot = {
 
 ### 添加样式
 
-北斗中默认的[webpack配置](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/config/webpack.common.js)中默认添加了 css 和 sass Loader，我们可以在应用中加入样式
+北斗中默认的[webpack配置](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/config/webpack.common.js)中默认添加了 css、less 和 sass Loader，我们可以在应用中加入额外的样式，以 [stylus](http://stylus-lang.com/) 为例
 
-```css
-/* client/index.css */
-body {
-  background: #f8f8f8;
-}
+```styl
+// client/index.styl
 
+body
+  background: #f8f8f8
 ```
 
 在 `index.jsx` 中引入
@@ -405,7 +404,7 @@ import 'index.jsx';
 ...
 ```
 
-此时，运行项目，我们发现应用抛出了一个 SyntaxError。因为我们直接 import 了一个 `.css` 文件，内容无法在服务端解析，我们需要一些额外的配置让服务端识别非js文件。
+此时，运行项目，我们发现应用抛出了一个 SyntaxError。因为我们直接 import 了一个 `.styl` 文件，内容无法在服务端解析，我们需要一些额外的配置让服务端识别非默认支持的文件。
 
 ```js
 // config.default.js
@@ -413,18 +412,19 @@ module.exports = {
   ...
   isomorphic: {
     universal: {
-      assets: ['.css'],
+      assets: ['.styl'],
     }
   },
 }
 ```
-上述配置告诉服务端从 webpack 的编译结果中读取 `.css` 文件的内容。本示例中，`.css` 文件的内容对代码运行没有影响，如果使用了 CSS MODULES，得到是转换的类选择器 `key-value` 对象。具体参见 [beidou-isomorphic](https://github.com/alibaba/beidou/blob/master/packages/beidou-isomorphic/README.md)
+
+上述配置告诉服务端从 webpack 的编译结果中读取 `.styl` 文件的内容(同时也需要修改 webpack 配置以支持编译 `.styl` 文件，参考下节示例)。本示例中，`.styl` 文件的内容对代码运行没有影响，如果使用了 CSS MODULES，得到是转换的类选择器 `key-value` 对象。具体参见 [beidou-isomorphic](https://github.com/alibaba/beidou/blob/master/packages/beidou-isomorphic/README.md)。
 
 ### 自定义webpack
 
 北斗默认的webpack配置能够满足基本需求, 多数情况下需要自定义webpack配置以满足多样的前端开发需要。
 
-可以在config中配置自定义webpack文件路径：
+可以在 config 中配置自定义 webpack 文件路径：
 
 ```js
 // config/config.default.js
@@ -433,18 +433,32 @@ const path = require('path');
 module.exports = {
   ...
   webpack: {
-    config: path.join(__dirname, '../webpack.js'),
+    custom: {
+      configPath: path.join(__dirname, './webpack.js'),
+    },
   },
 }
 ```
 
 ```js
 // webpack.js
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = (app, defaultConfig, dev) => {
-  return {
-    ...defaultConfig,
-  };
+  // 添加 .styl 文件支持
+  defaultConfig.module.rules.push({
+    test: /\.styl$/,
+    loader: ExtractTextPlugin.extract({
+      fallback: require.resolve('style-loader'),
+      use: ['css-loader', 'stylus-loader'].map(require.resolve),
+    })
+  });
+  defaultConfigs.plugins.pus(
+    new ExtractTextPlugin('[name].css')
+  );
+  return defaultConfig;
 };
 ```
 
-默认配置以参数的方式传入，可以根据需要自行修改配置。详见 [beidou-webpack](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/README.md)
+默认配置以参数的方式传入，可以根据需要自行修改配置。详见 [beidou-webpack](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/README.md)。

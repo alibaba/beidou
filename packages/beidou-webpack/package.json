@@ -56,7 +56,7 @@
     "supertest": "1"
   },
   "peerDependencies": {
-    "beidou-core": "^1.0.0-alpha.4"
+    "beidou-core": "^1.0.0-alpha.5"
   },
   "files": ["bin", "app", "lib", "config", "app.js", "agent.js", "index.js"],
   "engines": {

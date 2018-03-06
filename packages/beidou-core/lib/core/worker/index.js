@@ -29,7 +29,7 @@ module.exports = function (target) {
     /**
      * depd API
      * @member {Function}
-     * @since 1.1.2
+     * @since 1.0.0
      */
     get beidouDeprecate() {
       if (!this[DEPRECATE]) {

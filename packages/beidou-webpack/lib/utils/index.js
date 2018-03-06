@@ -28,6 +28,20 @@ function getAvaliablePort(defaultPort, app) {
   return port;
 }
 
+function getCustomWebpackCfgPath(app) {
+  const options = app.config.webpack;
+  if (options.config) {
+    // TODO: remove support at next major version
+    app.beidouDeprecate(
+      '`webpack.config`, use `webpack.custom.configPath` instead'
+    );
+    return options.config;
+  } else if (options.custom && options.custom.configPath) {
+    return options.custom.configPath;
+  }
+  return null;
+}
+
 const dumpWebpackConfig = function (agent, config) {
   const rundir = agent.config.rundir;
 
@@ -63,14 +77,14 @@ const dumpWebpackConfig = function (agent, config) {
   }
 };
 
-const getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
+const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
   const isDev = app.config.env !== 'prod';
   let webpackConfig = null;
 
   const defaultConfigPath = path.join(
     __dirname,
-    `../../config/webpack/webpack.${execEnv}.js`
+    `../../config/webpack/webpack.${target}.js`
   );
 
   // make sure the port assigned is available
@@ -90,10 +104,17 @@ const getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
 
   webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);
 
+  const customConfigPath = getCustomWebpackCfgPath(app);
   // custom config exists
-  if (options.config && fs.existsSync(options.config)) {
-    debug('custom config found at %s', options.config);
-    webpackConfig = loadFile(options.config, app, webpackConfig, isDev);
+  if (customConfigPath) {
+    debug('Custom config found at %s', customConfigPath);
+    webpackConfig = loadFile(
+      customConfigPath,
+      app,
+      webpackConfig,
+      isDev,
+      target
+    );
   }
 
   // make sure devServer is provided

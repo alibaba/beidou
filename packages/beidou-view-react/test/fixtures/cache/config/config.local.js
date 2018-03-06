@@ -2,6 +2,6 @@
 
 module.exports = {
   react: {
-    static: true,
+    beautify: false,
   },
 };

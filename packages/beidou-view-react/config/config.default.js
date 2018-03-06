@@ -11,10 +11,7 @@ module.exports = appInfo => ({
     middlewares: ['cache', 'redux', 'partial', 'render', 'beautify', 'doctype'],
     beautify: false,
     cache: true,
-
-    /**
-     * Use `renderToStaticMarkup` if true, otherwise `renderToString`
-     */
+    // Use `renderToStaticMarkup` if true, otherwise `renderToString`
     static: false,
     doctype: '<!DOCTYPE html>',
     assetHost: '',

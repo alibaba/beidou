@@ -5,7 +5,9 @@ const path = require('path');
 module.exports = {
   keys: 'secret',
   webpack: {
-    config: path.join(__dirname, './webpack.config.js'),
+    custom: {
+      configPath: path.join(__dirname, './webpack.config.js'),
+    },
   },
   router: {
     root: '/pages',
@@ -13,7 +15,6 @@ module.exports = {
   },
   react: {
     static: true,
-    cache: true,
   },
   security: {
     domainWhiteList: ['localhost:6001'],

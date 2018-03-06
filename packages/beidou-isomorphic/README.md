@@ -1,27 +1,16 @@
 # beidou-isomorphic
 
-### Features
+Import jsx,scss,less,css file directly in node, dependent on [beidou-webpack](../beidou-webpack/README.md) compiled results and [babel-register](https://babeljs.io/docs/usage/babel-register/) require hook.
+
+## Features
 
 * Support less/scss/css in server side
-* Suppot basic BOM/DOM varibles in node side, such as window/document/navigator and so on
+* Polyfill BOM/DOM in node side, such as window/document/navigator and so on
 
-### Install
+## Configuration
 
-```
-$ npm install beidou-isomorphic --save
-```
-
-### Configuration
-
-* config/plugin.default.js:
-
-```
-exports.isomorphic = {
-  enable: true,
-  package: 'beidou-isomorphic',
-};
+Read [config/config.default.js](./config/config.default.js) for default configs.
 
 ## License
 
 [MIT](LICENSE)
-```

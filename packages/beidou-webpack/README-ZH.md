@@ -18,6 +18,8 @@
 
 ## Configuration
 
+只在非生产环境下使用本插件，所以在你的项目上线之前必须先编译好，并把编译结果打包到线上环境。
+
 * config/plugin.js:
 
 ```js
@@ -32,7 +34,9 @@ exports.webpack = {
 
 ```js
 exports.webpack = {
-  // config: 'path/to/webpack/config/file',
+  custom: {
+    // configPath: 'path/to/webpack/config/file',
+  },
   output: {
     path: './build',
     filename: '[name].js?[hash]',
@@ -65,17 +69,19 @@ exports.webpack = {
 };
 ```
 
-配置项 `output`、`resolve`、`devServer` 和 [webpack](https://webpack.js.org) 中定义的配置项一致。对这些配置的修改会对插件默认生成的 webpack 配置生效。
+配置项 `output`、`resolve`、`devServer` 和 [webpack](https://webpack.js.org) 中定义的配置项一致。对这些配置的修改会对插件默认生成的 webpack 配置生效。插件自身使用的配置  在 `custom` 之下，比如，自定义 webpack 配置需要在 `'webpack.custom.configPath'` 里设置文件路径。
 
 * **devServer.port**： 定义 webpack dev server 的监听端口。访问 webpack 资源时，仍然可以通过 Node 应用直接访问，插件内置代理中间件自动转发请求到 webpack dev server ，所以  通常情况下不需要关心这个端口号。如果有特殊需要，可以直接访问 webpack dev server (上述配置下的地址 http://localhost:6002/webpack-dev-server)。
 
-- **devServer.contentBase**：必须设置为 `false`。任何非`false`的值都会  启用 webpack dev server 中的静态资源服务。这将导致所有发送到 Node 服务的请求都提前被 webpack 响应。
+* **devServer.contentBase**：必须设置为 `false`。任何非`false`的值都会  启用 webpack dev server 中的静态资源服务。这将导致所有发送到 Node 服务的请求都提前被 webpack 响应。
 
-## Custom Configuration
+## Custom webpack configuration
 
-**config**: 定义自定义配置的路径。
+**custom.configPath**: 先定义 webpack 配置文件路径
 
 ```js
+// webpack.config.js
+
 module.exports = (app, defaultConfig, dev, target) => {
   return {
     ...defaultConfig,
@@ -95,7 +101,7 @@ module.exports = (app, defaultConfig, dev, target) => {
 
 * **app**: `BeidouApplication` 示例, 通常用来读取应用的全局配置项。
 
-* **defaultConfig**: 插件生成的默认 webapck 配置，可用于覆盖使用。
+* **defaultConfig**: 插件生成的默认 webpack 配置，可用于覆盖使用。
 
 * **dev**: 本地开发环境下为`true`，生产环境下为`false` .
 
@@ -111,11 +117,11 @@ module.exports = (app, defaultConfig, dev, target) => {
 * **router.root**: 进行扫描的根路径
 * **router.entry**: entry 文件名称，文件名（不含后缀）匹配的文件才被视为可用的 entry
 
-> **Notice**:  扫描的文件深度为 1 (  仅匹配 ${router.root}/${entry}.jsx 和 ${router.root}/${dir}/${entry}.jsx )
+> **Notice**:  扫描的文件深度为 1 (  仅匹配 ${router.root}/${router.entry}.jsx 和 ${router.root}/${dir}/${router.entry}.jsx )
 
 ## Building
 
-**用法**: beidou build [--target=browser][--dev]
+**用法**: beidou-build [--target=browser][--dev]
 
 ## License
 
