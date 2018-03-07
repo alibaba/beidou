@@ -1,7 +1,7 @@
 {
-  "name": "beidou-example-with-auto-router",
+  "name": "beidou-example-auto-router",
   "version": "0.0.1",
-  "description": "Beidou example with auto router",
+  "description": "Beidou example auto router",
   "license": "MIT",
   "scripts": {
     "start": "beidou start",

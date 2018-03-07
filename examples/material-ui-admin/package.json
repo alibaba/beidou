@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-material-ui-admin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Beidou example material ui admin",
   "dependencies": {
     "beidou-core": "^1.0.0-alpha.5",
