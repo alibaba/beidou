@@ -62,7 +62,7 @@ export default class View extends React.Component {
     return (
       <html>
         <head>
-          <title>Example</title>
+          <title>Beidou example redux</title>
           <link rel="stylesheet" href={helper.asset('index.css')} />
         </head>
         <body>

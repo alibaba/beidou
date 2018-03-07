@@ -71,7 +71,7 @@ module.exports = appInfo => ({
         '.css',
         '.bmp',
         '.gif',
-        '.jpe',
+        '.jpg',
         '.jpeg',
         '.png',
         '.webp',

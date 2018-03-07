@@ -6,10 +6,10 @@
       "type": "node",
       "request": "launch",
       // Custom your exmaple project
-      "cwd": "${workspaceRoot}/examples/antd-admin",
+      "cwd": "${workspaceRoot}/examples/material-ui-admin",
       "runtimeExecutable": "yarn",
       "windows": { "runtimeExecutable": "yarn.cmd" },
-      "runtimeArgs": ["run", "build", "--inspect-brk"],
+      "runtimeArgs": ["run", "debug", "--inspect"],
       "console": "integratedTerminal",
       "protocol": "inspector",
       "restart": true,
