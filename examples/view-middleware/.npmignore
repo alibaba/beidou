@@ -7,10 +7,10 @@
 .tmp
 .vscode
 build/
-coverage
-logs
+coverage/
+logs/
 node_modules
 npm-debug.log
-run
-test
+run/
+test/
 yarn-error.log
