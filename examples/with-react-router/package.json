@@ -1,0 +1,25 @@
+{
+  "name": "beidou-example-with-react-router",
+  "version": "0.0.1",
+  "description": "Beidou example with react router",
+  "license": "MIT",
+  "scripts": {
+    "start": "beidou start",
+    "debug": "beidou debug",
+    "stop": "beidou stop",
+    "dev": "beidou dev",
+    "build": "beidou build",
+    "build:node": "beidou build --target=node"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "beidou-cli": "^0.0.4",
+    "beidou-core": "^1.0.0-alpha.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  }
+}
