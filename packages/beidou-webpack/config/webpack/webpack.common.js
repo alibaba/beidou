@@ -5,11 +5,11 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const reservedKey = 'custom';
+
 module.exports = (app, entry, dev) => {
   const webpackConfig = app.config.webpack;
-
-  const { output, resolve, devServer } = webpackConfig;
-
+  const { output } = webpackConfig;
   if (!path.isAbsolute(output.path)) {
     output.path = path.join(app.baseDir, output.path);
   }
@@ -20,21 +20,28 @@ module.exports = (app, entry, dev) => {
   };
 
   const plugins = [new webpack.NoEmitOnErrorsPlugin()];
-
   const { universal } = app.config.isomorphic;
   if (universal) {
     plugins.push(new app.IsomorphicPlugin(universal));
   }
 
-  return {
+  let finalConfig = {};
+  for (const key of Object.keys(webpackConfig)) {
+    if (key !== reservedKey) {
+      // Skip plugin self configs
+      finalConfig[key] = webpackConfig[key];
+    }
+  }
+  finalConfig = {
+    ...finalConfig,
     bail: !dev,
     devtool: dev ? 'eval' : false,
     context: app.config.baseDir,
     entry,
     output,
     module,
-    resolve,
     plugins,
-    devServer,
   };
+
+  return finalConfig;
 };

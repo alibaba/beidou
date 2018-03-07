@@ -14,7 +14,9 @@ export default class Index extends Component {
           <h1>Index</h1>
           <p>/pages/index.jsx</p>
           <ul>
-            <li><a href="./about">about</a></li>
+            <li>
+              <a href="./about">about</a>
+            </li>
           </ul>
         </body>
       </html>

@@ -1,6 +1,7 @@
 'use strict';
 
 exports.webpack = {
+  // keep this key name sync with webpack.common.js reservedKey
   custom: {
     // configPath: 'path/to/webpack/config/file',
   },

@@ -1,12 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { BrowserRouter, StaticRouter,  Route, Link } from 'react-router-dom';
-
+import { BrowserRouter, StaticRouter, Route, Link } from 'react-router-dom';
 
 const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
 
-export const BasicExample = (props) => (
+export const BasicExample = props => (
   <Router {...props}>
     <div>
       <ul>

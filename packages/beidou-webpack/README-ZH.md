@@ -69,7 +69,7 @@ exports.webpack = {
 };
 ```
 
-配置项 `output`、`resolve`、`devServer` 和 [webpack](https://webpack.js.org) 中定义的配置项一致。对这些配置的修改会对插件默认生成的 webpack 配置生效。插件自身使用的配置  在 `custom` 之下，比如，自定义 webpack 配置需要在 `'webpack.custom.configPath'` 里设置文件路径。
+配置项 `output`、`resolve`、`devServer` 和 [webpack](https://webpack.js.org) 中定义的配置项一致。注意：任何有效的 webpack 配置都可以而不仅仅是这三个配置项。对这些配置的修改会对插件默认生成的 webpack 配置生效。插件自身使用的配置在 `custom` 里面，比如，自定义 webpack 配置需要在 `'webpack.custom.configPath'` 里设置文件路径。
 
 * **devServer.port**： 定义 webpack dev server 的监听端口。访问 webpack 资源时，仍然可以通过 Node 应用直接访问，插件内置代理中间件自动转发请求到 webpack dev server ，所以  通常情况下不需要关心这个端口号。如果有特殊需要，可以直接访问 webpack dev server (上述配置下的地址 http://localhost:6002/webpack-dev-server)。
 
