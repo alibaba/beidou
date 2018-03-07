@@ -148,16 +148,5 @@ describe(`test/${path.basename(__filename)}`, () => {
         .expect('stdout', /Build finished/)
         .end(done);
     });
-
-    it('should throw error', (done) => {
-      rimraf.sync(path.join(cwd, 'node_modules/.bin'));
-      coffee
-        .fork(beidouBin, ['build'], {
-          cwd,
-          env,
-        })
-        .expect('stderr', /Error: Cannot find module/)
-        .end(done);
-    });
   });
 });
