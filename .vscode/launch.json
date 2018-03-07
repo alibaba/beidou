@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Beidou",
+      "type": "node",
+      "request": "launch",
+      // Custom your exmaple project
+      "cwd": "${workspaceRoot}/examples/antd-admin",
+      "runtimeExecutable": "yarn",
+      "windows": { "runtimeExecutable": "yarn.cmd" },
+      "runtimeArgs": ["run", "build", "--inspect-brk"],
+      "console": "integratedTerminal",
+      "protocol": "inspector",
+      "restart": true,
+      "port": 9229,
+      "autoAttachChildProcesses": true
+    }
+  ]
+}

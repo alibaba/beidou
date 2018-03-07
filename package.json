@@ -1,6 +1,5 @@
 {
-  "name": "beidou",
-  "description": "Isomorphic framework for server-rendered React apps",
+  "private": true,
   "scripts": {
     "lint": "make lint",
     "test": "make test",
@@ -11,19 +10,24 @@
     "changelog": "make changelog",
     "precommit": "lint-staged"
   },
+  "lint-staged": {
+    "*.{js,jsx}": ["prettier --write", "eslint --fix", "git add"],
+    "*.{json,css,scss,less,md}": ["prettier --write", "git add"]
+  },
   "author": "weichunpeng",
   "devDependencies": {
     "babel-eslint": "^8.1.2",
+    "beidou-core": "^1.0.0-alpha.5",
     "egg-bin": "^4.0.4",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "1.0.0-alpha.3",
+    "eslint-config-beidou": "1.0.0-alpha.5",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
-    "husky": "^0.13.4",
-    "lerna": "^2.0.0",
-    "lerna-changelog": "^0.5.0",
-    "lint-staged": "^4.0.0",
-    "prettier": "^1.11.0"
+    "husky": "^0.14.3",
+    "lerna": "^2.9.0",
+    "lerna-changelog": "^0.7.0",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1"
   },
   "engines": {
     "node": ">= 8.0.0"
@@ -33,17 +37,6 @@
     "alicov": {
       "threshold": 90
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{json,css,scss,less,md}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "repository": "https://github.com/alibaba/beidou"
 }

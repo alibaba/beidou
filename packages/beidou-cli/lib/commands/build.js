@@ -1,9 +1,10 @@
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const debug = require('debug')('beidou-cli');
 const { Command } = require('egg-bin');
-// const { log } = require('../helper');
+const { log } = require('../helper');
 
 module.exports = class BuildCMD extends Command {
   constructor(rawArgv) {
@@ -24,12 +25,22 @@ module.exports = class BuildCMD extends Command {
 
   async run(context) {
     // log.info(JSON.stringify(context, null, 2));
-    const buildBin = path.join(context.cwd, 'node_modules/.bin/beidou-build');
+    let buildBin = path.join(context.cwd, 'node_modules/.bin/beidou-build');
+    if (!fs.existsSync(buildBin)) {
+      buildBin = path.join(__dirname, '../../../beidou-webpack/bin/build.js');
+      debug('local buildBin path %s', buildBin);
+    }
+    if (!fs.existsSync(buildBin)) {
+      log.error(
+        'Add beidou-core as your package dependency before run build command'
+      );
+      return;
+    }
     const options = {
       execArgv: context.execArgv,
       env: Object.assign({ NODE_ENV: 'production' }, context.env),
     };
-    debug('%s %j', this.serverBin, context);
+    debug('%s %j', buildBin, context);
     await this.helper.forkNode(buildBin, context.rawArgv, options);
   }
 };
