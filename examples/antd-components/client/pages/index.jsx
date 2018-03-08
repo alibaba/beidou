@@ -2,17 +2,13 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Layout, Menu, Icon } from 'antd';
-import { BrowserRouter, StaticRouter,  Route, Link } from 'react-router-dom';
 import { View } from '../layout';
 import App from '../container';
-import util from '../util';
 import './index.less';
-
 
 export default class Index extends Component {
   static getPartial({ ctx }) {
-    return { html: <App location={ctx.req.url} /> };
+    return { html: <App location={ctx.req.url} context={{}} /> };
   }
 
   render() {
@@ -26,5 +22,5 @@ export default class Index extends Component {
 }
 
 if (__CLIENT__) {
-  ReactDOM.render(<App />, document.getElementById('container'));
+  ReactDOM.hydrate(<App />, document.getElementById('container'));
 }
