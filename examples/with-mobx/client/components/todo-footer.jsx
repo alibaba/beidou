@@ -6,8 +6,27 @@ import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from '../utils/constants';
 
 @observer
 export default class TodoFooter extends React.Component {
+  clearCompleted = () => {
+    this.props.todoStore.clearCompleted();
+  };
+
+  renderFilterLink(filterName, url, caption) {
+    return (
+      <li>
+        <a
+          href={`#/${url}`}
+          className={
+            filterName === this.props.viewStore.todoFilter ? 'selected' : ''
+          }
+        >
+          {caption}
+        </a>{' '}
+      </li>
+    );
+  }
+
   render() {
-    const todoStore = this.props.todoStore;
+    const { todoStore } = this.props;
     if (!todoStore.activeTodoCount && !todoStore.completedCount) return null;
 
     const activeTodoWord = pluralize(todoStore.activeTodoCount, 'item');
@@ -30,25 +49,6 @@ export default class TodoFooter extends React.Component {
       </footer>
     );
   }
-
-  renderFilterLink(filterName, url, caption) {
-    return (
-      <li>
-        <a
-          href={`#/${url}`}
-          className={
-            filterName === this.props.viewStore.todoFilter ? 'selected' : ''
-          }
-        >
-          {caption}
-        </a>{' '}
-      </li>
-    );
-  }
-
-  clearCompleted = () => {
-    this.props.todoStore.clearCompleted();
-  };
 }
 
 TodoFooter.propTypes = {

@@ -16,4 +16,4 @@ class BeidouCli extends Command {
   }
 }
 
-module.exports = exports = BeidouCli;
+module.exports = BeidouCli;

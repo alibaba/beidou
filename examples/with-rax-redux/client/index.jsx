@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import 'babel-polyfill';
 import { Component, hydrate, createElement } from 'rax';
 import View from 'rax-view';

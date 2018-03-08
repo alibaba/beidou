@@ -11,13 +11,13 @@ const createRule = {
 module.exports = (app) => {
   class DashboardController extends app.Controller {
     async index() {
-      const ctx = this.ctx;
+      const { ctx } = this;
       ctx.body = await this.service.user.findAll();
       ctx.status = 200;
     }
 
     async create() {
-      const ctx = this.ctx;
+      const { ctx } = this;
       ctx.validate(createRule);
       const {
         name,
@@ -42,8 +42,8 @@ module.exports = (app) => {
     }
 
     async destroy() {
-      const ctx = this.ctx;
-      const id = ctx.params.id;
+      const { ctx } = this;
+      const { id } = ctx.params;
       await this.service.user.delete(id);
       ctx.status = 204;
     }

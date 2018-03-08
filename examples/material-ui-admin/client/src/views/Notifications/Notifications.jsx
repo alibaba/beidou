@@ -25,6 +25,7 @@ class Notifications extends React.Component {
       br: false,
     };
   }
+
   showNotification(place) {
     const x = [];
     x[place] = true;
@@ -34,6 +35,7 @@ class Notifications extends React.Component {
       this.setState(x);
     }, 6000);
   }
+
   render() {
     return (
       <RegularCard
@@ -74,7 +76,12 @@ class Notifications extends React.Component {
                 <br />
                 <SnackbarContent
                   message={
-                    "This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style."
+                    'This is a notification with close ' +
+                    'button and icon and have many lines.' +
+                    ' You can see that the icon and the close button are ' +
+                    'always vertically aligned. This is a beautiful ' +
+                    "notification. So you don't have to worry about the " +
+                    'style.'
                   }
                   close
                   icon={AddAlert}
@@ -86,7 +93,8 @@ class Notifications extends React.Component {
                 <br />
                 <SnackbarContent
                   message={
-                    'INFO - This is a regular notification made with color="info"'
+                    'INFO - This is a regular notification' +
+                    ' made with color="info"'
                   }
                   close
                   color="info"
@@ -94,7 +102,8 @@ class Notifications extends React.Component {
                 <br />
                 <SnackbarContent
                   message={
-                    'SUCCESS - This is a regular notification made with color="success"'
+                    'SUCCESS - This is a regular notification' +
+                    ' made with color="success"'
                   }
                   close
                   color="success"
@@ -102,7 +111,8 @@ class Notifications extends React.Component {
                 <br />
                 <SnackbarContent
                   message={
-                    'WARNING - This is a regular notification made with color="warning"'
+                    'WARNING - This is a regular notification' +
+                    ' made with color="warning"'
                   }
                   close
                   color="warning"
@@ -110,7 +120,8 @@ class Notifications extends React.Component {
                 <br />
                 <SnackbarContent
                   message={
-                    'DANGER - This is a regular notification made with color="danger"'
+                    'DANGER - This is a regular notification' +
+                    ' made with color="danger"'
                   }
                   close
                   color="danger"
@@ -118,7 +129,8 @@ class Notifications extends React.Component {
                 <br />
                 <SnackbarContent
                   message={
-                    'PRIMARY - This is a regular notification made with color="primary"'
+                    'PRIMARY - This is a regular notification' +
+                    ' made with color="primary"'
                   }
                   close
                   color="primary"
@@ -151,7 +163,10 @@ class Notifications extends React.Component {
                       place="tl"
                       color="info"
                       icon={AddAlert}
-                      message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                      message={
+                        'Welcome to MATERIAL DASHBOARD React' +
+                        ' - a beautiful freebie for every web developer.'
+                      }
                       open={this.state.tl}
                       closeNotification={() => this.setState({ tl: false })}
                       close
@@ -169,7 +184,10 @@ class Notifications extends React.Component {
                       place="tc"
                       color="info"
                       icon={AddAlert}
-                      message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                      message={
+                        'Welcome to MATERIAL DASHBOARD React' +
+                        ' - a beautiful freebie for every web developer.'
+                      }
                       open={this.state.tc}
                       closeNotification={() => this.setState({ tc: false })}
                       close
@@ -187,7 +205,10 @@ class Notifications extends React.Component {
                       place="tr"
                       color="info"
                       icon={AddAlert}
-                      message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                      message={
+                        'Welcome to MATERIAL DASHBOARD React' +
+                        ' - a beautiful freebie for every web developer.'
+                      }
                       open={this.state.tr}
                       closeNotification={() => this.setState({ tr: false })}
                       close
@@ -211,7 +232,10 @@ class Notifications extends React.Component {
                       place="bl"
                       color="info"
                       icon={AddAlert}
-                      message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                      message={
+                        'Welcome to MATERIAL DASHBOARD React' +
+                        ' - a beautiful freebie for every web developer.'
+                      }
                       open={this.state.bl}
                       closeNotification={() => this.setState({ bl: false })}
                       close
@@ -229,7 +253,10 @@ class Notifications extends React.Component {
                       place="bc"
                       color="info"
                       icon={AddAlert}
-                      message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                      message={
+                        'Welcome to MATERIAL DASHBOARD React' +
+                        ' - a beautiful freebie for every web developer.'
+                      }
                       open={this.state.bc}
                       closeNotification={() => this.setState({ bc: false })}
                       close
@@ -247,7 +274,10 @@ class Notifications extends React.Component {
                       place="br"
                       color="info"
                       icon={AddAlert}
-                      message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                      message={
+                        'Welcome to MATERIAL DASHBOARD React' +
+                        ' - a beautiful freebie for every web developer.'
+                      }
                       open={this.state.br}
                       closeNotification={() => this.setState({ br: false })}
                       close

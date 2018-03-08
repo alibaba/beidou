@@ -6,7 +6,7 @@ const ENTER_KEY = 13;
 
 @observer
 export default class TodoEntry extends React.Component {
-  handleNewTodoKeyDown = event => {
+  handleNewTodoKeyDown = (event) => {
     if (event.keyCode !== ENTER_KEY) {
       return;
     }
@@ -20,10 +20,11 @@ export default class TodoEntry extends React.Component {
       this.newField.value = '';
     }
   };
+
   render() {
     return (
       <input
-        ref={r => {
+        ref={(r) => {
           this.newField = r;
         }}
         className="new-todo"

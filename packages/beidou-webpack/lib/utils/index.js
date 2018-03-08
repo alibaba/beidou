@@ -43,7 +43,7 @@ function getCustomWebpackCfgPath(app) {
 }
 
 const dumpWebpackConfig = function (agent, config) {
-  const rundir = agent.config.rundir;
+  const { rundir } = agent.config;
 
   try {
     /* istanbul ignore if */
@@ -204,7 +204,6 @@ const startServer = (config, port, logger, agent) => {
   server.listen(port, '0.0.0.0', (err) => {
     if (err) {
       logger.error('[Beidou Agent] webpack server start failed,', err);
-      return;
     }
   });
   agent[symbol] = server;

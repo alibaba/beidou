@@ -13,8 +13,9 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou-cli": "^0.0.4",
-    "beidou-core": "^1.0.0-alpha.4",
+    "beidou-cli": "^1.0.0-alpha.5",
+    "beidou-core": "^1.0.0-alpha.5",
+    "eslint-config-beidou": "^1.0.0-alpha.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2"

@@ -18,7 +18,7 @@ import HeaderLinks from './HeaderLinks';
 function Header({ ...props }) {
   function makeBrand() {
     let name;
-    props.routes.map((prop, key) => {
+    props.routes.map((prop) => {
       if (prop.path === props.location.pathname) {
         name = prop.navbarName;
       }

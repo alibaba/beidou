@@ -7,7 +7,7 @@ module.exports = (app) => {
 
   class LoginController extends app.Controller {
     async doLogin() {
-      const ctx = this.ctx;
+      const { ctx } = this;
       ctx.validate(loginRule);
 
       const { username, password } = ctx.request.body;
@@ -33,8 +33,7 @@ module.exports = (app) => {
     }
 
     async logout() {
-      // eslint-disable-line
-      const ctx = this.ctx;
+      const { ctx } = this;
       ctx.session.user = undefined;
 
       ctx.redirect(`/login${ctx.request.search}`);

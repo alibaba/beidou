@@ -21,7 +21,7 @@ const modal = ({
   ...modalProps
 }) => {
   const handleOk = () => {
-    validateFields(errors => {
+    validateFields((errors) => {
       if (errors) {
         return;
       }

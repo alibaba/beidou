@@ -17,11 +17,15 @@ import logo from 'assets/img/reactlogo.png';
 
 const switchRoutes = (
   <Switch>
-    {appRoutes.map((prop, key) => {
+    {appRoutes.map((prop) => {
       if (prop.redirect) {
-        return <Redirect from={prop.path} to={prop.to} key={key} />;
+        return (
+          <Redirect from={prop.path} to={prop.to} key={prop.path + prop.to} />
+        );
       }
-      return <Route path={prop.path} component={prop.component} key={key} />;
+      return (
+        <Route path={prop.path} component={prop.component} key={prop.path} />
+      );
     })}
   </Switch>
 );
@@ -30,21 +34,28 @@ class App extends React.Component {
   state = {
     mobileOpen: false,
   };
-  handleDrawerToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
-  };
-  getRoute() {
-    return this.props.location.pathname !== '/maps';
-  }
+
+  mainPanel = null;
+
   componentDidMount() {
     if (navigator.platform.indexOf('Win') > -1) {
       // eslint-disable-next-line
-      const ps = new PerfectScrollbar(this.refs.mainPanel);
+      const ps = new PerfectScrollbar(this.mainPanel);
     }
   }
+
   componentDidUpdate() {
-    this.refs.mainPanel.scrollTop = 0;
+    this.mainPanel.scrollTop = 0;
   }
+
+  getRoute() {
+    return this.props.location.pathname !== '/maps';
+  }
+
+  handleDrawerToggle = () => {
+    this.setState({ mobileOpen: !this.state.mobileOpen });
+  };
+
   render() {
     const { classes, ...rest } = this.props;
     return (
@@ -59,13 +70,23 @@ class App extends React.Component {
           color="blue"
           {...rest}
         />
-        <div className={classes.mainPanel} ref="mainPanel">
+        <div
+          className={classes.mainPanel}
+          ref={(div) => {
+            this.mainPanel = div;
+          }}
+        >
           <Header
             routes={appRoutes}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
-          {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
+          {/*
+            On the /maps route we want the map to be on full screen
+            - this is not possible if the content and container classes
+            are present because they have some paddings which would make
+            the map smaller
+          */}
           {this.getRoute() ? (
             <div className={classes.content}>
               <div className={classes.container}>{switchRoutes}</div>

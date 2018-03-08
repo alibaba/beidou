@@ -21,6 +21,7 @@ class HeaderLinks extends React.Component {
   state = {
     open: false,
   };
+
   handleClick = () => {
     this.setState({ open: !this.state.open });
   };
@@ -28,6 +29,7 @@ class HeaderLinks extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;
@@ -111,7 +113,7 @@ class HeaderLinks extends React.Component {
                       onClick={this.handleClose}
                       className={classes.dropdownItem}
                     >
-                      You're now friend with Andrew
+                      You&#39;re now friend with Andrew
                     </MenuItem>
                     <MenuItem
                       onClick={this.handleClose}

@@ -11,7 +11,7 @@ import {
 
 import avatar from 'assets/img/faces/marc.jpg';
 
-function UserProfile({ ...props }) {
+function UserProfile() {
   return (
     <div>
       <Grid container>
@@ -108,7 +108,10 @@ function UserProfile({ ...props }) {
                       About me
                     </InputLabel>
                     <CustomInput
-                      labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
+                      labelText={
+                        'Lamborghini Mercy, Your chick she so thirsty,' +
+                        " I'm in that two seat Lambo."
+                      }
                       id="about-me"
                       formControlProps={{
                         fullWidth: true,
@@ -130,7 +133,12 @@ function UserProfile({ ...props }) {
             avatar={avatar}
             subtitle="CEO / CO-FOUNDER"
             title="Alec Thompson"
-            description="Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is..."
+            description={
+              "Don't be scared of the truth because we need " +
+              'to restart the human foundation in truth And I love you like' +
+              ' Kanye loves Kanye I love Rick Owens’ ' +
+              'bed design but the back is...'
+            }
             footer={
               <Button color="primary" round>
                 Follow

@@ -13,8 +13,8 @@ function requireAssetsJson(filepath, logger) {
     } catch (e) {
       // warning
       logger.warn(
-        'invalid assets file at: %s, assets file was created automatically by Isomorphic plugin,' +
-          'never edit it manually',
+        'invalid assets file at: %s, assets file was created automatically ' +
+          'by Isomorphic plugin, never edit it manually',
         filepath
       );
       return json;
@@ -78,10 +78,12 @@ module.exports = function (app) {
         asset.ext &&
         isValidExt(asset.ext)
       ) {
+        /* eslint-disable prefer-destructuring */
         ext = asset.ext;
       } else {
         logger.error(
-          `Expect asset type string or object（e.g. ['.scss'], [{ext:'scss'}]）, get ${asset}`
+          `Expect asset type string or object
+          （e.g. ['.scss'], [{ext:'scss'}]）, get ${asset}`
         );
       }
       require.extensions[ext] = isomorphicRequire;

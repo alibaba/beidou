@@ -9,6 +9,7 @@ class Container extends React.Component {
     super();
     this.state = {};
   }
+
   componentDidMount() {
     this.props.dispatch(actions.greet());
   }

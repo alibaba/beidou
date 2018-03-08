@@ -24,7 +24,7 @@ const Sidebar = ({ ...props }) => {
   const { classes, color, logo, image, logoText, routes } = props;
   const links = (
     <List className={classes.list}>
-      {routes.map((prop, key) => {
+      {routes.map((prop) => {
         if (prop.redirect) return null;
         const listItemClasses = cx({
           [` ${classes[color]}`]: activeRoute(prop.path),
@@ -37,7 +37,7 @@ const Sidebar = ({ ...props }) => {
             to={prop.path}
             className={classes.item}
             activeClassName="active"
-            key={key}
+            key={prop.path + prop.sidebarName}
           >
             <ListItem button className={classes.itemLink + listItemClasses}>
               <ListItemIcon className={classes.itemIcon + whiteFontClasses}>

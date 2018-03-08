@@ -34,16 +34,19 @@ import {
 import dashboardStyle from 'variables/styles/dashboardStyle';
 
 class Dashboard extends React.Component {
+  /* eslint-disable react/no-unused-state */
   state = {
     value: 0,
   };
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
+  handleChangeIndex = (index) => {
     this.setState({ value: index });
   };
+
   render() {
     return (
       <div>

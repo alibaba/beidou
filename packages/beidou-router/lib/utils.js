@@ -32,6 +32,8 @@ exports.resolvePath = async function (
     names.unshift(name + ext);
   }
 
+  /* eslint-disable no-await-in-loop */
+
   for (const file of names) {
     if (!exclude.test(name)) {
       for (const dir of providers) {

@@ -7,6 +7,7 @@ module.exports = ({ Service }) => {
       super(ctx);
       this.user = this.ctx.db.user;
     }
+
     async find(username, password) {
       if (username === 'beidou' && password === 'admin') {
         return {

@@ -6,6 +6,8 @@ import cx from 'classnames';
 
 import customInputStyle from 'variables/styles/customInputStyle';
 
+/* eslint-disable no-nested-ternary */
+
 function CustomInput({ ...props }) {
   const {
     classes,

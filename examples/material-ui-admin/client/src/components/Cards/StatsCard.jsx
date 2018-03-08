@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 
 import statsCardStyle from 'variables/styles/statsCardStyle';
 
+/* eslint-disable no-nested-ternary */
+
 function StatsCard({ ...props }) {
   const {
     classes,

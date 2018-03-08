@@ -2,6 +2,8 @@
  * Module dependencies.
  */
 
+'use strict';
+
 const path = require('path');
 
 const EGG_PATH = path.join(__dirname, '..');
@@ -13,7 +15,7 @@ module.exports = function (target) {
   loaderExtend(target);
   applicationExtend(target);
   agentExtend(target);
-  const startCluster = target.startCluster;
+  const { startCluster } = target;
   target.startCluster = function (options, callback) {
     options = options || /* istanbul ignore next */ {};
     options.framework = EGG_PATH;

@@ -22,7 +22,7 @@ function Completed({ data }) {
         <AreaChart data={data}>
           <Legend
             verticalAlign="top"
-            content={prop => {
+            content={(prop) => {
               const { payload } = prop;
               return (
                 <ul
@@ -31,8 +31,8 @@ function Completed({ data }) {
                     clearfix: true,
                   })}
                 >
-                  {payload.map((item, key) => (
-                    <li key={key}>
+                  {payload.map(item => (
+                    <li key={item.color + item.value}>
                       <span
                         className={styles.radiusdot}
                         style={{ background: item.color }}
@@ -60,9 +60,9 @@ function Completed({ data }) {
               border: 'none',
               boxShadow: '4px 4px 40px rgba(0, 0, 0, 0.05)',
             }}
-            content={content => {
-              const list = content.payload.map((item, key) => (
-                <li key={key} className={styles.tipitem}>
+            content={(content) => {
+              const list = content.payload.map(item => (
+                <li key={item.name + item.value} className={styles.tipitem}>
                   <span
                     className={styles.radiusdot}
                     style={{ background: item.color }}

@@ -7,9 +7,6 @@ packages/beidou-docs/
 .isomorphic
 .stats
 
-# Different from .prettierignore
 examples/*/build/
 examples/*/logs/
 examples/*/run/
-examples/*/client/
-examples/*/app/views/

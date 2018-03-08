@@ -74,7 +74,7 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
 };
 
 IsomorphicPlugin.prototype.parse = function (module) {
-  const name = module.name;
+  const { name } = module;
   const ext = path.extname(name);
   const config = this.getConfig(ext);
   return this.parseForConfig(module, config);
@@ -116,7 +116,7 @@ IsomorphicPlugin.prototype.getConfig = function (ext) {
 IsomorphicPlugin.prototype.save = function (results) {
   const filePath = this.options.assetsFilePath;
   const dir = path.dirname(filePath);
-  const context = this.options.context;
+  const { context } = this.options;
   const json = {};
   for (const result of results) {
     const absolutePath = path.join(process.cwd(), result.name);
@@ -125,7 +125,7 @@ IsomorphicPlugin.prototype.save = function (results) {
     const m = new Module(absolutePath);
     try {
       m._compile(result.content, absolutePath);
-      const exports = m.exports;
+      const { exports } = m;
       json[relativePath] = exports;
     } catch (e) {
       // do nothing

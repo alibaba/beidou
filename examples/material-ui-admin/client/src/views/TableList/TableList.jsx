@@ -3,7 +3,7 @@ import { Grid } from 'material-ui';
 
 import { RegularCard, Table, ItemGrid } from 'components';
 
-function TableList({ ...props }) {
+function TableList() {
   return (
     <Grid container>
       <ItemGrid xs={12} sm={12} md={12}>

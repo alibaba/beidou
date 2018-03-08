@@ -5,6 +5,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 
 import 'assets/css/material-dashboard-react.css';
 import indexRoutes from 'routes/index.jsx';
+import favicon from '../public/favicon.ico';
 
 const hist = __CLIENT__ ? createBrowserHistory() : createMemoryHistory();
 
@@ -13,8 +14,12 @@ export default class View extends React.Component {
     const html = (
       <Router history={hist}>
         <Switch>
-          {indexRoutes.map((prop, key) => (
-            <Route path={prop.path} component={prop.component} key={key} />
+          {indexRoutes.map(prop => (
+            <Route
+              path={prop.path}
+              component={prop.component}
+              key={prop.path}
+            />
           ))}
         </Switch>
       </Router>
@@ -33,6 +38,7 @@ export default class View extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <meta name="theme-color" content="#000000" />
+          <link rel="shortcut icon" href={favicon} />
           <link
             rel="stylesheet"
             href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"
@@ -56,8 +62,8 @@ if (__CLIENT__) {
   ReactDOM.hydrate(
     <Router history={hist}>
       <Switch>
-        {indexRoutes.map((prop, key) => (
-          <Route path={prop.path} component={prop.component} key={key} />
+        {indexRoutes.map(prop => (
+          <Route path={prop.path} component={prop.component} key={prop.path} />
         ))}
       </Switch>
     </Router>,

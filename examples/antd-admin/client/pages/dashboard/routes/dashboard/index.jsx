@@ -32,7 +32,6 @@ class Dashboard extends React.Component {
 
   render() {
     const {
-      loading,
       weather,
       sales,
       quote,
@@ -44,8 +43,8 @@ class Dashboard extends React.Component {
       cpu,
       user,
     } = this.props;
-    const numberCards = numbers.map((item, key) => (
-      <Col key={key} lg={6} md={12}>
+    const numberCards = numbers.map(item => (
+      <Col key={item} lg={6} md={12}>
         <NumberCard {...item} />
       </Col>
     ));

@@ -10,6 +10,45 @@ const ENTER_KEY = 13;
 export default class TodoItem extends React.Component {
   @observable editText = '';
 
+  handleSubmit = () => {
+    const val = this.editText.trim();
+    if (val) {
+      this.props.todo.setTitle(val);
+      this.editText = val;
+    } else {
+      this.handleDestroy();
+    }
+    this.props.viewStore.todoBeingEdited = null;
+  };
+
+  handleDestroy = () => {
+    this.props.todo.destroy();
+    this.props.viewStore.todoBeingEdited = null;
+  };
+
+  handleEdit = () => {
+    const { todo } = this.props;
+    this.props.viewStore.todoBeingEdited = todo;
+    this.editText = todo.title;
+  };
+
+  handleKeyDown = (event) => {
+    if (event.which === ESCAPE_KEY) {
+      this.editText = this.props.todo.title;
+      this.props.viewStore.todoBeingEdited = null;
+    } else if (event.which === ENTER_KEY) {
+      this.handleSubmit(event);
+    }
+  };
+
+  handleChange = (event) => {
+    this.editText = event.target.value;
+  };
+
+  handleToggle = () => {
+    this.props.todo.toggle();
+  };
+
   render() {
     const { viewStore, todo } = this.props;
     return (
@@ -30,7 +69,7 @@ export default class TodoItem extends React.Component {
           <button className="destroy" onClick={this.handleDestroy} />
         </div>
         <input
-          ref="editField"
+          // ref="editField"
           className="edit"
           value={this.editText}
           onBlur={this.handleSubmit}
@@ -40,45 +79,6 @@ export default class TodoItem extends React.Component {
       </li>
     );
   }
-
-  handleSubmit = event => {
-    const val = this.editText.trim();
-    if (val) {
-      this.props.todo.setTitle(val);
-      this.editText = val;
-    } else {
-      this.handleDestroy();
-    }
-    this.props.viewStore.todoBeingEdited = null;
-  };
-
-  handleDestroy = () => {
-    this.props.todo.destroy();
-    this.props.viewStore.todoBeingEdited = null;
-  };
-
-  handleEdit = () => {
-    const todo = this.props.todo;
-    this.props.viewStore.todoBeingEdited = todo;
-    this.editText = todo.title;
-  };
-
-  handleKeyDown = event => {
-    if (event.which === ESCAPE_KEY) {
-      this.editText = this.props.todo.title;
-      this.props.viewStore.todoBeingEdited = null;
-    } else if (event.which === ENTER_KEY) {
-      this.handleSubmit(event);
-    }
-  };
-
-  handleChange = event => {
-    this.editText = event.target.value;
-  };
-
-  handleToggle = () => {
-    this.props.todo.toggle();
-  };
 }
 
 TodoItem.propTypes = {

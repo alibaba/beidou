@@ -26,6 +26,7 @@ function Snackbar({ ...props }) {
     ];
   }
   return (
+    /* eslint-disable no-nested-ternary */
     <Snack
       anchorOrigin={{
         vertical: place.indexOf('t') === -1 ? 'bottom' : 'top',

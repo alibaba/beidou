@@ -1,5 +1,5 @@
-const Application = require('beidou-core').Application;
-const Loader = require('beidou-core').AppWorkerLoader;
+const { Application } = require('beidou-core');
+const { Loader } = require('beidou-core');
 const builder = require('beidou-plugin-webpack/builder');
 
 Loader.prototype.load = function () {};

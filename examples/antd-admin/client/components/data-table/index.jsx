@@ -4,6 +4,8 @@ import { Table } from 'antd';
 import lodash from 'lodash';
 import request from '../../utils/request';
 
+/* eslint-disable react/no-string-refs */
+
 class DataTable extends React.Component {
   constructor(props) {
     super(props);
@@ -34,6 +36,7 @@ class DataTable extends React.Component {
   componentWillReceiveProps(nextProps) {
     const staticNextProps = lodash.cloneDeep(nextProps);
     delete staticNextProps.columns;
+    /* eslint-disable no-unused-vars */
     const { columns, ...otherProps } = this.props;
 
     if (!lodash.isEqual(staticNextProps, otherProps)) {
@@ -72,7 +75,7 @@ class DataTable extends React.Component {
         ...data,
         ...fetchData,
       },
-    }).then(result => {
+    }).then((result) => {
       if (!this.refs.DataTable) {
         return;
       }
@@ -107,10 +110,7 @@ class DataTable extends React.Component {
 DataTable.propTypes = {
   fetch: PropTypes.object,
   rowKey: PropTypes.string,
-  pagination: React.PropTypes.oneOfType([
-    React.PropTypes.bool,
-    React.PropTypes.object,
-  ]),
+  pagination: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   columns: PropTypes.array,
   dataSource: PropTypes.array,
 };

@@ -29,7 +29,7 @@ const Bread = ({ className, menus, location }) => {
       </span>
     );
     return (
-      <Breadcrumb.Item key={key}>
+      <Breadcrumb.Item key={item.route + item.name}>
         {menus.length - 1 !== key && item.route ? (
           <Link to={location.pathname !== item.route ? item.route : '#'}>
             {content}

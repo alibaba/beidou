@@ -18,7 +18,7 @@
     "eslint-plugin-react": "^7.5.1"
   },
   "dependencies": {
-    "eslint-config-ali": "^2.0.3"
+    "eslint-config-ali": "^3.0.1"
   },
   "engines": {
     "node": ">= 8.0.0"

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 export default class Index extends Component {
   render() {
-    const { html, helper } = this.props;
+    const { html } = this.props;
     return (
       <html>
         <head>

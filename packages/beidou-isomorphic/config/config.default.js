@@ -15,7 +15,8 @@ module.exports = appInfo => ({
     /**
      * babel register, enabled by default, set `false` to disable
      *
-     * all configs below will be passed into `require('babel-register')(configs)`
+     * all configs below will be passed into
+     * `require('babel-register')(configs)`
      *
      * for more details, see: https://babeljs.io/docs/usage/babel-register/
      */
@@ -32,12 +33,15 @@ module.exports = appInfo => ({
       // ignore(filename) {
       //   return false;
       // },
-      // Optional only regex - if any filenames **don't** match this regex then they
+      // Optional only regex - if any filenames
+      // **don't** match this regex then they
       // aren't compiled
       // only: /my_es6_folder/,
 
-      // Setting this will remove the currently hooked extensions of `.jsx`, `.mjs`
-      // and .js so you'll have to add them back if you want them to be used again.
+      // Setting this will remove the currently hooked extensions
+      // of `.jsx`, `.mjs`
+      // and .js so you'll have to add them back if you want them
+      // to be used again.
       extensions: ['.js', '.jsx', '.mjs'],
 
       // Setting this to false will disable the cache.
@@ -45,13 +49,15 @@ module.exports = appInfo => ({
     },
 
     /**
-     * the universal field provides configuration both for `beidou-isomorphic` and `beidou-webpack`
+     * the universal field provides configuration both for
+     * `beidou-isomorphic` and `beidou-webpack`
      * for `beidou-webpack`:
      *   write assets.json file into `assetsFilePath`
      *   only contains assets type defined by `assets` array
      * for `beidou-isomorphic`:
      *   read file defined by `assetsFilePath`
-     *   hook require and return content in assets.json if file path matches in `assets`
+     *   hook require and return content in assets.json if file
+     * path matches in `assets`
      *
      */
 

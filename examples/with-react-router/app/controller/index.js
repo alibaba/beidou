@@ -1,6 +1,6 @@
 'use strict';
 
-const Controller = require('beidou-core').Controller;
+const { Controller } = require('beidou-core');
 
 class IndexController extends Controller {
   async route() {

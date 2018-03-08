@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 
 import chartCardStyle from 'variables/styles/chartCardStyle';
 
+/* eslint-disable no-nested-ternary */
+
 function ChartCard({ ...props }) {
   const {
     classes,

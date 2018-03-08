@@ -35,7 +35,7 @@
 * ✔︎ User-friendly CLI tool
 * ✔︎ Lots of [plugins](./packages/beidou-docs/en/basic/plugins.md)
 
-## How to use
+## Quick start
 
 ```bash
 $ npm install beidou-cli -g
@@ -43,7 +43,7 @@ $ beidou init
 $ npm run dev
 ```
 
-After that, go to `http://localhost:6001/`
+Navigate to `http://localhost:6001/`
 
 ## Boilerplate
 

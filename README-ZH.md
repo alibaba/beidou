@@ -36,7 +36,7 @@
 * ✔︎ 可拔插的同构能力
 * ✔︎ 丰富的 [插件](./packages/beidou-docs/en/basic/plugins.md)
 
-## 如何使用？
+## 快速开始
 
 ```bash
 $ npm install beidou-cli -g

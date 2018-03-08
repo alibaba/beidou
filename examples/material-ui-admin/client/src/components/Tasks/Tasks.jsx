@@ -19,6 +19,7 @@ class Tasks extends React.Component {
   state = {
     checked: this.props.checkedIndexes,
   };
+
   handleToggle = value => () => {
     const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
@@ -34,6 +35,7 @@ class Tasks extends React.Component {
       checked: newChecked,
     });
   };
+
   render() {
     const { classes, tasksIndexes, tasks } = this.props;
     return (

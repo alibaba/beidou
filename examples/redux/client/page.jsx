@@ -26,6 +26,7 @@ export default class View extends React.Component {
 
     return store;
   }
+
   /**
    *
    * @param {Object} locals server context variables
@@ -33,7 +34,8 @@ export default class View extends React.Component {
    * {
    *    ctx: egg/koa context
    *    helper: view helper
-   *    render: server side renderToString of react or renderToStaticMarkup if `config.react.static = true`
+   *    render: server side renderToString of react or renderToStaticMarkup
+   *      if `config.react.static = true`
    *    renderToString
    *    renderToStaticMarkup
    *    request: http request object

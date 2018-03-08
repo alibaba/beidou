@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "eslint": "make eslint-lint",
     "lint": "make lint",
     "test": "make test",
     "install": "lerna bootstrap",
