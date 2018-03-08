@@ -1,0 +1,27 @@
+{
+  "name": "beidou-example-antd-components",
+  "version": "0.0.1",
+  "description": "Beidou Example AntD Components",
+  "license": "MIT",
+  "scripts": {
+    "start": "beidou start",
+    "debug": "beidou debug",
+    "stop": "beidou stop",
+    "dev": "beidou dev",
+    "build": "beidou build",
+    "build:node": "beidou build --target=node"
+  },
+  "dependencies": {
+    "antd": "^3.2.3",
+    "babel-polyfill": "^6.26.0",
+    "beidou-cli": "^1.0.0-alpha.5",
+    "beidou-core": "^1.0.0-alpha.5",
+    "globby": "^8.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  }
+}
