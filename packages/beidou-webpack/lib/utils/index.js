@@ -207,7 +207,7 @@ const startServer = (config, port, logger, agent) => {
       return;
     }
   });
-
+  agent[symbol] = server;
   // dump config
   dumpWebpackConfig(agent, config);
   return server;

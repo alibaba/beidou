@@ -25,7 +25,7 @@ module.exports = (agent) => {
     helper.startServer(webpackConfig, port, logger, agent);
 
     function watcher() {
-      const updatedEntry = entryLoader(agent, webpackConfig.devServer);
+      const updatedEntry = entryLoader(agent, webpackConfig.devServer, true);
       if (!equal(updatedEntry, webpackConfig.entry)) {
         webpackConfig.entry = updatedEntry;
         helper.restartServer(webpackConfig, port, logger, agent);
