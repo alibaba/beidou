@@ -30,7 +30,7 @@ export default class Demo extends Component {
   };
 
   render() {
-    const size = this.state.size;
+    const { size } = this.state;
     return (
       <div id="components-button-demo">
         <Row gutter={16}>

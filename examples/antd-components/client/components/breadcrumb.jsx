@@ -15,8 +15,12 @@ export default class Demo extends Component {
                 <Section title="基本">
                   <Breadcrumb>
                     <Breadcrumb.Item>Home</Breadcrumb.Item>
-                    <Breadcrumb.Item><a href="">Application Center</a></Breadcrumb.Item>
-                    <Breadcrumb.Item><a href="">Application List</a></Breadcrumb.Item>
+                    <Breadcrumb.Item>
+                      <a href="">Application Center</a>
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item>
+                      <a href="">Application List</a>
+                    </Breadcrumb.Item>
                     <Breadcrumb.Item>An Application</Breadcrumb.Item>
                   </Breadcrumb>
                 </Section>
@@ -25,13 +29,14 @@ export default class Demo extends Component {
                 <Section title="分隔符">
                   <Breadcrumb separator=">">
                     <Breadcrumb.Item>Home</Breadcrumb.Item>
-                    <Breadcrumb.Item href="">Application Center</Breadcrumb.Item>
+                    <Breadcrumb.Item href="">
+                      Application Center
+                    </Breadcrumb.Item>
                     <Breadcrumb.Item href="">Application List</Breadcrumb.Item>
                     <Breadcrumb.Item>An Application</Breadcrumb.Item>
                   </Breadcrumb>
                 </Section>
               </Col>
-
             </Row>
           </Col>
 
@@ -47,9 +52,7 @@ export default class Demo extends Component {
                       <Icon type="user" />
                       <span>Application List</span>
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item>
-      Application
-                    </Breadcrumb.Item>
+                    <Breadcrumb.Item>Application</Breadcrumb.Item>
                   </Breadcrumb>
                 </Section>
               </Col>

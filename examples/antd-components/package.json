@@ -25,6 +25,12 @@
     "react-infinite-scroller": "^1.1.3",
     "react-router-dom": "^4.2.2",
     "react-virtualized": "^9.18.5",
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.11.0",
+    "eslint-config-beidou": "1.0.0-alpha.5",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1",
+    "moment": "^2.21.0",
     "reqwest": "^2.0.5"
   },
   "engines": {

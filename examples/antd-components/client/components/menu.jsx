@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Row, Col, Icon, Menu, Button, Switch } from 'antd';
 import { Section } from '../layout';
 
-const SubMenu = Menu.SubMenu;
+const { SubMenu } = Menu;
 const MenuItemGroup = Menu.ItemGroup;
 
 export default class Demo extends Component {
@@ -44,6 +44,7 @@ export default class Demo extends Component {
       collapsed: !this.state.collapsed,
     });
   };
+
   handleClick = (e) => {
     console.log('click ', e);
   };

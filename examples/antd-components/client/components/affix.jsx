@@ -27,13 +27,12 @@ export default class Demo extends Component {
                   <div className="background">
                     <Affix target={() => this.container}>
                       <Button type="primary">
-              Fixed at the top of container
+                        Fixed at the top of container
                       </Button>
                     </Affix>
                   </div>
                 </Section>
               </Col>
-
             </Row>
           </Col>
 
@@ -41,7 +40,10 @@ export default class Demo extends Component {
             <Row>
               <Col span={24}>
                 <Section title="固定状态改变的回调">
-                  <Affix offsetTop={120} onChange={affixed => console.log(affixed)}>
+                  <Affix
+                    offsetTop={120}
+                    onChange={affixed => console.log(affixed)}
+                  >
                     <Button>120px to affix top</Button>
                   </Affix>
                 </Section>

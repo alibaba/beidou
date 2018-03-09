@@ -6,6 +6,9 @@
     "react/forbid-prop-types": [1, { "forbid": ["any"] }],
     "react/prefer-stateless-function": 0,
     "no-template-curly-in-string": 0,
-    "react/no-danger": 0
+    "react/no-danger": 0,
+    "react/prop-types": 0,
+    "react/no-multi-comp": 0,
+    "no-shadow": 0
   }
 }

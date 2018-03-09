@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { Row, Col, Icon } from 'antd';
 import { Section } from '../layout';
 
-
 const types = [
   'step-backward',
   'step-forward',
@@ -303,13 +302,11 @@ export default class Demo extends Component {
           <Col span={24}>
             <Section title="图标">
               <ul>
-                {types.map(type => {
-                  return (
-                    <li key={type}>
-                      <Icon type={type} />
-                    </li>
-                  );
-                })}
+                {types.map(type => (
+                  <li key={type}>
+                    <Icon type={type} />
+                  </li>
+                ))}
               </ul>
             </Section>
           </Col>

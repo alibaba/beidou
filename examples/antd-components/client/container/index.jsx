@@ -50,7 +50,7 @@ export default props => (
             })}
           </div>
         </Content>
-        <Footer className="footer">Ant Design ©2016 Created by Ant UED</Footer>
+        <Footer className="footer">Antd components rendered by beidou</Footer>
       </Layout>
     </Layout>
   </Router>

@@ -81,7 +81,68 @@ const configs = [
     title: 'Tabs 标签',
     name: 'tabs',
   },
+  {
+    title: 'Alert 警告提示',
+    name: 'alert',
+  },
+  {
+    title: 'Modal 对话框',
+    name: 'modal',
+  },
+  {
+    title: 'Message 全局提示',
+    name: 'message',
+  },
+  {
+    title: 'Notification 通知提醒框',
+    name: 'notification',
+  },
+  {
+    title: 'Progress 进度条',
+    name: 'progress',
+  },
+  {
+    title: 'Popconfirm 气泡确认框',
+    name: 'popconfirm',
+  },
+  {
+    title: 'Spin 加载中',
+    name: 'spin',
+  },
+  {
+    title: 'Anchor 锚点',
+    name: 'anchor',
+  },
+  {
+    title: 'BackTop 回到顶部',
+    name: 'backtop',
+  },
+  {
+    title: 'Divider 分割线',
+    name: 'divider',
+  },
+  {
+    title: 'LocaleProvider 国际化',
+    name: 'localeprovider',
+  },
+  {
+    title: 'TreeSelect树选择',
+    name: 'treeselect',
+  },
+  {
+    title: 'TimePicker时间选择框',
+    name: 'timepicker',
+  },
+  {
+    title: 'Transfer 穿梭框',
+    name: 'transfer',
+  },
+  {
+    title: 'Upload 上传',
+    name: 'upload',
+  },
 ];
+
 exports.listComponents = function () {
   return configs.map(({ title, name }) => {
     const component = require(`../components/${name}`);

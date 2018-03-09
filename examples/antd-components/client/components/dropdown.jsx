@@ -18,11 +18,13 @@ export default class Demo extends Component {
   state = {
     visible: false,
   };
+
   handleMenuClick = (e) => {
     if (e.key === '3') {
       this.setState({ visible: false });
     }
   };
+
   handleVisibleChange = (flag) => {
     this.setState({ visible: flag });
   };
