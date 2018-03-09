@@ -9,7 +9,7 @@ function dragDirection(
   hoverIndex,
   initialClientOffset,
   clientOffset,
-  sourceClientOffset,
+  sourceClientOffset
 ) {
   const hoverMiddleY = (initialClientOffset.y - sourceClientOffset.y) / 2;
   const hoverClientY = clientOffset.y - sourceClientOffset.y;
@@ -53,13 +53,7 @@ let BodyRow = (props) => {
   }
 
   return connectDragSource(
-    connectDropTarget(
-      <tr
-        {...restProps}
-        className={className}
-        style={style}
-      />
-    )
+    connectDropTarget(<tr {...restProps} className={className} style={style} />)
   );
 };
 
@@ -105,45 +99,53 @@ BodyRow = DropTarget('row', rowTarget, (connect, monitor) => ({
   }))(BodyRow)
 );
 
-const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  key: 'name',
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age',
-}, {
-  title: 'Address',
-  dataIndex: 'address',
-  key: 'address',
-}];
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
+  },
+];
 
 class DragSortingTable extends React.Component {
   state = {
-    data: [{
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    }, {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    }, {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    }],
-  }
+    data: [
+      {
+        key: '1',
+        name: 'John Brown',
+        age: 32,
+        address: 'New York No. 1 Lake Park',
+      },
+      {
+        key: '2',
+        name: 'Jim Green',
+        age: 42,
+        address: 'London No. 1 Lake Park',
+      },
+      {
+        key: '3',
+        name: 'Joe Black',
+        age: 32,
+        address: 'Sidney No. 1 Lake Park',
+      },
+    ],
+  };
 
   components = {
     body: {
       row: BodyRow,
     },
-  }
+  };
 
   moveRow = (dragIndex, hoverIndex) => {
     const { data } = this.state;
@@ -154,9 +156,9 @@ class DragSortingTable extends React.Component {
         data: {
           $splice: [[dragIndex, 1], [hoverIndex, 0, dragRow]],
         },
-      }),
+      })
     );
-  }
+  };
 
   render() {
     return (
@@ -175,6 +177,4 @@ class DragSortingTable extends React.Component {
 
 const Demo = DragDropContext(HTML5Backend)(DragSortingTable);
 
-export default () => (
-  <Demo />
-);
+export default () => <Demo />;

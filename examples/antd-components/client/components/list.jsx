@@ -14,7 +14,12 @@ import {
 } from 'antd';
 import reqwest from 'reqwest';
 import InfiniteScroll from 'react-infinite-scroller';
-import { WindowScroller, AutoSizer, List as VList, InfiniteLoader } from 'react-virtualized';
+import {
+  WindowScroller,
+  AutoSizer,
+  List as VList,
+  InfiniteLoader,
+} from 'react-virtualized';
 import { Section } from '../layout';
 
 const fakeDataUrl =
@@ -59,7 +64,7 @@ class VirtualizedExample extends React.Component {
   state = {
     data: [],
     loading: false,
-  }
+  };
   componentWillMount() {
     this.getData((res) => {
       this.setState({
@@ -78,9 +83,9 @@ class VirtualizedExample extends React.Component {
         callback(res);
       },
     });
-  }
+  };
 
-  loadedRowsMap = {}
+  loadedRowsMap = {};
 
   handleInfiniteOnLoad = ({ startIndex, stopIndex }) => {
     let data = this.state.data;
@@ -105,25 +110,33 @@ class VirtualizedExample extends React.Component {
         loading: false,
       });
     });
-  }
-  isRowLoaded = ({ index }) => !!this.loadedRowsMap[index]
+  };
+  isRowLoaded = ({ index }) => !!this.loadedRowsMap[index];
   renderItem = ({ index, key, style }) => {
     const { data } = this.state;
     const item = data[index];
     return (
       <List.Item key={key} style={style}>
         <List.Item.Meta
-          avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+          avatar={
+            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+          }
           title={<a href="https://ant.design">{item.name.last}</a>}
           description={item.email}
         />
         <div>Content</div>
       </List.Item>
     );
-  }
+  };
   render() {
     const { data } = this.state;
-    const vlist = ({ isScrolling, onChildScroll, scrollTop, onRowsRendered, width }) => (
+    const vlist = ({
+      isScrolling,
+      onChildScroll,
+      scrollTop,
+      onRowsRendered,
+      width,
+    }) => (
       <VList
         autoHeight
         height={730}
@@ -138,29 +151,53 @@ class VirtualizedExample extends React.Component {
         width={width}
       />
     );
-    const autoSize = ({ height, isScrolling, onChildScroll, scrollTop, onRowsRendered }) => (
+    const autoSize = ({
+      height,
+      isScrolling,
+      onChildScroll,
+      scrollTop,
+      onRowsRendered,
+    }) => (
       <AutoSizer disableHeight>
-        {({ width }) => vlist({ height, isScrolling, onChildScroll, scrollTop, onRowsRendered, width })}
+        {({ width }) =>
+          vlist({
+            height,
+            isScrolling,
+            onChildScroll,
+            scrollTop,
+            onRowsRendered,
+            width,
+          })
+        }
       </AutoSizer>
     );
-    const infiniteLoader = ({ height, isScrolling, onChildScroll, scrollTop }) => (
+    const infiniteLoader = ({
+      height,
+      isScrolling,
+      onChildScroll,
+      scrollTop,
+    }) => (
       <InfiniteLoader
         isRowLoaded={this.isRowLoaded}
         loadMoreRows={this.handleInfiniteOnLoad}
         rowCount={data.length}
       >
-        {({ onRowsRendered }) => autoSize({ height, isScrolling, onChildScroll, scrollTop, onRowsRendered })}
+        {({ onRowsRendered }) =>
+          autoSize({
+            height,
+            isScrolling,
+            onChildScroll,
+            scrollTop,
+            onRowsRendered,
+          })
+        }
       </InfiniteLoader>
     );
     return (
       <List>
-        {
-          data.length > 0 && (
-            <WindowScroller scrollElement={null}>
-              {infiniteLoader}
-            </WindowScroller>
-          )
-        }
+        {data.length > 0 && (
+          <WindowScroller scrollElement={null}>{infiniteLoader}</WindowScroller>
+        )}
         {this.state.loading && <Spin className="demo-loading" />}
       </List>
     );

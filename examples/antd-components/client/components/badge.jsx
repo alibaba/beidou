@@ -29,7 +29,6 @@ export default class Demo extends Component {
     this.setState({ count });
   };
 
-
   render() {
     return (
       <div id="components-badge-demo">

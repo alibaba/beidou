@@ -2,18 +2,22 @@ import React from 'react';
 
 import { Table } from 'antd';
 
-const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  width: 150,
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-  width: 150,
-}, {
-  title: 'Address',
-  dataIndex: 'address',
-}];
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    width: 150,
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    width: 150,
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+  },
+];
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -25,4 +29,11 @@ for (let i = 0; i < 100; i++) {
   });
 }
 
-export default () => <Table columns={columns} dataSource={data} pagination={{ pageSize: 50 }} scroll={{ y: 240 }} />;
+export default () => (
+  <Table
+    columns={columns}
+    dataSource={data}
+    pagination={{ pageSize: 50 }}
+    scroll={{ y: 240 }}
+  />
+);

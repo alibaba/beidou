@@ -13,56 +13,65 @@ for (let i = 0; i < 100; i++) {
 
 const EditableCell = ({ editable, value, onChange }) => (
   <div>
-    {editable
-      ? <Input
+    {editable ? (
+      <Input
         style={{ margin: '-5px 0' }}
         value={value}
         onChange={e => onChange(e.target.value)}
       />
-      : value
-    }
+    ) : (
+      value
+    )}
   </div>
 );
 
 class EditableTable extends React.Component {
   constructor(props) {
     super(props);
-    this.columns = [{
-      title: 'name',
-      dataIndex: 'name',
-      width: '25%',
-      render: (text, record) => this.renderColumns(text, record, 'name'),
-    }, {
-      title: 'age',
-      dataIndex: 'age',
-      width: '15%',
-      render: (text, record) => this.renderColumns(text, record, 'age'),
-    }, {
-      title: 'address',
-      dataIndex: 'address',
-      width: '40%',
-      render: (text, record) => this.renderColumns(text, record, 'address'),
-    }, {
-      title: 'operation',
-      dataIndex: 'operation',
-      render: (text, record) => {
-        const { editable } = record;
-        return (
-          <div className="editable-row-operations">
-            {
-              editable ?
+    this.columns = [
+      {
+        title: 'name',
+        dataIndex: 'name',
+        width: '25%',
+        render: (text, record) => this.renderColumns(text, record, 'name'),
+      },
+      {
+        title: 'age',
+        dataIndex: 'age',
+        width: '15%',
+        render: (text, record) => this.renderColumns(text, record, 'age'),
+      },
+      {
+        title: 'address',
+        dataIndex: 'address',
+        width: '40%',
+        render: (text, record) => this.renderColumns(text, record, 'address'),
+      },
+      {
+        title: 'operation',
+        dataIndex: 'operation',
+        render: (text, record) => {
+          const { editable } = record;
+          return (
+            <div className="editable-row-operations">
+              {editable ? (
                 <span>
                   <a onClick={() => this.save(record.key)}>Save</a>
-                  <Popconfirm title="Sure to cancel?" onConfirm={() => this.cancel(record.key)}>
+                  <Popconfirm
+                    title="Sure to cancel?"
+                    onConfirm={() => this.cancel(record.key)}
+                  >
                     <a>Cancel</a>
                   </Popconfirm>
                 </span>
-                : <a onClick={() => this.edit(record.key)}>Edit</a>
-            }
-          </div>
-        );
+              ) : (
+                <a onClick={() => this.edit(record.key)}>Edit</a>
+              )}
+            </div>
+          );
+        },
       },
-    }];
+    ];
     this.state = { data };
     this.cacheData = data.map(item => ({ ...item }));
   }
@@ -111,7 +120,9 @@ class EditableTable extends React.Component {
     );
   }
   render() {
-    return <Table bordered dataSource={this.state.data} columns={this.columns} />;
+    return (
+      <Table bordered dataSource={this.state.data} columns={this.columns} />
+    );
   }
 }
 

@@ -22,7 +22,7 @@ export default class Demo extends Component {
   onGutterChange = (gutterKey) => {
     this.setState({ gutterKey });
   };
-
+  
   onColCountChange = (colCountKey) => {
     this.setState({ colCountKey });
   };

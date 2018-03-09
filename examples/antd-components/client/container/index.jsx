@@ -1,14 +1,21 @@
 'use strict';
 
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu } from 'antd';
 import { BrowserRouter, StaticRouter, Route, Link } from 'react-router-dom';
 import util from '../util';
 
+const MenuItemGroup = Menu.ItemGroup;
 const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
 const { Header, Footer, Sider, Content } = Layout;
 
-const components = util.listComponents();
+const configs = util.listComponents();
+const components = [];
+configs.forEach((config) => {
+  config.list.forEach((item) => {
+    components.push(item);
+  });
+});
 export default props => (
   <Router {...props}>
     <Layout>
@@ -21,13 +28,16 @@ export default props => (
           Ant Design
         </div>
         <Menu theme="dark" mode="inline">
-          {components.map(item => (
-            <Menu.Item key={item.name}>
-              <Link className="nav-link" to={`/${item.name}`}>
-                <Icon type="link" />
-                {item.title}
-              </Link>
-            </Menu.Item>
+          {configs.map(item => (
+            <MenuItemGroup key={item.title} title={item.title}>
+              {item.list.map(m => (
+                <Menu.Item key={m.name}>
+                  <Link className="nav-link" to={`/${m.name}`}>
+                    {m.title}
+                  </Link>
+                </Menu.Item>
+              ))}
+            </MenuItemGroup>
           ))}
         </Menu>
       </Sider>

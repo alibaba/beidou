@@ -4,12 +4,8 @@ import { Table, Badge, Menu, Dropdown, Icon } from 'antd';
 
 const menu = (
   <Menu>
-    <Menu.Item>
-      Action 1
-    </Menu.Item>
-    <Menu.Item>
-      Action 2
-    </Menu.Item>
+    <Menu.Item>Action 1</Menu.Item>
+    <Menu.Item>Action 2</Menu.Item>
   </Menu>
 );
 
@@ -18,7 +14,15 @@ function NestedTable() {
     const columns = [
       { title: 'Date', dataIndex: 'date', key: 'date' },
       { title: 'Name', dataIndex: 'name', key: 'name' },
-      { title: 'Status', key: 'state', render: () => <span><Badge status="success" />Finished</span> },
+      {
+        title: 'Status',
+        key: 'state',
+        render: () => (
+          <span>
+            <Badge status="success" />Finished
+          </span>
+        ),
+      },
       { title: 'Upgrade Status', dataIndex: 'upgradeNum', key: 'upgradeNum' },
       {
         title: 'Action',
@@ -47,13 +51,7 @@ function NestedTable() {
         upgradeNum: 'Upgraded: 56',
       });
     }
-    return (
-      <Table
-        columns={columns}
-        dataSource={data}
-        pagination={false}
-      />
-    );
+    return <Table columns={columns} dataSource={data} pagination={false} />;
   };
 
   const columns = [
@@ -63,7 +61,11 @@ function NestedTable() {
     { title: 'Upgraded', dataIndex: 'upgradeNum', key: 'upgradeNum' },
     { title: 'Creator', dataIndex: 'creator', key: 'creator' },
     { title: 'Date', dataIndex: 'createdAt', key: 'createdAt' },
-    { title: 'Action', key: 'operation', render: () => <a href="#">Publish</a> },
+    {
+      title: 'Action',
+      key: 'operation',
+      render: () => <a href="#">Publish</a>,
+    },
   ];
 
   const data = [];

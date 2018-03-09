@@ -52,11 +52,11 @@ export default class Demo extends Component {
   state = {
     key: 'tab1',
     noTitleKey: 'article',
-  }
+  };
   onTabChange = (key, type) => {
     console.log(key, type);
     this.setState({ [type]: key });
-  }
+  };
   render() {
     return (
       <div id="components-card-demo">
