@@ -11,8 +11,10 @@ class BeidouBaseView {
    * @param ctx - beidou ctx
    * @param options - view sub plugin config, example
    * beautify: false // optional, beautify HTML snippet
-   * cache: true, //optional, if false, clean require cache for development usage
-   * internals: true, //optional, true: renderToString or false: renderToStaticMarkup
+   * cache: true, //optional, if false, clean require cache
+   *  for development usage
+   * internals: true, //optional, true: renderToString or
+   *  false: renderToStaticMarkup
    * doctype: '<!DOCTYPE html>', //optional, HTML doctype
    */
   constructor(ctx, options) {
@@ -47,7 +49,8 @@ class BeidouBaseView {
     const Component = require(filepath);
     const context = {
       filepath,
-      Component: Component.default || Component, // when add-module-exports not work
+      // when add-module-exports not work
+      Component: Component.default || Component,
       props,
       html: '',
       view: this,

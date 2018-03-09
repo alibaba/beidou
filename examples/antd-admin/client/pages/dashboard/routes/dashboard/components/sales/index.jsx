@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import color from 'client/utils/color';
-import styles from './index.less';
+import styles from './index.module.less';
 
 function Sales({ data }) {
   return (
@@ -22,7 +22,7 @@ function Sales({ data }) {
         <LineChart data={data}>
           <Legend
             verticalAlign="top"
-            content={prop => {
+            content={(prop) => {
               const { payload } = prop;
               return (
                 <ul
@@ -31,8 +31,8 @@ function Sales({ data }) {
                     clearfix: true,
                   })}
                 >
-                  {payload.map((item, key) => (
-                    <li key={key}>
+                  {payload.map(item => (
+                    <li key={item.value + item.color}>
                       <span
                         className={styles.radiusdot}
                         style={{ background: item.color }}
@@ -60,10 +60,10 @@ function Sales({ data }) {
               border: 'none',
               boxShadow: '4px 4px 40px rgba(0, 0, 0, 0.05)',
             }}
-            content={content => {
+            content={(content) => {
               if (!content.payload) return null;
-              const list = content.payload.map((item, key) => (
-                <li key={key} className={styles.tipitem}>
+              const list = content.payload.map(item => (
+                <li key={item.name + item.value} className={styles.tipitem}>
                   <span
                     className={styles.radiusdot}
                     style={{ background: item.color }}

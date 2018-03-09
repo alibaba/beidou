@@ -2,8 +2,11 @@ import { observable } from 'mobx';
 
 export default class TodoModel {
   store;
+
   id;
+
   @observable title;
+
   @observable completed;
 
   constructor(store, id, title, completed) {

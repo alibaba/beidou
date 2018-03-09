@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Row, Form, Input } from 'antd';
 import classNames from 'classnames/bind';
 import actions from '../actions';
-import style from './index.less';
+import style from './index.module.less';
 import logo from '../../../assets/logo.png';
 
 const cx = classNames.bind(style);

@@ -5,13 +5,14 @@ const is = require('is-type-of');
 
 module.exports = async function (viewCtx, next) {
   const { props, Component } = viewCtx;
-  const getStore = Component.getStore;
+  const { getStore } = Component;
   let store = null;
   if (is.asyncFunction(getStore)) {
     store = await getStore.call(Component, props);
   } else if (typeof getStore === 'function') {
     store = getStore.call(Component, props);
   } else if (props.store) {
+    /* eslint-disable prefer-destructuring */
     store = props.store;
   }
 

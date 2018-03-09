@@ -17,6 +17,7 @@ install:
   - yarn global add codecov
   - yarn
 script:
+  # TODO: Use 'lerna run ci' instead
   - yarn run ci
 after_script:
   - codecov

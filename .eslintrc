@@ -1,12 +1,3 @@
 {
-  "extends": "eslint-config-beidou",
-  "root": true,
-  "rules": {
-    "new-cap": "off",
-    "require-yield": "off",
-    "import/no-dynamic-require": "off",
-    "strict": "off",
-    "class-methods-use-this": "off",
-    "no-console": "off"
-  }
+  "extends": "./packages/eslint-config-beidou/index.js"
 }

@@ -1,12 +1,15 @@
 'use strict';
 
 exports.webpack = {
-  // config: 'path/to/webpack/config/file',
+  // keep this key name sync with webpack.common.js reservedKey
+  custom: {
+    // configPath: 'path/to/webpack/config/file',
+  },
   output: {
     path: './build',
     filename: '[name].js?[hash]',
     chunkFilename: '[name].js',
-    publicPath: './build',
+    publicPath: '/build/',
   },
 
   resolve: {
@@ -28,7 +31,7 @@ exports.webpack = {
       colors: true,
       chunks: false,
     },
-    publicPath: '/build',
+    publicPath: '/build/',
     hot: true,
   },
 };

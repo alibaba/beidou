@@ -14,7 +14,7 @@ import {
 import FilterItem from 'client/components/filter-item';
 import city from 'client/utils/city';
 
-const Search = Input.Search;
+const { Search } = Input;
 const { RangePicker } = DatePicker;
 
 const ColProps = {
@@ -38,7 +38,7 @@ const Filter = ({
   filter,
   form: { getFieldDecorator, getFieldsValue, setFieldsValue },
 }) => {
-  const handleFields = fields => {
+  const handleFields = (fields) => {
     const { createTime } = fields;
     if (createTime.length) {
       fields.createTime = [

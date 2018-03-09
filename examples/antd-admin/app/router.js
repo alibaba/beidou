@@ -1,6 +1,6 @@
 module.exports = (app) => {
   // restful api
-  const rest = app.controller.rest;
+  const { rest } = app.controller;
   app.router.resources('dashboard', '/api/dashboard', rest.dashboard);
   app.router.resources('dashboard', '/api/user', rest.user);
 

@@ -16,7 +16,7 @@ module.exports = class RaxView extends BaseView {
     Object.assign(props, {
       renderElement: this.renderElement.bind(this),
     });
-    return await super.render(filepath, props);
+    return super.render(filepath, props);
   }
 
   async renderString() {

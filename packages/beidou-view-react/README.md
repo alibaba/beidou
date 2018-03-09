@@ -31,7 +31,7 @@ module.exports = appInfo => ({
    */
   react: {
     // React view rendering middlewares
-    middlewares: ['cache', 'redux', 'partial', 'render', 'doctype', 'beautify'],
+    middlewares: ['cache', 'redux', 'partial', 'render', 'beautify', 'doctype'],
     // optional, beautify HTML snippet
     beautify: false,
     //optional, if false, clean require cache for development usage
@@ -41,7 +41,7 @@ module.exports = appInfo => ({
     //optional, HTML doctype
     doctype: '<!DOCTYPE html>',
     assetHost: '',
-    assetPath: '',
+    assetPath: '／build/',
   },
   view: {
     defaultViewEngine: 'react',
@@ -57,7 +57,7 @@ module.exports = appInfo => ({
 
 ### Custom view middlewares
 
-You can access view rendering process to meet your needs. For example, if you want to log rendering time, you need to write a `time.js` to your `app/view-middlewares/`. If you don't understand middleware please read [egg-middlewares](https://eggjs.org/en/intro/egg-and-koa.html) before you digging into code.
+You can access view rendering process to meet your needs. For example, if you want to log rendering time, you need to write a `time.js` to your `app/view-middlewares/` directory. If you don't understand middleware please read [egg-middlewares](https://eggjs.org/en/intro/egg-and-koa.html) before you digging into code.
 
 ```js
 // app/view-middlewares/time.js
@@ -100,7 +100,7 @@ module.exports = () => ({
 });
 ```
 
-Start [example project](../../examples/view-middleware/README.md) server to get the result
+Start [view-middleware project](../../examples/view-middleware/README.md) server, you will get something like below:
 
 ![Rendering time](./screenshot.png)
 
@@ -139,7 +139,7 @@ exprots.index = async function() {
 React view exports `render` and `renderString` 2 APIs, return Promise.
 
 > * ctx.render(name, locals) - render template, and assign to ctx.body
-> * ctx.renderString(tpl, locals) - only render template to string, will `not` assign to ctx.body
+> * ctx.renderString(tpl, locals) - only render template to string, will **not** assign to ctx.body
 
 ## License
 

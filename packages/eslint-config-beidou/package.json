@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-beidou",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-beta.0",
   "description": "Beidou Node Style Guide",
   "main": "index.js",
   "scripts": {
@@ -8,13 +8,8 @@
     "cov": "TEST_REPORTER=spec egg-bin cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "keywords": [
-    "eslint",
-    "beidou"
-  ],
-  "files": [
-    "index.js"
-  ],
+  "keywords": ["eslint", "beidou"],
+  "files": ["index.js"],
   "license": "MIT",
   "devDependencies": {
     "egg-bin": "^4.3.7",
@@ -23,7 +18,7 @@
     "eslint-plugin-react": "^7.5.1"
   },
   "dependencies": {
-    "eslint-config-ali": "^2.0.3"
+    "eslint-config-ali": "^3.0.1"
   },
   "engines": {
     "node": ">= 8.0.0"

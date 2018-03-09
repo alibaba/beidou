@@ -7,7 +7,6 @@ packages/beidou-docs/
 .isomorphic
 .stats
 
-# Different from .eslintignore
 examples/*/build/
 examples/*/logs/
 examples/*/run/

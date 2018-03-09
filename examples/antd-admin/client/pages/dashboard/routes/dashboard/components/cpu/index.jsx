@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import color from 'client/utils/color';
-import styles from './index.less';
+import styles from './index.module.less';
 
 const countUpProps = {
   start: 0,

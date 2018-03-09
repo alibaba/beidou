@@ -7,6 +7,24 @@ import TodoItem from './todo-item';
 
 @observer
 export default class TodoOverview extends React.Component {
+  getVisibleTodos() {
+    return this.props.todoStore.todos.filter((todo) => {
+      switch (this.props.viewStore.todoFilter) {
+        case ACTIVE_TODOS:
+          return !todo.completed;
+        case COMPLETED_TODOS:
+          return todo.completed;
+        default:
+          return true;
+      }
+    });
+  }
+
+  toggleAll = (event) => {
+    const { checked } = event.target;
+    this.props.todoStore.toggleAll(checked);
+  };
+
   render() {
     const { todoStore, viewStore } = this.props;
     if (todoStore.todos.length === 0) return null;
@@ -26,24 +44,6 @@ export default class TodoOverview extends React.Component {
       </section>
     );
   }
-
-  getVisibleTodos() {
-    return this.props.todoStore.todos.filter(todo => {
-      switch (this.props.viewStore.todoFilter) {
-        case ACTIVE_TODOS:
-          return !todo.completed;
-        case COMPLETED_TODOS:
-          return todo.completed;
-        default:
-          return true;
-      }
-    });
-  }
-
-  toggleAll = event => {
-    const checked = event.target.checked;
-    this.props.todoStore.toggleAll(checked);
-  };
 }
 
 TodoOverview.propTypes = {

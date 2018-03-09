@@ -52,7 +52,7 @@ export default class View extends React.Component {
     return (
       <html>
         <head>
-          <title>Example</title>
+          <title>Beidou CSS-Module Example</title>
           <link rel="stylesheet" href={helper.asset('example.css')} />
         </head>
         <body>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+/* eslint-disable no-alert */
+
 export default () => (
   <div>
     <h1 className="title">Script</h1>

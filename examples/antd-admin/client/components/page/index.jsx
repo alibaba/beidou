@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Loader from '../loader';
-import styles from './index.less';
+import styles from './index.module.less';
 
 export default class Page extends Component {
   render() {

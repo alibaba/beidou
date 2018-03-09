@@ -1,11 +1,12 @@
 {
   "name": "babel-preset-beidou-server",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-beta.0",
   "description": "Babel preset for Beidou Sever.",
   "author": "六猴",
   "license": "MIT",
   "main": "index.js",
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-server",
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-server",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
     "cov": "TEST_REPORTER=spec egg-bin cov",

@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import Sider from './sider';
 import Nav from './nav';
 import Bread from './bread';
-import style from './index.less';
+import style from './index.module.less';
 import { config } from './menu';
 
 const cx = classNames.bind(style);
@@ -13,6 +13,7 @@ class Layout extends React.Component {
   static contextTypes = {
     router: PropTypes.object.isRequired,
   };
+
   constructor() {
     super();
     this.state = {
@@ -25,11 +26,12 @@ class Layout extends React.Component {
       siderFolded: !this.state.siderFolded,
     });
   };
+
   render() {
     const { children } = this.props;
     const { siderFolded } = this.state;
     const { router } = this.context;
-    const location = router.history.location;
+    const { location } = router.history;
 
     return (
       <div className={cx('layout', { fold: siderFolded })}>

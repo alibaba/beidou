@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Table, Tag } from 'antd';
 import moment from 'moment';
 import color from 'client/utils/color';
-import styles from './index.less';
+import styles from './index.module.less';
 
 const status = {
   1: {

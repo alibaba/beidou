@@ -7,14 +7,14 @@ const helper = require('./lib/utils');
 const entryLoader = require('./lib/loader/entry-loader');
 
 module.exports = (agent) => {
-  const logger = agent.logger;
   helper.injectPlugin(agent);
 
   // start webpack server util agent ready
   agent.ready(() => {
+    const { logger } = agent;
     const config = agent.config.webpack;
 
-    debug('create webpack server with config: %o', config);
+    debug('create webpack server with config: %O', config);
     const webpackConfig = helper.getWebpackConfig(agent, config);
 
     debug('Webpack config: %O', webpackConfig);
@@ -25,10 +25,10 @@ module.exports = (agent) => {
     helper.startServer(webpackConfig, port, logger, agent);
 
     function watcher() {
-      const updatedEntry = entryLoader(agent, webpackConfig.devServer);
+      const updatedEntry = entryLoader(agent, webpackConfig.devServer, true);
       if (!equal(updatedEntry, webpackConfig.entry)) {
         webpackConfig.entry = updatedEntry;
-        helper.restartServer(webpackConfig, port, logger);
+        helper.restartServer(webpackConfig, port, logger, agent);
         logger.info('[webpack:watcher] entry updated');
       }
     }

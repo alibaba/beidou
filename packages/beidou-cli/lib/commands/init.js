@@ -118,7 +118,7 @@ module.exports = class InitCMD extends Command {
     // const dir = this.argv._[0] || this.argv.dir || '';
     // const dir = '';
     let targetDir = path.resolve(this.cwd, '');
-    const force = this.argv.force;
+    const { force } = this.argv;
 
     const validate = (dir) => {
       // create dir if not exist
@@ -175,7 +175,7 @@ module.exports = class InitCMD extends Command {
    * }`
    */
   fetchBoilerplateMapping() {
-    const pkgInfo = this.pkgInfo;
+    const { pkgInfo } = this;
     const mapping = pkgInfo.boilerplates;
     for (const key of Object.keys(mapping)) {
       const item = mapping[key];
@@ -263,7 +263,8 @@ module.exports = class InitCMD extends Command {
    *
    * @param {String} pkgName package name
    * @param {String} tag package tag
-   * @param {Boolean} [withFallback] when http request fail, whether to require local
+   * @param {Boolean} [withFallback] when http request fail,
+   *   whether to require local
    * @return {Object} pkgInfo
    */
   async getPackageInfo(pkgName, tag, withFallback) {

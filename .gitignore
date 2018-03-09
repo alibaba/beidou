@@ -3,6 +3,7 @@
 .idea
 .isomorphic
 .vscode
+!/.vscode/launch.json
 *.da
 *.lerna_backup
 *.log
@@ -18,3 +19,4 @@ packages/*/test/**/debug/
 packages/*/test/**/logs/
 packages/*/test/**/run/
 packages/*/yarn.lock
+package-lock.json

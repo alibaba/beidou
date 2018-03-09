@@ -8,6 +8,7 @@ const colorz = require('colorz');
 const { stringify } = require('q-i');
 const boxen = require('boxen');
 const FallbackPort = require('fallback-port');
+const _ = require('lodash');
 const debug = require('debug')('beidou:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
@@ -27,44 +28,92 @@ function getAvaliablePort(defaultPort, app) {
   return port;
 }
 
-const getWebpackConfig = (app, options = {}, execEnv = 'browser') => {
+function getCustomWebpackCfgPath(app) {
+  const options = app.config.webpack;
+  if (options.config) {
+    // TODO: remove support at next major version
+    app.beidouDeprecate(
+      '`webpack.config`, use `webpack.custom.configPath` instead'
+    );
+    return options.config;
+  } else if (options.custom && options.custom.configPath) {
+    return options.custom.configPath;
+  }
+  return null;
+}
+
+const dumpWebpackConfig = function (agent, config) {
+  const { rundir } = agent.config;
+
+  try {
+    /* istanbul ignore if */
+    if (!fs.existsSync(rundir)) fs.mkdirSync(rundir);
+    // dump config meta
+    const file = path.join(rundir, `webpack.${agent.config.env}.json`);
+    fs.writeFileSync(
+      file,
+      JSON.stringify(
+        config,
+        (key, value) => {
+          if (typeof value === 'object' && !Array.isArray(value)) {
+            const type = value.constructor.name || 'Unknown';
+            if (type === 'RegExp') {
+              return value.toString();
+            }
+
+            if (type !== 'Object') {
+              return Object.assign({
+                [`<${type}>`]: _.toPlainObject(value),
+              });
+            }
+          }
+          return value;
+        },
+        2
+      )
+    );
+  } catch (err) {
+    agent.logger.warn(`dumpConfig error: ${err.message}`);
+  }
+};
+
+const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
   const isDev = app.config.env !== 'prod';
   let webpackConfig = null;
 
-  const relativePath =
-    execEnv === 'node'
-      ? '../../config/webpack.node.js'
-      : '../../config/webpack.browser.js';
-
-  const defaultConfigPath = path.join(__dirname, relativePath);
+  const defaultConfigPath = path.join(
+    __dirname,
+    `../../config/webpack/webpack.${target}.js`
+  );
 
   // make sure the port assigned is available
   let defaultPort = 6002;
-  const portAssigned = options.devServer && options.devServer.port;
-  if (portAssigned) {
-    defaultPort = options.devServer.port;
+  const serverPort = options.devServer.port;
+  if (serverPort) {
+    defaultPort = serverPort;
   }
 
   defaultPort = getAvaliablePort(defaultPort, app);
-  if (portAssigned) {
+  if (serverPort) {
     options.devServer.port = defaultPort;
   }
 
-  const entry = entryLoader(app, options.devServer, isDev, execEnv);
+  const entry = entryLoader(app, options.devServer, isDev);
   debug('entry auto load as below:\n%o', entry);
 
-  webpackConfig = loadFile(defaultConfigPath, app, entry, isDev, execEnv);
+  webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);
 
+  const customConfigPath = getCustomWebpackCfgPath(app);
   // custom config exists
-  if (options.config && fs.existsSync(options.config)) {
-    debug('custom config found at %s', options.config);
+  if (customConfigPath) {
+    debug('Custom config found at %s', customConfigPath);
     webpackConfig = loadFile(
-      options.config,
+      customConfigPath,
       app,
       webpackConfig,
       isDev,
-      execEnv
+      target
     );
   }
 
@@ -155,9 +204,11 @@ const startServer = (config, port, logger, agent) => {
   server.listen(port, '0.0.0.0', (err) => {
     if (err) {
       logger.error('[Beidou Agent] webpack server start failed,', err);
-      return;
     }
   });
+  agent[symbol] = server;
+  // dump config
+  dumpWebpackConfig(agent, config);
   return server;
 };
 const closeServer = function (agent) {
@@ -172,7 +223,7 @@ const closeServer = function (agent) {
 const restartServer = function (config, port, logger, agent) {
   logger.info('[webpack-dev-server] auto restart');
   closeServer(agent);
-  exports.startServer(config, port, logger, agent);
+  startServer(config, port, logger, agent);
 };
 
 exports.startServer = startServer;
@@ -181,3 +232,4 @@ exports.injectPlugin = injectPlugin;
 exports.restartServer = restartServer;
 exports.printEntry = printEntry;
 exports.getWebpackConfig = getWebpackConfig;
+exports.dumpWebpackConfig = dumpWebpackConfig;

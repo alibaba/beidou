@@ -1,6 +1,6 @@
 # 从零开始搭建应用
 
-> 本章节将从零开始一步一步构建一个 Hacker News，如果你已经是 [egg](https://github.com/eggjs/egg) 的用户或者对其有所了解，并且你已经了解基于 react 的同构方案，那么请跳过本章节，直接通过[脚手架](./quick-start.md)开发项目吧
+> 本章节将从零开始一步一步构建一个 News App (use [newsapi.org](https://newsapi.org))，如果你已经是 [egg](https://github.com/eggjs/egg) 的用户或者对其有所了解，并且你已经了解基于 react 的同构方案，那么请跳过本章节，直接通过[脚手架](./quick-start.md)开发项目吧
 
 ## 初始化空项目
 
@@ -13,7 +13,7 @@ $ npm i --save beidou-core beidou-cli react react-dom
 
 > 说明： 本章节提到的路径未经特别说明均是相对于项目根路径而言。
 
-在 `package.json` 设置命令，具体命令含义参考 [beidou-cli](https://goo.gl/YzJkon)
+在 `package.json` 设置命令，具体命令含义参考 [beidou-cli](https://github.com/alibaba/beidou/tree/master/packages/beidou-cli)
 
 ```js
 {
@@ -28,120 +28,179 @@ $ npm i --save beidou-core beidou-cli react react-dom
 }
 ```
 
+## 配置工程
+
+> 如果你熟悉 Web 开发或 MVC，应用搭建通常从编写Controller开始。北斗默认开启 [自动路由]() 功能，对于简单的应用，可以完全不需要编写Controller代码。
+
+### 创建 `config` 目录
+- 创建 `config/config.default.js` 存放通用配置
+- 创建 `config/config.local.js` 存放开发环境配置 
+
+如果没有需要添加或修改的自定义配置，直接返回空对象即可
+```js
+// config/config.default.js
+module.exports = {
+  keys: 'test',
+  router: {
+    entry: 'index',
+  }
+};
+
+```
+配置 `router.entry`，只允许client下名称为 `index`的文件作为页面入口。
+
+`keys` 是 Cookie 加密的密钥，参看 [Cookie 秘钥](https://eggjs.org/zh-cn/core/cookie-and-session.html#cookie-%E7%A7%98%E9%92%A5)  
+
+
+- 创建 `config/plugin.js` 用于配置插件  
+  参看 [插件](../basic/plugins.md)
+ 
+
+写业务的时候，不可避免的需要有配置文件，北斗提供了强大的配置合并管理功能：
+
+* 支持按环境变量加载不同的配置文件，如 config.local.js , config.prod.js ...
+* 配置文件可以在应用/插件/框架等地方就近配置，北斗将合并加载。
+
+框架具有丰富的配置能力，参看 [Config配置](../basic/config.md) 了解更多信息。
+### 编写页面
+beidou默认使用`/client`目录存放客户端代码，如有特殊需要，可以通过修改 `config.client` 和 `config.view.root`，将路径指向自定义目录。
+
+- 在client目录下新增 `index.jsx` 作为页面入口文件
+
+```jsx
+// client/index.jsx
+import React from 'react';
+
+export default class View extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>News</h1>
+        <p>This is a news app</p>
+      </div>
+    );
+  }
+}
+
+```
+这时候，应用已经可以运行了，通过 `npm run dev` 指令启动本地开发调试服务，控制台上输出
+
+```sh
+beidou-core started on http://127.0.0.1:6001
+```
+
+表示应用成功启动，访问 `localhost:6001/` 即可看到页面内容。
+
+## 引入前端资源
+
+你可能已经发现，启动应用时，控制台上还打印除了一个高亮信息：`Auto Load Webpack Entry`
+
+这是北斗webpack插件扫描client目录生成的默认entry，本地开发时，资源由webpack托管，我们可以方便地引入，并且支持代码的热加载。
+
+- 创建 `news.jsx`
+  > `index.jsx` 相当于MVC中的视图层，它是一个静态的视图模版，不同的是，使用 React 编写，语法上更为统一。
+
+  在 `news.jsx` 中编写功能代码
+```jsx
+// client/news.jsx
+import React from 'react';
+
+export default class News extends React.Component {
+ render() {
+   return(
+    <div>
+      <h1>News</h1>
+      <p>This is a news app</p>
+      <button onClick={() => alert('it works~')}>Click Me</button>
+    </div>
+   );
+ }
+}
+```
+
+- 修改 `index.jsx`
+
+```jsx
+// client/index.jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import News from './news';
+
+
+export default class View extends React.Component {
+  static getPartial() {
+    const html = <News />
+    return { html };
+  }
+  render() {
+    const { html } = this.props;
+    return (
+      <html>
+        <head>
+          <title>news</title>
+        </head>
+        <body>
+        <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
+        <script src="/build/manifest.js" /> 
+        <script src="/build/index.js" /> 
+        </body>
+      </html>
+    );
+  }
+}
+
+if (__CLIENT__) {
+  ReactDOM.hydrate(<News />, document.getElementById('container'));
+}
+
+```
+
+上述代码中，View Component 定义了页面的视图模版，在模版中我们引入了js资源。
+
+其中 定义了静态方法 getPartial，这是由 `beidou-view` 的 `rendering middlewares` 定义的，返回需要进行局部渲染的 React实例Map对象，渲染结果最终会被注入到 props 中，供 render 方法使用。
+
+`__CLIENT__` 是框架定义的全局变量，在服务端恒为 `false`，用于区分服务端/客户端运行时。`ReactDOM`的挂载操作仅在客户端进行。
+
+此时，在浏览器中，我们可以看到一个可交互的同构渲染页面，点击 **Click Me** 时，事件得到响应。
+
 ## 编写 Controller
 
-如果你熟悉 Web 开发或 MVC，肯定猜到我们第一步需要编写的是 Controller 和路由映射。
+构造复杂Web应用时，仅仅使用上述的自动路由是远远不够的，我们还需要Controller更精细地控制页面逻辑、提供非同构的web服务或编写接口以供调用。
 
-> Controller 用于控制页面的展现逻辑，渲染页面或控制页面跳转等等。
-
-* 每个 Controller 类都是一个文件，包含一个或多个符合 koa middleware 约定的 Generator 函数。需放置在 `app/controller` 目录下。
+* 每个 Controller 类都是一个文件，定义一个或多个符合 koa 约定的 Async/Generator 方法。文件放置在 `app/controller` 目录下。
 
 * 每个 `app/controller/*.js` 文件，都会被自动加载到 `app.controller.*` 上。
 
 * 注意：下划线会转换为驼峰命名，如 `foo_bar => fooBar`。
 
-一个简单的欢迎页：
+使用 Controller 改写控制页面逻辑：
 
 ```js
-// app/controller/home.js
-module.exports = function* homeController() {
-  this.body = yield new Promise((resolve) => {
-    resolve('hello beidou！');
-  });
-};
+// app/controller/news.js
+const Controller = require('beidou-core').Controller;
+
+class NewsController extends Controller {
+
+  async show() {
+    const news = await this.ctx.service.news.get();
+    await this.ctx.render('index', {
+      news,
+    });
+  }
+}
+
+module.exports = NewsController;
 ```
 
-然后通过 app/router.js 来配置路由映射，相关 API 可以参考 [koa-router](https://github.com/alexmingoia/koa-router) 模块。
+然后通过 app/router.js 来配置路由映射，相关 API 可以参考 [egg router](https://eggjs.org/zh-cn/basics/router.html)。
 
 ```js
 // app/router.js
 module.exports = app => {
-  app.get('/', app.controller.home);
+  const { router, controller } = app;
+  router.get('/news', controller.news.show);
 };
 ```
-
-好，现在可以启动应用来体验下。
-
-```bash
-$ npm run dev
-$ open http://localhost:6001
-```
-
-## 客户端代码开发
-
-这里偷个懒，我们只引入 react 进行数据展示，不使用 redux。如果想看包含 redux 的 demo，请通过脚手架初始化项目, 或直接参考参考[redux demo](https://github.com/alibaba/beidou/tree/master/examples/redux)
-
-## 模板渲染
-
-绝大多数情况，我们都需要读取数据后渲染模板，然后呈现给用户。故我们需要引入对应的模板引擎，也就是 view 插件。
-北斗框架内置了基于 react 实现的 [beidou-view-react](https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react) 插件。默认配置如下：
-
-```js
-// config/config.default.js
-const path = require('path');
-
-module.exports = (appInfo) => {
-  const config = {};
-
-  /**
-   * View options
-   * @member Config#view
-   */
-  config.react = {
-    beautify: false,
-    cache: true,
-    static: false,
-    doctype: '<!DOCTYPE html>',
-    assetHost: '',
-    assetPath: '',
-  };
-  config.view = {
-    defaultViewEngine: 'react',
-    defaultExtension: '.jsx',
-    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(
-      appInfo.baseDir,
-      'client'
-    )}`,
-  };
-
-  return config;
-};
-```
-
-配置完成后，开发我们的页面模板。
-篇幅限制，客户端代码不再赘述，可借鉴[redux demo](https://github.com/alibaba/beidou/tree/master/examples/redux) client目录的实现,
-启动应用并访问：
-
-```bash
-$ yarn run dev
-$ open http://localhost:6001/
-```
-
-发现命令行报错，这里还需要进行一些构建环境配置。
-
-## 构建环境配置
-
-### 配置服务端的 `.babelrc`
-
-> 由于 node 版本在不断进化，对 es6 的支持也在逐步完善，因此北斗提倡服务端尽量使用 node 本身提供的 es6 特性。
-
-Beidou 框架默认已经配置好 babel, 如需扩展，参考配置如下：
-
-```json
-{
-  "presets": ["beidou-server"],
-  "plugins": [
-    // 扩展的babel插件
-  ]
-}
-```
-
-> 注意安装依赖
-
-### webpack 配置
-
-react 项目构建离不开 webpack，北斗的 webpack 配置中除了一般的构建动作，还添加了对同构的支持。如需定制请参考[webpack plugin](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack)
-
 ## 编写 Service
 
 在实际应用中， Controller 一般不会自己生成数据，也不会包含复杂的逻辑，你应该将那些复杂的过程放到业务逻辑层 Service 里面，然后暴露出一个简单的函数给 Controller 调用，这样也便于测试。
@@ -151,84 +210,162 @@ react 项目构建离不开 webpack，北斗的 webpack 配置中除了一般的
 * 注意：下划线会转换为驼峰命名，如 foo_bar => fooBar。
 * 注意：Service 不是单例。
 
-我们来添加一个 service 抓取 hacker-news 的数据 ，如下：
+我们来添加一个 service 抓取 NewsAPI 的数据 ，如下：
 
 ```js
 // app/service/news.js
-module.exports = app => {
-  class NewsService extends app.Service {
-    constructor(ctx) {
-      super(ctx);
-    }
+const Service = require('beidou-core').Service;
 
-    * list(page) {
-      const serverUrl = 'https://hacker-news.firebaseio.com/v0';
-      const pageSize = 30;
-      page = page || 1;
+class NewsService extends Service {
 
-      // 读取 hacker-news api 数据
-      // 先请求列表
-      const idList = yield this.app.urllib.request(`${serverUrl}/topstories.json`, {
-        data: {
-          orderBy: '"$key"',
-          startAt: `"${pageSize * (page - 1)}"`,
-          endAt: `"${pageSize * page - 1}"`,
-        },
-        dataType: 'json',
-      }).then(res => res.data);
+  async get() {
+    const url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=209cd02e74314a32a4e5f1d5b9cbdff1';
 
-      // 并行获取详细信息, 参见 co 文档的 yield []
-      const newsList = yield Object.keys(idList).map(key => {
-        const url = `${serverUrl}/item/${idList[key]}.json`;
-        return this.app.urllib.request(url, { dataType: 'json' }).then(res => res.data);
-      });
-      return newsList;
-    }
+    const result = await this.app.curl(url, {
+      method: 'GET',
+      dataType: 'json',
+    });
+    return result.data.articles
   }
-  return NewsService;
-};
+}
+
+module.exports = NewsService;
+
 ```
 
-然后稍微修改下之前的 Controller：
 
-```js
-// app/controller/news.js
-exports.list = function* newsListController() {
-  const page = this.query.page || 1;
-  const newsList = yield this.service.news.list(page);
-  yield this.render('news', { list: newsList });
-};
+现在，访问 http://localhost:6001/news，能看到我们之前实现的页面，页面路由router控制。
+
+在controller中，我们还传入了一个对象 `news`，其中包含了我们从NewsAPI获取到的数据。
+
+在 index.jsx 的 render 方法中，我们可以通过props直接读取 `news` 的值。
+
+```jsx
+render() {
+  const { html, news } = this.props;
+  return (
+    <html>
+      <head>
+        <title>News</title>
+      </head>
+      <body>
+      <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
+      <script dangerouslySetInnerHTML={{__html: `window.$$data=${JSON.stringify(news)}`}} />
+      <script src="/build/manifest.js" /> 
+      <script src="/build/index.js" /> 
+      </body>
+    </html>
+  );
+}
 ```
 
-再刷新下浏览器，可以看到从 hacker news 获取的 news 列表了。
+通过 `<script />` 标签，将 news 中的内容挂载到浏览器的 `window` 对象上传递给客户端，这样可以保证两个端具有一致的渲染结果。
 
-* 简单小结下几个概念的区别：*
+## 编写组件
 
-|概念|描述|
-|:---------:|:-------------:|
-|Controller|逻辑更加简洁，专注 Web 页面的渲染|
-|Service|负责组装和格式化 Proxy 接口提供的数据，并封装业务逻辑，被多个 Controller 使用|
+添加 `headline.jsx` 用于展示新闻的标题、描述等信息。
 
-## 编写 Middleware
+```jsx
+// client/headline.jsx
+import React from 'react';
+
+export default class News extends React.Component {
+ render() {
+   const { title, author, description, url, urlToImage, publishedAt } = this.props;
+   return(
+    <div>
+      <h3><a href={url}>{title}</a></h3>
+      <p>From: {author}</p>
+      <div>
+        <img src={urlToImage} style={{ width: '100px'}} />
+        <p>{description}</p>
+      </div>
+      <b>{publishedAt}</b>
+      <hr/>
+    </div>
+   );
+ }
+}
+
+```
+
+完善 `index.jsx` 和 `news.jsx`
+
+```jsx
+// client/index.jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import News from './news';
+
+
+export default class View extends React.Component {
+  static getPartial(props) {
+    const { news } = props;
+    const html = <News items={news} />
+    return { html };
+  }
+  render() {
+    const { html, news } = this.props;
+    return (
+      <html>
+        <head>
+          <title>news</title>
+        </head>
+        <body>
+        <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
+        <script dangerouslySetInnerHTML={{__html: `window.$$data=${JSON.stringify(news)}`}} />
+        <script src="/build/manifest.js" /> 
+        <script src="/build/index.js" /> 
+        </body>
+      </html>
+    );
+  }
+}
+
+if (__CLIENT__) {
+  const news = window.$$data;
+  ReactDOM.hydrate(<News items={news} />, document.getElementById('container'));
+}
+```
+
+```jsx
+// client/news.jsx
+import React from 'react';
+import Headline from './headline';
+
+export default class News extends React.Component {
+ render() {
+   const { items } = this.props;
+   return items.map(item => <Headline {...item}/>);
+ }
+}
+```
+
+现在，运行我们的应用并访问 http://localhost:6001/home ，我们可以看到一个简单的列表页，展示我们从外部接口获取到的信息。数据在服务端直接获取并直接渲染到页面，同时传递给客户端，保证二者的渲染是一致的。
+
+> 为保证示例的简洁，这里没有使用Redux或者其他的状态管理工具。如何结合状态管理工具构建应用可以参看 [redux example](https://github.com/alibaba/beidou/tree/master/examples/redux), [mobx example](https://github.com/alibaba/beidou/tree/master/examples/with-mobx) 以及examples目录下更多示例。
+
+## 完善其他功能
+### 编写 Middleware
 
 假设有个需求：我们的新闻站点，禁止百度爬虫访问。
-聪明的同学们一定很快能想到可以通过 Middleware 判断 UA，如下：
+可以通过 Middleware 判断 UA，如下：
 
 ```js
 // app/middleware/robot.js
 // options 为同名的 config, 即 app.config.robot
 module.exports = (options, app) => {
-  return function* robotMiddleware(next) {
-    const source = this.get('user-agent') || '';
+  return async function robotMiddleware(ctx, next) {
+    const source = ctx.get('user-agent') || '';
     const match = options.ua.some(ua => ua.test(source));
     if (match) {
-      this.status = 403;
-      this.message = 'forbidden';
+      ctx.status = 403;
     } else {
-      yield next;
+      await next();
     }
   }
 };
+
 // config/config.local.js
 // 挂载 middleware
 exports.middleware = [
@@ -243,10 +380,85 @@ exports.robot = {
 
 现在可以使用 curl localhost:6001/news -A "Baiduspider" 看看效果。
 
-## 配置文件
+### 添加样式
 
-写业务的时候，不可避免的需要有配置文件，北斗提供了强大的配置合并管理功能：
+北斗中默认的[webpack配置](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/config/webpack.common.js)中默认添加了 css、less 和 sass Loader，我们可以在应用中加入额外的样式，以 [stylus](http://stylus-lang.com/) 为例
 
-* 支持按环境变量加载不同的配置文件，如 config.local.js , config.prod.js ...
-* 配置文件可以在应用/插件/框架等地方就近配置，北斗将合并加载。
-* 具体合并逻辑可参见 [config](../basic/config.md)
+```styl
+// client/index.styl
+
+body
+  background: #f8f8f8
+```
+
+在 `index.jsx` 中引入
+
+```jsx
+...
+import 'index.jsx';
+...
+<head>
+  <title>news</title>
+  <link rel="stylesheet" href="/build/index.css"/>
+</head>
+...
+```
+
+此时，运行项目，我们发现应用抛出了一个 SyntaxError。因为我们直接 import 了一个 `.styl` 文件，内容无法在服务端解析，我们需要一些额外的配置让服务端识别非默认支持的文件。
+
+```js
+// config.default.js
+module.exports = {
+  ...
+  isomorphic: {
+    universal: {
+      assets: ['.styl'],
+    }
+  },
+}
+```
+
+上述配置告诉服务端从 webpack 的编译结果中读取 `.styl` 文件的内容(同时也需要修改 webpack 配置以支持编译 `.styl` 文件，参考下节示例)。本示例中，`.styl` 文件的内容对代码运行没有影响，如果使用了 CSS MODULES，得到是转换的类选择器 `key-value` 对象。具体参见 [beidou-isomorphic](https://github.com/alibaba/beidou/blob/master/packages/beidou-isomorphic/README.md)。
+
+### 自定义webpack
+
+北斗默认的webpack配置能够满足基本需求, 多数情况下需要自定义webpack配置以满足多样的前端开发需要。
+
+可以在 config 中配置自定义 webpack 文件路径：
+
+```js
+// config/config.default.js
+const path = require('path');
+
+module.exports = {
+  ...
+  webpack: {
+    custom: {
+      configPath: path.join(__dirname, './webpack.js'),
+    },
+  },
+}
+```
+
+```js
+// webpack.js
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = (app, defaultConfig, dev) => {
+  // 添加 .styl 文件支持
+  defaultConfig.module.rules.push({
+    test: /\.styl$/,
+    loader: ExtractTextPlugin.extract({
+      fallback: require.resolve('style-loader'),
+      use: ['css-loader', 'stylus-loader'].map(require.resolve),
+    })
+  });
+  defaultConfigs.plugins.pus(
+    new ExtractTextPlugin('[name].css')
+  );
+  return defaultConfig;
+};
+```
+
+默认配置以参数的方式传入，可以根据需要自行修改配置。详见 [beidou-webpack](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/README.md)。

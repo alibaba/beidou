@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 
-const SubMenu = Menu.SubMenu;
+const { SubMenu } = Menu;
 
 export const config = [
   {
@@ -48,7 +48,7 @@ export const config = [
 const Menus = ({ className, theme, siderFolded, location }) => {
   let selected = 'Dashboard';
   const mapItems = items =>
-    items.map(item => {
+    items.map((item) => {
       if (
         item &&
         item.route &&

@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import DropOption from 'client/components/drop-option';
 import AnimTableBody from 'client/components/data-table/animtable-body';
-import styles from './index.less';
+import styles from './index.module.less';
 
-const confirm = Modal.confirm;
+const { confirm } = Modal;
 
 const List = ({
   onDeleteItem,
@@ -105,7 +105,7 @@ const List = ({
   };
 
   const getBodyWrapper = body =>
-    isMotion ? <AnimTableBody {...getBodyWrapperProps} body={body} /> : body;
+    (isMotion ? <AnimTableBody {...getBodyWrapperProps} body={body} /> : body);
 
   return (
     <div>

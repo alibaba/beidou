@@ -9,7 +9,7 @@ const mapHandler = require('./mapping');
 module.exports = (app) => {
   const config = app.config.router;
   const { urlPrefix, root, exclude, mapping, entry, cache = false } = config;
-  const view = app.config.view;
+  const { view } = app.config;
   const ext = view.defaultExtension;
   const regexp = typeof exclude === 'string' ? pathToRegexp(exclude) : exclude;
   assert(

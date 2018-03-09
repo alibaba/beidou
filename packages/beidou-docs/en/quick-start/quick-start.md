@@ -27,4 +27,4 @@ $ beidou init
 $ npm run dev
 ```
 
-After that, go to [http://localhost:6001/](http://localhost:6001/)
+After that, navigate to [http://localhost:6001/](http://localhost:6001/)

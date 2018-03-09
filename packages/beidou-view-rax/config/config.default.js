@@ -16,6 +16,8 @@ module.exports = appInfo => ({
     static: false,
     cache: false,
     doctype: '<!DOCTYPE html>',
+    assetHost: '',
+    assetPath: '/build/',
   },
   view: {
     mapping: {
@@ -29,7 +31,9 @@ module.exports = appInfo => ({
     )}`,
   },
   webpack: {
-    config: path.resolve(__dirname, './webpack.config.js'),
+    custom: {
+      configPath: path.resolve(__dirname, './webpack.config.js'),
+    },
   },
   isomorphic: {
     babel: {

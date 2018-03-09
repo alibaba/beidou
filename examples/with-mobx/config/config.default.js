@@ -8,25 +8,13 @@ module.exports = {
     entry: 'view',
   },
   isomorphic: {
-    universal: {
-      assets: ['.css'],
-    },
     babel: {
       plugins: [require.resolve('babel-plugin-transform-decorators-legacy')],
     },
   },
-  react: {
-    assetPath: '/build',
-  },
   webpack: {
-    config: path.join(__dirname, './webpack.config.js'),
-    output: {
-      publicPath: '/build/',
+    custom: {
+      configPath: path.join(__dirname, './webpack.config.js'),
     },
-    // devServer: {
-    //   noInfo: false,
-    //   quiet: false,
-    //   clientLogLevel: 'info',
-    // },
   },
 };

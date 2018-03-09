@@ -15,7 +15,7 @@ const enterAnim = [
     type: 'from',
     delay: 250,
     ease: 'easeOutQuad',
-    onComplete: e => {
+    onComplete: (e) => {
       e.target.style.height = 'auto';
     },
   },
@@ -61,6 +61,8 @@ const AnimTableBody = ({ body, page = 1, current }) => {
     </TweenOneGroup>
   );
 };
+
+/* eslint-disable react/forbid-prop-types */
 
 AnimTableBody.propTypes = {
   body: PropTypes.element,

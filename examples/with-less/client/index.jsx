@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 import React, { Component } from 'react';
-import styles from './index.less';
+import styles from './index.module.less';
 
 const App = () => (
   <div className={styles.center}>

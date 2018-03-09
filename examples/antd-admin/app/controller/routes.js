@@ -3,6 +3,7 @@ module.exports = (app) => {
     async home() {
       this.ctx.redirect('/dashboard');
     }
+
     async show() {
       await this.ctx.render('pages/dashboard');
     }

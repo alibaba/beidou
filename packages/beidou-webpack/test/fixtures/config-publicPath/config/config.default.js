@@ -2,11 +2,13 @@
 
 const path = require('path');
 
-module.exports = function (antx) {
+module.exports = function () {
   const exports = {};
 
   exports.webpack = {
-    config: path.resolve(__dirname, '../webpack/webpack.config.js'),
+    custom: {
+      configPath: path.resolve(__dirname, '../webpack/webpack.config.js'),
+    },
   };
 
   exports.keys = '_2323234_3432_8857';

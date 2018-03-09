@@ -1,13 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 import { Menu, Icon, Popover } from 'antd';
 import Menus from './menu';
-import style from './nav.less';
+import style from './nav.module.less';
 
 const cx = classNames.bind(style);
-const SubMenu = Menu.SubMenu;
+const { SubMenu } = Menu;
 
 const Nav = ({ siderFolded, onFade, location }) => (
   <div className={cx('header')}>

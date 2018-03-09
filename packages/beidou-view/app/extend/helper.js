@@ -9,7 +9,7 @@ const helper = {
    */
   [Symbol.for('beidou#asset')](filename, config) {
     const assetHost = config.host || config.assetHost;
-    const assetPath = config.assetPath;
+    const { assetPath } = config;
 
     if (!assetHost) {
       return concatUrl(assetPath, filename);

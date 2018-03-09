@@ -6,7 +6,7 @@ const debug = require('debug')('beidou:webpack');
 
 module.exports = function (options, app) {
   return async function (ctx, next) {
-    if (!app.webpackServerPort) return await next();
+    if (!app.webpackServerPort) return next();
     let webpackUrl = ctx.request.href.replace(
       url.parse(ctx.request.href).port,
       app.webpackServerPort
@@ -20,6 +20,7 @@ module.exports = function (options, app) {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           debug('redirect request to webpack with url: %s', webpackUrl);
           ctx.res.statusCode = res.statusCode;
+          /* eslint-disable guard-for-in */
           for (const key in res.headers) {
             ctx.res.setHeader(key, res.headers[key]);
           }

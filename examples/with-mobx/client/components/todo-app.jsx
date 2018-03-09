@@ -13,21 +13,22 @@ export default class TodoApp extends React.Component {
   componentDidMount() {
     if (__CLIENT__) {
       const { Router } = require('director/build/director');
-      const viewStore = this.props.viewStore;
+      const { viewStore } = this.props;
       const router = Router({
-        '/': function() {
+        '/': function () {
           viewStore.todoFilter = ALL_TODOS;
         },
-        '/active': function() {
+        '/active': function () {
           viewStore.todoFilter = ACTIVE_TODOS;
         },
-        '/completed': function() {
+        '/completed': function () {
           viewStore.todoFilter = COMPLETED_TODOS;
         },
       });
       router.init('/');
     }
   }
+
   render() {
     const { todoStore, viewStore } = this.props;
     return (

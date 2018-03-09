@@ -42,8 +42,10 @@ module.exports = (app) => {
                 </head>
                 <body>
                   <div id="container">${serverHtml}</div>
-                  <script src="http://127.0.0.1:6001/build/manifest.js"></script>
-                  <script src="http://127.0.0.1:6001/build/react16-csr.js"></script>
+                  <script
+                    src="http://127.0.0.1:6001/build/manifest.js"></script>
+                  <script
+                    src="http://127.0.0.1:6001/build/react16-csr.js"></script>
                 </body>
               </html>`;
         this.ctx.body = html;

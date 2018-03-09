@@ -73,7 +73,7 @@ const User = ({ location, history, dispatch, user }) => {
     },
     rowSelection: {
       selectedRowKeys,
-      onChange: keys => {
+      onChange: (keys) => {
         dispatch({
           type: 'user/updateState',
           payload: {
@@ -102,15 +102,15 @@ const User = ({ location, history, dispatch, user }) => {
     onSearch(fieldsValue) {
       fieldsValue.keyword.length
         ? history.push({
-            pathname: '/user',
-            search: obj2query({
-              field: fieldsValue.field,
-              keyword: fieldsValue.keyword,
-            }),
-          })
+          pathname: '/user',
+          search: obj2query({
+            field: fieldsValue.field,
+            keyword: fieldsValue.keyword,
+          }),
+        })
         : history.push({
-            pathname: '/user',
-          });
+          pathname: '/user',
+        });
     },
     onAdd() {
       dispatch(actions.user.showModal('create'));

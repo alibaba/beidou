@@ -88,10 +88,12 @@ describe('test/react.test.js', () => {
       });
 
       cpFile();
-      await [app.ready(), cacheApp.ready()];
+      await Promise.all([app.ready(), cacheApp.ready()]);
     });
 
     after(() => {
+      app.close();
+      cacheApp.close();
       delFiles();
     });
 
@@ -199,10 +201,10 @@ describe('test/react.test.js', () => {
     });
 
     it('should return correct host', (done) => {
-      mm(app.config.react, 'host', 'static.example.com');
+      mm(app.config.react, 'assetHost', 'static.example.com');
       request(app.callback())
         .get('/cdn')
-        .expect(/static\.example\.com\/main\.js/)
+        .expect(/static\.example\.com\/build\/main\.js/)
         .expect(200, done);
     });
 
@@ -215,10 +217,10 @@ describe('test/react.test.js', () => {
     });
 
     it('should get resource path without domain name', (done) => {
-      mm(app.config.react, 'host', '');
+      mm(app.config.react, 'assetHost', '');
       request(app.callback())
         .get('/local-resource')
-        .expect(/<body>\/main\.js<\/body>/)
+        .expect(/<body>\/build\/main\.js<\/body>/)
         .expect(200, done);
     });
   });
@@ -231,6 +233,8 @@ describe('test/react.test.js', () => {
         baseDir: './partial',
         framework,
       });
+
+      await app.ready();
     });
 
     after(() => {
@@ -276,6 +280,8 @@ describe('test/react.test.js', () => {
         baseDir: './rax-enable',
         framework,
       });
+
+      await app.ready();
     });
 
     after(() => {

@@ -1,7 +1,7 @@
 module.exports = () =>
   function* (next) {
     if (global && typeof global.__reqIndex === 'number') {
-      global.__reqIndex++;
+      global.__reqIndex += 1;
     } else {
       global.__reqIndex = 1;
       global.__totleRenderTime = 0;

@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { Breadcrumb, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import pathToRegexp from 'path-to-regexp';
-import style from './bread.less';
+import style from './bread.module.less';
 
 const cx = classNames.bind(style);
 
@@ -29,7 +29,7 @@ const Bread = ({ className, menus, location }) => {
       </span>
     );
     return (
-      <Breadcrumb.Item key={key}>
+      <Breadcrumb.Item key={item.route + item.name}>
         {menus.length - 1 !== key && item.route ? (
           <Link to={location.pathname !== item.route ? item.route : '#'}>
             {content}

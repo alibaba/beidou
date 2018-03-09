@@ -19,7 +19,8 @@ module.exports = appInfo => ({
 
   /**
    * The directory of server running.
-   * You can find `application_config.json` under it that is dumpped from `app.config`.
+   * You can find `application_config.json`
+   * under it that is dumpped from `app.config`.
    * @member {String} Config#rundir
    * @default
    * @since 1.0.0
