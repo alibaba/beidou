@@ -2,7 +2,7 @@
 
 const url = require('url');
 const request = require('request');
-const debug = require('debug')('beidou:webpack');
+const debug = require('debug')('beidou-webpack');
 
 module.exports = function (options, app) {
   return async function (ctx, next) {

@@ -74,7 +74,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe('start and stop commands', () => {
+  describe('start, stop, dev, debug, test, cov commands', () => {
     let app;
     const exampleDir = path.join(__dirname, './fixtures/example');
 
@@ -110,6 +110,46 @@ describe(`test/${path.basename(__filename)}`, () => {
         .expect('stdout', /stopped/)
         .expect('code', 0)
         .end(done);
+    });
+
+    it('should run dev mode', () => {
+      coffee
+        .fork(beidouBin, ['dev'], {
+          cwd: exampleDir,
+        })
+        .expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('should run debug mode', () => {
+      coffee
+        .fork(beidouBin, ['debug'], {
+          cwd: exampleDir,
+        })
+        .expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('should run test command', () => {
+      coffee
+        .fork(beidouBin, ['test'], {
+          cwd: exampleDir,
+        })
+        .expect('stdout', /\d+ passing/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('should run cov command', () => {
+      coffee
+        .fork(beidouBin, ['cov'], {
+          cwd: exampleDir,
+        })
+        .expect('stdout', /\d+ passing/)
+        .expect('code', 0)
+        .end();
     });
   });
 

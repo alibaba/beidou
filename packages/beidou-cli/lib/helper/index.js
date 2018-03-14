@@ -3,18 +3,26 @@
 exports.install = require('./install');
 exports.getRegistry = require('./registry');
 exports.log = require('./logger');
+const configs = require('./configs');
+
+exports.configs = configs;
 
 exports.getArgvWithDefaultConfig = (argv) => {
   let findPort = false;
+  let findFramework = false;
   for (const arg of argv) {
-    if (arg.includes('port')) {
+    if (arg.includes('--port')) {
       findPort = true;
+    } else if (arg.includes('--framework')) {
+      findFramework = true;
     }
   }
-  // Set default port
+
   if (!findPort) {
-    argv.push('--port=6001');
+    argv.push(`--port=${configs.port}`);
   }
-  argv.push('--framework=beidou-core');
+  if (!findFramework) {
+    argv.push(`--framework=${configs.framework}`);
+  }
   return argv;
 };

@@ -5,11 +5,12 @@ const path = require('path');
 const debug = require('debug')('beidou-cli');
 const { Command } = require('egg-bin');
 const { log } = require('../helper');
+const { framework, cmdName } = require('../helper');
 
 module.exports = class BuildCMD extends Command {
   constructor(rawArgv) {
     super(rawArgv);
-    this.usage = 'Usage: beidou build [options]';
+    this.usage = `Usage: ${cmdName} build [options]`;
     this.options = {
       target: {
         description: 'build target, node or browser',
@@ -25,14 +26,17 @@ module.exports = class BuildCMD extends Command {
 
   async run(context) {
     // log.info(JSON.stringify(context, null, 2));
-    let buildBin = path.join(context.cwd, 'node_modules/.bin/beidou-build');
-    if (!fs.existsSync(buildBin)) {
-      buildBin = path.join(__dirname, '../../../beidou-webpack/bin/build.js');
-      debug('local buildBin path %s', buildBin);
-    }
-    if (!fs.existsSync(buildBin)) {
+    const buildPaths = [
+      path.join(context.cwd, 'node_modules/.bin/beidou-build'),
+      path.join(__dirname, '../../../beidou-webpack/bin/build.js'),
+      () => require.resolve('beidou-webpack/bin/build'),
+    ];
+    const buildBin = buildPaths.find(p =>
+      fs.existsSync(typeof p === 'function' ? p() : p)
+    );
+    if (!buildBin) {
       log.error(
-        'Add beidou-core as your package dependency before run build command'
+        `Add "${framework}" as your package dependency before run build command`
       );
       return;
     }

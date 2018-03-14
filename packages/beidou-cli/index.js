@@ -2,13 +2,14 @@
 
 const path = require('path');
 const { Command } = require('egg-bin');
-const pkg = require('./package.json');
-const { log } = require('./lib/helper');
+const { log, configs } = require('./lib/helper');
 
-class BeidouCli extends Command {
+const pkg = require(`${configs.root}package.json`);
+
+class BeidouCLI extends Command {
   constructor(rawArgv) {
     super(rawArgv);
-    this.usage = 'Usage: beidou [command] [options]';
+    this.usage = `Usage: ${configs.cmdName} [command] [options]`;
 
     // load directory
     this.load(path.join(__dirname, 'lib/commands'));
@@ -16,4 +17,4 @@ class BeidouCli extends Command {
   }
 }
 
-module.exports = BeidouCli;
+module.exports = BeidouCLI;

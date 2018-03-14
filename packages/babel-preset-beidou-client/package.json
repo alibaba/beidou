@@ -4,7 +4,8 @@
   "description": "Babel preset for Beidou Client.",
   "author": "六猴",
   "license": "MIT",
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client",
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client",
   "main": "index.js",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",

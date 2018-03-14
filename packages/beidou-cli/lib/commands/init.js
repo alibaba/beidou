@@ -19,12 +19,12 @@ const chalk = require('chalk');
 const { Command } = require('egg-bin');
 const helper = require('../helper');
 
-const { log } = helper;
+const { log, configs } = helper;
 
 module.exports = class InitCMD extends Command {
   constructor(rawArgv) {
     super(rawArgv);
-    this.usage = 'Usage: beidou init [options]';
+    this.usage = `Usage: ${configs.cmdName} init [options]`;
     this.options = {
       type: {
         description: 'boilerplate type',
@@ -43,7 +43,7 @@ module.exports = class InitCMD extends Command {
       },
     };
 
-    this.pkgInfo = require('../../package.json');
+    this.pkgInfo = require(`${configs.root}package.json`);
     this.fileMapping = {
       gitignore: '.gitignore',
       _gitignore: '.gitignore',
@@ -52,7 +52,6 @@ module.exports = class InitCMD extends Command {
       '_.eslintignore': '.eslintignore',
     };
     this.proxyMapping = [];
-    this.toolkitName = 'beidou';
   }
 
   get description() {
@@ -404,9 +403,9 @@ module.exports = class InitCMD extends Command {
     );
     log.info(`\n
   cd ${this.targetDir}
-  ${this.toolkitName} dev ${chalk.gray('# start dev server')}
-  ${this.toolkitName} start ${chalk.gray('# start prod server')}
-  ${this.toolkitName} build ${chalk.gray('# build assets')}
+  ${configs.cmdName} dev ${chalk.gray('# start dev server')}
+  ${configs.cmdName} start ${chalk.gray('# start prod server')}
+  ${configs.cmdName} build ${chalk.gray('# build assets')}
       `);
   }
 };

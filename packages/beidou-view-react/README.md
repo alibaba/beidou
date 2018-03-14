@@ -57,7 +57,7 @@ module.exports = appInfo => ({
 
 ### Custom view middlewares
 
-You can access view rendering process to meet your needs. For example, if you want to log rendering time, you need to write a `time.js` to your `app/view-middlewares/` directory. If you don't understand middleware please read [egg-middlewares](https://eggjs.org/en/intro/egg-and-koa.html) before you digging into code.
+You can access view rendering process to meet your needs. For example, if you want to record rendering time, you need to write a `time.js` to your `app/view-middlewares/` directory. If you don't understand middleware please read [middlewares](https://eggjs.org/en/intro/egg-and-koa.html) before you digging into code.
 
 ```js
 // app/view-middlewares/time.js
@@ -86,8 +86,8 @@ Set appropriate middlewares order
 
 module.exports = () => ({
   react: {
-    // Recording time at begining
     middlewares: [
+      // Recording time at begining
       'time',
       'cache',
       'redux',
@@ -100,13 +100,13 @@ module.exports = () => ({
 });
 ```
 
-Start [view-middleware project](../../examples/view-middleware/README.md) server, you will get something like below:
+Start the [view-middleware demo project](../../examples/view-middleware/README.md) local server, you will get something like below:
 
 ![Rendering time](./screenshot.png)
 
 ### Using CDN
 
-You may need access CDN resources when your project online. First you need build your project to assets and upload to your CDN server, then custom your asset config in `config.prod.js`.
+You may use CDN resources when your project online. First you need build your project to assets and upload to your CDN server, then custom your asset config in `config.prod.js`.
 
 ```js
 // config/config.prod.js

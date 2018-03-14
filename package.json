@@ -18,7 +18,6 @@
   "author": "weichunpeng",
   "devDependencies": {
     "babel-eslint": "^8.1.2",
-    "beidou-core": "^1.0.0-alpha.5",
     "egg-bin": "^4.0.4",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "1.0.0-alpha.5",
