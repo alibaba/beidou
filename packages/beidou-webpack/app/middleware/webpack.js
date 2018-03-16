@@ -1,19 +1,16 @@
 'use strict';
 
-const url = require('url');
+const URL = require('url-parse');
 const request = require('request');
 const debug = require('debug')('beidou-webpack');
 
 module.exports = function (options, app) {
   return async function (ctx, next) {
-    if (!app.webpackServerPort) return next();
-    let webpackUrl = ctx.request.href.replace(
-      url.parse(ctx.request.href).port,
-      app.webpackServerPort
-    );
+    const originUrl = `http://${ctx.host}${ctx.request.url}`;
+    const url = new URL(originUrl);
+    url.set('port', app.webpackServerPort);
+    const webpackUrl = url.href;
 
-    // force to use `http` protocol, because webpack does not support https
-    webpackUrl = webpackUrl.replace(/^https/, 'http');
     const webpackRequest = request(webpackUrl);
     const notFound = await new Promise((resolve) => {
       webpackRequest.on('response', function (res) {
