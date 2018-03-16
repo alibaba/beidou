@@ -1,37 +1,44 @@
 'use strict';
 
-exports.webpack = {
-  // keep this key name sync with webpack.common.js reservedKey
-  custom: {
-    // configPath: 'path/to/webpack/config/file',
-  },
-  output: {
-    path: './build',
-    filename: '[name].js?[hash]',
-    chunkFilename: '[name].js',
-    publicPath: '/build/',
-  },
+const path = require('path');
 
-  resolve: {
-    extensions: ['.json', '.js', '.jsx'],
-  },
+module.exports = appInfo => ({
+  webpack: {
+    // keep this key name sync with webpack.common.js reservedKey
+    custom: {
+      // configPath: 'path/to/webpack/config/file',
+    },
+    output: {
+      path: './build',
+      filename: '[name].js?[hash]',
+      chunkFilename: '[name].js',
+      publicPath: '/build/',
+    },
 
-  devServer: {
-    contentBase: false,
-    port: 6002,
-    noInfo: true,
-    quiet: false,
-    clientLogLevel: 'warning',
-    lazy: false,
-    watchOptions: {
-      aggregateTimeout: 300,
+    resolve: {
+      extensions: ['.json', '.js', '.jsx'],
+      alias: {
+        client: path.join(appInfo.baseDir, 'client'),
+      },
     },
-    headers: { 'X-Custom-Header': 'yes' },
-    stats: {
-      colors: true,
-      chunks: false,
+
+    devServer: {
+      contentBase: false,
+      port: 6002,
+      noInfo: true,
+      quiet: false,
+      clientLogLevel: 'warning',
+      lazy: false,
+      watchOptions: {
+        aggregateTimeout: 300,
+      },
+      headers: { 'X-Custom-Header': 'yes' },
+      stats: {
+        colors: true,
+        chunks: false,
+      },
+      publicPath: '/build/',
+      hot: true,
     },
-    publicPath: '/build/',
-    hot: true,
   },
-};
+});

@@ -15,8 +15,8 @@ const imageLoaderConfig = {
 const fileLoaderConfig = {
   test: [
     /\.ico$/,
-    /\.woff2?$/,
     /\.svgz?$/,
+    /\.woff2?$/,
     /\.otf$/,
     /\.tiff?$/,
     /\.ttf$/,
@@ -37,7 +37,7 @@ function getCssLoaderConfig(dev, modules = false) {
       minimize: !dev,
       sourceMap: dev,
       modules,
-      localIdentName: '[local]_[hash:base64:5]',
+      localIdentName: modules ? '[local]_[hash:base64:5]' : undefined,
     },
   };
 }

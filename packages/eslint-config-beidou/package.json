@@ -8,13 +8,8 @@
     "cov": "TEST_REPORTER=spec egg-bin cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "keywords": [
-    "eslint",
-    "beidou"
-  ],
-  "files": [
-    "index.js"
-  ],
+  "keywords": ["eslint", "beidou"],
+  "files": ["index.js"],
   "license": "MIT",
   "devDependencies": {
     "egg-bin": "^4.3.7",
