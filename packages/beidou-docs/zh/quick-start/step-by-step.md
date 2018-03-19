@@ -1,6 +1,6 @@
 # 从零开始搭建应用
 
-> 本章节将从零开始一步一步构建一个 News App (use [newsapi.org](https://newsapi.org))，如果你已经是 [egg](https://github.com/eggjs/egg) 的用户或者对其有所了解，并且你已经了解基于 react 的同构方案，那么请跳过本章节，直接通过[脚手架](./quick-start.md)开发项目吧
+> 本章节将从零开始一步一步构建一个 News App (使用 [newsapi.org](https://newsapi.org))，如果你已经是 [egg](https://github.com/eggjs/egg) 的用户或者对其有所了解，并且你已经了解基于 react 的同构方案，那么请跳过本章节，直接通过[脚手架](./quick-start.md)开发项目吧。
 
 ## 初始化空项目
 
@@ -30,7 +30,7 @@ $ npm i --save beidou-core beidou-cli react react-dom
 
 ## 配置工程
 
-> 如果你熟悉 Web 开发或 MVC，应用搭建通常从编写Controller开始。北斗默认开启 [自动路由]() 功能，对于简单的应用，可以完全不需要编写Controller代码。
+> 如果你熟悉 Web 开发或 MVC，应用搭建通常从编写 Controller 开始。北斗默认开启 [自动路由](https://github.com/alibaba/beidou/tree/master/examples/auto-router) 功能，对于简单的应用，可以完全不需要编写 Controller 代码。
 
 ### 创建 `config` 目录
 - 创建 `config/config.default.js` 存放通用配置
@@ -380,7 +380,7 @@ exports.robot = {
 
 现在可以使用 curl localhost:6001/news -A "Baiduspider" 看看效果。
 
-### 添加样式
+### 添加额外样式
 
 北斗中默认的[webpack配置](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/config/webpack.common.js)中默认添加了 css、less 和 sass Loader，我们可以在应用中加入额外的样式，以 [stylus](http://stylus-lang.com/) 为例
 
