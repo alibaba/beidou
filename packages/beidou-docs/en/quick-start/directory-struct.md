@@ -7,7 +7,7 @@ Before you start, take a moment to see how the project structure looks like:
 ├── package.json
 ├── app.js (optional)
 ├── agent.js (optional)
-├── app (应用代码目录)
+├── app (application source code dir)
 |   ├── router.js
 │   ├── controller
 │   │   └── home.js
@@ -38,10 +38,10 @@ Before you start, take a moment to see how the project structure looks like:
 │   ├── plugin.js
 │   └── role.js (optional,role plugin for example,special config could save in this dir)
 │   └── webpack.config.js (optional, custom webpack config)
-├── client (客户端代码目录)
+├── client (client source code dir)
 |   ├── index.jsx
 |   └── page/index.jsx
-└── test (测试目录)
+└── test (test file dir)
     ├── middleware
     |   └── response_time.test.js
     └── controller

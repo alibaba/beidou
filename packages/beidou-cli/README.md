@@ -10,16 +10,12 @@ Global install `beidou-cli` if you need to init beidou boilerplate, use local in
 
   ```bash
   $ npm install beidou-cli -g
-  $ # or
-  $ yarn global add beidou-cli
   ```
 
 * local
 
   ```bash
   $ npm install beidou-cli --save
-  $ # or
-  $ yarn add beidou-cli
   ```
 
 ## Usage
