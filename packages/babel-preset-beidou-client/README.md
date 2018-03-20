@@ -22,10 +22,7 @@ This preset support dynamic compile browser targets, set [browserslist](https://
 
 ```json
 {
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+  "browserslist": ["> 1%", "last 2 versions"]
 }
 ```
 

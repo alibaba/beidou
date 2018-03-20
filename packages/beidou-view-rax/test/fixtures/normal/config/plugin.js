@@ -5,9 +5,4 @@ module.exports = {
     enable: true,
     package: 'beidou-view-rax',
   },
-  webpack: {
-    enable: true,
-    package: 'beidou-webpack',
-    env: ['local', 'unittest'],
-  },
 };

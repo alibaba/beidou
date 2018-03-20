@@ -7,7 +7,7 @@ const coffee = require('coffee');
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 const { getRegistry, install } = require('../lib/helper');
-const { cleanup, sleep } = require('./utils');
+const { sleep } = require('./utils');
 
 describe(`test/${path.basename(__filename)}`, () => {
   const beidouBin = require.resolve('../bin/beidou.js');
@@ -77,59 +77,74 @@ describe(`test/${path.basename(__filename)}`, () => {
   describe('start, stop, dev, debug, test, cov commands', () => {
     let app;
     const exampleDir = path.join(__dirname, './fixtures/example');
+    const TIME = 10;
 
-    before(async () => {
+    function* stopEggProcess() {
+      yield coffee
+        .fork(beidouBin, ['stop'], {
+          cwd: exampleDir,
+        })
+        .expect('code', 0)
+        .end();
+    }
+
+    before(function* () {
       if (!fs.existsSync(path.join(exampleDir, 'node_modules'))) {
-        await install(exampleDir, await getRegistry());
+        yield install(exampleDir, yield getRegistry());
       }
-      await cleanup(exampleDir);
+      yield stopEggProcess();
     });
 
-    after(async () => {
-      app.proc.kill('SIGTERM');
-      await cleanup(exampleDir);
-    });
-
-    it('should start production mode', async () => {
+    it('should start production mode', function* () {
       app = coffee.fork(beidouBin, ['start', '--port=8080', '--cluster=1'], {
         cwd: exampleDir,
       });
       app.expect('code', 0);
-      await sleep(10);
+      yield sleep(TIME);
       assert(app.stderr === '');
       assert(
         app.stdout.match(/beidou-core started on http:\/\/127\.0\.0\.1:8080/)
       );
+      yield stopEggProcess();
     });
 
-    it('should stop beidou process', (done) => {
-      coffee
+    it('should stop beidou process', function* () {
+      app = coffee.fork(beidouBin, ['start'], {
+        cwd: exampleDir,
+      });
+      app.expect('code', 0);
+      yield sleep(TIME);
+      yield coffee
         .fork(beidouBin, ['stop'], {
           cwd: exampleDir,
         })
-        .expect('stdout', /stopped/)
+        .expect('stdout', /got master pid \["\d+\"\]/)
+        .expect('stdout', /stopping egg application/)
         .expect('code', 0)
-        .end(done);
+        .end();
     });
 
-    it('should run dev mode', () => {
-      coffee
+    it('should run dev mode', function* () {
+      const devApp = coffee
         .fork(beidouBin, ['dev'], {
           cwd: exampleDir,
-        })
-        .expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
-        .expect('code', 0)
-        .end();
+        });
+      devApp.expect('code', 0);
+      yield sleep(TIME);
+      devApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
+      yield stopEggProcess();
     });
 
-    it('should run debug mode', () => {
-      coffee
+    it('should run debug mode', function* () {
+      const debugApp = coffee
         .fork(beidouBin, ['debug'], {
           cwd: exampleDir,
-        })
-        .expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
-        .expect('code', 0)
-        .end();
+        });
+      debugApp.expect('code', 0);
+      yield sleep(TIME);
+      debugApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
+
+      yield stopEggProcess();
     });
 
     it('should run test command', () => {
