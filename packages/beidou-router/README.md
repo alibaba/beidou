@@ -1,33 +1,18 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
-* [Beidou Router](#beidou-router)
-  * [Install](#install)
-  * [Configuration](#configuration)
-  * [Usage](#usage)
-  * [API](#api)
-  * [License](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Beidou Router
 
 > Auto Router for Beidou framework
 
-### Install
+## Install
 
-```
+```bash
 $ npm install beidou-router --save
 ```
 
-### Configuration
+## Configuration
 
 * config/plugin.js:
 
-```
+```js
 exports.router = {
   enable: true,
   package: 'beidou-router',

@@ -104,8 +104,6 @@ module.exports = class InitCMD extends Command {
       this.exitInfo();
     } catch (e) {
       log.error(chalk.red(e.message));
-    } finally {
-      process.exit();
     }
   }
 
@@ -401,11 +399,13 @@ module.exports = class InitCMD extends Command {
         'boilerplate initialization is completed, follow below commands'
       )
     );
-    log.info(`\n
-  cd ${this.targetDir}
-  ${configs.cmdName} dev ${chalk.gray('# start dev server')}
-  ${configs.cmdName} start ${chalk.gray('# start prod server')}
-  ${configs.cmdName} build ${chalk.gray('# build assets')}
-      `);
+    if (!configs.noInitUsageInfo) {
+      log.info(`\n
+    cd ${this.targetDir}
+    ${configs.cmdName} dev ${chalk.gray('# start dev server')}
+    ${configs.cmdName} start ${chalk.gray('# start prod server')}
+    ${configs.cmdName} build ${chalk.gray('# build assets')}
+        `);
+    }
   }
 };

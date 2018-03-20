@@ -10,15 +10,6 @@ $ npm install beidou-view-react --save
 
 ## Configuration
 
-Enable plugin
-
-```js
-exports.react = {
-  enable: true,
-  package: 'beidou-view-react',
-};
-```
-
 Default configs
 
 ```js
