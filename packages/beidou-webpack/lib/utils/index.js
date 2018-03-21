@@ -54,20 +54,20 @@ const dumpWebpackConfig = function (agent, config) {
       file,
       JSON.stringify(
         config,
-        (key, value) => {
-          if (typeof value === 'object' && !Array.isArray(value)) {
-            const type = value.constructor.name || 'Unknown';
+        (key, val) => {
+          if (val !== null && typeof val === 'object' && !Array.isArray(val)) {
+            const type = val.constructor.name || 'Unknown';
             if (type === 'RegExp') {
-              return value.toString();
+              return val.toString();
             }
 
             if (type !== 'Object') {
               return Object.assign({
-                [`<${type}>`]: _.toPlainObject(value),
+                [`<${type}>`]: _.toPlainObject(val),
               });
             }
           }
-          return value;
+          return val;
         },
         2
       )
