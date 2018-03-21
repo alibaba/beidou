@@ -1,11 +1,10 @@
 {
   "name": "babel-preset-beidou-client",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Babel preset for Beidou Client.",
   "author": "六猴",
   "license": "MIT",
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client",
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client",
   "main": "index.js",
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test",
