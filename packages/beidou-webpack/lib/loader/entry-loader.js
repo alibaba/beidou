@@ -69,12 +69,11 @@ module.exports = (app, devServer = {}, dev = false) => {
     }
   } else {
     const files = searchForEntries({ exts, cwd: pageDir, exclude });
-    if (!files) {
-      throw new Error('Expect `client/index.jsx` entry file');
-    }
-    for (const file of files) {
-      const filename = path.parse(file).name;
-      entry[filename] = [...headEntries, file];
+    if (files) {
+      for (const file of files) {
+        const filename = path.parse(file).name;
+        entry[filename] = [...headEntries, file];
+      }
     }
   }
 
@@ -92,6 +91,12 @@ module.exports = (app, devServer = {}, dev = false) => {
 
     if (files) {
       const name = path.basename(dir);
+      if (name in entry) {
+        app.logger.warn(
+          `Duplicated entry(${name}) detected.
+          file entry will be overwritted by dir entry`
+        );
+      }
       entry[name] = [...headEntries, files[0]];
     }
   }
