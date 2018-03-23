@@ -55,6 +55,8 @@ Navigate to `http://localhost:6001/`
 
 ## Documentation
 
+> Chinese Documentation - [中文文档](./README-ZH.md)
+
 * [Quick Start](./packages/beidou-docs/en/quick-start/quick-start.md)
 * Step by Step
   * [Environment](./packages/beidou-docs/en/quick-start/prepare-environment.md)
@@ -126,8 +128,6 @@ Please let us know how can we help. Do check out [issues](https://github.com/ali
 DingTalk & Wechat group supported
 
 ![](https://img.alicdn.com/tfs/TB1ciTUX7yWBuNjy0FpXXassXXa-700-473.png)
-
-Chinese Documentation - [中文文档](./README-ZH.md)
 
 ## License
 
