@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-antd-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beidou Example AntD Components",
   "license": "MIT",
   "scripts": {
@@ -16,7 +16,7 @@
     "babel-eslint": "^8.1.2",
     "babel-polyfill": "^6.26.0",
     "beidou-cli": "^1.0.0",
-    "beidou-core": "^1.0.0",
+    "beidou-core": "^1.0.1",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.0",
     "eslint-plugin-import": "^2.8.0",

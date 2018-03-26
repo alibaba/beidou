@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-scss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beidou example with scss",
   "scripts": {
     "start": "beidou start",
@@ -14,7 +14,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "beidou-cli": "^1.0.0",
-    "beidou-core": "^1.0.0",
+    "beidou-core": "^1.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

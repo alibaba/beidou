@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-css-modules",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "beidou css modules example",
   "scripts": {
     "start": "beidou start",
@@ -37,7 +37,7 @@
     "babel-preset-beidou-client": "^1.0.0",
     "babel-preset-beidou-server": "^1.0.0",
     "beidou-cli": "^1.0.0",
-    "beidou-core": "^1.0.0",
+    "beidou-core": "^1.0.1",
     "classnames": "^2.2.3",
     "enums": "^1.0.0",
     "extend": "^3.0.0",
