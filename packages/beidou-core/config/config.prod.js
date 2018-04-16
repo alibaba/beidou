@@ -8,5 +8,6 @@ module.exports = appInfo => ({
     prefix: '/build',
     dir: path.join(appInfo.baseDir, 'build/'),
     dynamic: false,
+    preload: true,
   },
 });
