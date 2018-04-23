@@ -6,6 +6,7 @@ module.exports = appInfo => ({
   rax: {
     middlewares: [
       'cache',
+      'initialprops',
       'redux',
       'partial',
       'raxRender',

@@ -8,7 +8,7 @@ module.exports = appInfo => ({
    * @member Config#react
    */
   react: {
-    middlewares: ['cache', 'redux', 'partial', 'render', 'beautify', 'doctype'],
+    middlewares: ['cache', 'initialprops', 'redux', 'partial', 'render', 'beautify', 'doctype'],
     beautify: false,
     cache: true,
     // Use `renderToStaticMarkup` if true, otherwise `renderToString`

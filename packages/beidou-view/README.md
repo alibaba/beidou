@@ -58,6 +58,14 @@ The `viewCtx.html` is final context sended to browser.
 | :----------------: | :------------------------: | :-----: | :-----: | :-------------------------- |
 | `config.${env}.js` | `config.${viewType}.cache` | Boolean | `true`  | Don't clean cache if `true` |
 
+## initialprops
+
+Inject props into Component before render.
+
+|      File      |         Field          |      Type      |   Default   | Description                 |
+| :------------: | :--------------------: | :------------: | :---------: | :-------------------------- |
+| View Component | `View.getInitialProps` | Function/Async | `undefined` | Inject props into Component |
+
 ## redux
 
 Provide store **constructing** and **serialization** of redux.
