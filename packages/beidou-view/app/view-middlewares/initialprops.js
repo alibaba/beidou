@@ -3,15 +3,15 @@
 const is = require('is-type-of');
 
 module.exports = async function (viewCtx, next) {
-  const { Component, props, view } = viewCtx;
+  const { Component, props } = viewCtx;
   const { logger } = props.ctx;
 
   // check static method in Component
-  const render = Component.getInitialProps;
+  const injectProps = Component.getInitialProps;
   if (typeof render === 'function') {
-    let mapping = is.asyncFunction(render)
-      ? await render(props)
-      : render(props);
+    let mapping = is.asyncFunction(injectProps)
+      ? await injectProps(props)
+      : injectProps(props);
 
     if (is.promise(mapping)) {
       mapping = await mapping;
