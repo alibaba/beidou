@@ -27,6 +27,11 @@ module.exports = function (options, app) {
         this.abort();
         resolve(true);
       });
+
+      // catch error
+      webpackRequest.on('error', () => {
+        resolve(true);
+      });
     });
     if (notFound) {
       await next();

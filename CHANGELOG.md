@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.0.1](https://github.com/alibaba/beidou/compare/v1.0.0...v1.0.1) (2018-03-26)
+
+
+### Bug Fixes
+
+* prevent `lib/core/agent/index.js` unexpectly loaded by plugin loader ([#35](https://github.com/alibaba/beidou/issues/35)) ([c30f27e](https://github.com/alibaba/beidou/commit/c30f27e))
+
+
+
 ## 1.0.0 (2018-03-23)
 
 ### BREAKING CHANGE
@@ -7,9 +16,9 @@
 * Node version must >= 8
 * React/react-dom versions must >= 16
 * Replace `koa-webpack-dev-middleware` with `webpack-dev-server`
-  * all [webpack configurations](https://webpack.js.org/configuration/) except **entry** are available in `configs#webpack` option, see [default config](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/config/config.default.js)
-  * Move custom webpack config file path to `webpack.custom.configPath`, see [configuration](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/README.md#configuration)
-  * Custom webpack config file api, see [custom webpack configuration](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/README.md#custom-webpack-configuration)
+* all [webpack configurations](https://webpack.js.org/configuration/) except **entry** are available in `configs#webpack` option, see [default config](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/config/config.default.js)
+* Move custom webpack config file path to `webpack.custom.configPath`, see [configuration](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/README.md#configuration)
+* Custom webpack config file api, see [custom webpack configuration](https://github.com/alibaba/beidou/blob/master/packages/beidou-webpack/README.md#custom-webpack-configuration)
 * Remove `app.helper.resolveResource`, use `app.helper.asset` instead
 
 ### Features
