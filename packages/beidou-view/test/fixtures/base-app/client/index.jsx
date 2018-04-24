@@ -10,6 +10,11 @@ const testStr = 'base view test';
  * @extends {React.Component}
  */
 export default class View {
+  static async getInitialProps() {
+    return {
+      title: 'beidou',
+    };
+  }
   static async getStore() {
     return {
       getState: () => ({ testStr }),
@@ -21,7 +26,7 @@ export default class View {
     return { partial: '', list: ['a', 'b', 'c'], store: 'store' };
   }
 
-  render({ partial, list, store }) {
+  render({ partial, list, store, title }) {
     // See view.test.js BaseView.prototype.renderElement
     const partialResult = 'fake renderElement';
     assert(partial === partialResult);
@@ -32,5 +37,7 @@ export default class View {
     }
 
     assert(store === partialResult);
+
+    assert(title === 'beidou');
   }
 }

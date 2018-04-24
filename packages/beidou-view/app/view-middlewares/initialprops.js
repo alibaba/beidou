@@ -8,7 +8,7 @@ module.exports = async function (viewCtx, next) {
 
   // check static method in Component
   const injectProps = Component.getInitialProps;
-  if (typeof render === 'function') {
+  if (typeof injectProps === 'function') {
     let mapping = is.asyncFunction(injectProps)
       ? await injectProps(props)
       : injectProps(props);

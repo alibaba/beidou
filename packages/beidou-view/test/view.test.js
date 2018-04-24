@@ -45,6 +45,7 @@ describe('test/view.test.js', () => {
         doctype: '<!DOCTYPE html>',
         middlewares: [
           'cache',
+          'initialprops',
           'redux',
           'partial',
           'mock',
