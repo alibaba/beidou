@@ -1,6 +1,6 @@
 {
   "name": "beidou-view",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "beidou base view plugin",
   "eggPlugin": {
     "name": "beidouView"
