@@ -1,8 +1,9 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 
 /* eslint-disable no-alert */
 
-export default () => (
+const App = () => (
   <div>
     <h1 className="title">Script</h1>
     <p>
@@ -15,3 +16,5 @@ export default () => (
     <button onClick={() => alert('it works!')}>click me</button>
   </div>
 );
+
+export default hot(module)(App);
