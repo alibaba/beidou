@@ -1,11 +1,12 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import classNames from 'classnames/bind';
 import style from './index.module.scss';
 import bg from '../images/bg.png';
 
 const cx = classNames.bind(style);
 
-export default class Index extends React.Component {
+class Example extends React.Component {
   constructor() {
     super();
     this.state = {};
@@ -22,3 +23,5 @@ export default class Index extends React.Component {
     );
   }
 }
+
+export default hot(module)(Example);
