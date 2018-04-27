@@ -26,3 +26,17 @@ exports.getArgvWithDefaultConfig = (argv) => {
   }
   return argv;
 };
+
+exports.getArgvWithDefaultFramework = (argv) => {
+  let findFramework = false;
+  for (const arg of argv) {
+    if (arg.includes('--framework')) {
+      findFramework = true;
+    }
+  }
+  if (!findFramework) {
+    argv.push(`--framework=${configs.framework}`);
+  }
+
+  return argv;
+};
