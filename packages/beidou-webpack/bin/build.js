@@ -6,9 +6,12 @@ const process = require('process');
 const { argv } = require('argh');
 const fs = require('fs');
 const path = require('path');
-const { Application } = require('beidou-core');
-const Loader = require('beidou-core').AppWorkerLoader;
 const builder = require('../lib/builder');
+
+const { target, framework, dev } = argv;
+
+const { Application } = require(framework);
+const Loader = require(framework).AppWorkerLoader;
 
 // set serverEnv=local to ensure webpack plugin enable
 process.env.EGG_SERVER_ENV = 'local';
@@ -21,9 +24,7 @@ const app = new Application({
 });
 
 // build in production environment as default
-app.config.env = argv.dev ? 'local' : 'prod';
-
-const { target } = argv;
+app.config.env = dev ? 'local' : 'prod';
 
 if (target && !['node', 'browser'].includes(target)) {
   app.coreLogger.error(
