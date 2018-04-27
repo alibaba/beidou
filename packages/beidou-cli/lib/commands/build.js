@@ -5,7 +5,8 @@ const path = require('path');
 const debug = require('debug')('beidou-cli');
 const { Command } = require('egg-bin');
 const { log } = require('../helper');
-const { getArgvWithDefaultFramework, framework, cmdName } = require('../helper');
+const { getArgvWithDefaultFramework = 'beidou-core',
+  framework, cmdName } = require('../helper');
 
 module.exports = class BuildCMD extends Command {
   constructor(rawArgv) {
