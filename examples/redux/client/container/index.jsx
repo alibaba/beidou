@@ -1,3 +1,5 @@
+
+import { hot } from 'react-hot-loader';
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
@@ -24,4 +26,6 @@ class Container extends React.Component {
   }
 }
 
-export default connect(state => state)(Container);
+const ConnectedContainer = connect(state => state)(Container);
+
+export default hot(module)(ConnectedContainer);
