@@ -29,7 +29,7 @@ module.exports = class BuildCMD extends Command {
   async run(context) {
     // log.info(JSON.stringify(context, null, 2));
     const buildPaths = [
-      // path.join(context.cwd, 'node_modules/.bin/beidou-build'),
+      path.join(context.cwd, 'node_modules/beidou-webpack/bin/build.js'),
       path.join(__dirname, '../../../beidou-webpack/bin/build.js'),
       () => require.resolve('beidou-webpack/bin/build'),
     ];
