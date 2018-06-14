@@ -7,14 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [1.0.5](https://github.com/alibaba/beidou/compare/v1.0.4...v1.0.5) (2018-06-14)
 
 
+### Bug Fixes
 
-
-**Note:** Version bump only for package beidou-example-with-rax
-
-<a name="1.0.1"></a>
-## [1.0.1](https://github.com/alibaba/beidou/compare/v1.0.0...v1.0.1) (2018-03-26)
-
-
-
-
-**Note:** Version bump only for package beidou-example-with-rax
+* wrong bin file excuted in windows [#63](https://github.com/alibaba/beidou/issues/63) ([#65](https://github.com/alibaba/beidou/issues/65)) ([d2f7bac](https://github.com/alibaba/beidou/commit/d2f7bac))
