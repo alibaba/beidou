@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-react-loadable",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Beidou example with react loadable",
   "license": "MIT",
   "scripts": {
@@ -16,7 +16,7 @@
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-import-inspector": "^2.0.0",
     "babel-polyfill": "^6.26.0",
-    "beidou-cli": "^1.0.4",
+    "beidou-cli": "^1.0.5",
     "beidou-core": "^1.0.4",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.3",
