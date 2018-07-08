@@ -10,6 +10,9 @@ module.exports = {
   router: {
     exts: ['.jsx', '.ts', '.tsx'],
   },
+  isomorphic: {
+    babel: false,
+  },
   webpack: {
     // your webpack config file
     custom: {
