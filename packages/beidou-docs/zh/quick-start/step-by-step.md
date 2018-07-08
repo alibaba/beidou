@@ -47,7 +47,7 @@ module.exports = {
 };
 
 ```
-配置 `router.entry`，只允许client下名称为 `index`的文件作为页面入口。
+配置 `router.entry`，只允许client下名称为 `index` 的文件作为页面入口。
 
 `keys` 是 Cookie 加密的密钥，参看 [Cookie 秘钥](https://eggjs.org/zh-cn/core/cookie-and-session.html#cookie-%E7%A7%98%E9%92%A5)  
 
@@ -98,7 +98,7 @@ beidou-core started on http://127.0.0.1:6001
 这是北斗webpack插件扫描client目录生成的默认entry，本地开发时，资源由webpack托管，我们可以方便地引入，并且支持代码的热加载。
 
 - 创建 `news.jsx`
-  > `index.jsx` 相当于MVC中的视图层，它是一个静态的视图模版，不同的是，使用 React 编写，语法上更为统一。
+  > `news.jsx` 相当于MVC中的视图层，它是一个静态的视图模版，不同的是，使用 React 编写，语法上更为统一。
 
   在 `news.jsx` 中编写功能代码
 ```jsx
@@ -158,6 +158,10 @@ if (__CLIENT__) {
 上述代码中，View Component 定义了页面的视图模版，在模版中我们引入了js资源。
 
 其中 定义了静态方法 getPartial，这是由 `beidou-view` 的 `rendering middlewares` 定义的，返回需要进行局部渲染的 React实例Map对象，渲染结果最终会被注入到 props 中，供 render 方法使用。
+
+如上述 getPartial 中返回的 `{ html: <News />}`，React 组件 <News /> 会在渲染中间件中，通过 renderToString api 渲染为字符串，并将结果合并到 `props.html` 中。
+
+在 render 方法中，可以直接使用渲染结果，和视图模板组合为完整的HTML页面。
 
 `__CLIENT__` 是框架定义的全局变量，在服务端恒为 `false`，用于区分服务端/客户端运行时。`ReactDOM`的挂载操作仅在客户端进行。
 
