@@ -7,7 +7,7 @@
 ├── package.json
 ├── app.js (可选)
 ├── agent.js (可选)
-├── app (应用代码目录)
+├── app (应用层代码目录)
 |   ├── router.js
 │   ├── controller
 │   │   └── home.js
@@ -26,9 +26,10 @@
 │   ├── service (可选)
 │   ├── middleware (可选)
 │   │   └── response_time.js
-│   └── views (可选，由 view 插件规范，建议统一为 views)
-|       ├── layout.html
-│       └── home.html
+│   ├── views (可选，由 view 插件规范，建议统一为 views)
+|   │   ├── layout.html
+│   │   └── home.html
+│   └── view-middlewares (自定义渲染中间件)
 ├── config (应用配置目录)
 |   ├── config.default.js
 │   ├── config.prod.js
@@ -98,13 +99,13 @@
 
 * `config/config.default.js`: 默认配置，所有环境都会加载此配置
 * `config/config.prod.js`: prod 环境配置
-* `config/config.test.js`: test 环境配置
 * `config/config.local.js`: local 环境配置
-* `config/config.unittest.js`: local 环境配置
+* `config/config.unittest.js`: 单元测试环境配置
 
 ## `client` 目录
 
 同构代码目录，存放同构业务代码。
+对React同构项目而言，`client` 目录用于存放 React 代码，包含组件、前端逻辑以及视图模版
 
 ### `test` 目录
 
