@@ -1,6 +1,6 @@
 {
   "name": "beidou-webpack",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "beidou webpack middleware",
   "eggPlugin": {
     "name": "webpack"
