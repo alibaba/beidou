@@ -29,12 +29,16 @@ const originEnv = app.config.env;
 // force env to local and reload config
 if (originEnv !== 'local') {
   app.loader.serverEnv = 'local';
+  app.loader.dirs = null;
   app.config.env = 'local';
   app.loader.loadConfig();
   // restore
   app.loader.serverEnv = originEnv;
   app.config.env = originEnv;
 }
+
+// build in production environment as default
+app.config.env = argv.dev ? 'local' : 'prod';
 
 if (target && !['node', 'browser'].includes(target)) {
   app.coreLogger.error(
