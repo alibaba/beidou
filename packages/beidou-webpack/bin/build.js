@@ -23,8 +23,18 @@ const app = new Application({
   workers: 1,
 });
 
-// build in production environment as default
-app.config.env = dev ? 'local' : 'prod';
+const originEnv = app.config.env;
+
+// webpack build only works in local environment
+// force env to local and reload config
+if (originEnv !== 'local') {
+  app.loader.serverEnv = 'local';
+  app.config.env = 'local';
+  app.loader.loadConfig();
+  // restore
+  app.loader.serverEnv = originEnv;
+  app.config.env = originEnv;
+}
 
 if (target && !['node', 'browser'].includes(target)) {
   app.coreLogger.error(
