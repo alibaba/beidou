@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-auto-router",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Beidou example auto router",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,7 @@
     "babel-eslint": "^8.1.2",
     "babel-polyfill": "^6.26.0",
     "beidou-cli": "^1.0.5",
-    "beidou-core": "^1.0.4",
+    "beidou-core": "^1.0.6",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^1.0.3",
     "eslint-plugin-import": "^2.8.0",
