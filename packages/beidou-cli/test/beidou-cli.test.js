@@ -62,7 +62,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe('init commands', () => {
+  describe.skip('init commands', () => {
     it('should init boilerplate project', (done) => {
       coffee
         .fork(beidouBin, ['init'], {
@@ -168,7 +168,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe('build command', () => {
+  describe.skip('build command', () => {
     const env = Object.create(process.env);
 
     env.NODE_ENV = 'production';
