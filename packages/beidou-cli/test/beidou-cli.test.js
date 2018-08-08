@@ -9,7 +9,7 @@ const rimraf = require('rimraf');
 const { getRegistry, install } = require('../lib/helper');
 const { sleep } = require('./utils');
 
-describe(`test/${path.basename(__filename)}`, () => {
+describe.skip(`test/${path.basename(__filename)}`, () => {
   const beidouBin = require.resolve('../bin/beidou.js');
   const cwd = path.join(__dirname, 'fixtures/test-files');
 
@@ -74,7 +74,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe('start, stop, dev, debug, test, cov commands', () => {
+  describe.skip('start, stop, dev, debug, test, cov commands', () => {
     let app;
     const exampleDir = path.join(__dirname, './fixtures/example');
     const TIME = 10;
