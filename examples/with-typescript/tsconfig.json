@@ -11,12 +11,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "client/*": ["./client/*"],
+      "client/*": ["./client/*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-  ]
+  "exclude": ["node_modules", "build", "scripts"]
 }

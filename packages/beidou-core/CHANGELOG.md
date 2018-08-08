@@ -4,15 +4,12 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 <a name="1.0.1"></a>
-## [1.0.1](https://github.com/alibaba/beidou/packages/beidou-core/compare/v1.0.0...v1.0.1) (2018-03-26)
 
+## [1.0.1](https://github.com/alibaba/beidou/packages/beidou-core/compare/v1.0.0...v1.0.1) (2018-03-26)
 
 ### Bug Fixes
 
 * prevent `lib/core/agent/index.js` unexpectly loaded by plugin loader ([#35](https://github.com/alibaba/beidou/packages/beidou-core/issues/35)) ([c30f27e](https://github.com/alibaba/beidou/packages/beidou-core/commit/c30f27e))
-
-
-
 
 <a name="0.3.5"></a>
 

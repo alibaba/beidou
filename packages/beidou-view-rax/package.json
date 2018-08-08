@@ -4,18 +4,9 @@
   "description": "Beidou Rax server side render plugin",
   "eggPlugin": {
     "name": "rax",
-    "dep": [
-      "beidouView",
-      "isomorphic"
-    ]
+    "dep": ["beidouView", "isomorphic"]
   },
-  "keywords": [
-    "beidou",
-    "beidouPlugin",
-    "beidou-plugin",
-    "beidouView",
-    "rax"
-  ],
+  "keywords": ["beidou", "beidouPlugin", "beidou-plugin", "beidouView", "rax"],
   "main": "index.js",
   "author": "<devrsi0n devrsi0n@gmail.com>",
   "license": "MIT",
@@ -46,16 +37,12 @@
   },
   "devDependencies": {
     "egg-bin": "^4.3.7",
+    "egg-core": "^4.9.1",
     "egg-mock": "^3.14.0",
     "rax": "^0.5.0",
     "rax-server-renderer": "^0.5.0",
     "rax-text": "^0.5.0",
     "rax-view": "^0.5.0"
   },
-  "files": [
-    "app",
-    "app.js",
-    "lib",
-    "config"
-  ]
+  "files": ["app", "app.js", "lib", "config"]
 }

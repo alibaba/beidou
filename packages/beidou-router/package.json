@@ -19,17 +19,15 @@
   },
   "devDependencies": {
     "egg-bin": "^4.0.0",
+    "egg-core": "^4.9.1",
     "egg-mock": "^3.7.1",
     "react": "^16.2.0",
     "supertest": "1"
   },
-  "files": [
-    "app",
-    "lib",
-    "config"
-  ],
+  "files": ["app", "lib", "config"],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
 }

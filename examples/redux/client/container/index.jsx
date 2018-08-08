@@ -1,4 +1,3 @@
-
 import { hot } from 'react-hot-loader';
 import React from 'react';
 import { connect } from 'react-redux';
