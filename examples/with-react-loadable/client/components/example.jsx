@@ -15,7 +15,7 @@ export const Home = () => (
 
 export const Dynamic = Loadable({
   loader: () => import('./dynamic'),
-  loading: () => (<div>loading</div>),
+  loading: () => <div>loading</div>,
 });
 
 export const Topic = ({ match }) => (

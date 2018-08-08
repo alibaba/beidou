@@ -38,7 +38,7 @@ if (originEnv !== 'local') {
 }
 
 // build in production environment as default
-app.config.env = argv.dev ? 'local' : 'prod';
+app.config.env = dev ? 'local' : 'prod';
 
 if (target && !['node', 'browser'].includes(target)) {
   app.coreLogger.error(

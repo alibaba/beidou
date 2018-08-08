@@ -63,16 +63,17 @@ module.exports = (app, defaultConfig, dev) => {
           ],
 
           plugins: [
-            ['@babel/transform-runtime', {
-              polyfill: false,
-              regenerator: true,
-            }],
+            [
+              '@babel/transform-runtime',
+              {
+                polyfill: false,
+                regenerator: true,
+              },
+            ],
           ],
           env: {
             development: {
-              plugins: [
-                'module:react-hot-loader/babel',
-              ],
+              plugins: ['module:react-hot-loader/babel'],
             },
           },
           cacheDirectory: dev,
@@ -108,13 +109,10 @@ module.exports = (app, defaultConfig, dev) => {
           },
         ],
       ],
-      plugins: [
-      ],
+      plugins: [],
       env: {
         development: {
-          plugins: [
-            'module:react-hot-loader/babel',
-          ],
+          plugins: ['module:react-hot-loader/babel'],
         },
       },
       cacheDirectory: dev,
