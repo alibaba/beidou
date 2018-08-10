@@ -32,7 +32,7 @@ module.exports = appInfo => ({
     //optional, HTML doctype
     doctype: '<!DOCTYPE html>',
     assetHost: '',
-    assetPath: '／build/',
+    assetPath: '/build/',
   },
   view: {
     defaultViewEngine: 'react',
