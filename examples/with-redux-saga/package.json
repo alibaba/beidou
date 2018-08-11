@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-redux-saga",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Beidou example with redux saga",
   "scripts": {
     "start": "beidou start",
@@ -14,8 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou-cli": "^1.0.5",
-    "beidou-core": "^1.0.7",
+    "beidou-cli": "^1.0.8",
+    "beidou-core": "^1.0.8",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",

@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-redux",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "beidou css modules template",
   "scripts": {
     "start": "beidou start",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
-    "beidou-cli": "^1.0.5",
-    "beidou-core": "^1.0.7",
+    "beidou-cli": "^1.0.8",
+    "beidou-core": "^1.0.8",
     "classnames": "^2.2.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -29,7 +29,7 @@
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.0.3",
+    "eslint-config-beidou": "^1.0.8",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1"
   },
