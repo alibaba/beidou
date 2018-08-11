@@ -1,6 +1,6 @@
 {
   "name": "beidou-cli",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "Beidou cli tools",
   "main": "index.js",
   "license": "MIT",

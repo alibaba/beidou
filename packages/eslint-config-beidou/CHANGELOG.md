@@ -9,10 +9,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-**Note:** Version bump only for package beidou-example-with-react-loadable
-
-<a name="1.0.5"></a>
-
-## [1.0.5](https://github.com/alibaba/beidou/compare/v1.0.4...v1.0.5) (2018-06-14)
-
-**Note:** Version bump only for package beidou-example-with-react-loadable
+**Note:** Version bump only for package eslint-config-beidou
