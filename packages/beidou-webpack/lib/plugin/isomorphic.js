@@ -62,6 +62,11 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
     );
   }
 
+  // if not assign the __webpack_public_path__ value , set it default
+  if (!global.__webpack_public_path__) {
+    global.__webpack_public_path__ = compiler.options.output.publicPath;
+  }
+
   compiler.plugin('done', (stats) => {
     const json = stats.toJson();
 
