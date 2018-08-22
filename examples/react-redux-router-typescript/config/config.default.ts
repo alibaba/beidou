@@ -21,7 +21,7 @@ export default () => {
     webpack: {
       // your webpack config file
       custom: {
-        configPath: path.resolve(__dirname, './webpack.config.ts'),
+        configPath: path.resolve(__dirname, './webpack.config.js'),
       },
       devServer: {
         publicPath: '/public/',

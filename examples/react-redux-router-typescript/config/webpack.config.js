@@ -1,4 +1,5 @@
 'use strict';
+
 import * as path from 'path';
 import webpack from 'webpack';
 
@@ -12,7 +13,7 @@ export default (app, defaultConfig, dev) => {
         __DEVELOPMENT__: true,
         __DEVTOOLS__: true,
         __DAILY__: true,
-      }),
+      })
     );
   } else {
     defaultConfig.plugins.push(
@@ -26,7 +27,7 @@ export default (app, defaultConfig, dev) => {
         'process.env': {
           NODE_ENV: JSON.stringify('production'),
         },
-      }),
+      })
     );
   }
 
