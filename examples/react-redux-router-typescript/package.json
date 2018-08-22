@@ -53,5 +53,8 @@
   "devDependencies": {
     "@types/react": "^16.4.6",
     "webpack": "^3.12.0"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
   }
 }
