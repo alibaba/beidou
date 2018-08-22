@@ -6,16 +6,15 @@
     "typescript": true
   },
   "scripts": {
-    "start": "beidou start --workers=1",
+    "start": "beidou start",
     "debug": "beidou debug --inspect-brk",
     "stop": "beidou stop",
-    "dev": "beidou dev --port 8080",
+    "dev": "beidou dev",
     "build:server": "ets && tsc -p tsconfig-server.json",
     "build:client": "beidou build",
     "build": "npm run build:client && npm run build:server",
     "clean": "ets clean"
   },
-  "license": "MIT",
   "dependencies": {
     "@babel/core": "7.0.0-beta.51",
     "@babel/plugin-proposal-class-properties": "7.0.0-beta.51",
