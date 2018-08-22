@@ -23,6 +23,9 @@ module.exports =  () => {
             custom: {
                 configPath: path.resolve(__dirname, './webpack.config.ts'),
             },
+            devServer: {
+                publicPath: '/public/'
+            },
             resolve: {
                 extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
                 alias: {
