@@ -1,7 +1,7 @@
 {
-  "name": "apollo-mobile-wap",
+  "name": "react-redux-router-typescript",
   "version": "1.0.8",
-  "description": "官网触屏",
+  "description": "react-redux-router-typescript",
   "egg": {
     "typescript": true
   },
