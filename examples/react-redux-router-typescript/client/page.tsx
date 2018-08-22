@@ -94,6 +94,6 @@ if (__CLIENT__) {
   );
 
   // run saga
-  //run();
+  run();
   ReactDOM.render(app, document.getElementById('container'));
 }
