@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import App from './container';
 import configureStore from './store';
 import { run } from './saga';
-import Router from './router/router'
+import Router from './router/router';
 
 /**
  * custom view template
@@ -53,7 +53,7 @@ export default class View extends React.Component<any> {
   static getPartial({ store, ctx }) {
     const html = (
       <Provider store={store}>
-        <Router location={ctx.req.url} context={{}} />
+        <Router location={ctx.req.url} context={{}}/>
       </Provider>
     );
     return { html };
@@ -63,19 +63,19 @@ export default class View extends React.Component<any> {
     const { html, state, helper } = this.props;
     return (
       <html>
-        <head>
-          <title>Beidou example redux</title>
-        </head>
-        <body>
-          <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.__INITIAL_STATE__ = ${state}`,
-            }}
-          />
-          <script src={helper.asset('manifest.js')} />
-          <script src={helper.asset('index.js')} />
-        </body>
+      <head>
+        <title>Beidou example redux</title>
+      </head>
+      <body>
+      <div id="container" dangerouslySetInnerHTML={{ __html: html }}/>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.__INITIAL_STATE__ = ${state}`,
+        }}
+      />
+      <script src={helper.asset('manifest.js')}/>
+      <script src={helper.asset('index.js')}/>
+      </body>
       </html>
     );
   }
@@ -89,7 +89,7 @@ if (__CLIENT__) {
   const store = configureStore(window.__INITIAL_STATE__);
   const app = (
     <Provider store={store}>
-      <Router />
+      <Router/>
     </Provider>
   );
 

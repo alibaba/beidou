@@ -13,11 +13,11 @@ export default function configureStore(initialState) {
     return createStore(
       rootReducer,
       initialState,
-      compose(applyMiddleware(sagaMiddleware), debug)
+      compose(applyMiddleware(sagaMiddleware), debug),
     );
   }
   return createStore(
     rootReducer,
-    compose(applyMiddleware(sagaMiddleware), debug)
+    compose(applyMiddleware(sagaMiddleware), debug),
   );
 }

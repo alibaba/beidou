@@ -11,5 +11,5 @@ export default handleActions(
       greeting: name,
     }),
   },
-  initialState
+  initialState,
 );

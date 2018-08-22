@@ -19,7 +19,7 @@ class Container extends React.Component<any> {
     return (
       <div className="page">
         <h1>Redux Example</h1>
-          <button onClick={() => alert('hi')}>click</button>
+        <button onClick={() => alert('hi')}>click</button>
         <p>Hello, {this.props.greeting}</p>
       </div>
     );
