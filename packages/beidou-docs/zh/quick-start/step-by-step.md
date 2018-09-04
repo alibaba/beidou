@@ -399,7 +399,7 @@ body
 
 ```jsx
 ...
-import 'index.jsx';
+import 'index.styl';
 ...
 <head>
   <title>news</title>
@@ -458,7 +458,7 @@ module.exports = (app, defaultConfig, dev) => {
       use: ['css-loader', 'stylus-loader'].map(require.resolve),
     })
   });
-  defaultConfigs.plugins.pus(
+  defaultConfig.plugins.push(
     new ExtractTextPlugin('[name].css')
   );
   return defaultConfig;
