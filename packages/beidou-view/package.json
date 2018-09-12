@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
     "is-type-of": "^1.2.0",
     "js-beautify": "^1.6.2",
     "koa-compose": "^4.0.0",
