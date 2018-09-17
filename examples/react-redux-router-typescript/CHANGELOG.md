@@ -9,10 +9,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-**Note:** Version bump only for package beidou-example-with-typescript
-
-<a name="1.0.8"></a>
-
-## [1.0.8](https://github.com/alibaba/beidou/compare/v1.0.7...v1.0.8) (2018-08-11)
-
-**Note:** Version bump only for package beidou-example-with-typescript
+**Note:** Version bump only for package react-redux-router-typescript
