@@ -1,6 +1,6 @@
 {
   "name": "beidou-router",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "beidou auto router",
   "eggPlugin": {
     "name": "router"
@@ -24,10 +24,13 @@
     "react": "^16.2.0",
     "supertest": "1"
   },
-  "files": ["app", "lib", "config"],
+  "files": [
+    "app",
+    "lib",
+    "config"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view-react"
 }
