@@ -23,6 +23,7 @@ function setPolyfill(window) {
     removeListener() {},
   });
   window.matchMedia = global.matchMedia;
+  global.requestAnimationFrame = /* istanbul ignore next */ () => {};
 }
 
 exports.basicPolyfill = () => {
