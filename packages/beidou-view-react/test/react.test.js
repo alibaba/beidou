@@ -271,26 +271,4 @@ describe('test/react.test.js', () => {
         .expect(200, done);
     });
   });
-
-  describe('rax enable', () => {
-    let app;
-
-    before(async () => {
-      app = mm.app({
-        baseDir: './rax-enable',
-        framework,
-      });
-
-      await app.ready();
-    });
-
-    after(() => {
-      app.close();
-    });
-
-    it('disabled', () => {
-      const ReactView = require('../lib/react-view');
-      assert(app[Symbol.for('egg#view')] !== ReactView);
-    });
-  });
 });
