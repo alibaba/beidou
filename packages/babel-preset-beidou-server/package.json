@@ -12,9 +12,11 @@
     "history": "egg-bin history CHANGELOG.md"
   },
   "dependencies": {
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-2": "^6.24.1"
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0"
   },
   "devDependencies": {
     "egg-bin": "^4.3.7"

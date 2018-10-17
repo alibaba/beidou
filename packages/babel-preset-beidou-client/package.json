@@ -2,7 +2,6 @@
   "name": "babel-preset-beidou-client",
   "version": "1.0.9",
   "description": "Babel preset for Beidou Client.",
-  "author": "六猴",
   "license": "MIT",
   "repository": "https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client",
   "main": "index.js",
@@ -12,13 +11,17 @@
     "history": "egg-bin history CHANGELOG.md"
   },
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-typecheck": "^3.9.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-runtime": "^6.26.0",
-    "react-hot-loader": "^3.1.3"
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.1.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "react-hot-loader": "^4.3.11"
   },
   "peerDependencies": {
     "react": "^16.2.0",

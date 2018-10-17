@@ -10,10 +10,6 @@ module.exports = (app, defaultConfig, isDev) => {
   const outputPath = path.join(app.config.baseDir, 'output');
 
   const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      filename: 'manifest.js',
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(
         dev ? 'development' : 'production'

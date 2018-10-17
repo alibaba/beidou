@@ -67,7 +67,7 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
     global.__webpack_public_path__ = compiler.options.output.publicPath;
   }
 
-  compiler.plugin('done', (stats) => {
+  const cb = (stats) => {
     const json = stats.toJson();
 
     debug('webpack compile json:\n', JSON.stringify(json, null, 2));
@@ -75,7 +75,15 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
       .map(module => this.parse(module))
       .filter(result => result);
     this.save(results);
-  });
+  };
+
+  if (compiler.hooks) {
+    const plugin = { name: 'IsomorphicPlugin' };
+
+    compiler.hooks.done.tap(plugin, cb);
+  } else {
+    compiler.plugin('done', cb);
+  }
 };
 
 IsomorphicPlugin.prototype.parse = function (module) {

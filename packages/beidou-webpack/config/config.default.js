@@ -8,6 +8,7 @@ module.exports = appInfo => ({
     custom: {
       // configPath: 'path/to/webpack/config/file',
     },
+    mode: 'development',
     output: {
       path: './build',
       filename: '[name].js?[hash]',
@@ -20,6 +21,16 @@ module.exports = appInfo => ({
       alias: {
         client: path.join(appInfo.baseDir, 'client'),
       },
+    },
+
+    optimization: {
+      namedModules: true,
+      splitChunks: {
+        name: 'manifest',
+        chunks: 'all',
+      },
+      noEmitOnErrors: true,
+      concatenateModules: true,
     },
 
     devServer: {

@@ -28,7 +28,7 @@ module.exports = (app) => {
   const { babel } = config;
 
   if (babel) {
-    require('babel-register')(babel);
+    require('@babel/register')(babel);
   }
 
   // isomorphic register

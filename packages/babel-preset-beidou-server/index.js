@@ -1,23 +1,30 @@
 'use strict';
 
-const env = require('babel-preset-env');
-const stage2 = require('babel-preset-stage-2');
-const react = require('babel-preset-react');
+const env = require('@babel/preset-env');
+const react = require('@babel/preset-react');
 
-module.exports = {
-  presets: [
-    [
-      env,
-      {
-        targets: {
-          // Compile for this current running node, eg. 8.9.3
-          node: true,
+module.exports = function (api) {
+  api.assertVersion(7);
+
+  return {
+    presets: [
+      [
+        env,
+        {
+          targets: {
+            // Compile for this current running node, eg. 8.9.3
+            node: true,
+          },
+          useBuiltIns: false,
+          // debug: true,
         },
-        useBuiltIns: true,
-        // debug: true,
-      },
+      ],
+      react,
     ],
-    stage2,
-    react,
-  ],
+    plugins: [
+      // stage 2
+      [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
+      require.resolve('@babel/plugin-proposal-class-properties'),
+    ],
+  };
 };

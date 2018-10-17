@@ -46,5 +46,8 @@
       "threshold": 90
     }
   },
-  "repository": "https://github.com/alibaba/beidou"
+  "repository": "https://github.com/alibaba/beidou",
+  "dependencies": {
+    
+  }
 }

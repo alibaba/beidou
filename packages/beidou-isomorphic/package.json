@@ -18,8 +18,9 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/register": "^7.0.0",
     "babel-preset-beidou-server": "^1.0.9",
-    "babel-register": "^6.26.0",
     "jsdom": "^9.8.3"
   },
   "devDependencies": {

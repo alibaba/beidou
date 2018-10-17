@@ -10,6 +10,7 @@ const boxen = require('boxen');
 const FallbackPort = require('fallback-port');
 const _ = require('lodash');
 const debug = require('debug')('beidou:webpack');
+const { argv } = require('argh');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
 
@@ -79,7 +80,11 @@ const dumpWebpackConfig = function (agent, config) {
 
 const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
-  const isDev = app.config.env !== 'prod';
+
+  // argv passed from master process, JSON string
+  const [rawArgs] = argv.argv;
+  const args = JSON.parse(rawArgs);
+  const isDev = args.dev !== 'false';
   let webpackConfig = null;
 
   const defaultConfigPath = path.join(
@@ -171,13 +176,21 @@ const startServer = (config, port, logger, agent) => {
 
   const compiler = webpack(config);
   let lastCompileResult = false;
-  compiler.plugin('done', ({ compilation }) => {
+  const cb = ({ compilation }) => {
     const ok = compilation.errors.length === 0;
     ok &&
       !lastCompileResult &&
       logger.info('[webpack]', colorz.green('compile done'));
     lastCompileResult = ok;
-  });
+  };
+
+  if (compiler.hooks) {
+    const plugin = { name: 'BeidouWebpackPlugin' };
+
+    compiler.hooks.done.tap(plugin, cb);
+  } else {
+    compiler.plugin('done', cb);
+  }
 
   const server = new WebpackDevServer(compiler, config.devServer);
 

@@ -44,10 +44,6 @@ module.exports = (app, entry, dev) => {
   ];
   config.plugins.push(
     new ExtractTextPlugin('[name].css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      filename: 'manifest.js',
-    })
   );
 
   if (!dev) {
@@ -58,7 +54,7 @@ module.exports = (app, entry, dev) => {
         __DEV__: false,
         __SERVER__: true,
       }),
-      new MinifyPlugin()
+      new MinifyPlugin(),
     );
   } else {
     config.plugins.push(
