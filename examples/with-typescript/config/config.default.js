@@ -11,7 +11,7 @@ module.exports = {
     exts: ['.jsx', '.ts', '.tsx'],
   },
   isomorphic: {
-    babel: false,
+    // babel: false,
   },
   webpack: {
     // your webpack config file
