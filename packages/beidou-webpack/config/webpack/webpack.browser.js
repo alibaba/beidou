@@ -23,7 +23,7 @@ module.exports = (app, entry, dev) => {
       use: {
         loader: require.resolve('babel-loader'),
         options: {
-          babelrc: false,
+          babelrc: true,
           presets: [require.resolve('babel-preset-beidou-client')],
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/

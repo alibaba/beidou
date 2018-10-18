@@ -35,7 +35,6 @@ function searchForEntries({ exts, cwd, exclude, name = '*' }) {
  * @param {Boolean} dev - is development env
  */
 module.exports = (app, devServer = {}, dev = false) => {
-  console.log('==================dev====', dev);
   const { config } = app;
   const router = config.router || {};
   const options = config.webpack;
