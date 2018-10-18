@@ -1,11 +1,16 @@
 'use strict';
 
 const assert = require('assert');
-const babelConfig = require('../index');
+const preset = require('../index');
 
-describe('babel-preset-server', () => {
+const mockApi = {
+  assertVersion: ()=>{},
+}
+
+describe('babel-preset-client', () => {
   it('should exist', () => {
-    assert(typeof babelConfig === 'object');
-    assert(Array.isArray(babelConfig.presets));
+    assert(typeof preset === 'function');
+    const result = preset(mockApi);
+    assert(Array.isArray(result.presets));
   });
 });
