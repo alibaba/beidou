@@ -82,9 +82,15 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
 
   // argv passed from master process, JSON string
-  const [rawArgs] = argv.argv;
-  const args = JSON.parse(rawArgs);
-  const isDev = args.dev !== 'false';
+  let isDev = false;
+  if (argv.dev) {
+    isDev = true;
+  } else if (argv.argv && argv.argv.rawArgs) {
+    const [rawArgs] = argv.argv;
+    const args = JSON.parse(rawArgs);
+    isDev = args.dev !== 'false';
+  }
+
   let webpackConfig = null;
 
   const defaultConfigPath = path.join(
