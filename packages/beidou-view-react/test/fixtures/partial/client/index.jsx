@@ -37,7 +37,7 @@ export default class View extends React.Component {
    * @returns {ReactInstance|Array<ReactInstance>}
    */
   static getPartial() {
-    return { html: <App />, ctx: <App /> };
+    return { html: <App /> };
   }
 
   render() {

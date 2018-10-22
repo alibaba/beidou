@@ -1,7 +1,5 @@
 'use strict';
 
-require('babel-register');
-
 const createStore = require('../../client/store');
 
 exports.jsxtpl = async function () {
