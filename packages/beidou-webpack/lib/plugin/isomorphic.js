@@ -1,6 +1,5 @@
 'use strict';
 
-const process = require('process');
 const Module = require('module');
 const path = require('path');
 const assert = require('assert');
@@ -132,7 +131,7 @@ IsomorphicPlugin.prototype.save = function (results) {
   const { context } = this.options;
   const json = {};
   for (const result of results) {
-    const absolutePath = path.join(process.cwd(), result.name);
+    const absolutePath = path.join(context, result.name);
     const relativePath = path.relative(context, absolutePath);
 
     const m = new Module(absolutePath);

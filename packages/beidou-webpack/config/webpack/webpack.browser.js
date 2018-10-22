@@ -39,9 +39,7 @@ module.exports = (app, entry, dev) => {
     fileLoaderConfig,
   ];
 
-  config.plugins.push(
-    new ExtractTextPlugin('[name].css'),
-  );
+  config.plugins.push(new ExtractTextPlugin('[name].css'));
 
   if (!dev) {
     config.mode = 'production';

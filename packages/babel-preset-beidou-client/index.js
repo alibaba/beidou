@@ -38,7 +38,6 @@ module.exports = function (api) {
       require.resolve('@babel/plugin-proposal-export-namespace-from'),
       require.resolve('@babel/plugin-proposal-numeric-separator'),
       require.resolve('@babel/plugin-proposal-throw-expressions'),
-
     ],
 
     env: {

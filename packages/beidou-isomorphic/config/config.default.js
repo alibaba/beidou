@@ -42,7 +42,7 @@ module.exports = appInfo => ({
       // of `.jsx`, `.mjs`
       // and .js so you'll have to add them back if you want them
       // to be used again.
-      extensions: ['.js', '.jsx', '.mjs'],
+      extensions: ['.es6', '.es', '.jsx', '.js', '.mjs'],
 
       // Setting this to false will disable the cache.
       cache: true,

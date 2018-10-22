@@ -42,9 +42,7 @@ module.exports = (app, entry, dev) => {
     imageLoaderConfig,
     fileLoaderConfig,
   ];
-  config.plugins.push(
-    new ExtractTextPlugin('[name].css'),
-  );
+  config.plugins.push(new ExtractTextPlugin('[name].css'));
 
   if (!dev) {
     config.plugins.push(
