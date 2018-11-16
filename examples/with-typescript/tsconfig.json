@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "build/dist",
-    "module": "commonjs",
-    "target": "es6",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
     "paths": {
       "client/*": ["./client/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "jsx": "preserve",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "target": "es6",
+    "lib": ["dom", "es7"]
   },
   "exclude": ["node_modules", "build", "scripts"]
 }

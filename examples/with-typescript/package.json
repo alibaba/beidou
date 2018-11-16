@@ -33,6 +33,7 @@
     "@babel/register": "^7.0.0-beta.51",
     "@babel/runtime": "^7.0.0-beta.51",
     "babel-loader": "^7.1.5",
+    "babel-preset-beidou-client": "^1.0.9",
     "beidou-cli": "^1.0.8",
     "beidou-core": "^1.0.9",
     "react": "^16.2.0",
