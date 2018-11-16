@@ -18,6 +18,10 @@ exports.getArgvWithDefaultConfig = (argv) => {
     }
   }
 
+  if (process.env.PORT) {
+    findPort = true;
+    argv.push(`--port=${process.env.PORT}`);
+  }
   if (!findPort) {
     argv.push(`--port=${configs.port}`);
   }
