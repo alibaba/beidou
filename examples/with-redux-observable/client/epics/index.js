@@ -16,9 +16,9 @@ import * as actions from '../actions';
 const searchProducts = action$ =>
   action$.ofType(actions.GET_ALL_PRODUCTS).switchMap(q =>
     /*
-   * This example uses the same api of the redux-saga example, thus
-   * it adapts a Promise to an Observable.
-   */
+     * This example uses the same api of the redux-saga example, thus
+     * it adapts a Promise to an Observable.
+     */
     api.getProducts().map(actions.receiveProducts)
   );
 

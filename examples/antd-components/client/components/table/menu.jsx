@@ -59,11 +59,10 @@ class App extends React.Component {
               <span>
                 {record.name
                   .split(reg)
-                  .map(
-                    (text, i) =>
-                      (i > 0
-                        ? [<span className="highlight">{match[0]}</span>, text]
-                        : text)
+                  .map((text, i) =>
+                    (i > 0
+                      ? [<span className="highlight">{match[0]}</span>, text]
+                      : text)
                   )}
               </span>
             ),

@@ -89,10 +89,8 @@ export default class PopconfirmDemo extends Component {
                   </Popconfirm>
                   <br />
                   <br />
-                  Whether directly execute：<Switch
-                    defaultChecked
-                    onChange={this.changeCondition}
-                  />
+                  Whether directly execute：
+                  <Switch defaultChecked onChange={this.changeCondition} />
                 </div>
               </Section>
             </Col>

@@ -31,4 +31,7 @@ const mapDispatchToProps = dispatch => ({
   decrementAsync: () => dispatch({ type: 'INCREMENT_ASYNC' }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

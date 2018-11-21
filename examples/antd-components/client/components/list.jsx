@@ -519,8 +519,9 @@ export default class Demo extends Component {
                       </List.Item>
                     )}
                   >
-                    {this.state.loading &&
-                      this.state.hasMore && <Spin className="demo-loading" />}
+                    {this.state.loading && this.state.hasMore && (
+                      <Spin className="demo-loading" />
+                    )}
                   </List>
                 </InfiniteScroll>
               </div>

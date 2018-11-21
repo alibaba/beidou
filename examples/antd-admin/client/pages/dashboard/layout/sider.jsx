@@ -28,7 +28,8 @@ const Sider = ({ dispatch, siderFolded, theme, location }) => (
     {!siderFolded && (
       <div className={cx('switchtheme')}>
         <span>
-          <Icon type="bulb" />Switch Theme
+          <Icon type="bulb" />
+          Switch Theme
         </span>
         <Switch
           defaultChecked={false}
