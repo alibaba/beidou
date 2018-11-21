@@ -15,6 +15,5 @@ module.exports = (app, defaultConfig) => {
   };
 
   defaultConfig.module.rules.push(tsLoader);
-
   return defaultConfig;
 };

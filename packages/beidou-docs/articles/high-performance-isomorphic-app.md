@@ -127,7 +127,7 @@
 * 采用最新版React16: [facebook官方数据](https://reactjs.org/blog/2017/09/26/react-v16.0.html#better-server-side-rendering), 在Node8下，React16相比编译后的react15仍有3.8倍提升，相比未编译的React15更是有数量级的提升。
 
 #### 组件级缓存
-如果说性能优化有"万能"的招式，那一定是缓存, 从Nigix缓存到模块级缓存到组件级缓存，其中最让人兴奋的就是组件级缓存，让我们一起来看看如何实现
+如果说性能优化有"万能"的招式，那一定是缓存, 从Nginx缓存到模块级缓存到组件级缓存，其中最让人兴奋的就是组件级缓存，让我们一起来看看如何实现
 * 拦截React的渲染逻辑，业界主要有三种实现方式
   * Fork一份React, 暴力加入缓存逻辑, 代表库是[react-dom-stream](https://github.com/aickin/react-dom-stream), 虽然这个库的人气很高，但笔者还是反对这种实现方式的。
   * 通过require hook拦截instantiateReactComponent的载入并注入缓存逻辑，参考[react-ssr-optimization](https://github.com/walmartlabs/react-ssr-optimization/blob/master/lib/index.js#L211-L220)

@@ -63,7 +63,7 @@
     "supertest": "1"
   },
   "peerDependencies": {
-    "beidou-core": "^1.0.9"
+    "beidou-core": "^1.0.10"
   },
   "files": [
     "bin",
