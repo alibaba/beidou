@@ -1,6 +1,6 @@
 {
   "name": "react-redux-router-typescript",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "react-redux-router-typescript",
   "egg": {
     "typescript": true
@@ -32,8 +32,8 @@
     "babel-loader": "8.0.0-beta.4",
     "babel-plugin-dynamic-import-node": "^2.0.0",
     "babel-plugin-import-inspector": "^2.0.0",
-    "beidou-cli": "^1.0.8",
-    "beidou-core": "^1.0.9",
+    "beidou-cli": "^1.0.10",
+    "beidou-core": "^1.0.10",
     "egg": "^2.10.0",
     "egg-ts-helper": "^1.9.2",
     "react": "^16.2.0",

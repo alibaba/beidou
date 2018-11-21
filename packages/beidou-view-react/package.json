@@ -1,6 +1,6 @@
 {
   "name": "beidou-view-react",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "beidou view react",
   "eggPlugin": {
     "name": "react",
@@ -16,7 +16,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "beidou-view": "^1.0.9"
+    "beidou-view": "^1.0.10"
   },
   "peerDependencies": {
     "react": "^16.2.0",
