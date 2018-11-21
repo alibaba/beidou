@@ -45,7 +45,8 @@ export default class SpinDemo extends Component {
                     {container}
                   </Spin>
                   <div style={{ marginTop: 16 }}>
-                    Loading state：<Switch
+                    Loading state：
+                    <Switch
                       checked={this.state.loading}
                       onChange={this.toggle}
                     />

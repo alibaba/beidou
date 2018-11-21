@@ -60,7 +60,9 @@ class UserRemoteSelect extends React.Component {
         onChange={this.handleChange}
         style={{ width: '100%' }}
       >
-        {data.map(d => <Option key={d.value}>{d.text}</Option>)}
+        {data.map(d => (
+          <Option key={d.value}>{d.text}</Option>
+        ))}
       </Select>
     );
   }

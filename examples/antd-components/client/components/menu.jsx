@@ -57,15 +57,18 @@ export default class Demo extends Component {
             <Section title="顶部导航">
               <Menu onClick={this.handleClick} mode="horizontal">
                 <Menu.Item key="mail">
-                  <Icon type="mail" />Navigation One
+                  <Icon type="mail" />
+                  Navigation One
                 </Menu.Item>
                 <Menu.Item key="app" disabled>
-                  <Icon type="appstore" />Navigation Two
+                  <Icon type="appstore" />
+                  Navigation Two
                 </Menu.Item>
                 <SubMenu
                   title={
                     <span>
-                      <Icon type="setting" />Navigation Three - Submenu
+                      <Icon type="setting" />
+                      Navigation Three - Submenu
                     </span>
                   }
                 >

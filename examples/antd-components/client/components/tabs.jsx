@@ -126,7 +126,8 @@ export default class Demo extends Component {
                 <TabPane
                   tab={
                     <span>
-                      <Icon type="apple" />Tab 1
+                      <Icon type="apple" />
+                      Tab 1
                     </span>
                   }
                   key="1"
@@ -136,7 +137,8 @@ export default class Demo extends Component {
                 <TabPane
                   tab={
                     <span>
-                      <Icon type="android" />Tab 2
+                      <Icon type="android" />
+                      Tab 2
                     </span>
                   }
                   key="2"

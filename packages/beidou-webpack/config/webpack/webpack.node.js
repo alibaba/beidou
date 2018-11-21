@@ -52,7 +52,7 @@ module.exports = (app, entry, dev) => {
         __DEV__: false,
         __SERVER__: true,
       }),
-      new MinifyPlugin(),
+      new MinifyPlugin()
     );
   } else {
     config.plugins.push(

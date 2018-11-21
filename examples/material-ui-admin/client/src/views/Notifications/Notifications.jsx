@@ -49,10 +49,12 @@ class Notifications extends React.Component {
             and styled by{' '}
             <A target="_blank" href="https://www.creative-tim.com/">
               Creative Tim
-            </A>. Please checkout the{' '}
+            </A>
+            . Please checkout the{' '}
             <A href="#pablo" target="_blank">
               full documentation
-            </A>.
+            </A>
+            .
           </P>
         }
         content={

@@ -76,10 +76,12 @@ export default class Demo extends Component {
                   <br />
                   <Button.Group size={size}>
                     <Button type="primary">
-                      <Icon type="left" />Backward
+                      <Icon type="left" />
+                      Backward
                     </Button>
                     <Button type="primary">
-                      Forward<Icon type="right" />
+                      Forward
+                      <Icon type="right" />
                     </Button>
                   </Button.Group>
                 </Section>
@@ -134,10 +136,12 @@ export default class Demo extends Component {
                   <h4>With Icon</h4>
                   <ButtonGroup>
                     <Button type="primary">
-                      <Icon type="left" />Go back
+                      <Icon type="left" />
+                      Go back
                     </Button>
                     <Button type="primary">
-                      Go forward<Icon type="right" />
+                      Go forward
+                      <Icon type="right" />
                     </Button>
                   </ButtonGroup>
                   <ButtonGroup>

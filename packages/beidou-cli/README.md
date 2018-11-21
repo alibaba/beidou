@@ -6,13 +6,13 @@ Beidou application cli tool
 
 Global install `beidou-cli` if you need to init beidou boilerplate, use local install otherwise.
 
-* global
+- global
 
   ```bash
   $ npm install beidou-cli -g
   ```
 
-* local
+- local
 
   ```bash
   $ npm install beidou-cli --save
@@ -40,10 +40,10 @@ Add `beidou` to `package.json` scripts:
 
 All the commands support these specific v8 options:
 
-* `--debug`
-* `--inspect`
-* `--harmony*`
-* `--es_staging`
+- `--debug`
+- `--inspect`
+- `--harmony*`
+- `--es_staging`
 
 ```bash
 $ beidou [command] --debug --es_staging
@@ -61,8 +61,8 @@ $ beidou init
 
 #### options
 
-* `--tag=next` init boilerplate project with npm next tag, used for alpha or beta version.
-* `--force` force to overwrite directory.
+- `--tag=next` init boilerplate project with npm next tag, used for alpha or beta version.
+- `--force` force to overwrite directory.
 
 #### Choose boilerplate
 
@@ -85,10 +85,10 @@ $ beidou dev
 
 #### options
 
-* `--baseDir` application's root path, default to `process.cwd()`.
-* `--port` server port, default to `6001`.
-* `--cluster` worker process number, skip this argvs will start only `1` worker, provide this without value will start `cpu` count worker.
-* `--sticky` start a sticky cluster server, default to `false`.
+- `--baseDir` application's root path, default to `process.cwd()`.
+- `--port` server port, default to `6001`.
+- `--cluster` worker process number, skip this argvs will start only `1` worker, provide this without value will start `cpu` count worker.
+- `--sticky` start a sticky cluster server, default to `false`.
 
 ### debug
 
@@ -104,8 +104,8 @@ $ beidou debug --debug-port=9229 --proxy=9999
 
 #### options
 
-* all `beidou dev` options is accepted.
-* `--proxy=9999` worker debug proxy port.
+- all `beidou dev` options is accepted.
+- `--proxy=9999` worker debug proxy port.
 
 ### test
 
@@ -117,8 +117,8 @@ Using [mocha] with [co-mocha] to run test.
 $ beidou test [files] [options]
 ```
 
-* `files` is optional, default to `test/**/*.test.js`
-* `test/fixtures`, `test/node_modules` is always exclude.
+- `files` is optional, default to `test/**/*.test.js`
+- `test/fixtures`, `test/node_modules` is always exclude.
 
 #### auto require `test/.setup.js`
 
@@ -134,11 +134,11 @@ test
 
 You can pass any mocha argv.
 
-* `--require` require the given module
-* `--grep` only run tests matching <pattern>
-* `--timeout` milliseconds, default to 30000
-* `--full-trace` display the full stack trace, default to false.
-* see more at https://mochajs.org/#usage
+- `--require` require the given module
+- `--grep` only run tests matching <pattern>
+- `--timeout` milliseconds, default to 30000
+- `--full-trace` display the full stack trace, default to false.
+- see more at https://mochajs.org/#usage
 
 #### environment
 
@@ -172,9 +172,9 @@ Coverage reporter will output text-summary, json and lcov.
 
 You can pass any mocha argv.
 
-* `-x` add dir ignore coverage, support multiple argv
-* `--prerequire` prerequire files for coverage instrument, you can use this options if load files slowly when call `mm.app` or `mm.cluster`
-* also support all test params above.
+- `-x` add dir ignore coverage, support multiple argv
+- `--prerequire` prerequire files for coverage instrument, you can use this options if load files slowly when call `mm.app` or `mm.cluster`
+- also support all test params above.
 
 #### environment
 
@@ -195,18 +195,18 @@ $ beidou start [options] [baseDir]
 # beidou start ./server
 ```
 
-* **Arguments**
-  * `baseDir` - directory of application, default to `process.cwd()`.
-* **Options**
-  * `port` - listening port, default to `process.env.PORT`, if unset, egg will use `6001` as default.
-  * `title` - process title description, use for kill grep, default to `egg-server-${APP_NAME}`.
-  * `workers` - numbers of app workers, default to `process.env.EGG_WORKERS`, if unset, egg will use `os.cpus().length` as default.
-  * `daemon` - whether run at background daemon mode, don't use it if in docker mode.
-  * `env` - server env, default to `process.env.EGG_SERVER_ENV`, recommended to keep empty then use framwork default env.
-  * `stdout` - customize stdout file, default to `$HOME/logs/master-stdout.log`.
-  * `stderr` - customize stderr file, default to `$HOME/logs/master-stderr.log`.
-  * `timeout` - the maximum timeout when app starts, default to 300s.
-  * `ignore-stderr` - whether ignore stderr when app starts.
+- **Arguments**
+  - `baseDir` - directory of application, default to `process.cwd()`.
+- **Options**
+  - `port` - listening port, default to `process.env.PORT`, if unset, egg will use `6001` as default.
+  - `title` - process title description, use for kill grep, default to `egg-server-${APP_NAME}`.
+  - `workers` - numbers of app workers, default to `process.env.EGG_WORKERS`, if unset, egg will use `os.cpus().length` as default.
+  - `daemon` - whether run at background daemon mode, don't use it if in docker mode.
+  - `env` - server env, default to `process.env.EGG_SERVER_ENV`, recommended to keep empty then use framwork default env.
+  - `stdout` - customize stdout file, default to `$HOME/logs/master-stdout.log`.
+  - `stderr` - customize stderr file, default to `$HOME/logs/master-stderr.log`.
+  - `timeout` - the maximum timeout when app starts, default to 300s.
+  - `ignore-stderr` - whether ignore stderr when app starts.
 
 ### stop
 
@@ -219,15 +219,15 @@ Stop beidou gracefull.
 $ beidou stop [--title=example]
 ```
 
-* **Options**
-  * `title` - process title description, use for kill grep.
+- **Options**
+  - `title` - process title description, use for kill grep.
 
 ### build
 
 Build beidou assets
 
-* **Options**
-  * `target` - build target, `node` or `browser`(default)
+- **Options**
+  - `target` - build target, `node` or `browser`(default)
 
 ## License
 

@@ -26,10 +26,14 @@
     "egg-core": "^4.9.1",
     "egg-mock": "^3.7.1"
   },
-  "files": ["app", "lib", "config", "index.js"],
+  "files": [
+    "app",
+    "lib",
+    "config",
+    "index.js"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },
-  "repository":
-    "https://github.com/alibaba/beidou/tree/master/packages/beidou-view"
+  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-view"
 }

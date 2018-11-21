@@ -19,7 +19,8 @@ function NestedTable() {
         key: 'state',
         render: () => (
           <span>
-            <Badge status="success" />Finished
+            <Badge status="success" />
+            Finished
           </span>
         ),
       },
