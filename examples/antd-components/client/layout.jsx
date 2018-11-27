@@ -8,7 +8,7 @@ export const View = (props) => {
         <title>AntD Components</title>
         <link
           rel="stylesheet"
-          href="https://unpkg.com/antd@3.2.3/dist/antd.min.css"
+          href="https://unpkg.com/antd@3.10.9/dist/antd.min.css"
         />
         <link rel="stylesheet" href={helper.asset('index.css')} />
       </head>

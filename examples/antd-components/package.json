@@ -12,7 +12,7 @@
     "build:node": "beidou build --target=node"
   },
   "dependencies": {
-    "antd": "^3.2.3",
+    "antd": "^3.10.9",
     "babel-eslint": "^8.1.2",
     "babel-polyfill": "^6.26.0",
     "beidou-cli": "^1.0.10",
