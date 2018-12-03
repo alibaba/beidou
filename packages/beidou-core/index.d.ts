@@ -1,5 +1,6 @@
 import * as Egg from 'egg';
-import  { EggAppInfo, EggAppConfig, PowerPartial }  from 'egg';
+import  { EggAppInfo, EggAppConfig, PowerPartial, Context, IHelper }  from 'egg';
+import { ReactViewProps } from 'beidou-view-react';
 
 declare module 'egg' {
   // extend egg app config
@@ -124,6 +125,8 @@ declare module 'egg' {
       },
     },
   }
+  
+  export type ViewProps = ReactViewProps<Context, IHelper>;
 }
 
 export = Egg;
