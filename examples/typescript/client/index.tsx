@@ -1,14 +1,8 @@
 import * as React from 'react';
+import { ViewProps } from 'beidou-core';
 import App from './app';
 
-declare interface IViewProps {
-  helper: {
-    asset: (name: string) => string;
-  };
-  html: string;
-}
-
-export default class View extends React.Component<IViewProps> {
+export default class View extends React.Component<ViewProps>  {
 
   static getPartial() {
     return {
