@@ -24,7 +24,7 @@ export default () => {
   config.webpack = {
     // your webpack config file
     custom: {
-      configPath: path.resolve(__dirname, './webpack.config.js'),
+      configPath: path.resolve(__dirname, './webpack.config.ts'),
     },
     resolve: {
       extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
