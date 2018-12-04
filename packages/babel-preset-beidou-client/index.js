@@ -46,8 +46,10 @@ module.exports = function (api) {
 
   // make sure react-hot-loader only enable in development
   // and dependency installed in project
-  if (!api.env('production') &&
-    requirePeer('react-hot-loader/babel', { optional: true })) {
+  if (
+    !api.env('production') &&
+    requirePeer('react-hot-loader/babel', { optional: true })
+  ) {
     preset.plugins.push(require.resolve('react-hot-loader/babel'));
   }
   return preset;
