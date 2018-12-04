@@ -16,5 +16,11 @@ export default (app: EggAppInfo, defaultConfig: Configuration ): Configuration =
   defaultConfig.mode = 'development';
   defaultConfig.module = defaultConfig.module || { rules: [] };
   defaultConfig.module.rules.push(tsLoader);
+  defaultConfig.module.rules.push({
+    test: /\.js$/,
+    use: ['source-map-loader'],
+    enforce: 'pre'
+  })
+
   return defaultConfig;
 };

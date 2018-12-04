@@ -3,7 +3,7 @@
 
 import Home from '../../../app/controller/home';
 
-declare module 'egg' {
+declare module 'beidou-core' {
   interface IController {
     home: Home;
   }

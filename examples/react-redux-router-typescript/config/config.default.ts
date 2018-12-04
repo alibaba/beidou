@@ -5,7 +5,7 @@ export default () => {
   return {
     keys: 'secret',
     react: {
-      assetPath: '/public',
+      assetPath: '/build',
     },
 
     view: {
@@ -15,16 +15,13 @@ export default () => {
       entry: 'page',
       exts: ['.tsx'],
     },
-    isomorphic: {
-      babel: false,
-    },
     webpack: {
       // your webpack config file
       custom: {
-        configPath: path.resolve(__dirname, './webpack.config.js'),
+        configPath: path.resolve(__dirname, './webpack.config.ts'),
       },
       devServer: {
-        publicPath: '/public/',
+        publicPath: '/build/',
       },
       resolve: {
         extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],

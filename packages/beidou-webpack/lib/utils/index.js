@@ -80,16 +80,17 @@ const dumpWebpackConfig = function (agent, config) {
 
 const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
-
   // argv passed from master process, JSON string
   let isDev = false;
   if (argv.dev) {
     isDev = true;
-  } else if (argv.argv && argv.argv.rawArgs) {
+  } else if (argv.argv && argv.argv[0]) {
     const [rawArgs] = argv.argv;
     const args = JSON.parse(rawArgs);
     isDev = args.dev !== 'false';
   }
+
+  options.devServer.hot = isDev;
 
   let webpackConfig = null;
 
