@@ -78,17 +78,26 @@ const dumpWebpackConfig = function (agent, config) {
   }
 };
 
+function parseDevFromArgv() {
+  try {
+    let dev = false;
+    if (argv.dev) {
+      dev = true;
+    } else if (argv.argv && argv.argv[0]) {
+      const [rawArgs] = argv.argv;
+      const args = JSON.parse(rawArgs);
+      dev = args.dev !== 'false';
+    }
+    return dev;
+  } catch (e) {
+    return false;
+  }
+}
+
 const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
   // argv passed from master process, JSON string
-  let isDev = false;
-  if (argv.dev) {
-    isDev = true;
-  } else if (argv.argv && argv.argv[0]) {
-    const [rawArgs] = argv.argv;
-    const args = JSON.parse(rawArgs);
-    isDev = args.dev !== 'false';
-  }
+  const isDev = parseDevFromArgv();
 
   options.devServer.hot = isDev;
 
