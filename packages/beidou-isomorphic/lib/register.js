@@ -20,7 +20,7 @@ module.exports = (options) => {
   const defaultConfig = {
     presets: ['babel-preset-beidou-server'].map(require.resolve),
     babelrc: false,
-    extensions: ['.es6', '.es', '.jsx', '.mjs'],
+    extensions: ['.js', '.es6', '.es', '.jsx', '.mjs'],
     cache: true,
   };
 
