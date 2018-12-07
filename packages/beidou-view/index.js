@@ -45,8 +45,18 @@ class BeidouBaseView {
     throw new Error('Child class must implement this method');
   }
 
+  renderElementToStream() {
+    throw new Error('Child class must implement this method');
+  }
+
   async render(filepath, props) {
     const Component = require(filepath);
+
+    Object.assign(props, {
+      renderElement: this.renderElement.bind(this),
+      renderElementToStream: this.renderElementToStream.bind(this),
+    });
+
     const context = {
       filepath,
       // when add-module-exports not work
