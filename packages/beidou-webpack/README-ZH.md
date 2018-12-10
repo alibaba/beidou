@@ -81,7 +81,7 @@ exports.webpack = {
 
 ```js
 // webpack.config.js
-
+// 配置方案1:
 module.exports = (app, defaultConfig, dev, target) => {
   return {
     ...defaultConfig,
@@ -97,6 +97,63 @@ module.exports = (app, defaultConfig, dev, target) => {
     //something else to override
   };
 };
+
+// 配置方案2:
+// 此方案将直接覆盖原有配置
+module.exports = {
+  output: {
+    path: './build',
+    filename: '[name].js?[hash]',
+    chunkFilename: '[name].js',
+    publicPath: './build',
+  },
+
+  resolve: {
+    extensions: ['.json', '.js', '.jsx'],
+  },
+
+  devServer: {
+    contentBase: false,
+    port: 6002,
+    noInfo: true,
+    quiet: false,
+    clientLogLevel: 'warning',
+    lazy: false,
+    watchOptions: {
+      aggregateTimeout: 300,
+    },
+    headers: { 'X-Custom-Header': 'yes' },
+    stats: {
+      colors: true,
+      chunks: false,
+    },
+    publicPath: '/build',
+    hot: true,
+  },
+};
+
+// 配置方案3:
+// 更多配置方法，可参看单测用例
+module.exports = (app, defaultConfig, dev, target) => {
+  const factory = app.webpackFactory;
+  factory.append({
+    output: {
+      path: outputPath,
+      filename: '[name].js?[hash]',
+      chunkFilename: '[name].modify.js',
+      publicPath: '/build/',
+    },
+  })
+
+  const factoryInProd = factory.env('prod');
+  factoryInProd.addPlugin(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+    },
+  }))
+
+};
+
 ```
 
 - **app**: `BeidouApplication` 示例, 通常用来读取应用的全局配置项。

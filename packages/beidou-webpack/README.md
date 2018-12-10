@@ -83,7 +83,7 @@ Config fields `output`, `resolve`, `devServer` are same as what you know in [web
 
 ```js
 // webpack.config.js
-
+// Example 1:
 module.exports = (app, defaultConfig, dev, target) => {
   return {
     ...defaultConfig,
@@ -98,6 +98,62 @@ module.exports = (app, defaultConfig, dev, target) => {
     ],
     //something else to override
   };
+};
+
+// Exapple 2:
+// Note: The config will cover the default config
+module.exports = {
+  output: {
+    path: './build',
+    filename: '[name].js?[hash]',
+    chunkFilename: '[name].js',
+    publicPath: './build',
+  },
+
+  resolve: {
+    extensions: ['.json', '.js', '.jsx'],
+  },
+
+  devServer: {
+    contentBase: false,
+    port: 6002,
+    noInfo: true,
+    quiet: false,
+    clientLogLevel: 'warning',
+    lazy: false,
+    watchOptions: {
+      aggregateTimeout: 300,
+    },
+    headers: { 'X-Custom-Header': 'yes' },
+    stats: {
+      colors: true,
+      chunks: false,
+    },
+    publicPath: '/build',
+    hot: true,
+  },
+};
+
+// Example:
+// Please to find more methods in unittest
+module.exports = (app, defaultConfig, dev, target) => {
+  const factory = app.webpackFactory;
+  factory.append({
+    output: {
+      path: outputPath,
+      filename: '[name].js?[hash]',
+      chunkFilename: '[name].modify.js',
+      publicPath: '/build/',
+    },
+  })
+
+  const factoryInProd = factory.env('prod');
+  factoryInProd.addPlugin(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+    },
+  }))
+
 };
 ```
 
