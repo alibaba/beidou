@@ -6,7 +6,6 @@ const RaxWebpackPlugin = require('rax-webpack-plugin');
 
 module.exports = (app, defaultConfig, dev) => {
   const { universal } = app.config.isomorphic;
-
   const module = {
     rules: [
       {

@@ -15,10 +15,9 @@ module.exports = (agent) => {
     const config = agent.config.webpack;
 
     debug('create webpack server with config: %O', config);
-    const webpackConfig = helper.getWebpackConfig(agent, config);
-
+    const factory = helper.getWebpackConfig(agent, config);
+    const webpackConfig = factory.getConf();
     debug('Webpack config: %O', webpackConfig);
-
     // const webpackServer = http.createServer(agent.callback());
 
     const port = webpackConfig.devServer.port || 0;
