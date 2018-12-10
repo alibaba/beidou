@@ -6,21 +6,13 @@ const React = require('react');
 module.exports = (components, placeHolder) => (props) => {
   const {
     element = 'div',
-    enable = true,
+    disable = false,
     stream = false,
     children,
     app,
   } = props;
-  const Parent = element;
+  const Wrapper = element;
   const target = React.Children.only(children || app);
-  if (!enable) {
-    return null;
-  }
-
-  components.push({
-    stream,
-    component: target,
-  });
 
   const others = objectWithoutProperties(props, [
     'element',
@@ -30,8 +22,20 @@ module.exports = (components, placeHolder) => (props) => {
     'app',
   ]);
 
+  if (disable) {
+    return React.createElement(
+      Wrapper,
+      others,
+    );
+  }
+
+  components.push({
+    stream,
+    component: target,
+  });
+
   return React.createElement(
-    Parent,
+    Wrapper,
     Object.assign(others, {
       dangerouslySetInnerHTML: {
         __html: placeHolder,
