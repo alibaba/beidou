@@ -1,83 +1,130 @@
 'use strict';
 
 const is = require('is');
-const webpack = require('webpack');
+const Plugin = require('./Plugin');
+const Rule = require('./Rule');
 
 class Factory {
-  constructor() {
-    this._webpackConf = {};
-    this.webpackFn = webpack;
-  }
-
-  setWebpack(fn) {
-    this.webpackFn = fn;
-  }
-
-  getWebPack() {
-    return this.webpackFn;
+  init() {
+    this._envFactories = {};
+    this._plugins = {};
+    this._rules = {};
+    this._webpackConfig = {};
+    this._loaders = {};
   }
 }
 
-class ConfFactory extends Factory {
-  constructor(env) {
-    super();
-    if (env) {
-      this._env = env;
+class WebpackFactory extends Factory {
+  env(env) {
+    const factories = Object.getPrototypeOf(this)._envFactories;
+    if (factories[env]) {
+      return factories[env];
+    } else {
+      const factory = new WebpackFactory(env);
+      Object.getPrototypeOf(this)._envFactories[env] = factory;
+      return factory;
     }
   }
 
-  init(options, appDev) {
-    Object.getPrototypeOf(this)._webpackConf = options || {};
-    Object.getPrototypeOf(this).__sys_env = appDev;
-  }
-
-  webpack() {
-    return this.webpackFn(this.getConf());
-  }
-
-  append(options) {
-    if (this._env && this.__sys_env !== this._env) return this;
-    const config = Object.assign(this.getConf(), options);
-    this.reset(config);
-    return this;
-  }
-
-
   setEnv(env) {
-    this._env = env;
-    return this;
-  }
-
-  env(env) {
-    return new ConfFactory(env || this._env);
-  }
-
-  resetEnv() {
-    delete this._env;
-    return this;
+    this._currentEnv = env;
   }
 
   getEnv() {
-    return this._env;
+    return this._currentEnv;
   }
 
-  getConf() {
-    return Object.getPrototypeOf(this)._webpackConf;
+  _localConfig() {
+    if (this.getEnv()) {
+      return this._webpackConfig;
+    } else {
+      return Object.getPrototypeOf(this)._webpackConfig;
+    }
+  }
+
+  _commonConfig() {
+    return Object.getPrototypeOf(this)._webpackConfig;
+  }
+
+  _getFinalPlugins() {
+    const plugins = [];
+    if (this.getEnv()) {
+      const mergePlugins = Object.assign(
+        Object.getPrototypeOf(this)._plugins,
+        this._plugins
+      );
+      Object.values(mergePlugins).forEach((v) => {
+        plugins.push(v.init());
+      });
+    } else {
+      Object.values(Object.getPrototypeOf(this)._plugins).forEach((v) => {
+        plugins.push(v.init());
+      });
+    }
+    return plugins;
+  }
+
+  _getFinalRules() {
+    const rules = [];
+    if (this.getEnv()) {
+      const mergeRules = Object.assign(
+        Object.getPrototypeOf(this)._rules,
+        this._rules
+      );
+      Object.values(mergeRules).forEach((v) => {
+        rules.push(v.options);
+      });
+    } else {
+      Object.values(Object.getPrototypeOf(this)._rules).forEach((v) => {
+        rules.push(v.options);
+      });
+    }
+    return rules;
+  }
+
+  getConfig() {
+    let _webpackConfig = {};
+    const plugins = this._getFinalPlugins();
+    const rules = this._getFinalRules();
+    if (this.getEnv()) {
+      _webpackConfig = Object.assign(
+        this._commonConfig(),
+        this._localConfig()
+      );
+    } else {
+      _webpackConfig = this._commonConfig();
+    }
+    _webpackConfig.plugins = plugins;
+    const { module: mod } = _webpackConfig;
+    if (!mod) {
+      _webpackConfig.module = {
+        rules,
+      };
+    } else {
+      _webpackConfig.module.rules = rules;
+    }
+    return _webpackConfig;
   }
 
 
   set(key, config) {
-    if (!this._env || this.__sys_env === this._env) { Object.getPrototypeOf(this)._webpackConf[key] = config; }
+    this._localConfig()[key] = config;
     return this;
   }
 
   reset(config) {
-    if (!this._env || this.__sys_env === this._env) { Object.getPrototypeOf(this)._webpackConf = config; }
+    if (this.getEnv()) {
+      this.init();
+      this._webpackConfig = config;
+    } else {
+      Object.getPrototypeOf(this).init();
+      Object.getPrototypeOf(this)._webpackConfig = config;
+    }
     return this;
   }
 
   get(key, filter) {
-    const keyData = this.getConf()[key];
+    const keyData = this._localConfig()[key];
     if (!keyData && filter) {
       throw new Error(
         `webpack don't exist the key , ${key} value is undefined!`
@@ -88,169 +135,133 @@ class ConfFactory extends Factory {
     }
     if (is.function(filter)) {
       return filter(keyData);
-    }
-    if (is.array(keyData)) {
-      for (const v of keyData) {
-        if (is.object(v)) {
-          if (v.constructor.name === filter) return v;
-        } else if (v === filter) return v;
-      }
-    } else if (is.string(keyData)) {
-      if (is.regexp(filter)) {
-        if (filter.test(keyData) === true) {
-          return keyData;
-        } else {
-          return null;
-        }
-      }
-    }
-  }
-
-  getPlugin(filter) {
-    const { plugins } = this.getConf();
-    if (is.undefined(plugins)) {
-      throw new Error(
-        'webpack plugins don`t exist'
-      );
-    }
-    if (!is.array(plugins)) {
-      throw new Error(
-        'webpack plugins is wrong , please check'
-      );
-    }
-    if (is.function(filter)) {
-      return filter(plugins);
-    } else if (is.string(filter)) {
-      for (const plugin of plugins) {
-        if (plugin.constructor.name === filter) {
-          return plugin;
-        }
-      }
-    }
-    return null;
-  }
-
-  setPlugin(filter, config) {
-    if (this._env && this.__sys_env !== this._env) return this;
-    let { plugins } = this.getConf();
-    if (is.undefined(plugins)) {
-      throw new Error(
-        'webpack plugins don`t exist'
-      );
-    }
-    if (!is.array(plugins)) {
-      throw new Error(
-        'webpack plugins is wrong , please check'
-      );
-    }
-    if (is.function(filter)) {
-      filter(plugins);
-    } else if (is.string(filter)) {
-      plugins = plugins.map((val) => {
-        if (val.constructor.name === filter) {
-          return config;
-        } else {
-          return val;
-        }
-      });
-      this.set('plugins', plugins);
-    }
-
-    return this;
-  }
-
-  addPlugin(plugin) {
-    if (this._env && this.__sys_env !== this._env) return this;
-    let { plugins } = this.getConf();
-    if (!plugins || !is.array(plugins)) {
-      plugins = [];
-    }
-    if (is.array(plugin)) {
-      plugins = plugins.concat(plugin);
+    } else if (is.string(filter) || is.number(filter)) {
+      return keyData[filter];
     } else {
-      plugins.push(plugin);
-    }
-    this.set('plugins', plugins);
-    return this;
-  }
-
-  getRule(filter) {
-    const { mod } = this.getConf();
-    if (!mod) {
-      throw new Error(
-        'webpack module don`t exist'
-      );
-    }
-    const { rules } = mod;
-    if (!is.array(rules)) {
       return null;
     }
-    if (is.function(filter)) {
-      return filter(rules);
-    } else if (is.regexp(filter)) {
-      for (const row of rules) {
-        if (filter.test(row.test.toString()) === true) {
-          return row;
-        }
-      }
-    } else if (is.string(filter)) {
-      for (const row of rules) {
-        if (row.test(filter) === true) {
-          return row;
-        }
-      }
-    }
-    return null;
   }
 
-  addRule(rule) {
-    if (this._env && this.__sys_env !== this._env) return this;
-    let { module: mod } = this.getConf();
-    if (!mod) {
-      mod = { rules: [] };
-    }
-    if (!is.array(mod.rules)) {
-      mod.rules = [];
-    }
-    if (is.array(rule)) {
-      mod.rules = mod.rules.concat(rule);
+  addPlugin(model, options, alias) {
+    const plugin = new Plugin(model, options, alias);
+    if (this.getEnv()) {
+      this._plugins.push = plugin;
     } else {
-      mod.rules.push(rule);
+      Object.getPrototypeOf(this)._plugins[plugin.alias] = plugin;
     }
-    this.set('module', mod);
     return this;
   }
 
-  getLoader(filter) {
-    const { mod } = this.getConf();
-    if (!mod) {
+  addPlugins(plugins) {
+    for (const row of plugins) {
+      this.addPlugin(row);
+    }
+    return this;
+  }
+
+
+  getPlugin(params) {
+    if (is.string(params)) {
+      return this._plugins[params];
+    } else if (is.function(params)) {
+      return params(this._plugins);
+    } else {
       throw new Error(
-        'webpack module don`t exist'
+        'get plugin param type exception!'
       );
     }
-    const { rules } = mod;
-    if (!is.array(rules)) {
-      return null;
+  }
+
+  modifyPlugin(alias, model, options) {
+    let plugin = this._plugins;
+    if (!this.getEnv()) {
+      plugin = Object.getPrototypeOf(this)._plugins;
     }
-    if (is.regexp(filter)) {
-      for (const row of rules) {
-        if (row.use && row.user.loader) {
-          if (filter.test(row.user.loader) === true) {
-            return row.user.loader;
-          }
-        }
-      }
-    } else if (is.string(filter)) {
-      for (const row of rules) {
-        if (row.use && row.user.loader) {
-          if (filter === row.user.loader) {
-            return row.user.loader;
-          }
-        }
-      }
+    if (is.string(alias) && plugin[alias]) {
+      plugin[alias].reset(model, options);
+    } else {
+      throw new Error(
+        'get plugin param type exception!'
+      );
     }
-    return null;
+    return this;
+  }
+
+
+  defineLoader(name, resolve) {
+    this._loaders[name] = resolve || require.resolve(name);
+    return this;
+  }
+
+  getLoader(params) {
+    if (is.string(params)) {
+      return this._loaders[params];
+    } else if (is.function(params)) {
+      return params(this._loaders);
+    } else {
+      throw new Error(
+        'get loader param type exception!'
+      );
+    }
+  }
+
+  addRule(options, alias) {
+    const rule = new Rule(options, alias);
+    if (this.getEnv()) {
+      this._rules[rule.alias] = rule;
+    } else {
+      Object.getPrototypeOf(this)._rules[rule.alias] = rule;
+    }
+  }
+
+  addRules(rules) {
+    for (const row of rules) {
+      this.addRule(row);
+    }
+  }
+
+  modifyRule(alias, options) {
+    let rules = this._rules;
+    if (!this.getEnv()) {
+      rules = Object.getPrototypeOf(this)._rules;
+    }
+    if (is.string(alias) && this.rules[alias]) {
+      rules[alias].reset(options);
+    } else {
+      throw new Error(
+        'get plugin param type exception!'
+      );
+    }
+    return this;
+  }
+
+  getRule(params) {
+    if (is.string(params)) {
+      return this._rules[params];
+    } else if (is.function(params)) {
+      return params(this._rules);
+    } else {
+      throw new Error(
+        'get rules param type exception!'
+      );
+    }
+  }
+
+
+  getLocalPluginConfig() {
+    const plugins = [];
+    Object.values(this._plugins).forEach((val) => {
+      plugins.push(val.init());
+    });
+    return plugins;
+  }
+
+  getLocalRuleConfig() {
+    const rules = [];
+    Object.values(this._rules).forEach((val) => {
+      rules.push(val.options);
+    });
+    return rules;
   }
 }
-
-module.exports = ConfFactory;
+module.exports = WebpackFactory;

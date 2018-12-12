@@ -19,10 +19,10 @@ module.exports = (app, entry, dev) => {
     strictExportPresence: true,
   };
 
-  const plugins = [new webpack.NoEmitOnErrorsPlugin()];
+  app.webpackFactory.addPlugin(webpack.NoEmitOnErrorsPlugin, null, 'NoEmitOnErrorsPlugin');
   const { universal } = app.config.isomorphic;
   if (universal) {
-    plugins.push(new app.IsomorphicPlugin(universal));
+    app.webpackFactory.addPlugin(app.IsomorphicPlugin, universal, 'IsomorphicPlugin');
   }
 
   let finalConfig = {};
@@ -40,7 +40,6 @@ module.exports = (app, entry, dev) => {
     entry,
     output,
     module,
-    plugins,
   };
 
   return finalConfig;

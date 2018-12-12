@@ -138,12 +138,42 @@ module.exports = {
 // Please to find more methods in unittest
 module.exports = (app, defaultConfig, dev, target) => {
   const factory = app.webpackFactory;
-  factory.append({
-    output: {
+  factory.set('output',{
+    {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].modify.js',
       publicPath: '/build/',
+    }
+  })
+  // modify default webpack config
+  factory.modifyPlugin('CommonsChunkPlugin',
+    factory.getPlugin('CommonsChunkPlugin'), // if not modify , make sure the value is null
+    {
+      name: 'vendor',
+      filename: 'manifest.js',
+    }
+  );
+
+  factory.addPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: false,
+      }
+    },
+    'UglifyJsPlugin' , // if not set , the default value is function name
+  )
+
+  factory.addRule({
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        babelrc: false,
+        presets: ['beidou-client'],
+      },
     },
   })
 
@@ -153,6 +183,11 @@ module.exports = (app, defaultConfig, dev, target) => {
       warnings: false,
     },
   }))
+
+  return factory.getConfig(); // return the new config
+  // you can return different env value
+  // return factory.env('prod').getConfig();
+  // return factoryInProd.getConfig();
 
 };
 ```

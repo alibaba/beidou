@@ -15,7 +15,8 @@ const {
 
 module.exports = (app, entry, dev) => {
   const config = common(app, entry, dev);
-  config.module.rules = [
+  app.webpackFactory.reset(config);
+  app.webpackFactory.addRules([
     {
       test: /\.(js|jsx|mjs)$/,
       exclude: /node_modules/,
@@ -36,43 +37,42 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ];
+  ]);
 
-  config.plugins.push(
-    new ExtractTextPlugin('[name].css'),
-    new webpack.optimize.CommonsChunkPlugin({
+  app.webpackFactory
+    .addPlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .addPlugin(webpack.optimize.CommonsChunkPlugin, {
       name: 'manifest',
       filename: 'manifest.js',
-    })
-  );
+    }, 'CommonsChunkPlugin');
 
   if (!dev) {
-    config.plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
+    app.webpackFactory.addPlugin(
+      webpack.optimize.UglifyJsPlugin, {
         compress: {
           warnings: false,
         },
-      }),
-      new webpack.DefinePlugin({
+      }, 'UglifyJsPlugin');
+
+    app.webpackFactory.addPlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('production'),
         __CLIENT__: true,
         __DEV__: false,
         __SERVER__: false,
-      })
-    );
+      }, 'DefinePlugin');
   } else {
-    config.devServer.hot = true;
-    config.plugins.push(
-      new webpack.DefinePlugin({
+    app.webpackFactory.getConfig().devServer.hot = true;
+    app.webpackFactory.addPlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: true,
         __DEV__: true,
         __SERVER__: false,
-      }),
-      new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
-    );
-  }
+      }, 'DefinePlugin');
 
-  return config;
+    app.webpackFactory.addPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
+    app.webpackFactory.addPlugin(webpack.HotModuleReplacementPlugin, null, 'HotModuleReplacementPlugin');
+  }
+  return app.webpackFactory.getConfig();
 };

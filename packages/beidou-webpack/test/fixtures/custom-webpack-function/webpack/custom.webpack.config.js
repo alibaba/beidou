@@ -4,15 +4,14 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = (app, defaultConfig,entry, isDev) => {
-
+module.exports = (app, defaultConfig, entry, isDev) => {
   const universal = app.config.isomorphic.universal;
   const outputPath = path.join(app.config.baseDir, 'build');
   const factory = app.webpackFactory;
   factory.reset({
     devtool: 'source-map',
     context: path.resolve(__dirname, '..'),
-    entry: factory.getConf().entry,
+    entry: factory.getConfig().entry,
     output: {
       path: outputPath,
       filename: '[name].js?[hash]',
@@ -37,22 +36,22 @@ module.exports = (app, defaultConfig,entry, isDev) => {
     }
   });
 
-  // 单个
   factory.addPlugin(
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       filename: 'manifest.js',
     })
   )
-  // 多个
-  factory.addPlugin( [
-    
-    new webpack.DefinePlugin({
+
+  factory.addPlugin(
+    webpack.DefinePlugin, {
       'process.env.NODE_ENV': JSON.stringify(
         isDev ? 'development' : 'production'
       ),
       __CLIENT__: true,
-    }),
+    }, 'DefinePlugin')
+
+  factory.addPlugins([
     new webpack.ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;
       if (stream.isTTY && percentage < 0.71) {
@@ -76,7 +75,7 @@ module.exports = (app, defaultConfig,entry, isDev) => {
     },
   }))
 
-  factory.setPlugin('ExtractTextPlugin',new ExtractTextPlugin('[name].modify.css'))
+  factory.modifyPlugin('ExtractTextPlugin', new ExtractTextPlugin('[name].modify.css'))
 
   factory.addRule({
     test: /\.jsx?$/,
@@ -90,28 +89,27 @@ module.exports = (app, defaultConfig,entry, isDev) => {
     },
   })
 
-  factory.addRule([
-    {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        use: [
-          {
-            loader: 'css-loader',
-            // uncomment if need css modules
-            options: {
-              importLoaders: 1,
-              modules: true,
-            },
+  factory.addRules([{
+    test: /\.scss$/,
+    exclude: /node_modules/,
+    use: ExtractTextPlugin.extract({
+      use: [{
+          loader: 'css-loader',
+          // uncomment if need css modules
+          options: {
+            importLoaders: 1,
+            modules: true,
           },
-          {
-            loader: 'sass-loader',
-          },
-        ],
-        fallback: 'style-loader',
-      }),
-    }
-  ])
+        },
+        {
+          loader: 'sass-loader',
+        },
+      ],
+      fallback: 'style-loader',
+    }),
+  }])
+
+  return factory.getConfig();
 
 
 };

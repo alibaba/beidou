@@ -136,12 +136,42 @@ module.exports = {
 // 更多配置方法，可参看单测用例
 module.exports = (app, defaultConfig, dev, target) => {
   const factory = app.webpackFactory;
-  factory.append({
-    output: {
+  factory.set('output',{
+    {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].modify.js',
       publicPath: '/build/',
+    }
+  })
+  // 修改默认插件配置
+  factory.modifyPlugin('CommonsChunkPlugin',
+    factory.getPlugin('CommonsChunkPlugin'), // 如不修改，可传null
+    {
+      name: 'vendor',
+      filename: 'manifest.js',
+    }
+  );
+
+  factory.addPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: false,
+      }
+    },
+    'UglifyJsPlugin' , // 可空
+  )
+
+  factory.addRule({
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        babelrc: false,
+        presets: ['beidou-client'],
+      },
     },
   })
 
@@ -151,6 +181,8 @@ module.exports = (app, defaultConfig, dev, target) => {
       warnings: false,
     },
   }))
+
+  return factory.getConfig(); // 返回配置
 
 };
 

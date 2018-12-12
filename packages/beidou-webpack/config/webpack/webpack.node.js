@@ -21,7 +21,7 @@ module.exports = (app, entry, dev) => {
     __filename: true,
     __dirname: true,
   };
-  config.module.rules = [
+  app.webpackFactory.addRules([
     {
       test: /\.(js|jsx|mjs)$/,
       exclude: /node_modules/,
@@ -41,36 +41,35 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ];
-  config.plugins.push(
-    new ExtractTextPlugin('[name].css'),
-    new webpack.optimize.CommonsChunkPlugin({
+  ]);
+
+  app.webpackFactory
+    .addPlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .addPlugin(webpack.optimize.CommonsChunkPlugin, {
       name: 'manifest',
       filename: 'manifest.js',
-    })
-  );
+    }, 'CommonsChunkPlugin');
+
 
   if (!dev) {
-    config.plugins.push(
-      new webpack.DefinePlugin({
+    app.webpackFactory.addPlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('production'),
         __CLIENT__: false,
         __DEV__: false,
         __SERVER__: true,
-      }),
-      new MinifyPlugin()
-    );
+      }, 'DefinePlugin');
+    app.webpackFactory.addPlugin(MinifyPlugin, null, 'MinifyPlugin');
   } else {
-    config.plugins.push(
-      new webpack.NamedModulesPlugin(),
-      new webpack.DefinePlugin({
+    app.webpackFactory.addPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
+    app.webpackFactory.addPlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: false,
         __DEV__: true,
         __SERVER__: true,
-      })
-    );
+      }, 'DefinePlugin');
   }
-
-  return config;
+  app.webpackFactory.reset(config);
+  return app.webpackFactory.getConfig();
 };

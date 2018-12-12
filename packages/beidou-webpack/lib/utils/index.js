@@ -12,8 +12,7 @@ const _ = require('lodash');
 const debug = require('debug')('beidou:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
-const WPFactory = require('../factory/Webpack');
-const is = require('is');
+const WebpackFactory = require('../factory/Webpack');
 
 const symbol = Symbol.for('webpackServer');
 
@@ -83,7 +82,8 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
   const isDev = app.config.env !== 'prod';
   let webpackConfig = null;
-  app.webpackFactory = new WPFactory(app.config.env);
+  app.webpackFactory = new WebpackFactory();
+  app.webpackFactory.reset();
   const defaultConfigPath = path.join(
     __dirname,
     `../../config/webpack/webpack.${target}.js`
@@ -105,23 +105,19 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   debug('entry auto load as below:\n%o', entry);
 
   webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);
-  app.webpackFactory.init(webpackConfig, app.config.env);
+
   const customConfigPath = getCustomWebpackCfgPath(app);
   // custom config exists
   if (customConfigPath) {
     debug('Custom config found at %s', customConfigPath);
-    const loadData = loadFile(
+    webpackConfig = loadFile(
       customConfigPath,
       app,
       webpackConfig,
       isDev,
       target
     );
-    if (loadData && is.object(loadData)) {
-      app.webpackFactory.reset(loadData);
-    }
   }
-  webpackConfig = app.webpackFactory.getConf();
   // make sure devServer is provided
   if (!webpackConfig.devServer) {
     webpackConfig.devServer = {
@@ -147,7 +143,7 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   if (!devServer.publicPath) {
     devServer.publicPath = webpackConfig.output.publicPath || '/build';
   }
-  return app.webpackFactory;
+  return webpackConfig;
 };
 
 const injectPlugin = (app) => {
