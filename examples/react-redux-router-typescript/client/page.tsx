@@ -95,5 +95,5 @@ if (__CLIENT__) {
 
   // run saga
   run();
-  ReactDOM.render(app, document.getElementById('container'));
+  ReactDOM.hydrate(app, document.getElementById('container'));
 }

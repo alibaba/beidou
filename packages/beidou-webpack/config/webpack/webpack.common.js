@@ -34,7 +34,7 @@ module.exports = (app, entry, dev) => {
   finalConfig = {
     ...finalConfig,
     bail: !dev,
-    devtool: dev ? 'eval' : false,
+    devtool: dev ? 'eval-source-map' : false,
     context: app.config.baseDir,
     entry,
     output,

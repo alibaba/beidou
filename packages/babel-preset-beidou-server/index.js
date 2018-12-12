@@ -25,6 +25,7 @@ module.exports = function (api) {
       // stage 2
       [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
       require.resolve('@babel/plugin-proposal-class-properties'),
+      require.resolve('babel-plugin-add-module-exports'),
     ],
   };
 };

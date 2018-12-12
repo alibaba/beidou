@@ -5,6 +5,7 @@ const preset = require('../index');
 
 const mockApi = {
   assertVersion: ()=>{},
+  env: () => false
 }
 
 describe('babel-preset-client', () => {

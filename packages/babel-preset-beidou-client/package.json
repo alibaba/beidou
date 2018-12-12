@@ -21,11 +21,15 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "react-hot-loader": "^4.3.11"
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "codependency": "^2.1.0"
   },
   "peerDependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+  },
+  "optionalPeerDependencies": {
+    "react-hot-loader": "^4.3.11"
   },
   "devDependencies": {
     "egg-bin": "^4.3.7",

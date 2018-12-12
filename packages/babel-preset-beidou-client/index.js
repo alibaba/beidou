@@ -3,7 +3,9 @@
 const path = require('path');
 const env = require('@babel/preset-env');
 const react = require('@babel/preset-react');
-const reactHotLoader = require('react-hot-loader/babel');
+const codependency = require('codependency');
+
+const requirePeer = codependency.register(module, { strictCheck: false });
 
 let browsers;
 const defaultList = ['>1%', 'last 4 versions', 'not ie < 9'];
@@ -17,7 +19,7 @@ try {
 module.exports = function (api) {
   api.assertVersion(7);
 
-  return {
+  const preset = {
     presets: [
       [
         env,
@@ -38,12 +40,17 @@ module.exports = function (api) {
       require.resolve('@babel/plugin-proposal-export-namespace-from'),
       require.resolve('@babel/plugin-proposal-numeric-separator'),
       require.resolve('@babel/plugin-proposal-throw-expressions'),
+      require.resolve('babel-plugin-add-module-exports'),
     ],
-
-    env: {
-      development: {
-        plugins: [reactHotLoader],
-      },
-    },
   };
+
+  // make sure react-hot-loader only enable in development
+  // and dependency installed in project
+  if (
+    !api.env('production') &&
+    requirePeer('react-hot-loader/babel', { optional: true })
+  ) {
+    preset.plugins.push(require.resolve('react-hot-loader/babel'));
+  }
+  return preset;
 };

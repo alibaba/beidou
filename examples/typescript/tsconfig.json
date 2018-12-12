@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "baseUrl": "./",
+    "paths": {
+      "client/*": ["./client/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "lib": ["dom", "es7"]
+  },
+  "exclude": ["node_modules", "build", "scripts"]
+}

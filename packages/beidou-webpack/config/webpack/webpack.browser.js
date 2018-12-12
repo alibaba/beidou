@@ -46,6 +46,7 @@ module.exports = (app, entry, dev) => {
     config.plugins.push(
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
+        'process.env.BABEL_ENV': JSON.stringify('production'),
         __CLIENT__: true,
         __DEV__: false,
         __SERVER__: false,
@@ -65,6 +66,7 @@ module.exports = (app, entry, dev) => {
     config.plugins.push(
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development'),
+        'process.env.BABEL_ENV': JSON.stringify('development'),
         __CLIENT__: true,
         __DEV__: true,
         __SERVER__: false,
