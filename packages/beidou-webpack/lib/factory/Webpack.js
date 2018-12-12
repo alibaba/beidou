@@ -123,6 +123,15 @@ class WebpackFactory extends Factory {
     return this;
   }
 
+  append(config) {
+    if (this.getEnv()) {
+      this._webpackConfig = Object.assign(this._webpackConfig, config);
+    } else {
+      Object.getPrototypeOf(this)._webpackConfig = Object.assign(Object.getPrototypeOf(this)._webpackConfig, config);
+    }
+    return this;
+  }
+
   get(key, filter) {
     const keyData = this._localConfig()[key];
     if (!keyData && filter) {

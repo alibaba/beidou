@@ -15,7 +15,7 @@ const {
 
 module.exports = (app, entry, dev) => {
   const config = common(app, entry, dev);
-  app.webpackFactory.reset(config);
+  app.webpackFactory.append(config);
   app.webpackFactory.addRules([
     {
       test: /\.(js|jsx|mjs)$/,

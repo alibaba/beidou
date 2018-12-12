@@ -83,7 +83,7 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const isDev = app.config.env !== 'prod';
   let webpackConfig = null;
   app.webpackFactory = new WebpackFactory();
-  app.webpackFactory.reset();
+  Object.getPrototypeOf(app.webpackFactory).init();
   const defaultConfigPath = path.join(
     __dirname,
     `../../config/webpack/webpack.${target}.js`
@@ -105,7 +105,6 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   debug('entry auto load as below:\n%o', entry);
 
   webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);
-
   const customConfigPath = getCustomWebpackCfgPath(app);
   // custom config exists
   if (customConfigPath) {
@@ -143,6 +142,7 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   if (!devServer.publicPath) {
     devServer.publicPath = webpackConfig.output.publicPath || '/build';
   }
+
   return webpackConfig;
 };
 
