@@ -5,8 +5,11 @@ import React from 'react';
 const App = ({ index }) => (
   <div className="app">
     <p>Part No.{index} of page, rendered in stream.</p>
-    {[...new Array(1000)].map((v, i) =>
-      (<span key={i} className="span">{i}</span>))}
+    {[...new Array(1000)].map((v, i) => (
+      <span key={i} className="span">
+        {i}
+      </span>
+    ))}
   </div>
 );
 

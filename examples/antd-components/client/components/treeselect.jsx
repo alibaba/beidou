@@ -11,12 +11,12 @@ export default class TreeSelectDemo extends Component {
   };
 
   onChange = (value) => {
-    console.log(arguments);
+    // console.log(arguments);
     this.setState({ value });
   };
 
   onChange2 = (value2) => {
-    console.log(arguments);
+    // console.log(arguments);
     this.setState({ value2 });
   };
 
