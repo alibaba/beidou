@@ -190,8 +190,27 @@ module.exports = (app, defaultConfig, dev, target) => {
   return factory.getConfig(); // return the final config for webpack
 
 };
+
+```
+> Class Plugin Struct
+```
+class Plugin {
+  object ,      // instance object for webpack plugin
+  class,        // class for webpack plugin
+  opitons,      // initialize config
+  alias
+}
+
 ```
 
+> Class Rule Struct
+```
+class Rule {
+  opitons,      // initialize config for rule
+  alias
+}
+
+```
 > app.webpackFactory methods list:
 
 ### reset(value)
@@ -216,108 +235,100 @@ module.exports = (app, defaultConfig, dev, target) => {
 #### return
 * {*}
 
-### generate {param} factory for webpack:  env(param) 
+### generate {key} factory for webpack:  env(key) 
 ####  Parameters
-* param {String} factory flag
+* key {String} factory flag
 
 #### return
 * {Object}
 
 ### Get the final config for webpack : getConfig() 
 ####  Parameters
-* key {String}
-
 #### return
-* value {*}
+*  {Object}
 
 
-### addPlugin(params1, params2,params3) 
+### addPlugin(args, options,alias) 
 #### Parameters
-* params1 {Object|Class|String} 插件实例|构造函数|已定义的插件名
-* [params1] {Object} 插件配置项
-* [params2] {String} 插件别名
+* args {Object|Class|String} 
+* [options] {Object} 
+* [alias] {String} 
 
 #### return
 * this
 
 
-### getPlugin(params1)
+### getPlugin(filter) 
 #### Parameters
-* params1 {String|Function} 
+* filter {String|Function}
 
 #### return
-* {Object}
+* {Plugin}
 
-### 设置插件配置: setPlugin(params1, params2,params3) 
+### setPlugin(args, options,alias) 
 
 #### Parameter
-* params1 {Object|Class} 
-* [params1] {Object}
-* [params2] {String}
+* args {Object|Class}  
+* [options] {Object}
+* [alias] {String} 
 
 #### return 
 * this
 
-###  definePlugin(params1, params2,params3)
+###  definePlugin(args, options,alias)
 #### Parameters
-* params1 {Object|Class} 
-* [params1] {Object} 
-* [params2] {String} 
+* args {Object|Class}  
+* [options] {Object} 
+* [alias] {String} 
 #### return
 * this
 
-###  usePlugin(params1)
+###  usePlugin(alias)
 #### Parameters
-* params1 {String}  
+* alias {String}
 #### return
-* {Object}
+* {Plugin}
 
-###  addRule(params1,params2)
-#### Parameters
-* params1 {Object}  
-* [params2] {String} 
-#### return
-* this
 
-###  addRule(params1,params2)
+###  addRule(options,alias)
 #### Parameters
-* params1 {Object}  
-* [params2] {String}
+* options {Object} 
+* [alias] {String} 
 #### return
 * this
 
-###  getRule(params1)
+###  getRule(filter)
 #### Parameters
-* params1 {String|Function}  
+* filter {String|Function}  
 #### return
-* {Object}
+* {Rule}
 
-###  defineRule(params1,params2)
+### defineRule(options,alias)
 #### Parameters
-* params1 {Object}
-* [params2] {String}
-#### return
-* this
-
-###  usePlugin(params1)
-#### Parameters
-* params1 {String} 
-
-#### return
-* {Object}
-
-###  defineLoader(params1,params2)
-#### Parameters
-* params1 {String} 
-* [params2] {String} 
+* options {Object}
+* [alias] {String}
 #### return
 * this
 
-###  useLoader(params1)
+###  useRule(alias)
 #### Parameters
-* params1 {String}  
+* alias {String} 
+
 #### return
-* {path}
+* {Rule}
+
+###  defineLoader(alias,loader)
+#### Parameters
+* alias {String} 
+* [loader] {String} 
+#### return
+* this
+
+###  useLoader(alias)
+#### Parameters
+* alias {String}  
+#### return
+* {String}
 
 
 

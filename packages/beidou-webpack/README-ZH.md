@@ -189,6 +189,26 @@ module.exports = (app, defaultConfig, dev, target) => {
 };
 ```
 
+> Class Plugin Struct
+```
+class Plugin {
+  object ,      // instance object for webpack plugin
+  class,        // class for webpack plugin
+  opitons,      // initialize config
+  alias
+}
+
+```
+
+> Class Rule Struct
+```
+class Rule {
+  opitons,      // initialize config for rule
+  alias
+}
+
+```
+
 > app.webpackFactory 提供的函数如下:
 
 ### 重置配置项: reset(value)
@@ -213,106 +233,99 @@ module.exports = (app, defaultConfig, dev, target) => {
 #### return
 * {*}
 
-### 获取{param}配置实例:  env(param) 
+### 获取{key}配置实例:  env(key) 
 ####  Parameters
-* param {String} 配置实例标识
+* key {String} 配置实例标识
 
 #### return
 * {Object}
 
 ### 获取webpack配置: getConfig() 
 ####  Parameters
-* key {String}
 
 #### return
-* value {*}
+* {Object}
 
 
-### 增加插件配置: addPlugin(params1, params2,params3) 
+### 增加插件配置: addPlugin(args, options,alias) 
 #### Parameters
-* params1 {Object|Class|String} 插件实例|构造函数|已定义的插件名
-* [params1] {Object} 插件配置项
-* [params2] {String} 插件别名
+* args {Object|Class|String} 插件实例|构造函数|已定义的插件名
+* [options] {Object} 插件配置项
+* [alias] {String} 插件别名
 
 #### return
 * this
 
 
-### getPlugin(params1) 获取插件配置
+### getPlugin(filter) 获取插件配置
 #### Parameters
-* params1 {String|Function} 别名|自定义函数
+* filter {String|Function} 别名|自定义函数
 
 #### return
-* {Object}
+* {Plugin}
 
-### 设置插件配置: setPlugin(params1, params2,params3) 
+### 设置插件配置: setPlugin(args, options,alias) 
 
 #### Parameter
-* params1 {Object|Class}  插件实例|构造函数
-* [params1] {Object} 插件配置项
-* [params2] {String} 插件别名
+* args {Object|Class}  插件实例|构造函数
+* [options] {Object} 插件配置项
+* [alias] {String} 插件别名
 
 #### return 
 * this
 
-### 定义插件: definePlugin(params1, params2,params3)
+### 定义插件: definePlugin(args, options,alias)
 #### Parameters
-* params1 {Object|Class}  插件实例|构造函数
-* [params1] {Object} 插件配置项
-* [params2] {String} 插件别名
+* args {Object|Class}  插件实例|构造函数
+* [options] {Object} 插件配置项
+* [alias] {String} 插件别名
 #### return
 * this
 
-### 获取定义的插件: usePlugin(params1)
+### 获取定义的插件: usePlugin(alias)
 #### Parameters
-* params1 {String}  插件别名
+* alias {String}  插件别名
 #### return
-* {Object}
+* {Plugin}
 
-### 增加配置规则: addRule(params1,params2)
-#### Parameters
-* params1 {Object}  配置项
-* [params2] {String} 别名
-#### return
-* this
 
-### 设置配置规则: addRule(params1,params2)
+### 设置配置规则: addRule(options,alias)
 #### Parameters
-* params1 {Object}  配置项
-* [params2] {String} 别名
+* options {Object}  配置项
+* [alias] {String} 别名
 #### return
 * this
 
-### 获取配置规则: getRule(params1)
+### 获取配置规则: getRule(filter)
 #### Parameters
-* params1 {String|Function}  配置项|自定义函数
+* filter {String|Function}  配置项|自定义函数
 #### return
-* {Object}
+* {Rule}
 
-### 定义配置规则: defineRule(params1,params2)
+### 定义配置规则: defineRule(options,alias)
 #### Parameters
-* params1 {Object}  配置项
-* [params2] {String} 别名
-#### return
-* this
-
-### 获取定义的配置规则: usePlugin(params1)
-#### Parameters
-* params1 {String} 别名
-
-#### return
-* {Object}
-
-### 定义Loader: defineLoader(params1,params2)
-#### Parameters
-* params1 {String}  别名
-* [params2] {String} 路径,默认值为 require.resolve(params1)
+* options {Object}  配置项
+* [alias] {String} 别名
 #### return
 * this
 
-### 获取定义Loader: useLoader(params1)
+### 获取定义的配置规则: useRule(alias)
 #### Parameters
-* params1 {String}  别名
+* alias {String} 别名
+
+#### return
+* {Rule}
+
+### 定义Loader: defineLoader(alias,loader)
+#### Parameters
+* alias {String}  别名
+* [loader] {String} 路径,默认值为 require.resolve(params1)
+#### return
+* this
+
+### 获取定义Loader: useLoader(alias)
+#### Parameters
+* alias {String}  别名
 #### return
 * {path}
 
