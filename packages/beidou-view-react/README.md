@@ -46,6 +46,58 @@ module.exports = appInfo => ({
 });
 ```
 
+### Use **internal render component**
+
+Use internal render component `Render` in View.
+
+```jsx
+export default class View extends React.Component {
+  render() {
+    const { helper, Render } = this.props;
+    return (
+      <html>
+        <head>
+          <title>Script</title>
+          <link rel="stylesheet" href={helper.asset('index.css')} />
+        </head>
+        <body>
+          <Render stream id="container">
+            <App/>
+          </Render>
+        </body>
+      </html>
+    );
+  }
+}
+```
+
+The content inside `<Render />` element would be dynamicly rendered and set back into the view.
+
+**Props**
+
+
+| props | type | default | usage |
+|:--:|:--:|:--:|:--:|
+| disable|Boolean |`false` | disable server-side rendering, `true` to disable|
+| element | String or Component | `div` | the element type of render container
+| stream|Boolean |`false`| `true` to use `renderToNodeStream()`|
+| app | ReactNode | null | the component should be rendered |
+| children | ReactNode | null | same as app |
+| [others] | any |  | any other props will be passed to `element` you defined |
+
+#### The difference between `<Render />` and `getPartial()`
+
+**`getPartial()`**
+
+The components returnd from `getPartial()` will be rendered into string and put back to props,
+You can manipulate them in View template. So the *Partial* rendered first, and then is the template.
+
+**`<Render />`**
+
+But, for the `<Render />` component, it contains dynamic parts waiting to be rendered. When View template is rendered, each instance of `<Render />` will generate a markup (placeholder) in template result string, View Engine replace regonizes them, gets true parts should be rendered,  render and replaces the markups in sequence.
+
+In this mode, template rendered before the dynamic parts. So we can get the first part of page at very beginning, and send it the browser to reduce TTFB.
+
 ### Custom view middlewares
 
 You can access view rendering process to meet your needs. For example, if you want to record rendering time, you need to write a `time.js` to your `app/view-middlewares/` directory. If you don't understand middleware please read [middlewares](https://eggjs.org/en/intro/egg-and-koa.html) before you digging into code.

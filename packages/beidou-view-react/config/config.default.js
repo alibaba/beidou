@@ -24,6 +24,8 @@ module.exports = appInfo => ({
     doctype: '<!DOCTYPE html>',
     assetHost: '',
     assetPath: '/build/',
+    // make sure the string pattern won't be used your you project.
+    placeHolder: '<!--$render$-->',
   },
   view: {
     defaultViewEngine: 'react',
