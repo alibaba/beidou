@@ -19,6 +19,7 @@ class Timing extends React.Component {
       const TTFB = responseStart - requestStart;
       const contentDownload = responseEnd - responseStart;
       const total = responseEnd - requestStart;
+      // eslint-disable-next-line
       this.setState({
         TTFB,
         contentDownload,
@@ -31,18 +32,20 @@ class Timing extends React.Component {
     const { TTFB, contentDownload, total } = this.state;
     return (
       <div>
-        <p>Use <a href="/">renderToString()</a></p>
-        <p>Use <a href="/?stream=1">renderToNodeStream()</a></p>
+        <p>
+          Use <a href="/">renderToString()</a>
+        </p>
+        <p>
+          Use <a href="/?stream=1">renderToNodeStream()</a>
+        </p>
         <h3>Timing</h3>
-        {
-          TTFB &&
+        {TTFB && (
           <div style={{ backgroundColor: '#f2f2f2' }}>
             <p>TTFB: {TTFB} ms</p>
             <p>Content Download: {contentDownload} ms</p>
             <p>Total: {total} ms</p>
           </div>
-        }
-
+        )}
       </div>
     );
   }

@@ -23,10 +23,7 @@ module.exports = (components, placeHolder) => (props) => {
   ]);
 
   if (disable) {
-    return React.createElement(
-      Wrapper,
-      others,
-    );
+    return React.createElement(Wrapper, others);
   }
 
   components.push({
@@ -40,15 +37,17 @@ module.exports = (components, placeHolder) => (props) => {
       dangerouslySetInnerHTML: {
         __html: placeHolder,
       },
-    }),
+    })
   );
 };
 
 function objectWithoutProperties(obj, keys) {
   const target = {};
   for (const i in obj) {
-    if (keys.indexOf(i) === -1
-      && Object.prototype.hasOwnProperty.call(obj, i)) {
+    if (
+      keys.indexOf(i) === -1 &&
+      Object.prototype.hasOwnProperty.call(obj, i)
+    ) {
       target[i] = obj[i];
     }
   }
