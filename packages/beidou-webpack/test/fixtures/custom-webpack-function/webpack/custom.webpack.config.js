@@ -8,6 +8,10 @@ module.exports = (app, defaultConfig, entry, isDev) => {
   const universal = app.config.isomorphic.universal;
   const outputPath = path.join(app.config.baseDir, 'build');
   const factory = app.webpackFactory;
+
+  factory.clearPlugin();
+  factory.clearRule();
+
   factory.reset({
     devtool: 'source-map',
     context: path.resolve(__dirname, '..'),
@@ -36,6 +40,7 @@ module.exports = (app, defaultConfig, entry, isDev) => {
     }
   });
 
+
   factory.addPlugin(
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
@@ -51,18 +56,17 @@ module.exports = (app, defaultConfig, entry, isDev) => {
       __CLIENT__: true,
     }, 'DefinePlugin')
 
-  factory.addPlugins([
-    new webpack.ProgressPlugin((percentage, msg) => {
+  factory
+    .addPlugin(new webpack.ProgressPlugin((percentage, msg) => {
       const stream = process.stderr;
       if (stream.isTTY && percentage < 0.71) {
         stream.cursorTo(0);
         stream.write(`📦   ${msg}`);
         stream.clearLine(1);
       }
-    }),
-    new app.IsomorphicPlugin(universal),
-    new ExtractTextPlugin('[name].css'),
-  ])
+    })) 
+    .addPlugin(new app.IsomorphicPlugin(universal))
+    .addPlugin(new ExtractTextPlugin('[name].css'))
 
   // 切换环境
   const factoryInDev = factory.env('dev')
@@ -75,7 +79,7 @@ module.exports = (app, defaultConfig, entry, isDev) => {
     },
   }))
 
-  factory.modifyPlugin('ExtractTextPlugin', new ExtractTextPlugin('[name].modify.css'))
+  factory.setPlugin(new ExtractTextPlugin('[name].modify.css'))
 
   factory.addRule({
     test: /\.jsx?$/,
@@ -89,7 +93,7 @@ module.exports = (app, defaultConfig, entry, isDev) => {
     },
   })
 
-  factory.addRules([{
+  factory.addRule({
     test: /\.scss$/,
     exclude: /node_modules/,
     use: ExtractTextPlugin.extract({
@@ -107,7 +111,7 @@ module.exports = (app, defaultConfig, entry, isDev) => {
       ],
       fallback: 'style-loader',
     }),
-  }])
+  })
 
   return factory.getConfig();
 

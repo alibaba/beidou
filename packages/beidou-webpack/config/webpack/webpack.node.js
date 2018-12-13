@@ -13,15 +13,16 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
-  const config = common(app, entry, dev);
-  config.output.libraryTarget = 'commonjs';
-  config.target = 'node';
-  config.externals = /^react(-dom)?$/;
-  config.node = {
+  common(app, entry, dev);
+  app.webpackFactory.getConfig().output.libraryTarget = 'commonjs';
+  app.webpackFactory.getConfig().target = 'node';
+  app.webpackFactory.getConfig().externals = /^react(-dom)?$/;
+  app.webpackFactory.getConfig().node = {
     __filename: true,
     __dirname: true,
   };
-  app.webpackFactory.addRules([
+
+  [
     {
       test: /\.(js|jsx|mjs)$/,
       exclude: /node_modules/,
@@ -41,28 +42,33 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ]);
+  ].forEach((v) => {
+    app.webpackFactory.defineRule(v).addRule(v.test);
+  });
 
   app.webpackFactory
-    .addPlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
-    .addPlugin(webpack.optimize.CommonsChunkPlugin, {
+    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .addPlugin('ExtractTextPlugin')
+    .definePlugin(webpack.optimize.CommonsChunkPlugin, {
       name: 'manifest',
       filename: 'manifest.js',
-    }, 'CommonsChunkPlugin');
+    }, 'CommonsChunkPlugin')
+    .addPlugin('CommonsChunkPlugin');
 
+  app.webpackFactory.definePlugin(
+    webpack.DefinePlugin, {
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __CLIENT__: false,
+      __DEV__: false,
+      __SERVER__: true,
+    }, 'DefinePlugin');
 
   if (!dev) {
-    app.webpackFactory.addPlugin(
-      webpack.DefinePlugin, {
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        __CLIENT__: false,
-        __DEV__: false,
-        __SERVER__: true,
-      }, 'DefinePlugin');
+    app.webpackFactory.addPlugin('DefinePlugin');
     app.webpackFactory.addPlugin(MinifyPlugin, null, 'MinifyPlugin');
   } else {
     app.webpackFactory.addPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
-    app.webpackFactory.addPlugin(
+    app.webpackFactory.setPlugin(
       webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: false,
@@ -70,6 +76,5 @@ module.exports = (app, entry, dev) => {
         __SERVER__: true,
       }, 'DefinePlugin');
   }
-  app.webpackFactory.reset(config);
   return app.webpackFactory.getConfig();
 };

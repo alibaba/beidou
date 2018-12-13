@@ -134,8 +134,11 @@ module.exports = {
   },
 };
 
-// Example:
-// Please to find more methods in unittest
+```
+
+> Advanced custom configuration :
+```js
+// find more example in unittest, please
 module.exports = (app, defaultConfig, dev, target) => {
   const factory = app.webpackFactory;
   factory.set('output',{
@@ -146,9 +149,9 @@ module.exports = (app, defaultConfig, dev, target) => {
       publicPath: '/build/',
     }
   })
-  // modify default webpack config
-  factory.modifyPlugin('CommonsChunkPlugin',
-    factory.getPlugin('CommonsChunkPlugin'), // if not modify , make sure the value is null
+  // set default plugin config
+  factory.setPlugin('CommonsChunkPlugin',
+    factory.usePlugin('CommonsChunkPlugin'), 
     {
       name: 'vendor',
       filename: 'manifest.js',
@@ -162,7 +165,7 @@ module.exports = (app, defaultConfig, dev, target) => {
         warnings: false,
       }
     },
-    'UglifyJsPlugin' , // if not set , the default value is function name
+    'UglifyJsPlugin' , // if not pass, use the default value
   )
 
   factory.addRule({
@@ -184,13 +187,139 @@ module.exports = (app, defaultConfig, dev, target) => {
     },
   }))
 
-  return factory.getConfig(); // return the new config
-  // you can return different env value
-  // return factory.env('prod').getConfig();
-  // return factoryInProd.getConfig();
+  return factory.getConfig(); // return the final config for webpack
 
 };
 ```
+
+> app.webpackFactory methods list:
+
+### reset(value)
+#### Parameters
+* [value] {Object}
+
+#### return
+* this
+
+###  set(key,value) 
+####  Parameters
+* key {String}
+* value {*}
+
+#### return
+* this
+
+###  get(key) 
+####  Parameters
+* key {String}
+
+#### return
+* {*}
+
+### generate {param} factory for webpack:  env(param) 
+####  Parameters
+* param {String} factory flag
+
+#### return
+* {Object}
+
+### Get the final config for webpack : getConfig() 
+####  Parameters
+* key {String}
+
+#### return
+* value {*}
+
+
+### addPlugin(params1, params2,params3) 
+#### Parameters
+* params1 {Object|Class|String} 插件实例|构造函数|已定义的插件名
+* [params1] {Object} 插件配置项
+* [params2] {String} 插件别名
+
+#### return
+* this
+
+
+### getPlugin(params1)
+#### Parameters
+* params1 {String|Function} 
+
+#### return
+* {Object}
+
+### 设置插件配置: setPlugin(params1, params2,params3) 
+
+#### Parameter
+* params1 {Object|Class} 
+* [params1] {Object}
+* [params2] {String}
+
+#### return 
+* this
+
+###  definePlugin(params1, params2,params3)
+#### Parameters
+* params1 {Object|Class} 
+* [params1] {Object} 
+* [params2] {String} 
+#### return
+* this
+
+###  usePlugin(params1)
+#### Parameters
+* params1 {String}  
+#### return
+* {Object}
+
+###  addRule(params1,params2)
+#### Parameters
+* params1 {Object}  
+* [params2] {String} 
+#### return
+* this
+
+###  addRule(params1,params2)
+#### Parameters
+* params1 {Object}  
+* [params2] {String}
+#### return
+* this
+
+###  getRule(params1)
+#### Parameters
+* params1 {String|Function}  
+#### return
+* {Object}
+
+###  defineRule(params1,params2)
+#### Parameters
+* params1 {Object}
+* [params2] {String}
+#### return
+* this
+
+###  usePlugin(params1)
+#### Parameters
+* params1 {String} 
+
+#### return
+* {Object}
+
+###  defineLoader(params1,params2)
+#### Parameters
+* params1 {String} 
+* [params2] {String} 
+#### return
+* this
+
+###  useLoader(params1)
+#### Parameters
+* params1 {String}  
+#### return
+* {path}
+
+
 
 - **app**: the `BeidouApplication` instance, usually used to access server config.
 

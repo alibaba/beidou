@@ -131,8 +131,10 @@ module.exports = {
     hot: true,
   },
 };
+```
 
-// 配置方案3:
+高级自定义配置:
+```js
 // 更多配置方法，可参看单测用例
 module.exports = (app, defaultConfig, dev, target) => {
   const factory = app.webpackFactory;
@@ -145,8 +147,8 @@ module.exports = (app, defaultConfig, dev, target) => {
     }
   })
   // 修改默认插件配置
-  factory.modifyPlugin('CommonsChunkPlugin',
-    factory.getPlugin('CommonsChunkPlugin'), // 如不修改，可传null
+  factory.setPlugin('CommonsChunkPlugin',
+    factory.usePlugin('CommonsChunkPlugin'), // 如不修改，可传null
     {
       name: 'vendor',
       filename: 'manifest.js',
@@ -185,8 +187,136 @@ module.exports = (app, defaultConfig, dev, target) => {
   return factory.getConfig(); // 返回配置
 
 };
-
 ```
+
+> app.webpackFactory 提供的函数如下:
+
+### 重置配置项: reset(value)
+#### Parameters
+* [value] {Object}
+
+#### return
+* this
+
+### 设置配置项: set(key,value) 
+####  Parameters
+* key {String}
+* value {*}
+
+#### return
+* this
+
+### 获取配置项: get(key) 
+####  Parameters
+* key {String}
+
+#### return
+* {*}
+
+### 获取{param}配置实例:  env(param) 
+####  Parameters
+* param {String} 配置实例标识
+
+#### return
+* {Object}
+
+### 获取webpack配置: getConfig() 
+####  Parameters
+* key {String}
+
+#### return
+* value {*}
+
+
+### 增加插件配置: addPlugin(params1, params2,params3) 
+#### Parameters
+* params1 {Object|Class|String} 插件实例|构造函数|已定义的插件名
+* [params1] {Object} 插件配置项
+* [params2] {String} 插件别名
+
+#### return
+* this
+
+
+### getPlugin(params1) 获取插件配置
+#### Parameters
+* params1 {String|Function} 别名|自定义函数
+
+#### return
+* {Object}
+
+### 设置插件配置: setPlugin(params1, params2,params3) 
+
+#### Parameter
+* params1 {Object|Class}  插件实例|构造函数
+* [params1] {Object} 插件配置项
+* [params2] {String} 插件别名
+
+#### return 
+* this
+
+### 定义插件: definePlugin(params1, params2,params3)
+#### Parameters
+* params1 {Object|Class}  插件实例|构造函数
+* [params1] {Object} 插件配置项
+* [params2] {String} 插件别名
+#### return
+* this
+
+### 获取定义的插件: usePlugin(params1)
+#### Parameters
+* params1 {String}  插件别名
+#### return
+* {Object}
+
+### 增加配置规则: addRule(params1,params2)
+#### Parameters
+* params1 {Object}  配置项
+* [params2] {String} 别名
+#### return
+* this
+
+### 设置配置规则: addRule(params1,params2)
+#### Parameters
+* params1 {Object}  配置项
+* [params2] {String} 别名
+#### return
+* this
+
+### 获取配置规则: getRule(params1)
+#### Parameters
+* params1 {String|Function}  配置项|自定义函数
+#### return
+* {Object}
+
+### 定义配置规则: defineRule(params1,params2)
+#### Parameters
+* params1 {Object}  配置项
+* [params2] {String} 别名
+#### return
+* this
+
+### 获取定义的配置规则: usePlugin(params1)
+#### Parameters
+* params1 {String} 别名
+
+#### return
+* {Object}
+
+### 定义Loader: defineLoader(params1,params2)
+#### Parameters
+* params1 {String}  别名
+* [params2] {String} 路径,默认值为 require.resolve(params1)
+#### return
+* this
+
+### 获取定义Loader: useLoader(params1)
+#### Parameters
+* params1 {String}  别名
+#### return
+* {path}
+
+
 
 - **app**: `BeidouApplication` 示例, 通常用来读取应用的全局配置项。
 

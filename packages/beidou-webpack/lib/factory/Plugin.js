@@ -3,38 +3,34 @@
 const is = require('is');
 
 class Plugin {
-  constructor(model, options, alias) {
-    if (is.function(model)) {
-      this.model = model;
-      this.options = options;
-      this.alias = alias || model.name;
-    } else if (is.object(model)) {
-      this.class = model;
-      this.alias = alias || model.constructor.name;
+  constructor(...args) {
+    if (is.function(args[0])) {
+      this.class = args[0];
+      this.alias = args[0].name;
+    } else if (is.object(args[0])) {
+      this.object = args[0];
+      this.alias = args[0].constructor.name;
     } else {
       throw new Error(
-        'Class Plugin constructor expect function ! '
+        'Class Plugin constructor error ! '
       );
+    }
+    if (args[1]) {
+      this.options = args[1];
+    }
+    if (args[2]) {
+      this.alias = args[2];
     }
   }
 
   init() {
-    if (this.class) {
-      return this.class;
+    if (this.object) {
+      return this.object;
     } else if (this.options) {
-      return new this.model(this.options);
+      return new this.class(this.options);
     } else {
-      return new this.model();
+      return new this.class();
     }
-  }
-
-  reset(model, options) {
-    if (is.object(model)) {
-      this.class = model;
-    } else if (is.function(model)) {
-      this.model = model;
-    }
-    if (options) { this.options = options; }
   }
 }
 

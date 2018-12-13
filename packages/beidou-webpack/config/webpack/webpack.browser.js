@@ -14,9 +14,8 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
-  const config = common(app, entry, dev);
-  app.webpackFactory.append(config);
-  app.webpackFactory.addRules([
+  common(app, entry, dev);
+  [
     {
       test: /\.(js|jsx|mjs)$/,
       exclude: /node_modules/,
@@ -37,33 +36,39 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ]);
+  ].forEach((v) => {
+    app.webpackFactory.defineRule(v).addRule(v.test);
+  });
 
   app.webpackFactory
-    .addPlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
-    .addPlugin(webpack.optimize.CommonsChunkPlugin, {
+    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .addPlugin('ExtractTextPlugin')
+    .definePlugin(webpack.optimize.CommonsChunkPlugin, {
       name: 'manifest',
       filename: 'manifest.js',
-    }, 'CommonsChunkPlugin');
+    }, 'CommonsChunkPlugin')
+    .addPlugin('CommonsChunkPlugin');
+  app.webpackFactory.definePlugin(
+    webpack.optimize.UglifyJsPlugin, {
+      compress: {
+        warnings: false,
+      },
+    }, 'UglifyJsPlugin');
+
+  app.webpackFactory.definePlugin(
+    webpack.DefinePlugin, {
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __CLIENT__: true,
+      __DEV__: false,
+      __SERVER__: false,
+    }, 'DefinePlugin');
 
   if (!dev) {
-    app.webpackFactory.addPlugin(
-      webpack.optimize.UglifyJsPlugin, {
-        compress: {
-          warnings: false,
-        },
-      }, 'UglifyJsPlugin');
-
-    app.webpackFactory.addPlugin(
-      webpack.DefinePlugin, {
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        __CLIENT__: true,
-        __DEV__: false,
-        __SERVER__: false,
-      }, 'DefinePlugin');
+    app.webpackFactory.addPlugin('UglifyJsPlugin');
+    app.webpackFactory.addPlugin('DefinePlugin');
   } else {
     app.webpackFactory.getConfig().devServer.hot = true;
-    app.webpackFactory.addPlugin(
+    app.webpackFactory.setPlugin(
       webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: true,
@@ -71,8 +76,8 @@ module.exports = (app, entry, dev) => {
         __SERVER__: false,
       }, 'DefinePlugin');
 
-    app.webpackFactory.addPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
-    app.webpackFactory.addPlugin(webpack.HotModuleReplacementPlugin, null, 'HotModuleReplacementPlugin');
+    app.webpackFactory.setPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
+    app.webpackFactory.setPlugin(webpack.HotModuleReplacementPlugin, null, 'HotModuleReplacementPlugin');
   }
   return app.webpackFactory.getConfig();
 };

@@ -12,7 +12,7 @@ const _ = require('lodash');
 const debug = require('debug')('beidou:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
-const WebpackFactory = require('../factory/Webpack');
+const WebpackFactory = require('../factory/webpack');
 
 const symbol = Symbol.for('webpackServer');
 

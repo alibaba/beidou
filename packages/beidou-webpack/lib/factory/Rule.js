@@ -1,20 +1,14 @@
 'use strict';
 
-const is = require('is');
-
 class Rule {
   constructor(options, alias) {
-    if (!options || !is.object(options)) {
+    if (!options) {
       throw new Error(
-        'Class Plugin contructor exceptionally ! '
+        'Class Rule contructor exceptionally ! '
       );
     }
     this.options = options;
     this.alias = alias || options.test;
-  }
-
-  reset(options) {
-    this.options = options;
   }
 }
 module.exports = Rule;

@@ -19,10 +19,11 @@ module.exports = (app, entry, dev) => {
     strictExportPresence: true,
   };
 
-  app.webpackFactory.addPlugin(webpack.NoEmitOnErrorsPlugin, null, 'NoEmitOnErrorsPlugin');
+  app.webpackFactory.definePlugin(webpack.NoEmitOnErrorsPlugin, null, 'NoEmitOnErrorsPlugin').addPlugin('NoEmitOnErrorsPlugin');
+  app.webpackFactory.definePlugin(app.IsomorphicPlugin);
   const { universal } = app.config.isomorphic;
   if (universal) {
-    app.webpackFactory.addPlugin(app.IsomorphicPlugin, universal, 'IsomorphicPlugin');
+    app.webpackFactory.setPlugin(app.IsomorphicPlugin, universal);
   }
 
   let finalConfig = {};
@@ -42,5 +43,5 @@ module.exports = (app, entry, dev) => {
     module,
   };
 
-  return finalConfig;
+  app.webpackFactory.reset(finalConfig);
 };
