@@ -271,4 +271,44 @@ describe('test/react.test.js', () => {
         .expect(200, done);
     });
   });
+
+  describe('stream render', () => {
+    let app;
+
+    before(async () => {
+      app = mm.app({
+        baseDir: './stream',
+        framework,
+      });
+
+      await app.ready();
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(mm.restore);
+
+    it('should ok in normal mode', (done) => {
+      request(app.callback())
+        .get('/')
+        .expect(/hello/)
+        .expect(200, done);
+    });
+
+    it('should ok in stream mode', (done) => {
+      request(app.callback())
+        .get('/?stream=1')
+        .expect(/hello/)
+        .expect(200, done);
+    });
+
+    it('should return empty container when `disable=true`', (done) => {
+      request(app.callback())
+        .get('/?disable=1')
+        .expect(/<div><\/div>/)
+        .expect(200, done);
+    });
+  });
 });
