@@ -5,11 +5,7 @@
   "eggPlugin": {
     "name": "webpack"
   },
-  "keywords": [
-    "beidou",
-    "plugin",
-    "webpack"
-  ],
+  "keywords": ["beidou", "plugin", "webpack"],
   "main": "index.js",
   "bin": {
     "beidou-build": "./bin/build.js",
@@ -64,15 +60,7 @@
   "peerDependencies": {
     "beidou-core": "^1.0.0-beta.2"
   },
-  "files": [
-    "bin",
-    "app",
-    "lib",
-    "config",
-    "app.js",
-    "agent.js",
-    "index.js"
-  ],
+  "files": ["bin", "app", "lib", "config", "app.js", "agent.js", "index.js"],
   "engines": {
     "node": ">= 8.0.0"
   },
@@ -81,5 +69,6 @@
     "cov": "TEST_REPORTER=spec egg-bin cov",
     "history": "egg-bin history CHANGELOG.md"
   },
-  "repository": "https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack"
+  "repository":
+    "https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack"
 }

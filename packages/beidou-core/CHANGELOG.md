@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- prevent `lib/core/agent/index.js` unexpectly loaded by plugin loader ([#35](https://github.com/alibaba/beidou/packages/beidou-core/issues/35)) ([c30f27e](https://github.com/alibaba/beidou/packages/beidou-core/commit/c30f27e))
+* prevent `lib/core/agent/index.js` unexpectly loaded by plugin loader ([#35](https://github.com/alibaba/beidou/packages/beidou-core/issues/35)) ([c30f27e](https://github.com/alibaba/beidou/packages/beidou-core/commit/c30f27e))
 
 <a name="0.3.5"></a>
 
@@ -29,4 +29,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- remove config dump override ([a5576e1](https://github.com/alibaba/beidou/packages/beidou-core/commit/a5576e1))
+* remove config dump override ([a5576e1](https://github.com/alibaba/beidou/packages/beidou-core/commit/a5576e1))

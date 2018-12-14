@@ -21,4 +21,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- server side resolve alias ([82257e3](https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic/commit/82257e3))
+* server side resolve alias ([82257e3](https://github.com/alibaba/beidou/tree/master/packages/beidou-isomorphic/commit/82257e3))
