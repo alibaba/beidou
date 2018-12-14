@@ -180,8 +180,8 @@ exprots.index = async function() {
 
 React view exports `render` and `renderString` 2 APIs, return Promise.
 
-> - ctx.render(name, locals) - render template, and assign to ctx.body
-> - ctx.renderString(tpl, locals) - only render template to string, will **not** assign to ctx.body
+> * ctx.render(name, locals) - render template, and assign to ctx.body
+> * ctx.renderString(tpl, locals) - only render template to string, will **not** assign to ctx.body
 
 ## License
 

@@ -15,4 +15,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- wrong bin file excuted in windows [#63](https://github.com/alibaba/beidou/issues/63) ([#65](https://github.com/alibaba/beidou/issues/65)) ([d2f7bac](https://github.com/alibaba/beidou/commit/d2f7bac))
+* wrong bin file excuted in windows [#63](https://github.com/alibaba/beidou/issues/63) ([#65](https://github.com/alibaba/beidou/issues/65)) ([d2f7bac](https://github.com/alibaba/beidou/commit/d2f7bac))

@@ -66,9 +66,7 @@ class DataTable extends React.Component {
   };
 
   fetch = () => {
-    const {
-      fetch: { url, data, dataKey },
-    } = this.props;
+    const { fetch: { url, data, dataKey } } = this.props;
     const { fetchData } = this.state;
     this.setState({ loading: true });
     this.promise = request({

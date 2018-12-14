@@ -9,7 +9,7 @@ const rimraf = require('rimraf');
 const { getRegistry, install } = require('../lib/helper');
 const { sleep } = require('./utils');
 
-describe.skip(`test/${path.basename(__filename)}`, () => {
+describe(`test/${path.basename(__filename)}`, () => {
   const beidouBin = require.resolve('../bin/beidou.js');
   const cwd = path.join(__dirname, 'fixtures/test-files');
 
@@ -62,7 +62,7 @@ describe.skip(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe.skip('init commands', () => {
+  describe('init commands', () => {
     it('should init boilerplate project', (done) => {
       coffee
         .fork(beidouBin, ['init'], {
@@ -74,7 +74,7 @@ describe.skip(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe.skip('start, stop, dev, debug, test, cov commands', () => {
+  describe('start, stop, dev, debug, test, cov commands', () => {
     let app;
     const exampleDir = path.join(__dirname, './fixtures/example');
     const TIME = 10;
@@ -168,7 +168,7 @@ describe.skip(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe.skip('build command', () => {
+  describe('build command', () => {
     const env = Object.create(process.env);
 
     env.NODE_ENV = 'production';

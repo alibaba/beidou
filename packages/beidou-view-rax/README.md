@@ -2,9 +2,9 @@
 
 <!-- TOC -->
 
-- [Beidou rax view plugin](#beidou-view-rax-plugin)
-  - [Install](#install)
-  - [Configuration](#configuration)
+* [Beidou rax view plugin](#beidou-view-rax-plugin)
+  * [Install](#install)
+  * [Configuration](#configuration)
 
 <!-- /TOC -->
 
@@ -18,7 +18,7 @@ yarn add beidou-view-rax
 
 ## Configuration
 
-- config/plugin.js
+* config/plugin.js
 
 ```js
 exports.rax = {
@@ -27,7 +27,7 @@ exports.rax = {
 };
 ```
 
-- config/config.default.js
+* config/config.default.js
 
 ```js
 exports.rax = {

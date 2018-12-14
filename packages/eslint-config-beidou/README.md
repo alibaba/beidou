@@ -10,7 +10,7 @@ npm i eslint eslint-config-beidou --save-dev
 
 ## Usage
 
-- `package.json`
+* `package.json`
 
 ```json
 {
@@ -21,7 +21,7 @@ npm i eslint eslint-config-beidou --save-dev
 }
 ```
 
-- `.eslintrc.js`
+* `.eslintrc.js`
 
 ```js
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
 
 If you want to use **eslint-config-beidou** with experimental features such as `async function`, you should use `babel-eslint` parser:
 
-- `package.json`
+* `package.json`
 
 ```json
 {
@@ -45,7 +45,7 @@ If you want to use **eslint-config-beidou** with experimental features such as `
 }
 ```
 
-- `.eslintrc.js`
+* `.eslintrc.js`
 
 ```js
 module.exports = {
@@ -64,7 +64,7 @@ module.exports = {
 
 If you want to use **eslint-config-beidou** with react, jsx and es6 modules:
 
-- `package.json`
+* `package.json`
 
 ```json
 {
@@ -77,7 +77,7 @@ If you want to use **eslint-config-beidou** with react, jsx and es6 modules:
 }
 ```
 
-- `.eslintrc.js`
+* `.eslintrc.js`
 
 ```js
 module.exports = {

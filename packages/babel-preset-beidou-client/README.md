@@ -2,11 +2,11 @@
 
 This preset includes the following plugins:
 
-- babel-preset-env
-- babel-preset-react
-- babel-preset-stage-2
-- babel-plugin-typecheck
-- react-hot-loader
+* babel-preset-env
+* babel-preset-react
+* babel-preset-stage-2
+* babel-plugin-typecheck
+* react-hot-loader
 
 ## Install
 

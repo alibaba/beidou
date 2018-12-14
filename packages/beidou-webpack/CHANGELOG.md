@@ -15,4 +15,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **webpack:** isomorphic webpack set **webpack_public_path** default value, fix [#76](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/76) ([#78](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/78)) ([f6352c1](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/commit/f6352c1))
+* **webpack:** isomorphic webpack set **webpack_public_path** default value, fix [#76](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/76) ([#78](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/78)) ([f6352c1](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/commit/f6352c1))
