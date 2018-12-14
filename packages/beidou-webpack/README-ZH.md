@@ -284,21 +284,28 @@ class Rule {
 
 ### 获取定义的插件: usePlugin(alias)
 #### Parameters
-* alias {String}  插件别名
+* alias {String|Fucntion|Regexp}  插件别名|自定义函数|正则
 #### return
 * {Plugin}
 
 
-### 设置配置规则: addRule(options,alias)
+### 增加配置规则: addRule(options,alias)
 #### Parameters
-* options {Object}  配置项
+* options {Object|Rule}  配置项|Rule实例
+* [alias] {String} 别名
+#### return
+* this
+
+### 设置配置规则: setRule(options,alias)
+#### Parameters
+* options {Object|Rule}  配置项|Rule实例
 * [alias] {String} 别名
 #### return
 * this
 
 ### 获取配置规则: getRule(filter)
 #### Parameters
-* filter {String|Function}  配置项|自定义函数
+* filter {String|Function|Regexp}  配置项|自定义函数|正则
 #### return
 * {Rule}
 
@@ -311,7 +318,7 @@ class Rule {
 
 ### 获取定义的配置规则: useRule(alias)
 #### Parameters
-* alias {String} 别名
+* alias {String|Function|Regexp} 别名|自定义函数|正则
 
 #### return
 * {Rule}

@@ -24,10 +24,6 @@ module.exports = (app, defaultConfig, entry, isDev) => {
     },
     module: {
       "strictExportPresence": true,
-      rules: [{
-        test: /\.jsx?$/,
-        use: 'babel-loader',
-      }, ],
     },
     resolve: {
       extensions: ['.json', '.js', '.jsx'],

@@ -43,7 +43,7 @@ module.exports = (app, entry, dev) => {
     imageLoaderConfig,
     fileLoaderConfig,
   ].forEach((v) => {
-    app.webpackFactory.defineRule(v).addRule(v.test);
+    app.webpackFactory.defineRule(v).addRule(v);
   });
 
   app.webpackFactory

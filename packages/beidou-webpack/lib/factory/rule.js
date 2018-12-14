@@ -10,5 +10,9 @@ class Rule {
     this.options = options;
     this.alias = alias || options.test;
   }
+
+  init() {
+    return this.options;
+  }
 }
 module.exports = Rule;

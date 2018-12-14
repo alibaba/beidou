@@ -18,7 +18,7 @@ class WebpackFactory extends Factory {
     super();
     this.__webpackConfig = config || {};
     this.__plugins = plugins || {};
-    this.__rules = rules || {};
+    this.__rules = rules || [];
   }
 
   /**
@@ -50,7 +50,7 @@ class WebpackFactory extends Factory {
    * generate final plugins config for webpack config
    * @return {Array}
    */
-  _getFinalPlugins() {
+  getPluginConfig() {
     const plugins = [];
     Object.values(this.__plugins).forEach((v) => {
       plugins.push(v.init());
@@ -62,9 +62,9 @@ class WebpackFactory extends Factory {
    * generate final rules config for webpack config
    * @return {Array}
    */
-  _getFinalRules() {
+  getRuleConfig() {
     const rules = [];
-    Object.values(this.__rules).forEach((v) => {
+    this.__rules.forEach((v) => {
       rules.push(v.options);
     });
     return rules;
@@ -75,8 +75,8 @@ class WebpackFactory extends Factory {
    * @return {Object}
    */
   getConfig() {
-    const plugins = this._getFinalPlugins();
-    const rules = this._getFinalRules();
+    const plugins = this.getPluginConfig();
+    const rules = this.getRuleConfig();
 
     this.__webpackConfig.plugins = plugins;
     const { module: mod } = this.__webpackConfig;
@@ -127,7 +127,8 @@ class WebpackFactory extends Factory {
   addPlugin(...args) {
     if (args.length === 1 && is.string(args[0])) {
       if (this.usePlugin(args[0])) {
-        this.__plugins[args[0]] = this.usePlugin(args[0]);
+        const plugin = this.usePlugin(args[0]);
+        this.__plugins[plugin.alias] = plugin;
         return this;
       } else {
         throw new Error(
@@ -135,6 +136,13 @@ class WebpackFactory extends Factory {
         );
       }
     }
+    if (args.length === 1 && args[0].constructor === Plugin) {
+      const plugin = args[0];
+      this.__plugins[plugin.alias] = plugin;
+      return this;
+    }
+
+
     const pluginObj = new Plugin(...args);
     if (this.__plugins[pluginObj.alias]) {
       throw new Error(
@@ -149,7 +157,7 @@ class WebpackFactory extends Factory {
     if (is.string(params)) {
       return this.__plugins[params];
     } else if (is.function(params)) {
-      return params(this.__plugins);
+      return params(Object.values(this.__plugins));
     } else {
       throw new Error(
         'get plugin param type exception!'
@@ -158,7 +166,12 @@ class WebpackFactory extends Factory {
   }
 
   setPlugin(...args) {
-    const pluginObj = new Plugin(...args);
+    let pluginObj = {};
+    if (args.length === 1 && args[0].constructor === Plugin) {
+      pluginObj = args[0];
+    } else {
+      pluginObj = new Plugin(...args);
+    }
     this.__plugins[pluginObj.alias] = pluginObj;
     return this;
   }
@@ -169,8 +182,21 @@ class WebpackFactory extends Factory {
     return this;
   }
 
-  usePlugin(alias) {
-    return Object.getPrototypeOf(this).__definePlugins[alias];
+  usePlugin(filter) {
+    const definePlugins = Object.getPrototypeOf(this).__definePlugins;
+    if (is.string(filter)) {
+      return definePlugins[filter];
+    } else if (is.function(filter)) {
+      return filter(Object.values(definePlugins));
+    } else {
+      throw new Error(
+        'use plugin param type exception!'
+      );
+    }
+  }
+
+  getDefinePlugins() {
+    return Object.getPrototypeOf(this).__definePlugins;
   }
 
   clearPlugin() {
@@ -182,7 +208,7 @@ class WebpackFactory extends Factory {
     if (args.length === 1 && !is.object(args[0])) {
       const alias = args[0];
       if (this.useRule(alias)) {
-        this.__rules[alias] = this.useRule(alias);
+        this.__rules.push(this.useRule(alias));
         return this;
       } else {
         throw new Error(
@@ -191,21 +217,23 @@ class WebpackFactory extends Factory {
       }
     }
 
-    const ruleObj = new Rule(...args);
-    if (this.__rules[ruleObj.alias]) {
-      throw new Error(
-        `${ruleObj.alias} the rules alias exsit! please change alias.`
-      );
+    if (args.length === 1 && args[0].constructor === Rule) {
+      this.__rules.push(args[0]);
+      return this;
     }
-    this.__rules[ruleObj.alias] = ruleObj;
+
+    const ruleObj = new Rule(...args);
+    this.__rules.push(ruleObj);
     return this;
   }
 
   getRule(params) {
     if (is.string(params)) {
-      return this.__rules[params];
+      return this.__rules.find(v => v.options.test.test(params) === true);
     } else if (is.function(params)) {
       return params(this.__rules);
+    } else if (is.regexp(params)) {
+      return this.__rules.find(v => v.options.test.toString() === params.toString());
     } else {
       throw new Error(
         'get rule param type exception!'
@@ -213,9 +241,21 @@ class WebpackFactory extends Factory {
     }
   }
 
+
   setRule(...args) {
-    const ruleObj = new Rule(...args);
-    this.__rules[ruleObj.alias] = ruleObj;
+    let ruleObj = {};
+    if (args.length === 1 && args[0].constructor === Rule) {
+      ruleObj = args[0];
+    } else {
+      ruleObj = new Rule(...args);
+    }
+
+    let exsitRule = this.__rules.find(v => v.alias.toString() === ruleObj.alias.toString());
+    if (exsitRule) {
+      exsitRule = ruleObj;
+    } else {
+      this.__rules.push(ruleObj);
+    }
     return this;
   }
 
@@ -225,12 +265,27 @@ class WebpackFactory extends Factory {
     return this;
   }
 
-  useRule(alias) {
-    return Object.getPrototypeOf(this).__defineRules[alias];
+  useRule(filter) {
+    const defineRules = Object.getPrototypeOf(this).__defineRules;
+    if (is.function(filter)) {
+      return filter(Object.values(defineRules));
+    }
+    if (is.regexp(filter)) {
+      return defineRules[filter.toString()];
+    }
+    if (is.string(filter)) {
+      return Object.values(defineRules).find(v => v.options.test.test(filter));
+    }
+
+    return null;
+  }
+
+  getDefineRules() {
+    return Object.getPrototypeOf(this).__defineRules;
   }
 
   clearRule() {
-    this.__rules = {};
+    this.__rules = [];
   }
 
 
@@ -243,4 +298,5 @@ class WebpackFactory extends Factory {
     return Object.getPrototypeOf(this).__defineloaders[name];
   }
 }
+
 module.exports = WebpackFactory;

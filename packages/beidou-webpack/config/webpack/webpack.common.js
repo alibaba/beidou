@@ -23,7 +23,7 @@ module.exports = (app, entry, dev) => {
   app.webpackFactory.definePlugin(app.IsomorphicPlugin);
   const { universal } = app.config.isomorphic;
   if (universal) {
-    app.webpackFactory.setPlugin(app.IsomorphicPlugin, universal);
+    app.webpackFactory.addPlugin(app.IsomorphicPlugin, universal);
   }
 
   let finalConfig = {};

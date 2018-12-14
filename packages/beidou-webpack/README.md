@@ -290,9 +290,16 @@ class Rule {
 * {Plugin}
 
 
-###  addRule(options,alias)
+### addRule(options,alias)
 #### Parameters
-* options {Object} 
+* options {Object|Rule} 
+* [alias] {String} 
+#### return
+* this
+
+###  setRule(options,alias)
+#### Parameters
+* options {Object|Rule}  
 * [alias] {String} 
 #### return
 * this
