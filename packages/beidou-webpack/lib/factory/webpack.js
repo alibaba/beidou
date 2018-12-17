@@ -127,7 +127,7 @@ class WebpackFactory extends Factory {
   addPlugin(...args) {
     if (args.length === 1 && is.string(args[0])) {
       if (this.usePlugin(args[0])) {
-        const plugin =  this.usePlugin(args[0]);
+        const plugin = this.usePlugin(args[0]);
         this.__plugins[plugin.alias] = plugin;
         return this;
       } else {
@@ -141,14 +141,8 @@ class WebpackFactory extends Factory {
       this.__plugins[plugin.alias] = plugin;
       return this;
     }
-    
 
     const pluginObj = new Plugin(...args);
-    if (this.__plugins[pluginObj.alias]) {
-      throw new Error(
-        `${pluginObj.alias} the plugin alias exsit! please change alias.`
-      );
-    }
     this.__plugins[pluginObj.alias] = pluginObj;
     return this;
   }
@@ -166,19 +160,13 @@ class WebpackFactory extends Factory {
   }
 
   setPlugin(...args) {
-    let pluginObj = {}
+    let pluginObj = {};
     if (args.length === 1 && args[0].constructor === Plugin) {
       pluginObj = args[0];
-    }else{
+    } else {
       pluginObj = new Plugin(...args);
     }
-    if(this.__plugins[pluginObj.alias]){
-      this.__plugins[pluginObj.alias] = pluginObj;
-    }else{
-      throw new Error(
-        `${pluginObj.alias} the Plugin not exsit! `
-      );
-    }
+    this.__plugins[pluginObj.alias] = pluginObj;
     return this;
   }
 
@@ -249,20 +237,20 @@ class WebpackFactory extends Factory {
 
 
   setRule(...args) {
-    let ruleObj  = {};
+    let ruleObj = {};
     if (args.length === 1 && args[0].constructor === Rule) {
-      ruleObj = args[0]
-    }else{
+      ruleObj = args[0];
+    } else {
       ruleObj = new Rule(...args);
     }
-    
+
     let exsitRule = this.__rules.find(v => v.alias.toString() === ruleObj.alias.toString());
-    if (!exsitRule) {
-      throw new Error(
-        `Set rule error, ${args.join(',')}`
-      );
+    if (exsitRule) {
+      exsitRule = ruleObj;
+    } else {
+      this.__rules.push(ruleObj);
     }
-    exsitRule = ruleObj;
+
     return this;
   }
 
@@ -273,23 +261,18 @@ class WebpackFactory extends Factory {
   }
 
   useRule(filter) {
-    
     const defineRules = Object.getPrototypeOf(this).__defineRules;
-    if(is.function(filter)){
+    if (is.function(filter)) {
       return filter(Object.values(defineRules));
     }
-    if(is.regexp(filter)){
+    if (is.regexp(filter)) {
       return defineRules[filter.toString()];
     }
-    if(is.string(filter)){
-      
-      return Object.values(defineRules).find((v)=>{
-        return v.options.test.test(filter);
-      });
+    if (is.string(filter)) {
+      return Object.values(defineRules).find(v => v.options.test.test(filter));
     }
 
     return null;
-    
   }
 
   getDefineRules() {
