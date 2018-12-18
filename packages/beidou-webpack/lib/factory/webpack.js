@@ -87,7 +87,7 @@ class WebpackFactory extends Factory {
     } else {
       this.__webpackConfig.module.rules = rules;
     }
-    return this.__webpackConfig;
+    return Object.assign({}, this.__webpackConfig);
   }
 
 
@@ -267,6 +267,13 @@ class WebpackFactory extends Factory {
     }
     if (is.regexp(filter)) {
       return defineRules[filter.toString()];
+    }
+
+    if (is.string(filter)) {
+      const rule = Object.values(defineRules).find(v => v.alias === filter);
+      if (rule) {
+        return rule;
+      }
     }
     if (is.string(filter)) {
       return Object.values(defineRules).find(v => v.options.test.test(filter));

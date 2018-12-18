@@ -79,6 +79,8 @@ exports.webpack = {
 
 **custom.configPath**: 先定义 webpack 配置文件路径
 
+#### 配置文件内容示例:
+
 ```js
 // webpack.config.js
 // 配置方案1:
@@ -131,10 +133,8 @@ module.exports = {
     hot: true,
   },
 };
-```
 
-高级自定义配置:
-```js
+// 自定义配置3 :
 // 更多配置方法，可参看单测用例
 module.exports = (app, defaultConfig, dev, target) => {
   const factory = app.webpackFactory;
@@ -187,10 +187,14 @@ module.exports = (app, defaultConfig, dev, target) => {
   return factory.getConfig(); // 返回配置
 
 };
+
 ```
 
+#### 数据结构：
+
 > Class Plugin Struct
-```
+
+```js
 class Plugin {
   object ,      // instance object for webpack plugin
   class,        // class for webpack plugin
@@ -201,15 +205,72 @@ class Plugin {
 ```
 
 > Class Rule Struct
-```
+
+```js
 class Rule {
   opitons,      // initialize config for rule
   alias
 }
+```
+
+## 配置扩展
+
+##### 自定义 Loader:
+```js
+  app.webpackFactory.defineLoader({
+    'babel-loader',
+    require.resolve('babel-loader')
+  })
+```
+
+##### 自定义 Rule:
+```js
+  app.webpackFactory.defineRule({
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: app.webpackFactory.useLoader('babel-loader'), //使用自定义loader
+        options: {
+          babelrc: false,
+          presets: ['preset-typescript'],
+        },
+      },
+  },'tsx')
+  // 使用自定义Rule增加到webpack项中
+  app.webpackFactory.addRule(
+    app.webpackFactory.useRule('tsx')
+  )
+  // 获取已配置的Rule
+  app.webpackFactory.getRule('tsx'); // return Rule Object
+```
+
+##### 自定义 Plugin:
+```js
+  app.webpackFactory.definePlugin(webpack.NoEmitOnErrorsPlugin,{},'NoEmitOnErrorsPlugin')
+
+  // 使用自定义Plugin增加到webpack项中
+  app.webpackFactory.addPlugin(
+    app.webpackFactory.usePlugin('NoEmitOnErrorsPlugin')
+  )
+  // 直接增加Plugin到webpack中
+  //方式1：
+  app.webpackFactory.addPlugin(webpack.optimize.UglifyJsPlugin, {
+      compress: {
+        warnings: false,
+      },
+    }, 'UglifyJsPlugin')
+  // 方式2:
+  app.webpackFactory.addPlugin( 
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    })
+  )
 
 ```
 
-> app.webpackFactory 提供的函数如下:
+## webpackFactory常用函数说明：
 
 ### 重置配置项: reset(value)
 #### Parameters

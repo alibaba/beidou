@@ -67,7 +67,7 @@ module.exports = (app, entry, dev) => {
     app.webpackFactory.addPlugin('UglifyJsPlugin');
     app.webpackFactory.addPlugin('DefinePlugin');
   } else {
-    app.webpackFactory.getConfig().devServer.hot = true;
+    app.webpackFactory.get('devServer').hot = true;
     app.webpackFactory.setPlugin(
       webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),

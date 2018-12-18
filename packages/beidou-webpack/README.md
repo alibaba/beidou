@@ -134,10 +134,7 @@ module.exports = {
   },
 };
 
-```
-
-> Advanced custom configuration :
-```js
+// Advanced custom configuration :
 // find more example in unittest, please
 module.exports = (app, defaultConfig, dev, target) => {
   const factory = app.webpackFactory;
@@ -192,8 +189,12 @@ module.exports = (app, defaultConfig, dev, target) => {
 };
 
 ```
-> Class Plugin Struct
-```
+
+#### Class Struct
+
+> Class Struct for Plugin
+
+```js
 class Plugin {
   object ,      // instance object for webpack plugin
   class,        // class for webpack plugin
@@ -203,14 +204,74 @@ class Plugin {
 
 ```
 
-> Class Rule Struct
-```
+> Class Struct for Rule
+
+```js
 class Rule {
   opitons,      // initialize config for rule
   alias
 }
 
 ```
+
+## Webpackfactory
+
+##### Define Custom Loader:
+```js
+  app.webpackFactory.defineLoader({
+    'babel-loader',
+    require.resolve('babel-loader')
+  })
+```
+
+##### Define Custom Rule:
+```js
+  app.webpackFactory.defineRule({
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: app.webpackFactory.useLoader('babel-loader'), //used the defined loader.
+        options: {
+          babelrc: false,
+          presets: ['preset-typescript'],
+        },
+      },
+  },'tsx')
+  //add the rule config to webpack factory
+  app.webpackFactory.addRule(
+    app.webpackFactory.useRule('tsx')
+  )
+  //add the rule config to webpack factory
+  app.webpackFactory.getRule('tsx'); // return Rule Object
+```
+
+##### Define Custom Plugin:
+```js
+  app.webpackFactory.definePlugin(webpack.NoEmitOnErrorsPlugin,{},'NoEmitOnErrorsPlugin')
+
+  // add defined plugin to webpack factory
+  app.webpackFactory.addPlugin(
+    app.webpackFactory.usePlugin('NoEmitOnErrorsPlugin')
+  )
+
+  //method 1：
+  app.webpackFactory.addPlugin(webpack.optimize.UglifyJsPlugin, {
+      compress: {
+        warnings: false,
+      },
+    }, 'UglifyJsPlugin')
+  //method 2:
+  app.webpackFactory.addPlugin( 
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    })
+  )
+
+```
+
+
 > app.webpackFactory methods list:
 
 ### reset(value)

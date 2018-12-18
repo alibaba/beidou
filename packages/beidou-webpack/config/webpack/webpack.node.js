@@ -14,13 +14,13 @@ const {
 
 module.exports = (app, entry, dev) => {
   common(app, entry, dev);
-  app.webpackFactory.getConfig().output.libraryTarget = 'commonjs';
-  app.webpackFactory.getConfig().target = 'node';
-  app.webpackFactory.getConfig().externals = /^react(-dom)?$/;
-  app.webpackFactory.getConfig().node = {
+  app.webpackFactory.get('output').libraryTarget = 'commonjs';
+  app.webpackFactory.set('target', 'node');
+  app.webpackFactory.set('externals', /^react(-dom)?$/);
+  app.webpackFactory.set('node', {
     __filename: true,
     __dirname: true,
-  };
+  });
 
   [
     {
