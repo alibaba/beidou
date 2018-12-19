@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        },
+        "useBuiltIns": "entry"
+      }
+    ],
+    [
+      "babel-preset-rax",
+      {
+        "development": true
+      }
+    ]
+  ]
+}
