@@ -79,9 +79,11 @@ exports.webpack = {
 
 **custom.configPath**: 先定义 webpack 配置文件路径
 
+#### 配置文件内容示例:
+
 ```js
 // webpack.config.js
-
+// 配置方案1:
 module.exports = (app, defaultConfig, dev, target) => {
   return {
     ...defaultConfig,
@@ -97,7 +99,283 @@ module.exports = (app, defaultConfig, dev, target) => {
     //something else to override
   };
 };
+
+// 配置方案2:
+// 此方案将直接覆盖原有配置
+module.exports = {
+  output: {
+    path: './build',
+    filename: '[name].js?[hash]',
+    chunkFilename: '[name].js',
+    publicPath: './build',
+  },
+
+  resolve: {
+    extensions: ['.json', '.js', '.jsx'],
+  },
+
+  devServer: {
+    contentBase: false,
+    port: 6002,
+    noInfo: true,
+    quiet: false,
+    clientLogLevel: 'warning',
+    lazy: false,
+    watchOptions: {
+      aggregateTimeout: 300,
+    },
+    headers: { 'X-Custom-Header': 'yes' },
+    stats: {
+      colors: true,
+      chunks: false,
+    },
+    publicPath: '/build',
+    hot: true,
+  },
+};
+
 ```
+
+#### FAQ:
+使用配置工厂自定义配置项,操作方式如下例
+```js
+
+module.exports = (app, defaultConfig, dev, target) => {
+  
+  // 从app中获取配置工厂,factory提供的函数下面有列出
+  const factory = app.webpackFactory;
+
+  // 设置 webpack output 的值，方式如下:
+  factory.set('output',{
+    {
+      path: outputPath,
+      filename: '[name].js?[hash]',
+      chunkFilename: '[name].js',
+      publicPath: '/build/',
+    }
+  })
+  // webpack output 值修改
+  factory.get('output').chunkFilename = '[name].modify.js';
+
+
+  // 增加webpack plugin的配置
+  // 增加了 UglifyJsPlugin 配置，并定义该插件别名为 'UglifyJsPlugin'
+  factory.addPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: false,
+      }
+    },
+    'UglifyJsPlugin' , // 可空,默认使用 构建函数名
+  )
+
+  // 根据别名，修改已配置的webpack plugin
+  factory.setPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: true,
+      }
+    },
+    'UglifyJsPlugin'
+  );
+  // or 修改方式也可使用如下方式
+  factory.getPlugin('UglifyJsPlugin').options = {
+    compress: {
+        warnings: true,
+      }
+  }
+
+  // 查找并修改已配置的webpack rule 
+  // 查找满足 .ts 的rule配置，仅且返回一个满足的rule
+  const ruleObj = factory.getRule('.ts');
+  ruleObj.options = {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 
+        app.webpackFactory.useLoader('babel-loader')/** 如有已定义的loader，则使用自定义loader **/ || 'babel-loader', 
+        options: {
+          babelrc: false,
+          presets: ['preset-typescript'],
+        },
+      },
+  }
+  // 定义loader的方式
+  app.webpackFactory.defineLoader({
+    'babel-loader',
+    require.resolve('babel-loader')
+  })
+
+  // 生成其他环境的webpack配置
+  const factoryInProd = factory.env('prod');
+  factoryInProd.addPlugin(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+    },
+  }))
+
+  return factory.getConfig(); // 返回配置
+  // or 返回 prod 环境的配置
+  // return factoryInProd.getConfig()
+
+};
+
+
+```
+
+#### 数据结构：
+
+> Class Plugin Struct
+
+```js
+class Plugin {
+  object ,      // instance object for webpack plugin
+  class,        // class for webpack plugin
+  opitons,      // initialize config
+  alias
+}
+
+```
+
+> Class Rule Struct
+
+```js
+class Rule {
+  opitons,      // initialize config for rule
+  alias
+}
+```
+
+## webpackFactory常用函数说明：
+
+### 重置配置项: reset(value)
+#### Parameters
+* [value] {Object}
+
+#### return
+* this
+
+### 设置配置项: set(key,value) 
+####  Parameters
+* key {String}
+* value {*}
+
+#### return
+* this
+
+### 获取配置项: get(key) 
+####  Parameters
+* key {String}
+
+#### return
+* {*}
+
+### 获取{key}配置实例:  env(key) 
+####  Parameters
+* key {String} 配置实例标识
+
+#### return
+* {Object}
+
+### 获取webpack配置: getConfig() 
+####  Parameters
+
+#### return
+* {Object}
+
+
+### 增加插件配置: addPlugin(args, options,alias) 
+#### Parameters
+* args {Object|Class|String} 插件实例|构造函数|已定义的插件名
+* [options] {Object} 插件配置项
+* [alias] {String} 插件别名
+
+#### return
+* this
+
+
+### getPlugin(filter) 获取插件配置
+#### Parameters
+* filter {String|Function} 别名|自定义函数
+
+#### return
+* {Plugin}
+
+### 设置插件配置: setPlugin(args, options,alias) 
+
+#### Parameter
+* args {Object|Class}  插件实例|构造函数
+* [options] {Object} 插件配置项
+* [alias] {String} 插件别名
+
+#### return 
+* this
+
+### 定义插件: definePlugin(args, options,alias)
+#### Parameters
+* args {Object|Class}  插件实例|构造函数
+* [options] {Object} 插件配置项
+* [alias] {String} 插件别名
+#### return
+* this
+
+### 获取定义的插件: usePlugin(alias)
+#### Parameters
+* alias {String|Fucntion|Regexp}  插件别名|自定义函数|正则
+#### return
+* {Plugin}
+
+
+### 增加配置规则: addRule(options,alias)
+#### Parameters
+* options {Object|Rule}  配置项|Rule实例
+* [alias] {String} 别名
+#### return
+* this
+
+### 设置配置规则: setRule(options,alias)
+#### Parameters
+* options {Object|Rule}  配置项|Rule实例
+* [alias] {String} 别名
+#### return
+* this
+
+### 获取配置规则: getRule(filter)
+#### Parameters
+* filter {String|Function|Regexp}  配置项|自定义函数|正则
+#### return
+* {Rule}
+
+### 定义配置规则: defineRule(options,alias)
+#### Parameters
+* options {Object}  配置项
+* [alias] {String} 别名
+#### return
+* this
+
+### 获取定义的配置规则: useRule(alias)
+#### Parameters
+* alias {String|Function|Regexp} 别名|自定义函数|正则
+
+#### return
+* {Rule}
+
+### 定义Loader: defineLoader(alias,loader)
+#### Parameters
+* alias {String}  别名
+* [loader] {String} 路径,默认值为 require.resolve(params1)
+#### return
+* this
+
+### 获取定义Loader: useLoader(alias)
+#### Parameters
+* alias {String}  别名
+#### return
+* {path}
+
+
 
 * **app**: `BeidouApplication` 示例, 通常用来读取应用的全局配置项。
 

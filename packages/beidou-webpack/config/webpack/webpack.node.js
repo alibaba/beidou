@@ -13,15 +13,16 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
-  const config = common(app, entry, dev);
-  config.output.libraryTarget = 'commonjs';
-  config.target = 'node';
-  config.externals = /^react(-dom)?$/;
-  config.node = {
+  common(app, entry, dev);
+  app.webpackFactory.get('output').libraryTarget = 'commonjs';
+  app.webpackFactory.set('target', 'node');
+  app.webpackFactory.set('externals', /^react(-dom)?$/);
+  app.webpackFactory.set('node', {
     __filename: true,
     __dirname: true,
-  };
-  config.module.rules = [
+  });
+
+  [
     {
       test: /\.(js|jsx|mjs)$/,
       exclude: /node_modules/,
@@ -41,36 +42,39 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ];
-  config.plugins.push(
-    new ExtractTextPlugin('[name].css'),
-    new webpack.optimize.CommonsChunkPlugin({
+  ].forEach((v) => {
+    app.webpackFactory.defineRule(v).addRule(v);
+  });
+
+  app.webpackFactory
+    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .addPlugin('ExtractTextPlugin')
+    .definePlugin(webpack.optimize.CommonsChunkPlugin, {
       name: 'manifest',
       filename: 'manifest.js',
-    })
-  );
+    }, 'CommonsChunkPlugin')
+    .addPlugin('CommonsChunkPlugin');
+
+  app.webpackFactory.definePlugin(
+    webpack.DefinePlugin, {
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __CLIENT__: false,
+      __DEV__: false,
+      __SERVER__: true,
+    }, 'DefinePlugin');
 
   if (!dev) {
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        __CLIENT__: false,
-        __DEV__: false,
-        __SERVER__: true,
-      }),
-      new MinifyPlugin()
-    );
+    app.webpackFactory.addPlugin('DefinePlugin');
+    app.webpackFactory.addPlugin(MinifyPlugin, null, 'MinifyPlugin');
   } else {
-    config.plugins.push(
-      new webpack.NamedModulesPlugin(),
-      new webpack.DefinePlugin({
+    app.webpackFactory.addPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
+    app.webpackFactory.setPlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: false,
         __DEV__: true,
         __SERVER__: true,
-      })
-    );
+      }, 'DefinePlugin');
   }
-
-  return config;
+  return app.webpackFactory.getConfig();
 };

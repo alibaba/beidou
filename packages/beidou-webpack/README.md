@@ -83,7 +83,7 @@ Config fields `output`, `resolve`, `devServer` are same as what you know in [web
 
 ```js
 // webpack.config.js
-
+// Example 1:
 module.exports = (app, defaultConfig, dev, target) => {
   return {
     ...defaultConfig,
@@ -99,9 +99,283 @@ module.exports = (app, defaultConfig, dev, target) => {
     //something else to override
   };
 };
+
+// Example 2:
+// Note: The config will cover the default config
+module.exports = {
+  output: {
+    path: './build',
+    filename: '[name].js?[hash]',
+    chunkFilename: '[name].js',
+    publicPath: './build',
+  },
+
+  resolve: {
+    extensions: ['.json', '.js', '.jsx'],
+  },
+
+  devServer: {
+    contentBase: false,
+    port: 6002,
+    noInfo: true,
+    quiet: false,
+    clientLogLevel: 'warning',
+    lazy: false,
+    watchOptions: {
+      aggregateTimeout: 300,
+    },
+    headers: { 'X-Custom-Header': 'yes' },
+    stats: {
+      colors: true,
+      chunks: false,
+    },
+    publicPath: '/build',
+    hot: true,
+  },
+};
 ```
 
-* **app**: the `BeidouApplication` instance, usually used to access server config.
+#### FAQ:
+使用配置工厂自定义配置项,操作方式如下例
+```js
+
+module.exports = (app, defaultConfig, dev, target) => {
+  
+  // get the webpack factory
+  const factory = app.webpackFactory;
+
+  // set the value of output in webpack :
+  factory.set('output',{
+    {
+      path: outputPath,
+      filename: '[name].js?[hash]',
+      chunkFilename: '[name].js',
+      publicPath: '/build/',
+    }
+  })
+  // modify the output value
+  factory.get('output').chunkFilename = '[name].modify.js';
+
+
+  // add webpack plugin config list
+  // add UglifyJsPlugin config into plugin of webpack
+  factory.addPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: false,
+      }
+    },
+    'UglifyJsPlugin' ,
+  )
+
+  // modify the UglifyJsPlugin config
+  factory.setPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: true,
+      }
+    },
+    'UglifyJsPlugin'
+  );
+  // or another method
+  factory.getPlugin('UglifyJsPlugin').options = {
+    compress: {
+        warnings: true,
+      }
+  }
+
+  // modify the rule of webpack
+  const ruleObj = factory.getRule('.ts');
+  ruleObj.options = {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 
+        app.webpackFactory.useLoader('babel-loader')/** if had the defined loader，use it **/ || 'babel-loader', 
+        options: {
+          babelrc: false,
+          presets: ['preset-typescript'],
+        },
+      },
+  }
+  // define the loader
+  app.webpackFactory.defineLoader({
+    'babel-loader',
+    require.resolve('babel-loader')
+  })
+
+  // generate prod webpack factory
+  const factoryInProd = factory.env('prod');
+  factoryInProd.addPlugin(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+    },
+  }))
+
+  return factory.getConfig(); // return webpack config
+  // or return webpack config for prod
+  // return factoryInProd.getConfig()
+
+};
+
+
+```
+
+#### Class Struct
+
+> Class Struct for Plugin
+
+```js
+class Plugin {
+  object ,      // instance object for webpack plugin
+  class,        // class for webpack plugin
+  opitons,      // initialize config
+  alias
+}
+
+```
+
+> Class Struct for Rule
+
+```js
+class Rule {
+  opitons,      // initialize config for rule
+  alias
+}
+
+```
+
+> app.webpackFactory methods list:
+
+### reset(value)
+#### Parameters
+* [value] {Object}
+
+#### return
+* this
+
+###  set(key,value) 
+####  Parameters
+* key {String}
+* value {*}
+
+#### return
+* this
+
+###  get(key) 
+####  Parameters
+* key {String}
+
+#### return
+* {*}
+
+### generate {key} factory for webpack:  env(key) 
+####  Parameters
+* key {String} factory flag
+
+#### return
+* {Object}
+
+### Get the final config for webpack : getConfig() 
+####  Parameters
+#### return
+*  {Object}
+
+
+### addPlugin(args, options,alias) 
+#### Parameters
+* args {Object|Class|String} 
+* [options] {Object} 
+* [alias] {String} 
+
+#### return
+* this
+
+
+### getPlugin(filter) 
+#### Parameters
+* filter {String|Function}
+
+#### return
+* {Plugin}
+
+### setPlugin(args, options,alias) 
+
+#### Parameter
+* args {Object|Class}  
+* [options] {Object}
+* [alias] {String} 
+
+#### return 
+* this
+
+###  definePlugin(args, options,alias)
+#### Parameters
+* args {Object|Class}  
+* [options] {Object} 
+* [alias] {String} 
+#### return
+* this
+
+###  usePlugin(alias)
+#### Parameters
+* alias {String}
+#### return
+* {Plugin}
+
+
+### addRule(options,alias)
+#### Parameters
+* options {Object|Rule} 
+* [alias] {String} 
+#### return
+* this
+
+###  setRule(options,alias)
+#### Parameters
+* options {Object|Rule}  
+* [alias] {String} 
+#### return
+* this
+
+###  getRule(filter)
+#### Parameters
+* filter {String|Function}  
+#### return
+* {Rule}
+
+### defineRule(options,alias)
+#### Parameters
+* options {Object}
+* [alias] {String}
+#### return
+* this
+
+###  useRule(alias)
+#### Parameters
+* alias {String} 
+
+#### return
+* {Rule}
+
+###  defineLoader(alias,loader)
+#### Parameters
+* alias {String} 
+* [loader] {String} 
+#### return
+* this
+
+###  useLoader(alias)
+#### Parameters
+* alias {String}  
+#### return
+* {String}
+
+
+
+- **app**: the `BeidouApplication` instance, usually used to access server config.
 
 * **defaultConfig**: default webpack config generated by beidou-webpack.
 

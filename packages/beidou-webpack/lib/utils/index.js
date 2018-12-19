@@ -12,6 +12,7 @@ const _ = require('lodash');
 const debug = require('debug')('beidou:webpack');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
+const WebpackFactory = require('../factory/webpack');
 
 const symbol = Symbol.for('webpackServer');
 
@@ -81,7 +82,8 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
   const isDev = app.config.env !== 'prod';
   let webpackConfig = null;
-
+  app.webpackFactory = new WebpackFactory();
+  Object.getPrototypeOf(app.webpackFactory).init();
   const defaultConfigPath = path.join(
     __dirname,
     `../../config/webpack/webpack.${target}.js`
@@ -103,7 +105,6 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   debug('entry auto load as below:\n%o', entry);
 
   webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);
-
   const customConfigPath = getCustomWebpackCfgPath(app);
   // custom config exists
   if (customConfigPath) {
@@ -116,7 +117,6 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
       target
     );
   }
-
   // make sure devServer is provided
   if (!webpackConfig.devServer) {
     webpackConfig.devServer = {

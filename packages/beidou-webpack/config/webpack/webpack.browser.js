@@ -14,8 +14,8 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
-  const config = common(app, entry, dev);
-  config.module.rules = [
+  common(app, entry, dev);
+  [
     {
       test: /\.(js|jsx|mjs)$/,
       exclude: /node_modules/,
@@ -36,43 +36,48 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ];
+  ].forEach((v) => {
+    app.webpackFactory.defineRule(v).addRule(v);
+  });
 
-  config.plugins.push(
-    new ExtractTextPlugin('[name].css'),
-    new webpack.optimize.CommonsChunkPlugin({
+  app.webpackFactory
+    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .addPlugin('ExtractTextPlugin')
+    .definePlugin(webpack.optimize.CommonsChunkPlugin, {
       name: 'manifest',
       filename: 'manifest.js',
-    })
-  );
+    }, 'CommonsChunkPlugin')
+    .addPlugin('CommonsChunkPlugin');
+  app.webpackFactory.definePlugin(
+    webpack.optimize.UglifyJsPlugin, {
+      compress: {
+        warnings: false,
+      },
+    }, 'UglifyJsPlugin');
+
+  app.webpackFactory.definePlugin(
+    webpack.DefinePlugin, {
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __CLIENT__: true,
+      __DEV__: false,
+      __SERVER__: false,
+    }, 'DefinePlugin');
 
   if (!dev) {
-    config.plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      }),
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        __CLIENT__: true,
-        __DEV__: false,
-        __SERVER__: false,
-      })
-    );
+    app.webpackFactory.addPlugin('UglifyJsPlugin');
+    app.webpackFactory.addPlugin('DefinePlugin');
   } else {
-    config.devServer.hot = true;
-    config.plugins.push(
-      new webpack.DefinePlugin({
+    app.webpackFactory.get('devServer').hot = true;
+    app.webpackFactory.setPlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: true,
         __DEV__: true,
         __SERVER__: false,
-      }),
-      new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
-    );
-  }
+      }, 'DefinePlugin');
 
-  return config;
+    app.webpackFactory.setPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
+    app.webpackFactory.setPlugin(webpack.HotModuleReplacementPlugin, null, 'HotModuleReplacementPlugin');
+  }
+  return app.webpackFactory.getConfig();
 };
