@@ -10,6 +10,7 @@ before_install:
   - rm -rf ./examples/
 install:
   - npm install
+  - npm install -g codecov
 script:
   # TODO: Use 'lerna run ci' instead
   - npm run ci
