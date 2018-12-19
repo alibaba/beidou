@@ -100,7 +100,7 @@ module.exports = (app, defaultConfig, dev, target) => {
   };
 };
 
-// Exapple 2:
+// Example 2:
 // Note: The config will cover the default config
 module.exports = {
   output: {
