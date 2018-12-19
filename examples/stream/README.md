@@ -1,4 +1,4 @@
-# Beidou Simple Example
+# Beidou Stream Example
 
 =================
 
@@ -16,11 +16,11 @@ $ npm start
 
 then navigate to [http://127.0.0.1:6001/](http://127.0.0.1:6001/)
 
-## Basic Usage
+## Why need stream render ?
 
-- add a new page in /client folder, eg. `/client/test.jsx`
-- start app: `npm start`
-- navigate to [http://127.0.0.1:6001/test](http://127.0.0.1:6001/test)
+### Signifiently reduce TTFB
+
+In this example, TTFB reduced from ~120ms to ~20ms when stream render feature enabled.
 
 ## License
 

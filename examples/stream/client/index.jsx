@@ -20,12 +20,7 @@ export default class View extends React.Component {
   render() {
     const { helper, Render, stream } = this.props;
     const streams = [...new Array(10)].map((v, i) => (
-      <Render
-        id={i}
-        key={i}
-        stream={!!stream}
-        app={<App stream index={i} />}
-      />
+      <Render id={i} key={i} stream={!!stream} app={<App stream index={i} />} />
     ));
     return (
       <html>
@@ -35,7 +30,7 @@ export default class View extends React.Component {
         </head>
         <body>
           <h1>RenderToNodeStream Demo</h1>
-          <Render id="timing" stream={!!stream} >
+          <Render id="timing" stream={!!stream}>
             <Timing />
           </Render>
           {streams}
@@ -48,15 +43,9 @@ export default class View extends React.Component {
 }
 
 if (__CLIENT__) {
-  ReactDOM.hydrate(
-    <Timing />,
-    document.getElementById('timing'),
-  );
+  ReactDOM.hydrate(<Timing />, document.getElementById('timing'));
 
   [...new Array(10)].forEach((v, i) => {
-    ReactDOM.hydrate(
-      <App stream index={i} />,
-      document.getElementById(i),
-    );
+    ReactDOM.hydrate(<App stream index={i} />, document.getElementById(i));
   });
 }
