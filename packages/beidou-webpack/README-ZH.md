@@ -134,27 +134,32 @@ module.exports = {
   },
 };
 
-// 自定义配置3 :
-// 更多配置方法，可参看单测用例
+```
+
+#### FAQ:
+使用配置工厂自定义配置项,操作方式如下例
+```js
+
 module.exports = (app, defaultConfig, dev, target) => {
+  
+  // 从app中获取配置工厂,factory提供的函数下面有列出
   const factory = app.webpackFactory;
+
+  // 设置 webpack output 的值，方式如下:
   factory.set('output',{
     {
       path: outputPath,
       filename: '[name].js?[hash]',
-      chunkFilename: '[name].modify.js',
+      chunkFilename: '[name].js',
       publicPath: '/build/',
     }
   })
-  // 修改默认插件配置
-  factory.setPlugin('CommonsChunkPlugin',
-    factory.usePlugin('CommonsChunkPlugin'), // 如不修改，可传null
-    {
-      name: 'vendor',
-      filename: 'manifest.js',
-    }
-  );
+  // webpack output 值修改
+  factory.get('output').chunkFilename = '[name].modify.js';
 
+
+  // 增加webpack plugin的配置
+  // 增加了 UglifyJsPlugin 配置，并定义该插件别名为 'UglifyJsPlugin'
   factory.addPlugin(
     webpack.optimize.UglifyJsPlugin,
     {
@@ -162,21 +167,48 @@ module.exports = (app, defaultConfig, dev, target) => {
         warnings: false,
       }
     },
-    'UglifyJsPlugin' , // 可空
+    'UglifyJsPlugin' , // 可空,默认使用 构建函数名
   )
 
-  factory.addRule({
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        babelrc: false,
-        presets: ['beidou-client'],
-      },
+  // 根据别名，修改已配置的webpack plugin
+  factory.setPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: true,
+      }
     },
+    'UglifyJsPlugin'
+  );
+  // or 修改方式也可使用如下方式
+  factory.getPlugin('UglifyJsPlugin').options = {
+    compress: {
+        warnings: true,
+      }
+  }
+
+  // 查找并修改已配置的webpack rule 
+  // 查找满足 .ts 的rule配置，仅且返回一个满足的rule
+  const ruleObj = factory.getRule('.ts');
+  ruleObj.options = {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 
+        app.webpackFactory.useLoader('babel-loader')/** 如有已定义的loader，则使用自定义loader **/ || 'babel-loader', 
+        options: {
+          babelrc: false,
+          presets: ['preset-typescript'],
+        },
+      },
+  }
+  // 定义loader的方式
+  app.webpackFactory.defineLoader({
+    'babel-loader',
+    require.resolve('babel-loader')
   })
 
+  // 生成其他环境的webpack配置
   const factoryInProd = factory.env('prod');
   factoryInProd.addPlugin(new webpack.optimize.UglifyJsPlugin({
     compress: {
@@ -185,8 +217,11 @@ module.exports = (app, defaultConfig, dev, target) => {
   }))
 
   return factory.getConfig(); // 返回配置
+  // or 返回 prod 环境的配置
+  // return factoryInProd.getConfig()
 
 };
+
 
 ```
 
@@ -211,63 +246,6 @@ class Rule {
   opitons,      // initialize config for rule
   alias
 }
-```
-
-## 配置扩展
-
-##### 自定义 Loader:
-```js
-  app.webpackFactory.defineLoader({
-    'babel-loader',
-    require.resolve('babel-loader')
-  })
-```
-
-##### 自定义 Rule:
-```js
-  app.webpackFactory.defineRule({
-      test: /\.tsx?$/,
-      exclude: /node_modules/,
-      use: {
-        loader: app.webpackFactory.useLoader('babel-loader'), //使用自定义loader
-        options: {
-          babelrc: false,
-          presets: ['preset-typescript'],
-        },
-      },
-  },'tsx')
-  // 使用自定义Rule增加到webpack项中
-  app.webpackFactory.addRule(
-    app.webpackFactory.useRule('tsx')
-  )
-  // 获取已配置的Rule
-  app.webpackFactory.getRule('tsx'); // return Rule Object
-```
-
-##### 自定义 Plugin:
-```js
-  app.webpackFactory.definePlugin(webpack.NoEmitOnErrorsPlugin,{},'NoEmitOnErrorsPlugin')
-
-  // 使用自定义Plugin增加到webpack项中
-  app.webpackFactory.addPlugin(
-    app.webpackFactory.usePlugin('NoEmitOnErrorsPlugin')
-  )
-  // 直接增加Plugin到webpack中
-  //方式1：
-  app.webpackFactory.addPlugin(webpack.optimize.UglifyJsPlugin, {
-      compress: {
-        warnings: false,
-      },
-    }, 'UglifyJsPlugin')
-  // 方式2:
-  app.webpackFactory.addPlugin( 
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-    })
-  )
-
 ```
 
 ## webpackFactory常用函数说明：

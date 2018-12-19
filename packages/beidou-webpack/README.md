@@ -133,28 +133,32 @@ module.exports = {
     hot: true,
   },
 };
+```
 
-// Advanced custom configuration :
-// find more example in unittest, please
+#### FAQ:
+使用配置工厂自定义配置项,操作方式如下例
+```js
+
 module.exports = (app, defaultConfig, dev, target) => {
+  
+  // get the webpack factory
   const factory = app.webpackFactory;
+
+  // set the value of output in webpack :
   factory.set('output',{
     {
       path: outputPath,
       filename: '[name].js?[hash]',
-      chunkFilename: '[name].modify.js',
+      chunkFilename: '[name].js',
       publicPath: '/build/',
     }
   })
-  // set default plugin config
-  factory.setPlugin('CommonsChunkPlugin',
-    factory.usePlugin('CommonsChunkPlugin'), 
-    {
-      name: 'vendor',
-      filename: 'manifest.js',
-    }
-  );
+  // modify the output value
+  factory.get('output').chunkFilename = '[name].modify.js';
 
+
+  // add webpack plugin config list
+  // add UglifyJsPlugin config into plugin of webpack
   factory.addPlugin(
     webpack.optimize.UglifyJsPlugin,
     {
@@ -162,21 +166,47 @@ module.exports = (app, defaultConfig, dev, target) => {
         warnings: false,
       }
     },
-    'UglifyJsPlugin' , // if not pass, use the default value
+    'UglifyJsPlugin' ,
   )
 
-  factory.addRule({
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        babelrc: false,
-        presets: ['beidou-client'],
-      },
+  // modify the UglifyJsPlugin config
+  factory.setPlugin(
+    webpack.optimize.UglifyJsPlugin,
+    {
+      compress: {
+        warnings: true,
+      }
     },
+    'UglifyJsPlugin'
+  );
+  // or another method
+  factory.getPlugin('UglifyJsPlugin').options = {
+    compress: {
+        warnings: true,
+      }
+  }
+
+  // modify the rule of webpack
+  const ruleObj = factory.getRule('.ts');
+  ruleObj.options = {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 
+        app.webpackFactory.useLoader('babel-loader')/** if had the defined loader，use it **/ || 'babel-loader', 
+        options: {
+          babelrc: false,
+          presets: ['preset-typescript'],
+        },
+      },
+  }
+  // define the loader
+  app.webpackFactory.defineLoader({
+    'babel-loader',
+    require.resolve('babel-loader')
   })
 
+  // generate prod webpack factory
   const factoryInProd = factory.env('prod');
   factoryInProd.addPlugin(new webpack.optimize.UglifyJsPlugin({
     compress: {
@@ -184,9 +214,12 @@ module.exports = (app, defaultConfig, dev, target) => {
     },
   }))
 
-  return factory.getConfig(); // return the final config for webpack
+  return factory.getConfig(); // return webpack config
+  // or return webpack config for prod
+  // return factoryInProd.getConfig()
 
 };
+
 
 ```
 
@@ -213,64 +246,6 @@ class Rule {
 }
 
 ```
-
-## Webpackfactory
-
-##### Define Custom Loader:
-```js
-  app.webpackFactory.defineLoader({
-    'babel-loader',
-    require.resolve('babel-loader')
-  })
-```
-
-##### Define Custom Rule:
-```js
-  app.webpackFactory.defineRule({
-      test: /\.tsx?$/,
-      exclude: /node_modules/,
-      use: {
-        loader: app.webpackFactory.useLoader('babel-loader'), //used the defined loader.
-        options: {
-          babelrc: false,
-          presets: ['preset-typescript'],
-        },
-      },
-  },'tsx')
-  //add the rule config to webpack factory
-  app.webpackFactory.addRule(
-    app.webpackFactory.useRule('tsx')
-  )
-  //add the rule config to webpack factory
-  app.webpackFactory.getRule('tsx'); // return Rule Object
-```
-
-##### Define Custom Plugin:
-```js
-  app.webpackFactory.definePlugin(webpack.NoEmitOnErrorsPlugin,{},'NoEmitOnErrorsPlugin')
-
-  // add defined plugin to webpack factory
-  app.webpackFactory.addPlugin(
-    app.webpackFactory.usePlugin('NoEmitOnErrorsPlugin')
-  )
-
-  //method 1：
-  app.webpackFactory.addPlugin(webpack.optimize.UglifyJsPlugin, {
-      compress: {
-        warnings: false,
-      },
-    }, 'UglifyJsPlugin')
-  //method 2:
-  app.webpackFactory.addPlugin( 
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-    })
-  )
-
-```
-
 
 > app.webpackFactory methods list:
 

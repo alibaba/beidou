@@ -1,7 +1,7 @@
 'use strict';
 
-const helper = require('../utils');
 const webpack = require('webpack');
+const helper = require('../utils');
 
 module.exports = (app, target = 'browser') => {
   helper.injectPlugin(app);
