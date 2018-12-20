@@ -20,3 +20,4 @@ packages/*/test/**/logs/
 packages/*/test/**/run/
 packages/*/yarn.lock
 package-lock.json
+.nyc_output/
