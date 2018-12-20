@@ -28,19 +28,18 @@ class WebpackFactory extends Factory {
    */
   env(env) {
     if (!env) {
-      throw new Error(
-        'Env param is required!'
-      );
+      throw new Error('Env param is required!');
     }
     const factories = Object.getPrototypeOf(this).__envFactories;
     if (factories[env]) {
       return factories[env];
     } else {
       const factory = new WebpackFactory(
-        this.__webpackConfig,
-        this.__plugins,
-        this.__rules
+        Object.assign({}, this.__webpackConfig),
+        Object.assign({}, this.__plugins),
+        [].concat(this.__rules)
       );
+      factory.env = env;
       Object.getPrototypeOf(this).__envFactories[env] = factory;
       return factory;
     }
@@ -94,7 +93,6 @@ class WebpackFactory extends Factory {
     return Object.assign({}, this.__webpackConfig);
   }
 
-
   set(key, config) {
     this.__webpackConfig[key] = config;
     return this;
@@ -135,9 +133,7 @@ class WebpackFactory extends Factory {
         this.__plugins[plugin.alias] = plugin;
         return this;
       } else {
-        throw new Error(
-          `${args[0]} the plugin alias not exsit! `
-        );
+        throw new Error(`${args[0]} the plugin alias not exsit! `);
       }
     }
     if (args.length === 1 && args[0].constructor === Plugin) {
@@ -162,9 +158,7 @@ class WebpackFactory extends Factory {
       }
       return null;
     } else {
-      throw new Error(
-        'get plugin param type exception!'
-      );
+      throw new Error('get plugin param type exception!');
     }
   }
 
@@ -192,9 +186,7 @@ class WebpackFactory extends Factory {
     } else if (is.function(filter)) {
       return filter(Object.values(definePlugins));
     } else {
-      throw new Error(
-        'use plugin param type exception!'
-      );
+      throw new Error('use plugin param type exception!');
     }
   }
 
@@ -206,7 +198,6 @@ class WebpackFactory extends Factory {
     this.__plugins = {};
   }
 
-
   addRule(...args) {
     if (args.length === 1 && !is.object(args[0])) {
       const alias = args[0];
@@ -214,9 +205,7 @@ class WebpackFactory extends Factory {
         this.__rules.push(this.useRule(alias));
         return this;
       } else {
-        throw new Error(
-          `${args[0]} the rule alias not exsit! `
-        );
+        throw new Error(`${args[0]} the rule alias not exsit! `);
       }
     }
 
@@ -232,7 +221,9 @@ class WebpackFactory extends Factory {
 
   getRule(params) {
     if (is.string(params)) {
-      return this.__rules.find(v => v.options.test.test(params) === true);
+      return this.__rules.find(
+        v => v.alias === params || v.options.test.test(params) === true
+      );
     } else if (is.function(params)) {
       for (const rule of this.__rules) {
         if (params(rule)) {
@@ -241,15 +232,13 @@ class WebpackFactory extends Factory {
       }
       return null;
     } else if (is.regexp(params)) {
-      return this.__rules.find(v =>
-        v.options.test.toString() === params.toString());
-    } else {
-      throw new Error(
-        'get rule param type exception!'
+      return this.__rules.find(
+        v => v.options.test.toString() === params.toString()
       );
+    } else {
+      throw new Error('get rule param type exception!');
     }
   }
-
 
   setRule(...args) {
     let ruleObj = {};
@@ -259,8 +248,9 @@ class WebpackFactory extends Factory {
       ruleObj = new Rule(...args);
     }
 
-    let exsitRule = this.__rules.find(v =>
-      v.alias.toString() === ruleObj.alias.toString());
+    let exsitRule = this.__rules.find(
+      v => v.alias.toString() === ruleObj.alias.toString()
+    );
     if (exsitRule) {
       exsitRule = ruleObj;
     } else {
@@ -306,10 +296,9 @@ class WebpackFactory extends Factory {
     this.__rules = [];
   }
 
-
   defineLoader(name, resolve) {
-    Object.getPrototypeOf(this)
-      .__defineloaders[name] = resolve || require.resolve(name);
+    Object.getPrototypeOf(this).__defineloaders[name] =
+      resolve || require.resolve(name);
     return this;
   }
 
