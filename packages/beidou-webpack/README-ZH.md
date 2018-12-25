@@ -136,8 +136,108 @@ module.exports = {
 
 ```
 
-#### FAQ:
-使用配置工厂自定义配置项,操作方式如下例
+### 常见配置问题
+
+#### 如何新增 rule ？
+
+```js
+module.exports = (app, defaultConfig, dev, target) => {
+  // 获取配置工厂
+  const factory = app.webpackFactory;
+
+  factory.addRule({
+    test: /.ts/,
+    exclude: /node_modules/,
+    use: 'ts-loader',
+  });
+
+  // 在上述变更后重新生产配置
+  return factory.getConfig();
+};
+```
+
+#### 如何在已有 rule 上修改？
+
+```js
+module.exports = (app, defaultConfig, dev, target) => {
+  // 获取配置工厂
+  const factory = app.webpackFactory;
+
+  const rule = factory.getRule(/.ts/);
+  // 或者
+  // const rule = factory.getRule('.ts');
+  // const rule = factory.getRule((r) => {
+  //   return r.test.test('.ts');
+  // });
+
+  rule.use = {
+    loader: 'ts-loader',
+    options: {
+      // some options
+    }
+  }
+
+  // 在上述变更后重新生产配置
+  return factory.getConfig();
+};
+```
+
+#### 如何新增 Plugin ？
+
+```js
+module.exports = (app, defaultConfig, dev, target) => {
+  // 获取配置工厂
+  const factory = app.webpackFactory;
+  const webpack = factory.webpack;
+  factory.addPlugin(webpack.DefinePlugin, {
+    __FOO__: 'bar',
+  });
+
+  // 在上述变更后重新生产配置
+  return factory.getConfig();
+};
+```
+
+#### 如何修改已有Plugin配置 ？
+
+```js
+module.exports = (app, defaultConfig, dev, target) => {
+  // 获取配置工厂
+  const factory = app.webpackFactory;
+  const plugin = factory.getPlugin('DefinePlugin');
+  plugin.options = {
+    __DEV__: false,
+  }
+
+  // 在上述变更后重新生产配置
+  return factory.getConfig();
+};
+```
+内置所有Plugin和获取方式：
+
+| Plugin | alias |
+|:--|:--|
+|DefinePlugin| 'DefinePlugin' |
+|UglifyJsPlugin| 'UglifyJsPlugin' |
+|NamedModulesPlugin| 'NamedModulesPlugin' |
+|HotModuleReplacementPlugin| 'HotModuleReplacementPlugin' |
+
+默认仅获取匹配的 **一项**，复杂场景需自行遍历查询
+
+`getPlugin` 返回 PluginConfig 对象:
+
+```
+{
+  class: DefinePlugin， // 构造函数
+  options: {} // 构造参数
+  instance: new DefinePlugin({}) // instance 优先，配置后 class 和 options自动失效
+}
+```
+
+#### 其他使用方式
+
+使用配置工厂自定义配置项: 
+
 ```js
 
 module.exports = (app, defaultConfig, dev, target) => {
@@ -195,7 +295,7 @@ module.exports = (app, defaultConfig, dev, target) => {
       exclude: /node_modules/,
       use: {
         loader: 
-        app.webpackFactory.useLoader('babel-loader')/** 如有已定义的loader，则使用自定义loader **/ || 'babel-loader', 
+        factory.useLoader('babel-loader')/** 如有已定义的loader，则使用自定义loader **/ || 'babel-loader', 
         options: {
           babelrc: false,
           presets: ['preset-typescript'],
@@ -203,7 +303,7 @@ module.exports = (app, defaultConfig, dev, target) => {
       },
   }
   // 定义loader的方式
-  app.webpackFactory.defineLoader({
+  factory.defineLoader({
     'babel-loader',
     require.resolve('babel-loader')
   })
@@ -221,7 +321,6 @@ module.exports = (app, defaultConfig, dev, target) => {
   // return factoryInProd.getConfig()
 
 };
-
 
 ```
 
