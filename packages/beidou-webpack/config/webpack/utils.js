@@ -78,14 +78,14 @@ function getStyleCongfigs(dev) {
   const loaders = [
     {
       test: /\.css$/,
-      exclude: /\.module\.css$/,
+      exclude: /\.m(odule)?\.css$/,
       loader: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [getCssLoaderConfig(dev), postCssLoaderConfig],
       }),
     },
     {
-      test: /\.module\.css$/,
+      test: /\.m(odule)?\.css$/,
       loader: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [getCssLoaderConfig(dev, true), postCssLoaderConfig],
@@ -93,14 +93,14 @@ function getStyleCongfigs(dev) {
     },
     {
       test: /\.less$/,
-      exclude: /\.module\.less$/,
+      exclude: /\.m(odule)?\.less$/,
       use: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [getCssLoaderConfig(dev), postCssLoaderConfig, lessLoaderConfig],
       }),
     },
     {
-      test: /\.module\.less$/,
+      test: /\.m(odule)?\.less$/,
       use: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [
@@ -115,7 +115,7 @@ function getStyleCongfigs(dev) {
     return loaders.concat([
       {
         test: /\.s(c|a)ss$/,
-        exclude: /\.module\.s(c|a)ss$/,
+        exclude: /\.m(odule)?\.s(c|a)ss$/,
         use: ExtractTextPlugin.extract({
           fallback: getStyleFallbackConfig(dev),
           use: [
@@ -128,7 +128,7 @@ function getStyleCongfigs(dev) {
         }),
       },
       {
-        test: /\.module\.s(c|a)ss$/,
+        test: /\.m(odule)?\.s(c|a)ss$/,
         use: ExtractTextPlugin.extract({
           fallback: getStyleFallbackConfig(dev),
           use: [
