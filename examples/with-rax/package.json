@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-rax",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Beidou example with rax",
   "license": "MIT",
   "scripts": {
@@ -14,8 +14,8 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "beidou-cli": "^1.1.0",
-    "beidou-core": "^1.1.0",
-    "beidou-view-rax": "^1.1.0",
+    "beidou-core": "^1.2.0",
+    "beidou-view-rax": "^1.2.0",
     "rax": "^0.5.0",
     "rax-server-renderer": "^0.5.0",
     "rax-text": "^0.5.0",

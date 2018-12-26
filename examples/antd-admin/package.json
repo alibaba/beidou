@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-antd-admin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "beidou antd template",
   "scripts": {
     "start": "beidou start",
@@ -17,7 +17,7 @@
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "beidou-cli": "^1.1.0",
-    "beidou-core": "^1.1.0",
+    "beidou-core": "^1.2.0",
     "classnames": "^2.2.3",
     "color": "^2.0.1",
     "diskdb": "^0.1.17",
