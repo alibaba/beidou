@@ -28,14 +28,15 @@ module.exports = (app, defaultConfig, isDev) => {
     new ExtractTextPlugin('[name].css'),
   ];
 
+  let mode = 'development';
   if (dev) {
-    config.mode = 'development';
     plugins.push(new webpack.HotModuleReplacementPlugin());
   } else {
-    config.mode = 'production';
+    mode = 'production';
   }
 
   const config = {
+    mode,
     devtool: dev ? 'eval' : false,
     context: app.baseDir,
     entry: defaultConfig.entry,
