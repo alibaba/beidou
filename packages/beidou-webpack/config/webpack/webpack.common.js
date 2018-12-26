@@ -18,10 +18,10 @@ module.exports = (app, entry, dev) => {
     strictExportPresence: true,
   };
 
-  const plugins = [];
+  app.webpackFactory.definePlugin(app.IsomorphicPlugin);
   const { universal } = app.config.isomorphic;
   if (universal) {
-    plugins.push(new app.IsomorphicPlugin(universal));
+    app.webpackFactory.addPlugin(app.IsomorphicPlugin, universal);
   }
 
   let finalConfig = {};
@@ -39,8 +39,7 @@ module.exports = (app, entry, dev) => {
     entry,
     output,
     module,
-    plugins,
   };
 
-  return finalConfig;
+  app.webpackFactory.reset(finalConfig);
 };

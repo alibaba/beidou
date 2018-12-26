@@ -29,15 +29,10 @@ module.exports = (app, defaultConfig, isDev) => {
   ];
 
   if (dev) {
+    config.mode = 'development';
     plugins.push(new webpack.HotModuleReplacementPlugin());
   } else {
-    plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      })
-    );
+    config.mode = 'production';
   }
 
   const config = {

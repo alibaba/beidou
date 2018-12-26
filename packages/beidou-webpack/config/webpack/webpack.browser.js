@@ -15,8 +15,9 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
-  const config = common(app, entry, dev);
-  config.module.rules = [
+  const factory = app.webpackFactory;
+  common(app, entry, dev);
+  [
     {
       test: /\.(js|jsx|mjs)$/,
       exclude: /node_modules/,
@@ -37,43 +38,85 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ];
+  ].forEach(v => factory.defineRule(v).addRule(v));
 
-  config.plugins.push(new ExtractTextPlugin('[name].css'));
 
-  if (!dev) {
-    config.mode = 'production';
-    config.plugins.push(
-      new webpack.DefinePlugin({
+  // config.plugins.push(new ExtractTextPlugin('[name].css'));
+
+  // if (!dev) {
+  //   config.mode = 'production';
+  //   config.plugins.push(
+  //     new webpack.DefinePlugin({
+  //       'process.env.NODE_ENV': JSON.stringify('production'),
+  //       'process.env.BABEL_ENV': JSON.stringify('production'),
+  //       __CLIENT__: true,
+  //       __DEV__: false,
+  //       __SERVER__: false,
+  //     })
+  //   );
+  //   config.optimization.minimizer = [
+  //     new UglifyJsPlugin({
+  //       parallel: true,
+  //       extractComments: true,
+  //       uglifyOptions: {
+  //         warnings: false,
+  //       },
+  //     }),
+  //   ];
+  //     }),
+  //     new webpack.HotModuleReplacementPlugin()
+  //   );
+  // }
+  factory
+    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .definePlugin(
+      UglifyJsPlugin, {
+        compress: {
+          warnings: false,
+        },
+      }, 'UglifyJsPlugin')
+    .definePlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('production'),
-        'process.env.BABEL_ENV': JSON.stringify('production'),
         __CLIENT__: true,
         __DEV__: false,
         __SERVER__: false,
-      })
-    );
-    config.optimization.minimizer = [
-      new UglifyJsPlugin({
-        parallel: true,
-        extractComments: true,
-        uglifyOptions: {
-          warnings: false,
-        },
-      }),
-    ];
+      }, 'DefinePlugin');
+
+  factory
+    .addPlugin('ExtractTextPlugin');
+
+  if (!dev) {
+    factory.set('mode', 'production');
+    factory.addPlugin('DefinePlugin');
+
+    factory.set('optimization', {
+      minimizer: [
+        new UglifyJsPlugin({
+          parallel: true,
+          extractComments: true,
+          uglifyOptions: {
+            warnings: false,
+          },
+        }),
+      ],
+    });
   } else {
-    config.devServer.hot = true;
-    config.plugins.push(
-      new webpack.DefinePlugin({
+    factory.set('mode', 'development');
+    factory.get('devServer').hot = true;
+    factory.setPlugin(
+      webpack.DefinePlugin, {
         'process.env.NODE_ENV': JSON.stringify('development'),
         'process.env.BABEL_ENV': JSON.stringify('development'),
         __CLIENT__: true,
         __DEV__: true,
         __SERVER__: false,
-      }),
-      new webpack.HotModuleReplacementPlugin()
-    );
-  }
 
-  return config;
+
+      }, 'DefinePlugin');
+
+    factory.setPlugin(
+      webpack.HotModuleReplacementPlugin, null, 'HotModuleReplacementPlugin');
+  }
+  return factory.getConfig();
 };

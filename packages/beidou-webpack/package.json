@@ -1,6 +1,6 @@
 {
   "name": "beidou-webpack",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "beidou webpack middleware",
   "eggPlugin": {
     "name": "webpack"
@@ -35,6 +35,7 @@
     "fallback-port": "^0.1.7",
     "file-loader": "^1.1.11",
     "glob": "^7.1.2",
+    "is": "^3.2.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.6",
     "lodash": "^4.17.4",
