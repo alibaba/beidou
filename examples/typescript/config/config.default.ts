@@ -1,7 +1,7 @@
 'use strict';
 
 import * as path from 'path';
-import { EggAppConfig, PowerPartial } from 'beidou-core';
+import { EggAppConfig, PowerPartial } from 'beidou';
 
 export default () => {
   const config = {} as PowerPartial<EggAppConfig>;

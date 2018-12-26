@@ -3,7 +3,7 @@
 
 import Contact from '../../../app/service/contact';
 
-declare module 'beidou-core' {
+declare module 'beidou' {
   interface IService {
     contact: Contact;
   }

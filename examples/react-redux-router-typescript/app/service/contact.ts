@@ -1,4 +1,4 @@
-import { Service } from 'beidou-core';
+import { Service } from 'beidou';
 
 export default class ContactService extends Service {
   async getFrom() {

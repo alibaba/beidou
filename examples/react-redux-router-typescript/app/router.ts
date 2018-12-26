@@ -1,4 +1,4 @@
-import { Application } from 'beidou-core';
+import { Application } from 'beidou';
 
 export default (app: Application) => {
   const { controller, router } = app;

@@ -6,7 +6,7 @@ const debug = require('debug')('beidou-cli');
 const { Command } = require('egg-bin');
 const { log } = require('../helper');
 const {
-  getArgvWithDefaultFramework = 'beidou-core',
+  getArgvWithDefaultFramework = 'beidou',
   framework,
   cmdName,
 } = require('../helper');

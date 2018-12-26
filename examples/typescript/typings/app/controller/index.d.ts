@@ -1,10 +1,10 @@
 // This file is created by egg-ts-helper
 // Do not modify this file!!!!!!!!!
 
-import 'beidou-core';
+import 'beidou';
 import ExportHome from '../../../app/controller/home';
 
-declare module 'beidou-core' {
+declare module 'beidou' {
   interface IController {
     home: ExportHome;
   }

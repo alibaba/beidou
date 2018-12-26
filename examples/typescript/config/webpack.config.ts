@@ -1,6 +1,6 @@
 'use strict';
 
-import { EggAppInfo} from 'beidou-core';
+import { EggAppInfo} from 'beidou';
 import { Configuration } from 'webpack';
 
 export default (app: EggAppInfo, defaultConfig: Configuration ): Configuration => {

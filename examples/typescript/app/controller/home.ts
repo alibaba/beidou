@@ -1,4 +1,4 @@
-import { Controller } from 'beidou-core';
+import { Controller } from 'beidou';
 
 export default class HomeController extends Controller {
   public async index() {
