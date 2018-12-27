@@ -5,7 +5,7 @@
 process.traceDeprecation = true;
 
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common');
 const {
   imageLoaderConfig,
@@ -40,7 +40,6 @@ module.exports = (app, entry, dev) => {
     fileLoaderConfig,
   ].forEach(v => factory.defineRule(v).addRule(v));
 
-
   // config.plugins.push(new ExtractTextPlugin('[name].css'));
 
   // if (!dev) {
@@ -70,21 +69,17 @@ module.exports = (app, entry, dev) => {
   factory
     .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
     .definePlugin(
-      UglifyJsPlugin, {
-        compress: {
-          warnings: false,
-        },
-      }, 'UglifyJsPlugin')
-    .definePlugin(
-      webpack.DefinePlugin, {
+      webpack.DefinePlugin,
+      {
         'process.env.NODE_ENV': JSON.stringify('production'),
         __CLIENT__: true,
         __DEV__: false,
         __SERVER__: false,
-      }, 'DefinePlugin');
+      },
+      'DefinePlugin'
+    );
 
-  factory
-    .addPlugin('ExtractTextPlugin');
+  factory.addPlugin('ExtractTextPlugin');
 
   if (!dev) {
     factory.set('mode', 'production');
@@ -92,12 +87,9 @@ module.exports = (app, entry, dev) => {
 
     factory.set('optimization', {
       minimizer: [
-        new UglifyJsPlugin({
+        new TerserPlugin({
           parallel: true,
           extractComments: true,
-          uglifyOptions: {
-            warnings: false,
-          },
         }),
       ],
     });
@@ -105,18 +97,22 @@ module.exports = (app, entry, dev) => {
     factory.set('mode', 'development');
     factory.get('devServer').hot = true;
     factory.setPlugin(
-      webpack.DefinePlugin, {
+      webpack.DefinePlugin,
+      {
         'process.env.NODE_ENV': JSON.stringify('development'),
         'process.env.BABEL_ENV': JSON.stringify('development'),
         __CLIENT__: true,
         __DEV__: true,
         __SERVER__: false,
-
-
-      }, 'DefinePlugin');
+      },
+      'DefinePlugin'
+    );
 
     factory.setPlugin(
-      webpack.HotModuleReplacementPlugin, null, 'HotModuleReplacementPlugin');
+      webpack.HotModuleReplacementPlugin,
+      null,
+      'HotModuleReplacementPlugin'
+    );
   }
   return factory.getConfig();
 };
