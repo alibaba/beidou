@@ -34,7 +34,7 @@ function searchForEntries({ exts, cwd, exclude, name = '*' }) {
  * @param {Object} devServer - webpack.devServer config
  * @param {Boolean} dev - is development env
  */
-module.exports = (app, devServer = {}, dev = false) => {
+module.exports = (app, devServer = {}, dev = false, depth = 1) => {
   const { config } = app;
   const router = config.router || {};
   const options = config.webpack;
@@ -77,29 +77,35 @@ module.exports = (app, devServer = {}, dev = false) => {
     }
   }
 
-  const dirs = glob.sync('*/', {
-    cwd: pageDir,
-    ignore: exclude,
-  });
+  // search entry file with depth, default 1.
 
-  for (const dir of dirs) {
-    const files = searchForEntries({
-      exts,
-      cwd: path.join(pageDir, dir),
-      name: entryName,
+  for (let i = 0; i < depth; i += 1) {
+    const globStr = new Array(i + 2).join('*/');
+    const dirs = glob.sync(globStr, {
+      cwd: pageDir,
+      ignore: exclude,
     });
 
-    if (files) {
-      const name = path.basename(dir);
-      if (name in entry) {
-        app.logger.warn(
-          `Duplicated entry(${name}) detected.
-          file entry will be overwritted by dir entry`
-        );
+    for (const dir of dirs) {
+      const files = searchForEntries({
+        exts,
+        cwd: path.join(pageDir, dir),
+        name: entryName,
+      });
+
+      if (files) {
+        const name = dir.replace(/\/$/, '');
+        if (name in entry) {
+          app.logger.warn(
+            `Duplicated entry(${name}) detected.
+            file entry will be overwritted by dir entry`
+          );
+        }
+        entry[name] = [...headEntries, files[0]];
       }
-      entry[name] = [...headEntries, files[0]];
     }
   }
+
 
   return entry;
 };

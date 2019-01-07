@@ -101,6 +101,8 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const isDev = parseDevFromArgv();
 
   options.devServer.hot = isDev;
+  const depth = (options.custom && options.custom.depth) ?
+    options.custom.depth : 1;
 
   let webpackConfig = null;
   app.webpackFactory = new WebpackFactory();
@@ -122,7 +124,7 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
     options.devServer.port = defaultPort;
   }
 
-  const entry = entryLoader(app, options.devServer, isDev);
+  const entry = entryLoader(app, options.devServer, isDev, depth);
   debug('entry auto load as below:\n%o', entry);
 
   webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);

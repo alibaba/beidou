@@ -40,32 +40,6 @@ module.exports = (app, entry, dev) => {
     fileLoaderConfig,
   ].forEach(v => factory.defineRule(v).addRule(v));
 
-  // config.plugins.push(new ExtractTextPlugin('[name].css'));
-
-  // if (!dev) {
-  //   config.mode = 'production';
-  //   config.plugins.push(
-  //     new webpack.DefinePlugin({
-  //       'process.env.NODE_ENV': JSON.stringify('production'),
-  //       'process.env.BABEL_ENV': JSON.stringify('production'),
-  //       __CLIENT__: true,
-  //       __DEV__: false,
-  //       __SERVER__: false,
-  //     })
-  //   );
-  //   config.optimization.minimizer = [
-  //     new UglifyJsPlugin({
-  //       parallel: true,
-  //       extractComments: true,
-  //       uglifyOptions: {
-  //         warnings: false,
-  //       },
-  //     }),
-  //   ];
-  //     }),
-  //     new webpack.HotModuleReplacementPlugin()
-  //   );
-  // }
   factory
     .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
     .definePlugin(

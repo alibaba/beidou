@@ -18,7 +18,7 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "argh": "^0.1.4",
-    "autoprefixer": "^7.2.4",
+    "autoprefixer": "^9.4.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^8.0.4",
     "babel-minify-webpack-plugin": "^0.3.1",
