@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-redux",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "beidou css modules template",
   "scripts": {
     "start": "beidou start",
@@ -14,7 +14,7 @@
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "beidou-cli": "^1.1.0",
-    "beidou-core": "^1.2.0",
+    "beidou-core": "^1.2.1",
     "classnames": "^2.2.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
