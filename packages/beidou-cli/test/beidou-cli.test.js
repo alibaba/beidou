@@ -203,34 +203,23 @@ describe(`test/${path.basename(__filename)}`, () => {
 
     env.NODE_ENV = 'production';
 
-    function copyBuildFile(targetName) {
-      const srcPath = path.join(__dirname, 'fixtures/beidou-build');
-      const dstDir = path.join(cwd, 'node_modules/.bin');
-      const dstPath = path.join(dstDir, targetName);
-      mkdirp.sync(dstDir);
-      fs.copyFileSync(srcPath, dstPath);
-      fs.chmodSync(dstPath, '755');
-    }
-
     it('should run beidou-build script', (done) => {
-      copyBuildFile('beidou-build');
       coffee
         .fork(beidouBin, ['build'], {
           cwd,
           env,
         })
-        .expect('stdout', /Build finished/)
+        .expect('code', 0)
         .end(done);
     });
 
     it('should run webpack-build script with target node', (done) => {
-      copyBuildFile('webpack-build');
       coffee
         .fork(beidouBin, ['build', '--target=node'], {
           cwd,
           env,
         })
-        .expect('stdout', /Build finished/)
+        .expect('code', 0)
         .end(done);
     });
   });
