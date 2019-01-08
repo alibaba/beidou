@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const coffee = require('coffee');
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
@@ -12,15 +12,18 @@ const { sleep } = require('./utils');
 describe(`test/${path.basename(__filename)}`, () => {
   const beidouBin = require.resolve('../bin/beidou.js');
   const cwd = path.join(__dirname, 'fixtures/test-files');
+  const exampleDir = path.join(__dirname, './fixtures/example');
 
   before(() => {
     rimraf.sync(cwd);
     mkdirp.sync(cwd);
+    rimraf.sync(exampleDir);
+    mkdirp.sync(exampleDir);
   });
 
   after(() => {
     rimraf.sync(cwd);
-    mkdirp.sync(cwd);
+    rimraf.sync(exampleDir);
   });
 
   describe('global options', () => {
@@ -65,7 +68,17 @@ describe(`test/${path.basename(__filename)}`, () => {
   describe('init commands', () => {
     it('should init boilerplate project', (done) => {
       coffee
-        .fork(beidouBin, ['init'], {
+        .fork(beidouBin, ['init', '--skipInstall'], {
+          cwd,
+        })
+        .write('\n')
+        .expect('code', 0)
+        .end(done);
+    });
+
+    it('should init boilerplate project in force', (done) => {
+      coffee
+        .fork(beidouBin, ['init', '--force'], {
           cwd,
         })
         .write('\n')
@@ -76,7 +89,7 @@ describe(`test/${path.basename(__filename)}`, () => {
 
   describe('start, stop, dev, debug, test, cov commands', () => {
     let app;
-    const exampleDir = path.join(__dirname, './fixtures/example');
+   
     const TIME = 10;
 
     function* stopEggProcess() {
@@ -89,6 +102,23 @@ describe(`test/${path.basename(__filename)}`, () => {
     }
 
     before(function* () {
+      if (!fs.existsSync(path.join(exampleDir, 'package.json'))) {
+        fs.copySync(path.join(__dirname, '../../../examples/simple'), exampleDir)
+        mkdirp.sync(path.join(exampleDir, 'test'));
+        fs.writeFileSync(path.join(exampleDir, 'test/example.test.js'), `
+          'use strict';
+
+          const assert = require('assert');
+          
+          describe('example.test.js', () => {
+            it('test', () => {
+              assert(1 + 1 === 2);
+            });
+          });
+        `)
+        rimraf.sync(path.join(exampleDir, 'node_modules'));
+      }
+
       if (!fs.existsSync(path.join(exampleDir, 'node_modules'))) {
         yield install(exampleDir, yield getRegistry());
       }
@@ -152,7 +182,7 @@ describe(`test/${path.basename(__filename)}`, () => {
         .fork(beidouBin, ['test'], {
           cwd: exampleDir,
         })
-        .expect('stdout', /\d+ passing/)
+        .expect('stdout', /passing/)
         .expect('code', 0)
         .end();
     });
@@ -162,7 +192,7 @@ describe(`test/${path.basename(__filename)}`, () => {
         .fork(beidouBin, ['cov'], {
           cwd: exampleDir,
         })
-        .expect('stdout', /\d+ passing/)
+        .expect('stdout', /passing/)
         .expect('code', 0)
         .end();
     });

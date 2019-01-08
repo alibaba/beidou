@@ -58,6 +58,7 @@
     }
   },
   "devDependencies": {
-    "coffee": "^4.1.0"
+    "coffee": "^4.1.0",
+    "fs-extra": "^7.0.1"
   }
 }

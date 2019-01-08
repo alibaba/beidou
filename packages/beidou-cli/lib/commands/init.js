@@ -14,7 +14,6 @@ const memFs = require('mem-fs');
 const editor = require('mem-fs-editor');
 const glob = require('glob');
 const groupBy = require('group-object');
-// const debug = require('debug')('beidou-cli');
 const chalk = require('chalk');
 const { Command } = require('egg-bin');
 const helper = require('../helper');
@@ -40,6 +39,12 @@ module.exports = class InitCMD extends Command {
         type: 'boolean',
         description: 'force to overwrite directory',
         alias: 'f',
+      },
+      skipInstall: {
+        type: 'boolean',
+        description: 'skip npm install',
+        alias: 's',
+        default: false,
       },
     };
 
@@ -96,9 +101,11 @@ module.exports = class InitCMD extends Command {
       // copy template
       await this.processFiles(this.targetDir, templateDir);
 
-      log.info(chalk.green('start to install the dependencies ... '));
+      if (!argv.skipInstall) {
+        log.info(chalk.green('start to install the dependencies ... '));
 
-      await helper.install(this.targetDir, this.registryUrl);
+        await helper.install(this.targetDir, this.registryUrl);
+      }
 
       log.info(chalk.green('npm packages installed'));
       // done
@@ -113,8 +120,6 @@ module.exports = class InitCMD extends Command {
    * @return {String} Full path of target directory
    */
   async getTargetDirectory() {
-    // const dir = this.argv._[0] || this.argv.dir || '';
-    // const dir = '';
     let targetDir = path.resolve(this.cwd, '');
     const { force } = this.argv;
 
