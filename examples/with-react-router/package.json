@@ -14,8 +14,8 @@
   "dependencies": {
     "babel-eslint": "^8.1.2",
     "babel-polyfill": "^6.26.0",
+    "beidou": "^2.0.0-alpha.0",
     "beidou-cli": "^2.0.0-alpha.0",
-    "beidou-core": "^2.0.0-alpha.0",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^2.0.0-alpha.0",
     "eslint-plugin-import": "^2.8.0",

@@ -34,8 +34,8 @@
     "@babel/runtime": "^7.0.0",
     "babel-loader": "^7.1.5",
     "babel-preset-beidou-client": "^2.0.0-alpha.0",
+    "beidou": "^2.0.0-alpha.0",
     "beidou-cli": "^2.0.0-alpha.0",
-    "beidou-core": "^2.0.0-alpha.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "typescript": "^2.7.2"
