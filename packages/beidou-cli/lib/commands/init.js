@@ -86,10 +86,11 @@ module.exports = class InitCMD extends Command {
     }
     log.info(`you have selected: ${boilerplate.name}(${boilerplate.package})`);
 
+    const tag = argv.tag || boilerplate.tag || 'latest';
     try {
       const templateDir = await this.downloadBoilerplate(
         boilerplate.package,
-        argv.tag
+        tag
       );
 
       // copy template
