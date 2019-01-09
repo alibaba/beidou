@@ -72,7 +72,11 @@ describe(`test/${path.basename(__filename)}`, () => {
         })
         .write('\n')
         .expect('code', 0)
-        .end(done);
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
     });
 
     it('should init boilerplate project in force', (done) => {
@@ -81,8 +85,12 @@ describe(`test/${path.basename(__filename)}`, () => {
           cwd,
         })
         .write('\n')
-        .expect('code', 0)
-        .end(done);
+        .expect('code', 1)
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
     });
   });
 
@@ -208,6 +216,7 @@ describe(`test/${path.basename(__filename)}`, () => {
           cwd,
           env,
         })
+        .expect('code', 0)
         .end((err, ret) => {
           console.error(err);
           console.log(ret);
@@ -221,6 +230,7 @@ describe(`test/${path.basename(__filename)}`, () => {
           cwd,
           env,
         })
+        .expect('code', 0)
         .end((err, ret) => {
           console.error(err);
           console.log(ret);
