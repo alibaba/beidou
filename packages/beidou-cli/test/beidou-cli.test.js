@@ -42,7 +42,6 @@ describe(`test/${path.basename(__filename)}`, () => {
         .fork(beidouBin, ['--help'], {
           cwd,
         })
-        .expect('stdout', /Usage: .*beidou.* \[command] \[options]/)
         .expect('code', 0)
         .end(done);
     });
@@ -209,8 +208,11 @@ describe(`test/${path.basename(__filename)}`, () => {
           cwd,
           env,
         })
-        .expect('code', 0)
-        .end(done);
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
     });
 
     it('should run webpack-build script with target node', (done) => {
@@ -219,8 +221,11 @@ describe(`test/${path.basename(__filename)}`, () => {
           cwd,
           env,
         })
-        .expect('code', 0)
-        .end(done);
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
     });
   });
 });
