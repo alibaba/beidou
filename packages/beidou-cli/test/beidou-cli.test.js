@@ -13,6 +13,7 @@ describe(`test/${path.basename(__filename)}`, () => {
   const beidouBin = require.resolve('../bin/beidou.js');
   const cwd = path.join(__dirname, 'fixtures/test-files');
   const exampleDir = path.join(__dirname, './fixtures/example');
+  const buildDir = path.join(__dirname, './fixtures/build');
 
   before(() => {
     rimraf.sync(cwd);
@@ -210,10 +211,25 @@ describe(`test/${path.basename(__filename)}`, () => {
 
     env.NODE_ENV = 'production';
 
+    before(function* () {
+      if (!fs.existsSync(path.join(buildDir, 'package.json'))) {
+        fs.copySync(path.join(__dirname, '../../../examples/simple'), buildDir)
+        rimraf.sync(path.join(buildDir, 'node_modules'));
+      }
+
+      if (!fs.existsSync(path.join(buildDir, 'node_modules'))) {
+        yield install(buildDir, yield getRegistry());
+      }
+    });
+
+    after(() => {
+      rimraf.sync(buildDir);
+    });
+
     it('should run beidou-build script', (done) => {
       coffee
         .fork(beidouBin, ['build'], {
-          cwd,
+          cwd: buildDir,
           env,
         })
         .expect('code', 0)
@@ -227,7 +243,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     it('should run webpack-build script with target node', (done) => {
       coffee
         .fork(beidouBin, ['build', '--target=node'], {
-          cwd,
+          cwd: buildDir,
           env,
         })
         .expect('code', 0)
