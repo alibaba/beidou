@@ -273,13 +273,19 @@ module.exports = class InitCMD extends Command {
   async getPackageInfo(pkgName, tag, withFallback) {
     try {
       const result = await urllib.request(
-        `${this.registryUrl}/${pkgName}/${tag}`,
+        `${this.registryUrl}/${pkgName}`,
         {
           dataType: 'json',
           followRedirect: true,
         }
       );
-      return result.data;
+      const info = result.data;
+
+      if (tag && info['dist-tags'] && info['dist-tags'][tag]) {
+        const version = info['dist-tags'][tag];
+        return info.versions[version];
+      }
+      throw new Error('Package not found');
     } catch (err) {
       if (withFallback) {
         log.warn(`use fallback from ${pkgName}`);
