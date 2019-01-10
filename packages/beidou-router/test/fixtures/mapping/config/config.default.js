@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function () {
-  const exports = {};
-  exports.router = {
+  const config = {};
+  config.router = {
     mapping: {
       about: 'get',
       login: ['get', 'post'],
@@ -11,5 +11,5 @@ module.exports = function () {
       },
     },
   };
-  return exports;
+  return config;
 };

@@ -15,7 +15,7 @@ describe('test/router.test.js', () => {
   describe('use default router config', () => {
     let app;
     before((done) => {
-      app = mm.cluster({
+      app = mm.app({
         baseDir: './basic',
         plugin,
         framework,
@@ -59,18 +59,36 @@ describe('test/router.test.js', () => {
         .expect(404, done);
     });
 
+    it('should response 404 for path /_exclude/bar', (done) => {
+      request(app.callback())
+        .get('/_exclude/bar')
+        .expect(404, done);
+    });
+
+    it('should response 404 for path /file/_bar', (done) => {
+      request(app.callback())
+        .get('/file/_bar')
+        .expect(404, done);
+    });
+
     it('should search file first for path /file', (done) => {
       request(app.callback())
         .get('/file')
         .expect(200)
         .expect('<!DOCTYPE html><span>file</span>', done);
     });
+
+    it('should response ok for path / and cache', (done) => {
+      request(app.callback())
+        .get('/')
+        .expect(200, done);
+    });
   });
 
   describe("set `router.root = '/about'`", () => {
     let app;
     before((done) => {
-      app = mm.cluster({
+      app = mm.app({
         baseDir: './root',
         plugin,
         framework,
@@ -118,7 +136,7 @@ describe('test/router.test.js', () => {
   describe("set `router.urlPrefix = '/about'`", () => {
     let app;
     before((done) => {
-      app = mm.cluster({
+      app = mm.app({
         baseDir: './prefix',
         plugin,
         framework,
@@ -166,7 +184,7 @@ describe('test/router.test.js', () => {
   describe("set `router.exclude = '*-*'`", () => {
     let app;
     before((done) => {
-      app = mm.cluster({
+      app = mm.app({
         baseDir: './exclude',
         plugin,
         framework,
@@ -196,7 +214,7 @@ describe('test/router.test.js', () => {
   describe("set `router.mapping = { about: 'get', login: ['get', 'post']}`", () => {
     let app;
     before((done) => {
-      app = mm.cluster({
+      app = mm.app({
         baseDir: './mapping',
         plugin,
         framework,
