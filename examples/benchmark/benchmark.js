@@ -28,7 +28,8 @@ startApp().then(() => {
     .add('3000+DOM(depth=3,breadth=10,repeat=3)', {
       defer: true,
       fn(deferred) {
-        app.httpRequest()
+        app
+          .httpRequest()
           .get('/?depth=3&breadth=10&repeat=3')
           .end(() => deferred.resolve());
       },
@@ -36,7 +37,8 @@ startApp().then(() => {
     .add('2000+DOM(depth=3,breadth=10,repeat=2)', {
       defer: true,
       fn(deferred) {
-        app.httpRequest()
+        app
+          .httpRequest()
           .get('/?depth=3&breadth=10&repeat=2')
           .end(() => deferred.resolve());
       },
@@ -44,7 +46,8 @@ startApp().then(() => {
     .add('1000+DOM(depth=3,breadth=10,repeat=1)', {
       defer: true,
       fn(deferred) {
-        app.httpRequest()
+        app
+          .httpRequest()
           .get('/?depth=3&breadth=10&repeat=1')
           .end(() => deferred.resolve());
       },
@@ -52,7 +55,8 @@ startApp().then(() => {
     .add('500+DOM(depth=3,breadth=8,repeat=1)', {
       defer: true,
       fn(deferred) {
-        app.httpRequest()
+        app
+          .httpRequest()
           .get('/?depth=3&breadth=8&repeat=1')
           .end(() => deferred.resolve());
       },
@@ -60,14 +64,18 @@ startApp().then(() => {
     .add('300+DOM(depth=2,breadth=10,repeat=3)', {
       defer: true,
       fn(deferred) {
-        app.httpRequest()
+        app
+          .httpRequest()
           .get('/?depth=2&breadth=10&repeat=3')
           .end(() => deferred.resolve());
       },
     })
     .on('start', () => {
-      console.log('\n  node version: %s, date: %s\n  Starting...',
-        process.version, Date());
+      console.log(
+        '\n  node version: %s, date: %s\n  Starting...',
+        process.version,
+        Date()
+      );
     })
     .on('complete', () => {
       stopApp();

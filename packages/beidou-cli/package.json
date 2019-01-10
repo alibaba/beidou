@@ -19,6 +19,7 @@
     "debug": "^3.1.0",
     "egg-bin": "^4.4.0",
     "egg-scripts": "^2.5.1",
+    "egg-ts-helper": "^1.20.0",
     "glob": "^7.1.2",
     "group-object": "^0.1.1",
     "inquirer": "^5.1.0",

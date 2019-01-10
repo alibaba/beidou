@@ -21,6 +21,7 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
     "babel-plugin-add-module-exports": "^1.0.0",
     "codependency": "^2.1.0"
   },

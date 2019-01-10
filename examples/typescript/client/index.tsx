@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ViewProps } from 'beidou-core';
+import * as ReactDOM from 'react-dom';
+import { ViewProps } from 'beidou';
 import App from './app';
 
 export default class View extends React.Component<ViewProps>  {
@@ -19,13 +20,18 @@ export default class View extends React.Component<ViewProps>  {
           <link rel="stylesheet" href={helper.asset('index.css')}/>
         </head>
         <body>
-          <div id="container" dangerouslySetInnerHTML={
-            {
+          <div id="container" dangerouslySetInnerHTML={{
               __html: html
-            }
-          } />
+            }}
+          />
+          <script src={helper.asset('manifest.js')} />
+          <script src={helper.asset('index.js')} />
         </body>
       </html>
     );
   }
+}
+
+if (__CLIENT__) {
+  ReactDOM.hydrate(<App />, document.getElementById('container'));
 }

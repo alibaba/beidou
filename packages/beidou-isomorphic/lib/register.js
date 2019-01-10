@@ -5,23 +5,34 @@ const debug = require('debug')('beidou:isomorphic:register');
 module.exports = (options) => {
   debug(options);
 
-  // for basic typescript support
-  // make sure egg will load .ts files
-  process.env.EGG_TYPESCRIPT = 'true';
-
   // babel-register
   const { baseDir } = options;
 
   // read package.json babel options
   const pkgJson = require(path.join(baseDir, 'package.json'));
-  const config = pkgJson.babel;
-  const enable = config !== false;
+  const { config = {} } = pkgJson;
+  const enable = config.babel !== false;
+  const extensions = ['.js', '.es6', '.es', '.jsx', '.mjs'];
+  if (config.typescript) {
+    // for basic typescript support
+    // make sure egg will load .ts files
+    process.env.EGG_TYPESCRIPT = 'true';
+    extensions.push('.ts');
+    extensions.push('.tsx');
+  }
 
   const defaultConfig = {
-    presets: ['babel-preset-beidou-server'].map(require.resolve),
+    presets: [
+      [
+        require.resolve('babel-preset-beidou-server'),
+        {
+          typescript: config.typescript,
+        },
+      ],
+    ],
     ignore: [/node_modules/],
     babelrc: false,
-    extensions: ['.js', '.es6', '.es', '.jsx', '.mjs'],
+    extensions,
     cache: true,
   };
 

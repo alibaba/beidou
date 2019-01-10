@@ -15,17 +15,21 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
+  const { pkg } = app.config;
   const factory = app.webpackFactory;
+  const typescript = pkg && pkg.config && pkg.config.typescript;
   common(app, entry, dev);
   [
     {
-      test: /\.(js|jsx|mjs)$/,
+      test: /\.(js|jsx|ts|tsx|mjs)$/,
       exclude: /node_modules/,
       use: {
         loader: require.resolve('babel-loader'),
         options: {
           babelrc: true,
-          presets: [require.resolve('babel-preset-beidou-client')],
+          presets: [
+            [require.resolve('babel-preset-beidou-client'), { typescript }],
+          ],
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.

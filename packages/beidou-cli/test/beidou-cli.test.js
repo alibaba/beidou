@@ -85,7 +85,7 @@ describe(`test/${path.basename(__filename)}`, () => {
           cwd,
         })
         .write('\n')
-        .expect('code', 1)
+        .expect('code', 0)
         .end((err, ret) => {
           console.error(err);
           console.log(ret);

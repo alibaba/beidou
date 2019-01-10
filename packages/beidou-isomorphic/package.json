@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "egg-bin": "^4.0.0",
-    "egg-core": "^4.9.1",
     "egg-mock": "^3.7.2",
     "mkdirp": "^0.5.1",
     "supertest": "1"

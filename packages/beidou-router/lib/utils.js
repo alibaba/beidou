@@ -9,7 +9,7 @@ exports.resolvePath = async function (
   root,
   exclude,
   ext,
-  entry,
+  entry
 ) {
   if (exclude) {
     for (const dir of path.dirname(name).split('/')) {

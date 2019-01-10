@@ -2,6 +2,9 @@ import * as Egg from 'egg';
 import  { EggAppInfo, EggAppConfig, PowerPartial, Context, IHelper }  from 'egg';
 import { ReactViewProps } from 'beidou-view-react';
 
+declare global {
+  const __CLIENT__: boolean;
+}
 declare module 'egg' {
   // extend egg app config
   export interface EggAppConfig {

@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
+    "noEmit": true,
+    "pretty": true,
     "module": "commonjs",
+    "skipLibCheck": true,
     "target": "es2017",
     "baseUrl": "./",
     "paths": {

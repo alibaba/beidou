@@ -13,6 +13,13 @@ const debug = require('debug')('beidou:webpack');
  * @returns {(Array|null)} return absolute path of entries or null if not exist
  */
 function searchForEntries({ exts, cwd, exclude, name = '*' }) {
+  debug(
+    'search in %s with exts: %s, exclude: %s, name: %s',
+    cwd,
+    exts,
+    exclude,
+    name
+  );
   const files = glob
     .sync(`@(${exts.map(ext => name + ext).join('|')})`, {
       cwd,
@@ -105,7 +112,6 @@ module.exports = (app, devServer = {}, dev = false, depth = 1) => {
       }
     }
   }
-
 
   return entry;
 };

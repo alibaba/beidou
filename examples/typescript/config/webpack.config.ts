@@ -3,7 +3,7 @@
 import { EggAppInfo} from 'beidou';
 import { Configuration } from 'webpack';
 
-export default (app: EggAppInfo, defaultConfig: Configuration ): Configuration => {
+export default (_: EggAppInfo, defaultConfig: Configuration ): Configuration => {
   const tsLoader =  {
     test: /\.tsx?$/,
     exclude: /node_modules/,

@@ -101,8 +101,8 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const isDev = parseDevFromArgv();
 
   options.devServer.hot = isDev;
-  const depth = (options.custom && options.custom.depth) ?
-    options.custom.depth : 1;
+  const depth =
+    options.custom && options.custom.depth ? options.custom.depth : 1;
 
   let webpackConfig = null;
   app.webpackFactory = new WebpackFactory();

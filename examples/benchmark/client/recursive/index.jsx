@@ -6,7 +6,6 @@ const cx = classnames.bind(style);
 
 const leaf = <div className={cx('leaf')}>Recursive Leaf</div>;
 
-
 export default class RecursiveDivs extends React.Component {
   render() {
     const { depth, breadth } = this.props;

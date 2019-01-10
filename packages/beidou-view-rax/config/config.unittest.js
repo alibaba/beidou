@@ -1,7 +1,5 @@
 'use strict';
 
-const path = require('path');
-
 module.exports = () => ({
   view: {
     cache: false,
@@ -42,6 +40,5 @@ module.exports = () => ({
      */
     entry: null,
   },
-  isomorphic: {
-  },
+  isomorphic: {},
 });

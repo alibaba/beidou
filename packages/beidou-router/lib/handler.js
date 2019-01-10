@@ -44,7 +44,7 @@ module.exports = (app) => {
         root,
         regexp,
         ext,
-        entry,
+        entry
       );
       if (cache && pageName) {
         cached[url] = pageName;

@@ -20,7 +20,6 @@
     "eslint-plugin-react": "^7.5.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "beidou": "^2.0.0-alpha.1",
     "beidou-cli": "^2.0.0-alpha.1",
     "react": "^16.2.0",

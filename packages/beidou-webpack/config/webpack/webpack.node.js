@@ -52,24 +52,30 @@ module.exports = (app, entry, dev) => {
     .addPlugin('ExtractTextPlugin');
 
   factory.definePlugin(
-    webpack.DefinePlugin, {
+    webpack.DefinePlugin,
+    {
       'process.env.NODE_ENV': JSON.stringify('production'),
       __CLIENT__: false,
       __DEV__: false,
       __SERVER__: true,
-    }, 'DefinePlugin');
+    },
+    'DefinePlugin'
+  );
 
   if (!dev) {
     factory.addPlugin('DefinePlugin');
     factory.addPlugin(MinifyPlugin, null, 'MinifyPlugin');
   } else {
     factory.setPlugin(
-      webpack.DefinePlugin, {
+      webpack.DefinePlugin,
+      {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: false,
         __DEV__: true,
         __SERVER__: true,
-      }, 'DefinePlugin');
+      },
+      'DefinePlugin'
+    );
   }
   return factory.getConfig();
 };

@@ -48,7 +48,7 @@ module.exports = class InitCMD extends Command {
       },
     };
 
-    this.pkgInfo = require(`${configs.root}package.json`);
+    this.pkgInfo = require(path.join(configs.root, 'package.json'));
     this.fileMapping = {
       gitignore: '.gitignore',
       _gitignore: '.gitignore',
@@ -102,16 +102,16 @@ module.exports = class InitCMD extends Command {
       await this.processFiles(this.targetDir, templateDir);
 
       if (!argv.skipInstall) {
-        log.info(chalk.green('start to install the dependencies ... '));
+        log.green('start to install the dependencies ... ');
 
         await helper.install(this.targetDir, this.registryUrl);
       }
 
-      log.info(chalk.green('npm packages installed'));
+      log.green('npm packages installed');
       // done
       this.exitInfo();
     } catch (e) {
-      log.error(chalk.red(e.message));
+      log.error(e.message);
     }
   }
 
@@ -400,11 +400,7 @@ module.exports = class InitCMD extends Command {
   }
 
   exitInfo() {
-    log.info(
-      chalk.green(
-        'boilerplate initialization is completed, follow below commands'
-      )
-    );
+    log.green('boilerplate initialization is completed, follow below commands');
     if (!configs.noInitUsageInfo) {
       log.info(`\n
     cd ${this.targetDir}

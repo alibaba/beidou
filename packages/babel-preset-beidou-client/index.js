@@ -3,6 +3,7 @@
 const path = require('path');
 const env = require('@babel/preset-env');
 const react = require('@babel/preset-react');
+const typescript = require('@babel/preset-typescript');
 const codependency = require('codependency');
 
 const requirePeer = codependency.register(module, { strictCheck: false });
@@ -13,25 +14,37 @@ try {
   const pkg = require(path.join(process.cwd(), 'package.json'));
   browsers = pkg.browserslist || defaultList;
 } catch (e) {
+  /* istanbul ignore next */
   browsers = defaultList;
 }
 
-module.exports = function (api) {
+module.exports = function (api, opt) {
   api.assertVersion(7);
 
-  const preset = {
-    presets: [
-      [
-        env,
-        {
-          useBuiltIns: 'entry',
-          targets: {
-            browsers,
-          },
+  const presets = [
+    [
+      env,
+      {
+        useBuiltIns: 'entry',
+        targets: {
+          browsers,
         },
-      ],
-      react,
+      },
     ],
+  ];
+
+  if (opt.typescript) {
+    if (typeof opt.typescript === 'object') {
+      presets.push([typescript, opt.typescript]);
+    } else {
+      presets.push(typescript);
+    }
+  }
+
+  presets.push(react);
+
+  const preset = {
+    presets,
     plugins: [
       // stage 2
       [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
@@ -45,7 +58,8 @@ module.exports = function (api) {
   };
 
   // make sure react-hot-loader only enable in development
-  // and dependency installed in project
+  // and dependency installed in project\
+  /* istanbul ignore if */
   if (
     !api.env('production') &&
     requirePeer('react-hot-loader/babel', { optional: true })

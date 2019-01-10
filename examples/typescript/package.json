@@ -6,26 +6,24 @@
     "start": "beidou start",
     "debug": "beidou debug --inspect-brk",
     "stop": "beidou stop",
-    "dev": "ets --framework=beidou && beidou dev",
-    "tsc": "ets && tsc -p tsconfig.json",
-    "clean": "ets clean",
-    "build": "beidou build",
-    "build:node": "beidou build --target=node"
+    "dev": "beidou dev",
+    "check": "tsc",
+    "build": "tsc && beidou build",
+    "build:node": "tsc && beidou build --target=node"
   },
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-typescript": "^7.0.0",
-    "babel-loader": "^8.0.0",
     "beidou": "^2.0.0-alpha.1",
     "beidou-cli": "^2.0.0-alpha.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "typescript": "^2.9.2"
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
     "@types/react": "^16.4.6",
-    "@types/webpack": "^4.4.20",
-    "egg-ts-helper": "^1.16.1"
+    "@types/react-dom": "^16.0.11",
+    "@types/webpack": "^4.4.20"
+  },
+  "config": {
+    "typescript": true
   }
 }
