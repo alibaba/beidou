@@ -28,7 +28,7 @@ module.exports = class DevCMD extends DevCommand {
         log.green('TS Helper enabled for TypeScript Project');
         const helperConfig = require('egg-ts-helper').defaultConfig;
 
-        helperConfig.framework = 'beidou';
+        helperConfig.framework = configs.framework;
 
         require('egg-ts-helper/register');
       }
