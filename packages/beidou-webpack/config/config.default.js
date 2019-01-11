@@ -18,7 +18,7 @@ module.exports = appInfo => ({
     },
 
     resolve: {
-      extensions: ['.json', '.js', '.jsx'],
+      extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
       alias: {
         client: path.join(appInfo.baseDir, 'client'),
       },
