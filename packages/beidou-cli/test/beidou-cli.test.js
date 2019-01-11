@@ -113,7 +113,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     });
   });
 
-  describe.only('start, stop, dev, debug, test, cov commands', () => {
+  describe('start, stop, dev, debug, test, cov commands', () => {
     let app;
    
     const TIME = 10;
