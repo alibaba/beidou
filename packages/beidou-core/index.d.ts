@@ -120,13 +120,35 @@ declare module 'egg' {
           [key: string]: string;
         };
         stats?: {
-          colors: boolean,
-          chunks: boolean,
+          colors?: boolean;
+          chunks?: boolean;
         };
-        publicPath: string;
-        hot: boolean,
+        publicPath?: string;
+        hot?: boolean;
+      };
+    };
+
+    router?: {
+      root?: string;
+      urlPrefix?: string;
+      exclude?: string;
+      mapping?: {
+        [key: string]: any;
       },
-    },
+      entry?: string;
+      exts?: string[];
+    };
+
+    react?: {
+      middlewares?: string[];
+      beautify?: boolean;
+      cache?: boolean;
+      static?: boolean;
+      doctype?: string;
+      assetHost?: string;
+      assetPath?: string;
+      placeHolder?: string;
+    }
   }
   
   export type ViewProps = ReactViewProps<Context, IHelper>;
