@@ -41,18 +41,18 @@ if (originEnv !== 'local') {
 app.config.env = dev ? 'local' : 'prod';
 
 if (target && !['node', 'browser'].includes(target)) {
-  app.coreLogger.error(
+  console.error(
     `Expect target to be "node" or "browser"(default), got ${target}`
   );
   process.exit(1);
 }
 
-app.coreLogger.info(`Target is ${target}`);
+console.info(`Target is ${target}`);
 const compiler = builder(app, target);
 
 compiler.run((err, stats) => {
   if (err) {
-    app.coreLogger.error(err);
+    console.error(err);
     process.exit(1);
   }
   if (stats) {
