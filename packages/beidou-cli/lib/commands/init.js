@@ -272,13 +272,10 @@ module.exports = class InitCMD extends Command {
    */
   async getPackageInfo(pkgName, tag, withFallback) {
     try {
-      const result = await urllib.request(
-        `${this.registryUrl}/${pkgName}`,
-        {
-          dataType: 'json',
-          followRedirect: true,
-        }
-      );
+      const result = await urllib.request(`${this.registryUrl}/${pkgName}`, {
+        dataType: 'json',
+        followRedirect: true,
+      });
       const info = result.data;
 
       if (tag && info['dist-tags'] && info['dist-tags'][tag]) {

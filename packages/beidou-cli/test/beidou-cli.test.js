@@ -32,7 +32,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     }
   }
 
-  describe.only('global options', () => {
+  describe('global options', () => {
     const cwd = __dirname;
 
     it('should show version', (done) => {
