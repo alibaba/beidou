@@ -32,8 +32,8 @@ describe(`test/${path.basename(__filename)}`, () => {
     }
   }
 
-  describe('global options', () => {
-    const cwd = path.join(__dirname, './fixtures');
+  describe.only('global options', () => {
+    const cwd = __dirname;
 
     it('should show version', (done) => {
       coffee
