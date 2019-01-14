@@ -28,3 +28,16 @@ function setPolyfill(window) {
 exports.basicPolyfill = () => {
   setPolyfill(jsdom(html).defaultView);
 };
+
+/**
+ * inject env variables into global
+ * used to separate server side code from client side
+ * @param {*} ENV dev/production
+ */
+exports.setGlobal = function (ENV) {
+  global.__ENV__ = ENV;
+  global.__CLIENT__ = false;
+  global.__SERVER__ = true;
+  global.__DEVELOPMENT__ = ENV !== 'production';
+  global.__DEV__ = ENV === 'local';
+};
