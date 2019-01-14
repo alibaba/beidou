@@ -1,48 +1,37 @@
 # egg-beidou
 
-[![TNPM version][tnpm-image]][tnpm-url]
-[![TNPM downloads][tnpm-downloads-image]][tnpm-url]
+[Support React SSR in Egg Framework]
 
-[tnpm-image]: http://web.npm.alibaba-inc.com/badge/v/egg-beidou/egg-beidou.svg?style=flat-square
-[tnpm-url]: http://web.npm.alibaba-inc.com/package/egg-beidou/egg-beidou
-[tnpm-downloads-image]: http://web.npm.alibaba-inc.com/badge/d/egg-beidou/egg-beidou.svg?style=flat-square
+neet to open the plugin for using
 
-[一句话介绍(解决啥问题)]
+## Warning:
 
-默认开启/不开启
+the plugin depences `beidou-isomorphic`, you must install `beidou-isomorphic` and open the plugin !!!
 
-## **注意**
-
-注意事项写这里！(如果有)
-
-## 功能特性
-
-### middleware
-
-提供了一个 development middleware
-
-- 静态文件托管 staticMiddleware；
-- 开发环境的请求日志在 STDOUT 输出，并统计各个关键部位耗时并输出；
-- 监视应用文件变动，实现 Reload 重新加载新的代码；
+## Feature
 
 ### extends
 
-- helper.xx 说明
-- app.xx 说明
-- ctx.xx 说明
+- app.beidou the Beidou plugin Object
+- ctx.beidou render the file for SSR
 
 ## 配置
 
 ```js
-exports.siteFile = {
-  '/favicon.ico': 'https://www.alibaba.com/favicon.ico',
+// plugin.js
+exports.isomorphic = {
+  enable: true,
+  package: 'beidou-isomorphic',
+};
+exports.beidou = {
+  enable: true,
+  package: 'egg-beidou',
+};
+
+// config.default.js
+exports.beidou = {
+  viewPath: '', // render the base path
+  static: true, //  whether use static render for SSR
+  stream: false, //  whether use stream render for SSR
 };
 ```
-
-| 配置项           | 类型   | 默认值 | 说明                                |
-| ---------------- | ------ | ------ | ----------------------------------- |
-| /favicon.ico     | String | Buffer | https://www.alibaba.com/favicon.ico | 说明说明说明 |
-| /crossdomain.xml | String | Buffer | 无，需要时才配置                    |  |
-| /robots.txt      | String | Buffer | 无，需要时才配置                    |  |
-
-## Examples
