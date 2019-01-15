@@ -25,13 +25,19 @@ module.exports = appInfo => ({
     },
 
     optimization: {
-      namedModules: true,
       splitChunks: {
-        name: 'manifest',
         chunks: 'all',
+        name: 'manifest',
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          manifest: {
+            test: /[\\/]node_modules[\\/]/,
+            enforce: true,
+          },
+        },
       },
       noEmitOnErrors: true,
-      concatenateModules: true,
     },
 
     devServer: {
