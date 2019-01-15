@@ -10,10 +10,6 @@ module.exports = (app, defaultConfig, isDev) => {
   const outputPath = path.join(app.config.baseDir, 'output');
 
   const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      filename: 'manifest.js',
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(
         dev ? 'development' : 'production'
@@ -32,19 +28,15 @@ module.exports = (app, defaultConfig, isDev) => {
     new ExtractTextPlugin('[name].css'),
   ];
 
+  let mode = 'development';
   if (dev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
   } else {
-    plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      })
-    );
+    mode = 'production';
   }
 
   const config = {
+    mode,
     devtool: dev ? 'eval' : false,
     context: app.baseDir,
     entry: defaultConfig.entry,

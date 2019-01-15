@@ -1,39 +1,25 @@
 {
   "name": "react-redux-router-typescript",
-  "version": "1.2.1",
+  "version": "2.0.0-beta.0",
   "description": "react-redux-router-typescript",
-  "egg": {
-    "typescript": true
-  },
   "scripts": {
     "start": "beidou start",
     "debug": "beidou debug --inspect-brk",
     "stop": "beidou stop",
-    "dev": "beidou dev",
+    "dev": "ets --framework=beidou && beidou dev",
     "build:server": "ets && tsc -p tsconfig-server.json",
     "build:client": "beidou build",
     "build": "npm run build:client && npm run build:server",
     "clean": "ets clean"
   },
   "dependencies": {
-    "@babel/core": "7.0.0-beta.51",
-    "@babel/plugin-proposal-class-properties": "7.0.0-beta.51",
-    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.51",
-    "@babel/plugin-transform-modules-commonjs": "7.0.0-beta.51",
-    "@babel/plugin-transform-runtime": "7.0.0-beta.51",
-    "@babel/plugin-transform-typescript": "7.0.0-beta.51",
-    "@babel/preset-env": "7.0.0-beta.51",
-    "@babel/preset-react": "7.0.0-beta.51",
-    "@babel/preset-stage-2": "7.0.0-beta.51",
-    "@babel/preset-typescript": "7.0.0-beta.51",
-    "@babel/register": "7.0.0-beta.51",
-    "@babel/runtime": "7.0.0-beta.51",
+    "@babel/preset-typescript": "7.0.0",
     "@types/node": "^10.7.1",
-    "babel-loader": "8.0.0-beta.4",
-    "babel-plugin-dynamic-import-node": "^2.0.0",
+    "babel-loader": "8.0.4",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-plugin-import-inspector": "^2.0.0",
-    "beidou-cli": "^1.1.0",
-    "beidou-core": "^1.2.1",
+    "beidou": "^2.0.0-beta.0",
+    "beidou-cli": "^2.0.0-beta.0",
     "egg": "^2.10.0",
     "egg-ts-helper": "^1.9.2",
     "react": "^16.2.0",
@@ -45,16 +31,22 @@
     "redux": "^4.0.0",
     "redux-actions": "^2.6.1",
     "redux-saga": "^0.16.0",
-    "tslib": "^1.9.3",
-    "tslint": "^5.11.0",
     "typescript": "^2.7.2"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/polyfill": "^7.0.0",
     "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.11",
+    "@types/webpack": "^4.4.20",
+    "babel-loader": "^8.0.4",
+    "source-map-loader": "^0.2.4",
+    "tslint": "^5.11.0",
     "webpack": "^3.12.0"
   },
   "engines": {
     "node": ">= 8.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }

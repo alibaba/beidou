@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-exports.framework = 'beidou-core';
+exports.framework = 'beidou';
 exports.name = 'beidou-cli';
 exports.port = 6001;
 exports.cmdName = 'beidou';

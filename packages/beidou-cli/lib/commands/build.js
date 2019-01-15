@@ -6,7 +6,7 @@ const debug = require('debug')('beidou-cli');
 const { Command } = require('egg-bin');
 const { log } = require('../helper');
 const {
-  getArgvWithDefaultFramework = 'beidou-core',
+  getArgvWithDefaultFramework = 'beidou',
   framework,
   cmdName,
 } = require('../helper');
@@ -30,7 +30,6 @@ module.exports = class BuildCMD extends Command {
   }
 
   async run(context) {
-    // log.info(JSON.stringify(context, null, 2));
     const buildPaths = [
       path.join(context.cwd, 'node_modules/beidou-webpack/bin/build.js'),
       path.join(__dirname, '../../../beidou-webpack/bin/build.js'),

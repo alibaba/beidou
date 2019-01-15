@@ -1,6 +1,6 @@
 {
   "name": "beidou-core",
-  "version": "1.2.1",
+  "version": "2.0.0-beta.0",
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
   "scripts": {
@@ -22,13 +22,13 @@
   },
   "dependencies": {
     "argh": "^0.1.4",
-    "babel-preset-beidou-client": "^1.1.0",
-    "babel-preset-beidou-server": "^1.1.0",
-    "beidou-isomorphic": "^1.1.0",
-    "beidou-router": "^1.1.0",
-    "beidou-view": "^1.1.0",
-    "beidou-view-react": "^1.1.0",
-    "beidou-webpack": "^1.2.1",
+    "babel-preset-beidou-client": "^2.0.0-beta.0",
+    "babel-preset-beidou-server": "^2.0.0-beta.0",
+    "beidou-isomorphic": "^2.0.0-beta.0",
+    "beidou-router": "^2.0.0-beta.0",
+    "beidou-view": "^2.0.0-beta.0",
+    "beidou-view-react": "^2.0.0-beta.0",
+    "beidou-webpack": "^2.0.0-beta.0",
     "depd": "^1.1.2",
     "egg": "^2.3.0"
   },
@@ -45,5 +45,6 @@
       "threshold": 90
     }
   },
-  "repository": "https://github.com/alibaba/beidou/packages/beidou-core"
+  "repository": "https://github.com/alibaba/beidou/packages/beidou-core",
+  "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }

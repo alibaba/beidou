@@ -5,13 +5,12 @@
     "eslint": "make eslint-lint",
     "lint": "make lint",
     "test": "make test",
-    "install": "lerna bootstrap",
+    "install": "lerna bootstrap --ignore=beidou-example*",
     "reinstall-examples-dependencies": "make reinstall-examples-dependencies",
     "clean": "make clean",
     "ci": "make ci",
     "changelog": "make changelog",
-    "precommit": "lint-staged",
-    "publish": "lerna publish --conventional-commits"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -26,6 +25,18 @@
   },
   "author": "weichunpeng",
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.1.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^8.1.2",
     "egg-bin": "^4.0.4",
     "eslint": "^4.11.0",
@@ -33,7 +44,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
     "husky": "^0.14.3",
-    "lerna": "^2.9.0",
+    "lerna": "^3.10.5",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1"
@@ -47,5 +58,6 @@
       "threshold": 90
     }
   },
-  "repository": "https://github.com/alibaba/beidou"
+  "repository": "https://github.com/alibaba/beidou",
+  "dependencies": {}
 }

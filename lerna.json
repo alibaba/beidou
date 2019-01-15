@@ -1,6 +1,6 @@
 {
-  "lerna": "2.9.0",
-  "version": "1.2.1",
+  "lerna": "3.10.5",
+  "version": "2.0.0-beta.0",
   "changelog": {
     "repo": "alibaba/beidou",
     "labels": {
@@ -12,18 +12,11 @@
       "tag: internal": ":house: Internal"
     }
   },
-  "packages": [
-    "examples/*",
-    "packages/*"
-  ],
+  "packages": ["examples/*", "packages/*"],
   "command": {
     "publish": {
-      "message": "chore(release): publish %s",
-      "ignoreChanges": [
-        "*.md",
-        "test/**",
-        "node_modules"
-      ]
+      "ignoreChanges": ["*.md", "test/**", "node_modules"],
+      "message": "chore(release): publish %s"
     }
   },
   "npmClient": "yarn"

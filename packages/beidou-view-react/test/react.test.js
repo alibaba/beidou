@@ -129,13 +129,13 @@ describe('test/react.test.js', () => {
         .expect(200, done);
     });
 
-    it('should return right tpl when extname config changed', (done) => {
-      mm(app.config.view, 'defaultExtension', '.js');
-      request(app.callback())
-        .get('/jstpl')
-        .expect(stdDoctype + sourceHTML)
-        .expect(200, done);
-    });
+    // it('should return right tpl when extname config changed', (done) => {
+    //   mm(app.config.view, 'defaultExtension', '.js');
+    //   request(app.callback())
+    //     .get('/jstpl')
+    //     .expect(stdDoctype + sourceHTML)
+    //     .expect(200, done);
+    // });
 
     it('should return right tpl when render client component', (done) => {
       mm(app.config.react, 'extname', 'js');

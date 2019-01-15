@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const coffee = require('coffee');
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
@@ -11,19 +11,30 @@ const { sleep } = require('./utils');
 
 describe(`test/${path.basename(__filename)}`, () => {
   const beidouBin = require.resolve('../bin/beidou.js');
-  const cwd = path.join(__dirname, 'fixtures/test-files');
 
-  before(() => {
-    rimraf.sync(cwd);
-    mkdirp.sync(cwd);
-  });
+  function* stopEggProcess(cwd) {
+    yield coffee
+      .fork(beidouBin, ['stop'], {
+        cwd,
+      })
+      .expect('code', 0)
+      .end();
+  }
 
-  after(() => {
-    rimraf.sync(cwd);
-    mkdirp.sync(cwd);
-  });
+  function* prepareFiles(cwd) {
+    if (!fs.existsSync(path.join(cwd, 'package.json'))) {
+      fs.copySync(path.join(__dirname, '../../../examples/simple'), cwd)
+      rimraf.sync(path.join(cwd, 'node_modules'));
+    }
+
+    if (!fs.existsSync(path.join(cwd, 'node_modules'))) {
+      yield install(cwd, yield getRegistry());
+    }
+  }
 
   describe('global options', () => {
+    const cwd = __dirname;
+
     it('should show version', (done) => {
       coffee
         .fork(beidouBin, ['--version'], {
@@ -39,7 +50,6 @@ describe(`test/${path.basename(__filename)}`, () => {
         .fork(beidouBin, ['--help'], {
           cwd,
         })
-        .expect('stdout', /Usage: .*beidou.* \[command] \[options]/)
         .expect('code', 0)
         .end(done);
     });
@@ -63,41 +73,76 @@ describe(`test/${path.basename(__filename)}`, () => {
   });
 
   describe('init commands', () => {
+    const cwd = path.join(__dirname, './fixtures/init');
+    before(() => {
+      rimraf.sync(cwd);
+      mkdirp.sync(cwd);
+    });
+  
+    after(() => {
+      rimraf.sync(cwd);
+    });
+
+    
     it('should init boilerplate project', (done) => {
       coffee
-        .fork(beidouBin, ['init'], {
+        .fork(beidouBin, ['init', '--skipInstall'], {
           cwd,
         })
         .write('\n')
         .expect('code', 0)
-        .end(done);
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
+    });
+
+    it('should init boilerplate project in force', (done) => {
+      coffee
+        .fork(beidouBin, ['init', '--force'], {
+          cwd,
+        })
+        .write('\n')
+        .expect('code', 0)
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
     });
   });
 
   describe('start, stop, dev, debug, test, cov commands', () => {
     let app;
-    const exampleDir = path.join(__dirname, './fixtures/example');
+   
     const TIME = 10;
 
-    function* stopEggProcess() {
-      yield coffee
-        .fork(beidouBin, ['stop'], {
-          cwd: exampleDir,
-        })
-        .expect('code', 0)
-        .end();
-    }
+    const cwd = path.join(__dirname, './fixtures/running');
+    before(function*() {
+      yield prepareFiles(cwd);
+      mkdirp.sync(path.join(cwd, 'test'));
+      fs.writeFileSync(path.join(cwd, 'test/example.test.js'), `
+        'use strict';
 
-    before(function* () {
-      if (!fs.existsSync(path.join(exampleDir, 'node_modules'))) {
-        yield install(exampleDir, yield getRegistry());
-      }
-      yield stopEggProcess();
+        const assert = require('assert');
+        
+        describe('example.test.js', () => {
+          it('test', () => {
+            assert(1 + 1 === 2);
+          });
+        });
+      `)
+    });
+  
+    after(function*() {
+      yield sleep(TIME);
+      rimraf.sync(cwd);
     });
 
     it('should start production mode', function* () {
       app = coffee.fork(beidouBin, ['start', '--port=8080', '--cluster=1'], {
-        cwd: exampleDir,
+        cwd,
       });
       app.expect('code', 0);
       yield sleep(TIME);
@@ -105,18 +150,18 @@ describe(`test/${path.basename(__filename)}`, () => {
       assert(
         app.stdout.match(/beidou-core started on http:\/\/127\.0\.0\.1:8080/)
       );
-      yield stopEggProcess();
+      yield stopEggProcess(cwd);
     });
 
     it('should stop beidou process', function* () {
       app = coffee.fork(beidouBin, ['start'], {
-        cwd: exampleDir,
+        cwd,
       });
       app.expect('code', 0);
       yield sleep(TIME);
       yield coffee
         .fork(beidouBin, ['stop'], {
-          cwd: exampleDir,
+          cwd,
         })
         .expect('stdout', /got master pid \["\d+\"\]/)
         .expect('stdout', /stopping egg application/)
@@ -127,32 +172,32 @@ describe(`test/${path.basename(__filename)}`, () => {
     it('should run dev mode', function* () {
       const devApp = coffee
         .fork(beidouBin, ['dev'], {
-          cwd: exampleDir,
+          cwd,
         });
       devApp.expect('code', 0);
       yield sleep(TIME);
       devApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
-      yield stopEggProcess();
+      yield stopEggProcess(cwd);
     });
 
     it('should run debug mode', function* () {
       const debugApp = coffee
         .fork(beidouBin, ['debug'], {
-          cwd: exampleDir,
+          cwd,
         });
       debugApp.expect('code', 0);
       yield sleep(TIME);
       debugApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
 
-      yield stopEggProcess();
+      yield stopEggProcess(cwd);
     });
 
     it('should run test command', () => {
       coffee
         .fork(beidouBin, ['test'], {
-          cwd: exampleDir,
+          cwd,
         })
-        .expect('stdout', /\d+ passing/)
+        .expect('stdout', /passing/)
         .expect('code', 0)
         .end();
     });
@@ -160,9 +205,9 @@ describe(`test/${path.basename(__filename)}`, () => {
     it('should run cov command', () => {
       coffee
         .fork(beidouBin, ['cov'], {
-          cwd: exampleDir,
+          cwd,
         })
-        .expect('stdout', /\d+ passing/)
+        .expect('stdout', /passing/)
         .expect('code', 0)
         .end();
     });
@@ -173,35 +218,45 @@ describe(`test/${path.basename(__filename)}`, () => {
 
     env.NODE_ENV = 'production';
 
-    function copyBuildFile(targetName) {
-      const srcPath = path.join(__dirname, 'fixtures/beidou-build');
-      const dstDir = path.join(cwd, 'node_modules/.bin');
-      const dstPath = path.join(dstDir, targetName);
-      mkdirp.sync(dstDir);
-      fs.copyFileSync(srcPath, dstPath);
-      fs.chmodSync(dstPath, '755');
-    }
+
+    const cwd = path.join(__dirname, './fixtures/build');
+
+    before(function* () {
+      yield prepareFiles(cwd);
+    });
+
+    after(() => {
+      rimraf.sync(cwd);
+    });
 
     it('should run beidou-build script', (done) => {
-      copyBuildFile('beidou-build');
       coffee
         .fork(beidouBin, ['build'], {
           cwd,
           env,
         })
+        .expect('code', 0)
         .expect('stdout', /Build finished/)
-        .end(done);
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
     });
 
     it('should run webpack-build script with target node', (done) => {
-      copyBuildFile('webpack-build');
       coffee
         .fork(beidouBin, ['build', '--target=node'], {
           cwd,
           env,
         })
+        .expect('code', 0)
         .expect('stdout', /Build finished/)
-        .end(done);
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done()
+        });
     });
   });
 });

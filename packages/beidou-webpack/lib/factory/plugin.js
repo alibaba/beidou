@@ -11,9 +11,7 @@ class Plugin {
       [this.object] = args;
       this.alias = args[0].constructor.name;
     } else {
-      throw new Error(
-        'Class Plugin constructor error ! '
-      );
+      throw new Error('Class Plugin constructor error ! ');
     }
     if (args[1]) {
       [, this.options] = args;

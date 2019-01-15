@@ -3,7 +3,6 @@
 // Webpack common config
 
 const path = require('path');
-const webpack = require('webpack');
 
 const reservedKey = 'custom';
 
@@ -19,7 +18,6 @@ module.exports = (app, entry, dev) => {
     strictExportPresence: true,
   };
 
-  app.webpackFactory.definePlugin(webpack.NoEmitOnErrorsPlugin, null, 'NoEmitOnErrorsPlugin').addPlugin('NoEmitOnErrorsPlugin');
   app.webpackFactory.definePlugin(app.IsomorphicPlugin);
   const { universal } = app.config.isomorphic;
   if (universal) {
@@ -36,7 +34,7 @@ module.exports = (app, entry, dev) => {
   finalConfig = {
     ...finalConfig,
     bail: !dev,
-    devtool: dev ? 'eval' : false,
+    devtool: dev ? 'eval-source-map' : false,
     context: app.config.baseDir,
     entry,
     output,

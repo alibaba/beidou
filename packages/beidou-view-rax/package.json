@@ -1,6 +1,6 @@
 {
   "name": "beidou-view-rax",
-  "version": "1.2.0",
+  "version": "2.0.0-beta.0",
   "description": "Beidou Rax server side render plugin",
   "eggPlugin": {
     "name": "rax",
@@ -25,21 +25,20 @@
     "history": "egg-bin history CHANGELOG.md"
   },
   "dependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-rax": "^0.5.0",
-    "babel-preset-stage-2": "^6.24.1",
-    "beidou-view": "^1.1.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "babel-preset-rax": "^1.0.0-beta.0",
+    "beidou-view": "^2.0.0-beta.0",
     "extract-text-webpack-plugin": "^3.0.2",
-    "rax-webpack-plugin": "^0.5.0",
-    "stylesheet-loader": "^0.5.0",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.10.0"
+    "rax-webpack-plugin": "^0.6.5",
+    "stylesheet-loader": "^0.6.5",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.27.1"
   },
   "peerDependencies": {
-    "rax": "^0.5.0",
-    "rax-server-renderer": "^0.5.0"
+    "rax": "^0.6.0",
+    "rax-server-renderer": "^0.6.0"
   },
   "engines": {
     "node": ">= 8.0.0"
@@ -48,15 +47,16 @@
     "egg-bin": "^4.3.7",
     "egg-core": "^4.9.1",
     "egg-mock": "^3.14.0",
-    "rax": "^0.5.0",
-    "rax-server-renderer": "^0.5.0",
-    "rax-text": "^0.5.0",
-    "rax-view": "^0.5.0"
+    "rax": "^0.6.0",
+    "rax-server-renderer": "^0.6.0",
+    "rax-text": "^0.6.0",
+    "rax-view": "^0.6.0"
   },
   "files": [
     "app",
     "app.js",
     "lib",
     "config"
-  ]
+  ],
+  "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }

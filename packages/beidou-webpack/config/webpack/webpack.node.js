@@ -13,11 +13,12 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
+  const factory = app.webpackFactory;
   common(app, entry, dev);
-  app.webpackFactory.get('output').libraryTarget = 'commonjs';
-  app.webpackFactory.set('target', 'node');
-  app.webpackFactory.set('externals', /^react(-dom)?$/);
-  app.webpackFactory.set('node', {
+  factory.get('output').libraryTarget = 'commonjs';
+  factory.set('target', 'node');
+  factory.set('externals', /^react(-dom)?$/);
+  factory.set('node', {
     __filename: true,
     __dirname: true,
   });
@@ -43,38 +44,38 @@ module.exports = (app, entry, dev) => {
     imageLoaderConfig,
     fileLoaderConfig,
   ].forEach((v) => {
-    app.webpackFactory.defineRule(v).addRule(v);
+    factory.defineRule(v).addRule(v);
   });
 
-  app.webpackFactory
+  factory
     .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
-    .addPlugin('ExtractTextPlugin')
-    .definePlugin(webpack.optimize.CommonsChunkPlugin, {
-      name: 'manifest',
-      filename: 'manifest.js',
-    }, 'CommonsChunkPlugin')
-    .addPlugin('CommonsChunkPlugin');
+    .addPlugin('ExtractTextPlugin');
 
-  app.webpackFactory.definePlugin(
-    webpack.DefinePlugin, {
+  factory.definePlugin(
+    webpack.DefinePlugin,
+    {
       'process.env.NODE_ENV': JSON.stringify('production'),
       __CLIENT__: false,
       __DEV__: false,
       __SERVER__: true,
-    }, 'DefinePlugin');
+    },
+    'DefinePlugin'
+  );
 
   if (!dev) {
-    app.webpackFactory.addPlugin('DefinePlugin');
-    app.webpackFactory.addPlugin(MinifyPlugin, null, 'MinifyPlugin');
+    factory.addPlugin('DefinePlugin');
+    factory.addPlugin(MinifyPlugin, null, 'MinifyPlugin');
   } else {
-    app.webpackFactory.addPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
-    app.webpackFactory.setPlugin(
-      webpack.DefinePlugin, {
+    factory.setPlugin(
+      webpack.DefinePlugin,
+      {
         'process.env.NODE_ENV': JSON.stringify('development'),
         __CLIENT__: false,
         __DEV__: true,
         __SERVER__: true,
-      }, 'DefinePlugin');
+      },
+      'DefinePlugin'
+    );
   }
-  return app.webpackFactory.getConfig();
+  return factory.getConfig();
 };

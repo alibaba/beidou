@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-antd-components",
-  "version": "1.2.1",
+  "version": "2.0.0-beta.0",
   "description": "Beidou Example AntD Components",
   "license": "MIT",
   "scripts": {
@@ -15,10 +15,10 @@
     "antd": "^3.10.9",
     "babel-eslint": "^8.1.2",
     "babel-polyfill": "^6.26.0",
-    "beidou-cli": "^1.1.0",
-    "beidou-core": "^1.2.1",
+    "beidou": "^2.0.0-beta.0",
+    "beidou-cli": "^2.0.0-beta.0",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "^1.1.0",
+    "eslint-config-beidou": "^2.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
     "fetch-jsonp": "^1.1.3",
@@ -37,5 +37,6 @@
   },
   "engines": {
     "node": ">= 8.0.0"
-  }
+  },
+  "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }

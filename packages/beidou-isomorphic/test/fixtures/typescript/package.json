@@ -1,0 +1,6 @@
+{
+  "name": "typescript",
+  "config": {
+    "typescript": true
+  }
+}

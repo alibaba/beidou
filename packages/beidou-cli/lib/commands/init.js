@@ -14,7 +14,6 @@ const memFs = require('mem-fs');
 const editor = require('mem-fs-editor');
 const glob = require('glob');
 const groupBy = require('group-object');
-// const debug = require('debug')('beidou-cli');
 const chalk = require('chalk');
 const { Command } = require('egg-bin');
 const helper = require('../helper');
@@ -41,9 +40,15 @@ module.exports = class InitCMD extends Command {
         description: 'force to overwrite directory',
         alias: 'f',
       },
+      skipInstall: {
+        type: 'boolean',
+        description: 'skip npm install',
+        alias: 's',
+        default: false,
+      },
     };
 
-    this.pkgInfo = require(`${configs.root}package.json`);
+    this.pkgInfo = require(path.join(configs.root, 'package.json'));
     this.fileMapping = {
       gitignore: '.gitignore',
       _gitignore: '.gitignore',
@@ -86,24 +91,27 @@ module.exports = class InitCMD extends Command {
     }
     log.info(`you have selected: ${boilerplate.name}(${boilerplate.package})`);
 
+    const tag = argv.tag || boilerplate.tag || 'latest';
     try {
       const templateDir = await this.downloadBoilerplate(
         boilerplate.package,
-        argv.tag
+        tag
       );
 
       // copy template
       await this.processFiles(this.targetDir, templateDir);
 
-      log.info(chalk.green('start to install the dependencies ... '));
+      if (!argv.skipInstall) {
+        log.green('start to install the dependencies ... ');
 
-      await helper.install(this.targetDir, this.registryUrl);
+        await helper.install(this.targetDir, this.registryUrl);
+      }
 
-      log.info(chalk.green('npm packages installed'));
+      log.green('npm packages installed');
       // done
       this.exitInfo();
     } catch (e) {
-      log.error(chalk.red(e.message));
+      log.error(e.message);
     }
   }
 
@@ -112,8 +120,6 @@ module.exports = class InitCMD extends Command {
    * @return {String} Full path of target directory
    */
   async getTargetDirectory() {
-    // const dir = this.argv._[0] || this.argv.dir || '';
-    // const dir = '';
     let targetDir = path.resolve(this.cwd, '');
     const { force } = this.argv;
 
@@ -266,14 +272,17 @@ module.exports = class InitCMD extends Command {
    */
   async getPackageInfo(pkgName, tag, withFallback) {
     try {
-      const result = await urllib.request(
-        `${this.registryUrl}/${pkgName}/${tag}`,
-        {
-          dataType: 'json',
-          followRedirect: true,
-        }
-      );
-      return result.data;
+      const result = await urllib.request(`${this.registryUrl}/${pkgName}`, {
+        dataType: 'json',
+        followRedirect: true,
+      });
+      const info = result.data;
+
+      if (tag && info['dist-tags'] && info['dist-tags'][tag]) {
+        const version = info['dist-tags'][tag];
+        return info.versions[version];
+      }
+      throw new Error('Package not found');
     } catch (err) {
       if (withFallback) {
         log.warn(`use fallback from ${pkgName}`);
@@ -394,11 +403,7 @@ module.exports = class InitCMD extends Command {
   }
 
   exitInfo() {
-    log.info(
-      chalk.green(
-        'boilerplate initialization is completed, follow below commands'
-      )
-    );
+    log.green('boilerplate initialization is completed, follow below commands');
     if (!configs.noInitUsageInfo) {
       log.info(`\n
     cd ${this.targetDir}

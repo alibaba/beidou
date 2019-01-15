@@ -1,0 +1,30 @@
+{
+  "name": "beidou-example-typescript",
+  "version": "2.0.0-beta.0",
+  "description": "Beidou example with TypeScript",
+  "scripts": {
+    "start": "beidou start",
+    "debug": "beidou debug --inspect-brk",
+    "stop": "beidou stop",
+    "dev": "beidou dev",
+    "check": "tsc",
+    "build": "tsc && beidou build",
+    "build:node": "tsc && beidou build --target=node"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "beidou": "^2.0.0-beta.0",
+    "beidou-cli": "^2.0.0-beta.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.11",
+    "@types/webpack": "^4.4.20"
+  },
+  "config": {
+    "typescript": true
+  },
+  "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
+}

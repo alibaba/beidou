@@ -57,27 +57,27 @@ describe('test/lib/factory/webpack.test.js', () => {
     assert(nameModulesPlugin, 'get plugin error');
 
     factory.addPlugin(
-      webpack.optimize.UglifyJsPlugin,
+      webpack.DefinePlugin,
     );
 
-    let UglifyJsPlugin = factory.getPlugin(function (plugin) {
-      return plugin.alias === 'UglifyJsPlugin';
+    let DefinePlugin = factory.getPlugin(function (plugin) {
+      return plugin.alias === 'DefinePlugin';
     })
-    assert(UglifyJsPlugin, 'fucntion get plugin error');
+    assert(DefinePlugin, 'fucntion get plugin error');
 
     factory.setPlugin(
-      webpack.optimize.UglifyJsPlugin, {
+      webpack.DefinePlugin, {
         compress: {
           warnings: true,
         },
       },
-      'UglifyJsPlugin'
+      'DefinePlugin'
     );
 
-    UglifyJsPlugin = factory.getPlugin('UglifyJsPlugin');
+    DefinePlugin = factory.getPlugin('DefinePlugin');
     let {
       compress
-    } = UglifyJsPlugin.options
+    } = DefinePlugin.options
     assert(compress.warnings === true, 'reset plugin error');
   });
 

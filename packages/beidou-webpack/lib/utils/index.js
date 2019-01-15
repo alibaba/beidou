@@ -10,6 +10,7 @@ const boxen = require('boxen');
 const FallbackPort = require('fallback-port');
 const _ = require('lodash');
 const debug = require('debug')('beidou:webpack');
+const { argv } = require('argh');
 const IsomorphicPlugin = require('../plugin/isomorphic');
 const entryLoader = require('../loader/entry-loader');
 const WebpackFactory = require('../factory/webpack');
@@ -78,9 +79,31 @@ const dumpWebpackConfig = function (agent, config) {
   }
 };
 
+function parseDevFromArgv() {
+  try {
+    let dev = false;
+    if (argv.dev) {
+      dev = true;
+    } else if (argv.argv && argv.argv[0]) {
+      const [rawArgs] = argv.argv;
+      const args = JSON.parse(rawArgs);
+      dev = args.dev !== 'false';
+    }
+    return dev;
+  } catch (e) {
+    return false;
+  }
+}
+
 const getWebpackConfig = (app, options = {}, target = 'browser') => {
   const loadFile = app.loader.loadFile.bind(app.loader);
-  const isDev = app.config.env !== 'prod';
+  // argv passed from master process, JSON string
+  const isDev = parseDevFromArgv();
+
+  options.devServer.hot = isDev;
+  const depth =
+    options.custom && options.custom.depth ? options.custom.depth : 1;
+
   let webpackConfig = null;
   app.webpackFactory = new WebpackFactory();
   Object.getPrototypeOf(app.webpackFactory).init();
@@ -101,7 +124,7 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
     options.devServer.port = defaultPort;
   }
 
-  const entry = entryLoader(app, options.devServer, isDev);
+  const entry = entryLoader(app, options.devServer, isDev, depth);
   debug('entry auto load as below:\n%o', entry);
 
   webpackConfig = loadFile(defaultConfigPath, app, entry, isDev);
@@ -171,13 +194,21 @@ const startServer = (config, port, logger, agent) => {
 
   const compiler = webpack(config);
   let lastCompileResult = false;
-  compiler.plugin('done', ({ compilation }) => {
+  const cb = ({ compilation }) => {
     const ok = compilation.errors.length === 0;
     ok &&
       !lastCompileResult &&
       logger.info('[webpack]', colorz.green('compile done'));
     lastCompileResult = ok;
-  });
+  };
+
+  if (compiler.hooks) {
+    const plugin = { name: 'BeidouWebpackPlugin' };
+
+    compiler.hooks.done.tap(plugin, cb);
+  } else {
+    compiler.plugin('done', cb);
+  }
 
   const server = new WebpackDevServer(compiler, config.devServer);
 

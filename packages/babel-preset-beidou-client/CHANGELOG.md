@@ -4,10 +4,8 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 <a name="1.1.0"></a>
+
 # [1.1.0](https://github.com/alibaba/beidou/tree/master/packages/babel-preset-beidou-client/compare/v1.0.10...v1.1.0) (2018-12-18)
-
-
-
 
 **Note:** Version bump only for package babel-preset-beidou-client
 

@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const register = require('beidou-isomorphic/lib/register');
 
 const DEPRECATE = Symbol('BeidouApplication#deprecate');
 
@@ -11,9 +12,10 @@ module.exports = function (target) {
    */
   class BeidouAgent extends target.Agent {
     constructor(options) {
+      register(options);
       super(options);
       this.logger.info(
-        '[Beidou Worker] Beidou Worker started, pid is %s',
+        '[Beidou Agent] Beidou Agent started, pid is %s',
         process.pid
       );
     }

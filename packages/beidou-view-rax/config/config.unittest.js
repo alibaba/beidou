@@ -1,7 +1,5 @@
 'use strict';
 
-const path = require('path');
-
 module.exports = () => ({
   view: {
     cache: false,
@@ -42,18 +40,5 @@ module.exports = () => ({
      */
     entry: null,
   },
-  isomorphic: {
-    babel: {
-      ignore(filename) {
-        const testDirs = [path.resolve(__dirname, '../test/fixtures')];
-        for (const dir of testDirs) {
-          if (filename.includes(dir)) {
-            return false;
-          }
-        }
-
-        return true;
-      },
-    },
-  },
+  isomorphic: {},
 });

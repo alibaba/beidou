@@ -54,9 +54,12 @@ module.exports = class ReactView extends BaseView {
 
               // eslint-disable-next-line
               await new Promise((resolve, reject) => {
-                renderedStream.pipe(res, {
-                  end: false,
-                });
+                renderedStream.pipe(
+                  res,
+                  {
+                    end: false,
+                  }
+                );
                 renderedStream.on('error', reject);
                 renderedStream.on('end', resolve);
               });

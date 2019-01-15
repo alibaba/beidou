@@ -2,9 +2,6 @@
 
 const fs = require('mz/fs');
 const path = require('path');
-const globToRegExp = require('glob-to-regexp');
-
-const resolved = {};
 
 exports.resolvePath = async function (
   name,
@@ -15,8 +12,7 @@ exports.resolvePath = async function (
   entry
 ) {
   if (exclude) {
-    exclude = globToRegExp(exclude);
-    for (const dir of name.split('/')) {
+    for (const dir of path.dirname(name).split('/')) {
       if (exclude.test(dir)) {
         return false;
       }
@@ -33,26 +29,21 @@ exports.resolvePath = async function (
   }
 
   /* eslint-disable no-await-in-loop */
-
   for (const file of names) {
-    if (!exclude.test(name)) {
-      for (const dir of providers) {
-        const target = path.join(dir, file);
-        if (await fs.exists(target)) {
-          const stat = await fs.stat(target);
-          if (stat.isFile()) {
-            return path.join(root, file);
-          }
+    if (exclude && exclude.test(path.basename(name))) {
+      return false;
+    }
+
+    for (const dir of providers) {
+      const target = path.join(dir, file);
+      if (await fs.exists(target)) {
+        const stat = await fs.stat(target);
+        if (stat.isFile()) {
+          return path.join(root, file);
         }
       }
     }
   }
 
   return false;
-};
-
-exports.cached = key => resolved[key];
-
-exports.putCache = (key, value) => {
-  resolved[key] = value;
 };

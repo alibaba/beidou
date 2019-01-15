@@ -3,9 +3,7 @@
 class Rule {
   constructor(options, alias) {
     if (!options) {
-      throw new Error(
-        'Class Rule contructor exceptionally ! '
-      );
+      throw new Error('Class Rule contructor exceptionally ! ');
     }
     this.options = options;
     this.alias = alias || options.test;

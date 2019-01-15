@@ -37,12 +37,12 @@ module.exports = (app, defaultConfig, entry, isDev) => {
   });
 
 
-  factory.addPlugin(
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      filename: 'manifest.js',
-    })
-  )
+  // factory.addPlugin(
+  //   new webpack.optimize.CommonsChunkPlugin({
+  //     name: 'manifest',
+  //     filename: 'manifest.js',
+  //   })
+  // )
 
   factory.addPlugin(
     webpack.DefinePlugin, {
@@ -69,11 +69,11 @@ module.exports = (app, defaultConfig, entry, isDev) => {
   factoryInDev.addPlugin(new webpack.HotModuleReplacementPlugin())
 
   // 原环境加载
-  factory.addPlugin(new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-    },
-  }))
+  // factory.addPlugin(new webpack.optimize.UglifyJsPlugin({
+  //   compress: {
+  //     warnings: false,
+  //   },
+  // }))
 
   factory.setPlugin(new ExtractTextPlugin('[name].modify.css'))
 

@@ -2,6 +2,9 @@
 
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const codependency = require('codependency');
+
+const requirePeer = codependency.register(module, { strictCheck: false });
 
 const imageLoaderConfig = {
   test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.webp$/],
@@ -72,59 +75,32 @@ const getStyleFallbackConfig = dev => ({
 });
 
 function getStyleCongfigs(dev) {
-  return [
+  const loaders = [
     {
       test: /\.css$/,
-      exclude: /\.module\.css$/,
+      exclude: /\.m(odule)?\.css$/,
       loader: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [getCssLoaderConfig(dev), postCssLoaderConfig],
       }),
     },
     {
-      test: /\.module\.css$/,
+      test: /\.m(odule)?\.css$/,
       loader: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [getCssLoaderConfig(dev, true), postCssLoaderConfig],
       }),
     },
     {
-      test: /\.s(c|a)ss$/,
-      exclude: /\.module\.s(c|a)ss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: getStyleFallbackConfig(dev),
-        use: [
-          getCssLoaderConfig(dev),
-          postCssLoaderConfig,
-          {
-            loader: require.resolve('sass-loader'),
-          },
-        ],
-      }),
-    },
-    {
-      test: /\.module\.s(c|a)ss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: getStyleFallbackConfig(dev),
-        use: [
-          getCssLoaderConfig(dev, true),
-          postCssLoaderConfig,
-          {
-            loader: require.resolve('sass-loader'),
-          },
-        ],
-      }),
-    },
-    {
       test: /\.less$/,
-      exclude: /\.module\.less$/,
+      exclude: /\.m(odule)?\.less$/,
       use: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [getCssLoaderConfig(dev), postCssLoaderConfig, lessLoaderConfig],
       }),
     },
     {
-      test: /\.module\.less$/,
+      test: /\.m(odule)?\.less$/,
       use: ExtractTextPlugin.extract({
         fallback: getStyleFallbackConfig(dev),
         use: [
@@ -135,6 +111,39 @@ function getStyleCongfigs(dev) {
       }),
     },
   ];
+  if (requirePeer.resolve('sass-loader').isValid) {
+    return loaders.concat([
+      {
+        test: /\.s(c|a)ss$/,
+        exclude: /\.m(odule)?\.s(c|a)ss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: getStyleFallbackConfig(dev),
+          use: [
+            getCssLoaderConfig(dev),
+            postCssLoaderConfig,
+            {
+              loader: require.resolve('sass-loader'),
+            },
+          ],
+        }),
+      },
+      {
+        test: /\.m(odule)?\.s(c|a)ss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: getStyleFallbackConfig(dev),
+          use: [
+            getCssLoaderConfig(dev, true),
+            postCssLoaderConfig,
+            {
+              loader: require.resolve('sass-loader'),
+            },
+          ],
+        }),
+      },
+    ]);
+  }
+
+  return loaders;
 }
 
 exports.imageLoaderConfig = imageLoaderConfig;

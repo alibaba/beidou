@@ -1,4 +1,4 @@
-import { Application } from 'egg';
+import { Application } from 'beidou';
 
 export default (app: Application) => {
   const { controller, router } = app;

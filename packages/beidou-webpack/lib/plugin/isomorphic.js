@@ -1,6 +1,5 @@
 'use strict';
 
-const process = require('process');
 const Module = require('module');
 const path = require('path');
 const assert = require('assert');
@@ -67,7 +66,7 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
     global.__webpack_public_path__ = compiler.options.output.publicPath;
   }
 
-  compiler.plugin('done', (stats) => {
+  const cb = (stats) => {
     const json = stats.toJson();
 
     debug('webpack compile json:\n', JSON.stringify(json, null, 2));
@@ -75,7 +74,15 @@ IsomorphicPlugin.prototype.apply = function (compiler) {
       .map(module => this.parse(module))
       .filter(result => result);
     this.save(results);
-  });
+  };
+
+  if (compiler.hooks) {
+    const plugin = { name: 'IsomorphicPlugin' };
+
+    compiler.hooks.done.tap(plugin, cb);
+  } else {
+    compiler.plugin('done', cb);
+  }
 };
 
 IsomorphicPlugin.prototype.parse = function (module) {
@@ -124,7 +131,7 @@ IsomorphicPlugin.prototype.save = function (results) {
   const { context } = this.options;
   const json = {};
   for (const result of results) {
-    const absolutePath = path.join(process.cwd(), result.name);
+    const absolutePath = path.join(context, result.name);
     const relativePath = path.relative(context, absolutePath);
 
     const m = new Module(absolutePath);

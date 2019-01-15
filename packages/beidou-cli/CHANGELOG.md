@@ -4,10 +4,8 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 <a name="1.1.0"></a>
+
 # [1.1.0](https://github.com/alibaba/beidou/compare/v1.0.10...v1.1.0) (2018-12-18)
-
-
-
 
 **Note:** Version bump only for package beidou-cli
 
@@ -23,4 +21,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* wrong bin file excuted in windows [#63](https://github.com/alibaba/beidou/issues/63) ([#65](https://github.com/alibaba/beidou/issues/65)) ([d2f7bac](https://github.com/alibaba/beidou/commit/d2f7bac))
+- wrong bin file excuted in windows [#63](https://github.com/alibaba/beidou/issues/63) ([#65](https://github.com/alibaba/beidou/issues/65)) ([d2f7bac](https://github.com/alibaba/beidou/commit/d2f7bac))

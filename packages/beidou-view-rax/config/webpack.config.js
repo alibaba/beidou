@@ -1,7 +1,6 @@
 'use strict';
 
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const RaxWebpackPlugin = require('rax-webpack-plugin');
 
 module.exports = (app, defaultConfig, dev) => {
@@ -17,7 +16,7 @@ module.exports = (app, defaultConfig, dev) => {
             babelrc: false,
             presets: [
               [
-                require.resolve('babel-preset-env'),
+                require.resolve('@babel/preset-env'),
                 {
                   targets: {
                     browsers: ['>1%', 'last 4 versions', 'not ie < 9'],
@@ -27,8 +26,12 @@ module.exports = (app, defaultConfig, dev) => {
                   // debug: true,
                 },
               ],
-              require.resolve('babel-preset-stage-2'),
-              require.resolve('babel-preset-rax'),
+              [
+                require.resolve('babel-preset-rax'),
+                {
+                  development: false,
+                },
+              ],
             ],
           },
         },
@@ -53,10 +56,6 @@ module.exports = (app, defaultConfig, dev) => {
   };
 
   const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      filename: 'manifest.js',
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(
         dev ? 'development' : 'production'
@@ -65,10 +64,12 @@ module.exports = (app, defaultConfig, dev) => {
       __DEV__: dev,
       __SERVER__: false,
     }),
-    new ExtractTextPlugin('[name].css'),
-    new webpack.NoEmitOnErrorsPlugin(),
     new RaxWebpackPlugin({
       target: 'umd',
+      frameworkComment: '// {"framework" : "Rax"}',
+      // component mode build config
+      moduleName: 'rax',
+      globalName: 'Rax',
       // externalBuiltinModules: false,
       platforms: ['web'],
     }),
@@ -81,15 +82,23 @@ module.exports = (app, defaultConfig, dev) => {
   if (dev) {
     plugins.push(new webpack.NamedModulesPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
-  } else {
-    plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      })
-    );
   }
 
-  return { ...defaultConfig, target: 'web', plugins, module };
+  const optimization = {
+    namedModules: true,
+    splitChunks: {
+      name: 'manifest',
+      chunks: 'all',
+    },
+    noEmitOnErrors: true,
+    concatenateModules: true,
+  };
+
+  return {
+    ...defaultConfig,
+    target: 'web',
+    plugins,
+    module,
+    optimization,
+  };
 };

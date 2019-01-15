@@ -14,16 +14,15 @@ export default class View extends React.Component {
           <title>benchmark demo</title>
           <meta viewport="" />
           <link rel="stylesheet" href={helper.asset('index.css')} />
-
         </head>
         <body>
           <div className="demo">
-            {[...new Array(parseInt(repeat, 10))].map((v, i) =>
-              <Recursive key={i} depth={depth} breadth={breadth} />)}
+            {[...new Array(parseInt(repeat, 10))].map((v, i) => (
+              <Recursive key={i} depth={depth} breadth={breadth} />
+            ))}
           </div>
         </body>
       </html>
-
     );
   }
 }

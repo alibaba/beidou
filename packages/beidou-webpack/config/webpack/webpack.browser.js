@@ -5,6 +5,7 @@
 process.traceDeprecation = true;
 
 const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common');
 const {
   imageLoaderConfig,
@@ -14,16 +15,21 @@ const {
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
+  const { pkg } = app.config;
+  const factory = app.webpackFactory;
+  const typescript = pkg && pkg.config && pkg.config.typescript;
   common(app, entry, dev);
   [
     {
-      test: /\.(js|jsx|mjs)$/,
+      test: /\.(js|jsx|ts|tsx|mjs)$/,
       exclude: /node_modules/,
       use: {
         loader: require.resolve('babel-loader'),
         options: {
-          babelrc: false,
-          presets: [require.resolve('babel-preset-beidou-client')],
+          babelrc: true,
+          presets: [
+            [require.resolve('babel-preset-beidou-client'), { typescript }],
+          ],
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
@@ -36,48 +42,55 @@ module.exports = (app, entry, dev) => {
     ...getStyleCongfigs(dev),
     imageLoaderConfig,
     fileLoaderConfig,
-  ].forEach((v) => {
-    app.webpackFactory.defineRule(v).addRule(v);
-  });
+  ].forEach(v => factory.defineRule(v).addRule(v));
 
-  app.webpackFactory
+  factory
     .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
-    .addPlugin('ExtractTextPlugin')
-    .definePlugin(webpack.optimize.CommonsChunkPlugin, {
-      name: 'manifest',
-      filename: 'manifest.js',
-    }, 'CommonsChunkPlugin')
-    .addPlugin('CommonsChunkPlugin');
-  app.webpackFactory.definePlugin(
-    webpack.optimize.UglifyJsPlugin, {
-      compress: {
-        warnings: false,
+    .definePlugin(
+      webpack.DefinePlugin,
+      {
+        'process.env.NODE_ENV': JSON.stringify('production'),
+        __CLIENT__: true,
+        __DEV__: false,
+        __SERVER__: false,
       },
-    }, 'UglifyJsPlugin');
+      'DefinePlugin'
+    );
 
-  app.webpackFactory.definePlugin(
-    webpack.DefinePlugin, {
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      __CLIENT__: true,
-      __DEV__: false,
-      __SERVER__: false,
-    }, 'DefinePlugin');
+  factory.addPlugin('ExtractTextPlugin');
 
   if (!dev) {
-    app.webpackFactory.addPlugin('UglifyJsPlugin');
-    app.webpackFactory.addPlugin('DefinePlugin');
+    factory.set('mode', 'production');
+    factory.addPlugin('DefinePlugin');
+
+    factory.set('optimization', {
+      minimizer: [
+        new TerserPlugin({
+          parallel: true,
+          extractComments: true,
+        }),
+      ],
+    });
   } else {
-    app.webpackFactory.get('devServer').hot = true;
-    app.webpackFactory.setPlugin(
-      webpack.DefinePlugin, {
+    factory.set('mode', 'development');
+    factory.get('devServer').hot = true;
+    factory.setPlugin(
+      webpack.DefinePlugin,
+      {
         'process.env.NODE_ENV': JSON.stringify('development'),
+        'process.env.BABEL_ENV': JSON.stringify('development'),
         __CLIENT__: true,
         __DEV__: true,
         __SERVER__: false,
-      }, 'DefinePlugin');
+      },
+      'DefinePlugin'
+    );
 
-    app.webpackFactory.setPlugin(webpack.NamedModulesPlugin, null, 'NamedModulesPlugin');
-    app.webpackFactory.setPlugin(webpack.HotModuleReplacementPlugin, null, 'HotModuleReplacementPlugin');
+    factory.setPlugin(
+      webpack.HotModuleReplacementPlugin,
+      null,
+      'HotModuleReplacementPlugin'
+    );
   }
-  return app.webpackFactory.getConfig();
+  return factory.getConfig();
 };

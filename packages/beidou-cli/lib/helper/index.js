@@ -43,3 +43,17 @@ exports.getArgvWithDefaultFramework = (argv) => {
 
   return argv;
 };
+
+exports.setDefaultDev = (argv) => {
+  let findDev = false;
+  for (const arg of argv) {
+    if (arg.includes('--dev')) {
+      findDev = true;
+    }
+  }
+
+  if (!findDev) {
+    argv.push('--dev=true');
+  }
+  return argv;
+};

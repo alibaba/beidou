@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
 
-import './index.scss';
+import './index.less';
 
 class Container extends React.Component {
   constructor() {

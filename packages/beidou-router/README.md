@@ -10,7 +10,7 @@ $ npm install beidou-router --save
 
 ## Configuration
 
-* config/plugin.js:
+- config/plugin.js:
 
 ```js
 exports.router = {
@@ -19,7 +19,7 @@ exports.router = {
 };
 ```
 
-* config/config.default.js
+- config/config.default.js
 
 ```js
 /**

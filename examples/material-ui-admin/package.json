@@ -1,10 +1,10 @@
 {
   "name": "beidou-example-material-ui-admin",
-  "version": "1.2.1",
+  "version": "2.0.0-beta.0",
   "description": "Beidou example material ui admin",
   "dependencies": {
-    "beidou-cli": "^1.1.0",
-    "beidou-core": "^1.2.1",
+    "beidou": "^2.0.0-beta.0",
+    "beidou-cli": "^2.0.0-beta.0",
     "chartist": "^0.10.1",
     "classnames": "^2.2.5",
     "material-ui": "1.0.0-beta.34",
@@ -25,5 +25,6 @@
     "dev": "beidou dev",
     "build": "beidou build"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }

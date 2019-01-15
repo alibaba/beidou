@@ -1,4 +1,4 @@
-import { Controller } from 'egg';
+import { Controller } from 'beidou';
 
 export default class HomeController extends Controller {
   async index() {

@@ -253,8 +253,10 @@ describe('test/webpack.test.js', () => {
     afterEach(mm.restore);
 
     it('should exist output files', (done) => {
-      const exist = fs.existsSync(path.join(output, 'index.js'));
-      expect(exist).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'index.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'bar.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'foo.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'bar/foo.js'))).to.equal(true);
       done();
     });
   });

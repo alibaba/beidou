@@ -37,22 +37,6 @@ module.exports = appInfo => ({
     },
   },
   isomorphic: {
-    babel: {
-      presets: [
-        [
-          require('babel-preset-env'),
-          {
-            targets: {
-              node: true,
-            },
-            useBuiltIns: true,
-            // debug: true,
-          },
-        ],
-        require('babel-preset-stage-2'),
-        require('babel-preset-rax'),
-      ],
-    },
     universal: {
       assets: ['.css'],
     },

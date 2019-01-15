@@ -4,15 +4,15 @@
 
 ## 特性
 
-* 编译 jsx/js
-* 编译 less/scss/css
-* 支持热替换(hmr)
-* 快速重启
-* 支持自定义配置
+- 编译 jsx/js
+- 编译 less/scss/css
+- 支持热替换(hmr)
+- 快速重启
+- 支持自定义配置
 
 ## Breaking Changes
 
-* 配置项变更，
+- 配置项变更，
 
   自`v1.0.0`起，beidou-webpack 插件底层依赖从 `webpackDevMiddleware` 迁移到了 `WebpackDevServer`，配置方式更趋近于普通非同构前端项目。具体变更参看 [issue#21](https://github.com/alibaba/beidou/issues/21)
 
@@ -20,7 +20,7 @@
 
 只在非生产环境下使用本插件，所以在你的项目上线之前必须先编译好，并把编译结果打包到线上环境。
 
-* config/plugin.js:
+- config/plugin.js:
 
 ```js
 exports.webpack = {
@@ -30,7 +30,7 @@ exports.webpack = {
 };
 ```
 
-* config/config.local.js **默认配置如下：**
+- config/config.local.js **默认配置如下：**
 
 ```js
 exports.webpack = {
@@ -71,9 +71,9 @@ exports.webpack = {
 
 配置项 `output`、`resolve`、`devServer` 和 [webpack](https://webpack.js.org) 中定义的配置项一致。注意：任何有效的 webpack 配置都可以而不仅仅是这三个配置项。对这些配置的修改会对插件默认生成的 webpack 配置生效。插件自身使用的配置在 `custom` 里面，比如，自定义 webpack 配置需要在 `'webpack.custom.configPath'` 里设置文件路径。
 
-* **devServer.port**： 定义 webpack dev server 的监听端口。访问 webpack 资源时，仍然可以通过 Node 应用直接访问，插件内置代理中间件自动转发请求到 webpack dev server ，所以  通常情况下不需要关心这个端口号。如果有特殊需要，可以直接访问 webpack dev server (上述配置下的地址 http://localhost:6002/webpack-dev-server)。
+- **devServer.port**： 定义 webpack dev server 的监听端口。访问 webpack 资源时，仍然可以通过 Node 应用直接访问，插件内置代理中间件自动转发请求到 webpack dev server ，所以  通常情况下不需要关心这个端口号。如果有特殊需要，可以直接访问 webpack dev server (上述配置下的地址 http://localhost:6002/webpack-dev-server)。
 
-* **devServer.contentBase**：必须设置为 `false`。任何非`false`的值都会  启用 webpack dev server 中的静态资源服务。这将导致所有发送到 Node 服务的请求都提前被 webpack 响应。
+- **devServer.contentBase**：必须设置为 `false`。任何非`false`的值都会  启用 webpack dev server 中的静态资源服务。这将导致所有发送到 Node 服务的请求都提前被 webpack 响应。
 
 ## Custom webpack configuration
 
@@ -133,7 +133,6 @@ module.exports = {
     hot: true,
   },
 };
-
 ```
 
 ### 常见配置问题
@@ -174,8 +173,8 @@ module.exports = (app, defaultConfig, dev, target) => {
     loader: 'ts-loader',
     options: {
       // some options
-    }
-  }
+    },
+  };
 
   // 在上述变更后重新生产配置
   return factory.getConfig();
@@ -198,7 +197,7 @@ module.exports = (app, defaultConfig, dev, target) => {
 };
 ```
 
-#### 如何修改已有Plugin配置 ？
+#### 如何修改已有 Plugin 配置 ？
 
 ```js
 module.exports = (app, defaultConfig, dev, target) => {
@@ -207,22 +206,23 @@ module.exports = (app, defaultConfig, dev, target) => {
   const plugin = factory.getPlugin('DefinePlugin');
   plugin.options = {
     __DEV__: false,
-  }
+  };
 
   // 在上述变更后重新生产配置
   return factory.getConfig();
 };
 ```
-内置所有Plugin和获取方式：
 
-| Plugin | alias |
-|:--|:--|
-|DefinePlugin| 'DefinePlugin' |
-|UglifyJsPlugin| 'UglifyJsPlugin' |
-|NamedModulesPlugin| 'NamedModulesPlugin' |
-|HotModuleReplacementPlugin| 'HotModuleReplacementPlugin' |
+内置所有 Plugin 和获取方式：
 
-默认仅获取匹配的 **一项**，复杂场景需自行遍历查询
+| Plugin                     | alias                        |
+| :------------------------- | :--------------------------- |
+| DefinePlugin               | 'DefinePlugin'               |
+| UglifyJsPlugin             | 'UglifyJsPlugin'             |
+| NamedModulesPlugin         | 'NamedModulesPlugin'         |
+| HotModuleReplacementPlugin | 'HotModuleReplacementPlugin' |
+
+默认仅获取匹配的 **一项**，复杂场景  需自行遍历查询
 
 `getPlugin` 返回 PluginConfig 对象:
 
@@ -236,12 +236,12 @@ module.exports = (app, defaultConfig, dev, target) => {
 
 #### 其他使用方式
 
-使用配置工厂自定义配置项: 
+使用配置工厂自定义配置项:
 
 ```js
 
 module.exports = (app, defaultConfig, dev, target) => {
-  
+
   // 从app中获取配置工厂,factory提供的函数下面有列出
   const factory = app.webpackFactory;
 
@@ -260,26 +260,27 @@ module.exports = (app, defaultConfig, dev, target) => {
 
   // 增加webpack plugin的配置
   // 增加了 UglifyJsPlugin 配置，并定义该插件别名为 'UglifyJsPlugin'
-  factory.addPlugin(
-    webpack.optimize.UglifyJsPlugin,
-    {
-      compress: {
-        warnings: false,
-      }
-    },
-    'UglifyJsPlugin' , // 可空,默认使用 构建函数名
-  )
-
+  // TODO: fix
+  // factory.addPlugin(
+  //   webpack.optimize.UglifyJsPlugin,
+  //   {
+  //     compress: {
+  //       warnings: false,
+  //     }
+  //   },
+  //   'UglifyJsPlugin' , // 可空,默认使用 构建函数名
+  // )
+  // TODO: fix
   // 根据别名，修改已配置的webpack plugin
-  factory.setPlugin(
-    webpack.optimize.UglifyJsPlugin,
-    {
-      compress: {
-        warnings: true,
-      }
-    },
-    'UglifyJsPlugin'
-  );
+  // factory.setPlugin(
+  //   webpack.optimize.UglifyJsPlugin,
+  //   {
+  //     compress: {
+  //       warnings: true,
+  //     }
+  //   },
+  //   'UglifyJsPlugin'
+  // );
   // or 修改方式也可使用如下方式
   factory.getPlugin('UglifyJsPlugin').options = {
     compress: {
@@ -287,15 +288,15 @@ module.exports = (app, defaultConfig, dev, target) => {
       }
   }
 
-  // 查找并修改已配置的webpack rule 
+  // 查找并修改已配置的webpack rule
   // 查找满足 .ts 的rule配置，仅且返回一个满足的rule
   const ruleObj = factory.getRule('.ts');
   ruleObj.options = {
       test: /\.tsx?$/,
       exclude: /node_modules/,
       use: {
-        loader: 
-        factory.useLoader('babel-loader')/** 如有已定义的loader，则使用自定义loader **/ || 'babel-loader', 
+        loader:
+        factory.useLoader('babel-loader')/** 如有已定义的loader，则使用自定义loader **/ || 'babel-loader',
         options: {
           babelrc: false,
           presets: ['preset-typescript'],
@@ -347,134 +348,186 @@ class Rule {
 }
 ```
 
-## webpackFactory常用函数说明：
+## webpackFactory 常用函数说明：
 
 ### 重置配置项: reset(value)
+
 #### Parameters
-* [value] {Object}
+
+- [value] {Object}
 
 #### return
-* this
 
-### 设置配置项: set(key,value) 
-####  Parameters
-* key {String}
-* value {*}
+- this
 
-#### return
-* this
+### 设置配置项: set(key,value)
 
-### 获取配置项: get(key) 
-####  Parameters
-* key {String}
-
-#### return
-* {*}
-
-### 获取{key}配置实例:  env(key) 
-####  Parameters
-* key {String} 配置实例标识
-
-#### return
-* {Object}
-
-### 获取webpack配置: getConfig() 
-####  Parameters
-
-#### return
-* {Object}
-
-
-### 增加插件配置: addPlugin(args, options,alias) 
 #### Parameters
-* args {Object|Class|String} 插件实例|构造函数|已定义的插件名
-* [options] {Object} 插件配置项
-* [alias] {String} 插件别名
+
+- key {String}
+- value {\*}
 
 #### return
-* this
 
+- this
+
+### 获取配置项: get(key)
+
+#### Parameters
+
+- key {String}
+
+#### return
+
+- {\*}
+
+### 获取{key}配置实例: env(key)
+
+#### Parameters
+
+- key {String} 配置实例标识
+
+#### return
+
+- {Object}
+
+### 获取 webpack 配置: getConfig()
+
+#### Parameters
+
+#### return
+
+- {Object}
+
+### 增加插件配置: addPlugin(args, options,alias)
+
+#### Parameters
+
+- args {Object|Class|String} 插件实例|构造函数|已定义的插件名
+- [options] {Object} 插件配置项
+- [alias] {String} 插件别名
+
+#### return
+
+- this
 
 ### getPlugin(filter) 获取插件配置
+
 #### Parameters
-* filter {String|Function} 别名|自定义函数
+
+- filter {String|Function} 别名|自定义函数
 
 #### return
-* {Plugin}
 
-### 设置插件配置: setPlugin(args, options,alias) 
+- {Plugin}
+
+### 设置插件配置: setPlugin(args, options,alias)
 
 #### Parameter
-* args {Object|Class}  插件实例|构造函数
-* [options] {Object} 插件配置项
-* [alias] {String} 插件别名
 
-#### return 
-* this
+- args {Object|Class} 插件实例|构造函数
+- [options] {Object} 插件配置项
+- [alias] {String} 插件别名
+
+#### return
+
+- this
 
 ### 定义插件: definePlugin(args, options,alias)
+
 #### Parameters
-* args {Object|Class}  插件实例|构造函数
-* [options] {Object} 插件配置项
-* [alias] {String} 插件别名
+
+- args {Object|Class} 插件实例|构造函数
+- [options] {Object} 插件配置项
+- [alias] {String} 插件别名
+
 #### return
-* this
+
+- this
 
 ### 获取定义的插件: usePlugin(alias)
-#### Parameters
-* alias {String|Fucntion|Regexp}  插件别名|自定义函数|正则
-#### return
-* {Plugin}
 
+#### Parameters
+
+- alias {String|Fucntion|Regexp} 插件别名|自定义函数|正则
+
+#### return
+
+- {Plugin}
 
 ### 增加配置规则: addRule(options,alias)
+
 #### Parameters
-* options {Object|Rule}  配置项|Rule实例
-* [alias] {String} 别名
+
+- options {Object|Rule} 配置项|Rule 实例
+- [alias] {String} 别名
+
 #### return
-* this
+
+- this
 
 ### 设置配置规则: setRule(options,alias)
+
 #### Parameters
-* options {Object|Rule}  配置项|Rule实例
-* [alias] {String} 别名
+
+- options {Object|Rule} 配置项|Rule 实例
+- [alias] {String} 别名
+
 #### return
-* this
+
+- this
 
 ### 获取配置规则: getRule(filter)
+
 #### Parameters
-* filter {String|Function|Regexp}  配置项|自定义函数|正则
+
+- filter {String|Function|Regexp} 配置项|自定义函数|正则
+
 #### return
-* {Rule}
+
+- {Rule}
 
 ### 定义配置规则: defineRule(options,alias)
+
 #### Parameters
-* options {Object}  配置项
-* [alias] {String} 别名
+
+- options {Object} 配置项
+- [alias] {String} 别名
+
 #### return
-* this
+
+- this
 
 ### 获取定义的配置规则: useRule(alias)
+
 #### Parameters
-* alias {String|Function|Regexp} 别名|自定义函数|正则
+
+- alias {String|Function|Regexp} 别名|自定义函数|正则
 
 #### return
-* {Rule}
 
-### 定义Loader: defineLoader(alias,loader)
+- {Rule}
+
+### 定义 Loader: defineLoader(alias,loader)
+
 #### Parameters
-* alias {String}  别名
-* [loader] {String} 路径,默认值为 require.resolve(params1)
-#### return
-* this
 
-### 获取定义Loader: useLoader(alias)
+- alias {String} 别名
+- [loader] {String} 路径,默认值为 require.resolve(params1)
+
+#### return
+
+- this
+
+### 获取定义 Loader: useLoader(alias)
+
 #### Parameters
-* alias {String}  别名
+
+- alias {String} 别名
+
 #### return
-* {path}
 
-
+- {path}
 
 * **app**: `BeidouApplication` 示例, 通常用来读取应用的全局配置项。
 
@@ -491,8 +544,8 @@ class Rule {
 扫描规则受 [beidou-router](../beidou-router/) 中
 `router.root` 和 `router.entry` 两个配置项影响。
 
-* **router.root**: 进行扫描的根路径
-* **router.entry**: entry 文件名称，文件名（不含后缀）匹配的文件才被视为可用的 entry
+- **router.root**: 进行扫描的根路径
+- **router.entry**: entry 文件名称，文件名（不含后缀）匹配的文件才被视为可用的 entry
 
 > **Notice**:  扫描的文件深度为 1 (  仅匹配 ${router.root}/${router.entry}.jsx 和 ${router.root}/${dir}/\${router.entry}.jsx )
 

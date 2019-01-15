@@ -1,6 +1,6 @@
 'use strict';
 
-import client from '../../client';
+const client = require('../../client');
 
 module.exports.less = function* () {
   this.body = client.less;

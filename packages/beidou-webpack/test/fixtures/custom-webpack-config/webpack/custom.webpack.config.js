@@ -5,6 +5,7 @@ const path = require('path');
 const outputPath = path.resolve(__dirname, '../build');
 
 module.exports = {
+  mode: 'development',
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: {

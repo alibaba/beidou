@@ -12,23 +12,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package beidou-example-stream
 
 <a name="1.2.0"></a>
+
 # [1.2.0](https://github.com/alibaba/beidou/compare/v1.1.0...v1.2.0) (2018-12-26)
-
-
-
 
 **Note:** Version bump only for package beidou-example-stream
 
 <a name="1.1.0"></a>
-# [1.1.0](https://github.com/alibaba/beidou/compare/v1.0.10...v1.1.0) (2018-12-18)
 
+# [1.1.0](https://github.com/alibaba/beidou/compare/v1.0.10...v1.1.0) (2018-12-18)
 
 ### Features
 
-* support render to stream  ([#126](https://github.com/alibaba/beidou/issues/126)) ([dce1416](https://github.com/alibaba/beidou/commit/dce1416)), closes [#124](https://github.com/alibaba/beidou/issues/124)
-
-
-
+- support render to stream ([#126](https://github.com/alibaba/beidou/issues/126)) ([dce1416](https://github.com/alibaba/beidou/commit/dce1416)), closes [#124](https://github.com/alibaba/beidou/issues/124)
 
 <a name="1.0.9"></a>
 

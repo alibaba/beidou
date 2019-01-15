@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import classNames from 'classnames/bind';
-import style from './index.module.scss';
+import style from './index.module.less';
 import bg from '../images/bg.png';
 
 const cx = classNames.bind(style);

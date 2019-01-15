@@ -7,7 +7,7 @@ node_js:
   - '10'
 before_install:
   # Remove examples directories, avoid install dependencies
-  - rm -rf ./examples/
+  # - rm -rf ./examples/
 install:
   - npm install
   - npm install -g codecov

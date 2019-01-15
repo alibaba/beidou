@@ -21,6 +21,16 @@ class Logger {
     args[0] = this.prefix + chalk.red(`error ${args[0]}`);
     console.log(...args);
   }
+
+  green(...args) {
+    args[0] = this.prefix + chalk.green(args[0]);
+    console.log(...args);
+  }
+
+  red(...args) {
+    args[0] = this.prefix + chalk.red(args[0]);
+    console.log(...args);
+  }
 }
 
 module.exports = new Logger();

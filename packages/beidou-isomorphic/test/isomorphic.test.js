@@ -13,8 +13,7 @@ describe('test/isomorphic.test.js', () => {
     let app;
 
     before((done) => {
-      app = mm.cluster({
-        coverage: true,
+      app = mm.app({
         baseDir: './isomorphic-app/',
         plugin: 'isomorphic',
         framework: frameworkPath,
@@ -126,7 +125,7 @@ describe('test/isomorphic.test.js', () => {
   // describe('render with fullPolyfill', () => {
   //   let app;
   //   before((done) => {
-  //     app = mm.cluster({
+  //     app = mm.app({
   //       baseDir: './isomorphic-app/',
   //       plugin: 'isomorphic',
   //       framework: frameworkPath
@@ -160,7 +159,7 @@ describe('test/isomorphic.test.js', () => {
   // describe('render with fullPolyfill when get wrong match config', () => {
   //   let app;
   //   before((done) => {
-  //     app = mm.cluster({
+  //     app = mm.app({
   //       baseDir: './isomorphic-app/',
   //       plugin: 'isomorphic',
   //       framework: frameworkPath
@@ -198,7 +197,7 @@ describe('test/isomorphic.test.js', () => {
   // describe('render with match polyfill(RegExp)', () => {
   //   let app;
   //   before((done) => {
-  //     app = mm.cluster({
+  //     app = mm.app({
   //       baseDir: './isomorphic-app/',
   //       plugin: 'isomorphic',
   //       framework: frameworkPath
@@ -233,7 +232,7 @@ describe('test/isomorphic.test.js', () => {
   // describe('render with match polyfill(string)', () => {
   //   let app;
   //   before((done) => {
-  //     app = mm.cluster({
+  //     app = mm.app({
   //       baseDir: './isomorphic-app/',
   //       plugin: 'isomorphic',
   //       framework: frameworkPath
@@ -268,7 +267,7 @@ describe('test/isomorphic.test.js', () => {
   // describe('render with parallel request', () => {
   //   let app;
   //   before((done) => {
-  //     app = mm.cluster({
+  //     app = mm.app({
   //       baseDir: './isomorphic-app/',
   //       plugin: 'isomorphic',
   //       framework: frameworkPath
@@ -409,7 +408,7 @@ describe('test/isomorphic.test.js', () => {
   describe('universal no assets.json', () => {
     let app;
     before((done) => {
-      app = mm.cluster({
+      app = mm.app({
         baseDir: './universal-noasset',
         plugin: 'isomorphic',
         framework: frameworkPath,
@@ -471,7 +470,7 @@ describe('test/isomorphic.test.js', () => {
   describe('alias resolve', () => {
     let app;
     before((done) => {
-      app = mm.cluster({
+      app = mm.app({
         baseDir: './alias',
         plugin: 'isomorphic',
         framework: frameworkPath,
@@ -491,6 +490,85 @@ describe('test/isomorphic.test.js', () => {
       request(app.callback())
         .get('/')
         .expect('alias file content')
+        .expect(200, done);
+    });
+  });
+
+  describe('`.node.babelrc` resolve', () => {
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './babelrc',
+        plugin: 'isomorphic',
+        framework: frameworkPath,
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should return ok', (done) => {
+      request(app.callback())
+        .get('/')
+        .expect(/hello world/)
+        .expect(200, done);
+    });
+  });
+
+  describe('error config', () => {
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './error-config',
+        plugin: 'isomorphic',
+        framework: frameworkPath,
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should throw error', (done) => {
+      request(app.callback())
+        .get('/')
+        .expect(200, done);
+    });
+  });
+
+  describe('typescript support', () => {
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './typescript',
+        plugin: 'isomorphic',
+        framework: frameworkPath,
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(() => {
+      mm.restore();
+    });
+
+    it('should return ok for ts config', (done) => {
+      request(app.callback())
+        .get('/')
         .expect(200, done);
     });
   });

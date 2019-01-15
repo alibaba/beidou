@@ -2,10 +2,8 @@
 
 module.exports = function (appInfo) {
   const exports = {
-    keys: '123456',
+    keys: 'test',
     view: {
-      defaultViewEngine: 'react',
-      defaultExtension: '.jsx',
       root: `${appInfo.baseDir}/app/views`,
     },
     react: {
