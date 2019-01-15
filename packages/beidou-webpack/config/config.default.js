@@ -33,7 +33,6 @@ module.exports = appInfo => ({
           vendors: false,
           manifest: {
             test: /[\\/]node_modules[\\/]/,
-            enforce: true,
           },
         },
       },
