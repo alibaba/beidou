@@ -28,5 +28,6 @@
       "threshold": 90
     }
   },
-  "repository": "https://github.com/alibaba/beidou/"
+  "repository": "https://github.com/alibaba/beidou/",
+  "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }

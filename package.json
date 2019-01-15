@@ -10,8 +10,7 @@
     "clean": "make clean",
     "ci": "make ci",
     "changelog": "make changelog",
-    "precommit": "lint-staged",
-    "publish": "lerna publish --conventional-commits"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx}": [
