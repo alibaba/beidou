@@ -35,27 +35,27 @@
     "Simple": {
       "package": "beidou-example-simple",
       "description": "Simple beidou isomorphic app boilerplate",
-      "tag": "next"
+      "tag": "latest"
     },
     "Redux": {
       "package": "beidou-example-redux",
       "description": "Redux beidou isomorphic app boilerplate",
-      "tag": "next"
+      "tag": "latest"
     },
     "CSS-MODULES": {
       "package": "beidou-example-css-modules",
       "description": "CSS-MODULES beidou isomorphic app boilerplate",
-      "tag": "next"
+      "tag": "latest"
     },
     "Advanced": {
       "package": "beidou-example-advanced",
       "description": "Advanced beidou isomorphic app boilerplate",
-      "tag": "next"
+      "tag": "latest"
     },
     "TypeScript": {
       "package": "beidou-example-typescript",
       "description": "Beidou TypeScript isomorphic app boilerplate",
-      "tag": "next"
+      "tag": "latest"
     }
   },
   "devDependencies": {
