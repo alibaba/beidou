@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-css-modules",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "beidou css modules example",
   "scripts": {
     "start": "beidou start",
@@ -15,7 +15,7 @@
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "^2.0.0-beta.0",
+    "eslint-config-beidou": "^2.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1"
   },
@@ -23,10 +23,10 @@
     "babel": "^6.5.2",
     "babel-core": "^6.25.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-beidou-client": "^2.0.0-beta.0",
-    "babel-preset-beidou-server": "^2.0.0-beta.0",
-    "beidou": "^2.0.0-beta.0",
-    "beidou-cli": "^2.0.0-beta.0",
+    "babel-preset-beidou-client": "^2.0.0",
+    "babel-preset-beidou-server": "^2.0.0",
+    "beidou": "^2.0.0",
+    "beidou-cli": "^2.0.0",
     "classnames": "^2.2.3",
     "enums": "^1.0.0",
     "extend": "^3.0.0",

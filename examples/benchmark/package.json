@@ -1,6 +1,6 @@
 {
   "name": "beidou-benchmark",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "beidou benchmark",
   "scripts": {
     "start": "beidou start",
@@ -18,15 +18,15 @@
     "benchmark": "^2.1.4",
     "egg-mock": "^3.20.1",
     "eslint": "^4.11.0",
-    "eslint-config-beidou": "^2.0.0-beta.0",
+    "eslint-config-beidou": "^2.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
     "markdown-table": "^1.1.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.0.0-beta.0",
-    "beidou-cli": "^2.0.0-beta.0",
+    "beidou": "^2.0.0",
+    "beidou-cli": "^2.0.0",
     "classnames": "^2.2.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

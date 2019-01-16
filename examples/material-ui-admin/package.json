@@ -1,10 +1,10 @@
 {
   "name": "beidou-example-material-ui-admin",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "Beidou example material ui admin",
   "dependencies": {
-    "beidou": "^2.0.0-beta.0",
-    "beidou-cli": "^2.0.0-beta.0",
+    "beidou": "^2.0.0",
+    "beidou-cli": "^2.0.0",
     "chartist": "^0.10.1",
     "classnames": "^2.2.5",
     "material-ui": "1.0.0-beta.34",

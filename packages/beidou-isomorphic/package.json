@@ -1,6 +1,6 @@
 {
   "name": "beidou-isomorphic",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "beidou isomorphic register",
   "main": "app.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/register": "^7.0.0",
-    "babel-preset-beidou-server": "^2.0.0-beta.0",
+    "babel-preset-beidou-server": "^2.0.0",
     "babel-register": "^6.26.0",
     "jsdom": "^9.8.3"
   },

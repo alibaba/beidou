@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-redux-observable",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "Beidou example with redux-observable",
   "scripts": {
     "start": "beidou start",
@@ -13,8 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.0.0-beta.0",
-    "beidou-cli": "^2.0.0-beta.0",
+    "beidou": "^2.0.0",
+    "beidou-cli": "^2.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

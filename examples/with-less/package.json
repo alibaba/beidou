@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-less",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "Beidou example with less",
   "scripts": {
     "start": "beidou start",
@@ -13,8 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.0.0-beta.0",
-    "beidou-cli": "^2.0.0-beta.0",
+    "beidou": "^2.0.0",
+    "beidou-cli": "^2.0.0",
     "css-loader": "^0.28.10",
     "less": "^3.0.1",
     "less-loader": "^4.0.5",

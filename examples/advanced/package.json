@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-advanced",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0",
   "description": "beidou example advanced",
   "scripts": {
     "start": "beidou start",
@@ -14,15 +14,15 @@
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
-    "eslint-config-beidou": "^2.0.0-beta.0",
+    "eslint-config-beidou": "^2.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
     "react-hot-loader": "^4.3.12"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.0.0-beta.0",
-    "beidou-cli": "^2.0.0-beta.0",
+    "beidou": "^2.0.0",
+    "beidou-cli": "^2.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
