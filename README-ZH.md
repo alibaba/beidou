@@ -44,7 +44,7 @@
 - **BREAKING CHANGE**: 内置 babel 升级至 7
 - **BREAKING CHANGE**: 内置 webpack 升级至 4
 
-- 完备的 TypeScript 支持，开启仅需  一行配置:
+- 完备的 TypeScript 支持，开启仅需一行配置:
 
 ```json
 // package.json
