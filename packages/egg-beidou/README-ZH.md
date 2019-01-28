@@ -6,17 +6,13 @@
 
 ### 使用方式
 
-- app.beidou 将渲染对象赋值在 app 下，方便调用
-- ctx.beidou 将 SSR 渲染功能注入 context 上下文中方便调用
+- ctx.render(filepath,props) 将 filepath 文件内的 react 代码使用 props 参数进行渲染，并赋值在 ctx.body 上
+- ctx.renderView(filepath,props) 将 filepath 文件内的 react 代码使用 props 参数进行渲染,并将渲染结果返回
 
 ## 配置
 
 ```js
 // plugin.js
-exports.isomorphic = {
-  enable: true,
-  package: 'beidou-isomorphic',
-};
 exports.beidou = {
   enable: true,
   package: 'egg-beidou',
@@ -24,7 +20,6 @@ exports.beidou = {
 
 // config.default.js
 exports.beidou = {
-  viewPath: '', //   打包后的文件base path
   static: true, //   是否开启 static 渲染
   stream: false, //  是否开启 stream 渲染
 };
@@ -39,16 +34,19 @@ exports.beidou = {
 'use strict';
 
 exports.index = async function(ctx) {
-  ctx.body = await ctx.beidou('simple/index.js');
+  await ctx.render('simple/index.js', {
+    data: {
+      text: 'hello world!',
+    },
+  });
 };
 
 // 将数据传入 react render中的this.props
 exports.simple = async function(ctx) {
-  ctx.body = await ctx.beidou('simple/index.js', {
+  ctx.body = await ctx.renderView('simple/index.js', {
     data: {
-      msg: 'your data',
+      text: 'hello world!',
     },
-    ctx,
   });
 };
 ```

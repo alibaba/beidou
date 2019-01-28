@@ -1,11 +1,10 @@
 'use strict';
 
 exports.index = async function (ctx) {
-  ctx.app.beidou.options.static = false;
-  ctx.body = await ctx.beidou('redux/index.js', { ctx });
+  ctx.body = await ctx.renderView('redux/index.js', { ctx });
 };
 
 exports.page = async function (ctx) {
-  ctx.app.beidou.options.static = true;
-  ctx.body = await ctx.beidou('redux/page.js', { ctx });
+  ctx.app.config.beidou.stream = false;
+  ctx.body = await ctx.renderView('redux/page.js', { ctx });
 };

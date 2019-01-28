@@ -13,7 +13,7 @@ describe('test/beidou.test.js', () => {
   after(() => app.close());
   afterEach(mm.restore);
 
-  describe('static string SRR request success ', () => {
+  describe('static string SRR request  ', () => {
     it('simple should status 200', () => app.httpRequest(app.callback())
       .get('/')
       .expect(200));
@@ -47,9 +47,15 @@ describe('test/beidou.test.js', () => {
   after(() => app.close());
   afterEach(mm.restore);
 
-  describe('static stream SRR request success ', () => {
+  describe('static stream SRR request  ', () => {
     it('simple should status 200', () => app.httpRequest(app.callback())
       .get('/')
       .expect(200));
+  });
+
+  describe('renderString Exception  ', () => {
+    it('simple should status 500', () => app.httpRequest(app.callback())
+      .get('/miss')
+      .expect(500));
   });
 });

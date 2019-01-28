@@ -26,10 +26,13 @@ class BeidouBaseView {
     const { loader } = this.app;
     const { FileLoader } = loader;
     const middlewares = {};
-
     // Load all plugins, frameworks, application 'app/view-middlewares'
     // into object middlewares
-    for (const unit of loader.getLoadUnits()) {
+    const units = loader.getLoadUnits();
+    if (!options.extPaths) {
+      options.extPaths = [];
+    }
+    for (const unit of units.concat(options.extPaths)) {
       new FileLoader({
         directory: path.join(unit.path, 'app/view-middlewares'),
         target: middlewares,
@@ -67,7 +70,6 @@ class BeidouBaseView {
       config: this.config,
       options: this.options,
     };
-
     await this.fn(context);
     const htmlStr = context.html;
 

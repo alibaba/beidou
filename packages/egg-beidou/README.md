@@ -8,17 +8,12 @@ neet to open the plugin for using
 
 ### extends
 
-- app.beidou the Beidou plugin Object
-- ctx.beidou render the file for SSR
+- ctx.render(filepath,props) Render the `filepath` by proprs and set the result as `ctx.body` value
+- ctx.renderView(filepath,props) Render the `filepath` by proprs and return result for SSR
 
 ## Configure
 
 ```js
-// plugin.js
-exports.isomorphic = {
-  enable: true,
-  package: 'beidou-isomorphic',
-};
 exports.beidou = {
   enable: true,
   package: 'egg-beidou',
@@ -26,7 +21,6 @@ exports.beidou = {
 
 // config.default.js
 exports.beidou = {
-  viewPath: '', // render the base path
   static: true, //  whether use static render for SSR
   stream: false, //  whether use stream render for SSR
 };
@@ -41,16 +35,19 @@ exports.beidou = {
 'use strict';
 
 exports.index = async function(ctx) {
-  ctx.body = await ctx.beidou('simple/index.js');
+  await ctx.render('simple/index.js', {
+    data: {
+      text: 'hello world!',
+    },
+  });
 };
 
 // if you need pass server data to render
 exports.simple = async function(ctx) {
-  ctx.body = await ctx.beidou('simple/index.js', {
+  ctx.body = await ctx.renderView('simple/index.js', {
     data: {
-      msg: 'your data',
+      text: 'hello world!',
     },
-    ctx,
   });
 };
 ```
