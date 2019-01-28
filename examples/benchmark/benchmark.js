@@ -13,7 +13,7 @@ const startApp = async () => {
   mm.env('prod');
   app = mm.app({
     baseDir: __dirname,
-    framework: 'beidou-core',
+    framework: 'beidou',
   });
   await app.ready();
   await app.httpRequest().get('/');
