@@ -1,22 +1,15 @@
 'use strict';
 
 const ReactDOMServer = require('react-dom/server');
-const fs = require('fs');
 const path = require('path');
-
-const viewPaths = [
-  path.join(__dirname, '../../beidou-view'),
-  path.join(require.resolve('beidou-view'), '../'),
-];
-const viewPath = viewPaths.find(p => fs.existsSync(p));
-const BaseView = require(viewPath);
+const BaseView = require('beidou-view');
 
 class BeidouView extends BaseView {
   constructor(ctx) {
     const options = ctx.app.config.beidou;
     let extPaths = [
       {
-        path: viewPath,
+        path: path.join(require.resolve('beidou-view'), '../'),
       },
     ];
     if (options.extPaths) {
