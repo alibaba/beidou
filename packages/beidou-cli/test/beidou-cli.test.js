@@ -23,7 +23,7 @@ describe(`test/${path.basename(__filename)}`, () => {
 
   function* prepareFiles(cwd) {
     if (!fs.existsSync(path.join(cwd, 'package.json'))) {
-      fs.copySync(path.join(__dirname, '../../../examples/simple'), cwd)
+      fs.copySync(path.join(__dirname, '../../../examples/simple'), cwd);
       rimraf.sync(path.join(cwd, 'node_modules'));
     }
 
@@ -78,12 +78,12 @@ describe(`test/${path.basename(__filename)}`, () => {
       rimraf.sync(cwd);
       mkdirp.sync(cwd);
     });
-  
+
     after(() => {
       rimraf.sync(cwd);
     });
 
-    
+
     it('should init boilerplate project', (done) => {
       coffee
         .fork(beidouBin, ['init', '--skipInstall'], {
@@ -94,7 +94,7 @@ describe(`test/${path.basename(__filename)}`, () => {
         .end((err, ret) => {
           console.error(err);
           console.log(ret);
-          done()
+          done();
         });
     });
 
@@ -108,18 +108,18 @@ describe(`test/${path.basename(__filename)}`, () => {
         .end((err, ret) => {
           console.error(err);
           console.log(ret);
-          done()
+          done();
         });
     });
   });
 
   describe('start, stop, dev, debug, test, cov commands', () => {
     let app;
-   
+
     const TIME = 10;
 
     const cwd = path.join(__dirname, './fixtures/running');
-    before(function*() {
+    before(function* () {
       yield prepareFiles(cwd);
       mkdirp.sync(path.join(cwd, 'test'));
       fs.writeFileSync(path.join(cwd, 'test/example.test.js'), `
@@ -132,10 +132,10 @@ describe(`test/${path.basename(__filename)}`, () => {
             assert(1 + 1 === 2);
           });
         });
-      `)
+      `);
     });
-  
-    after(function*() {
+
+    after(function* () {
       yield sleep(TIME);
       rimraf.sync(cwd);
     });
@@ -176,7 +176,7 @@ describe(`test/${path.basename(__filename)}`, () => {
         });
       devApp.expect('code', 0);
       yield sleep(TIME);
-      devApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
+      devApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/);
       yield stopEggProcess(cwd);
     });
 
@@ -187,7 +187,7 @@ describe(`test/${path.basename(__filename)}`, () => {
         });
       debugApp.expect('code', 0);
       yield sleep(TIME);
-      debugApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/)
+      debugApp.expect('stdout', /beidou-core started on http:\/\/127\.0\.0\.1:6001/);
 
       yield stopEggProcess(cwd);
     });
@@ -240,7 +240,7 @@ describe(`test/${path.basename(__filename)}`, () => {
         .end((err, ret) => {
           console.error(err);
           console.log(ret);
-          done()
+          done();
         });
     });
 
@@ -255,7 +255,52 @@ describe(`test/${path.basename(__filename)}`, () => {
         .end((err, ret) => {
           console.error(err);
           console.log(ret);
-          done()
+          done();
+        });
+    });
+  });
+
+
+  describe('should run pack command', () => {
+    const webpackPath = path.join(__dirname, '../../beidou-webpack/node_modules/webpack');
+    const webpackConfig = path.join(__dirname, './fixtures/configs/webpack.config.js');
+    const buildPath = path.join(__dirname, './fixtures/build');
+    after(() => {
+      rimraf.sync(buildPath);
+    });
+    it('should run pack script', (done) => {
+      coffee
+        .fork(beidouBin, ['pack', `--config=${webpackConfig}`, `--webpack=${webpackPath}`])
+        .expect('stdout', /Build finished/)
+        .expect('code', 0)
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done();
+        });
+    });
+
+    it('pack command exception for custom path', (done) => {
+      coffee
+        .fork(beidouBin, ['pack', `--webpack=${webpackPath}`])
+        .expect('stdout', /Custom webpack path error/)
+        .expect('code', 0)
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done();
+        });
+    });
+
+    it('pack command exception for webpack dependence', (done) => {
+      coffee
+        .fork(beidouBin, ['pack'])
+        .expect('stdout', /webpack dependence/)
+        .expect('code', 0)
+        .end((err, ret) => {
+          console.error(err);
+          console.log(ret);
+          done();
         });
     });
   });

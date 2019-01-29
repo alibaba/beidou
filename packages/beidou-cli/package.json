@@ -29,7 +29,8 @@
     "npm-updater": "^3.0.3",
     "rimraf": "^2.6.2",
     "tar": "^2.2.1",
-    "urllib": "^2.25.4"
+    "urllib": "^2.25.4",
+    "babel-loader": "^8.0.5"
   },
   "boilerplates": {
     "Simple": {
