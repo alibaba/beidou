@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-beidou",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Beidou Node Style Guide",
   "main": "index.js",
   "scripts": {

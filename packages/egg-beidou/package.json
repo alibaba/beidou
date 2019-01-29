@@ -1,7 +1,7 @@
 {
   "name": "egg-beidou",
   "private": true,
-  "version": "0.0.1",
+  "version": "2.0.1",
   "description": "the plugin support egg framework to SSR",
   "eggPlugin": {
     "name": "beidou"
@@ -14,8 +14,8 @@
     "eggPlugin"
   ],
   "dependencies": {
-    "beidou-view": "^2.0.0",
-    "beidou-isomorphic": "^2.0.0",
+    "beidou-isomorphic": "^2.0.1",
+    "beidou-view": "^2.0.1",
     "koa-compose": "^4.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -24,11 +24,11 @@
   },
   "devDependencies": {
     "autod": "^3.0.1",
-    "eslint": "^5.3.0",
-    "eslint-config-egg": "^7.0.0",
-    "egg-bin": "^4.0.0",
     "egg": "^2.10.0",
-    "egg-mock": "^3.7.1"
+    "egg-bin": "^4.0.0",
+    "egg-mock": "^3.7.1",
+    "eslint": "^5.3.0",
+    "eslint-config-egg": "^7.0.0"
   },
   "scripts": {
     "autod": "autod",

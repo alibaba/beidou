@@ -1,6 +1,6 @@
 {
   "name": "beidou-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Beidou cli tools",
   "main": "index.js",
   "license": "MIT",
@@ -13,6 +13,7 @@
     "history": "egg-bin history CHANGELOG.md"
   },
   "dependencies": {
+    "babel-loader": "^8.0.5",
     "chalk": "^2.3.1",
     "check-npm-registry": "^1.0.4",
     "cross-spawn": "^6.0.4",
@@ -29,8 +30,7 @@
     "npm-updater": "^3.0.3",
     "rimraf": "^2.6.2",
     "tar": "^2.2.1",
-    "urllib": "^2.25.4",
-    "babel-loader": "^8.0.5"
+    "urllib": "^2.25.4"
   },
   "boilerplates": {
     "Simple": {
