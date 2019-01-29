@@ -148,9 +148,9 @@ Navigate to `http://localhost:6001/`
 
 Please let us know how can we help. Do check out [issues](https://github.com/alibaba/beidou/issues) for bug reports or suggestions first.
 
-DingTalk & Wechat group supported
+DingTalk group supported
 
-![](https://img.alicdn.com/tfs/TB1ciTUX7yWBuNjy0FpXXassXXa-700-473.png)
+![](https://img.alicdn.com/tfs/TB1hwjgEpYqK1RjSZLeXXbXppXa-416-530.png)
 
 ## License
 
