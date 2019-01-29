@@ -48,12 +48,18 @@ module.exports = function (api, opt) {
     plugins: [
       // stage 2
       [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
-      require.resolve('@babel/plugin-proposal-class-properties'),
+      [
+        require.resolve('@babel/plugin-proposal-class-properties'),
+        {
+          loose: true,
+        },
+      ],
       require.resolve('@babel/plugin-proposal-function-sent'),
       require.resolve('@babel/plugin-proposal-export-namespace-from'),
       require.resolve('@babel/plugin-proposal-numeric-separator'),
       require.resolve('@babel/plugin-proposal-throw-expressions'),
       require.resolve('babel-plugin-add-module-exports'),
+      // require.resolve('@babel/plugin-transform-runtime'),
     ],
   };
 
