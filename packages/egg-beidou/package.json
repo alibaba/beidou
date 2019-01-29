@@ -1,5 +1,6 @@
 {
   "name": "egg-beidou",
+  "private": true,
   "version": "0.0.1",
   "description": "the plugin support egg framework to SSR",
   "eggPlugin": {
