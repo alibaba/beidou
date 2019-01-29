@@ -59,7 +59,7 @@ module.exports = function (api, opt) {
       require.resolve('@babel/plugin-proposal-numeric-separator'),
       require.resolve('@babel/plugin-proposal-throw-expressions'),
       require.resolve('babel-plugin-add-module-exports'),
-      require.resolve('@babel/plugin-transform-runtime'),
+      // require.resolve('@babel/plugin-transform-runtime'),
     ],
   };
 
