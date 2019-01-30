@@ -9,7 +9,6 @@
     "prestart": "npm run asset",
     "asset": "node scripts/asset --dev",
     "build": "npm run lint && beidou build",
-    "prepush": "tnpm run lint",
     "precommit": "lint-staged",
     "debug": "beidou debug"
   },
