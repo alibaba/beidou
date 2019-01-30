@@ -1,0 +1,27 @@
+
+.nav {
+  box-shadow: 0 1px 1px rgba(0,0,0, 0.2);
+  .logo {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .user {
+    $s: 36px;
+    width: $s;
+    height: $s;
+    border-radius: $s / 2;
+    overflow: hidden;
+    margin-right: 16px;
+    margin-top: 10px;
+
+    > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

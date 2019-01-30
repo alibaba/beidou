@@ -1,0 +1,20 @@
+#_ {
+
+  
+}
+
+.expand-enter {
+  overflow: hidden;
+}
+
+.expand-enter-active {
+  transition: height 0.2s ease-in-out;
+}
+
+.expand-leave {
+  overflow: hidden;
+}
+
+.expand-leave-active {
+  transition: height 0.2s ease-in-out;
+}

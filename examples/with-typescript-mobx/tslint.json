@@ -1,0 +1,27 @@
+{
+  "extends": ["tslint:latest", "tslint-react", "tslint-eslint-rules"],
+  "rules": {
+    "quotemark": [true, "single", "jsx-double"],
+    "member-access": false,
+    "ordered-imports": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "jsx-boolean-value": false,
+    "jsx-no-multiline-js": false,
+    "object-literal-sort-keys": false,
+    "no-console": [true, "log"],
+    "array-bracket-spacing": "always",
+    "block-spacing": "always",
+    "object-curly-spacing": "always",
+    "no-this-assignment": false,
+    "no-object-literal-type-assertion": false,
+    "no-empty-interface": false,
+    "jsx-no-lambda": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "**/*.d.ts"
+    ]
+  }
+}
