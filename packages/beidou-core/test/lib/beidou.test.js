@@ -41,4 +41,26 @@ describe('test/lib/beidou.test.js', () => {
       app.expect('stdout', /Beidou started/).ready(done);
     });
   });
+
+  describe('Static server started success', () => {
+    let app;
+
+    before((done) => {
+      app = utils.startMaster('apps/static-server-with-build-dir', {
+        coverage: true,
+      });
+      app.ready(done);
+    });
+
+    afterEach(() => {
+      app.close();
+    });
+
+    it('should get 200 when request a static file under "build" folder', () => {
+      return app.httpRequest()
+        .get('/build/foo.js')
+        .expect(/console.log\(\'bar\'\);/)
+        .expect(200);
+    });
+  });
 });

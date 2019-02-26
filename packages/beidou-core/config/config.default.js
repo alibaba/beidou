@@ -54,4 +54,19 @@ module.exports = appInfo => ({
     'bodyParser',
     'overrideMethod',
   ],
+
+  /**
+   * enable app/build and app/public folder for static-server
+   * @member {Array} Config#static
+   */
+  static: {
+    prefix: '/public',
+    dir: [
+      path.join(appInfo.baseDir, '/app/public'),
+      {
+        prefix: '/build',
+        dir: path.join(appInfo.baseDir, '/build'),
+      },
+    ],
+  },
 });
