@@ -52,7 +52,7 @@ describe('test/lib/beidou.test.js', () => {
       app.ready(done);
     });
 
-    afterEach(() => {
+    after(() => {
       app.close();
     });
 
@@ -60,6 +60,13 @@ describe('test/lib/beidou.test.js', () => {
       return app.httpRequest()
         .get('/build/foo.js')
         .expect(/console.log\(\'bar\'\);/)
+        .expect(200);
+    });
+
+    it('should get 200 when request a static file under "app/public" folder', () => {
+      return app.httpRequest()
+        .get('/public/bar.js')
+        .expect(/console.log\(\'foo\'\);/)
         .expect(200);
     });
   });
