@@ -60,9 +60,11 @@ module.exports = appInfo => ({
    * @member {Array} Config#static
    */
   static: {
-    prefix: '/public',
     dir: [
-      path.join(appInfo.baseDir, '/app/public'),
+      {
+        prefix: '/public',
+        dir: path.join(appInfo.baseDir, '/app/public'),
+      },
       {
         prefix: '/build',
         dir: path.join(appInfo.baseDir, '/build'),
