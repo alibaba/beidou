@@ -4,7 +4,10 @@ const is = require('is');
 const Plugin = require('./plugin');
 const Rule = require('./rule');
 const extend = require('extend2');
-const helper = require('../utils');
+
+function toType(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+}
 
 class Factory {
   init() {
@@ -96,7 +99,7 @@ class WebpackFactory extends Factory {
   }
 
   set(key, config, force = false) {
-    if (helper.toType(config) !== helper.toType(this.__webpackConfig[key])) {
+    if (toType(config) !== toType(this.__webpackConfig[key])) {
       force = true;
     }
     if (force || is.string(config)) {
