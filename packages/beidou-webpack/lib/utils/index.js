@@ -155,8 +155,8 @@ const getWebpackConfig = (app, options = {}, target = 'browser') => {
   if (devServer.contentBase !== false) {
     app.logger.warn(
       '[webpack] devServer.contentBase: %s, if ' +
-        'webpack.devServer.contentBase is not false may cause beidou' +
-        ' server unreachable',
+      'webpack.devServer.contentBase is not false may cause beidou' +
+      ' server unreachable',
       devServer.contentBase
     );
     devServer.contentBase = false;
@@ -257,6 +257,10 @@ const restartServer = function (config, port, logger, agent) {
   startServer(config, port, logger, agent);
 };
 
+const toType = function (obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+};
+
 exports.startServer = startServer;
 exports.closeServer = closeServer;
 exports.injectPlugin = injectPlugin;
@@ -264,3 +268,4 @@ exports.restartServer = restartServer;
 exports.printEntry = printEntry;
 exports.getWebpackConfig = getWebpackConfig;
 exports.dumpWebpackConfig = dumpWebpackConfig;
+exports.toType = toType;
