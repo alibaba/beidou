@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/compare/v2.0.1...v2.0.2) (2019-02-27)
+
+
+### Bug Fixes
+
+* disable exract comments ([#149](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/149)) ([a0b7025](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/commit/a0b7025))
+
+
+
+
+
 # [2.0.0](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/compare/v1.2.1...v2.0.0) (2019-01-16)
 
 **Note:** Version bump only for package beidou-webpack

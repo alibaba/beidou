@@ -5,12 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.0.2](https://github.com/alibaba/beidou/compare/v2.0.1...v2.0.2) (2019-02-27)
 
-**Note:** Version bump only for package beidou-example-typescript
-
-
-
-
-
-# [2.0.0](https://github.com/alibaba/beidou/compare/v1.2.1...v2.0.0) (2019-01-16)
-
-**Note:** Version bump only for package beidou-example-typescript
+**Note:** Version bump only for package beidou-example-typescript-mobx
