@@ -247,13 +247,35 @@ module.exports = (app, defaultConfig, dev, target) => {
 
   // 设置 webpack output 的值，方式如下:
   factory.set('output',{
-    {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
       publicPath: '/build/',
-    }
   })
+
+  // 如果新set变量类型和目前factory中的变量类型一样时，会默认触发递归合并行为:
+  // string类型还是会直接覆盖
+  // obj:
+  factory.set('output',{
+      hashDigestLength:10
+  })
+  // factory.get('output'): {
+  //     path: outputPath,
+  //     filename: '[name].js?[hash]',
+  //     chunkFilename: '[name].js',
+  //     publicPath: '/build/',
+  //     hashDigestLength: 10
+  // }
+
+  // array:
+  // 假设之前的entry为: ['./src/main.js']
+  factory.set('entry',['./src/index.js'])
+  // factory.get('entry'): ['./src/main.js','./src/index.js'];
+
+  // 如果想要强制直接覆盖，在第三个参数中传入true
+  factory.set('entry',['./src/app.js'],true)
+  // factory.get('entry'): ['./src/app.js'];
+  
   // webpack output 值修改
   factory.get('output').chunkFilename = '[name].modify.js';
 
