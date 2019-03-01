@@ -148,13 +148,35 @@ module.exports = (app, defaultConfig, dev, target) => {
 
   // set the value of output in webpack :
   factory.set('output',{
-    {
       path: outputPath,
       filename: '[name].js?[hash]',
       chunkFilename: '[name].js',
       publicPath: '/build/',
-    }
   })
+
+  // if type of the new value is the same, it will emit deep merge by default;
+  // string type will overrided;
+  // obj:
+  factory.set('output',{
+      hashDigestLength:10
+  })
+  // factory.get('output'): {
+  //     path: outputPath,
+  //     filename: '[name].js?[hash]',
+  //     chunkFilename: '[name].js',
+  //     publicPath: '/build/',
+  //     hashDigestLength: 10
+  // }
+
+  // array:
+  // suppose the old entry value is ['./src/main.js']
+  factory.set('entry',['./src/index.js'])
+  // factory.get('entry'): ['./src/main.js','./src/index.js'];
+
+  // want to override the old value? just set the 3rd param true;
+  factory.set('entry',['./src/app.js'],true)
+  // factory.get('entry'): ['./src/app.js'];
+
   // modify the output value
   factory.get('output').chunkFilename = '[name].modify.js';
 

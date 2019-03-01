@@ -258,6 +258,7 @@ describe('test/webpack.test.js', () => {
       expect(fs.existsSync(path.join(output, 'bar.js'))).to.equal(true);
       expect(fs.existsSync(path.join(output, 'foo.js'))).to.equal(true);
       expect(fs.existsSync(path.join(output, 'bar/foo.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'manifest.js'))).to.equal(true);
       done();
     });
   });
