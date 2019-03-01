@@ -30,7 +30,6 @@ module.exports = {
   },
   devServer: {
     contentBase: false,
-    port: 6002,
     noInfo: true,
     quiet: false,
     clientLogLevel: 'warning',
@@ -47,7 +46,7 @@ module.exports = {
     hot: true,
     proxy: {
       '/foo': {
-        target: 'http://127.0.0.1:17001',
+        target: 'http://127.0.0.1:6001',
         pathRewrite: { '^/foo': '' },
         changeOrigin: true,
         secure: false

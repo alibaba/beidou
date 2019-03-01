@@ -13,31 +13,6 @@ const plugin = 'webpack';
 
 describe('test/webpack.test.js', () => {
 
-  describe('webpack-proxy', () => {
-    let app;
-    before((done) => {
-      app = mm.cluster({
-        baseDir: './webpack-proxy',
-        plugin,
-        framework,
-      });
-      app.ready(done);
-    });
-
-    after(() => {
-      app.close();
-    });
-
-    afterEach(mm.restore);
-
-    it('should get 200 statusCode for post /foo', (done) => {
-      request(app.callback())
-        .post('/foo')
-        .expect(200, done);
-    });
-
-  });
-
   describe('use default webpack config', () => {
     let app;
     before((done) => {
@@ -330,6 +305,32 @@ describe('test/webpack.test.js', () => {
         /iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkCPi\/FAADnQH2diZYqwAAAABJRU5ErkJggg==/
       );
     });
+  });
+
+  describe('webpack-proxy', () => {
+    let app;
+    before((done) => {
+      app = mm.cluster({
+        baseDir: './webpack-proxy',
+        plugin,
+        framework,
+        port: 6001,
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(mm.restore);
+
+    it('should get 200 statusCode for post /foo', (done) => {
+      request(app.callback())
+        .post('/foo')
+        .expect(200, done);
+    });
+
   });
 
 });
