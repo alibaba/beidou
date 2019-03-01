@@ -1,7 +1,7 @@
 'use strict';
 
 const URL = require('url-parse');
-const request = require('request');
+const http = require('http');
 const debug = require('debug')('beidou-webpack');
 
 module.exports = function (options, app) {
@@ -11,7 +11,15 @@ module.exports = function (options, app) {
     url.set('port', app.webpackServerPort);
     const webpackUrl = url.href;
 
-    const webpackRequest = request(webpackUrl);
+    const httpOptions = {
+      host: url.hostname,
+      port: url.port,
+      method: ctx.method,
+      path: ctx.url,
+      headers: ctx.headers,
+    };
+
+    const webpackRequest = http.request(httpOptions).end();
     const notFound = await new Promise((resolve) => {
       webpackRequest.on('response', function (res) {
         if (res.statusCode >= 200 && res.statusCode < 300) {

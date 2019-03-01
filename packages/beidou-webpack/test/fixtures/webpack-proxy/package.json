@@ -1,0 +1,6 @@
+{
+  "name": "webpack-server",
+  "spm": {
+    "less": true
+  }
+}
