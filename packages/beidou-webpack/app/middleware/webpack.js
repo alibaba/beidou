@@ -19,7 +19,7 @@ module.exports = function (options, app) {
       headers: ctx.headers,
     };
 
-    const webpackRequest = http.request(httpOptions).end();
+    const webpackRequest = http.request(httpOptions);
     const notFound = await new Promise((resolve) => {
       webpackRequest.on('response', function (res) {
         if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -40,6 +40,7 @@ module.exports = function (options, app) {
       webpackRequest.on('error', () => {
         resolve(true);
       });
+      webpackRequest.end();
     });
     if (notFound) {
       await next();
