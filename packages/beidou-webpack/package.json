@@ -31,6 +31,7 @@
     "css-loader": "^0.28.7",
     "debug": "^2.2.0",
     "deep-equal": "^1.0.1",
+    "extend2": "^1.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fallback-port": "^0.1.7",
     "file-loader": "^1.1.11",

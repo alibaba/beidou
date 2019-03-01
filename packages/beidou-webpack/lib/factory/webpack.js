@@ -3,6 +3,11 @@
 const is = require('is');
 const Plugin = require('./plugin');
 const Rule = require('./rule');
+const extend = require('extend2');
+
+function toType(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+}
 
 class Factory {
   init() {
@@ -93,8 +98,17 @@ class WebpackFactory extends Factory {
     return Object.assign({}, this.__webpackConfig);
   }
 
-  set(key, config) {
-    this.__webpackConfig[key] = config;
+  set(key, config, force = false) {
+    if (toType(config) !== toType(this.__webpackConfig[key])) {
+      force = true;
+    }
+    if (force || is.string(config)) {
+      this.__webpackConfig[key] = config;
+    } else if (is.object(config)) {
+      this.__webpackConfig[key] = extend(true, this.__webpackConfig[key], config);
+    } else if (is.array(config)) {
+      this.__webpackConfig[key] = this.__webpackConfig[key].concat(config);
+    }
     return this;
   }
 

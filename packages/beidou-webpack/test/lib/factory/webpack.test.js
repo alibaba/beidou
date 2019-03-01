@@ -5,7 +5,13 @@ const webpack = require('webpack');
 const WebpackFactory = require('../../../lib/factory/webpack');
 
 describe('test/lib/factory/webpack.test.js', () => {
-  const factory = new WebpackFactory();
+  const factory = new WebpackFactory({
+    'testArr': ['foo', 'bar'],
+    'testObj': {
+      'foo': 'bar'
+    }
+  });
+
   Object.getPrototypeOf(factory).init();
   it('init the webpack factory', () => {
     const config = factory.getConfig();
@@ -14,9 +20,30 @@ describe('test/lib/factory/webpack.test.js', () => {
 
   it('set & get webpack config', () => {
     factory.set('mode', 'development');
-
     let mode = factory.get('mode');
     assert(mode === 'development', 'factory set/get error');
+
+    factory.set('testArr', ['foo']);
+    let testArr = factory.get('testArr');
+    assert.deepEqual(testArr, ['foo', 'bar', 'foo'], 'factory array type set/get error');
+
+    factory.set('testObj', {
+      'bar': 'foo'
+    });
+    let testObj = factory.get('testObj');
+    assert.deepEqual(testObj, {
+      'foo': 'bar',
+      'bar': 'foo'
+    }, 'factory obj type set/get error');
+
+    factory.set('testArr', ['foo'], true);
+    testArr = factory.get('testArr');
+    assert.deepEqual(testArr, ['foo'], 'factory type set/get error when force param is true');
+
+    factory.set('testObj', 'foo');
+    testObj = factory.get('testObj');
+    assert(testObj === 'foo', 'factory set/get error when type not equal');
+
     factory.reset({
       output: {
         path: './build',
@@ -84,15 +111,15 @@ describe('test/lib/factory/webpack.test.js', () => {
   it('define rule & use rule', () => {
 
     factory.defineRule({
-        test: /\.(js|jsx|mjs)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: require.resolve('babel-loader'),
-          options: {
-            babelrc: false,
-          },
+      test: /\.(js|jsx|mjs)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: require.resolve('babel-loader'),
+        options: {
+          babelrc: false,
         },
       },
+    },
       'js'
     );
     let rules = factory.getDefineRules();
@@ -107,11 +134,11 @@ describe('test/lib/factory/webpack.test.js', () => {
 
     rule = factory.getRule('js')
     assert(rule, 'get the rule error')
-    
+
     factory.setRule({
-        test: /\.(js|mjs)$/,
-        exclude: /node_modules/
-      },
+      test: /\.(js|mjs)$/,
+      exclude: /node_modules/
+    },
       'js')
     rule = factory.getRule('jsx')
     assert(!rule, 'the rule shuld undefined');
@@ -123,54 +150,54 @@ describe('test/lib/factory/webpack.test.js', () => {
       factory.env()
     }, Error)
     assert.throws(() => {
-      factory.get('devServer','port')
-    }, Error,'unexpected error for get value')
+      factory.get('devServer', 'port')
+    }, Error, 'unexpected error for get value')
 
-    factory.set('entry',[
+    factory.set('entry', [
       'index.js',
       'main.js'
     ])
 
     assert.throws(() => {
       factory.addPlugin('test')
-    }, Error,'unexpected add plugin error')
+    }, Error, 'unexpected add plugin error')
 
     assert.throws(() => {
       factory.usePlugin({})
-    }, Error,'unexpected use plugin error')
+    }, Error, 'unexpected use plugin error')
 
     assert.throws(() => {
       factory.getPlugin({})
-    }, Error,'unexpected use plugin error')
-    
+    }, Error, 'unexpected use plugin error')
+
     assert.throws(() => {
       factory.addRule('test')
-    }, Error,'unexpected add rule error')
+    }, Error, 'unexpected add rule error')
 
     assert.throws(() => {
       factory.getRule({})
-    }, Error,'unexpected use plugin error')
+    }, Error, 'unexpected use plugin error')
 
-    assert(factory.get('entry',1) === 'main.js','get webpack entry value')
-    assert(factory.get('entry',function(v){return v[0]}) === 'index.js','get webpack entry value')
-    assert(factory.get('entry',{}) === null,'get webpack null')
-    
+    assert(factory.get('entry', 1) === 'main.js', 'get webpack entry value')
+    assert(factory.get('entry', function (v) { return v[0] }) === 'index.js', 'get webpack entry value')
+    assert(factory.get('entry', {}) === null, 'get webpack null')
+
     const factoryInProd = factory.env('prod');
 
     factoryInProd.defineRule({
-        test: /\.(js|jsx|mjs)$/,
-      },
+      test: /\.(js|jsx|mjs)$/,
+    },
       'test'
     );
     factoryInProd.addRule('test');
-    assert(factoryInProd.getRule(function(v){
-      if(v.alias === 'test') return v;
-    }),'get rule from function')
-    assert(factory.getRule(function(v){
+    assert(factoryInProd.getRule(function (v) {
+      if (v.alias === 'test') return v;
+    }), 'get rule from function')
+    assert(factory.getRule(function (v) {
 
-      if(v.alias === 'test') return true;
+      if (v.alias === 'test') return true;
 
-    }) === null,'factory get rule from function')
+    }) === null, 'factory get rule from function')
     assert(factoryInProd.get('port') === 9999, 'new factory error')
     assert(factoryInProd.getEnv() === 'prod', 'new factory env error')
     const factorySelf = factory.env('prod');
