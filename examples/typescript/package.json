@@ -16,7 +16,8 @@
     "beidou": "^2.0.2",
     "beidou-cli": "^2.0.1",
     "react": "^16.2.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "typescript": "^3.3.0"
   },
   "devDependencies": {
     "@types/react": "^16.4.6",
