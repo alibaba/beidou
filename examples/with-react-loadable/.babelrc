@@ -1,0 +1,4 @@
+{
+  "presets": ["babel-preset-beidou-client"],
+  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}
