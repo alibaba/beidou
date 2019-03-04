@@ -1,5 +1,19 @@
 'use strict';
 
-module.exports = {
+const path = require('path');
+
+module.exports = appInfo => ({
   keys: 'secrets',
-};
+  static: {
+    dir: [
+      {
+        prefix: '/public',
+        dir: path.join(appInfo.baseDir, '/app/public'),
+      },
+      {
+        prefix: '/build',
+        dir: path.join(appInfo.baseDir, '/build'),
+      },
+    ],
+  },
+});
