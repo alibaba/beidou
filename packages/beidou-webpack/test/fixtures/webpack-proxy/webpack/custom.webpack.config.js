@@ -47,7 +47,7 @@ module.exports = {
     proxy: {
       '/foo': {
         target: 'http://127.0.0.1:6001',
-        pathRewrite: { '^/foo': '' },
+        pathRewrite: { '^/foo': '/proxy' },
         changeOrigin: true,
         secure: false
       }

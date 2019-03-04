@@ -1,25 +1,24 @@
 'use strict';
 
 const URL = require('url-parse');
-const http = require('http');
+const request = require('request');
 const debug = require('debug')('beidou-webpack');
 
-module.exports = function (options, app) {
+module.exports = function (_, app) {
   return async function (ctx, next) {
     const originUrl = `http://${ctx.host}${ctx.request.url}`;
     const url = new URL(originUrl);
     url.set('port', app.webpackServerPort);
     const webpackUrl = url.href;
 
-    const httpOptions = {
-      host: url.hostname,
-      port: url.port,
+    const requestOptions = {
       method: ctx.method,
-      path: ctx.url,
+      uri: webpackUrl,
+      body: JSON.stringify(ctx.request.body),
       headers: ctx.headers,
     };
 
-    const webpackRequest = http.request(httpOptions);
+    const webpackRequest = request(requestOptions);
     const notFound = await new Promise((resolve) => {
       webpackRequest.on('response', function (res) {
         if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -40,7 +39,6 @@ module.exports = function (options, app) {
       webpackRequest.on('error', () => {
         resolve(true);
       });
-      webpackRequest.end();
     });
     if (notFound) {
       await next();

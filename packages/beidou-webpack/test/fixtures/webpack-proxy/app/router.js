@@ -2,5 +2,5 @@
 
 module.exports = (app) => {
     const { router, controller } = app;
-    router.post('/', controller.foo);
+    router.post('/proxy', controller.foo);
 };

@@ -329,6 +329,8 @@ describe('test/webpack.test.js', () => {
     it('should get 200 statusCode for post /foo', (done) => {
       request(app.callback())
         .post('/foo')
+        .set('Content-Type', 'application/json')
+        .send({ name: 'jack' })
         .expect(200, done);
     });
 
