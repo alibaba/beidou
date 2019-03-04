@@ -1,6 +1,6 @@
 {
   "name": "beidou",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "history": "egg-bin history CHANGELOG.md"
   },
   "dependencies": {
-    "beidou-core": "^2.0.2"
+    "beidou-core": "^2.0.3"
   },
   "devDependencies": {
     "egg-bin": "^4.0.4",

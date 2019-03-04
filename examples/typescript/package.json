@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-typescript",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Beidou example with TypeScript",
   "scripts": {
     "start": "beidou start",
@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "beidou": "^2.0.2",
+    "beidou": "^2.0.3",
     "beidou-cli": "^2.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.7.0",
