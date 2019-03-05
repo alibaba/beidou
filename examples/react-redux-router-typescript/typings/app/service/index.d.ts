@@ -1,10 +1,11 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper
 // Do not modify this file!!!!!!!!!
 
-import Contact from '../../../app/service/contact';
+import 'beidou';
+import ExportContact from '../../../app/service/contact';
 
 declare module 'beidou' {
   interface IService {
-    contact: Contact;
+    contact: ExportContact;
   }
 }

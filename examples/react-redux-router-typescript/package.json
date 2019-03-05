@@ -6,22 +6,15 @@
     "start": "beidou start",
     "debug": "beidou debug --inspect-brk",
     "stop": "beidou stop",
-    "dev": "ets --framework=beidou && beidou dev",
-    "build:server": "ets && tsc -p tsconfig-server.json",
-    "build:client": "beidou build",
-    "build": "npm run build:client && npm run build:server",
+    "dev": "beidou dev",
+    "build": "beidou build",
     "clean": "ets clean"
   },
   "dependencies": {
-    "@babel/preset-typescript": "7.0.0",
-    "@types/node": "^10.7.1",
-    "babel-loader": "8.0.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
-    "babel-plugin-import-inspector": "^2.0.0",
     "beidou": "^2.0.3",
     "beidou-cli": "^2.0.1",
-    "egg": "^2.10.0",
-    "egg-ts-helper": "^1.9.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.3.3",
@@ -34,18 +27,20 @@
     "typescript": "^2.7.2"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/polyfill": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@types/node": "^10.7.1",
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.11",
-    "@types/webpack": "^4.4.20",
+    "@types/webpack": "^4.4.25",
     "babel-loader": "^8.0.4",
     "source-map-loader": "^0.2.4",
-    "tslint": "^5.11.0",
-    "webpack": "^3.12.0"
+    "tslint": "^5.11.0"
   },
   "engines": {
     "node": ">= 8.0.0"
+  },
+  "config": {
+    "typescript": true
   },
   "license": "MIT",
   "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
