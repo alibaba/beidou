@@ -1,10 +1,11 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper
 // Do not modify this file!!!!!!!!!
 
-import Home from '../../../app/controller/home';
+import 'beidou';
+import ExportHome from '../../../app/controller/home';
 
 declare module 'beidou' {
   interface IController {
-    home: Home;
+    home: ExportHome;
   }
 }

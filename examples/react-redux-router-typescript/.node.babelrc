@@ -1,20 +1,7 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "current"
-        }
-      }
-    ],
-    "@babel/preset-typescript",
-    "@babel/preset-react"
-  ],
   "plugins": [
     "@babel/plugin-transform-modules-commonjs",
     "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread",
     "dynamic-import-node"
   ],
   "extensions": [".jsx", ".mjs", ".ts", ".tsx"]
