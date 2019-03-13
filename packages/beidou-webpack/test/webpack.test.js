@@ -12,6 +12,7 @@ const framework = path.join(__dirname, '../../beidou-core/');
 const plugin = 'webpack';
 
 describe('test/webpack.test.js', () => {
+
   describe('use default webpack config', () => {
     let app;
     before((done) => {
@@ -307,5 +308,52 @@ describe('test/webpack.test.js', () => {
     });
   });
 
+  describe('webpack-proxy', () => {
+    let app;
+    before((done) => {
+      app = mm.cluster({
+        baseDir: './webpack-proxy',
+        plugin,
+        framework,
+        port: 6001,
+      });
+      app.ready(done);
+    });
+
+    after(() => {
+      app.close();
+    });
+
+    afterEach(mm.restore);
+
+    it('should get 200 statusCode for GET /foo', (done) => {
+      request(app.callback())
+        .get('/foo')
+        .expect(200, done);
+    });
+
+    it('should get 200 statusCode for POST /foo', (done) => {
+      request(app.callback())
+        .post('/foo')
+        .set('Content-Type', 'application/json')
+        .send({ name: 'jack' })
+        .expect(200, done);
+    });
+
+    it('should get 200 statusCode for form post', (done) => {
+      request(app.callback())
+        .post('/foo')
+        .type('form')
+        .send({ name: 'jack' })
+        .expect(200, done);
+    });
+
+    it('should get 200 statusCode for GET /proxy', (done) => {
+      request(app.callback())
+        .get('/proxy')
+        .expect(200, done);
+    });
+
+  });
 
 });

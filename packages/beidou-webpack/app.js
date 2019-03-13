@@ -4,7 +4,8 @@ const helper = require('./lib/utils');
 
 module.exports = (app) => {
   // ensure webpack middleware works before custom middleware
-  app.config.coreMiddleware.unshift('webpack');
+  const mws = app.config.coreMiddleware;
+  mws.unshift('webpack');
 
   helper.injectPlugin(app);
 
