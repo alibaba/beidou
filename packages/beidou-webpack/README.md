@@ -38,6 +38,8 @@ exports.webpack = {
 exports.webpack = {
   custom: {
     // configPath: 'path/to/webpack/config/file',
+    // depth: 1,
+    // proxy: null,
   },
   output: {
     path: './build',
@@ -134,6 +136,24 @@ module.exports = {
   },
 };
 ```
+
+**custom.depth**: define the depth of entry scanning
+
+**custom.proxy**: define the url match for webpack proxy
+
+e.g.：
+
+```js
+{
+  webpack: {
+    custom: {
+      proxy: '/foo*'
+    }
+  }
+}
+```
+
+All of the requests start with `/foo` will be redirected to webpack server directly. Useful when enable devServer.proxy.
 
 #### FAQ:
 

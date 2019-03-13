@@ -135,6 +135,25 @@ module.exports = {
 };
 ```
 
+
+**custom.depth**: 自定义 entry 扫描深度默认 1
+
+**custom.proxy**: 定义由webpack完全代理的url规则
+
+如：
+
+```js
+{
+  webpack: {
+    custom: {
+      proxy: '/foo*'
+    }
+  }
+}
+```
+
+上述配置下，以 `/foo` 开头的所有请求均会直接转发给 webpack，用于使用了 devServer.proxy 的场景
+
 ### 常见配置问题
 
 #### 如何新增 rule ？
