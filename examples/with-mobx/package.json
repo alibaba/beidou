@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-mobx",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "beidou example with mobx",
   "scripts": {
     "start": "beidou start",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.0.3",
+    "beidou": "^2.0.4",
     "beidou-cli": "^2.0.1",
     "director": "^1.2.8",
     "js-cookie": "^2.2.0",
