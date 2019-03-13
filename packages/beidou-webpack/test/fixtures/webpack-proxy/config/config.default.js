@@ -8,6 +8,7 @@ module.exports = function (antx) {
   exports.webpack = {
     custom: {
       configPath: path.resolve(__dirname, '../webpack/custom.webpack.config.js'),
+      proxy: '/foo*',
     },
   };
 

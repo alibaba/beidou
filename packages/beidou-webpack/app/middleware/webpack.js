@@ -3,8 +3,9 @@
 const URL = require('url-parse');
 const request = require('request');
 const debug = require('debug')('beidou-webpack');
+const mm = require('micromatch');
 
-module.exports = function (_, app) {
+module.exports = function (options, app) {
   return async function (ctx, next) {
     const originUrl = `http://${ctx.host}${ctx.request.url}`;
     const url = new URL(originUrl);
@@ -14,11 +15,19 @@ module.exports = function (_, app) {
     const requestOptions = {
       method: ctx.method,
       uri: webpackUrl,
-      body: JSON.stringify(ctx.request.body),
+      // body: JSON.stringify(ctx.request.body),
       headers: ctx.headers,
     };
 
     const webpackRequest = request(requestOptions);
+
+    if (options.custom && options.custom.proxy) {
+      const rule = options.custom.proxy;
+      if (mm.isMatch(ctx.path, rule)) {
+        ctx.body = ctx.req.pipe(webpackRequest);
+        return;
+      }
+    }
     const notFound = await new Promise((resolve) => {
       webpackRequest.on('response', function (res) {
         if (res.statusCode >= 200 && res.statusCode < 300) {

@@ -2,5 +2,6 @@
 
 module.exports = (app) => {
     const { router, controller } = app;
-    router.post('/proxy', controller.foo);
+    router.post('/proxy', controller.post);
+    router.get('/proxy', controller.get);
 };
