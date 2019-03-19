@@ -30,7 +30,7 @@ module.exports = function (options, app) {
     }
     const notFound = await new Promise((resolve) => {
       webpackRequest.on('response', function (res) {
-        if (res.statusCode >= 200 && res.statusCode < 300) {
+        if (res.statusCode >= 200 && res.statusCode < 400) {
           debug('redirect request to webpack with url: %s', webpackUrl);
           ctx.res.statusCode = res.statusCode;
           /* eslint-disable guard-for-in */
