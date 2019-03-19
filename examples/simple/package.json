@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-simple",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "beidou example simple",
   "scripts": {
     "start": "beidou start",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "beidou": "^2.0.4",
+    "beidou": "^2.0.5",
     "beidou-cli": "^2.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

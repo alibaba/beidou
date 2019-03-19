@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-stream",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "beidou example stream",
   "scripts": {
     "start": "beidou start",
@@ -20,7 +20,7 @@
     "eslint-plugin-react": "^7.5.1"
   },
   "dependencies": {
-    "beidou": "^2.0.4",
+    "beidou": "^2.0.5",
     "beidou-cli": "^2.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
