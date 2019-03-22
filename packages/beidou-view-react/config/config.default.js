@@ -31,6 +31,7 @@ module.exports = (appInfo) => {
       placeHolder: '<!--$render$-->',
     },
     view: {
+      useHashAsset: false,
       defaultViewEngine: 'react',
       defaultExtension: isTs ? '.tsx' : '.jsx',
       root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(

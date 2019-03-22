@@ -7,6 +7,7 @@ module.exports = appInfo => ({
     // keep this key name sync with webpack.common.js reservedKey
     custom: {
       depth: 1,
+      assetWithHash: false,
       // configPath: 'path/to/webpack/config/file',
     },
     mode: 'development',

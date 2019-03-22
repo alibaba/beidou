@@ -6,11 +6,15 @@ const path = require('path');
 
 const reservedKey = 'custom';
 
-module.exports = (app, entry, dev) => {
+exports.common = (app, entry, dev) => {
   const webpackConfig = app.config.webpack;
   const { output } = webpackConfig;
   if (!path.isAbsolute(output.path)) {
     output.path = path.join(app.baseDir, output.path);
+  }
+  if (!dev && webpackConfig[reservedKey].assetWithHash) {
+    output.filename = '[name]_[chunkhash:8].js';
+    output.chunkFilename = '[name]_[chunkhash:8].js';
   }
 
   const module = {
@@ -43,3 +47,5 @@ module.exports = (app, entry, dev) => {
 
   app.webpackFactory.reset(finalConfig);
 };
+
+exports.reservedKey = reservedKey;

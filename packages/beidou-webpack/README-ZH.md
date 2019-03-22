@@ -36,6 +36,8 @@ exports.webpack = {
 exports.webpack = {
   custom: {
     // configPath: 'path/to/webpack/config/file',
+    depth:1,
+    assetWithHash: false,
   },
   output: {
     path: './build',
@@ -137,6 +139,8 @@ module.exports = {
 
 
 **custom.depth**: 自定义 entry 扫描深度默认 1
+
+**custom.assetWithHash**: 开启此配置后，打包生成的js，css等资源将会以`[name]_[contenthash:8]`形式命名，可用于缓存。（如果`config.view.useHashAsset`开启，beidou将会在生产环境中的页面上引用这些哈希资源，配合`publicPath`，效果更佳哦)
 
 **custom.proxy**: 定义由webpack完全代理的url规则
 

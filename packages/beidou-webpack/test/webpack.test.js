@@ -263,6 +263,45 @@ describe('test/webpack.test.js', () => {
     });
   });
 
+  describe('webpack build with contenthash', () => {
+    const output = path.join(__dirname, './fixtures/webpack-build-with-contenthash/output');
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './webpack-build-with-contenthash',
+        plugin,
+        framework,
+      });
+
+      app.ready(() => {
+        const builder = require('../lib/builder');
+        app.config.env = 'prod';
+        const compiler = builder(app);
+        compiler.run(done);
+      });
+    });
+
+    after((done) => {
+      if (fs.existsSync(output)) {
+        rimraf(output, done);
+      }
+      app.close();
+      app.agent.close();
+    });
+
+    afterEach(mm.restore);
+
+    it('should exist output assets with contenthash', (done) => {
+      expect(fs.existsSync(path.join(output, 'index_0fc10ef9.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'bar_8f6d9194.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'bar_1c091e5a.css'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'foo_392a0288.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'bar/foo_f61f8d12.js'))).to.equal(true);
+      expect(fs.existsSync(path.join(output, 'manifest_5bfed605.js'))).to.equal(true);
+      done();
+    });
+  });
+
   describe('isomorphic plugin', () => {
     const output = path.join(__dirname, './fixtures/isomorphic/output');
     let app;

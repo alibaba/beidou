@@ -4,7 +4,7 @@
 
 const webpack = require('webpack');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
-const common = require('./webpack.common');
+const { common } = require('./webpack.common');
 const {
   imageLoaderConfig,
   fileLoaderConfig,
@@ -48,7 +48,7 @@ module.exports = (app, entry, dev) => {
   });
 
   factory
-    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .definePlugin(ExtractTextPlugin, '[name]_[md5:contenthash:hex:8].css', 'ExtractTextPlugin')
     .addPlugin('ExtractTextPlugin');
 
   factory.definePlugin(

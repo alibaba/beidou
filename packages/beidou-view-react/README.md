@@ -35,6 +35,7 @@ module.exports = appInfo => ({
     assetPath: '/build/',
   },
   view: {
+    useHashAsset:false,
     defaultViewEngine: 'react',
     defaultExtension: '.jsx',
     // Isomorphic directories

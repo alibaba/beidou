@@ -139,6 +139,8 @@ module.exports = {
 
 **custom.depth**: define the depth of entry scanning
 
+**custom.assetWithHash**: when set true, assets such as '.js', '.css' will be named as `[name]_[contenthash:8]`, which can be cache-friendly.(If `config.view.useHashAsset` is set true, beidou will use hashed assets on the page if not local env. You can set CDN path in `publicPath`, which will be included.)
+
 **custom.proxy**: define the url match for webpack proxy
 
 e.g.：

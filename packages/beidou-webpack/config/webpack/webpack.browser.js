@@ -5,8 +5,10 @@
 process.traceDeprecation = true;
 
 const webpack = require('webpack');
+const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const common = require('./webpack.common');
+const { common, reservedKey } = require('./webpack.common');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const {
   imageLoaderConfig,
   fileLoaderConfig,
@@ -18,6 +20,7 @@ module.exports = (app, entry, dev) => {
   const { pkg } = app.config;
   const factory = app.webpackFactory;
   const typescript = pkg && pkg.config && pkg.config.typescript;
+  const reservedConfig = app.config.webpack[reservedKey];
   common(app, entry, dev);
   [
     {
@@ -62,7 +65,6 @@ module.exports = (app, entry, dev) => {
   if (!dev) {
     factory.set('mode', 'production');
     factory.addPlugin('DefinePlugin');
-
     factory.set('optimization', {
       minimizer: [
         new TerserPlugin({
@@ -91,6 +93,18 @@ module.exports = (app, entry, dev) => {
       null,
       'HotModuleReplacementPlugin'
     );
+  }
+  if (reservedConfig.assetWithHash && !dev) {
+    factory.addPlugin(ManifestPlugin,
+      { fileName: path.join(app.baseDir, 'manifest.json') },
+      'WebpackManifestPlugin'
+    );
+    factory
+      .setPlugin(
+        ExtractTextPlugin,
+        '[name]_[md5:contenthash:hex:8].css',
+        'ExtractTextPlugin'
+      );
   }
   return factory.getConfig();
 };

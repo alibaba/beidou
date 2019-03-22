@@ -27,8 +27,8 @@ export default class View extends React.Component {
         </head>
         <body>
           <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
-          <script src={helper.asset('/manifest.js')} />
-          <script src={helper.asset('/script.js')} />
+          <script src={helper.asset('manifest.js')} />
+          <script src={helper.asset('script.js')} />
         </body>
       </html>
     );

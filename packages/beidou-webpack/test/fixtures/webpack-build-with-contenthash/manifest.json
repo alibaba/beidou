@@ -1,0 +1,8 @@
+{
+  "manifest.js": "/build/manifest_5bfed605.js",
+  "bar.js": "/build/bar_8f6d9194.js",
+  "bar.css": "/build/bar_1c091e5a.css",
+  "bar/foo.js": "/build/bar/foo_f61f8d12.js",
+  "foo.js": "/build/foo_392a0288.js",
+  "index.js": "/build/index_0fc10ef9.js"
+}
