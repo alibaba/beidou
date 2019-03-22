@@ -6,6 +6,7 @@ const request = require('supertest');
 const mm = require('egg-mock');
 const chai = require('chai');
 const rimraf = require('rimraf');
+const glob = require('glob');
 
 const expect = chai.expect;
 const framework = path.join(__dirname, '../../beidou-core/');
@@ -291,15 +292,17 @@ describe('test/webpack.test.js', () => {
 
     afterEach(mm.restore);
 
-    it('should exist output assets with contenthash', (done) => {
-      expect(fs.existsSync(path.join(output, 'index_0fc10ef9.js'))).to.equal(true);
-      expect(fs.existsSync(path.join(output, 'bar_8f6d9194.js'))).to.equal(true);
-      expect(fs.existsSync(path.join(output, 'bar_1c091e5a.css'))).to.equal(true);
-      expect(fs.existsSync(path.join(output, 'foo_392a0288.js'))).to.equal(true);
-      expect(fs.existsSync(path.join(output, 'bar/foo_f61f8d12.js'))).to.equal(true);
-      expect(fs.existsSync(path.join(output, 'manifest_5bfed605.js'))).to.equal(true);
+    it.only('should exist output assets with contenthash', (done) => {
+      expect(fs.existsSync(path.join(output, '../manifest.json'))).to.equal(true);
+      expect(glob.sync(path.join(output, 'index_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar_????????.css')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'foo_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar/foo_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'manifest_????????.js')).length).to.equal(1);
       done();
     });
+
   });
 
   describe('isomorphic plugin', () => {
