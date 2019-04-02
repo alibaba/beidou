@@ -306,7 +306,7 @@ describe('test/webpack.test.js', () => {
 
   });
 
-  describe('webpack build with custome hashAssetPath', () => {
+  describe('webpack build with custom hashAssetPath', () => {
     const output = path.join(__dirname, './fixtures/webpack-build-with-hashAssetPath/output');
     const manifest = path.join(__dirname, './fixtures/webpack-build-with-contenthash/foo.json')
 
@@ -338,7 +338,7 @@ describe('test/webpack.test.js', () => {
 
     afterEach(mm.restore);
 
-    it.only('should exist output assets with contenthash', (done) => {
+    it('should exist output assets with contenthash', (done) => {
       expect(fs.existsSync(path.join(output, '../foo.json'))).to.equal(true);
       expect(glob.sync(path.join(output, 'index_????????.js')).length).to.equal(1);
       expect(glob.sync(path.join(output, 'bar_????????.js')).length).to.equal(1);
