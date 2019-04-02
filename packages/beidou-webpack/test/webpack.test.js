@@ -308,7 +308,7 @@ describe('test/webpack.test.js', () => {
 
   describe('webpack build with custom hashAssetPath', () => {
     const output = path.join(__dirname, './fixtures/webpack-build-with-hashAssetPath/output');
-    const manifest = path.join(__dirname, './fixtures/webpack-build-with-contenthash/foo.json')
+    const manifest = path.join(__dirname, './fixtures/webpack-build-with-hashAssetPath/foo.json')
 
     let app;
     before((done) => {
@@ -333,7 +333,6 @@ describe('test/webpack.test.js', () => {
       }
       app.close();
       app.agent.close();
-      done();
     });
 
     afterEach(mm.restore);
