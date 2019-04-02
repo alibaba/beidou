@@ -27,7 +27,7 @@ exports.getAssetManifest = function (hashAssetPath) {
     return JSON.parse(raw);
   } else {
     throw new Error(
-      'Cannot find manifest.json! Please check view.hashAssetPath config.'
+      `Cannot find ${hashAssetPath}! Please check view.hashAssetPath config.`
     );
   }
 };

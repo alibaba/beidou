@@ -93,7 +93,7 @@ module.exports = (app, entry, dev) => {
       'HotModuleReplacementPlugin'
     );
   }
-  if (viewConfig.useHashAsset && !dev) {
+  if (viewConfig && viewConfig.useHashAsset && !dev) {
     factory.addPlugin(
       ManifestPlugin,
       { fileName: viewConfig.hashAssetPath },

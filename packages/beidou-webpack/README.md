@@ -143,11 +143,11 @@ module.exports = {
 
 e.g.：
 
-```js
+```json
 {
-  webpack: {
-    custom: {
-      proxy: '/foo*';
+  "webpack": {
+    "custom": {
+      "proxy": "/foo*"
     }
   }
 }

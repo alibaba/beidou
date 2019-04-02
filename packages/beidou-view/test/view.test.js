@@ -220,4 +220,34 @@ describe('test/view.test.js', () => {
       assert(url === '/build/index_ec3f4aa7.js');
     });
   });
+
+  describe('HashAssetPath throw', () => {
+    let app;
+
+    // before((done) => {
+    //   mock.env('prod');
+    //   app = mock.app({
+    //     baseDir: './hash-asset-throw',
+    //     framework,
+    //   });
+    //   app.ready(done);
+    // });
+
+    after(() => {
+      app.close();
+    });
+
+    it('should throw error', async () => {
+      try{
+        mock.env('prod');
+        app = mock.app({
+          baseDir: './hash-asset-throw',
+          framework,
+        });
+        app.ready(done);
+      }catch(e){
+        assert(e instanceof Error);
+      }
+    });
+  });
 });
