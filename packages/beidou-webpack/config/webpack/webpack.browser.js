@@ -5,7 +5,6 @@
 process.traceDeprecation = true;
 
 const webpack = require('webpack');
-const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const { common } = require('./webpack.common');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -95,11 +94,9 @@ module.exports = (app, entry, dev) => {
     );
   }
   if (viewConfig.useHashAsset && !dev) {
-    const hashAssetPath =
-      viewConfig.hashAssetPath || path.join(app.baseDir, 'manifest.json');
     factory.addPlugin(
       ManifestPlugin,
-      { fileName: hashAssetPath },
+      { fileName: viewConfig.hashAssetPath },
       'WebpackManifestPlugin'
     );
     factory.setPlugin(
