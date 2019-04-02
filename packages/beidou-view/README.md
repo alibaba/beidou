@@ -9,7 +9,7 @@ Used by internal react and rax plugins.
 If `config.view.useHashAsset` is set true, beidou will use hashed assets on the page if not local env with the help of `webpack build`. You can set CDN path in `publicPath`, which will be included.
 Remember that, you should run `beidou build` first before use this feature.
 
-You can define the assets mapping file with `config.view.hashAssetPath`, the default value of which is `path.join(appInfo.baseDir, 'manifest.json')`.
+You can define the assets mapping file with `config.view.hashAssetPath`, the default value of which is `path.join(appInfo.baseDir, '.manifest.json')`.
 
 # Middlewares
 

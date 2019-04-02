@@ -8,7 +8,7 @@ module.exports = (app) => {
   if (app.config.view.useHashAsset) {
     // define hashAssetPath once here,and according to beidou-core, beidou-view will be loaded first.
     app.config.view.hashAssetPath =
-      app.config.view.hashAssetPath || path.join(app.baseDir, 'manifest.json');
+      app.config.view.hashAssetPath || path.join(app.baseDir, '.manifest.json');
     if (app.config.env === 'local' || app.config.env === 'unittest') {
       app.coreLogger.warn(
         `Detect view.useHashAsset in ${app.config.env} env, will ignore it.`
