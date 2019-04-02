@@ -2,12 +2,16 @@
 
 const path = require('path');
 
-exports.webpack = {
-  custom: {
-    depth: 2,
-    assetWithHash:true
+module.exports = {
+  webpack: {
+    custom: {
+      depth: 2,
+    },
+    output: {
+      path: path.join(__dirname, '../output'),
+    },
   },
-  output: {
-    path: path.join(__dirname, '../output'),
-  },
-};
+  view: {
+    useHashAsset: true,
+  }
+}

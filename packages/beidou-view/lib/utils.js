@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const fs = require('fs');
 const normalizeUrl = require('normalizeurl');
 
@@ -22,12 +21,13 @@ exports.concatUrl = function (...pathes) {
 };
 
 exports.normalizeUrl = normalizeUrl;
-exports.getAssetManifest = function (baseDir) {
-  const manifestFile = path.join(baseDir, './manifest.json');
-  if (fs.existsSync(manifestFile)) {
-    const raw = fs.readFileSync(manifestFile, { encoding: 'utf8' });
+exports.getAssetManifest = function (hashAssetPath) {
+  if (fs.existsSync(hashAssetPath)) {
+    const raw = fs.readFileSync(hashAssetPath, { encoding: 'utf8' });
     return JSON.parse(raw);
   } else {
-    throw new Error('Cannot find manifest.json! Please check webpack.custom.assetWithHash config.');
+    throw new Error(
+      'Cannot find manifest.json! Please check view.hashAssetPath config.'
+    );
   }
 };

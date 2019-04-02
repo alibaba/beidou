@@ -180,4 +180,44 @@ describe('test/view.test.js', () => {
       assert(url === '/build/index_ec3f4aa7.js');
     });
   });
+
+  describe('With HashAssetPath view', () => {
+    let app;
+
+    before((done) => {
+      mock.env('prod');
+      app = mock.app({
+        baseDir: './with-hash-asset-path',
+        framework,
+      });
+      app.ready(done);
+    });
+    after(() => {
+      app.close();
+    });
+
+    it('should use asset with hash in local env', () => {
+      const ctx = app.mockContext();
+      const asset = ctx.helper[Symbol.for('beidou#asset')].bind(ctx.helper);
+      let url = asset('index.js', {
+        assetPath: 'build',
+      });
+      assert(url === '/build/index_ec3f4aa7.js');
+
+      url = asset('index.js', {
+        host: 'http://127.0.0.1',
+        assetPath: 'build',
+      });
+      assert(url === '/build/index_ec3f4aa7.js');
+
+      url = asset('index.js', {
+        host: '127.0.0.1',
+        assetPath: 'build',
+      });
+      assert(url === '/build/index_ec3f4aa7.js');
+
+      url = asset('index.js');
+      assert(url === '/build/index_ec3f4aa7.js');
+    });
+  });
 });

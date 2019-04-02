@@ -36,8 +36,7 @@ exports.webpack = {
 exports.webpack = {
   custom: {
     // configPath: 'path/to/webpack/config/file',
-    depth:1,
-    assetWithHash: false,
+    depth: 1,
   },
   output: {
     path: './build',
@@ -137,12 +136,9 @@ module.exports = {
 };
 ```
 
-
 **custom.depth**: 自定义 entry 扫描深度默认 1
 
-**custom.assetWithHash**: 开启此配置后，打包生成的js，css等资源将会以`[name]_[contenthash:8]`形式命名，可用于缓存。（如果`config.view.useHashAsset`开启，beidou将会在生产环境中的页面上引用这些哈希资源，配合`publicPath`，效果更佳哦)
-
-**custom.proxy**: 定义由webpack完全代理的url规则
+**custom.proxy**: 定义由 webpack 完全代理的 url 规则
 
 如：
 
@@ -150,7 +146,7 @@ module.exports = {
 {
   webpack: {
     custom: {
-      proxy: '/foo*'
+      proxy: '/foo*';
     }
   }
 }
@@ -298,7 +294,7 @@ module.exports = (app, defaultConfig, dev, target) => {
   // 如果想要强制直接覆盖，在第三个参数中传入true
   factory.set('entry',['./src/app.js'],true)
   // factory.get('entry'): ['./src/app.js'];
-  
+
   // webpack output 值修改
   factory.get('output').chunkFilename = '[name].modify.js';
 

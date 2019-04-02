@@ -7,7 +7,7 @@ process.traceDeprecation = true;
 const webpack = require('webpack');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const { common, reservedKey } = require('./webpack.common');
+const { common } = require('./webpack.common');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const {
   imageLoaderConfig,
@@ -20,7 +20,7 @@ module.exports = (app, entry, dev) => {
   const { pkg } = app.config;
   const factory = app.webpackFactory;
   const typescript = pkg && pkg.config && pkg.config.typescript;
-  const reservedConfig = app.config.webpack[reservedKey];
+  const viewConfig = app.config.view;
   common(app, entry, dev);
   [
     {
@@ -94,17 +94,19 @@ module.exports = (app, entry, dev) => {
       'HotModuleReplacementPlugin'
     );
   }
-  if (reservedConfig.assetWithHash && !dev) {
-    factory.addPlugin(ManifestPlugin,
-      { fileName: path.join(app.baseDir, 'manifest.json') },
+  if (viewConfig.useHashAsset && !dev) {
+    const hashAssetPath =
+      viewConfig.hashAssetPath || path.join(app.baseDir, 'manifest.json');
+    factory.addPlugin(
+      ManifestPlugin,
+      { fileName: hashAssetPath },
       'WebpackManifestPlugin'
     );
-    factory
-      .setPlugin(
-        ExtractTextPlugin,
-        '[name]_[md5:contenthash:hex:8].css',
-        'ExtractTextPlugin'
-      );
+    factory.setPlugin(
+      ExtractTextPlugin,
+      '[name]_[md5:contenthash:hex:8].css',
+      'ExtractTextPlugin'
+    );
   }
   return factory.getConfig();
 };

@@ -21,7 +21,6 @@ module.exports = appInfo => ({
     assetPath: '/build/',
   },
   view: {
-    useHashAsset: false,
     mapping: {
       '.jsx': 'rax',
     },
