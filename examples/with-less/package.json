@@ -15,12 +15,8 @@
     "babel-polyfill": "^6.26.0",
     "beidou": "^2.0.5",
     "beidou-cli": "^2.0.1",
-    "css-loader": "^0.28.10",
-    "less": "^3.0.1",
-    "less-loader": "^4.0.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "style-loader": "^0.20.2"
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "extract-text-webpack-plugin": "^3.0.2",
