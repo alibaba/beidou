@@ -96,7 +96,7 @@ module.exports = (app, entry, dev) => {
   if (viewConfig && viewConfig.useHashAsset && !dev) {
     factory.addPlugin(
       ManifestPlugin,
-      { fileName: viewConfig.hashAssetPath },
+      { fileName: viewConfig.hashAssetPath, publicPath: '' },
       'WebpackManifestPlugin'
     );
     factory.setPlugin(

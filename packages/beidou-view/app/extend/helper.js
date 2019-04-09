@@ -9,7 +9,7 @@ const helper = {
    */
   [Symbol.for('beidou#asset')](filename, config) {
     if (this.app.config.view.useHashAsset && this.app.assetManifest[filename]) {
-      return this.app.assetManifest[filename];
+      filename = this.app.assetManifest[filename];
     }
     const assetHost = config.host || config.assetHost;
     const { assetPath } = config;

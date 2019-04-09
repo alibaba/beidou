@@ -156,28 +156,25 @@ describe('test/view.test.js', () => {
       app.close();
     });
 
-    it('should use asset with hash in local env', () => {
+    it('should use asset with hash in prod env', () => {
       const ctx = app.mockContext();
       const asset = ctx.helper[Symbol.for('beidou#asset')].bind(ctx.helper);
       let url = asset('index.js', {
         assetPath: 'build',
       });
-      assert(url === '/build/index_ec3f4aa7.js');
+      assert(url === 'build/index_ec3f4aa7.js');
 
       url = asset('index.js', {
         host: 'http://127.0.0.1',
         assetPath: 'build',
       });
-      assert(url === '/build/index_ec3f4aa7.js');
+      assert(url === 'http://127.0.0.1/build/index_ec3f4aa7.js');
 
       url = asset('index.js', {
         host: '127.0.0.1',
         assetPath: 'build',
       });
-      assert(url === '/build/index_ec3f4aa7.js');
-
-      url = asset('index.js');
-      assert(url === '/build/index_ec3f4aa7.js');
+      assert(url === 'http://127.0.0.1/build/index_ec3f4aa7.js');
     });
   });
 
@@ -196,28 +193,26 @@ describe('test/view.test.js', () => {
       app.close();
     });
 
-    it('should use asset with hash in local env', () => {
+    it('should use asset with hash in prod env', () => {
       const ctx = app.mockContext();
       const asset = ctx.helper[Symbol.for('beidou#asset')].bind(ctx.helper);
       let url = asset('index.js', {
         assetPath: 'build',
       });
-      assert(url === '/build/index_ec3f4aa7.js');
+      assert(url === 'build/index_ec3f4aa7.js');
 
       url = asset('index.js', {
         host: 'http://127.0.0.1',
         assetPath: 'build',
       });
-      assert(url === '/build/index_ec3f4aa7.js');
+      assert(url === 'http://127.0.0.1/build/index_ec3f4aa7.js');
 
       url = asset('index.js', {
         host: '127.0.0.1',
         assetPath: 'build',
       });
-      assert(url === '/build/index_ec3f4aa7.js');
+      assert(url === 'http://127.0.0.1/build/index_ec3f4aa7.js');
 
-      url = asset('index.js');
-      assert(url === '/build/index_ec3f4aa7.js');
     });
   });
 
