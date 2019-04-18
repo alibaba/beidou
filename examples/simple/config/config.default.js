@@ -4,6 +4,9 @@ const path = require('path');
 
 module.exports = appInfo => ({
   keys: 'secrets',
+  view: {
+    useHashAsset: true,
+  },
   static: {
     dir: [
       {

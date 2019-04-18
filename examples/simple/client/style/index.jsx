@@ -16,7 +16,7 @@ export default class View extends React.Component {
       <html>
         <head>
           <title>Styling</title>
-          <link rel="stylesheet" href={helper.asset('/style.css')} />
+          <link rel="stylesheet" href={helper.asset('style.css')} />
         </head>
         <body>
           <h1 className="title">Styling Page</h1>

@@ -6,6 +6,7 @@ const request = require('supertest');
 const mm = require('egg-mock');
 const chai = require('chai');
 const rimraf = require('rimraf');
+const glob = require('glob');
 
 const expect = chai.expect;
 const framework = path.join(__dirname, '../../beidou-core/');
@@ -261,6 +262,92 @@ describe('test/webpack.test.js', () => {
       expect(fs.existsSync(path.join(output, 'manifest.js'))).to.equal(true);
       done();
     });
+  });
+
+  describe('webpack build with contenthash', () => {
+    const output = path.join(__dirname, './fixtures/webpack-build-with-contenthash/output');
+    const manifest = path.join(__dirname, './fixtures/webpack-build-with-contenthash/.manifest.json');
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './webpack-build-with-contenthash',
+        plugin,
+        framework,
+      });
+      app.ready(() => {
+        const builder = require('../lib/builder');
+        app.config.env = 'prod';
+        const compiler = builder(app);
+        compiler.run(done);
+      });
+    });
+
+    after((done) => {
+      rimraf.sync(manifest);
+      if (fs.existsSync(output)) {
+        rimraf(output, done);
+      }
+      app.close();
+      app.agent.close();
+    });
+
+    afterEach(mm.restore);
+
+    it('should exist output assets with contenthash', (done) => {
+      expect(fs.existsSync(path.join(output, '../.manifest.json'))).to.equal(true);
+      expect(glob.sync(path.join(output, 'index_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar_????????.css')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'foo_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar/foo_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'manifest_????????.js')).length).to.equal(1);
+      done();
+    });
+
+  });
+
+  describe('webpack build with custom hashAssetPath', () => {
+    const output = path.join(__dirname, './fixtures/webpack-build-with-hashAssetPath/output');
+    const manifest = path.join(__dirname, './fixtures/webpack-build-with-hashAssetPath/foo.json')
+
+    let app;
+    before((done) => {
+      app = mm.app({
+        baseDir: './webpack-build-with-hashAssetPath',
+        plugin,
+        framework,
+      });
+
+      app.ready(() => {
+        const builder = require('../lib/builder');
+        app.config.env = 'prod';
+        const compiler = builder(app);
+        compiler.run(done);
+      });
+    });
+
+    after((done) => {
+      rimraf.sync(manifest);
+      if (fs.existsSync(output)) {
+        rimraf(output, done);
+      }
+      app.close();
+      app.agent.close();
+    });
+
+    afterEach(mm.restore);
+
+    it('should exist output assets with contenthash', (done) => {
+      expect(fs.existsSync(path.join(output, '../foo.json'))).to.equal(true);
+      expect(glob.sync(path.join(output, 'index_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar_????????.css')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'foo_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'bar/foo_????????.js')).length).to.equal(1);
+      expect(glob.sync(path.join(output, 'manifest_????????.js')).length).to.equal(1);
+      done();
+    });
+
   });
 
   describe('isomorphic plugin', () => {
