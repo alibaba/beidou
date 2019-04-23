@@ -4,7 +4,7 @@
 
 const webpack = require('webpack');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
-const common = require('./webpack.common');
+const { common } = require('./webpack.common');
 const {
   imageLoaderConfig,
   fileLoaderConfig,
@@ -14,6 +14,7 @@ const {
 
 module.exports = (app, entry, dev) => {
   const factory = app.webpackFactory;
+  const viewConfig = app.config.view;
   common(app, entry, dev);
   factory.get('output').libraryTarget = 'commonjs';
   factory.set('target', 'node');
@@ -46,10 +47,17 @@ module.exports = (app, entry, dev) => {
   ].forEach((v) => {
     factory.defineRule(v).addRule(v);
   });
+  if (!dev && viewConfig.useHashAsset) {
+    factory.definePlugin(
+      ExtractTextPlugin,
+      '[name]_[md5:contenthash:hex:8].css',
+      'ExtractTextPlugin'
+    );
+  } else {
+    factory.definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin');
+  }
 
-  factory
-    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
-    .addPlugin('ExtractTextPlugin');
+  factory.addPlugin('ExtractTextPlugin');
 
   factory.definePlugin(
     webpack.DefinePlugin,

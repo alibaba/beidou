@@ -36,6 +36,7 @@ exports.webpack = {
 exports.webpack = {
   custom: {
     // configPath: 'path/to/webpack/config/file',
+    depth: 1,
   },
   output: {
     path: './build',
@@ -135,18 +136,17 @@ module.exports = {
 };
 ```
 
-
 **custom.depth**: 自定义 entry 扫描深度默认 1
 
-**custom.proxy**: 定义由webpack完全代理的url规则
+**custom.proxy**: 定义由 webpack 完全代理的 url 规则
 
 如：
 
-```js
+```json
 {
-  webpack: {
-    custom: {
-      proxy: '/foo*'
+  "webpack": {
+    "custom": {
+      "proxy": "/foo*"
     }
   }
 }
@@ -294,7 +294,7 @@ module.exports = (app, defaultConfig, dev, target) => {
   // 如果想要强制直接覆盖，在第三个参数中传入true
   factory.set('entry',['./src/app.js'],true)
   // factory.get('entry'): ['./src/app.js'];
-  
+
   // webpack output 值修改
   factory.get('output').chunkFilename = '[name].modify.js';
 

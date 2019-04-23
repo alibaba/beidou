@@ -30,10 +30,26 @@ describe('test/beidou.test.js', () => {
       .get('/spa')
       .expect(200));
 
+    it('ssr should status 200', () => app.httpRequest(app.callback())
+      .get('/ssr')
+      .expect(200));
+
     it('filepath not`t exsit, should status 500', () => app.httpRequest(app.callback())
       .get('/miss')
       .expect(500));
   });
+
+
+  describe('render file and default add suffix  ', () => {
+    it('simple should status 200 for file suffix', () => app.httpRequest(app.callback())
+      .get('/suffix')
+      .expect(200));
+    it('simple should status 200 for full filepath suffix', () => app.httpRequest(app.callback())
+      .get('/suffixpath')
+      .expect(200));
+
+  });
+
 });
 
 describe('test/beidou.test.js', () => {
