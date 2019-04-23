@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { createStore, applyMiddleware, compose } from 'redux';
 import { sagaMiddleware } from '../saga';
 import rootReducer from '../reducers';

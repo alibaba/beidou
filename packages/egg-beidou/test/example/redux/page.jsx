@@ -1,5 +1,6 @@
+/* eslint-disable valid-jsdoc */
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './container';
 import configureStore from './store';

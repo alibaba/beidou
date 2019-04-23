@@ -16,6 +16,7 @@
   "dependencies": {
     "beidou-isomorphic": "^2.0.1",
     "beidou-view": "^2.0.1",
+    "is": "^3.3.0",
     "koa-compose": "^4.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -24,11 +25,11 @@
   },
   "devDependencies": {
     "autod": "^3.0.1",
-    "egg": "^2.10.0",
-    "egg-bin": "^4.0.0",
-    "egg-mock": "^3.7.1",
     "eslint": "^5.3.0",
-    "eslint-config-egg": "^7.0.0"
+    "eslint-config-egg": "^7.0.0",
+    "egg-bin": "^4.0.0",
+    "egg": "^2.10.0",
+    "egg-mock": "^3.7.1"
   },
   "scripts": {
     "autod": "autod",

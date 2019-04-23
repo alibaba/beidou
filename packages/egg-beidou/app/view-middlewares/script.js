@@ -2,7 +2,7 @@
 
 const is = require('is-type-of');
 
-module.exports = async function (viewCtx, next) {
+module.exports = async function(viewCtx, next) {
   const { Component, props } = viewCtx;
 
   const render = Component.script;

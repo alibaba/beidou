@@ -23,8 +23,8 @@ export default class View extends React.Component {
     );
   }
 
-  static script(props){
-    return "<sript>window.name = hhhh</sript>"
+  // eslint-disable-next-line no-unused-vars
+  static script(props) {
+    return '<sript>window.name = hhhh</sript>';
   }
-  
 }

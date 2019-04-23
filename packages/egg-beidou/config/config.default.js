@@ -1,13 +1,9 @@
 'use strict';
-
-const path = require('path');
-
-module.exports = appInfo => ({
+module.exports = () => ({
   beidou: {
     middlewares: [
       'render',
       'custom',
-      'cache',
       'initialprops',
       'redux',
       'partial',
@@ -18,16 +14,8 @@ module.exports = appInfo => ({
     ],
     doctype: '<!DOCTYPE html>',
     cache: true,
-    static: true,
+    static: false,
     stream: false,
-  },
-  view: {
-    mapping: {
-      '.js': 'beidou',
-    },
-    root: `${path.join(appInfo.baseDir, 'app/views')},${path.join(
-      appInfo.baseDir,
-      'clients'
-    )}`,
+    extensions: [ '.js', 'jsx', '.ts', '.tsx' ],
   },
 });

@@ -1,11 +1,11 @@
-'use strict';
 const path = require('path');
 const webpack = require('webpack');
+
 module.exports = Object.assign({}, {
   entry: {
-    "redux/page": path.join(__dirname, './redux/page.jsx'),
-    "spa/index": path.join(__dirname, './spa/index.jsx'),
-    "simple/index": path.join(__dirname, './simple/index.jsx'),
+    'redux/page': path.join(__dirname, './redux/page.jsx'),
+    'spa/index': path.join(__dirname, './spa/index.jsx'),
+    'simple/index': path.join(__dirname, './simple/index.jsx'),
   },
   output: {
     path: path.join(__dirname, '../build'),
@@ -37,11 +37,13 @@ module.exports = Object.assign({}, {
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ],
+        use: [ 'null-loader', 'style-loader', 'css-loader' ],
       },
       {
         test: /\.less$/,
         use: [{
+          loader: 'null-loader',
+        }, {
           loader: 'style-loader', // creates style nodes from JS strings
         }, {
           loader: 'css-loader', // translates CSS into CommonJS
@@ -52,6 +54,7 @@ module.exports = Object.assign({}, {
       {
         test: /\.scss$/,
         use: [
+          'null-loader',
           'style-loader', // creates style nodes from JS strings
           'css-loader', // translates CSS into CommonJS
           'sass-loader', // compiles Sass to CSS, using Node Sass by default
