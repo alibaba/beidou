@@ -26,31 +26,32 @@ class BeidouView extends BaseView {
 
   async render(...args) {
     this.ctx.type = 'html';
+    if (this.options.cache === false) {
+      this.clearCache(args[0]);
+    }
     const res = await super.render(...args);
     return res;
-  }
-
-  async renderString() {
-    this.app.logger.info('reject');
-    const err = new Error();
-    err.name = 'not implemented yet!';
-    err.status = 500;
-    throw err;
   }
 
   renderElementToStream(component, props = {}) {
     if (this.options.static) {
       return ReactDOMServer.renderToStaticNodeStream(component, props);
-    } else {
-      return ReactDOMServer.renderToNodeStream(component, props);
     }
+    return ReactDOMServer.renderToNodeStream(component, props);
+
   }
 
   renderElement(component, props = {}) {
     if (this.options.static) {
       return ReactDOMServer.renderToStaticMarkup(component, props);
-    } else {
-      return ReactDOMServer.renderToString(component, props);
+    }
+    return ReactDOMServer.renderToString(component, props);
+  }
+
+  clearCache(filepath) {
+    const absolutePath = path.resolve(filepath);
+    if (require.cache[absolutePath]) {
+      delete require.cache[absolutePath];
     }
   }
 }
