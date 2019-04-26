@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/alibaba/beidou/tree/master/packages/beidou-view/compare/v2.0.5...v2.1.0) (2019-04-26)
+
+
+### Features
+
+* enable contenthash for assets ([#161](https://github.com/alibaba/beidou/tree/master/packages/beidou-view/issues/161)) ([b2fdb07](https://github.com/alibaba/beidou/tree/master/packages/beidou-view/commit/b2fdb07))
+
+
+
+
+
 # [2.0.0](https://github.com/alibaba/beidou/tree/master/packages/beidou-view/compare/v1.2.1...v2.0.0) (2019-01-16)
 
 **Note:** Version bump only for package beidou-view
