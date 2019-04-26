@@ -20,16 +20,21 @@ try {
 
 module.exports = function (api, opt) {
   api.assertVersion(7);
-
+  opt = opt || {};
+  const envOption = opt.env || {};
   const presets = [
     [
       env,
-      {
-        useBuiltIns: 'entry',
-        targets: {
-          browsers,
+      Object.assign(
+        {
+          useBuiltIns: 'entry',
+          corejs: '3.0.0',
+          targets: {
+            browsers,
+          },
         },
-      },
+        envOption
+      ),
     ],
   ];
 
