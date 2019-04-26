@@ -3,7 +3,7 @@
 This preset includes the following plugins:
 
 - @babel/preset-env
-- @babel/reset-react
+- @babel/preset-react
 - @babel/preset-typescript [optional]
 - @babel/plugin-proposal-function-sent
 - @babel/plugin-proposal-decorators
