@@ -2,11 +2,17 @@
 
 This preset includes the following plugins:
 
-- babel-preset-env
-- babel-preset-react
-- babel-preset-stage-2
-- babel-plugin-typecheck
-- react-hot-loader
+- @babel/preset-env
+- @babel/reset-react
+- @babel/preset-typescript [optional]
+- @babel/plugin-proposal-function-sent
+- @babel/plugin-proposal-decorators
+- @babel/plugin-proposal-class-properties
+- @babel/plugin-proposal-export-namespace-from
+- @babel/plugin-proposal-numeric-separator
+- @babel/plugin-proposal-throw-expressions
+- babel-plugin-add-module-exports
+- react-hot-loader/babel [only for dev]
 
 ## Install
 
@@ -27,3 +33,16 @@ This preset support dynamic compile browser targets, set [browserslist](https://
 ```
 
 Or using default browserslist `['>1%', 'last 4 versions', 'not ie < 9']`.
+
+### Config in `.babelrc`
+
+```json
+{
+  "presets": [["babel-preset-beidou-client", { "typescript": true }]]
+}
+```
+
+**Options**
+
+- typescript: enable typescript
+- env: config passed to preset-env
