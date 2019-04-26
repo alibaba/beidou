@@ -32,4 +32,14 @@ describe('babel-preset-client', () => {
     assert.equal(typeof result.presets[1][1], 'object');
   });
 
+  it('should overrite defalt env config', () => {
+    assert(typeof preset === 'function');
+    const result = preset(mockApi, { env: {
+      corejs: '2.0.0',
+    } });
+    assert(Array.isArray(result.presets));
+    assert.equal(typeof result.presets[0][1], 'object');
+    assert.equal(result.presets[0][1].corejs, '2.0.0');
+  });
+
 });
