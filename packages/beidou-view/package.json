@@ -30,7 +30,8 @@
     "app",
     "lib",
     "config",
-    "index.js"
+    "index.js",
+    "app.js"
   ],
   "engines": {
     "node": ">= 8.0.0"
