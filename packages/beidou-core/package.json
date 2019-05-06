@@ -1,6 +1,6 @@
 {
   "name": "beidou-core",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Isomorphic framework for server-rendered React apps",
   "main": "index.js",
   "scripts": {
@@ -26,8 +26,8 @@
     "babel-preset-beidou-server": "^2.0.1",
     "beidou-isomorphic": "^2.0.1",
     "beidou-router": "^2.0.1",
-    "beidou-view": "^2.1.0",
-    "beidou-view-react": "^2.1.0",
+    "beidou-view": "^2.1.1",
+    "beidou-view-react": "^2.1.1",
     "beidou-webpack": "^2.1.0",
     "depd": "^1.1.2",
     "egg": "^2.3.0"

@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-typescript-mobx",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "beidou project ",
   "scripts": {
     "dev": "npm run asset && beidou dev",
@@ -53,8 +53,8 @@
     "@babel/plugin-proposal-decorators": "^7.2.3",
     "@babel/polyfill": "^7.2.5",
     "axios": "^0.18.0",
-    "beidou": "^2.1.0",
-    "beidou-cli": "^2.0.1",
+    "beidou": "^2.1.1",
+    "beidou-cli": "^2.1.1",
     "classnames": "^2.2.6",
     "egg-sequelize": "^4.3.1",
     "history": "^4.7.2",
