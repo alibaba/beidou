@@ -29,7 +29,7 @@
     "mkdirp": "^0.5.1",
     "npm-updater": "^3.0.3",
     "rimraf": "^2.6.2",
-    "tar": "^2.2.1",
+    "tar": "^4.4.2",
     "urllib": "^2.25.4"
   },
   "boilerplates": {

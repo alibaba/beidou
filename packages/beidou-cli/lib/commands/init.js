@@ -4,7 +4,6 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
-const zlib = require('zlib');
 const tar = require('tar');
 const urllib = require('urllib');
 const updater = require('npm-updater');
@@ -300,6 +299,7 @@ module.exports = class InitCMD extends Command {
   async downloadAndUnzip(url, saveDir) {
     await new Promise((resolve, reject) => {
       rimraf.sync(saveDir);
+      fs.mkdirSync(saveDir);
       function handleError(err) {
         rimraf.sync(saveDir);
         reject(err);
@@ -316,14 +316,11 @@ module.exports = class InitCMD extends Command {
             return reject(err);
           }
 
-          const gunzip = zlib.createGunzip();
-          gunzip.on('error', handleError);
-
-          const extractor = tar.Extract({ path: saveDir, strip: 1 });
+          const extractor = tar.x({ C: saveDir, strip: 1 });
           extractor.on('error', handleError);
           extractor.on('end', resolve);
 
-          res.pipe(gunzip).pipe(extractor);
+          res.pipe(extractor);
         }
       );
     });
