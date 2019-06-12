@@ -40,6 +40,7 @@
     "react-dom": "^16.2.0",
     "typescript": "^2.7.2"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "devDependencies": {
     "@types/react": "^16.4.6"
   },

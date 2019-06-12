@@ -23,6 +23,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "engines": {
     "node": ">= 8.0.0"
   },

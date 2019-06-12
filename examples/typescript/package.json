@@ -24,6 +24,7 @@
     "@types/react-dom": "^16.0.11",
     "@types/webpack": "^4.4.20"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "config": {
     "typescript": true
   },

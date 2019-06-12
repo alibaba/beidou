@@ -10,6 +10,7 @@
     "build": "beidou build",
     "build:node": "beidou build --target=node"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",

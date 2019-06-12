@@ -35,6 +35,7 @@
     "react-virtualized": "^9.18.5",
     "reqwest": "^2.0.5"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "engines": {
     "node": ">= 8.0.0"
   },
