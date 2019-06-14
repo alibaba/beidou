@@ -9,7 +9,7 @@ const {
   imageLoaderConfig,
   fileLoaderConfig,
   getStyleCongfigs,
-  ExtractTextPlugin,
+  MiniCssExtractPlugin,
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
@@ -49,15 +49,19 @@ module.exports = (app, entry, dev) => {
   });
   if (!dev && viewConfig.useHashAsset) {
     factory.definePlugin(
-      ExtractTextPlugin,
-      '[name]_[md5:contenthash:hex:8].css',
-      'ExtractTextPlugin'
+      MiniCssExtractPlugin,
+      {
+        filename: '[name]_[hash:8].css',
+      },
+      'MiniCssExtractPlugin'
     );
   } else {
-    factory.definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin');
+    factory.definePlugin(MiniCssExtractPlugin, {
+      filename: '[name].css',
+    }, 'MiniCssExtractPlugin');
   }
 
-  factory.addPlugin('ExtractTextPlugin');
+  factory.addPlugin('MiniCssExtractPlugin');
 
   factory.definePlugin(
     webpack.DefinePlugin,

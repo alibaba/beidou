@@ -1,7 +1,7 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const codependency = require('codependency');
 
 const requirePeer = codependency.register(module, { strictCheck: false });
@@ -68,48 +68,63 @@ const lessLoaderConfig = {
   },
 };
 
-const getStyleFallbackConfig = dev => ({
-  loader: require.resolve('style-loader'),
-  options: {
-    hmr: dev,
-  },
-});
-
 function getStyleCongfigs(dev) {
   const loaders = [
     {
       test: /\.css$/,
       exclude: /\.m(odule)?\.css$/,
-      loader: ExtractTextPlugin.extract({
-        fallback: getStyleFallbackConfig(dev),
-        use: [getCssLoaderConfig(dev), postCssLoaderConfig],
-      }),
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: dev,
+          },
+        },
+        getCssLoaderConfig(dev),
+        postCssLoaderConfig,
+      ],
     },
     {
       test: /\.m(odule)?\.css$/,
-      loader: ExtractTextPlugin.extract({
-        fallback: getStyleFallbackConfig(dev),
-        use: [getCssLoaderConfig(dev, true), postCssLoaderConfig],
-      }),
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: dev,
+          },
+        },
+        getCssLoaderConfig(dev, true),
+        postCssLoaderConfig,
+      ],
     },
     {
       test: /\.less$/,
       exclude: /\.m(odule)?\.less$/,
-      use: ExtractTextPlugin.extract({
-        fallback: getStyleFallbackConfig(dev),
-        use: [getCssLoaderConfig(dev), postCssLoaderConfig, lessLoaderConfig],
-      }),
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: dev,
+          },
+        },
+        getCssLoaderConfig(dev),
+        postCssLoaderConfig,
+        lessLoaderConfig,
+      ],
     },
     {
       test: /\.m(odule)?\.less$/,
-      use: ExtractTextPlugin.extract({
-        fallback: getStyleFallbackConfig(dev),
-        use: [
-          getCssLoaderConfig(dev, true),
-          postCssLoaderConfig,
-          lessLoaderConfig,
-        ],
-      }),
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: dev,
+          },
+        },
+        getCssLoaderConfig(dev, true),
+        postCssLoaderConfig,
+        lessLoaderConfig,
+      ],
     },
   ];
   if (requirePeer.resolve('sass-loader').isValid) {
@@ -117,29 +132,35 @@ function getStyleCongfigs(dev) {
       {
         test: /\.s(c|a)ss$/,
         exclude: /\.m(odule)?\.s(c|a)ss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: getStyleFallbackConfig(dev),
-          use: [
-            getCssLoaderConfig(dev),
-            postCssLoaderConfig,
-            {
-              loader: require.resolve('sass-loader'),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: dev,
             },
-          ],
-        }),
+          },
+          getCssLoaderConfig(dev),
+          postCssLoaderConfig,
+          {
+            loader: require.resolve('sass-loader'),
+          },
+        ],
       },
       {
         test: /\.m(odule)?\.s(c|a)ss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: getStyleFallbackConfig(dev),
-          use: [
-            getCssLoaderConfig(dev, true),
-            postCssLoaderConfig,
-            {
-              loader: require.resolve('sass-loader'),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: dev,
             },
-          ],
-        }),
+          },
+          getCssLoaderConfig(dev, true),
+          postCssLoaderConfig,
+          {
+            loader: require.resolve('sass-loader'),
+          },
+        ],
       },
     ]);
   }
@@ -149,5 +170,5 @@ function getStyleCongfigs(dev) {
 
 exports.imageLoaderConfig = imageLoaderConfig;
 exports.fileLoaderConfig = fileLoaderConfig;
-exports.ExtractTextPlugin = ExtractTextPlugin;
+exports.MiniCssExtractPlugin = MiniCssExtractPlugin;
 exports.getStyleCongfigs = getStyleCongfigs;
