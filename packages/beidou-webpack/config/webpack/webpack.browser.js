@@ -12,7 +12,7 @@ const {
   imageLoaderConfig,
   fileLoaderConfig,
   getStyleCongfigs,
-  ExtractTextPlugin,
+  MiniCssExtractPlugin,
 } = require('./utils');
 
 module.exports = (app, entry, dev) => {
@@ -47,7 +47,9 @@ module.exports = (app, entry, dev) => {
   ].forEach(v => factory.defineRule(v).addRule(v));
 
   factory
-    .definePlugin(ExtractTextPlugin, '[name].css', 'ExtractTextPlugin')
+    .definePlugin(MiniCssExtractPlugin, {
+      filename: '[name].css',
+    }, 'MiniCssExtractPlugin')
     .definePlugin(
       webpack.DefinePlugin,
       {
@@ -58,8 +60,6 @@ module.exports = (app, entry, dev) => {
       },
       'DefinePlugin'
     );
-
-  factory.addPlugin('ExtractTextPlugin');
 
   if (!dev) {
     factory.set('mode', 'production');
@@ -93,6 +93,7 @@ module.exports = (app, entry, dev) => {
       'HotModuleReplacementPlugin'
     );
   }
+  factory.addPlugin('MiniCssExtractPlugin');
   if (viewConfig && viewConfig.useHashAsset && !dev) {
     factory.addPlugin(
       ManifestPlugin,
@@ -100,10 +101,13 @@ module.exports = (app, entry, dev) => {
       'WebpackManifestPlugin'
     );
     factory.setPlugin(
-      ExtractTextPlugin,
-      '[name]_[md5:contenthash:hex:8].css',
-      'ExtractTextPlugin'
+      MiniCssExtractPlugin,
+      {
+        filename: '[name]_[chunkhash:8].css',
+      },
+      'MiniCssExtractPlugin'
     );
   }
+
   return factory.getConfig();
 };

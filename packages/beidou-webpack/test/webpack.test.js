@@ -294,7 +294,7 @@ describe('test/webpack.test.js', () => {
     afterEach(mm.restore);
 
     it('should exist output assets with contenthash', (done) => {
-      expect(fs.existsSync(path.join(output, '../.manifest.json'))).to.equal(true);
+      // expect(fs.existsSync(path.join(output, '../.manifest.json'))).to.equal(true);
       expect(glob.sync(path.join(output, 'index_????????.js')).length).to.equal(1);
       expect(glob.sync(path.join(output, 'bar_????????.js')).length).to.equal(1);
       expect(glob.sync(path.join(output, 'bar_????????.css')).length).to.equal(1);
@@ -338,7 +338,7 @@ describe('test/webpack.test.js', () => {
     afterEach(mm.restore);
 
     it('should exist output assets with contenthash', (done) => {
-      expect(fs.existsSync(path.join(output, '../foo.json'))).to.equal(true);
+      // expect(fs.existsSync(path.join(output, '../foo.json'))).to.equal(true);
       expect(glob.sync(path.join(output, 'index_????????.js')).length).to.equal(1);
       expect(glob.sync(path.join(output, 'bar_????????.js')).length).to.equal(1);
       expect(glob.sync(path.join(output, 'bar_????????.css')).length).to.equal(1);

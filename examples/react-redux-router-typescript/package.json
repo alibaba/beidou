@@ -36,6 +36,7 @@
     "source-map-loader": "^0.2.4",
     "tslint": "^5.11.0"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "engines": {
     "node": ">= 8.0.0"
   },

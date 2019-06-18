@@ -2,7 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (app, defaultConfig, isDev) => {
   const universal = app.config.isomorphic.universal;
@@ -25,7 +25,9 @@ module.exports = (app, defaultConfig, isDev) => {
       }
     }),
     new app.IsomorphicPlugin(universal),
-    new ExtractTextPlugin('[name].css'),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
   ];
 
   let mode = 'development';
@@ -62,22 +64,22 @@ module.exports = (app, defaultConfig, isDev) => {
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          use: ExtractTextPlugin.extract({
-            use: [
-              {
-                loader: 'css-loader',
-                // uncomment if need css modules
-                options: {
-                  importLoaders: 1,
-                  modules: true,
-                },
+          use:[
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
+            {
+              loader: 'css-loader',
+              // uncomment if need css modules
+              options: {
+                importLoaders: 1,
+                modules: true,
               },
-              {
-                loader: 'sass-loader',
-              },
-            ],
-            fallback: 'style-loader',
-          }),
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
         },
         {
           test: /\.(png|jpg|gif)$/,

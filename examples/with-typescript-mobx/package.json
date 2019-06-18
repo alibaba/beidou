@@ -73,6 +73,7 @@
     "sequelize": "^4.42.0",
     "sqlite3": "^4.0.6"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "config": {
     "typescript": true
   }

@@ -2,7 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (app, defaultConfig, entry, isDev) => {
   const universal = app.config.isomorphic.universal;
@@ -37,13 +37,6 @@ module.exports = (app, defaultConfig, entry, isDev) => {
   });
 
 
-  // factory.addPlugin(
-  //   new webpack.optimize.CommonsChunkPlugin({
-  //     name: 'manifest',
-  //     filename: 'manifest.js',
-  //   })
-  // )
-
   factory.addPlugin(
     webpack.DefinePlugin, {
       'process.env.NODE_ENV': JSON.stringify(
@@ -62,7 +55,9 @@ module.exports = (app, defaultConfig, entry, isDev) => {
       }
     })) 
     .addPlugin(new app.IsomorphicPlugin(universal))
-    .addPlugin(new ExtractTextPlugin('[name].css'))
+    .addPlugin(new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }))
 
   // 切换环境
   const factoryInDev = factory.env('dev')
@@ -75,7 +70,9 @@ module.exports = (app, defaultConfig, entry, isDev) => {
   //   },
   // }))
 
-  factory.setPlugin(new ExtractTextPlugin('[name].modify.css'))
+  factory.setPlugin(new MiniCssExtractPlugin({
+    filename: '[name].modify.css',
+  }))
 
   factory.addRule({
     test: /\.jsx?$/,
@@ -92,21 +89,23 @@ module.exports = (app, defaultConfig, entry, isDev) => {
   factory.addRule({
     test: /\.scss$/,
     exclude: /node_modules/,
-    use: ExtractTextPlugin.extract({
-      use: [{
-          loader: 'css-loader',
-          // uncomment if need css modules
-          options: {
-            importLoaders: 1,
-            modules: true,
-          },
+    use:[
+      {
+        loader: MiniCssExtractPlugin.loader,
+      },
+      {
+        loader: 'css-loader',
+        // uncomment if need css modules
+        options: {
+          importLoaders: 1,
+          modules: true,
         },
-        {
-          loader: 'sass-loader',
-        },
-      ],
-      fallback: 'style-loader',
-    }),
+      },
+      {
+        loader: 'sass-loader',
+      },
+    
+    ]
   })
 
   return factory.getConfig();

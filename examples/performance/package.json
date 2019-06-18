@@ -54,6 +54,7 @@
     "whatwg-fetch": "^1.0.0",
     "xhr2": "^0.1.3"
   },
+  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "engines": {
     "node": ">= 8.0.0"
   },
