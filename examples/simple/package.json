@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-simple",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "beidou example simple",
   "scripts": {
     "start": "beidou start",
@@ -21,13 +21,18 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "beidou": "^2.1.1",
+    "beidou": "^2.2.0",
     "beidou-cli": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.1.2"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },

@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-less",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Beidou example with less",
   "scripts": {
     "start": "beidou start",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.1.1",
+    "beidou": "^2.2.0",
     "beidou-cli": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
@@ -22,6 +22,11 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "webpack": "^3.10.0"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }

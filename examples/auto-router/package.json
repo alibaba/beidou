@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-auto-router",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Beidou example auto router",
   "license": "MIT",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "babel-eslint": "^8.1.2",
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.1.1",
+    "beidou": "^2.2.0",
     "beidou-cli": "^2.1.1",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^2.0.1",
@@ -23,7 +23,12 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },

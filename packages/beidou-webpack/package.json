@@ -1,6 +1,6 @@
 {
   "name": "beidou-webpack",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "beidou webpack middleware",
   "eggPlugin": {
     "name": "webpack"
@@ -41,6 +41,7 @@
     "lodash": "^4.17.4",
     "memory-fs": "^0.4.1",
     "micromatch": "^3.1.10",
+    "mini-css-extract-plugin": "^0.7.0",
     "mkdirp": "^0.5.1",
     "postcss": "^6.0.15",
     "postcss-flexbugs-fixes": "^3.2.0",
@@ -53,8 +54,7 @@
     "url-loader": "^0.6.2",
     "webpack": "^4.20.2",
     "webpack-dev-server": "^3.1.9",
-    "webpack-manifest-plugin": "^2.0.4",
-    "mini-css-extract-plugin": "^0.7.0"
+    "webpack-manifest-plugin": "^2.0.4"
   },
   "devDependencies": {
     "chai": "^4.0.2",

@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-react-loadable",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Beidou example with react loadable",
   "license": "MIT",
   "scripts": {
@@ -17,7 +17,7 @@
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-beidou-client": "^2.1.0",
-    "beidou": "^2.1.1",
+    "beidou": "^2.2.0",
     "beidou-cli": "^2.1.1",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^2.0.1",
@@ -28,7 +28,12 @@
     "react-loadable": "^5.3.1",
     "react-router-dom": "^4.2.2"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "engines": {
     "node": ">= 8.0.0"
   },

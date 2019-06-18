@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-dva",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Beidou example with dva",
   "scripts": {
     "start": "beidou start",
@@ -10,11 +10,16 @@
     "build": "beidou build",
     "build:node": "beidou build --target=node"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.1.1",
+    "beidou": "^2.2.0",
     "beidou-cli": "^2.1.1",
     "dva": "^2.1.0",
     "react": "^16.2.0",

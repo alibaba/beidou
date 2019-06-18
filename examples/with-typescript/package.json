@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-typescript",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Beidou example with TypeScript",
   "scripts": {
     "start": "beidou start",
@@ -34,13 +34,18 @@
     "@babel/runtime": "^7.0.0",
     "babel-loader": "^7.1.5",
     "babel-preset-beidou-client": "^2.1.0",
-    "beidou": "^2.1.1",
+    "beidou": "^2.2.0",
     "beidou-cli": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "typescript": "^2.7.2"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "devDependencies": {
     "@types/react": "^16.4.6"
   },

@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-scss",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Beidou example with scss",
   "scripts": {
     "start": "beidou start",
@@ -13,13 +13,18 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.1.1",
+    "beidou": "^2.2.0",
     "beidou-cli": "^2.1.1",
     "node-sass": "^4.11.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "sass-loader": "^7.1.0"
   },
-  "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "gitHead": "b601b857e2d005cdad7cb7b73462a7e02f23f8e9"
 }
