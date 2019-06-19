@@ -9,7 +9,13 @@ class Rule {
     this.alias = alias || options.test;
   }
 
-  init() {
+  toConfig(factory) {
+    if (this.options.processor) {
+      const dynamicOptions = this.options.processor(factory);
+      const options = Object.assign({}, this.options, dynamicOptions);
+      delete options.processor;
+      return options;
+    }
     return this.options;
   }
 }

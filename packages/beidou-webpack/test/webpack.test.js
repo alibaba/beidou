@@ -161,7 +161,7 @@ describe('test/webpack.test.js', () => {
     });
   })
 
-  describe.only('customer webpack config => disable css mini plugin', () => {
+  describe('customer webpack config => disable css mini plugin', () => {
     let app;
     const output = path.join(__dirname, './fixtures/custom-webpack-css-extract/build');
     before((done) => {

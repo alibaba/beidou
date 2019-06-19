@@ -22,6 +22,7 @@ module.exports = (app, entry, dev) => {
   const viewConfig = app.config.view;
   const { custom } = app.config.webpack;
   common(app, entry, dev);
+
   [
     {
       test: /\.(js|jsx|ts|tsx|mjs)$/,

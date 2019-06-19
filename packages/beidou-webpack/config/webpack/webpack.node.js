@@ -50,6 +50,7 @@ module.exports = (app, entry, dev) => {
   ].forEach((v) => {
     factory.defineRule(v).addRule(v);
   });
+
   if (!dev && viewConfig.useHashAsset) {
     factory.definePlugin(
       MiniCssExtractPlugin,

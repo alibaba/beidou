@@ -14,6 +14,7 @@ function toType(obj) {
 
 class Factory {
   init() {
+    this.cssExtract = undefined;
     this.__envFactories = {};
     this.__defineloaders = {};
     this.__definePlugins = {};
@@ -76,7 +77,7 @@ class WebpackFactory extends Factory {
   getRuleConfig() {
     const rules = [];
     this.__rules.forEach((v) => {
-      rules.push(v.options);
+      rules.push(v.toConfig(this));
     });
     return rules;
   }
