@@ -68,18 +68,28 @@ const lessLoaderConfig = {
   },
 };
 
-function getStyleCongfigs(dev) {
+
+const getMiniCssExtractConfig = (dev, options) => (options.cssExtract ?
+  { loader: MiniCssExtractPlugin.loader,
+    options: {
+      hmr: dev,
+    },
+  } : {
+    loader: require.resolve('style-loader'),
+    options: {
+      hmr: dev,
+    },
+  }
+);
+
+
+function getStyleCongfigs(dev, options) {
   const loaders = [
     {
       test: /\.css$/,
       exclude: /\.m(odule)?\.css$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        getMiniCssExtractConfig(dev, options),
         getCssLoaderConfig(dev),
         postCssLoaderConfig,
       ],
@@ -87,12 +97,7 @@ function getStyleCongfigs(dev) {
     {
       test: /\.m(odule)?\.css$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        getMiniCssExtractConfig(dev, options),
         getCssLoaderConfig(dev, true),
         postCssLoaderConfig,
       ],
@@ -101,12 +106,7 @@ function getStyleCongfigs(dev) {
       test: /\.less$/,
       exclude: /\.m(odule)?\.less$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        getMiniCssExtractConfig(dev, options),
         getCssLoaderConfig(dev),
         postCssLoaderConfig,
         lessLoaderConfig,
@@ -115,12 +115,7 @@ function getStyleCongfigs(dev) {
     {
       test: /\.m(odule)?\.less$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        getMiniCssExtractConfig(dev, options),
         getCssLoaderConfig(dev, true),
         postCssLoaderConfig,
         lessLoaderConfig,
@@ -133,12 +128,7 @@ function getStyleCongfigs(dev) {
         test: /\.s(c|a)ss$/,
         exclude: /\.m(odule)?\.s(c|a)ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: dev,
-            },
-          },
+          getMiniCssExtractConfig(dev, options),
           getCssLoaderConfig(dev),
           postCssLoaderConfig,
           {
@@ -149,12 +139,7 @@ function getStyleCongfigs(dev) {
       {
         test: /\.m(odule)?\.s(c|a)ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: dev,
-            },
-          },
+          getMiniCssExtractConfig(dev, options),
           getCssLoaderConfig(dev, true),
           postCssLoaderConfig,
           {

@@ -161,6 +161,45 @@ describe('test/webpack.test.js', () => {
     });
   })
 
+  describe.only('customer webpack config => disable css mini plugin', () => {
+    let app;
+    const output = path.join(__dirname, './fixtures/custom-webpack-css-extract/build');
+    before((done) => {
+      app = mm.app({
+        baseDir: './custom-webpack-css-extract',
+        plugin,
+        framework,
+      });
+      app.ready(() => {
+        const builder = require('../lib/builder');
+        app.config.env = 'prod';
+        const compiler = builder(app);
+        compiler.run(done);
+      });
+    });
+
+    after((done) => {
+      if (fs.existsSync(output)) {
+        rimraf(output, done);
+      }
+      app.close();
+      app.agent.close();
+    });
+
+    afterEach(mm.restore);
+
+    it('should exist build files', (done) => {
+      const exist = fs.existsSync(path.join(output, 'index.js'));
+      expect(exist).to.equal(true);
+      done();
+    });
+
+    it('should disable the css module plugin ', (done) => {
+      const example = fs.existsSync(path.join(output, 'example.css'));
+      expect(example).to.equal(false);
+      done();
+    });
+  })
 
   describe('config publicPath', () => {
     let app;
