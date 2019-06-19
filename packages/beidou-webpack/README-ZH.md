@@ -37,6 +37,7 @@ exports.webpack = {
   custom: {
     // configPath: 'path/to/webpack/config/file',
     depth: 1,
+    cssExtract: true, // 是否默认使用 mini-css-extract-plugin 抽离css文件
   },
   output: {
     path: './build',
@@ -153,6 +154,8 @@ module.exports = {
 ```
 
 上述配置下，以 `/foo` 开头的所有请求均会直接转发给 webpack，用于使用了 devServer.proxy 的场景
+
+**custom.cssExtract**: 是否开启css抽离插件
 
 ### 常见配置问题
 
