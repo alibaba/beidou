@@ -5,25 +5,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.1.0](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/compare/v2.0.5...v2.1.0) (2019-04-26)
 
-
 ### Features
 
-* enable contenthash for assets ([#161](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/161)) ([b2fdb07](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/commit/b2fdb07))
-
-
-
-
+- enable contenthash for assets ([#161](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/161)) ([b2fdb07](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/commit/b2fdb07))
 
 ## [2.0.2](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/compare/v2.0.1...v2.0.2) (2019-02-27)
 
-
 ### Bug Fixes
 
-* disable exract comments ([#149](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/149)) ([a0b7025](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/commit/a0b7025))
-
-
-
-
+- disable exract comments ([#149](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/issues/149)) ([a0b7025](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/commit/a0b7025))
 
 # [2.0.0](https://github.com/alibaba/beidou/tree/master/packages/beidou-webpack/compare/v1.2.1...v2.0.0) (2019-01-16)
 

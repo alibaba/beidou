@@ -40,6 +40,7 @@ exports.webpack = {
     // configPath: 'path/to/webpack/config/file',
     // depth: 1,
     // proxy: null,
+    cssExtract: true,  // default enable css-mini-plugin config
   },
   output: {
     path: './build',
@@ -155,9 +156,11 @@ e.g.：
 
 All of the requests start with `/foo` will be redirected to webpack server directly. Useful when enable devServer.proxy.
 
+**custom.cssExtract**: whether enable css-mini-plugin for webpack
+
 #### FAQ:
 
-使用配置工厂自定义配置项,操作方式如下例
+Custom configurate method by `app.webpackFactory`:
 
 ```js
 

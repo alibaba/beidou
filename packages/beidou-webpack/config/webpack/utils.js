@@ -68,100 +68,113 @@ const lessLoaderConfig = {
   },
 };
 
-function getStyleCongfigs(dev) {
+
+function getStyleCongfigs(dev, options) {
+  const extractLoader = { loader: MiniCssExtractPlugin.loader,
+    options: {
+      hmr: dev,
+    },
+  };
+  const styleLoader = {
+    loader: require.resolve('style-loader'),
+    options: {
+      hmr: dev,
+    },
+  };
+
+  const defaultLoader = options.cssExtract ? extractLoader : styleLoader;
+
+  const dynamicProcessor = (rule) => {
+    const use = rule.use.slice(1);
+
+    rule.processor = function (factory) {
+      if (factory.cssExtract === undefined) {
+        return {};
+      }
+      if (factory.cssExtract) {
+        return {
+          use: [
+            extractLoader,
+            ...use,
+          ],
+        };
+      } else {
+        return {
+          use: [
+            styleLoader,
+            ...use,
+          ],
+        };
+      }
+    };
+
+    return rule;
+  };
+
+
   const loaders = [
-    {
+    dynamicProcessor({
       test: /\.css$/,
       exclude: /\.m(odule)?\.css$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        defaultLoader,
         getCssLoaderConfig(dev),
         postCssLoaderConfig,
       ],
-    },
-    {
+    }),
+    dynamicProcessor({
       test: /\.m(odule)?\.css$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        defaultLoader,
         getCssLoaderConfig(dev, true),
         postCssLoaderConfig,
       ],
-    },
-    {
+    }),
+    dynamicProcessor({
       test: /\.less$/,
       exclude: /\.m(odule)?\.less$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        defaultLoader,
         getCssLoaderConfig(dev),
         postCssLoaderConfig,
         lessLoaderConfig,
       ],
-    },
-    {
+    }),
+    dynamicProcessor({
       test: /\.m(odule)?\.less$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: dev,
-          },
-        },
+        defaultLoader,
         getCssLoaderConfig(dev, true),
         postCssLoaderConfig,
         lessLoaderConfig,
       ],
-    },
+    }),
   ];
   if (requirePeer.resolve('sass-loader').isValid) {
     return loaders.concat([
-      {
+      dynamicProcessor({
         test: /\.s(c|a)ss$/,
         exclude: /\.m(odule)?\.s(c|a)ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: dev,
-            },
-          },
+          defaultLoader,
           getCssLoaderConfig(dev),
           postCssLoaderConfig,
           {
             loader: require.resolve('sass-loader'),
           },
         ],
-      },
-      {
+      }),
+      dynamicProcessor({
         test: /\.m(odule)?\.s(c|a)ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: dev,
-            },
-          },
+          defaultLoader,
           getCssLoaderConfig(dev, true),
           postCssLoaderConfig,
           {
             loader: require.resolve('sass-loader'),
           },
         ],
-      },
+      }),
     ]);
   }
 

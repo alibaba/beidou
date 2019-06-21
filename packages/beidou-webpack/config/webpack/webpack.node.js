@@ -15,6 +15,7 @@ const {
 module.exports = (app, entry, dev) => {
   const factory = app.webpackFactory;
   const viewConfig = app.config.view;
+  const { custom } = app.config.webpack;
   common(app, entry, dev);
   factory.get('output').libraryTarget = 'commonjs';
   factory.set('target', 'node');
@@ -41,12 +42,15 @@ module.exports = (app, entry, dev) => {
         },
       },
     },
-    ...getStyleCongfigs(dev),
+    ...getStyleCongfigs(dev, {
+      cssExtract: custom.cssExtract,
+    }),
     imageLoaderConfig,
     fileLoaderConfig,
   ].forEach((v) => {
     factory.defineRule(v).addRule(v);
   });
+
   if (!dev && viewConfig.useHashAsset) {
     factory.definePlugin(
       MiniCssExtractPlugin,
@@ -56,12 +60,18 @@ module.exports = (app, entry, dev) => {
       'MiniCssExtractPlugin'
     );
   } else {
-    factory.definePlugin(MiniCssExtractPlugin, {
-      filename: '[name].css',
-    }, 'MiniCssExtractPlugin');
+    factory.definePlugin(
+      MiniCssExtractPlugin,
+      {
+        filename: '[name].css',
+      },
+      'MiniCssExtractPlugin'
+    );
   }
 
-  factory.addPlugin('MiniCssExtractPlugin');
+  if (custom.cssExtract) {
+    factory.addPlugin('MiniCssExtractPlugin');
+  }
 
   factory.definePlugin(
     webpack.DefinePlugin,

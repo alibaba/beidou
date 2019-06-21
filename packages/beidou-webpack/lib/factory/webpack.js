@@ -6,11 +6,15 @@ const Rule = require('./rule');
 const extend = require('extend2');
 
 function toType(obj) {
-  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+  return {}.toString
+    .call(obj)
+    .match(/\s([a-zA-Z]+)/)[1]
+    .toLowerCase();
 }
 
 class Factory {
   init() {
+    this.cssExtract = undefined;
     this.__envFactories = {};
     this.__defineloaders = {};
     this.__definePlugins = {};
@@ -73,7 +77,7 @@ class WebpackFactory extends Factory {
   getRuleConfig() {
     const rules = [];
     this.__rules.forEach((v) => {
-      rules.push(v.options);
+      rules.push(v.toConfig(this));
     });
     return rules;
   }
@@ -105,7 +109,11 @@ class WebpackFactory extends Factory {
     if (force || is.string(config)) {
       this.__webpackConfig[key] = config;
     } else if (is.object(config)) {
-      this.__webpackConfig[key] = extend(true, this.__webpackConfig[key], config);
+      this.__webpackConfig[key] = extend(
+        true,
+        this.__webpackConfig[key],
+        config
+      );
     } else if (is.array(config)) {
       this.__webpackConfig[key] = this.__webpackConfig[key].concat(config);
     }

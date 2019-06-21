@@ -20,7 +20,9 @@ module.exports = (app, entry, dev) => {
   const factory = app.webpackFactory;
   const typescript = pkg && pkg.config && pkg.config.typescript;
   const viewConfig = app.config.view;
+  const { custom } = app.config.webpack;
   common(app, entry, dev);
+
   [
     {
       test: /\.(js|jsx|ts|tsx|mjs)$/,
@@ -41,15 +43,21 @@ module.exports = (app, entry, dev) => {
         },
       },
     },
-    ...getStyleCongfigs(dev),
+    ...getStyleCongfigs(dev, {
+      cssExtract: custom.cssExtract,
+    }),
     imageLoaderConfig,
     fileLoaderConfig,
   ].forEach(v => factory.defineRule(v).addRule(v));
 
   factory
-    .definePlugin(MiniCssExtractPlugin, {
-      filename: '[name].css',
-    }, 'MiniCssExtractPlugin')
+    .definePlugin(
+      MiniCssExtractPlugin,
+      {
+        filename: '[name].css',
+      },
+      'MiniCssExtractPlugin'
+    )
     .definePlugin(
       webpack.DefinePlugin,
       {
@@ -93,7 +101,10 @@ module.exports = (app, entry, dev) => {
       'HotModuleReplacementPlugin'
     );
   }
-  factory.addPlugin('MiniCssExtractPlugin');
+  if (custom.cssExtract) {
+    factory.addPlugin('MiniCssExtractPlugin');
+  }
+
   if (viewConfig && viewConfig.useHashAsset && !dev) {
     factory.addPlugin(
       ManifestPlugin,
