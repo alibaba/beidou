@@ -14,7 +14,7 @@
   "author": "",
   "dependencies": {
     "antd": "3.13.6",
-    "axios": "^0.17.1",
+    "axios": "^0.18.1",
     "babel-polyfill": "^6.26.0",
     "beidou": "^2.2.1",
     "beidou-cli": "^2.1.1",
