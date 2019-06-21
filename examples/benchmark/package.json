@@ -1,6 +1,6 @@
 {
   "name": "beidou-benchmark",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "beidou benchmark",
   "scripts": {
     "start": "beidou start",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.2.0",
+    "beidou": "^2.2.1",
     "beidou-cli": "^2.1.1",
     "classnames": "^2.2.6",
     "react": "^16.2.0",

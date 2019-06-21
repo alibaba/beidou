@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-with-react-router",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Beidou example with react router",
   "license": "MIT",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "babel-eslint": "^8.1.2",
     "babel-polyfill": "^6.26.0",
-    "beidou": "^2.2.0",
+    "beidou": "^2.2.1",
     "beidou-cli": "^2.1.1",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^2.0.1",

@@ -1,6 +1,6 @@
 {
   "name": "beidou-example-css-modules",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "beidou css modules example",
   "scripts": {
     "start": "beidou start",
@@ -23,7 +23,7 @@
     "@babel/polyfill": "^7.2.5",
     "babel-preset-beidou-client": "^2.1.0",
     "babel-preset-beidou-server": "^2.0.1",
-    "beidou": "^2.2.0",
+    "beidou": "^2.2.1",
     "beidou-cli": "^2.1.1",
     "classnames": "^2.2.3",
     "enums": "^1.0.0",
