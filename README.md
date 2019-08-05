@@ -150,7 +150,9 @@ Please let us know how can we help. Do check out [issues](https://github.com/ali
 
 DingTalk group supported
 
-![](https://img.alicdn.com/tfs/TB1hwjgEpYqK1RjSZLeXXbXppXa-416-530.png)
+![](https://img.alicdn.com/tfs/TB1iC0ycuH2gK0jSZFEXXcqMpXa-970-1280.jpg_400x400.jpg)
+
+DingTalk Group Number: 23374510
 
 ## License
 
