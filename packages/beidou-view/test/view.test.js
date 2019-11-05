@@ -24,11 +24,12 @@ describe('test/view.test.js', () => {
   describe('Base view', () => {
     let app;
 
-    before(() => {
+    before((done) => {
       app = mock.app({
         baseDir: './base-app',
         framework,
       });
+      app.ready(done);
     });
     after(() => {
       app.close();
