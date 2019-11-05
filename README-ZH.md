@@ -146,11 +146,12 @@ $ npm run dev
 
 碰到任何问题请向我们提[issues](https://github.com/alibaba/beidou/issues)
 
-钉钉和微信技术支持群如下
+钉钉技术支持群
 
-![](https://img.alicdn.com/tfs/TB1xFtzlf6H8KJjy0FjXXaXepXa-700-473.jpg)
+![](https://img.alicdn.com/tfs/TB1iC0ycuH2gK0jSZFEXXcqMpXa-970-1280.jpg_400x400.jpg)
 
-注：微信群的有效期只有 7 天，我们将定期更新。万一二维码失效，请联系群主 EN_Holden 邀请入群
+钉钉群号: 23374510
+
 
 ## 许可
 
