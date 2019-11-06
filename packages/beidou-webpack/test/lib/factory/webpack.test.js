@@ -4,7 +4,7 @@ const assert = require('assert');
 const webpack = require('webpack');
 const WebpackFactory = require('../../../lib/factory/webpack');
 
-describe.only('test/lib/factory/webpack.test.js', () => {
+describe('test/lib/factory/webpack.test.js', () => {
   const factory = new WebpackFactory({
     'testArr': ['foo', 'bar'],
     'testObj': {
