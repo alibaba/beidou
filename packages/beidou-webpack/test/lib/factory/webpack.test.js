@@ -4,7 +4,7 @@ const assert = require('assert');
 const webpack = require('webpack');
 const WebpackFactory = require('../../../lib/factory/webpack');
 
-describe('test/lib/factory/webpack.test.js', () => {
+describe.only('test/lib/factory/webpack.test.js', () => {
   const factory = new WebpackFactory({
     'testArr': ['foo', 'bar'],
     'testObj': {
@@ -142,6 +142,14 @@ describe('test/lib/factory/webpack.test.js', () => {
       'js')
     rule = factory.getRule('jsx')
     assert(!rule, 'the rule shuld undefined');
+
+    factory.setRule({
+      test: [/\.png$/, /\.jpg/],
+      exclude: /node_modules/
+    }, 'image');
+
+    rule = factory.getRule('.jpg');
+    assert(rule, 'should get rule if test is array');
   })
 
   it('generate env config ', () => {
