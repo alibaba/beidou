@@ -72,8 +72,8 @@
     "beidou-core": "^1.0.10"
   },
   "optionalPeerDependencies": {
-    "node-sass": "^4.5.3",
-    "sass-loader": "^7.0.0"
+    "node-sass": ">=4.0.0",
+    "sass-loader": ">=7.0.0"
   },
   "files": [
     "bin",
