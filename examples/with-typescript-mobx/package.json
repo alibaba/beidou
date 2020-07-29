@@ -70,7 +70,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "sass-loader": "^7.1.0",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "sqlite3": "^4.0.6"
   },
   "browserslist": [
