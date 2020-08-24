@@ -73,7 +73,9 @@ module.exports = (app, defaultConfig, isDev) => {
               // uncomment if need css modules
               options: {
                 importLoaders: 1,
-                modules: true,
+                modules: {
+                  localIdentName: '[local]_[hash:base64:5]',
+                },
               },
             },
             {
@@ -88,6 +90,7 @@ module.exports = (app, defaultConfig, isDev) => {
               loader: 'url-loader',
               options: {
                 limit: 81920,
+                esModule: false,
               },
             },
           ],

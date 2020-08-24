@@ -9,6 +9,7 @@ module.exports = (app, defaultConfig, entry, isDev) => {
   const factory = app.webpackFactory;
 
   factory.reset({
+    mode: 'development',
     devtool: 'source-map',
     context: path.resolve(__dirname, '..'),
     entry: factory.getConfig().entry,
@@ -32,7 +33,5 @@ module.exports = (app, defaultConfig, entry, isDev) => {
     }
   });
 
-  return factory.getConfig();
-
-
+  return factory.getConfig();;
 };
