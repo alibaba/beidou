@@ -1,8 +1,10 @@
 'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const is = require('is');
 const BeidouView = require('../../lib/beidou');
+
 const symbol = Symbol.for('beidou#renderView');
 module.exports = {
   [symbol]: null,
@@ -14,7 +16,10 @@ module.exports = {
     } else {
       beidou = new BeidouView(this);
     }
-    let pathArr = [ filepath, path.join(option.view || this.app.baseDir, filepath) ];
+    let pathArr = [
+      filepath,
+      path.join(option.view || this.app.baseDir, filepath),
+    ];
     if (is.function(this.remoteAsset)) {
       pathArr.push(await this.remoteAsset(filepath));
     }
@@ -22,20 +27,14 @@ module.exports = {
     if (option.extensions && is.array(option.extensions)) {
       const pathArrExt = [];
 
-      pathArr.forEach(v => {
-        option.extensions.forEach(
-          ext => {
-            pathArrExt.push(v + ext);
-          }
-        );
+      pathArr.forEach((v) => {
+        option.extensions.forEach((ext) => {
+          pathArrExt.push(v + ext);
+        });
       });
       pathArr = pathArr.concat(pathArrExt);
     }
-    const p = pathArr.find(
-      v => {
-        return fs.existsSync(v);
-      }
-    );
+    const p = pathArr.find(v => fs.existsSync(v));
     try {
       if (!p) {
         throw new Error(`${filepath} is not exsit, please check it`);
@@ -48,7 +47,7 @@ module.exports = {
     } catch (e) {
       this.coreLogger.warn(`SSRError: render ${filepath} occur exception !`, e);
       if (option.onError) {
-        return await option.onError.call(this, e);
+        return option.onError.call(this, e);
       }
       throw e;
     }

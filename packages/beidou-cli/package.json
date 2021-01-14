@@ -8,7 +8,7 @@
     "beidou": "bin/beidou.js"
   },
   "scripts": {
-    "test": "TEST_REPORTER=spec egg-bin test",
+    "test": "TEST_REPORTER=spec egg-bin test --timeout 200000",
     "cov": "TEST_REPORTER=spec egg-bin cov",
     "history": "egg-bin history CHANGELOG.md"
   },

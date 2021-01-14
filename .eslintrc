@@ -1,3 +1,6 @@
 {
-  "extends": "./packages/eslint-config-beidou/index.js"
+  "extends": "./packages/eslint-config-beidou/index.js",
+  "rules": {
+    "react/sort-comp": 0
+  }
 }

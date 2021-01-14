@@ -38,7 +38,6 @@ class BeidouView extends BaseView {
       return ReactDOMServer.renderToStaticNodeStream(component, props);
     }
     return ReactDOMServer.renderToNodeStream(component, props);
-
   }
 
   renderElement(component, props = {}) {

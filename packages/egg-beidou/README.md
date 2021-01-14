@@ -24,11 +24,12 @@ exports.beidou = {
   static: false, //  whether use static render for SSR
   stream: false, //  whether use stream render for SSR
   cache: true, // whether open require cache
-  onError: function(error){  // call the function when render occur error
+  onError: function(error) {
+    // call the function when render occur error
     // do something
   },
-  view:"/home/admin/project/",
-  extensions: [ '.js', 'jsx', '.ts', '.tsx' ] , // file suffix
+  view: '/home/admin/project/',
+  extensions: ['.js', 'jsx', '.ts', '.tsx'], // file suffix
 };
 ```
 
@@ -37,6 +38,7 @@ exports.beidou = {
 > see more example to test/exmaple folder
 
 ### case1 : render packaged code
+
 ```js
 // Controller
 'use strict';
@@ -69,6 +71,7 @@ exports.test = async function(ctx) {
 ```
 
 ### case2: render react native code
+
 > The scheme of rendering React code by this plug-in is consistent with that of Beidou isomorphic framework, which can be used with reference to Beidou isomorphic framework document.
 
 ```js

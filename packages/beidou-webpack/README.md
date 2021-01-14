@@ -40,7 +40,7 @@ exports.webpack = {
     // configPath: 'path/to/webpack/config/file',
     // depth: 1,
     // proxy: null,
-    cssExtract: true,  // default enable css-mini-plugin config
+    cssExtract: true, // default enable css-mini-plugin config
   },
   output: {
     path: './build',
