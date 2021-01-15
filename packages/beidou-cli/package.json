@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "TEST_REPORTER=spec egg-bin test --timeout 200000",
-    "cov": "TEST_REPORTER=spec egg-bin cov",
+    "cov": "TEST_REPORTER=spec egg-bin cov --timeout 200000",
     "history": "egg-bin history CHANGELOG.md"
   },
   "dependencies": {
