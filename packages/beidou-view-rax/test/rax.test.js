@@ -7,7 +7,7 @@ const RaxView = require('../lib/rax-view');
 
 const framework = path.join(__dirname, '../../beidou-core/');
 
-describe('Rax render test', () => {
+describe.skip('Rax render test', () => {
   let app;
 
   describe('basic render', () => {

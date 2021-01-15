@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package beidou-view-rax
 
-
-
-
-
 # [2.0.0](https://github.com/alibaba/beidou/compare/v1.2.1...v2.0.0) (2019-01-16)
 
 **Note:** Version bump only for package beidou-view-rax

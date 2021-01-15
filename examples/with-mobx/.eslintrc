@@ -7,6 +7,7 @@
     "react/prefer-stateless-function": 0,
     "no-template-curly-in-string": 0,
     "react/no-danger": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/sort-comp": 0
   }
 }

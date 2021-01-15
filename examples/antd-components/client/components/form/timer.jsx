@@ -66,9 +66,10 @@ class TimeRelatedForm extends React.Component {
           {getFieldDecorator('date-picker', config)(<DatePicker />)}
         </FormItem>
         <FormItem {...formItemLayout} label="DatePicker[showTime]">
-          {getFieldDecorator('date-time-picker', config)(
-            <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
-          )}
+          {getFieldDecorator(
+            'date-time-picker',
+            config
+          )(<DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />)}
         </FormItem>
         <FormItem {...formItemLayout} label="MonthPicker">
           {getFieldDecorator('month-picker', config)(<MonthPicker />)}
@@ -77,9 +78,10 @@ class TimeRelatedForm extends React.Component {
           {getFieldDecorator('range-picker', rangeConfig)(<RangePicker />)}
         </FormItem>
         <FormItem {...formItemLayout} label="RangePicker[showTime]">
-          {getFieldDecorator('range-time-picker', rangeConfig)(
-            <RangePicker showTime format="YYYY-MM-DD HH:mm:ss" />
-          )}
+          {getFieldDecorator(
+            'range-time-picker',
+            rangeConfig
+          )(<RangePicker showTime format="YYYY-MM-DD HH:mm:ss" />)}
         </FormItem>
         <FormItem {...formItemLayout} label="TimePicker">
           {getFieldDecorator('time-picker', config)(<TimePicker />)}

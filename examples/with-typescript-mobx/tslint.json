@@ -19,9 +19,6 @@
     "jsx-no-lambda": false
   },
   "linterOptions": {
-    "exclude": [
-      "node_modules/**",
-      "**/*.d.ts"
-    ]
+    "exclude": ["node_modules/**", "**/*.d.ts"]
   }
 }

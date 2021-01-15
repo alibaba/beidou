@@ -17,6 +17,9 @@
     "packages/*"
   ],
   "command": {
+    "bootstrap": {
+      "npmClientArgs": ["--no-lockfile"]
+    },
     "publish": {
       "ignoreChanges": [
         "*.md",

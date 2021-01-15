@@ -222,9 +222,7 @@ export default class Demo extends Component {
                 </div>
               </div>
               <Row gutter={this.gutters[gutterKey]}>{cols}</Row>
-              <pre>{`<Row gutter={${
-                this.gutters[gutterKey]
-              }}>\n${colCode}</Row>`}</pre>
+              <pre>{`<Row gutter={${this.gutters[gutterKey]}}>\n${colCode}</Row>`}</pre>
             </Section>
           </Col>
         </Row>

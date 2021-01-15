@@ -94,7 +94,6 @@ IsomorphicPlugin.prototype.parse = function (module) {
 
 IsomorphicPlugin.prototype.parseForConfig = function (module, config) {
   if (!config) return null;
-
   if (!_.isRegExp(config.exclude)) {
     config.exclude = new RegExp(config.exclude);
   }
@@ -109,6 +108,7 @@ IsomorphicPlugin.prototype.parseForConfig = function (module, config) {
   // if set `include`, test it, works together with `exclude`
   if (config.include && !config.include.test(module.name)) return null;
   // TODO: clean-css if needed
+
   return {
     content: module.source,
     name: module.name,

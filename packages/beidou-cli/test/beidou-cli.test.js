@@ -24,7 +24,7 @@ describe(`test/${path.basename(__filename)}`, () => {
   function* prepareFiles(cwd) {
     if (!fs.existsSync(path.join(cwd, 'package.json'))) {
       fs.copySync(path.join(__dirname, '../../../examples/simple'), cwd);
-      rimraf.sync(path.join(cwd, 'node_modules'));
+      rimraf.sync(path.join(cwd, 'node_modules'), { recursive: true });
     }
 
     if (!fs.existsSync(path.join(cwd, 'node_modules'))) {
@@ -75,12 +75,12 @@ describe(`test/${path.basename(__filename)}`, () => {
   describe('init commands', () => {
     const cwd = path.join(__dirname, './fixtures/init');
     before(() => {
-      rimraf.sync(cwd);
+      rimraf.sync(cwd, { recursive: true });
       mkdirp.sync(cwd);
     });
 
     after(() => {
-      rimraf.sync(cwd);
+      rimraf.sync(cwd, { recursive: true });
     });
 
 
@@ -137,7 +137,7 @@ describe(`test/${path.basename(__filename)}`, () => {
 
     after(function* () {
       yield sleep(TIME);
-      rimraf.sync(cwd);
+      rimraf.sync(cwd, { recursive: true });
     });
 
     it('should start production mode', function* () {
@@ -226,7 +226,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     });
 
     after(() => {
-      rimraf.sync(cwd);
+      rimraf.sync(cwd, { recursive: true });
     });
 
     it('should run beidou-build script', (done) => {
@@ -266,7 +266,7 @@ describe(`test/${path.basename(__filename)}`, () => {
     const webpackConfig = path.join(__dirname, './fixtures/configs/webpack.config.js');
     const buildPath = path.join(__dirname, './fixtures/build');
     after(() => {
-      rimraf.sync(buildPath);
+      rimraf.sync(buildPath, { recursive: true });
     });
     it('should run pack script', (done) => {
       coffee

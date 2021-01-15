@@ -14,7 +14,9 @@ const libs = {
   'next.js': `@alifd/next/dist/next${dev ? '' : '.min'}.js`,
   'moment.js': `moment/min/moment-with-locales${dev ? '' : '.min'}.js`,
   'react.js': `react/umd/react.${dev ? 'development' : 'production.min'}.js`,
-  'react-dom.js': `react-dom/umd/react-dom.${dev ? 'development' : 'production.min'}.js`,
+  'react-dom.js': `react-dom/umd/react-dom.${
+    dev ? 'development' : 'production.min'
+  }.js`,
 };
 
 const buildDir = path.join(__dirname, '../build');
@@ -38,7 +40,11 @@ for (const name in libs) {
         return;
       }
 
-      const files = glob.sync(rule.filter, { cwd: origin, nodir: true, matchBase: true });
+      const files = glob.sync(rule.filter, {
+        cwd: origin,
+        nodir: true,
+        matchBase: true,
+      });
 
       for (const file of files) {
         const target = path.join(buildDir, name, file);

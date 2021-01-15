@@ -8,6 +8,8 @@ const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const { common } = require('./webpack.common');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const {
   imageLoaderConfig,
   fileLoaderConfig,
@@ -78,6 +80,7 @@ module.exports = (app, entry, dev) => {
           parallel: true,
           extractComments: false,
         }),
+        new OptimizeCSSAssetsPlugin({}),
       ],
     });
   } else {

@@ -8,4 +8,3 @@ module.exports = {
     dir: path.join(__dirname, '../build'),
   },
 };
-
