@@ -16,8 +16,8 @@ HttpClient/调用http服务
 // app.js
 module.exports = app => {
   app.beforeStart(function* () {
-    // 示例：启动的时候去读取 https://registry.npm.taobao.org/egg/latest 的版本信息
-    const result = yield app.curl('https://registry.npm.taobao.org/egg/latest', {
+    // 示例：启动的时候去读取 https://registry.npmmirror.com/egg/latest 的版本信息
+    const result = yield app.curl('https://registry.npmmirror.com/egg/latest', {
       dataType: 'json',
     });
     app.logger.info('Egg latest version: %s', result.data.version);
@@ -34,7 +34,7 @@ module.exports = app => {
 // app/controller/home.js
 module.exports = function* home(ctx) {
   // 示例：请求一个 npm 模块信息
-  const result = yield ctx.curl('https://registry.npm.taobao.org/egg/latest', {
+  const result = yield ctx.curl('https://registry.npmmirror.com/egg/latest', {
     // 自动解析 JSON response
     dataType: 'json',
     // 3 秒超时
