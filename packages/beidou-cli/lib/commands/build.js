@@ -9,6 +9,7 @@ const {
   getArgvWithDefaultFramework = 'beidou',
   framework,
   cmdName,
+  webpack = 'beidou-webpack'
 } = require('../helper');
 
 module.exports = class BuildCMD extends Command {
@@ -31,9 +32,9 @@ module.exports = class BuildCMD extends Command {
 
   async run(context) {
     const buildPaths = [
-      path.join(context.cwd, 'node_modules/beidou-webpack/bin/build.js'),
-      path.join(__dirname, '../../../beidou-webpack/bin/build.js'),
-      () => require.resolve('beidou-webpack/bin/build'),
+      path.join(context.cwd, `node_modules/${webpack}/bin/build.js`),
+      path.join(__dirname, `../../../${webpack}/bin/build.js`),
+      () => require.resolve(`${webpack}/bin/build`),
     ];
     const buildBin = buildPaths.find(p =>
       fs.existsSync(typeof p === 'function' ? p() : p)
