@@ -2801,10 +2801,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beidou-cli@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/beidou-cli/-/beidou-cli-2.1.1.tgz#e4d7915e837f88c90d332a871b8e3f71162ca0ac"
-  integrity sha512-buz8wm4YDIqWsMSiiicZtvwR416rVsjxtNxJmKdFlJLx7vC4KtxLGwxRV+U3Gg5o1SOSKXmE6fTaT0nGXoD8iw==
+beidou-cli@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-cli/-/beidou-cli-2.3.0.tgz#71380e2852e4f5286adf8db23b8264ac36a3fcb0"
+  integrity sha512-wfOQ2ppQxLkGEs/dQPHqbPvn+Ki50pUVGobiXcUh4/00E0Dexvic+IirURMr58ipig2ayztq6ZbhpYiCzI/7Lw==
   dependencies:
     babel-loader "^8.0.5"
     chalk "^2.3.1"
@@ -2825,19 +2825,19 @@ beidou-cli@^2.1.1:
     tar "^4.4.2"
     urllib "^2.25.4"
 
-beidou-core@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-2.2.1.tgz#ac5d7ef9bc1d919f13cab839c9a5cf71928483cc"
-  integrity sha512-+dxme6vwiTwVMp4+1UbRfqclber7HzZWDQTUCG1tNvPjsRcUErSJEqhWmdj3PfUwRDrZ4vIh9tKkTXFbsO690g==
+beidou-core@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-2.3.0.tgz#0489ea8e1883b4bcac9900c945842c3a3f0352ff"
+  integrity sha512-tQYaJxj0RvTGvA1LO9bJhr3u+5hecoXlUXNnZiVpWKT9PTkBd+xrrZk1cEMomqxPvdFAJvGPE59btxkgTdTSag==
   dependencies:
     argh "^0.1.4"
     babel-preset-beidou-client "^2.1.0"
     babel-preset-beidou-server "^2.0.1"
     beidou-isomorphic "^2.0.1"
     beidou-router "^2.0.1"
-    beidou-view "^2.1.1"
-    beidou-view-react "^2.1.1"
-    beidou-webpack "^2.2.1"
+    beidou-view "^2.3.0"
+    beidou-view-react "^2.3.0"
+    beidou-webpack "^2.3.0"
     depd "^1.1.2"
     egg "^2.3.0"
 
@@ -2860,17 +2860,17 @@ beidou-router@^2.0.1:
     glob-to-regexp "^0.3.0"
     mz "^2.6.0"
 
-beidou-view-react@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-2.1.1.tgz#33aaee70d1a91001d19ec2ae9cad2526d36fcbcd"
-  integrity sha512-js03bAbbz685XDbIosy9DQ7qRb3T6q5ZxhoD6Mga2+SyvMg8+iFvEjEU2DbelXeTXRQRswzz6+odASsk7qRmbg==
+beidou-view-react@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-2.3.0.tgz#5b260d37203e4c6a0b54432d7849f59ac0a67ac6"
+  integrity sha512-rJdZa3mMhf4RHcs99HP2/MSz7eywPqc/sKUmSMOVuQl055NusCtzav0sDuPI9nNbedoSgL6D7mA5AB3ely9t1g==
   dependencies:
-    beidou-view "^2.1.1"
+    beidou-view "^2.3.0"
 
-beidou-view@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-2.1.1.tgz#714c9aef8b493cc44442f6a90c0a78e971e963cf"
-  integrity sha512-nU3sMtcS5c8WXjsQd0iYvo1qXa8aLbOrCZBY/Hq6oNf848JBeAsIL6tSeewyTzlPXLcqfNHG9RZNj3ql1kPnrg==
+beidou-view@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-2.3.0.tgz#5851e5f0ccc99193014cd3dbe4e385cad018043c"
+  integrity sha512-IKfM7sqQ+9+mVud1eATP5jYrTbOZQlILKebsXwIRzhl+4gF8G5Wszu7zrVYxA/oIJ1IJLy73Ma8uSLxZFlYogw==
   dependencies:
     escape-string-regexp "^1.0.5"
     is-type-of "^1.2.0"
@@ -2880,10 +2880,10 @@ beidou-view@^2.1.1:
     normalizeurl "^1.0.0"
     serialize-javascript "^1.3.0"
 
-beidou-webpack@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-2.2.1.tgz#147c8c2b43f5212f99318acfb513f3e7686e44f7"
-  integrity sha512-gxS3yKKM6PU+sKw5B7XEqhokja6y1uwLuyoJskUNKXfhB1RGU3M6cfX/41r/1FG6Ckr+4xMXc+Wtl+11yoFeMg==
+beidou-webpack@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-2.3.0.tgz#a53185deacd60fa42e011a3cbb3253f6c1767d2e"
+  integrity sha512-4WkWlXfmt5wyu+sDxYt+9zjPIIasHB3htWJOZCIk6cQrlLitp+H5qUl3uFyRdagLCyf+tPRnRCfjphEAUTF1Kg==
   dependencies:
     "@babel/core" "^7.1.2"
     argh "^0.1.4"
@@ -2925,12 +2925,12 @@ beidou-webpack@^2.2.1:
     webpack-dev-server "^3.1.9"
     webpack-manifest-plugin "^2.0.4"
 
-beidou@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/beidou/-/beidou-2.2.1.tgz#f38bba3a5186ec5d785be86a16d8707d238df63e"
-  integrity sha512-AH2UecKJ5mGclss2h3Bxkk1LiHgUczGVFGPvzxYadvA1CTeQzo5vVlkrgbN1c32iyKT/FBB/h4McPEs3lAqbxw==
+beidou@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou/-/beidou-2.3.0.tgz#e15dda11b760e07e3daeaabf591a694c1a5cd96c"
+  integrity sha512-pwRKVU/tPiEjK9N2z27xEkG8hIZ4EkSUyoEYzOF26UTi4hNby85GuQ49s0HuLjcJWSYrjLFqDP+SeBReaDdAvQ==
   dependencies:
-    beidou-core "^2.2.1"
+    beidou-core "^2.3.0"
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -2952,10 +2952,10 @@ bluebird@^3.5.5:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
   integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
 
-bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
-  version "4.11.8"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
-  integrity sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==
+bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.11.9:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.12.0.tgz#775b3f278efbb9718eec7361f483fb36fbbfea88"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
 body-parser@1.19.0:
   version "1.19.0"
@@ -3034,7 +3034,7 @@ brcast@^3.0.1:
   resolved "https://registry.yarnpkg.com/brcast/-/brcast-3.0.1.tgz#6256a8349b20de9eed44257a9b24d71493cd48dd"
   integrity sha512-eI3yqf9YEqyGl9PCNTR46MGvDylGtaHjalcz6Q3fAPnP/PhpKkkve52vFdfGpwp4VUvK6LUr4TQN+2stCrEwTg==
 
-brorand@^1.0.1:
+brorand@^1.0.1, brorand@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
@@ -4919,17 +4919,17 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.191, electron-to-chromium
   integrity sha512-gachlDdHSK47s0N2e58GH9HMC6Z4ip0SfmYUa5iEbE50AKaOUXysaJnXMfKj0xB245jWbYcyFSH+th3rqsF8hA==
 
 elliptic@^6.0.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.0.tgz#2b8ed4c891b7de3200e14412a5b8248c7af505ca"
-  integrity sha512-eFOJTMyCYb7xtE/caJ6JJu+bhi67WCYNbkGSknu20pmM8Ke/bqOfdnZWxyoGN26JgfxTbXrsCkEw4KheCT/KGg==
+  version "6.5.4"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.4.tgz#da37cebd31e79a1367e941b592ed1fbebd58abbb"
+  integrity sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==
   dependencies:
-    bn.js "^4.4.0"
-    brorand "^1.0.1"
+    bn.js "^4.11.9"
+    brorand "^1.1.0"
     hash.js "^1.0.0"
-    hmac-drbg "^1.0.0"
-    inherits "^2.0.1"
-    minimalistic-assert "^1.0.0"
-    minimalistic-crypto-utils "^1.0.0"
+    hmac-drbg "^1.0.1"
+    inherits "^2.0.4"
+    minimalistic-assert "^1.0.1"
+    minimalistic-crypto-utils "^1.0.1"
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -6155,7 +6155,7 @@ history@^4.7.2:
     tiny-warning "^1.0.0"
     value-equal "^0.4.0"
 
-hmac-drbg@^1.0.0:
+hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
   integrity sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
@@ -6462,7 +6462,7 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.4, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.1, inherits@~2.0.3:
+inherits@2, inherits@2.0.4, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
@@ -7890,7 +7890,7 @@ minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
   integrity sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==
 
-minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
+minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
