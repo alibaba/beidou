@@ -1,6 +1,6 @@
 {
   "lerna": "3.10.5",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "changelog": {
     "repo": "alibaba/beidou",
     "labels": {

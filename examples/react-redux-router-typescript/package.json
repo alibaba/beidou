@@ -1,6 +1,6 @@
 {
   "name": "react-redux-router-typescript",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "react-redux-router-typescript",
   "scripts": {
     "start": "beidou start",
@@ -13,8 +13,8 @@
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
-    "beidou": "^2.2.1",
-    "beidou-cli": "^2.1.1",
+    "beidou": "^2.3.0",
+    "beidou-cli": "^2.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.3.3",

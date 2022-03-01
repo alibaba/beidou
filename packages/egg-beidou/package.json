@@ -1,7 +1,7 @@
 {
   "name": "egg-beidou",
   "private": true,
-  "version": "2.1.1",
+  "version": "2.3.0",
   "description": "the plugin support egg framework to SSR",
   "eggPlugin": {
     "name": "beidou"
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "beidou-isomorphic": "^2.0.1",
-    "beidou-view": "^2.1.1",
+    "beidou-view": "^2.3.0",
     "is": "^3.3.0",
     "koa-compose": "^4.1.0",
     "react": "^16.7.0",
