@@ -2779,10 +2779,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beidou-cli@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/beidou-cli/-/beidou-cli-2.1.1.tgz#e4d7915e837f88c90d332a871b8e3f71162ca0ac"
-  integrity sha512-buz8wm4YDIqWsMSiiicZtvwR416rVsjxtNxJmKdFlJLx7vC4KtxLGwxRV+U3Gg5o1SOSKXmE6fTaT0nGXoD8iw==
+beidou-cli@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-cli/-/beidou-cli-2.3.0.tgz#71380e2852e4f5286adf8db23b8264ac36a3fcb0"
+  integrity sha512-wfOQ2ppQxLkGEs/dQPHqbPvn+Ki50pUVGobiXcUh4/00E0Dexvic+IirURMr58ipig2ayztq6ZbhpYiCzI/7Lw==
   dependencies:
     babel-loader "^8.0.5"
     chalk "^2.3.1"
@@ -2803,19 +2803,19 @@ beidou-cli@^2.1.1:
     tar "^4.4.2"
     urllib "^2.25.4"
 
-beidou-core@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-2.2.1.tgz#ac5d7ef9bc1d919f13cab839c9a5cf71928483cc"
-  integrity sha512-+dxme6vwiTwVMp4+1UbRfqclber7HzZWDQTUCG1tNvPjsRcUErSJEqhWmdj3PfUwRDrZ4vIh9tKkTXFbsO690g==
+beidou-core@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-core/-/beidou-core-2.3.0.tgz#0489ea8e1883b4bcac9900c945842c3a3f0352ff"
+  integrity sha512-tQYaJxj0RvTGvA1LO9bJhr3u+5hecoXlUXNnZiVpWKT9PTkBd+xrrZk1cEMomqxPvdFAJvGPE59btxkgTdTSag==
   dependencies:
     argh "^0.1.4"
     babel-preset-beidou-client "^2.1.0"
     babel-preset-beidou-server "^2.0.1"
     beidou-isomorphic "^2.0.1"
     beidou-router "^2.0.1"
-    beidou-view "^2.1.1"
-    beidou-view-react "^2.1.1"
-    beidou-webpack "^2.2.1"
+    beidou-view "^2.3.0"
+    beidou-view-react "^2.3.0"
+    beidou-webpack "^2.3.0"
     depd "^1.1.2"
     egg "^2.3.0"
 
@@ -2838,17 +2838,17 @@ beidou-router@^2.0.1:
     glob-to-regexp "^0.3.0"
     mz "^2.6.0"
 
-beidou-view-react@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-2.1.1.tgz#33aaee70d1a91001d19ec2ae9cad2526d36fcbcd"
-  integrity sha512-js03bAbbz685XDbIosy9DQ7qRb3T6q5ZxhoD6Mga2+SyvMg8+iFvEjEU2DbelXeTXRQRswzz6+odASsk7qRmbg==
+beidou-view-react@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-view-react/-/beidou-view-react-2.3.0.tgz#5b260d37203e4c6a0b54432d7849f59ac0a67ac6"
+  integrity sha512-rJdZa3mMhf4RHcs99HP2/MSz7eywPqc/sKUmSMOVuQl055NusCtzav0sDuPI9nNbedoSgL6D7mA5AB3ely9t1g==
   dependencies:
-    beidou-view "^2.1.1"
+    beidou-view "^2.3.0"
 
-beidou-view@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-2.1.1.tgz#714c9aef8b493cc44442f6a90c0a78e971e963cf"
-  integrity sha512-nU3sMtcS5c8WXjsQd0iYvo1qXa8aLbOrCZBY/Hq6oNf848JBeAsIL6tSeewyTzlPXLcqfNHG9RZNj3ql1kPnrg==
+beidou-view@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-view/-/beidou-view-2.3.0.tgz#5851e5f0ccc99193014cd3dbe4e385cad018043c"
+  integrity sha512-IKfM7sqQ+9+mVud1eATP5jYrTbOZQlILKebsXwIRzhl+4gF8G5Wszu7zrVYxA/oIJ1IJLy73Ma8uSLxZFlYogw==
   dependencies:
     escape-string-regexp "^1.0.5"
     is-type-of "^1.2.0"
@@ -2858,10 +2858,10 @@ beidou-view@^2.1.1:
     normalizeurl "^1.0.0"
     serialize-javascript "^1.3.0"
 
-beidou-webpack@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-2.2.1.tgz#147c8c2b43f5212f99318acfb513f3e7686e44f7"
-  integrity sha512-gxS3yKKM6PU+sKw5B7XEqhokja6y1uwLuyoJskUNKXfhB1RGU3M6cfX/41r/1FG6Ckr+4xMXc+Wtl+11yoFeMg==
+beidou-webpack@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou-webpack/-/beidou-webpack-2.3.0.tgz#a53185deacd60fa42e011a3cbb3253f6c1767d2e"
+  integrity sha512-4WkWlXfmt5wyu+sDxYt+9zjPIIasHB3htWJOZCIk6cQrlLitp+H5qUl3uFyRdagLCyf+tPRnRCfjphEAUTF1Kg==
   dependencies:
     "@babel/core" "^7.1.2"
     argh "^0.1.4"
@@ -2903,12 +2903,12 @@ beidou-webpack@^2.2.1:
     webpack-dev-server "^3.1.9"
     webpack-manifest-plugin "^2.0.4"
 
-beidou@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/beidou/-/beidou-2.2.1.tgz#f38bba3a5186ec5d785be86a16d8707d238df63e"
-  integrity sha512-AH2UecKJ5mGclss2h3Bxkk1LiHgUczGVFGPvzxYadvA1CTeQzo5vVlkrgbN1c32iyKT/FBB/h4McPEs3lAqbxw==
+beidou@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/beidou/-/beidou-2.3.0.tgz#e15dda11b760e07e3daeaabf591a694c1a5cd96c"
+  integrity sha512-pwRKVU/tPiEjK9N2z27xEkG8hIZ4EkSUyoEYzOF26UTi4hNby85GuQ49s0HuLjcJWSYrjLFqDP+SeBReaDdAvQ==
   dependencies:
-    beidou-core "^2.2.1"
+    beidou-core "^2.3.0"
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -6561,9 +6561,9 @@ inherits@2.0.3:
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@^1.3.4, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
+  integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
 inquirer@^3.0.6:
   version "3.3.0"
