@@ -30,10 +30,11 @@ module.exports = class BuildCMD extends Command {
   }
 
   async run(context) {
+    const wpconfig = context.argv.webpack || 'beidou-webpack'
     const buildPaths = [
-      path.join(context.cwd, 'node_modules/beidou-webpack/bin/build.js'),
-      path.join(__dirname, '../../../beidou-webpack/bin/build.js'),
-      () => require.resolve('beidou-webpack/bin/build'),
+      path.join(context.cwd, `node_modules/${wpconfig}/bin/build.js`),
+      path.join(__dirname, `../../../${wpconfig}/bin/build.js`),
+      () => require.resolve(`${wpconfig}/bin/build`),,
     ];
     const buildBin = buildPaths.find(p =>
       fs.existsSync(typeof p === 'function' ? p() : p)
