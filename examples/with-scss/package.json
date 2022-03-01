@@ -15,7 +15,7 @@
     "babel-polyfill": "^6.26.0",
     "beidou": "^2.3.0",
     "beidou-cli": "^2.3.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "sass-loader": "^7.1.0"
