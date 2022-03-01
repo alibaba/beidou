@@ -20,7 +20,7 @@
     "eslint-plugin-react": "^6.2.0",
     "globby": "^6.1.0",
     "husky": "^0.13.4",
-    "node-sass": "^4.7.2",
+    "node-sass": "^7.0.0",
     "pixrem": "^3.0.2",
     "pleeease-filters": "^3.0.0",
     "sass-loader": "^6.0.6"
