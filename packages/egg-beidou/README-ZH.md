@@ -21,12 +21,13 @@ exports.beidou = {
 exports.beidou = {
   static: false, //   是否开启 static 渲染
   stream: false, //  是否开启 stream 渲染
-  cache: true,   //  是否清除require.cache (开发阶段建议关闭)
-  onError: function(error){  // 渲染发生错误时的回调函数
+  cache: true, //  是否清除require.cache (开发阶段建议关闭)
+  onError: function(error) {
+    // 渲染发生错误时的回调函数
     // do something
   },
-  view: "/home/admin/project/", // 渲染文件相对路径
-  extensions: [ '.js', 'jsx', '.ts', '.tsx' ] , // 默认文件添加后缀
+  view: '/home/admin/project/', // 渲染文件相对路径
+  extensions: ['.js', 'jsx', '.ts', '.tsx'], // 默认文件添加后缀
 };
 ```
 
@@ -34,9 +35,9 @@ exports.beidou = {
 
 > 更多示例可查看单测目录下的 example 目录
 
-### 方式1： 渲染打包后代码
-```js
+### 方式 1： 渲染打包后代码
 
+```js
 // Controller
 'use strict';
 
@@ -67,9 +68,10 @@ exports.test = async function(ctx) {
 };
 ```
 
+### 方式 2： 渲染 React 代码
 
-### 方式2： 渲染React代码
-> 此插件渲染React代码的方案与北斗同构框架使用一致的方案，具体可参考北斗同构框架文档使用
+> 此插件渲染 React 代码的方案与北斗同构框架使用一致的方案，具体可参考北斗同构框架文档使用
+
 ```js
 //config/plugin.js
 // 安装 beidou-isomorphic 与 beidou-webpack 依赖，并开启插件
@@ -92,5 +94,3 @@ exports.simple = async function(ctx) {
   });
 };
 ```
-
-

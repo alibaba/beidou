@@ -3,7 +3,7 @@
 const React = require('react');
 const through = require('through');
 
-module.exports = async function(viewCtx, next) {
+module.exports = async function (viewCtx, next) {
   await next();
   const { Component, props, view, html } = viewCtx;
   const instance = React.createElement(Component, props);
@@ -13,12 +13,9 @@ module.exports = async function(viewCtx, next) {
     process.nextTick(async () => {
       const renderedStream = view.renderElementToStream(instance);
       await new Promise((resolve, reject) => {
-        renderedStream.pipe(
-          res,
-          {
-            end: false,
-          }
-        );
+        renderedStream.pipe(res, {
+          end: false,
+        });
         renderedStream.on('error', reject);
         renderedStream.on('end', resolve);
       });

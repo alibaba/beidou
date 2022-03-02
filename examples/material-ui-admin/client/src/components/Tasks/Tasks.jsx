@@ -70,9 +70,7 @@ class Tasks extends React.Component {
                     className={classes.tableActionButton}
                   >
                     <Edit
-                      className={`${classes.tableActionButtonIcon} ${
-                        classes.edit
-                      }`}
+                      className={`${classes.tableActionButtonIcon} ${classes.edit}`}
                     />
                   </IconButton>
                 </Tooltip>
@@ -87,9 +85,7 @@ class Tasks extends React.Component {
                     className={classes.tableActionButton}
                   >
                     <Close
-                      className={`${classes.tableActionButtonIcon} ${
-                        classes.close
-                      }`}
+                      className={`${classes.tableActionButtonIcon} ${classes.close}`}
                     />
                   </IconButton>
                 </Tooltip>

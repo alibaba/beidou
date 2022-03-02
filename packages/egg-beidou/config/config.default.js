@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = () => ({
   beidou: {
     middlewares: [
@@ -16,6 +17,6 @@ module.exports = () => ({
     cache: true,
     static: false,
     stream: false,
-    extensions: [ '.js', 'jsx', '.ts', '.tsx' ],
+    extensions: ['.js', 'jsx', '.ts', '.tsx'],
   },
 });

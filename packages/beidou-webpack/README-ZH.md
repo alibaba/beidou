@@ -155,7 +155,7 @@ module.exports = {
 
 上述配置下，以 `/foo` 开头的所有请求均会直接转发给 webpack，用于使用了 devServer.proxy 的场景
 
-**custom.cssExtract**: 是否开启css抽离插件
+**custom.cssExtract**: 是否开启 css 抽离插件
 
 ### 常见配置问题
 

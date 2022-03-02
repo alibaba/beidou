@@ -106,9 +106,7 @@ module.exports = (app, defaultConfig, entry, isDev) => {
       },
     
     ]
-  })
+  });
 
-  return factory.getConfig();
-
-
+  return factory.getConfig();;
 };

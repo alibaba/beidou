@@ -1,6 +1,5 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const codependency = require('codependency');
 
@@ -29,20 +28,28 @@ const fileLoaderConfig = {
   loader: require.resolve('file-loader'),
   options: {
     name: '[name]-[hash:5].[ext]',
+    esModule: false,
   },
 };
 
 function getCssLoaderConfig(dev, modules = false) {
-  return {
+  const config = {
     loader: require.resolve('css-loader'),
     options: {
       importLoaders: 1,
-      minimize: !dev,
+      // minimize: !dev,
       sourceMap: dev,
       modules,
-      localIdentName: modules ? '[local]_[hash:base64:5]' : undefined,
     },
   };
+
+  if (modules) {
+    config.options.modules = {
+      localIdentName: '[local]_[hash:base64:5]',
+    };
+  }
+
+  return config;
 }
 
 const postCssLoaderConfig = {
@@ -50,13 +57,10 @@ const postCssLoaderConfig = {
   options: {
     // Necessary for external CSS imports to work
     ident: 'postcss',
-    plugins: () => [
-      require('postcss-flexbugs-fixes'),
-      autoprefixer({
-        // browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'],
-        // please set browserslist in package.json
-        flexbox: 'no-2009',
-      }),
+    plugins: loader => [
+      require('postcss-import')({ root: loader.resourcePath }),
+      require('postcss-preset-env')(),
+      // require('cssnano')({ preset: ['default', { normalizeUrl: false }] }),
     ],
   },
 };
@@ -64,13 +68,15 @@ const postCssLoaderConfig = {
 const lessLoaderConfig = {
   loader: require.resolve('less-loader'),
   options: {
-    javascriptEnabled: true,
+    lessOptions: {
+      javascriptEnabled: true,
+    },
   },
 };
 
-
 function getStyleCongfigs(dev, options) {
-  const extractLoader = { loader: MiniCssExtractPlugin.loader,
+  const extractLoader = {
+    loader: MiniCssExtractPlugin.loader,
     options: {
       hmr: dev,
     },
@@ -78,7 +84,7 @@ function getStyleCongfigs(dev, options) {
   const styleLoader = {
     loader: require.resolve('style-loader'),
     options: {
-      hmr: dev,
+      // hmr: dev,
     },
   };
 
@@ -93,17 +99,11 @@ function getStyleCongfigs(dev, options) {
       }
       if (factory.cssExtract) {
         return {
-          use: [
-            extractLoader,
-            ...use,
-          ],
+          use: [extractLoader, ...use],
         };
       } else {
         return {
-          use: [
-            styleLoader,
-            ...use,
-          ],
+          use: [styleLoader, ...use],
         };
       }
     };
@@ -111,24 +111,15 @@ function getStyleCongfigs(dev, options) {
     return rule;
   };
 
-
   const loaders = [
     dynamicProcessor({
       test: /\.css$/,
       exclude: /\.m(odule)?\.css$/,
-      use: [
-        defaultLoader,
-        getCssLoaderConfig(dev),
-        postCssLoaderConfig,
-      ],
+      use: [defaultLoader, getCssLoaderConfig(dev), postCssLoaderConfig],
     }),
     dynamicProcessor({
       test: /\.m(odule)?\.css$/,
-      use: [
-        defaultLoader,
-        getCssLoaderConfig(dev, true),
-        postCssLoaderConfig,
-      ],
+      use: [defaultLoader, getCssLoaderConfig(dev, true), postCssLoaderConfig],
     }),
     dynamicProcessor({
       test: /\.less$/,
