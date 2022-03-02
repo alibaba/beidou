@@ -16,8 +16,8 @@ So you can easily use `app.curl` to complete a HTTP request.
 // app.js
 module.exports = app => {
   app.beforeStart(function* () {
-    // example: read the version info on https://registry.npm.taobao.org/beidou-core/latest when it starts
-    const result = yield app.curl('https://registry.npm.taobao.org/beidou-core/latest', {
+    // example: read the version info on https://registry.npmmirror.com/beidou-core/latest when it starts
+    const result = yield app.curl('https://registry.npmmirror.com/beidou-core/latest', {
       dataType: 'json',
     });
     app.logger.info('Beidou latest version: %s', result.data.version);
@@ -34,7 +34,7 @@ So it's very easy to use `ctx.curl()` to complete a HTTP request in the Context 
 // app/controller/home.js
 module.exports = function* home(ctx) {
   // example: request a npm module's info
-  const result = yield ctx.curl('https://registry.npm.taobao.org/beidou-core/latest', {
+  const result = yield ctx.curl('https://registry.npmmirror.com/beidou-core/latest', {
     // parse JSON response
     dataType: 'json',
     // timeout of 3s
